@@ -1,0 +1,9 @@
+{
+  "packageFiles": ["plugins/devtools/package.json"],
+  "bumpFiles": [
+    {
+      "filename": "plugins/devtools/package.json",
+      "type": "json"
+    }
+  ]
+}
