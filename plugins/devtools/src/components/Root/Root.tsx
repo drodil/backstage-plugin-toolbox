@@ -3,11 +3,16 @@ import { Content, Header, Page } from '@backstage/core-components';
 import { Grid, Tab, Tabs } from '@material-ui/core';
 import { Base64Encode } from '../Base64Encode/Base64Encode';
 import { TabContext, TabPanel } from '@material-ui/lab';
+import { UrlEncode } from '../UrlEncode/UrlEncode';
 
 const tabs = [
   {
-    name: 'Base64 string encode/decode',
+    name: 'Base64 encode/decode',
     component: <Base64Encode />,
+  },
+  {
+    name: 'URL encode/decode',
+    component: <UrlEncode />,
   },
 ];
 
@@ -36,10 +41,14 @@ export const Root = () => {
               variant="fullWidth"
               value={value}
               onChange={handleChange}
-              aria-label="Vertical tabs example"
+              aria-label="Tools selection"
             >
               {tabs.map((tab, i) => (
-                <Tab label={tab.name} {...tabProps(i)} />
+                <Tab
+                  style={{ alignSelf: 'end' }}
+                  label={tab.name}
+                  {...tabProps(i)}
+                />
               ))}
             </Tabs>
           </Grid>

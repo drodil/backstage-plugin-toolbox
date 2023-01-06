@@ -1,16 +1,16 @@
 import React, { useEffect } from 'react';
 import { VerticalConverter } from '../VerticalConverter/VerticalConverter';
 
-export const Base64Encode = () => {
+export const UrlEncode = () => {
   const [input, setInput] = React.useState('');
   const [output, setOutput] = React.useState('');
   const [mode, setMode] = React.useState('Encode');
 
   useEffect(() => {
     if (mode === 'Encode') {
-      setOutput(Buffer.from(input).toString('base64'));
+      setOutput(encodeURI(input));
     } else {
-      setOutput(Buffer.from(input, 'base64').toString());
+      setOutput(decodeURI(input));
     }
   }, [input, mode]);
 
