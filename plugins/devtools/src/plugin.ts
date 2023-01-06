@@ -15,8 +15,7 @@ export const devtoolsPlugin = createPlugin({
 export const DevtoolsPage = devtoolsPlugin.provide(
   createRoutableExtension({
     name: 'DevtoolsPage',
-    component: () =>
-      import('./components/ExampleComponent').then(m => m.ExampleComponent),
+    component: () => import('./components/Root').then(m => m.Root),
     mountPoint: rootRouteRef,
   }),
 );
