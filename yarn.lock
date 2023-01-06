@@ -4,7 +4,7 @@
 
 "@adobe/css-tools@^4.0.1":
   version "4.0.1"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/@adobe/css-tools/-/css-tools-4.0.1.tgz#b38b444ad3aa5fedbb15f2f746dcd934226a12dd"
+  resolved "https://registry.npmjs.org/@adobe/css-tools/-/css-tools-4.0.1.tgz#b38b444ad3aa5fedbb15f2f746dcd934226a12dd"
   integrity sha512-+u76oB43nOHrF4DDWRLWDCtci7f3QJoEBigemIdIeTi1ODqjx6Tad9NCVnPRwewWlKkVab5PlK8DCtPTyX7S8g==
 
 "@ampproject/remapping@^2.1.0":
@@ -1024,7 +1024,7 @@
 
 "@backstage/app-defaults@^1.0.10":
   version "1.0.10"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/@backstage/app-defaults/-/app-defaults-1.0.10.tgz#0c1ac246e555d0175b5bf7161174e087a02959dc"
+  resolved "https://registry.npmjs.org/@backstage/app-defaults/-/app-defaults-1.0.10.tgz#0c1ac246e555d0175b5bf7161174e087a02959dc"
   integrity sha512-H7YCEm0Vx7nLS7JIdgWf2ab8xgMUoJhkpwcqfdbcVFym9ytTcgx6nIHhyJyZHZwOIUzISmen1FYjO5cN563p0A==
   dependencies:
     "@backstage/core-app-api" "^1.3.0"
@@ -1037,7 +1037,7 @@
 
 "@backstage/catalog-client@^1.2.0":
   version "1.2.0"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/@backstage/catalog-client/-/catalog-client-1.2.0.tgz#14b3c69fcb41528a2da975ea4b771ee873055d70"
+  resolved "https://registry.npmjs.org/@backstage/catalog-client/-/catalog-client-1.2.0.tgz#14b3c69fcb41528a2da975ea4b771ee873055d70"
   integrity sha512-aSD2bpbPvO6j4wm0cUPPT6lQNDsSNGTFFuUfrVSP/w6zt4Xu7MBBmYcm3ppk4goOZeoqq2/zlHfszs3TCjilxw==
   dependencies:
     "@backstage/catalog-model" "^1.1.4"
@@ -1046,7 +1046,7 @@
 
 "@backstage/catalog-model@^1.1.4":
   version "1.1.4"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/@backstage/catalog-model/-/catalog-model-1.1.4.tgz#3addf3e4708aca718734c764362a69dfc01b7006"
+  resolved "https://registry.npmjs.org/@backstage/catalog-model/-/catalog-model-1.1.4.tgz#3addf3e4708aca718734c764362a69dfc01b7006"
   integrity sha512-dYswAB34/HFqwg0EhdkkirmARIQ7dXCwteM+H18qwEN/RIx7IqE5D1quAWGxvBd3frYfOsiBigRKNvZ9b5o7ug==
   dependencies:
     "@backstage/config" "^1.0.5"
@@ -1195,7 +1195,7 @@
 
 "@backstage/core-app-api@^1.3.0":
   version "1.3.0"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/@backstage/core-app-api/-/core-app-api-1.3.0.tgz#0ffd969cbf3e81f8c7b93ade4aa463579a769e95"
+  resolved "https://registry.npmjs.org/@backstage/core-app-api/-/core-app-api-1.3.0.tgz#0ffd969cbf3e81f8c7b93ade4aa463579a769e95"
   integrity sha512-HUcbxTvWaE1gS1hvVHrVH5d/gkt7iaEJj5RVF5sL+Sdn4Gk9aRQ1zr/na0BlLEiWCUVOc1QZM1Ganf4/OTLnTw==
   dependencies:
     "@backstage/config" "^1.0.5"
@@ -1210,7 +1210,7 @@
 
 "@backstage/core-components@^0.12.1", "@backstage/core-components@^0.12.2":
   version "0.12.2"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/@backstage/core-components/-/core-components-0.12.2.tgz#d3d678711048572a25c8455f13ea65df958f8a94"
+  resolved "https://registry.npmjs.org/@backstage/core-components/-/core-components-0.12.2.tgz#d3d678711048572a25c8455f13ea65df958f8a94"
   integrity sha512-ZYLCFU5liWGqdoc7MOttZU3/o5PGusmm0w7dm/WyTNX9FWynYLy4+nwc5f4MD36R6NcOAmXN9g+WYrfBNd85Hw==
   dependencies:
     "@backstage/config" "^1.0.5"
@@ -1253,7 +1253,7 @@
 
 "@backstage/core-plugin-api@^1.2.0":
   version "1.2.0"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/@backstage/core-plugin-api/-/core-plugin-api-1.2.0.tgz#533acb42301d6d581ade247f9e99509e956788e6"
+  resolved "https://registry.npmjs.org/@backstage/core-plugin-api/-/core-plugin-api-1.2.0.tgz#533acb42301d6d581ade247f9e99509e956788e6"
   integrity sha512-An8SObFyJpUrzIfg2S6W1aT+8Rs1zUxW2fzjv7wkl1EgrpwGjxPWl6KxQ15g9FQwcbhO1qJPRlcg7aK6ICvWxw==
   dependencies:
     "@backstage/config" "^1.0.5"
@@ -1265,7 +1265,7 @@
 
 "@backstage/dev-utils@^1.0.9":
   version "1.0.10"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/@backstage/dev-utils/-/dev-utils-1.0.10.tgz#cd06c9cf19b309373d036041739fa434069a7282"
+  resolved "https://registry.npmjs.org/@backstage/dev-utils/-/dev-utils-1.0.10.tgz#cd06c9cf19b309373d036041739fa434069a7282"
   integrity sha512-+xskpUWetq1iwUzFYGE0Z3s7JsHhmHW7SeqIryD0gc6WY5GqXeCoU8JLUjcEEff0tlNgESTs53gfroNJxdCK8g==
   dependencies:
     "@backstage/app-defaults" "^1.0.10"
@@ -1296,7 +1296,7 @@
 
 "@backstage/integration-react@^1.1.8":
   version "1.1.8"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/@backstage/integration-react/-/integration-react-1.1.8.tgz#a850249bcd07b619414543189442b2f3a5da7593"
+  resolved "https://registry.npmjs.org/@backstage/integration-react/-/integration-react-1.1.8.tgz#a850249bcd07b619414543189442b2f3a5da7593"
   integrity sha512-ADRZrOWcxRBt17CYuKr0FAzv0jZFpC8dmxBQlR+d8/JQlWnEuxIpRGk1ndJ9PF82WO2OGVYhLmHl1i6AcZ+sZA==
   dependencies:
     "@backstage/config" "^1.0.5"
@@ -1311,7 +1311,7 @@
 
 "@backstage/integration@^1.4.1":
   version "1.4.1"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/@backstage/integration/-/integration-1.4.1.tgz#bacbfd8bc783428d82a9e51354db570ceca7e618"
+  resolved "https://registry.npmjs.org/@backstage/integration/-/integration-1.4.1.tgz#bacbfd8bc783428d82a9e51354db570ceca7e618"
   integrity sha512-+hD+NqN9ewbv0wxj9m7Qu50xvRvR7SrEcyEm62D9hlqVYr9Ro+cQUJyE0XHR/DWV20j/K9haou5r6N5S5zRpxQ==
   dependencies:
     "@backstage/config" "^1.0.5"
@@ -1325,7 +1325,7 @@
 
 "@backstage/plugin-catalog-common@^1.0.9":
   version "1.0.9"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/@backstage/plugin-catalog-common/-/plugin-catalog-common-1.0.9.tgz#a16ce8936ace90bb35514966fcd97a54845bc702"
+  resolved "https://registry.npmjs.org/@backstage/plugin-catalog-common/-/plugin-catalog-common-1.0.9.tgz#a16ce8936ace90bb35514966fcd97a54845bc702"
   integrity sha512-KjV1t9nT/6ekOEWHxhC133YJoQrdQpikEGR2En33DfPZ5oCI2ZunkkEiJIdDIl0YbKT2Jh+5WuD96VUabxnJdA==
   dependencies:
     "@backstage/catalog-model" "^1.1.4"
@@ -1334,7 +1334,7 @@
 
 "@backstage/plugin-catalog-react@^1.2.3":
   version "1.2.3"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/@backstage/plugin-catalog-react/-/plugin-catalog-react-1.2.3.tgz#38b5fc0272b487d85a521fd200dbd95a542bed5d"
+  resolved "https://registry.npmjs.org/@backstage/plugin-catalog-react/-/plugin-catalog-react-1.2.3.tgz#38b5fc0272b487d85a521fd200dbd95a542bed5d"
   integrity sha512-IpO545da+qXA/yuifbZ1cPK2b/alZ8p5BhxDfmS7CcgqgzkSf8bmqgp2sbw0UwVXpRQKLfSbS0j7kOao7R+0MQ==
   dependencies:
     "@backstage/catalog-client" "^1.2.0"
@@ -1362,7 +1362,7 @@
 
 "@backstage/plugin-permission-common@^0.7.2":
   version "0.7.2"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/@backstage/plugin-permission-common/-/plugin-permission-common-0.7.2.tgz#d30531451876b1899b3726245ca7b6eb4270282a"
+  resolved "https://registry.npmjs.org/@backstage/plugin-permission-common/-/plugin-permission-common-0.7.2.tgz#d30531451876b1899b3726245ca7b6eb4270282a"
   integrity sha512-FnrZ9HWyE7qQGN20Ubw27g07JzQ/uGf/Qcmm7nIohTSNJEOF51t0axniQ159g5PAdSF/5OrTB2RKrk4SqWbXHA==
   dependencies:
     "@backstage/config" "^1.0.5"
@@ -1374,7 +1374,7 @@
 
 "@backstage/plugin-permission-react@^0.4.8":
   version "0.4.8"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/@backstage/plugin-permission-react/-/plugin-permission-react-0.4.8.tgz#6b10f75e8a08d221b9fec6148269c822704efa5b"
+  resolved "https://registry.npmjs.org/@backstage/plugin-permission-react/-/plugin-permission-react-0.4.8.tgz#6b10f75e8a08d221b9fec6148269c822704efa5b"
   integrity sha512-t8fizCl1XQrPahzqASfQIuZXfeS88lZ9XYyYvfvfJ7n3EUAGE9YsxFkwpP9HFEjkfnBCgrANdzxDPRwtq/6CPA==
   dependencies:
     "@backstage/config" "^1.0.5"
@@ -1386,7 +1386,7 @@
 
 "@backstage/plugin-search-common@^1.2.0":
   version "1.2.0"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/@backstage/plugin-search-common/-/plugin-search-common-1.2.0.tgz#af81ab8efbf0c0a9448ae28778ce48f7ee857bd8"
+  resolved "https://registry.npmjs.org/@backstage/plugin-search-common/-/plugin-search-common-1.2.0.tgz#af81ab8efbf0c0a9448ae28778ce48f7ee857bd8"
   integrity sha512-BGMh+oqd6TCpBeA9x4Fg+uASPr0cYam4TqrJrNDMqcG9negC1uJhpcEbXoRCN8CeTsvuoo5Gm6+CwDTkT8EuGA==
   dependencies:
     "@backstage/plugin-permission-common" "^0.7.2"
@@ -1401,7 +1401,7 @@
 
 "@backstage/test-utils@^1.2.3":
   version "1.2.3"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/@backstage/test-utils/-/test-utils-1.2.3.tgz#e79d911bcd4dec7f5c3db4e9c8b328eda2fe13a6"
+  resolved "https://registry.npmjs.org/@backstage/test-utils/-/test-utils-1.2.3.tgz#e79d911bcd4dec7f5c3db4e9c8b328eda2fe13a6"
   integrity sha512-gQifMe62GHaR/T3Zb4EnIhwbnfzvEcqjgDmaI33FtvIL+nJXZkHu1P35+sqp22E2s5VY7Ol9/IVXweoU0fJ2/w==
   dependencies:
     "@backstage/config" "^1.0.5"
@@ -1421,7 +1421,7 @@
 
 "@backstage/theme@^0.2.16":
   version "0.2.16"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/@backstage/theme/-/theme-0.2.16.tgz#463abce6f55e160a3a61e6654603f20b4f259a9e"
+  resolved "https://registry.npmjs.org/@backstage/theme/-/theme-0.2.16.tgz#463abce6f55e160a3a61e6654603f20b4f259a9e"
   integrity sha512-UDVqQhPunL3uDrhhKP72HlvEoG3rv2dspPxCEGqAAICBjXdLGh7CZ2qGlwdBxDjvCZ/tJcg9GNfpa6SOzdMJmA==
   dependencies:
     "@material-ui/core" "^4.12.2"
@@ -1433,7 +1433,7 @@
 
 "@backstage/version-bridge@^1.0.3":
   version "1.0.3"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/@backstage/version-bridge/-/version-bridge-1.0.3.tgz#3ee86ac9a99bf031f6cf16f277c712ec581f14cb"
+  resolved "https://registry.npmjs.org/@backstage/version-bridge/-/version-bridge-1.0.3.tgz#3ee86ac9a99bf031f6cf16f277c712ec581f14cb"
   integrity sha512-b+r0LKjciyVgrw/nrEEqY/zxMwT4GzGjoQUY3YgmtNuUeSheVHf2uwq++nsSfy3ZXZwvyTX0uR3c2YDB3q/Sig==
 
 "@bcoe/v8-coverage@^0.2.3":
@@ -1615,19 +1615,19 @@
 
 "@date-io/core@1.x", "@date-io/core@^1.3.13":
   version "1.3.13"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/@date-io/core/-/core-1.3.13.tgz#90c71da493f20204b7a972929cc5c482d078b3fa"
+  resolved "https://registry.npmjs.org/@date-io/core/-/core-1.3.13.tgz#90c71da493f20204b7a972929cc5c482d078b3fa"
   integrity sha512-AlEKV7TxjeK+jxWVKcCFrfYAk8spX9aCyiToFIiLPtfQbsjmRGLIhb5VZgptQcJdHtLXo7+m0DuurwFgUToQuA==
 
 "@date-io/date-fns@^1.3.13":
   version "1.3.13"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/@date-io/date-fns/-/date-fns-1.3.13.tgz#7798844041640ab393f7e21a7769a65d672f4735"
+  resolved "https://registry.npmjs.org/@date-io/date-fns/-/date-fns-1.3.13.tgz#7798844041640ab393f7e21a7769a65d672f4735"
   integrity sha512-yXxGzcRUPcogiMj58wVgFjc9qUYrCnnU9eLcyNbsQCmae4jPuZCDoIBR21j8ZURsM7GRtU62VOw5yNd4dDHunA==
   dependencies:
     "@date-io/core" "^1.3.13"
 
 "@emotion/hash@^0.8.0":
   version "0.8.0"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/@emotion/hash/-/hash-0.8.0.tgz#bbbff68978fefdbe68ccb533bc8cbe1d1afb5413"
+  resolved "https://registry.npmjs.org/@emotion/hash/-/hash-0.8.0.tgz#bbbff68978fefdbe68ccb533bc8cbe1d1afb5413"
   integrity sha512-kBJtf7PH6aWwZ6fka3zQ0p6SBYzx4fl1LoZXE2RrnYST9Xljm7WfKJrU4g/Xr3Beg72MLrp1AWNUmuYJTL7Cow==
 
 "@esbuild/android-arm64@0.16.14":
@@ -2100,7 +2100,7 @@
 
 "@material-table/core@^3.1.0":
   version "3.2.5"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/@material-table/core/-/core-3.2.5.tgz#37b3c665bed3ded6c147ad74adb330bf49efb213"
+  resolved "https://registry.npmjs.org/@material-table/core/-/core-3.2.5.tgz#37b3c665bed3ded6c147ad74adb330bf49efb213"
   integrity sha512-TmVN/In15faabezW3COb4Ve5+YhqxFEQnf2Q2Cz3FVXXCFqJvtu3pkRLi+7N9UJ5bvistszz6wfHeiZZY1Rf9Q==
   dependencies:
     "@babel/runtime" "^7.12.5"
@@ -2118,7 +2118,7 @@
 
 "@material-ui/core@^4.12.2":
   version "4.12.4"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/@material-ui/core/-/core-4.12.4.tgz#4ac17488e8fcaf55eb6a7f5efb2a131e10138a73"
+  resolved "https://registry.npmjs.org/@material-ui/core/-/core-4.12.4.tgz#4ac17488e8fcaf55eb6a7f5efb2a131e10138a73"
   integrity sha512-tr7xekNlM9LjA6pagJmL8QCgZXaubWUwkJnoYcMKd4gw/t4XiyvnTkjdGrUVicyB2BsdaAv1tvow45bPM4sSwQ==
   dependencies:
     "@babel/runtime" "^7.4.4"
@@ -2136,14 +2136,14 @@
 
 "@material-ui/icons@^4.9.1":
   version "4.11.3"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/@material-ui/icons/-/icons-4.11.3.tgz#b0693709f9b161ce9ccde276a770d968484ecff1"
+  resolved "https://registry.npmjs.org/@material-ui/icons/-/icons-4.11.3.tgz#b0693709f9b161ce9ccde276a770d968484ecff1"
   integrity sha512-IKHlyx6LDh8n19vzwH5RtHIOHl9Tu90aAAxcbWME6kp4dmvODM3UvOHJeMIDzUbd4muuJKHmlNoBN+mDY4XkBA==
   dependencies:
     "@babel/runtime" "^7.4.4"
 
 "@material-ui/lab@4.0.0-alpha.57":
   version "4.0.0-alpha.57"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/@material-ui/lab/-/lab-4.0.0-alpha.57.tgz#e8961bcf6449e8a8dabe84f2700daacfcafbf83a"
+  resolved "https://registry.npmjs.org/@material-ui/lab/-/lab-4.0.0-alpha.57.tgz#e8961bcf6449e8a8dabe84f2700daacfcafbf83a"
   integrity sha512-qo/IuIQOmEKtzmRD2E4Aa6DB4A87kmY6h0uYhjUmrrgmEAgbbw9etXpWPVXuRK6AGIQCjFzV6WO2i21m1R4FCw==
   dependencies:
     "@babel/runtime" "^7.4.4"
@@ -2154,7 +2154,7 @@
 
 "@material-ui/pickers@^3.2.10":
   version "3.3.10"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/@material-ui/pickers/-/pickers-3.3.10.tgz#f1b0f963348cc191645ef0bdeff7a67c6aa25485"
+  resolved "https://registry.npmjs.org/@material-ui/pickers/-/pickers-3.3.10.tgz#f1b0f963348cc191645ef0bdeff7a67c6aa25485"
   integrity sha512-hS4pxwn1ZGXVkmgD4tpFpaumUaAg2ZzbTrxltfC5yPw4BJV+mGkfnQOB4VpWEYZw2jv65Z0wLwDE/piQiPPZ3w==
   dependencies:
     "@babel/runtime" "^7.6.0"
@@ -2166,7 +2166,7 @@
 
 "@material-ui/styles@^4.11.4", "@material-ui/styles@^4.11.5":
   version "4.11.5"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/@material-ui/styles/-/styles-4.11.5.tgz#19f84457df3aafd956ac863dbe156b1d88e2bbfb"
+  resolved "https://registry.npmjs.org/@material-ui/styles/-/styles-4.11.5.tgz#19f84457df3aafd956ac863dbe156b1d88e2bbfb"
   integrity sha512-o/41ot5JJiUsIETME9wVLAJrmIWL3j0R0Bj2kCOLbSfqEkKf0fmaPt+5vtblUh5eXr2S+J/8J3DaCb10+CzPGA==
   dependencies:
     "@babel/runtime" "^7.4.4"
@@ -2188,7 +2188,7 @@
 
 "@material-ui/system@^4.12.2":
   version "4.12.2"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/@material-ui/system/-/system-4.12.2.tgz#f5c389adf3fce4146edd489bf4082d461d86aa8b"
+  resolved "https://registry.npmjs.org/@material-ui/system/-/system-4.12.2.tgz#f5c389adf3fce4146edd489bf4082d461d86aa8b"
   integrity sha512-6CSKu2MtmiJgcCGf6nBQpM8fLkuB9F55EKfbdTC80NND5wpTmKzwdhLYLH3zL4cLlK0gVaaltW7/wMuyTnN0Lw==
   dependencies:
     "@babel/runtime" "^7.4.4"
@@ -2198,12 +2198,12 @@
 
 "@material-ui/types@5.1.0":
   version "5.1.0"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/@material-ui/types/-/types-5.1.0.tgz#efa1c7a0b0eaa4c7c87ac0390445f0f88b0d88f2"
+  resolved "https://registry.npmjs.org/@material-ui/types/-/types-5.1.0.tgz#efa1c7a0b0eaa4c7c87ac0390445f0f88b0d88f2"
   integrity sha512-7cqRjrY50b8QzRSYyhSpx4WRw2YuO0KKIGQEVk5J8uoz2BanawykgZGoWEqKm7pVIbzFDN0SpPcVV4IhOFkl8A==
 
 "@material-ui/utils@^4.11.2", "@material-ui/utils@^4.11.3":
   version "4.11.3"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/@material-ui/utils/-/utils-4.11.3.tgz#232bd86c4ea81dab714f21edad70b7fdf0253942"
+  resolved "https://registry.npmjs.org/@material-ui/utils/-/utils-4.11.3.tgz#232bd86c4ea81dab714f21edad70b7fdf0253942"
   integrity sha512-ZuQPV4rBK/V1j2dIkSSEcH5uT6AaHuKWFfotADHsC0wVL1NLd2WkFCm4ZZbX33iO4ydl6V0GPngKm8HZQ2oujg==
   dependencies:
     "@babel/runtime" "^7.4.4"
@@ -2212,7 +2212,7 @@
 
 "@mswjs/cookies@^0.2.2":
   version "0.2.2"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/@mswjs/cookies/-/cookies-0.2.2.tgz#b4e207bf6989e5d5427539c2443380a33ebb922b"
+  resolved "https://registry.npmjs.org/@mswjs/cookies/-/cookies-0.2.2.tgz#b4e207bf6989e5d5427539c2443380a33ebb922b"
   integrity sha512-mlN83YSrcFgk7Dm1Mys40DLssI1KdJji2CMKN8eOlBqsTADYzj2+jWzsANsUTFbxDMWPD5e9bfA1RGqBpS3O1g==
   dependencies:
     "@types/set-cookie-parser" "^2.4.0"
@@ -2220,7 +2220,7 @@
 
 "@mswjs/interceptors@^0.17.5":
   version "0.17.6"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/@mswjs/interceptors/-/interceptors-0.17.6.tgz#7f7900f4cd26f70d9f698685e4485b2f4101d26a"
+  resolved "https://registry.npmjs.org/@mswjs/interceptors/-/interceptors-0.17.6.tgz#7f7900f4cd26f70d9f698685e4485b2f4101d26a"
   integrity sha512-201pBIWehTURb6q8Gheu4Zhvd3Ox1U4BJq5KiOQsYzkWyfiOG4pwcz5hPZIEryztgrf8/sdwABpvY757xMmfrQ==
   dependencies:
     "@open-draft/until" "^1.0.3"
@@ -2255,7 +2255,7 @@
 
 "@octokit/auth-app@^4.0.0":
   version "4.0.8"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/@octokit/auth-app/-/auth-app-4.0.8.tgz#73a8c6c087c55473affeedd939ef08ff2cfa9b3d"
+  resolved "https://registry.npmjs.org/@octokit/auth-app/-/auth-app-4.0.8.tgz#73a8c6c087c55473affeedd939ef08ff2cfa9b3d"
   integrity sha512-miI7y9FfS/fL1bSPsDaAfCGSxQ04iGLyisI2GA8N7P6eB6AkCOt+F1XXapJKRnAubQubvYF0dqxoTZYyKk93NQ==
   dependencies:
     "@octokit/auth-oauth-app" "^5.0.0"
@@ -2271,7 +2271,7 @@
 
 "@octokit/auth-oauth-app@^5.0.0":
   version "5.0.4"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/@octokit/auth-oauth-app/-/auth-oauth-app-5.0.4.tgz#ebd9a38f75381093d1a5e08e05b70b94f0918277"
+  resolved "https://registry.npmjs.org/@octokit/auth-oauth-app/-/auth-oauth-app-5.0.4.tgz#ebd9a38f75381093d1a5e08e05b70b94f0918277"
   integrity sha512-zlWuii5hAN50vsV6SJC+uIJ7SMhyWjQMEmKJQxkmNDlieE9LjnkZnbOjqRsfcG7VO7WTl4K8ccpo/3A7Kdpmrw==
   dependencies:
     "@octokit/auth-oauth-device" "^4.0.0"
@@ -2284,7 +2284,7 @@
 
 "@octokit/auth-oauth-device@^4.0.0":
   version "4.0.3"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/@octokit/auth-oauth-device/-/auth-oauth-device-4.0.3.tgz#00ce77233517e0d7d39e42a02652f64337d9df81"
+  resolved "https://registry.npmjs.org/@octokit/auth-oauth-device/-/auth-oauth-device-4.0.3.tgz#00ce77233517e0d7d39e42a02652f64337d9df81"
   integrity sha512-KPTx5nMntKjNZzzltO3X4T68v22rd7Cp/TcLJXQE2U8aXPcZ9LFuww9q9Q5WUNSu3jwi3lRwzfkPguRfz1R8Vg==
   dependencies:
     "@octokit/oauth-methods" "^2.0.0"
@@ -2294,7 +2294,7 @@
 
 "@octokit/auth-oauth-user@^2.0.0":
   version "2.0.4"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/@octokit/auth-oauth-user/-/auth-oauth-user-2.0.4.tgz#88f060ec678d7d493695af8d827e115dd064e212"
+  resolved "https://registry.npmjs.org/@octokit/auth-oauth-user/-/auth-oauth-user-2.0.4.tgz#88f060ec678d7d493695af8d827e115dd064e212"
   integrity sha512-HrbDzTPqz6GcGSOUkR+wSeF3vEqsb9NMsmPja/qqqdiGmlk/Czkxctc3KeWYogHonp62Ml4kjz2VxKawrFsadQ==
   dependencies:
     "@octokit/auth-oauth-device" "^4.0.0"
@@ -2306,14 +2306,14 @@
 
 "@octokit/auth-token@^3.0.0":
   version "3.0.2"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/@octokit/auth-token/-/auth-token-3.0.2.tgz#a0fc8de149fd15876e1ac78f6525c1c5ab48435f"
+  resolved "https://registry.npmjs.org/@octokit/auth-token/-/auth-token-3.0.2.tgz#a0fc8de149fd15876e1ac78f6525c1c5ab48435f"
   integrity sha512-pq7CwIMV1kmzkFTimdwjAINCXKTajZErLB4wMLYapR2nuB/Jpr66+05wOTZMSCBXP6n4DdDWT2W19Bm17vU69Q==
   dependencies:
     "@octokit/types" "^8.0.0"
 
 "@octokit/core@^4.1.0":
   version "4.1.0"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/@octokit/core/-/core-4.1.0.tgz#b6b03a478f1716de92b3f4ec4fd64d05ba5a9251"
+  resolved "https://registry.npmjs.org/@octokit/core/-/core-4.1.0.tgz#b6b03a478f1716de92b3f4ec4fd64d05ba5a9251"
   integrity sha512-Czz/59VefU+kKDy+ZfDwtOIYIkFjExOKf+HA92aiTZJ6EfWpFzYQWw0l54ji8bVmyhc+mGaLUbSUmXazG7z5OQ==
   dependencies:
     "@octokit/auth-token" "^3.0.0"
@@ -2335,7 +2335,7 @@
 
 "@octokit/graphql@^5.0.0":
   version "5.0.4"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/@octokit/graphql/-/graphql-5.0.4.tgz#519dd5c05123868276f3ae4e50ad565ed7dff8c8"
+  resolved "https://registry.npmjs.org/@octokit/graphql/-/graphql-5.0.4.tgz#519dd5c05123868276f3ae4e50ad565ed7dff8c8"
   integrity sha512-amO1M5QUQgYQo09aStR/XO7KAl13xpigcy/kI8/N1PnZYSS69fgte+xA4+c2DISKqUZfsh0wwjc2FaCt99L41A==
   dependencies:
     "@octokit/request" "^6.0.0"
@@ -2344,12 +2344,12 @@
 
 "@octokit/oauth-authorization-url@^5.0.0":
   version "5.0.0"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/@octokit/oauth-authorization-url/-/oauth-authorization-url-5.0.0.tgz#029626ce87f3b31addb98cd0d2355c2381a1c5a1"
+  resolved "https://registry.npmjs.org/@octokit/oauth-authorization-url/-/oauth-authorization-url-5.0.0.tgz#029626ce87f3b31addb98cd0d2355c2381a1c5a1"
   integrity sha512-y1WhN+ERDZTh0qZ4SR+zotgsQUE1ysKnvBt1hvDRB2WRzYtVKQjn97HEPzoehh66Fj9LwNdlZh+p6TJatT0zzg==
 
 "@octokit/oauth-methods@^2.0.0":
   version "2.0.4"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/@octokit/oauth-methods/-/oauth-methods-2.0.4.tgz#6abd9593ca7f91fe5068375a363bd70abd5516dc"
+  resolved "https://registry.npmjs.org/@octokit/oauth-methods/-/oauth-methods-2.0.4.tgz#6abd9593ca7f91fe5068375a363bd70abd5516dc"
   integrity sha512-RDSa6XL+5waUVrYSmOlYROtPq0+cfwppP4VaQY/iIei3xlFb0expH6YNsxNrZktcLhJWSpm9uzeom+dQrXlS3A==
   dependencies:
     "@octokit/oauth-authorization-url" "^5.0.0"
@@ -2365,19 +2365,19 @@
 
 "@octokit/plugin-paginate-rest@^5.0.0":
   version "5.0.1"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/@octokit/plugin-paginate-rest/-/plugin-paginate-rest-5.0.1.tgz#93d7e74f1f69d68ba554fa6b888c2a9cf1f99a83"
+  resolved "https://registry.npmjs.org/@octokit/plugin-paginate-rest/-/plugin-paginate-rest-5.0.1.tgz#93d7e74f1f69d68ba554fa6b888c2a9cf1f99a83"
   integrity sha512-7A+rEkS70pH36Z6JivSlR7Zqepz3KVucEFVDnSrgHXzG7WLAzYwcHZbKdfTXHwuTHbkT1vKvz7dHl1+HNf6Qyw==
   dependencies:
     "@octokit/types" "^8.0.0"
 
 "@octokit/plugin-request-log@^1.0.4":
   version "1.0.4"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/@octokit/plugin-request-log/-/plugin-request-log-1.0.4.tgz#5e50ed7083a613816b1e4a28aeec5fb7f1462e85"
+  resolved "https://registry.npmjs.org/@octokit/plugin-request-log/-/plugin-request-log-1.0.4.tgz#5e50ed7083a613816b1e4a28aeec5fb7f1462e85"
   integrity sha512-mLUsMkgP7K/cnFEw07kWqXGF5LKrOkD+lhCrKvPHXWDywAwuDUeDwWBpc69XK3pNX0uKiVt8g5z96PJ6z9xCFA==
 
 "@octokit/plugin-rest-endpoint-methods@^6.7.0":
   version "6.7.0"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/@octokit/plugin-rest-endpoint-methods/-/plugin-rest-endpoint-methods-6.7.0.tgz#2f6f17f25b6babbc8b41d2bb0a95a8839672ce7c"
+  resolved "https://registry.npmjs.org/@octokit/plugin-rest-endpoint-methods/-/plugin-rest-endpoint-methods-6.7.0.tgz#2f6f17f25b6babbc8b41d2bb0a95a8839672ce7c"
   integrity sha512-orxQ0fAHA7IpYhG2flD2AygztPlGYNAdlzYz8yrD8NDgelPfOYoRPROfEyIe035PlxvbYrgkfUZIhSBKju/Cvw==
   dependencies:
     "@octokit/types" "^8.0.0"
@@ -2406,7 +2406,7 @@
 
 "@octokit/rest@^19.0.3":
   version "19.0.5"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/@octokit/rest/-/rest-19.0.5.tgz#4dbde8ae69b27dca04b5f1d8119d282575818f6c"
+  resolved "https://registry.npmjs.org/@octokit/rest/-/rest-19.0.5.tgz#4dbde8ae69b27dca04b5f1d8119d282575818f6c"
   integrity sha512-+4qdrUFq2lk7Va+Qff3ofREQWGBeoTKNqlJO+FGjFP35ZahP+nBenhZiGdu8USSgmq4Ky3IJ/i4u0xbLqHaeow==
   dependencies:
     "@octokit/core" "^4.1.0"
@@ -2423,7 +2423,7 @@
 
 "@open-draft/until@^1.0.3":
   version "1.0.3"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/@open-draft/until/-/until-1.0.3.tgz#db9cc719191a62e7d9200f6e7bab21c5b848adca"
+  resolved "https://registry.npmjs.org/@open-draft/until/-/until-1.0.3.tgz#db9cc719191a62e7d9200f6e7bab21c5b848adca"
   integrity sha512-Aq58f5HiWdyDlFffbbSjAlv596h/cOnt2DO1w3DOC7OJ5EHs0hd/nycJfiu9RJbT6Yk6F1knnRRXNSpxoIVZ9Q==
 
 "@pmmmwh/react-refresh-webpack-plugin@^0.5.7":
@@ -2443,12 +2443,12 @@
 
 "@react-hookz/deep-equal@^1.0.4":
   version "1.0.4"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/@react-hookz/deep-equal/-/deep-equal-1.0.4.tgz#68a71f36cbc88724b3ce6f4036183778b6e7f282"
+  resolved "https://registry.npmjs.org/@react-hookz/deep-equal/-/deep-equal-1.0.4.tgz#68a71f36cbc88724b3ce6f4036183778b6e7f282"
   integrity sha512-N56fTrAPUDz/R423pag+n6TXWbvlBZDtTehaGFjK0InmN+V2OFWLE/WmORhmn6Ce7dlwH5+tQN1LJFw3ngTJVg==
 
 "@react-hookz/web@^20.0.0":
   version "20.1.0"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/@react-hookz/web/-/web-20.1.0.tgz#9734d640f6f3bc3c98e8fba674a60187ff913bfb"
+  resolved "https://registry.npmjs.org/@react-hookz/web/-/web-20.1.0.tgz#9734d640f6f3bc3c98e8fba674a60187ff913bfb"
   integrity sha512-60H9KAQ8QF4lEEY2VujTaDTEb5tzHFVQ+pq4kV5zPHMzDVoaBQbiWcZrCKpFaVHzBP/nPvDEfXICZzga0aIIzg==
   dependencies:
     "@react-hookz/deep-equal" "^1.0.4"
@@ -2774,7 +2774,7 @@
 
 "@testing-library/dom@^8.0.0":
   version "8.19.1"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/@testing-library/dom/-/dom-8.19.1.tgz#0e2dafd281dedb930bb235eac1045470b4129d0e"
+  resolved "https://registry.npmjs.org/@testing-library/dom/-/dom-8.19.1.tgz#0e2dafd281dedb930bb235eac1045470b4129d0e"
   integrity sha512-P6iIPyYQ+qH8CvGauAqanhVnjrnRe0IZFSYCeGkSRW9q3u8bdVn2NPI+lasFyVsEQn1J/IFmp5Aax41+dAP9wg==
   dependencies:
     "@babel/code-frame" "^7.10.4"
@@ -2788,7 +2788,7 @@
 
 "@testing-library/jest-dom@^5.10.1":
   version "5.16.5"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/@testing-library/jest-dom/-/jest-dom-5.16.5.tgz#3912846af19a29b2dbf32a6ae9c31ef52580074e"
+  resolved "https://registry.npmjs.org/@testing-library/jest-dom/-/jest-dom-5.16.5.tgz#3912846af19a29b2dbf32a6ae9c31ef52580074e"
   integrity sha512-N5ixQ2qKpi5OLYfwQmUb/5mSV9LneAcaUfp32pn4yCnpb8r/Yz0pXFPck21dIicKmi+ta5WRAknkZCfA8refMA==
   dependencies:
     "@adobe/css-tools" "^4.0.1"
@@ -2803,7 +2803,7 @@
 
 "@testing-library/react@^12.1.3":
   version "12.1.5"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/@testing-library/react/-/react-12.1.5.tgz#bb248f72f02a5ac9d949dea07279095fa577963b"
+  resolved "https://registry.npmjs.org/@testing-library/react/-/react-12.1.5.tgz#bb248f72f02a5ac9d949dea07279095fa577963b"
   integrity sha512-OfTXCJUFgjd/digLUuPxa0+/3ZxsQmE7ub9kcbW/wi96Bh3o/p5vrETcBGfP17NWPGqeYYl5LTRpwyGoMC4ysg==
   dependencies:
     "@babel/runtime" "^7.12.5"
@@ -2812,7 +2812,7 @@
 
 "@testing-library/user-event@^14.0.0":
   version "14.4.3"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/@testing-library/user-event/-/user-event-14.4.3.tgz#af975e367743fa91989cd666666aec31a8f50591"
+  resolved "https://registry.npmjs.org/@testing-library/user-event/-/user-event-14.4.3.tgz#af975e367743fa91989cd666666aec31a8f50591"
   integrity sha512-kCUc5MEwaEMakkO5x7aoD+DLi02ehmEM2QCGWvNqAS1dV/fAvORWEjnjsEIvml59M7Y5kCkWN6fCCyPOe8OL6Q==
 
 "@tootallnate/once@2":
@@ -2847,7 +2847,7 @@
 
 "@types/aria-query@^5.0.1":
   version "5.0.1"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/@types/aria-query/-/aria-query-5.0.1.tgz#3286741fb8f1e1580ac28784add4c7a1d49bdfbc"
+  resolved "https://registry.npmjs.org/@types/aria-query/-/aria-query-5.0.1.tgz#3286741fb8f1e1580ac28784add4c7a1d49bdfbc"
   integrity sha512-XTIieEY+gvJ39ChLcB4If5zHtPxt3Syj5rgZR+e1ctpmK8NjPf0zFqsz4JpLJT0xla9GFDKjy8Cpu331nrmE1Q==
 
 "@types/babel__core@^7.1.14":
@@ -2900,7 +2900,7 @@
 
 "@types/btoa-lite@^1.0.0":
   version "1.0.0"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/@types/btoa-lite/-/btoa-lite-1.0.0.tgz#e190a5a548e0b348adb0df9ac7fa5f1151c7cca4"
+  resolved "https://registry.npmjs.org/@types/btoa-lite/-/btoa-lite-1.0.0.tgz#e190a5a548e0b348adb0df9ac7fa5f1151c7cca4"
   integrity sha512-wJsiX1tosQ+J5+bY5LrSahHxr2wT+uME5UDwdN1kg4frt40euqA+wzECkmq4t5QbveHiJepfdThgQrPw6KiSlg==
 
 "@types/connect-history-api-fallback@^1.3.5":
@@ -2920,12 +2920,12 @@
 
 "@types/cookie@^0.4.1":
   version "0.4.1"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/@types/cookie/-/cookie-0.4.1.tgz#bfd02c1f2224567676c1545199f87c3a861d878d"
+  resolved "https://registry.npmjs.org/@types/cookie/-/cookie-0.4.1.tgz#bfd02c1f2224567676c1545199f87c3a861d878d"
   integrity sha512-XW/Aa8APYr6jSVVA1y/DEIZX0/GMKLEVekNG727R8cs56ahETkRAy/3DR7+fJyh7oUgGwNQaRfXCun0+KbWY7Q==
 
 "@types/debug@^4.0.0", "@types/debug@^4.1.7":
   version "4.1.7"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/@types/debug/-/debug-4.1.7.tgz#7cc0ea761509124709b8b2d1090d8f6c17aadb82"
+  resolved "https://registry.npmjs.org/@types/debug/-/debug-4.1.7.tgz#7cc0ea761509124709b8b2d1090d8f6c17aadb82"
   integrity sha512-9AonUzyTjXXhEOa0DnqpzZi6VHlqKMswga9EXjpXnnqxwLtdvPPtlO8evrI5D9S6asFRCQ6v+wpiUKbw+vKqyg==
   dependencies:
     "@types/ms" "*"
@@ -2989,14 +2989,14 @@
 
 "@types/hast@^2.0.0":
   version "2.3.4"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/@types/hast/-/hast-2.3.4.tgz#8aa5ef92c117d20d974a82bdfb6a648b08c0bafc"
+  resolved "https://registry.npmjs.org/@types/hast/-/hast-2.3.4.tgz#8aa5ef92c117d20d974a82bdfb6a648b08c0bafc"
   integrity sha512-wLEm0QvaoawEDoTRwzTXp4b4jpwiJDvR5KMnFnVodm3scufTlBOWRD6N1OBf9TZMhjlNsSfcO5V+7AF4+Vy+9g==
   dependencies:
     "@types/unist" "*"
 
 "@types/hoist-non-react-statics@^3.3.0":
   version "3.3.1"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/@types/hoist-non-react-statics/-/hoist-non-react-statics-3.3.1.tgz#1124aafe5118cb591977aeb1ceaaed1070eb039f"
+  resolved "https://registry.npmjs.org/@types/hoist-non-react-statics/-/hoist-non-react-statics-3.3.1.tgz#1124aafe5118cb591977aeb1ceaaed1070eb039f"
   integrity sha512-iMIqiko6ooLrTh1joXodJK5X9xeEALT1kM5G3ZLhD3hszxBdIEd5C75U834D9mLcINgD4OyZf5uQXjkuYydWvA==
   dependencies:
     "@types/react" "*"
@@ -3043,12 +3043,12 @@
 
 "@types/js-cookie@^2.2.6":
   version "2.2.7"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/@types/js-cookie/-/js-cookie-2.2.7.tgz#226a9e31680835a6188e887f3988e60c04d3f6a3"
+  resolved "https://registry.npmjs.org/@types/js-cookie/-/js-cookie-2.2.7.tgz#226a9e31680835a6188e887f3988e60c04d3f6a3"
   integrity sha512-aLkWa0C0vO5b4Sr798E26QgOkss68Un0bLjs7u9qxzPT5CG+8DuNTffWES58YzJs3hrVAOs1wonycqEBqNJubA==
 
 "@types/js-levenshtein@^1.1.1":
   version "1.1.1"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/@types/js-levenshtein/-/js-levenshtein-1.1.1.tgz#ba05426a43f9e4e30b631941e0aa17bf0c890ed5"
+  resolved "https://registry.npmjs.org/@types/js-levenshtein/-/js-levenshtein-1.1.1.tgz#ba05426a43f9e4e30b631941e0aa17bf0c890ed5"
   integrity sha512-qC4bCqYGy1y/NP7dDVr7KJarn+PbX1nSpwA7JXdu0HxT3QYjO8MJ+cntENtHFVy2dRAyBV23OZ6MxsW1AM1L8g==
 
 "@types/jsdom@^20.0.0":
@@ -3072,7 +3072,7 @@
 
 "@types/jsonwebtoken@^9.0.0":
   version "9.0.0"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/@types/jsonwebtoken/-/jsonwebtoken-9.0.0.tgz#4db9bfaf276ef4fdc3608194fab8b8f2fd1c44f9"
+  resolved "https://registry.npmjs.org/@types/jsonwebtoken/-/jsonwebtoken-9.0.0.tgz#4db9bfaf276ef4fdc3608194fab8b8f2fd1c44f9"
   integrity sha512-mM4TkDpA9oixqg1Fv2vVpOFyIVLJjm5x4k0V+K/rEsizfjD7Tk7LKk3GTtbB7KCfP0FEHQtsZqFxYA0+sijNVg==
   dependencies:
     "@types/node" "*"
@@ -3084,12 +3084,12 @@
 
 "@types/lru-cache@^5.1.0":
   version "5.1.1"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/@types/lru-cache/-/lru-cache-5.1.1.tgz#c48c2e27b65d2a153b19bfc1a317e30872e01eef"
+  resolved "https://registry.npmjs.org/@types/lru-cache/-/lru-cache-5.1.1.tgz#c48c2e27b65d2a153b19bfc1a317e30872e01eef"
   integrity sha512-ssE3Vlrys7sdIzs5LOxCzTVMsU7i9oa/IaW92wF32JFb3CVczqOkru2xspuKczHEbG3nvmPY7IFqVmGGHdNbYw==
 
 "@types/mdast@^3.0.0":
   version "3.0.10"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/@types/mdast/-/mdast-3.0.10.tgz#4724244a82a4598884cbbe9bcfd73dff927ee8af"
+  resolved "https://registry.npmjs.org/@types/mdast/-/mdast-3.0.10.tgz#4724244a82a4598884cbbe9bcfd73dff927ee8af"
   integrity sha512-W864tg/Osz1+9f4lrGTZpCSO5/z4608eUp19tbozkq2HJK6i3z1kT0H9tlADXuYIb1YYOBByU4Jsqkk75q48qA==
   dependencies:
     "@types/unist" "*"
@@ -3106,7 +3106,7 @@
 
 "@types/ms@*":
   version "0.7.31"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/@types/ms/-/ms-0.7.31.tgz#31b7ca6407128a3d2bbc27fe2d21b345397f6197"
+  resolved "https://registry.npmjs.org/@types/ms/-/ms-0.7.31.tgz#31b7ca6407128a3d2bbc27fe2d21b345397f6197"
   integrity sha512-iiUgKzV9AuaEkZqkOLDIvlQiL6ltuZd9tGcW3gwpnX8JbuiuhFlEGmmFXEXkN50Cvq7Os88IY2v0dkDqXYWVgA==
 
 "@types/node@*":
@@ -3141,7 +3141,7 @@
 
 "@types/prop-types@*", "@types/prop-types@^15.0.0", "@types/prop-types@^15.7.3":
   version "15.7.5"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/@types/prop-types/-/prop-types-15.7.5.tgz#5f19d2b85a98e9558036f6a3cacc8819420f05cf"
+  resolved "https://registry.npmjs.org/@types/prop-types/-/prop-types-15.7.5.tgz#5f19d2b85a98e9558036f6a3cacc8819420f05cf"
   integrity sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==
 
 "@types/qs@*":
@@ -3156,14 +3156,14 @@
 
 "@types/react-dom@<18.0.0":
   version "17.0.18"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/@types/react-dom/-/react-dom-17.0.18.tgz#8f7af38f5d9b42f79162eea7492e5a1caff70dc2"
+  resolved "https://registry.npmjs.org/@types/react-dom/-/react-dom-17.0.18.tgz#8f7af38f5d9b42f79162eea7492e5a1caff70dc2"
   integrity sha512-rLVtIfbwyur2iFKykP2w0pl/1unw26b5td16d5xMgp7/yjTHomkyxPYChFoCr/FtEX1lN9wY6lFj1qvKdS5kDw==
   dependencies:
     "@types/react" "^17"
 
 "@types/react-redux@^7.1.20":
   version "7.1.25"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/@types/react-redux/-/react-redux-7.1.25.tgz#de841631205b24f9dfb4967dd4a7901e048f9a88"
+  resolved "https://registry.npmjs.org/@types/react-redux/-/react-redux-7.1.25.tgz#de841631205b24f9dfb4967dd4a7901e048f9a88"
   integrity sha512-bAGh4e+w5D8dajd6InASVIyCo4pZLJ66oLb80F9OBLO1gKESbZcRCJpTT6uLXX+HAB57zw1WTdwJdAsewuTweg==
   dependencies:
     "@types/hoist-non-react-statics" "^3.3.0"
@@ -3173,28 +3173,28 @@
 
 "@types/react-sparklines@^1.7.0":
   version "1.7.2"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/@types/react-sparklines/-/react-sparklines-1.7.2.tgz#c14e80623abd3669a10f18d13f6fb9fbdc322f70"
+  resolved "https://registry.npmjs.org/@types/react-sparklines/-/react-sparklines-1.7.2.tgz#c14e80623abd3669a10f18d13f6fb9fbdc322f70"
   integrity sha512-N1GwO7Ri5C5fE8+CxhiDntuSw1qYdGytBuedKrCxWpaojXm4WnfygbdBdc5sXGX7feMxDXBy9MNhxoUTwrMl4A==
   dependencies:
     "@types/react" "*"
 
 "@types/react-text-truncate@^0.14.0":
   version "0.14.1"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/@types/react-text-truncate/-/react-text-truncate-0.14.1.tgz#3d24eca927e5fd1bfd789b047ae8ec53ba878b28"
+  resolved "https://registry.npmjs.org/@types/react-text-truncate/-/react-text-truncate-0.14.1.tgz#3d24eca927e5fd1bfd789b047ae8ec53ba878b28"
   integrity sha512-yCtOOOJzrsfWF6TbnTDZz0gM5JYOxJmewExaTJTv01E7yrmpkNcmVny2fAtsNgSFCp8k2VgCePBoIvFBpKyEOw==
   dependencies:
     "@types/react" "*"
 
 "@types/react-transition-group@^4.2.0":
   version "4.4.5"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/@types/react-transition-group/-/react-transition-group-4.4.5.tgz#aae20dcf773c5aa275d5b9f7cdbca638abc5e416"
+  resolved "https://registry.npmjs.org/@types/react-transition-group/-/react-transition-group-4.4.5.tgz#aae20dcf773c5aa275d5b9f7cdbca638abc5e416"
   integrity sha512-juKD/eiSM3/xZYzjuzH6ZwpP+/lejltmiS3QEzV/vmb/Q8+HfDmxu+Baga8UEMGBqV88Nbg4l2hY/K2DkyaLLA==
   dependencies:
     "@types/react" "*"
 
 "@types/react@*":
   version "18.0.26"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/@types/react/-/react-18.0.26.tgz#8ad59fc01fef8eaf5c74f4ea392621749f0b7917"
+  resolved "https://registry.npmjs.org/@types/react/-/react-18.0.26.tgz#8ad59fc01fef8eaf5c74f4ea392621749f0b7917"
   integrity sha512-hCR3PJQsAIXyxhTNSiDFY//LhnMZWpNNr5etoCqx/iUfGc5gXWtQR2Phl908jVR6uPXacojQWTg4qRpkxTuGug==
   dependencies:
     "@types/prop-types" "*"
@@ -3203,7 +3203,7 @@
 
 "@types/react@^17":
   version "17.0.52"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/@types/react/-/react-17.0.52.tgz#10d8b907b5c563ac014a541f289ae8eaa9bf2e9b"
+  resolved "https://registry.npmjs.org/@types/react/-/react-17.0.52.tgz#10d8b907b5c563ac014a541f289ae8eaa9bf2e9b"
   integrity sha512-vwk8QqVODi0VaZZpDXQCmEmiOuyjEFPY7Ttaw5vjM112LOq37yz1CDJGrRJwA1fYEq4Iitd5rnjd1yWAc/bT+A==
   dependencies:
     "@types/prop-types" "*"
@@ -3224,7 +3224,7 @@
 
 "@types/scheduler@*":
   version "0.16.2"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/@types/scheduler/-/scheduler-0.16.2.tgz#1a62f89525723dde24ba1b01b092bf5df8ad4d39"
+  resolved "https://registry.npmjs.org/@types/scheduler/-/scheduler-0.16.2.tgz#1a62f89525723dde24ba1b01b092bf5df8ad4d39"
   integrity sha512-hppQEBDmlwhFAXKJX2KnWLYu5yMfi91yazPb2l+lbJiwW+wdo1gNeRA+3RgNSO39WYX2euey41KEwnqesU2Jew==
 
 "@types/semver@^7.3.12":
@@ -3249,7 +3249,7 @@
 
 "@types/set-cookie-parser@^2.4.0":
   version "2.4.2"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/@types/set-cookie-parser/-/set-cookie-parser-2.4.2.tgz#b6a955219b54151bfebd4521170723df5e13caad"
+  resolved "https://registry.npmjs.org/@types/set-cookie-parser/-/set-cookie-parser-2.4.2.tgz#b6a955219b54151bfebd4521170723df5e13caad"
   integrity sha512-fBZgytwhYAUkj/jC/FAV4RQ5EerRup1YQsXQCh8rZfiHkc4UahC192oH0smGwsXol3cL3A5oETuAHeQHmhXM4w==
   dependencies:
     "@types/node" "*"
@@ -3268,14 +3268,14 @@
 
 "@types/styled-jsx@^2.2.8":
   version "2.2.9"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/@types/styled-jsx/-/styled-jsx-2.2.9.tgz#e50b3f868c055bcbf9bc353eca6c10fdad32a53f"
+  resolved "https://registry.npmjs.org/@types/styled-jsx/-/styled-jsx-2.2.9.tgz#e50b3f868c055bcbf9bc353eca6c10fdad32a53f"
   integrity sha512-W/iTlIkGEyTBGTEvZCey8EgQlQ5l0DwMqi3iOXlLs2kyBwYTXHKEiU6IZ5EwoRwngL8/dGYuzezSup89ttVHLw==
   dependencies:
     "@types/react" "*"
 
 "@types/testing-library__jest-dom@^5.9.1":
   version "5.14.5"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/@types/testing-library__jest-dom/-/testing-library__jest-dom-5.14.5.tgz#d113709c90b3c75fdb127ec338dad7d5f86c974f"
+  resolved "https://registry.npmjs.org/@types/testing-library__jest-dom/-/testing-library__jest-dom-5.14.5.tgz#d113709c90b3c75fdb127ec338dad7d5f86c974f"
   integrity sha512-SBwbxYoyPIvxHbeHxTZX2Pe/74F/tX2/D3mMvzabdeJ25bBojfW0TyB8BHrbq/9zaaKICJZjLP+8r6AeZMFCuQ==
   dependencies:
     "@types/jest" "*"
@@ -3287,7 +3287,7 @@
 
 "@types/unist@*", "@types/unist@^2.0.0":
   version "2.0.6"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/@types/unist/-/unist-2.0.6.tgz#250a7b16c3b91f672a24552ec64678eeb1d3a08d"
+  resolved "https://registry.npmjs.org/@types/unist/-/unist-2.0.6.tgz#250a7b16c3b91f672a24552ec64678eeb1d3a08d"
   integrity sha512-PBjIUxZHOuj0R15/xuwJYjFi+KZdNFrehocChv4g5hu6aFroHue8m0lBP0POdK2nKzbw0cgV1mws8+V/JAcEkQ==
 
 "@types/webpack-env@^1.15.2":
@@ -3543,12 +3543,12 @@
 
 "@xmldom/xmldom@^0.8.3":
   version "0.8.6"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/@xmldom/xmldom/-/xmldom-0.8.6.tgz#8a1524eb5bd5e965c1e3735476f0262469f71440"
+  resolved "https://registry.npmjs.org/@xmldom/xmldom/-/xmldom-0.8.6.tgz#8a1524eb5bd5e965c1e3735476f0262469f71440"
   integrity sha512-uRjjusqpoqfmRkTaNuLJ2VohVr67Q5YwDATW3VU7PfzTj6IRaihGrYI7zckGZjxQPBIp63nfvJbM+Yu5ICh0Bg==
 
 "@xobotyi/scrollbar-width@^1.9.5":
   version "1.9.5"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/@xobotyi/scrollbar-width/-/scrollbar-width-1.9.5.tgz#80224a6919272f405b87913ca13b92929bdf3c4d"
+  resolved "https://registry.npmjs.org/@xobotyi/scrollbar-width/-/scrollbar-width-1.9.5.tgz#80224a6919272f405b87913ca13b92929bdf3c4d"
   integrity sha512-N8tkAACJx2ww8vFMneJmaAgmjAG1tnVBZJRLRcx061tmsLRZHSEZSLuGWnwPtunsSLvSqXQ2wfp7Mgqg1I+2dQ==
 
 "@xtuc/ieee754@^1.2.0":
@@ -3576,7 +3576,7 @@
 
 "@zxing/text-encoding@0.9.0":
   version "0.9.0"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/@zxing/text-encoding/-/text-encoding-0.9.0.tgz#fb50ffabc6c7c66a0c96b4c03e3d9be74864b70b"
+  resolved "https://registry.npmjs.org/@zxing/text-encoding/-/text-encoding-0.9.0.tgz#fb50ffabc6c7c66a0c96b4c03e3d9be74864b70b"
   integrity sha512-U/4aVJ2mxI0aDNI8Uq0wEhMgY+u4CNtEb0om3+y3+niDAsoTCOB33UF0sxpzqzdqXLqmvc+vZyAt4O8pPdfkwA==
 
 JSONStream@^1.0.4:
@@ -3783,7 +3783,7 @@ aria-query@^4.2.2:
 
 aria-query@^5.0.0:
   version "5.1.3"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/aria-query/-/aria-query-5.1.3.tgz#19db27cd101152773631396f7a95a3b58c22c35e"
+  resolved "https://registry.npmjs.org/aria-query/-/aria-query-5.1.3.tgz#19db27cd101152773631396f7a95a3b58c22c35e"
   integrity sha512-R5iJ5lkuHybztUfuOAznmboyjWq8O6sqNqtK7CLOqdydi54VNbORp49mb14KbWgG1QD3JFO9hJdZ+y4KutfdOQ==
   dependencies:
     deep-equal "^2.0.5"
@@ -4006,7 +4006,7 @@ babel-preset-jest@^29.2.0:
 
 bail@^2.0.0:
   version "2.0.2"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/bail/-/bail-2.0.2.tgz#d26f5cd8fe5d6f832a31517b9f7c356040ba6d5d"
+  resolved "https://registry.npmjs.org/bail/-/bail-2.0.2.tgz#d26f5cd8fe5d6f832a31517b9f7c356040ba6d5d"
   integrity sha512-0xO6mYd7JB2YesxDKplafRpsiOzPt9V02ddPCLbY1xYGPOX24NTyN50qnUxgCPcSoYMhKpAuBTjQoRZCAkUDRw==
 
 balanced-match@^1.0.0:
@@ -4026,7 +4026,7 @@ batch@0.6.1:
 
 before-after-hook@^2.2.0:
   version "2.2.3"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/before-after-hook/-/before-after-hook-2.2.3.tgz#c51e809c81a4e354084422b9b26bad88249c517c"
+  resolved "https://registry.npmjs.org/before-after-hook/-/before-after-hook-2.2.3.tgz#c51e809c81a4e354084422b9b26bad88249c517c"
   integrity sha512-NzUnlZexiaH/46WDhANlyR2bXRopNg4F/zuSA3OpZnllCUgRaOF2znDioDWrmbNVsuZk6l9pMquQB38cfBZwkQ==
 
 bfj@^7.0.2:
@@ -4218,12 +4218,12 @@ bser@2.1.1:
 
 btoa-lite@^1.0.0:
   version "1.0.0"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/btoa-lite/-/btoa-lite-1.0.0.tgz#337766da15801210fdd956c22e9c6891ab9d0337"
+  resolved "https://registry.npmjs.org/btoa-lite/-/btoa-lite-1.0.0.tgz#337766da15801210fdd956c22e9c6891ab9d0337"
   integrity sha512-gvW7InbIyF8AicrqWoptdW08pUxuhq8BEgowNajy9RhiE86fmGAGl+bLKo6oB8QP0CkqHLowfN0oJdKC/J6LbA==
 
 buffer-equal-constant-time@1.0.1:
   version "1.0.1"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/buffer-equal-constant-time/-/buffer-equal-constant-time-1.0.1.tgz#f8e71132f7ffe6e01a5c9697a4c6f3e48d5cc819"
+  resolved "https://registry.npmjs.org/buffer-equal-constant-time/-/buffer-equal-constant-time-1.0.1.tgz#f8e71132f7ffe6e01a5c9697a4c6f3e48d5cc819"
   integrity sha512-zRpUiDwd/xk6ADqPMATG8vc9VPrkck7T07OIx0gnjmJAnHnTVXNQG3vfvWNuiZIkwu9KrKdA1iJKfsfTVxE6NA==
 
 buffer-from@^1.0.0:
@@ -4338,7 +4338,7 @@ caniuse-lite@^1.0.0, caniuse-lite@^1.0.30001400:
 
 ccount@^2.0.0:
   version "2.0.1"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/ccount/-/ccount-2.0.1.tgz#17a3bf82302e0870d6da43a01311a8bc02a3ecf5"
+  resolved "https://registry.npmjs.org/ccount/-/ccount-2.0.1.tgz#17a3bf82302e0870d6da43a01311a8bc02a3ecf5"
   integrity sha512-eyrF0jiFpY+3drT6383f1qhkbGsLSifNAjA61IUjZjmLCWjItY6LB9ft9YhoDgwfmclB2zhu51Lc7+95b8NRAg==
 
 chalk@2.4.2, chalk@^2.0.0, chalk@^2.4.2:
@@ -4352,7 +4352,7 @@ chalk@2.4.2, chalk@^2.0.0, chalk@^2.4.2:
 
 chalk@4.1.1:
   version "4.1.1"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/chalk/-/chalk-4.1.1.tgz#c80b3fab28bf6371e6863325eee67e618b77e6ad"
+  resolved "https://registry.npmjs.org/chalk/-/chalk-4.1.1.tgz#c80b3fab28bf6371e6863325eee67e618b77e6ad"
   integrity sha512-diHzdDKxcU+bAsUboHLPEDQiw0qEe0qd7SYUn3HgcFlWgbDcfLGswOHYeGrHKzG9z6UYf01d9VFMfZxPM1xZSg==
   dependencies:
     ansi-styles "^4.1.0"
@@ -4360,7 +4360,7 @@ chalk@4.1.1:
 
 chalk@^3.0.0:
   version "3.0.0"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/chalk/-/chalk-3.0.0.tgz#3f73c2bf526591f574cc492c51e2456349f844e4"
+  resolved "https://registry.npmjs.org/chalk/-/chalk-3.0.0.tgz#3f73c2bf526591f574cc492c51e2456349f844e4"
   integrity sha512-4D3B6Wf41KOYRFdszmDqMCGq5VV/uMAB273JILmO+3jAlh8X4qDtdtgCR3fxtbLEMzSx22QdhnDcJvu2u1fVwg==
   dependencies:
     ansi-styles "^4.1.0"
@@ -4381,22 +4381,22 @@ char-regex@^1.0.2:
 
 character-entities-legacy@^1.0.0:
   version "1.1.4"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/character-entities-legacy/-/character-entities-legacy-1.1.4.tgz#94bc1845dce70a5bb9d2ecc748725661293d8fc1"
+  resolved "https://registry.npmjs.org/character-entities-legacy/-/character-entities-legacy-1.1.4.tgz#94bc1845dce70a5bb9d2ecc748725661293d8fc1"
   integrity sha512-3Xnr+7ZFS1uxeiUDvV02wQ+QDbc55o97tIV5zHScSPJpcLm/r0DFPcoY3tYRp+VZukxuMeKgXYmsXQHO05zQeA==
 
 character-entities@^1.0.0:
   version "1.2.4"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/character-entities/-/character-entities-1.2.4.tgz#e12c3939b7eaf4e5b15e7ad4c5e28e1d48c5b16b"
+  resolved "https://registry.npmjs.org/character-entities/-/character-entities-1.2.4.tgz#e12c3939b7eaf4e5b15e7ad4c5e28e1d48c5b16b"
   integrity sha512-iBMyeEHxfVnIakwOuDXpVkc54HijNgCyQB2w0VfGQThle6NXn50zU6V/u+LDhxHcDUPojn6Kpga3PTAD8W1bQw==
 
 character-entities@^2.0.0:
   version "2.0.2"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/character-entities/-/character-entities-2.0.2.tgz#2d09c2e72cd9523076ccb21157dff66ad43fcc22"
+  resolved "https://registry.npmjs.org/character-entities/-/character-entities-2.0.2.tgz#2d09c2e72cd9523076ccb21157dff66ad43fcc22"
   integrity sha512-shx7oQ0Awen/BRIdkjkvz54PnEEI/EjwXDSIZp86/KKdbafHh1Df/RYGBhn4hbe2+uKC9FnT5UCEdyPz3ai9hQ==
 
 character-reference-invalid@^1.0.0:
   version "1.1.4"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/character-reference-invalid/-/character-reference-invalid-1.1.4.tgz#083329cda0eae272ab3dbbf37e9a382c13af1560"
+  resolved "https://registry.npmjs.org/character-reference-invalid/-/character-reference-invalid-1.1.4.tgz#083329cda0eae272ab3dbbf37e9a382c13af1560"
   integrity sha512-mKKUkUbhPpQlCOfIuZkvSEgktjPFIsZKRRbC6KWVEMvlzblj3i3asQv5ODsrwt0N3pHAEvjP8KTQPHkp0+6jOg==
 
 chardet@^0.7.0:
@@ -4454,7 +4454,7 @@ cjs-module-lexer@^1.0.0:
 
 classnames@^2.2.6:
   version "2.3.2"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/classnames/-/classnames-2.3.2.tgz#351d813bf0137fcc6a76a16b88208d2560a0d924"
+  resolved "https://registry.npmjs.org/classnames/-/classnames-2.3.2.tgz#351d813bf0137fcc6a76a16b88208d2560a0d924"
   integrity sha512-CSbhY4cFEJRe6/GQzIk5qXZ4Jeg5pcsP7b5peFSDpffpe1cqjASH/n9UTjBwOp6XpMSTwQ8Za2K5V02ueA7Tmw==
 
 clean-css@^5.2.2:
@@ -4527,7 +4527,7 @@ clone@^1.0.2:
 
 clsx@^1.0.2, clsx@^1.0.4:
   version "1.2.1"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/clsx/-/clsx-1.2.1.tgz#0ddc4a20a549b59c93a4116bb26f5294ca17dc12"
+  resolved "https://registry.npmjs.org/clsx/-/clsx-1.2.1.tgz#0ddc4a20a549b59c93a4116bb26f5294ca17dc12"
   integrity sha512-EcR6r5a8bj6pu3ycsa/E/cKVGuTgZJZdsyUYHOksG/UHIiKfjxzRxYJpyVBwYaQeOvghal9fcc4PidlgzugAQg==
 
 co@^4.6.0:
@@ -4583,12 +4583,12 @@ combined-stream@^1.0.8:
 
 comma-separated-tokens@^1.0.0:
   version "1.0.8"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/comma-separated-tokens/-/comma-separated-tokens-1.0.8.tgz#632b80b6117867a158f1080ad498b2fbe7e3f5ea"
+  resolved "https://registry.npmjs.org/comma-separated-tokens/-/comma-separated-tokens-1.0.8.tgz#632b80b6117867a158f1080ad498b2fbe7e3f5ea"
   integrity sha512-GHuDRO12Sypu2cV70d1dkA2EUmXHgntrzbpvOB+Qy+49ypNfGgFQIC2fhhXbnyrJRynDCAARsT7Ou0M6hirpfw==
 
 comma-separated-tokens@^2.0.0:
   version "2.0.3"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/comma-separated-tokens/-/comma-separated-tokens-2.0.3.tgz#4e89c9458acb61bc8fef19f4529973b2392839ee"
+  resolved "https://registry.npmjs.org/comma-separated-tokens/-/comma-separated-tokens-2.0.3.tgz#4e89c9458acb61bc8fef19f4529973b2392839ee"
   integrity sha512-Fu4hJdvzeylCfQPp9SGWidpzrMs7tTrlu6Vb8XGaRGck8QSNZJJp538Wrb60Lax4fPwR64ViY468OIUTbRlGZg==
 
 commander@^2.20.0:
@@ -4931,12 +4931,12 @@ cookie@0.5.0:
 
 cookie@^0.4.2:
   version "0.4.2"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/cookie/-/cookie-0.4.2.tgz#0e41f24de5ecf317947c82fc789e06a884824432"
+  resolved "https://registry.npmjs.org/cookie/-/cookie-0.4.2.tgz#0e41f24de5ecf317947c82fc789e06a884824432"
   integrity sha512-aSWTXFzaKWkvHO1Ny/s+ePFpvKsPnjc551iI41v3ny/ow6tBG5Vd+FuqGNhh1LxOmVzOlGUriIlOaokOvhaStA==
 
 copy-to-clipboard@^3.3.1:
   version "3.3.3"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/copy-to-clipboard/-/copy-to-clipboard-3.3.3.tgz#55ac43a1db8ae639a4bd99511c148cdd1b83a1b0"
+  resolved "https://registry.npmjs.org/copy-to-clipboard/-/copy-to-clipboard-3.3.3.tgz#55ac43a1db8ae639a4bd99511c148cdd1b83a1b0"
   integrity sha512-2KV8NhB5JqC3ky0r9PMCAZKbUHSwtEo4CwCs0KXgruG43gX5PMqDEBbVU4OUzw2MuAWUfsuFmWvEKG5QRfSnJA==
   dependencies:
     toggle-selection "^1.0.6"
@@ -5066,7 +5066,7 @@ crypto-browserify@^3.11.0:
 
 css-box-model@^1.2.0:
   version "1.2.1"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/css-box-model/-/css-box-model-1.2.1.tgz#59951d3b81fd6b2074a62d49444415b0d2b4d7c1"
+  resolved "https://registry.npmjs.org/css-box-model/-/css-box-model-1.2.1.tgz#59951d3b81fd6b2074a62d49444415b0d2b4d7c1"
   integrity sha512-a7Vr4Q/kd/aw96bnJG332W9V9LkJO69JRcaCYDUqjp6/z0w6VcZjgAcTbgFxEPfBgdnAwlh3iwu+hLopa+flJw==
   dependencies:
     tiny-invariant "^1.0.6"
@@ -5078,7 +5078,7 @@ css-declaration-sorter@^6.3.1:
 
 css-in-js-utils@^3.1.0:
   version "3.1.0"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/css-in-js-utils/-/css-in-js-utils-3.1.0.tgz#640ae6a33646d401fc720c54fc61c42cd76ae2bb"
+  resolved "https://registry.npmjs.org/css-in-js-utils/-/css-in-js-utils-3.1.0.tgz#640ae6a33646d401fc720c54fc61c42cd76ae2bb"
   integrity sha512-fJAcud6B3rRu+KHYk+Bwf+WFL2MDCJJ1XG9x137tJQ0xYxor7XziQtuGFbWNdqrvF4Tk26O3H73nfVqXt/fW1A==
   dependencies:
     hyphenate-style-name "^1.0.3"
@@ -5118,7 +5118,7 @@ css-tree@^1.1.2, css-tree@^1.1.3:
 
 css-vendor@^2.0.8:
   version "2.0.8"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/css-vendor/-/css-vendor-2.0.8.tgz#e47f91d3bd3117d49180a3c935e62e3d9f7f449d"
+  resolved "https://registry.npmjs.org/css-vendor/-/css-vendor-2.0.8.tgz#e47f91d3bd3117d49180a3c935e62e3d9f7f449d"
   integrity sha512-x9Aq0XTInxrkuFeHKbYC7zWY8ai7qJ04Kxd9MnvbC1uO5DagxoHQjm4JvG+vCdXOoFtCjbL2XSZfxmoYa9uQVQ==
   dependencies:
     "@babel/runtime" "^7.8.3"
@@ -5131,7 +5131,7 @@ css-what@^6.0.1:
 
 css.escape@^1.5.1:
   version "1.5.1"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/css.escape/-/css.escape-1.5.1.tgz#42e27d4fa04ae32f931a4b4d4191fa9cddee97cb"
+  resolved "https://registry.npmjs.org/css.escape/-/css.escape-1.5.1.tgz#42e27d4fa04ae32f931a4b4d4191fa9cddee97cb"
   integrity sha512-YUifsXXuknHlUsmlgyY0PKzgPOr7/FjCePfHNt0jxm83wHZi44VDMQ7/fGNkjY3/jV1MC+1CmZbaHzugyeRtpg==
 
 cssesc@^3.0.0:
@@ -5214,27 +5214,27 @@ cssstyle@^2.3.0:
 
 csstype@^2.5.2:
   version "2.6.21"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/csstype/-/csstype-2.6.21.tgz#2efb85b7cc55c80017c66a5ad7cbd931fda3a90e"
+  resolved "https://registry.npmjs.org/csstype/-/csstype-2.6.21.tgz#2efb85b7cc55c80017c66a5ad7cbd931fda3a90e"
   integrity sha512-Z1PhmomIfypOpoMjRQB70jfvy/wxT50qW08YXO5lMIJkrdq4yOTR+AW7FqutScmB9NkLwxo+jU+kZLbofZZq/w==
 
 csstype@^3.0.2, csstype@^3.0.6:
   version "3.1.1"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/csstype/-/csstype-3.1.1.tgz#841b532c45c758ee546a11d5bd7b7b473c8c30b9"
+  resolved "https://registry.npmjs.org/csstype/-/csstype-3.1.1.tgz#841b532c45c758ee546a11d5bd7b7b473c8c30b9"
   integrity sha512-DJR/VvkAvSZW9bTouZue2sSxDwdTN92uHjqeKVm+0dAqdfNykRzQ95tay8aXMBAAPpUiq4Qcug2L7neoRh2Egw==
 
 "d3-color@1 - 3":
   version "3.1.0"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/d3-color/-/d3-color-3.1.0.tgz#395b2833dfac71507f12ac2f7af23bf819de24e2"
+  resolved "https://registry.npmjs.org/d3-color/-/d3-color-3.1.0.tgz#395b2833dfac71507f12ac2f7af23bf819de24e2"
   integrity sha512-zg/chbXyeBtMQ1LbD/WSoW2DpC3I0mpmPdW+ynRTj/x2DAWYrIY7qeZIHidozwV24m4iavr15lNwIwLxRmOxhA==
 
 "d3-dispatch@1 - 3":
   version "3.0.1"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/d3-dispatch/-/d3-dispatch-3.0.1.tgz#5fc75284e9c2375c36c839411a0cf550cbfc4d5e"
+  resolved "https://registry.npmjs.org/d3-dispatch/-/d3-dispatch-3.0.1.tgz#5fc75284e9c2375c36c839411a0cf550cbfc4d5e"
   integrity sha512-rzUyPU/S7rwUflMyLc1ETDeBj0NRuHKKAcvukozwhshr6g6c5d8zh4c2gQjY2bZ0dXeGLWc1PF174P2tVvKhfg==
 
 "d3-drag@2 - 3":
   version "3.0.0"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/d3-drag/-/d3-drag-3.0.0.tgz#994aae9cd23c719f53b5e10e3a0a6108c69607ba"
+  resolved "https://registry.npmjs.org/d3-drag/-/d3-drag-3.0.0.tgz#994aae9cd23c719f53b5e10e3a0a6108c69607ba"
   integrity sha512-pWbUJLdETVA8lQNJecMxoXfH6x+mO2UQo8rSmZ+QqxcbyA3hfeprFgIT//HW2nlHChWeIIMwS2Fq+gEARkhTkg==
   dependencies:
     d3-dispatch "1 - 3"
@@ -5242,41 +5242,41 @@ csstype@^3.0.2, csstype@^3.0.6:
 
 "d3-ease@1 - 3":
   version "3.0.1"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/d3-ease/-/d3-ease-3.0.1.tgz#9658ac38a2140d59d346160f1f6c30fda0bd12f4"
+  resolved "https://registry.npmjs.org/d3-ease/-/d3-ease-3.0.1.tgz#9658ac38a2140d59d346160f1f6c30fda0bd12f4"
   integrity sha512-wR/XK3D3XcLIZwpbvQwQ5fK+8Ykds1ip7A2Txe0yxncXSdq1L9skcG7blcedkOX+ZcgxGAmLX1FrRGbADwzi0w==
 
 "d3-interpolate@1 - 3":
   version "3.0.1"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/d3-interpolate/-/d3-interpolate-3.0.1.tgz#3c47aa5b32c5b3dfb56ef3fd4342078a632b400d"
+  resolved "https://registry.npmjs.org/d3-interpolate/-/d3-interpolate-3.0.1.tgz#3c47aa5b32c5b3dfb56ef3fd4342078a632b400d"
   integrity sha512-3bYs1rOD33uo8aqJfKP3JWPAibgw8Zm2+L9vBKEHJ2Rg+viTR7o5Mmv5mZcieN+FRYaAOWX5SJATX6k1PWz72g==
   dependencies:
     d3-color "1 - 3"
 
 d3-path@^3.1.0:
   version "3.1.0"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/d3-path/-/d3-path-3.1.0.tgz#22df939032fb5a71ae8b1800d61ddb7851c42526"
+  resolved "https://registry.npmjs.org/d3-path/-/d3-path-3.1.0.tgz#22df939032fb5a71ae8b1800d61ddb7851c42526"
   integrity sha512-p3KP5HCf/bvjBSSKuXid6Zqijx7wIfNW+J/maPs+iwR35at5JCbLUT0LzF1cnjbCHWhqzQTIN2Jpe8pRebIEFQ==
 
 "d3-selection@2 - 3", d3-selection@3, d3-selection@^3.0.0:
   version "3.0.0"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/d3-selection/-/d3-selection-3.0.0.tgz#c25338207efa72cc5b9bd1458a1a41901f1e1b31"
+  resolved "https://registry.npmjs.org/d3-selection/-/d3-selection-3.0.0.tgz#c25338207efa72cc5b9bd1458a1a41901f1e1b31"
   integrity sha512-fmTRWbNMmsmWq6xJV8D19U/gw/bwrHfNXxrIN+HfZgnzqTHp9jOmKMhsTUjXOJnZOdZY9Q28y4yebKzqDKlxlQ==
 
 d3-shape@^3.0.0:
   version "3.2.0"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/d3-shape/-/d3-shape-3.2.0.tgz#a1a839cbd9ba45f28674c69d7f855bcf91dfc6a5"
+  resolved "https://registry.npmjs.org/d3-shape/-/d3-shape-3.2.0.tgz#a1a839cbd9ba45f28674c69d7f855bcf91dfc6a5"
   integrity sha512-SaLBuwGm3MOViRq2ABk3eLoxwZELpH6zhl3FbAoJ7Vm1gofKx6El1Ib5z23NUEhF9AsGl7y+dzLe5Cw2AArGTA==
   dependencies:
     d3-path "^3.1.0"
 
 "d3-timer@1 - 3":
   version "3.0.1"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/d3-timer/-/d3-timer-3.0.1.tgz#6284d2a2708285b1abb7e201eda4380af35e63b0"
+  resolved "https://registry.npmjs.org/d3-timer/-/d3-timer-3.0.1.tgz#6284d2a2708285b1abb7e201eda4380af35e63b0"
   integrity sha512-ndfJ/JxxMd3nw31uyKoY2naivF+r29V+Lc0svZxe1JvvIRmi8hUsrMvdOwgS1o6uBHmiz91geQ0ylPP0aj1VUA==
 
 "d3-transition@2 - 3":
   version "3.0.1"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/d3-transition/-/d3-transition-3.0.1.tgz#6869fdde1448868077fdd5989200cb61b2a1645f"
+  resolved "https://registry.npmjs.org/d3-transition/-/d3-transition-3.0.1.tgz#6869fdde1448868077fdd5989200cb61b2a1645f"
   integrity sha512-ApKvfjsSR6tg06xrL434C0WydLr7JewBB3V+/39RMHsaXTOG0zmt/OAXeng5M5LBm0ojmxJrpomQVZ1aPvBL4w==
   dependencies:
     d3-color "1 - 3"
@@ -5287,7 +5287,7 @@ d3-shape@^3.0.0:
 
 d3-zoom@^3.0.0:
   version "3.0.0"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/d3-zoom/-/d3-zoom-3.0.0.tgz#d13f4165c73217ffeaa54295cd6969b3e7aee8f3"
+  resolved "https://registry.npmjs.org/d3-zoom/-/d3-zoom-3.0.0.tgz#d13f4165c73217ffeaa54295cd6969b3e7aee8f3"
   integrity sha512-b8AmV3kfQaqWAuacbPuNbL6vahnOJflOhexLzMMNLga62+/nh0JzvJ0aO/5a5MVgUFGS7Hu1P9P03o3fJkDCyw==
   dependencies:
     d3-dispatch "1 - 3"
@@ -5298,7 +5298,7 @@ d3-zoom@^3.0.0:
 
 dagre@^0.8.5:
   version "0.8.5"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/dagre/-/dagre-0.8.5.tgz#ba30b0055dac12b6c1fcc247817442777d06afee"
+  resolved "https://registry.npmjs.org/dagre/-/dagre-0.8.5.tgz#ba30b0055dac12b6c1fcc247817442777d06afee"
   integrity sha512-/aTqmnRta7x7MCCpExk7HQL2O4owCT2h8NT//9I1OQ9vt29Pa0BzSAkR5lwFUcQ7491yVi/3CXU9jQ5o0Mn2Sw==
   dependencies:
     graphlib "^2.1.8"
@@ -5335,7 +5335,7 @@ dateformat@^3.0.0:
 
 debounce@^1.2.0:
   version "1.2.1"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/debounce/-/debounce-1.2.1.tgz#38881d8f4166a5c5848020c11827b834bcb3e0a5"
+  resolved "https://registry.npmjs.org/debounce/-/debounce-1.2.1.tgz#38881d8f4166a5c5848020c11827b834bcb3e0a5"
   integrity sha512-XRRe6Glud4rd/ZGQfiV1ruXSfbvfJedlV9Y6zOlP+2K04vBYiJEte6stfFkCP03aMnY5tsipamumUjL14fofug==
 
 debug@2.6.9, debug@^2.6.0, debug@^2.6.9:
@@ -5379,7 +5379,7 @@ decimal.js@^10.4.2:
 
 decode-named-character-reference@^1.0.0:
   version "1.0.2"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/decode-named-character-reference/-/decode-named-character-reference-1.0.2.tgz#daabac9690874c394c81e4162a0304b35d824f0e"
+  resolved "https://registry.npmjs.org/decode-named-character-reference/-/decode-named-character-reference-1.0.2.tgz#daabac9690874c394c81e4162a0304b35d824f0e"
   integrity sha512-O8x12RzrUF8xyVcY0KJowWsmaJxQbmy0/EtnNtHRpsOcT7dFk5W598coHqBVpmWo1oQQfsCqfCmkZN5DJrZVdg==
   dependencies:
     character-entities "^2.0.0"
@@ -5391,7 +5391,7 @@ dedent@^0.7.0:
 
 deep-equal@^2.0.5:
   version "2.2.0"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/deep-equal/-/deep-equal-2.2.0.tgz#5caeace9c781028b9ff459f33b779346637c43e6"
+  resolved "https://registry.npmjs.org/deep-equal/-/deep-equal-2.2.0.tgz#5caeace9c781028b9ff459f33b779346637c43e6"
   integrity sha512-RdpzE0Hv4lhowpIUKKMJfeH6C1pXdtT1/it80ubgWqwI3qpuxUBpC1S4hnHg+zjnuOoDkzUtUCEEkG+XG5l3Mw==
   dependencies:
     call-bind "^1.0.2"
@@ -5471,7 +5471,7 @@ deprecation@^2.0.0, deprecation@^2.3.1:
 
 dequal@^2.0.0:
   version "2.0.3"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/dequal/-/dequal-2.0.3.tgz#2644214f1997d39ed0ee0ece72335490a7ac67be"
+  resolved "https://registry.npmjs.org/dequal/-/dequal-2.0.3.tgz#2644214f1997d39ed0ee0ece72335490a7ac67be"
   integrity sha512-0je+qPKHEMohvfRTCEo3CrPG6cAzAYgmzKyxRiYSSDkS6eGJdyVJm7WaYA5ECaAD9wLB2T4EEeymA5aFVcYXCA==
 
 des.js@^1.0.0:
@@ -5576,7 +5576,7 @@ doctrine@^3.0.0:
 
 dom-accessibility-api@^0.5.6, dom-accessibility-api@^0.5.9:
   version "0.5.15"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/dom-accessibility-api/-/dom-accessibility-api-0.5.15.tgz#357e74338704f36fada8b2e01a4bfc11ef436ac9"
+  resolved "https://registry.npmjs.org/dom-accessibility-api/-/dom-accessibility-api-0.5.15.tgz#357e74338704f36fada8b2e01a4bfc11ef436ac9"
   integrity sha512-8o+oVqLQZoruQPYy3uAAQtc6YbtSiRq5aPJBhJ82YTJRHvI6ofhYAkC81WmjFTnfUbqg6T3aCglIpU9p/5e7Cw==
 
 dom-converter@^0.2.0:
@@ -5588,7 +5588,7 @@ dom-converter@^0.2.0:
 
 dom-helpers@^5.0.1:
   version "5.2.1"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/dom-helpers/-/dom-helpers-5.2.1.tgz#d9400536b2bf8225ad98fe052e029451ac40e902"
+  resolved "https://registry.npmjs.org/dom-helpers/-/dom-helpers-5.2.1.tgz#d9400536b2bf8225ad98fe052e029451ac40e902"
   integrity sha512-nRCa7CK3VTrM2NmGkIy4cbK7IZlgBE/PYMn55rrXefr5xXDP0LdtfPnblFDoVdcAfslJ7or6iqAUnx0CCGIWQA==
   dependencies:
     "@babel/runtime" "^7.8.7"
@@ -5671,7 +5671,7 @@ eastasianwidth@^0.2.0:
 
 ecdsa-sig-formatter@1.0.11:
   version "1.0.11"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/ecdsa-sig-formatter/-/ecdsa-sig-formatter-1.0.11.tgz#ae0f0fa2d85045ef14a817daa3ce9acd0489e5bf"
+  resolved "https://registry.npmjs.org/ecdsa-sig-formatter/-/ecdsa-sig-formatter-1.0.11.tgz#ae0f0fa2d85045ef14a817daa3ce9acd0489e5bf"
   integrity sha512-nagl3RYrbNv6kQkeJIpt6NJZy8twLB/2vtz6yN9Z4vRKHN4/QZJIEbqohALSgwKdnksuY3k5Addp5lg8sVoVcQ==
   dependencies:
     safe-buffer "^5.0.1"
@@ -5796,7 +5796,7 @@ es-abstract@^1.19.0, es-abstract@^1.20.4:
 
 es-get-iterator@^1.1.2:
   version "1.1.2"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/es-get-iterator/-/es-get-iterator-1.1.2.tgz#9234c54aba713486d7ebde0220864af5e2b283f7"
+  resolved "https://registry.npmjs.org/es-get-iterator/-/es-get-iterator-1.1.2.tgz#9234c54aba713486d7ebde0220864af5e2b283f7"
   integrity sha512-+DTO8GYwbMCwbywjimwZMHp8AuYXOS2JZFWoi2AlPOS3ebnII9w/NLpNZtA7A0YLaVDw+O7KFCeoIV7OPvM7hQ==
   dependencies:
     call-bind "^1.0.2"
@@ -6038,7 +6038,7 @@ escape-string-regexp@^4.0.0:
 
 escape-string-regexp@^5.0.0:
   version "5.0.0"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/escape-string-regexp/-/escape-string-regexp-5.0.0.tgz#4683126b500b61762f2dbebace1806e8be31b1c8"
+  resolved "https://registry.npmjs.org/escape-string-regexp/-/escape-string-regexp-5.0.0.tgz#4683126b500b61762f2dbebace1806e8be31b1c8"
   integrity sha512-/veY75JbMK4j1yjvuUxuVsiS/hr/4iHs9FTT6cgTexxdE0Ly/glccBAkloH/DofkjRbZU3bnoj38mOmhkZ0lHw==
 
 escodegen@^2.0.0:
@@ -6113,9 +6113,9 @@ eslint-plugin-import@^2.25.4:
     tsconfig-paths "^3.14.1"
 
 eslint-plugin-jest@^27.0.0:
-  version "27.2.0"
-  resolved "https://registry.npmjs.org/eslint-plugin-jest/-/eslint-plugin-jest-27.2.0.tgz#8e9976705642bea1981596c0ba5e3f46d449f3fc"
-  integrity sha512-KGIYtelk4rIhKocxRKUEeX+kJ0ZCab/CiSgS8BMcKD7AY7YxXhlg/d51oF5jq2rOrtuJEDYWRwXD95l6l2vtrA==
+  version "27.2.1"
+  resolved "https://registry.npmjs.org/eslint-plugin-jest/-/eslint-plugin-jest-27.2.1.tgz#b85b4adf41c682ea29f1f01c8b11ccc39b5c672c"
+  integrity sha512-l067Uxx7ZT8cO9NJuf+eJHvt6bqJyz2Z29wykyEdz/OtmcELQl2MQGQLX8J94O1cSJWAwUSEvCjwjA7KEK3Hmg==
   dependencies:
     "@typescript-eslint/utils" "^5.10.0"
 
@@ -6472,17 +6472,17 @@ fast-levenshtein@^2.0.6, fast-levenshtein@~2.0.6:
 
 fast-loops@^1.1.3:
   version "1.1.3"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/fast-loops/-/fast-loops-1.1.3.tgz#ce96adb86d07e7bf9b4822ab9c6fac9964981f75"
+  resolved "https://registry.npmjs.org/fast-loops/-/fast-loops-1.1.3.tgz#ce96adb86d07e7bf9b4822ab9c6fac9964981f75"
   integrity sha512-8EZzEP0eKkEEVX+drtd9mtuQ+/QrlfW/5MlwcwK5Nds6EkZ/tRzEexkzUY2mIssnAyVLT+TKHuRXmFNNXYUd6g==
 
 fast-shallow-equal@^1.0.0:
   version "1.0.0"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/fast-shallow-equal/-/fast-shallow-equal-1.0.0.tgz#d4dcaf6472440dcefa6f88b98e3251e27f25628b"
+  resolved "https://registry.npmjs.org/fast-shallow-equal/-/fast-shallow-equal-1.0.0.tgz#d4dcaf6472440dcefa6f88b98e3251e27f25628b"
   integrity sha512-HPtaa38cPgWvaCFmRNhlc6NG7pv6NUHqjPgVAkWGoB9mQMwYB27/K0CvOM5Czy+qpT3e8XJ6Q4aPAnzpNpzNaw==
 
 fastest-stable-stringify@^2.0.2:
   version "2.0.2"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/fastest-stable-stringify/-/fastest-stable-stringify-2.0.2.tgz#3757a6774f6ec8de40c4e86ec28ea02417214c76"
+  resolved "https://registry.npmjs.org/fastest-stable-stringify/-/fastest-stable-stringify-2.0.2.tgz#3757a6774f6ec8de40c4e86ec28ea02417214c76"
   integrity sha512-bijHueCGd0LqqNK9b5oCMHc0MluJAx0cwqASgbWMvkO01lCYgIhacVRLcaDz3QnyYIRNJRDwMb41VuT6pHJ91Q==
 
 fastq@^1.6.0:
@@ -6494,7 +6494,7 @@ fastq@^1.6.0:
 
 fault@^1.0.0:
   version "1.0.4"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/fault/-/fault-1.0.4.tgz#eafcfc0a6d214fc94601e170df29954a4f842f13"
+  resolved "https://registry.npmjs.org/fault/-/fault-1.0.4.tgz#eafcfc0a6d214fc94601e170df29954a4f842f13"
   integrity sha512-CJ0HCB5tL5fYTEA7ToAq5+kTwd++Borf1/bifxd9iT70QcXr4MRrO3Llf8Ifs70q+SJcGHFtnIE/Nw6giCtECA==
   dependencies:
     format "^0.2.0"
@@ -6655,7 +6655,7 @@ form-data@^4.0.0:
 
 format@^0.2.0:
   version "0.2.2"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/format/-/format-0.2.2.tgz#d6170107e9efdc4ed30c9dc39016df942b5cb58b"
+  resolved "https://registry.npmjs.org/format/-/format-0.2.2.tgz#d6170107e9efdc4ed30c9dc39016df942b5cb58b"
   integrity sha512-wzsgA6WOq+09wrU1tsJ09udeR/YZRaeArL9e1wPbFg3GG2yDnC2ldKpxs4xunpFF9DgqCqOIra3bc1HWrJ37Ww==
 
 forwarded@0.2.0:
@@ -6838,7 +6838,7 @@ git-semver-tags@^4.0.0, git-semver-tags@^4.1.1:
 
 git-up@^7.0.0:
   version "7.0.0"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/git-up/-/git-up-7.0.0.tgz#bace30786e36f56ea341b6f69adfd83286337467"
+  resolved "https://registry.npmjs.org/git-up/-/git-up-7.0.0.tgz#bace30786e36f56ea341b6f69adfd83286337467"
   integrity sha512-ONdIrbBCFusq1Oy0sC71F5azx8bVkvtZtMJAsv+a6lz5YAmbNnLD6HAB4gptHZVLPR8S2/kVN6Gab7lryq5+lQ==
   dependencies:
     is-ssh "^1.4.0"
@@ -6846,7 +6846,7 @@ git-up@^7.0.0:
 
 git-url-parse@^13.0.0:
   version "13.1.0"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/git-url-parse/-/git-url-parse-13.1.0.tgz#07e136b5baa08d59fabdf0e33170de425adf07b4"
+  resolved "https://registry.npmjs.org/git-url-parse/-/git-url-parse-13.1.0.tgz#07e136b5baa08d59fabdf0e33170de425adf07b4"
   integrity sha512-5FvPJP/70WkIprlUZ33bm4UAaFdjcLkJLpWft1BeZKqwR0uhhNGoKwlUaPtVb4LxCSQ++erHapRak9kWGj+FCA==
   dependencies:
     git-up "^7.0.0"
@@ -7009,14 +7009,14 @@ grapheme-splitter@^1.0.4:
 
 graphlib@^2.1.8:
   version "2.1.8"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/graphlib/-/graphlib-2.1.8.tgz#5761d414737870084c92ec7b5dbcb0592c9d35da"
+  resolved "https://registry.npmjs.org/graphlib/-/graphlib-2.1.8.tgz#5761d414737870084c92ec7b5dbcb0592c9d35da"
   integrity sha512-jcLLfkpoVGmH7/InMC/1hIvOPSUh38oJtGhvrOFGzioE1DZ+0YW16RgmOJhHiuWTvGiJQ9Z1Ik43JvkRPRvE+A==
   dependencies:
     lodash "^4.17.15"
 
 "graphql@^15.0.0 || ^16.0.0":
   version "16.6.0"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/graphql/-/graphql-16.6.0.tgz#c2dcffa4649db149f6282af726c8c83f1c7c5fdb"
+  resolved "https://registry.npmjs.org/graphql/-/graphql-16.6.0.tgz#c2dcffa4649db149f6282af726c8c83f1c7c5fdb"
   integrity sha512-KPIBPDlW7NxrbT/eh4qPXz5FiFdL5UbaA0XUNz2Rp3Z3hqBSkbj0GVjwFDztsWVauZUWsbKHgMg++sk8UX0bkw==
 
 gzip-size@^6.0.0:
@@ -7118,17 +7118,17 @@ hash.js@^1.0.0, hash.js@^1.0.3:
 
 hast-util-parse-selector@^2.0.0:
   version "2.2.5"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/hast-util-parse-selector/-/hast-util-parse-selector-2.2.5.tgz#d57c23f4da16ae3c63b3b6ca4616683313499c3a"
+  resolved "https://registry.npmjs.org/hast-util-parse-selector/-/hast-util-parse-selector-2.2.5.tgz#d57c23f4da16ae3c63b3b6ca4616683313499c3a"
   integrity sha512-7j6mrk/qqkSehsM92wQjdIgWM2/BW61u/53G6xmC8i1OmEdKLHbk419QKQUjz6LglWsfqoiHmyMRkP1BGjecNQ==
 
 hast-util-whitespace@^2.0.0:
   version "2.0.1"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/hast-util-whitespace/-/hast-util-whitespace-2.0.1.tgz#0ec64e257e6fc216c7d14c8a1b74d27d650b4557"
+  resolved "https://registry.npmjs.org/hast-util-whitespace/-/hast-util-whitespace-2.0.1.tgz#0ec64e257e6fc216c7d14c8a1b74d27d650b4557"
   integrity sha512-nAxA0v8+vXSBDt3AnRUNjyRIQ0rD+ntpbAp4LnPkumc5M9yUbSMa4XDU9Q6etY4f1Wp4bNgvc1yjiZtsTTrSng==
 
 hastscript@^6.0.0:
   version "6.0.0"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/hastscript/-/hastscript-6.0.0.tgz#e8768d7eac56c3fdeac8a92830d58e811e5bf640"
+  resolved "https://registry.npmjs.org/hastscript/-/hastscript-6.0.0.tgz#e8768d7eac56c3fdeac8a92830d58e811e5bf640"
   integrity sha512-nDM6bvd7lIqDUiYEiu5Sl/+6ReP0BMk/2f4U/Rooccxkj0P5nm+acM5PrGJ/t5I8qPGiqZSE6hVAwZEdZIvP4w==
   dependencies:
     "@types/hast" "^2.0.0"
@@ -7144,17 +7144,17 @@ he@^1.2.0:
 
 headers-polyfill@^3.1.0:
   version "3.1.2"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/headers-polyfill/-/headers-polyfill-3.1.2.tgz#9a4dcb545c5b95d9569592ef7ec0708aab763fbe"
+  resolved "https://registry.npmjs.org/headers-polyfill/-/headers-polyfill-3.1.2.tgz#9a4dcb545c5b95d9569592ef7ec0708aab763fbe"
   integrity sha512-tWCK4biJ6hcLqTviLXVR9DTRfYGQMXEIUj3gwJ2rZ5wO/at3XtkI4g8mCvFdUF9l1KMBNCfmNAdnahm1cgavQA==
 
 highlight.js@^10.4.1, highlight.js@~10.7.0:
   version "10.7.3"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/highlight.js/-/highlight.js-10.7.3.tgz#697272e3991356e40c3cac566a74eef681756531"
+  resolved "https://registry.npmjs.org/highlight.js/-/highlight.js-10.7.3.tgz#697272e3991356e40c3cac566a74eef681756531"
   integrity sha512-tzcUFauisWKNHaRkN4Wjl/ZA07gENAjFl3J/c480dprkGTg5EQstgaNFqBfUqCq54kZRIEcreTsAgF/m2quD7A==
 
 history@^5.0.0:
   version "5.3.0"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/history/-/history-5.3.0.tgz#1548abaa245ba47992f063a0783db91ef201c73b"
+  resolved "https://registry.npmjs.org/history/-/history-5.3.0.tgz#1548abaa245ba47992f063a0783db91ef201c73b"
   integrity sha512-ZqaKwjjrAYUYfLG+htGaIIZ4nioX2L70ZUMIFysS3xvBsSG4x/n1V6TXV3N8ZYNuFGlDirFg32T7B6WOUPDYcQ==
   dependencies:
     "@babel/runtime" "^7.7.6"
@@ -7170,7 +7170,7 @@ hmac-drbg@^1.0.1:
 
 hoist-non-react-statics@^3.3.0, hoist-non-react-statics@^3.3.2:
   version "3.3.2"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/hoist-non-react-statics/-/hoist-non-react-statics-3.3.2.tgz#ece0acaf71d62c2969c2ec59feff42a4b1a85b45"
+  resolved "https://registry.npmjs.org/hoist-non-react-statics/-/hoist-non-react-statics-3.3.2.tgz#ece0acaf71d62c2969c2ec59feff42a4b1a85b45"
   integrity sha512-/gGivxi8JPKWNm/W0jSmzcMPpfpPLc3dY/6GxhX2hQ9iGj3aDfklV4ET7NjKpSinLpJ5vafa9iiGIEZg10SfBw==
   dependencies:
     react-is "^16.7.0"
@@ -7343,7 +7343,7 @@ husky@^8.0.1:
 
 hyphenate-style-name@^1.0.3:
   version "1.0.4"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/hyphenate-style-name/-/hyphenate-style-name-1.0.4.tgz#691879af8e220aea5750e8827db4ef62a54e361d"
+  resolved "https://registry.npmjs.org/hyphenate-style-name/-/hyphenate-style-name-1.0.4.tgz#691879af8e220aea5750e8827db4ef62a54e361d"
   integrity sha512-ygGZLjmXfPHj+ZWh6LwbC37l43MhfztxetbFCoYTM2VjkIUpeHgSNn7QIyVFj7YQ1Wl9Cbw5sholVJPzWvC2MQ==
 
 iconv-lite@0.4.24, iconv-lite@^0.4.24:
@@ -7474,12 +7474,12 @@ ini@^1.3.2, ini@^1.3.4, ini@^1.3.5:
 
 inline-style-parser@0.1.1:
   version "0.1.1"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/inline-style-parser/-/inline-style-parser-0.1.1.tgz#ec8a3b429274e9c0a1f1c4ffa9453a7fef72cea1"
+  resolved "https://registry.npmjs.org/inline-style-parser/-/inline-style-parser-0.1.1.tgz#ec8a3b429274e9c0a1f1c4ffa9453a7fef72cea1"
   integrity sha512-7NXolsK4CAS5+xvdj5OMMbI962hU/wvwoxk+LWR9Ek9bVtyuuYScDN6eS0rUm6TxApFpw7CX1o4uJzcd4AyD3Q==
 
 inline-style-prefixer@^6.0.0:
   version "6.0.4"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/inline-style-prefixer/-/inline-style-prefixer-6.0.4.tgz#4290ed453ab0e4441583284ad86e41ad88384f44"
+  resolved "https://registry.npmjs.org/inline-style-prefixer/-/inline-style-prefixer-6.0.4.tgz#4290ed453ab0e4441583284ad86e41ad88384f44"
   integrity sha512-FwXmZC2zbeeS7NzGjJ6pAiqRhXR0ugUShSNb6GApMl6da0/XGc4MOJsoWAywia52EEWbXNSy0pzkwz/+Y+swSg==
   dependencies:
     css-in-js-utils "^3.1.0"
@@ -7527,12 +7527,12 @@ ipaddr.js@^2.0.1:
 
 is-alphabetical@^1.0.0:
   version "1.0.4"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/is-alphabetical/-/is-alphabetical-1.0.4.tgz#9e7d6b94916be22153745d184c298cbf986a686d"
+  resolved "https://registry.npmjs.org/is-alphabetical/-/is-alphabetical-1.0.4.tgz#9e7d6b94916be22153745d184c298cbf986a686d"
   integrity sha512-DwzsA04LQ10FHTZuL0/grVDk4rFoVH1pjAToYwBrHSxcrBIGQuXrQMtD5U1b0U2XVgKZCTLLP8u2Qxqhy3l2Vg==
 
 is-alphanumerical@^1.0.0:
   version "1.0.4"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/is-alphanumerical/-/is-alphanumerical-1.0.4.tgz#7eb9a2431f855f6b1ef1a78e326df515696c4dbf"
+  resolved "https://registry.npmjs.org/is-alphanumerical/-/is-alphanumerical-1.0.4.tgz#7eb9a2431f855f6b1ef1a78e326df515696c4dbf"
   integrity sha512-UzoZUr+XfVz3t3v4KyGEniVL9BDRoQtY7tOyrRybkVNjDFWyo1yhXNGrrBTQxp3ib9BLAWs7k2YKBQsFRkZG9A==
   dependencies:
     is-alphabetical "^1.0.0"
@@ -7584,7 +7584,7 @@ is-boolean-object@^1.1.0:
 
 is-buffer@^2.0.0:
   version "2.0.5"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/is-buffer/-/is-buffer-2.0.5.tgz#ebc252e400d22ff8d77fa09888821a24a658c191"
+  resolved "https://registry.npmjs.org/is-buffer/-/is-buffer-2.0.5.tgz#ebc252e400d22ff8d77fa09888821a24a658c191"
   integrity sha512-i2R6zNFDwgEHJyQUtJEk0XFi1i0dPFn/oqjK3/vPCcDeJvW5NQ83V8QbicfF1SupOaB0h8ntgBC2YiE7dfyctQ==
 
 is-builtin-module@^3.1.0:
@@ -7615,7 +7615,7 @@ is-date-object@^1.0.1, is-date-object@^1.0.5:
 
 is-decimal@^1.0.0:
   version "1.0.4"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/is-decimal/-/is-decimal-1.0.4.tgz#65a3a5958a1c5b63a706e1b333d7cd9f630d3fa5"
+  resolved "https://registry.npmjs.org/is-decimal/-/is-decimal-1.0.4.tgz#65a3a5958a1c5b63a706e1b333d7cd9f630d3fa5"
   integrity sha512-RGdriMmQQvZ2aqaQq3awNA6dCGtKpiDFcOzrTWrDAT2MiWrKQVPmxLGHl7Y2nNu6led0kEyoX0enY0qXYsv9zw==
 
 is-docker@^2.0.0, is-docker@^2.1.1:
@@ -7659,12 +7659,12 @@ is-glob@^4.0.0, is-glob@^4.0.1, is-glob@^4.0.3, is-glob@~4.0.1:
 
 is-hexadecimal@^1.0.0:
   version "1.0.4"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/is-hexadecimal/-/is-hexadecimal-1.0.4.tgz#cc35c97588da4bd49a8eedd6bc4082d44dcb23a7"
+  resolved "https://registry.npmjs.org/is-hexadecimal/-/is-hexadecimal-1.0.4.tgz#cc35c97588da4bd49a8eedd6bc4082d44dcb23a7"
   integrity sha512-gyPJuv83bHMpocVYoqof5VDiZveEoGoFL8m3BXNb2VW8Xs+rz9kqO8LOQ5DH6EsuvilT1ApazU0pyl+ytbPtlw==
 
 is-in-browser@^1.0.2, is-in-browser@^1.1.3:
   version "1.1.3"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/is-in-browser/-/is-in-browser-1.1.3.tgz#56ff4db683a078c6082eb95dad7dc62e1d04f835"
+  resolved "https://registry.npmjs.org/is-in-browser/-/is-in-browser-1.1.3.tgz#56ff4db683a078c6082eb95dad7dc62e1d04f835"
   integrity sha512-FeXIBgG/CPGd/WUxuEyvgGTEfwiG9Z4EKGxjNMRqviiIIfsmgrpnHLffEDdwUHqNva1VEW91o3xBT/m8Elgl9g==
 
 is-interactive@^1.0.0:
@@ -7674,7 +7674,7 @@ is-interactive@^1.0.0:
 
 is-map@^2.0.1, is-map@^2.0.2:
   version "2.0.2"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/is-map/-/is-map-2.0.2.tgz#00922db8c9bf73e81b7a335827bc2a43f2b91127"
+  resolved "https://registry.npmjs.org/is-map/-/is-map-2.0.2.tgz#00922db8c9bf73e81b7a335827bc2a43f2b91127"
   integrity sha512-cOZFQQozTha1f4MxLFzlgKYPTyj26picdZTx82hbc/Xf4K/tZOOXSCkMvU4pKioRXGDLJRn0GM7Upe7kR721yg==
 
 is-module@^1.0.0:
@@ -7689,7 +7689,7 @@ is-negative-zero@^2.0.2:
 
 is-node-process@^1.0.1:
   version "1.0.1"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/is-node-process/-/is-node-process-1.0.1.tgz#4fc7ac3a91e8aac58175fe0578abbc56f2831b23"
+  resolved "https://registry.npmjs.org/is-node-process/-/is-node-process-1.0.1.tgz#4fc7ac3a91e8aac58175fe0578abbc56f2831b23"
   integrity sha512-5IcdXuf++TTNt3oGl9EBdkvndXA8gmc4bz/Y+mdEpWh3Mcn/+kOw6hI7LD5CocqJWMzeb0I0ClndRVNdEPuJXQ==
 
 is-number-object@^1.0.4:
@@ -7726,7 +7726,7 @@ is-plain-obj@^3.0.0:
 
 is-plain-obj@^4.0.0:
   version "4.1.0"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/is-plain-obj/-/is-plain-obj-4.1.0.tgz#d65025edec3657ce032fd7db63c97883eaed71f0"
+  resolved "https://registry.npmjs.org/is-plain-obj/-/is-plain-obj-4.1.0.tgz#d65025edec3657ce032fd7db63c97883eaed71f0"
   integrity sha512-+Pgi+vMuUNkJyExiMBt5IlFoMyKnr5zhJ4Uspz58WOhBF5QoIZkFyNHIbBAtHwzVAgk5RtndVNsDRN61/mmDqg==
 
 is-plain-object@^5.0.0:
@@ -7761,7 +7761,7 @@ is-root@^2.1.0:
 
 is-set@^2.0.1, is-set@^2.0.2:
   version "2.0.2"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/is-set/-/is-set-2.0.2.tgz#90755fa4c2562dc1c5d4024760d6119b94ca18ec"
+  resolved "https://registry.npmjs.org/is-set/-/is-set-2.0.2.tgz#90755fa4c2562dc1c5d4024760d6119b94ca18ec"
   integrity sha512-+2cnTEZeY5z/iXGbLhPrOAaK/Mau5k5eXq9j14CpRTftq0pAJu2MwVRSZhyZWBzx3o6X795Lz6Bpb6R0GKf37g==
 
 is-shared-array-buffer@^1.0.2:
@@ -7773,7 +7773,7 @@ is-shared-array-buffer@^1.0.2:
 
 is-ssh@^1.4.0:
   version "1.4.0"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/is-ssh/-/is-ssh-1.4.0.tgz#4f8220601d2839d8fa624b3106f8e8884f01b8b2"
+  resolved "https://registry.npmjs.org/is-ssh/-/is-ssh-1.4.0.tgz#4f8220601d2839d8fa624b3106f8e8884f01b8b2"
   integrity sha512-x7+VxdxOdlV3CYpjvRLBv5Lo9OJerlYanjwFrPR9fuGPjCiNiCzFgAWpiLAohSbsnH4ZAys3SBh+hq5rJosxUQ==
   dependencies:
     protocols "^2.0.1"
@@ -7827,7 +7827,7 @@ is-unicode-supported@^0.1.0:
 
 is-weakmap@^2.0.1:
   version "2.0.1"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/is-weakmap/-/is-weakmap-2.0.1.tgz#5008b59bdc43b698201d18f62b37b2ca243e8cf2"
+  resolved "https://registry.npmjs.org/is-weakmap/-/is-weakmap-2.0.1.tgz#5008b59bdc43b698201d18f62b37b2ca243e8cf2"
   integrity sha512-NSBR4kH5oVj1Uwvv970ruUkCV7O1mzgVFO4/rev2cLRda9Tm9HrL70ZPut4rOHgY0FNrUu9BCbXA2sdQ+x0chA==
 
 is-weakref@^1.0.2:
@@ -7839,7 +7839,7 @@ is-weakref@^1.0.2:
 
 is-weakset@^2.0.1:
   version "2.0.2"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/is-weakset/-/is-weakset-2.0.2.tgz#4569d67a747a1ce5a994dfd4ef6dcea76e7c0a1d"
+  resolved "https://registry.npmjs.org/is-weakset/-/is-weakset-2.0.2.tgz#4569d67a747a1ce5a994dfd4ef6dcea76e7c0a1d"
   integrity sha512-t2yVvttHkQktwnNNmBQ98AhENLdPUTDTE21uPqAQ0ARwQfGeQKRVS0NNurH7bTf7RrvcVn1OOge45CnBeHCSmg==
   dependencies:
     call-bind "^1.0.2"
@@ -7859,7 +7859,7 @@ isarray@^1.0.0, isarray@~1.0.0:
 
 isarray@^2.0.5:
   version "2.0.5"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/isarray/-/isarray-2.0.5.tgz#8af1e4c1221244cc62459faf38940d4e644a5723"
+  resolved "https://registry.npmjs.org/isarray/-/isarray-2.0.5.tgz#8af1e4c1221244cc62459faf38940d4e644a5723"
   integrity sha512-xHjhDr3cNBK0BzdUJSPXZntQUx/mwMS5Rw4A7lPJ90XGAO6ISP/ePDNuo0vhqOZU+UD5JoodwCAAoZQd3FeAKw==
 
 isexe@^2.0.0:
@@ -8316,12 +8316,12 @@ joycon@^3.0.1:
 
 js-cookie@^2.2.1:
   version "2.2.1"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/js-cookie/-/js-cookie-2.2.1.tgz#69e106dc5d5806894562902aa5baec3744e9b2b8"
+  resolved "https://registry.npmjs.org/js-cookie/-/js-cookie-2.2.1.tgz#69e106dc5d5806894562902aa5baec3744e9b2b8"
   integrity sha512-HvdH2LzI/EAZcUwA8+0nKNtWHqS+ZmijLA30RwZA0bo7ToCckjK5MkGhjED9KoRcXO6BaGI3I9UIzSA1FKFPOQ==
 
 js-levenshtein@^1.1.6:
   version "1.1.6"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/js-levenshtein/-/js-levenshtein-1.1.6.tgz#c6cee58eb3550372df8deb85fad5ce66ce01d59d"
+  resolved "https://registry.npmjs.org/js-levenshtein/-/js-levenshtein-1.1.6.tgz#c6cee58eb3550372df8deb85fad5ce66ce01d59d"
   integrity sha512-X2BB11YZtrRqY4EnQcLX5Rh373zbK4alC1FW7D7MBhL2gtcC17cTnr6DmfHZeS0s2rTHjUTMMHfG7gO8SSdw+g==
 
 js-sdsl@^4.1.4:
@@ -8482,7 +8482,7 @@ jsonparse@^1.2.0:
 
 jsonwebtoken@^9.0.0:
   version "9.0.0"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/jsonwebtoken/-/jsonwebtoken-9.0.0.tgz#d0faf9ba1cc3a56255fe49c0961a67e520c1926d"
+  resolved "https://registry.npmjs.org/jsonwebtoken/-/jsonwebtoken-9.0.0.tgz#d0faf9ba1cc3a56255fe49c0961a67e520c1926d"
   integrity sha512-tuGfYXxkQGDPnLJ7SibiQgVgeDgfbPq2k2ICcbgqW8WxWLBAxKQM/ZCu/IT8SOSwmaYl4dpTFCW5xZv7YbbWUw==
   dependencies:
     jws "^3.2.2"
@@ -8492,7 +8492,7 @@ jsonwebtoken@^9.0.0:
 
 jss-plugin-camel-case@^10.5.1:
   version "10.9.2"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/jss-plugin-camel-case/-/jss-plugin-camel-case-10.9.2.tgz#76dddfa32f9e62d17daa4e3504991fd0933b89e1"
+  resolved "https://registry.npmjs.org/jss-plugin-camel-case/-/jss-plugin-camel-case-10.9.2.tgz#76dddfa32f9e62d17daa4e3504991fd0933b89e1"
   integrity sha512-wgBPlL3WS0WDJ1lPJcgjux/SHnDuu7opmgQKSraKs4z8dCCyYMx9IDPFKBXQ8Q5dVYij1FFV0WdxyhuOOAXuTg==
   dependencies:
     "@babel/runtime" "^7.3.1"
@@ -8501,7 +8501,7 @@ jss-plugin-camel-case@^10.5.1:
 
 jss-plugin-default-unit@^10.5.1:
   version "10.9.2"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/jss-plugin-default-unit/-/jss-plugin-default-unit-10.9.2.tgz#3e7f4a1506b18d8fe231554fd982439feb2a9c53"
+  resolved "https://registry.npmjs.org/jss-plugin-default-unit/-/jss-plugin-default-unit-10.9.2.tgz#3e7f4a1506b18d8fe231554fd982439feb2a9c53"
   integrity sha512-pYg0QX3bBEFtTnmeSI3l7ad1vtHU42YEEpgW7pmIh+9pkWNWb5dwS/4onSfAaI0kq+dOZHzz4dWe+8vWnanoSg==
   dependencies:
     "@babel/runtime" "^7.3.1"
@@ -8509,7 +8509,7 @@ jss-plugin-default-unit@^10.5.1:
 
 jss-plugin-global@^10.5.1:
   version "10.9.2"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/jss-plugin-global/-/jss-plugin-global-10.9.2.tgz#e7f2ad4a5e8e674fb703b04b57a570b8c3e5c2c2"
+  resolved "https://registry.npmjs.org/jss-plugin-global/-/jss-plugin-global-10.9.2.tgz#e7f2ad4a5e8e674fb703b04b57a570b8c3e5c2c2"
   integrity sha512-GcX0aE8Ef6AtlasVrafg1DItlL/tWHoC4cGir4r3gegbWwF5ZOBYhx04gurPvWHC8F873aEGqge7C17xpwmp2g==
   dependencies:
     "@babel/runtime" "^7.3.1"
@@ -8517,7 +8517,7 @@ jss-plugin-global@^10.5.1:
 
 jss-plugin-nested@^10.5.1:
   version "10.9.2"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/jss-plugin-nested/-/jss-plugin-nested-10.9.2.tgz#3aa2502816089ecf3981e1a07c49b276d67dca63"
+  resolved "https://registry.npmjs.org/jss-plugin-nested/-/jss-plugin-nested-10.9.2.tgz#3aa2502816089ecf3981e1a07c49b276d67dca63"
   integrity sha512-VgiOWIC6bvgDaAL97XCxGD0BxOKM0K0zeB/ECyNaVF6FqvdGB9KBBWRdy2STYAss4VVA7i5TbxFZN+WSX1kfQA==
   dependencies:
     "@babel/runtime" "^7.3.1"
@@ -8526,7 +8526,7 @@ jss-plugin-nested@^10.5.1:
 
 jss-plugin-props-sort@^10.5.1:
   version "10.9.2"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/jss-plugin-props-sort/-/jss-plugin-props-sort-10.9.2.tgz#645f6c8f179309667b3e6212f66b59a32fb3f01f"
+  resolved "https://registry.npmjs.org/jss-plugin-props-sort/-/jss-plugin-props-sort-10.9.2.tgz#645f6c8f179309667b3e6212f66b59a32fb3f01f"
   integrity sha512-AP1AyUTbi2szylgr+O0OB7gkIxEGzySLITZ2GpsaoX72YMCGI2jYAc+WUhPfvUnZYiauF4zTnN4V4TGuvFjJlw==
   dependencies:
     "@babel/runtime" "^7.3.1"
@@ -8534,7 +8534,7 @@ jss-plugin-props-sort@^10.5.1:
 
 jss-plugin-rule-value-function@^10.5.1:
   version "10.9.2"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/jss-plugin-rule-value-function/-/jss-plugin-rule-value-function-10.9.2.tgz#9afe07596e477123cbf11120776be6a64494541f"
+  resolved "https://registry.npmjs.org/jss-plugin-rule-value-function/-/jss-plugin-rule-value-function-10.9.2.tgz#9afe07596e477123cbf11120776be6a64494541f"
   integrity sha512-vf5ms8zvLFMub6swbNxvzsurHfUZ5Shy5aJB2gIpY6WNA3uLinEcxYyraQXItRHi5ivXGqYciFDRM2ZoVoRZ4Q==
   dependencies:
     "@babel/runtime" "^7.3.1"
@@ -8543,7 +8543,7 @@ jss-plugin-rule-value-function@^10.5.1:
 
 jss-plugin-vendor-prefixer@^10.5.1:
   version "10.9.2"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/jss-plugin-vendor-prefixer/-/jss-plugin-vendor-prefixer-10.9.2.tgz#410a0f3b9f8dbbfba58f4d329134df4849aa1237"
+  resolved "https://registry.npmjs.org/jss-plugin-vendor-prefixer/-/jss-plugin-vendor-prefixer-10.9.2.tgz#410a0f3b9f8dbbfba58f4d329134df4849aa1237"
   integrity sha512-SxcEoH+Rttf9fEv6KkiPzLdXRmI6waOTcMkbbEFgdZLDYNIP9UKNHFy6thhbRKqv0XMQZdrEsbDyV464zE/dUA==
   dependencies:
     "@babel/runtime" "^7.3.1"
@@ -8552,7 +8552,7 @@ jss-plugin-vendor-prefixer@^10.5.1:
 
 jss@10.9.2, jss@^10.5.1:
   version "10.9.2"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/jss/-/jss-10.9.2.tgz#9379be1f195ef98011dfd31f9448251bd61b95a9"
+  resolved "https://registry.npmjs.org/jss/-/jss-10.9.2.tgz#9379be1f195ef98011dfd31f9448251bd61b95a9"
   integrity sha512-b8G6rWpYLR4teTUbGd4I4EsnWjg7MN0Q5bSsjKhVkJVjhQDy2KzkbD2AW3TuT0RYZVmZZHKIrXDn6kjU14qkUg==
   dependencies:
     "@babel/runtime" "^7.3.1"
@@ -8570,7 +8570,7 @@ jss@10.9.2, jss@^10.5.1:
 
 jwa@^1.4.1:
   version "1.4.1"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/jwa/-/jwa-1.4.1.tgz#743c32985cb9e98655530d53641b66c8645b039a"
+  resolved "https://registry.npmjs.org/jwa/-/jwa-1.4.1.tgz#743c32985cb9e98655530d53641b66c8645b039a"
   integrity sha512-qiLX/xhEEFKUAJ6FiBMbes3w9ATzyk5W7Hvzpa/SLYdxNtng+gcurvrI7TbACjIXlsJyr05/S1oUhZrc63evQA==
   dependencies:
     buffer-equal-constant-time "1.0.1"
@@ -8579,7 +8579,7 @@ jwa@^1.4.1:
 
 jws@^3.2.2:
   version "3.2.2"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/jws/-/jws-3.2.2.tgz#001099f3639468c9414000e99995fa52fb478304"
+  resolved "https://registry.npmjs.org/jws/-/jws-3.2.2.tgz#001099f3639468c9414000e99995fa52fb478304"
   integrity sha512-YHlZCB6lMTllWDtSPHz/ZXTsi8S00usEV6v1tjq8tOUZzw7DpSDWVXjXDre6ed1w/pd495ODpHZYSdkRTsa0HA==
   dependencies:
     jwa "^1.4.1"
@@ -8587,7 +8587,7 @@ jws@^3.2.2:
 
 jwt-decode@^3.1.0:
   version "3.1.2"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/jwt-decode/-/jwt-decode-3.1.2.tgz#3fb319f3675a2df0c2895c8f5e9fa4b67b04ed59"
+  resolved "https://registry.npmjs.org/jwt-decode/-/jwt-decode-3.1.2.tgz#3fb319f3675a2df0c2895c8f5e9fa4b67b04ed59"
   integrity sha512-UfpWE/VZn0iP50d8cz9NrZLM9lSWhcJ+0Gt/nm4by88UL+J1SiKN8/5dkjMmbEzwL2CAe+67GsegCbIKtbp75A==
 
 kind-of@^6.0.2, kind-of@^6.0.3:
@@ -8602,7 +8602,7 @@ kleur@^3.0.3:
 
 kleur@^4.0.3:
   version "4.1.5"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/kleur/-/kleur-4.1.5.tgz#95106101795f7050c6c650f350c683febddb1780"
+  resolved "https://registry.npmjs.org/kleur/-/kleur-4.1.5.tgz#95106101795f7050c6c650f350c683febddb1780"
   integrity sha512-o+NO+8WrRiQEE4/7nwRJhN1HWpVmJm511pBHUxPLtp0BUISzlBplORYSmTclCnJvQq2tKu/sgl3xVpkc7ZWuQQ==
 
 language-subtag-registry@^0.3.20:
@@ -8844,7 +8844,7 @@ log-update@^4.0.0:
 
 longest-streak@^3.0.0:
   version "3.1.0"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/longest-streak/-/longest-streak-3.1.0.tgz#62fa67cd958742a1574af9f39866364102d90cd4"
+  resolved "https://registry.npmjs.org/longest-streak/-/longest-streak-3.1.0.tgz#62fa67cd958742a1574af9f39866364102d90cd4"
   integrity sha512-9Ri+o0JYgehTaVBBDoMqIl8GXtbWg711O3srftcHhZ0dqnETqLaoIK0x17fUw9rFSlK/0NlsKe0Ahhyl5pXE2g==
 
 loose-envify@^1.1.0, loose-envify@^1.4.0:
@@ -8863,7 +8863,7 @@ lower-case@^2.0.2:
 
 lowlight@^1.17.0:
   version "1.20.0"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/lowlight/-/lowlight-1.20.0.tgz#ddb197d33462ad0d93bf19d17b6c301aa3941888"
+  resolved "https://registry.npmjs.org/lowlight/-/lowlight-1.20.0.tgz#ddb197d33462ad0d93bf19d17b6c301aa3941888"
   integrity sha512-8Ktj+prEb1RoCPkEOrPMYUN/nCggB7qAWe3a7OpMjWQkh3l2RD5wKRQ+o8Q8YuI9RG/xs95waaI/E6ym/7NsTw==
   dependencies:
     fault "^1.0.0"
@@ -8885,12 +8885,12 @@ lru-cache@^6.0.0:
 
 luxon@^3.0.0:
   version "3.2.1"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/luxon/-/luxon-3.2.1.tgz#14f1af209188ad61212578ea7e3d518d18cee45f"
+  resolved "https://registry.npmjs.org/luxon/-/luxon-3.2.1.tgz#14f1af209188ad61212578ea7e3d518d18cee45f"
   integrity sha512-QrwPArQCNLAKGO/C+ZIilgIuDnEnKx5QYODdDtbFaxzsbZcc/a7WFq7MhsVYgRlwawLtvOUESTlfJ+hc/USqPg==
 
 lz-string@^1.4.4:
   version "1.4.4"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/lz-string/-/lz-string-1.4.4.tgz#c0d8eaf36059f705796e1e344811cf4c498d3a26"
+  resolved "https://registry.npmjs.org/lz-string/-/lz-string-1.4.4.tgz#c0d8eaf36059f705796e1e344811cf4c498d3a26"
   integrity sha512-0ckx7ZHRPqb0oUm8zNr+90mtf9DQB60H1wMCjBtfi62Kl3a7JbHob6gA2bC+xRvZoOL+1hzUK8jeuEIQE8svEQ==
 
 magic-string@^0.26.6:
@@ -8938,7 +8938,7 @@ map-obj@^4.0.0:
 
 markdown-table@^3.0.0:
   version "3.0.3"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/markdown-table/-/markdown-table-3.0.3.tgz#e6331d30e493127e031dd385488b5bd326e4a6bd"
+  resolved "https://registry.npmjs.org/markdown-table/-/markdown-table-3.0.3.tgz#e6331d30e493127e031dd385488b5bd326e4a6bd"
   integrity sha512-Z1NL3Tb1M9wH4XESsCDEksWoKTdlUafKc4pt0GRwjUyXaCFZ+dc3g2erqB6zm3szA2IUSi7VnPI+o/9jnxh9hw==
 
 matcher@^3.0.0:
@@ -8959,7 +8959,7 @@ md5.js@^1.3.4:
 
 mdast-util-definitions@^5.0.0:
   version "5.1.1"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/mdast-util-definitions/-/mdast-util-definitions-5.1.1.tgz#2c1d684b28e53f84938bb06317944bee8efa79db"
+  resolved "https://registry.npmjs.org/mdast-util-definitions/-/mdast-util-definitions-5.1.1.tgz#2c1d684b28e53f84938bb06317944bee8efa79db"
   integrity sha512-rQ+Gv7mHttxHOBx2dkF4HWTg+EE+UR78ptQWDylzPKaQuVGdG4HIoY3SrS/pCp80nZ04greFvXbVFHT+uf0JVQ==
   dependencies:
     "@types/mdast" "^3.0.0"
@@ -8968,7 +8968,7 @@ mdast-util-definitions@^5.0.0:
 
 mdast-util-find-and-replace@^2.0.0:
   version "2.2.1"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/mdast-util-find-and-replace/-/mdast-util-find-and-replace-2.2.1.tgz#249901ef43c5f41d6e8a8d446b3b63b17e592d7c"
+  resolved "https://registry.npmjs.org/mdast-util-find-and-replace/-/mdast-util-find-and-replace-2.2.1.tgz#249901ef43c5f41d6e8a8d446b3b63b17e592d7c"
   integrity sha512-SobxkQXFAdd4b5WmEakmkVoh18icjQRxGy5OWTCzgsLRm1Fu/KCtwD1HIQSsmq5ZRjVH0Ehwg6/Fn3xIUk+nKw==
   dependencies:
     escape-string-regexp "^5.0.0"
@@ -8977,7 +8977,7 @@ mdast-util-find-and-replace@^2.0.0:
 
 mdast-util-from-markdown@^1.0.0:
   version "1.2.0"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/mdast-util-from-markdown/-/mdast-util-from-markdown-1.2.0.tgz#84df2924ccc6c995dec1e2368b2b208ad0a76268"
+  resolved "https://registry.npmjs.org/mdast-util-from-markdown/-/mdast-util-from-markdown-1.2.0.tgz#84df2924ccc6c995dec1e2368b2b208ad0a76268"
   integrity sha512-iZJyyvKD1+K7QX1b5jXdE7Sc5dtoTry1vzV28UZZe8Z1xVnB/czKntJ7ZAkG0tANqRnBF6p3p7GpU1y19DTf2Q==
   dependencies:
     "@types/mdast" "^3.0.0"
@@ -8995,7 +8995,7 @@ mdast-util-from-markdown@^1.0.0:
 
 mdast-util-gfm-autolink-literal@^1.0.0:
   version "1.0.2"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/mdast-util-gfm-autolink-literal/-/mdast-util-gfm-autolink-literal-1.0.2.tgz#4032dcbaddaef7d4f2f3768ed830475bb22d3970"
+  resolved "https://registry.npmjs.org/mdast-util-gfm-autolink-literal/-/mdast-util-gfm-autolink-literal-1.0.2.tgz#4032dcbaddaef7d4f2f3768ed830475bb22d3970"
   integrity sha512-FzopkOd4xTTBeGXhXSBU0OCDDh5lUj2rd+HQqG92Ld+jL4lpUfgX2AT2OHAVP9aEeDKp7G92fuooSZcYJA3cRg==
   dependencies:
     "@types/mdast" "^3.0.0"
@@ -9005,7 +9005,7 @@ mdast-util-gfm-autolink-literal@^1.0.0:
 
 mdast-util-gfm-footnote@^1.0.0:
   version "1.0.1"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/mdast-util-gfm-footnote/-/mdast-util-gfm-footnote-1.0.1.tgz#11d2d40a1a673a399c459e467fa85e00223191fe"
+  resolved "https://registry.npmjs.org/mdast-util-gfm-footnote/-/mdast-util-gfm-footnote-1.0.1.tgz#11d2d40a1a673a399c459e467fa85e00223191fe"
   integrity sha512-p+PrYlkw9DeCRkTVw1duWqPRHX6Ywh2BNKJQcZbCwAuP/59B0Lk9kakuAd7KbQprVO4GzdW8eS5++A9PUSqIyw==
   dependencies:
     "@types/mdast" "^3.0.0"
@@ -9014,7 +9014,7 @@ mdast-util-gfm-footnote@^1.0.0:
 
 mdast-util-gfm-strikethrough@^1.0.0:
   version "1.0.2"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/mdast-util-gfm-strikethrough/-/mdast-util-gfm-strikethrough-1.0.2.tgz#6b4fa4ae37d449ccb988192ac0afbb2710ffcefd"
+  resolved "https://registry.npmjs.org/mdast-util-gfm-strikethrough/-/mdast-util-gfm-strikethrough-1.0.2.tgz#6b4fa4ae37d449ccb988192ac0afbb2710ffcefd"
   integrity sha512-T/4DVHXcujH6jx1yqpcAYYwd+z5lAYMw4Ls6yhTfbMMtCt0PHY4gEfhW9+lKsLBtyhUGKRIzcUA2FATVqnvPDA==
   dependencies:
     "@types/mdast" "^3.0.0"
@@ -9022,7 +9022,7 @@ mdast-util-gfm-strikethrough@^1.0.0:
 
 mdast-util-gfm-table@^1.0.0:
   version "1.0.6"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/mdast-util-gfm-table/-/mdast-util-gfm-table-1.0.6.tgz#184e900979fe790745fc3dabf77a4114595fcd7f"
+  resolved "https://registry.npmjs.org/mdast-util-gfm-table/-/mdast-util-gfm-table-1.0.6.tgz#184e900979fe790745fc3dabf77a4114595fcd7f"
   integrity sha512-uHR+fqFq3IvB3Rd4+kzXW8dmpxUhvgCQZep6KdjsLK4O6meK5dYZEayLtIxNus1XO3gfjfcIFe8a7L0HZRGgag==
   dependencies:
     "@types/mdast" "^3.0.0"
@@ -9032,7 +9032,7 @@ mdast-util-gfm-table@^1.0.0:
 
 mdast-util-gfm-task-list-item@^1.0.0:
   version "1.0.1"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/mdast-util-gfm-task-list-item/-/mdast-util-gfm-task-list-item-1.0.1.tgz#6f35f09c6e2bcbe88af62fdea02ac199cc802c5c"
+  resolved "https://registry.npmjs.org/mdast-util-gfm-task-list-item/-/mdast-util-gfm-task-list-item-1.0.1.tgz#6f35f09c6e2bcbe88af62fdea02ac199cc802c5c"
   integrity sha512-KZ4KLmPdABXOsfnM6JHUIjxEvcx2ulk656Z/4Balw071/5qgnhz+H1uGtf2zIGnrnvDC8xR4Fj9uKbjAFGNIeA==
   dependencies:
     "@types/mdast" "^3.0.0"
@@ -9040,7 +9040,7 @@ mdast-util-gfm-task-list-item@^1.0.0:
 
 mdast-util-gfm@^2.0.0:
   version "2.0.1"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/mdast-util-gfm/-/mdast-util-gfm-2.0.1.tgz#16fcf70110ae689a06d77e8f4e346223b64a0ea6"
+  resolved "https://registry.npmjs.org/mdast-util-gfm/-/mdast-util-gfm-2.0.1.tgz#16fcf70110ae689a06d77e8f4e346223b64a0ea6"
   integrity sha512-42yHBbfWIFisaAfV1eixlabbsa6q7vHeSPY+cg+BBjX51M8xhgMacqH9g6TftB/9+YkcI0ooV4ncfrJslzm/RQ==
   dependencies:
     mdast-util-from-markdown "^1.0.0"
@@ -9053,7 +9053,7 @@ mdast-util-gfm@^2.0.0:
 
 mdast-util-phrasing@^3.0.0:
   version "3.0.0"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/mdast-util-phrasing/-/mdast-util-phrasing-3.0.0.tgz#c44fcf6be61a3cb8da54ab2df22320e61d4537ce"
+  resolved "https://registry.npmjs.org/mdast-util-phrasing/-/mdast-util-phrasing-3.0.0.tgz#c44fcf6be61a3cb8da54ab2df22320e61d4537ce"
   integrity sha512-S+QYsDRLkGi8U7o5JF1agKa/sdP+CNGXXLqC17pdTVL8FHHgQEiwFGa9yE5aYtUxNiFGYoaDy9V1kC85Sz86Gg==
   dependencies:
     "@types/mdast" "^3.0.0"
@@ -9061,7 +9061,7 @@ mdast-util-phrasing@^3.0.0:
 
 mdast-util-to-hast@^12.1.0:
   version "12.2.5"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/mdast-util-to-hast/-/mdast-util-to-hast-12.2.5.tgz#91532ebd929a7def21585034f7901eb367d2d272"
+  resolved "https://registry.npmjs.org/mdast-util-to-hast/-/mdast-util-to-hast-12.2.5.tgz#91532ebd929a7def21585034f7901eb367d2d272"
   integrity sha512-EFNhT35ZR/VZ85/EedDdCNTq0oFM+NM/+qBomVGQ0+Lcg0nhI8xIwmdCzNMlVlCJNXRprpobtKP/IUh8cfz6zQ==
   dependencies:
     "@types/hast" "^2.0.0"
@@ -9076,7 +9076,7 @@ mdast-util-to-hast@^12.1.0:
 
 mdast-util-to-markdown@^1.0.0, mdast-util-to-markdown@^1.3.0:
   version "1.5.0"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/mdast-util-to-markdown/-/mdast-util-to-markdown-1.5.0.tgz#c13343cb3fc98621911d33b5cd42e7d0731171c6"
+  resolved "https://registry.npmjs.org/mdast-util-to-markdown/-/mdast-util-to-markdown-1.5.0.tgz#c13343cb3fc98621911d33b5cd42e7d0731171c6"
   integrity sha512-bbv7TPv/WC49thZPg3jXuqzuvI45IL2EVAr/KxF0BSdHsU0ceFHOmwQn6evxAh1GaoK/6GQ1wp4R4oW2+LFL/A==
   dependencies:
     "@types/mdast" "^3.0.0"
@@ -9090,7 +9090,7 @@ mdast-util-to-markdown@^1.0.0, mdast-util-to-markdown@^1.3.0:
 
 mdast-util-to-string@^3.0.0, mdast-util-to-string@^3.1.0:
   version "3.1.0"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/mdast-util-to-string/-/mdast-util-to-string-3.1.0.tgz#56c506d065fbf769515235e577b5a261552d56e9"
+  resolved "https://registry.npmjs.org/mdast-util-to-string/-/mdast-util-to-string-3.1.0.tgz#56c506d065fbf769515235e577b5a261552d56e9"
   integrity sha512-n4Vypz/DZgwo0iMHLQL49dJzlp7YtAJP+N07MZHpjPf/5XJuHUWstviF4Mn2jEiR/GNmtnRRqnwsXExk3igfFA==
 
 mdn-data@2.0.14:
@@ -9112,7 +9112,7 @@ memfs@^3.1.2, memfs@^3.4.1, memfs@^3.4.3:
 
 "memoize-one@>=3.1.1 <6", memoize-one@^5.1.1:
   version "5.2.1"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/memoize-one/-/memoize-one-5.2.1.tgz#8337aa3c4335581839ec01c3d594090cebe8f00e"
+  resolved "https://registry.npmjs.org/memoize-one/-/memoize-one-5.2.1.tgz#8337aa3c4335581839ec01c3d594090cebe8f00e"
   integrity sha512-zYiwtZUcYyXKo/np96AGZAckk+FWWsUdJ3cHGGmld7+AhvcWmQyGCYUh1hc4Q/pkOhb65dQR/pqCyK0cOaHz4Q==
 
 meow@^8.0.0:
@@ -9154,7 +9154,7 @@ methods@~1.1.2:
 
 micromark-core-commonmark@^1.0.0, micromark-core-commonmark@^1.0.1:
   version "1.0.6"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/micromark-core-commonmark/-/micromark-core-commonmark-1.0.6.tgz#edff4c72e5993d93724a3c206970f5a15b0585ad"
+  resolved "https://registry.npmjs.org/micromark-core-commonmark/-/micromark-core-commonmark-1.0.6.tgz#edff4c72e5993d93724a3c206970f5a15b0585ad"
   integrity sha512-K+PkJTxqjFfSNkfAhp4GB+cZPfQd6dxtTXnf+RjZOV7T4EEXnvgzOcnp+eSTmpGk9d1S9sL6/lqrgSNn/s0HZA==
   dependencies:
     decode-named-character-reference "^1.0.0"
@@ -9176,7 +9176,7 @@ micromark-core-commonmark@^1.0.0, micromark-core-commonmark@^1.0.1:
 
 micromark-extension-gfm-autolink-literal@^1.0.0:
   version "1.0.3"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/micromark-extension-gfm-autolink-literal/-/micromark-extension-gfm-autolink-literal-1.0.3.tgz#dc589f9c37eaff31a175bab49f12290edcf96058"
+  resolved "https://registry.npmjs.org/micromark-extension-gfm-autolink-literal/-/micromark-extension-gfm-autolink-literal-1.0.3.tgz#dc589f9c37eaff31a175bab49f12290edcf96058"
   integrity sha512-i3dmvU0htawfWED8aHMMAzAVp/F0Z+0bPh3YrbTPPL1v4YAlCZpy5rBO5p0LPYiZo0zFVkoYh7vDU7yQSiCMjg==
   dependencies:
     micromark-util-character "^1.0.0"
@@ -9187,7 +9187,7 @@ micromark-extension-gfm-autolink-literal@^1.0.0:
 
 micromark-extension-gfm-footnote@^1.0.0:
   version "1.0.4"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/micromark-extension-gfm-footnote/-/micromark-extension-gfm-footnote-1.0.4.tgz#cbfd8873b983e820c494498c6dac0105920818d5"
+  resolved "https://registry.npmjs.org/micromark-extension-gfm-footnote/-/micromark-extension-gfm-footnote-1.0.4.tgz#cbfd8873b983e820c494498c6dac0105920818d5"
   integrity sha512-E/fmPmDqLiMUP8mLJ8NbJWJ4bTw6tS+FEQS8CcuDtZpILuOb2kjLqPEeAePF1djXROHXChM/wPJw0iS4kHCcIg==
   dependencies:
     micromark-core-commonmark "^1.0.0"
@@ -9201,7 +9201,7 @@ micromark-extension-gfm-footnote@^1.0.0:
 
 micromark-extension-gfm-strikethrough@^1.0.0:
   version "1.0.4"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/micromark-extension-gfm-strikethrough/-/micromark-extension-gfm-strikethrough-1.0.4.tgz#162232c284ffbedd8c74e59c1525bda217295e18"
+  resolved "https://registry.npmjs.org/micromark-extension-gfm-strikethrough/-/micromark-extension-gfm-strikethrough-1.0.4.tgz#162232c284ffbedd8c74e59c1525bda217295e18"
   integrity sha512-/vjHU/lalmjZCT5xt7CcHVJGq8sYRm80z24qAKXzaHzem/xsDYb2yLL+NNVbYvmpLx3O7SYPuGL5pzusL9CLIQ==
   dependencies:
     micromark-util-chunked "^1.0.0"
@@ -9213,7 +9213,7 @@ micromark-extension-gfm-strikethrough@^1.0.0:
 
 micromark-extension-gfm-table@^1.0.0:
   version "1.0.5"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/micromark-extension-gfm-table/-/micromark-extension-gfm-table-1.0.5.tgz#7b708b728f8dc4d95d486b9e7a2262f9cddbcbb4"
+  resolved "https://registry.npmjs.org/micromark-extension-gfm-table/-/micromark-extension-gfm-table-1.0.5.tgz#7b708b728f8dc4d95d486b9e7a2262f9cddbcbb4"
   integrity sha512-xAZ8J1X9W9K3JTJTUL7G6wSKhp2ZYHrFk5qJgY/4B33scJzE2kpfRL6oiw/veJTbt7jiM/1rngLlOKPWr1G+vg==
   dependencies:
     micromark-factory-space "^1.0.0"
@@ -9224,14 +9224,14 @@ micromark-extension-gfm-table@^1.0.0:
 
 micromark-extension-gfm-tagfilter@^1.0.0:
   version "1.0.1"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/micromark-extension-gfm-tagfilter/-/micromark-extension-gfm-tagfilter-1.0.1.tgz#fb2e303f7daf616db428bb6a26e18fda14a90a4d"
+  resolved "https://registry.npmjs.org/micromark-extension-gfm-tagfilter/-/micromark-extension-gfm-tagfilter-1.0.1.tgz#fb2e303f7daf616db428bb6a26e18fda14a90a4d"
   integrity sha512-Ty6psLAcAjboRa/UKUbbUcwjVAv5plxmpUTy2XC/3nJFL37eHej8jrHrRzkqcpipJliuBH30DTs7+3wqNcQUVA==
   dependencies:
     micromark-util-types "^1.0.0"
 
 micromark-extension-gfm-task-list-item@^1.0.0:
   version "1.0.3"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/micromark-extension-gfm-task-list-item/-/micromark-extension-gfm-task-list-item-1.0.3.tgz#7683641df5d4a09795f353574d7f7f66e47b7fc4"
+  resolved "https://registry.npmjs.org/micromark-extension-gfm-task-list-item/-/micromark-extension-gfm-task-list-item-1.0.3.tgz#7683641df5d4a09795f353574d7f7f66e47b7fc4"
   integrity sha512-PpysK2S1Q/5VXi72IIapbi/jliaiOFzv7THH4amwXeYXLq3l1uo8/2Be0Ac1rEwK20MQEsGH2ltAZLNY2KI/0Q==
   dependencies:
     micromark-factory-space "^1.0.0"
@@ -9242,7 +9242,7 @@ micromark-extension-gfm-task-list-item@^1.0.0:
 
 micromark-extension-gfm@^2.0.0:
   version "2.0.1"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/micromark-extension-gfm/-/micromark-extension-gfm-2.0.1.tgz#40f3209216127a96297c54c67f5edc7ef2d1a2a2"
+  resolved "https://registry.npmjs.org/micromark-extension-gfm/-/micromark-extension-gfm-2.0.1.tgz#40f3209216127a96297c54c67f5edc7ef2d1a2a2"
   integrity sha512-p2sGjajLa0iYiGQdT0oelahRYtMWvLjy8J9LOCxzIQsllMCGLbsLW+Nc+N4vi02jcRJvedVJ68cjelKIO6bpDA==
   dependencies:
     micromark-extension-gfm-autolink-literal "^1.0.0"
@@ -9256,7 +9256,7 @@ micromark-extension-gfm@^2.0.0:
 
 micromark-factory-destination@^1.0.0:
   version "1.0.0"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/micromark-factory-destination/-/micromark-factory-destination-1.0.0.tgz#fef1cb59ad4997c496f887b6977aa3034a5a277e"
+  resolved "https://registry.npmjs.org/micromark-factory-destination/-/micromark-factory-destination-1.0.0.tgz#fef1cb59ad4997c496f887b6977aa3034a5a277e"
   integrity sha512-eUBA7Rs1/xtTVun9TmV3gjfPz2wEwgK5R5xcbIM5ZYAtvGF6JkyaDsj0agx8urXnO31tEO6Ug83iVH3tdedLnw==
   dependencies:
     micromark-util-character "^1.0.0"
@@ -9265,7 +9265,7 @@ micromark-factory-destination@^1.0.0:
 
 micromark-factory-label@^1.0.0:
   version "1.0.2"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/micromark-factory-label/-/micromark-factory-label-1.0.2.tgz#6be2551fa8d13542fcbbac478258fb7a20047137"
+  resolved "https://registry.npmjs.org/micromark-factory-label/-/micromark-factory-label-1.0.2.tgz#6be2551fa8d13542fcbbac478258fb7a20047137"
   integrity sha512-CTIwxlOnU7dEshXDQ+dsr2n+yxpP0+fn271pu0bwDIS8uqfFcumXpj5mLn3hSC8iw2MUr6Gx8EcKng1dD7i6hg==
   dependencies:
     micromark-util-character "^1.0.0"
@@ -9275,7 +9275,7 @@ micromark-factory-label@^1.0.0:
 
 micromark-factory-space@^1.0.0:
   version "1.0.0"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/micromark-factory-space/-/micromark-factory-space-1.0.0.tgz#cebff49968f2b9616c0fcb239e96685cb9497633"
+  resolved "https://registry.npmjs.org/micromark-factory-space/-/micromark-factory-space-1.0.0.tgz#cebff49968f2b9616c0fcb239e96685cb9497633"
   integrity sha512-qUmqs4kj9a5yBnk3JMLyjtWYN6Mzfcx8uJfi5XAveBniDevmZasdGBba5b4QsvRcAkmvGo5ACmSUmyGiKTLZew==
   dependencies:
     micromark-util-character "^1.0.0"
@@ -9283,7 +9283,7 @@ micromark-factory-space@^1.0.0:
 
 micromark-factory-title@^1.0.0:
   version "1.0.2"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/micromark-factory-title/-/micromark-factory-title-1.0.2.tgz#7e09287c3748ff1693930f176e1c4a328382494f"
+  resolved "https://registry.npmjs.org/micromark-factory-title/-/micromark-factory-title-1.0.2.tgz#7e09287c3748ff1693930f176e1c4a328382494f"
   integrity sha512-zily+Nr4yFqgMGRKLpTVsNl5L4PMu485fGFDOQJQBl2NFpjGte1e86zC0da93wf97jrc4+2G2GQudFMHn3IX+A==
   dependencies:
     micromark-factory-space "^1.0.0"
@@ -9294,7 +9294,7 @@ micromark-factory-title@^1.0.0:
 
 micromark-factory-whitespace@^1.0.0:
   version "1.0.0"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/micromark-factory-whitespace/-/micromark-factory-whitespace-1.0.0.tgz#e991e043ad376c1ba52f4e49858ce0794678621c"
+  resolved "https://registry.npmjs.org/micromark-factory-whitespace/-/micromark-factory-whitespace-1.0.0.tgz#e991e043ad376c1ba52f4e49858ce0794678621c"
   integrity sha512-Qx7uEyahU1lt1RnsECBiuEbfr9INjQTGa6Err+gF3g0Tx4YEviPbqqGKNv/NrBaE7dVHdn1bVZKM/n5I/Bak7A==
   dependencies:
     micromark-factory-space "^1.0.0"
@@ -9304,7 +9304,7 @@ micromark-factory-whitespace@^1.0.0:
 
 micromark-util-character@^1.0.0:
   version "1.1.0"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/micromark-util-character/-/micromark-util-character-1.1.0.tgz#d97c54d5742a0d9611a68ca0cd4124331f264d86"
+  resolved "https://registry.npmjs.org/micromark-util-character/-/micromark-util-character-1.1.0.tgz#d97c54d5742a0d9611a68ca0cd4124331f264d86"
   integrity sha512-agJ5B3unGNJ9rJvADMJ5ZiYjBRyDpzKAOk01Kpi1TKhlT1APx3XZk6eN7RtSz1erbWHC2L8T3xLZ81wdtGRZzg==
   dependencies:
     micromark-util-symbol "^1.0.0"
@@ -9312,14 +9312,14 @@ micromark-util-character@^1.0.0:
 
 micromark-util-chunked@^1.0.0:
   version "1.0.0"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/micromark-util-chunked/-/micromark-util-chunked-1.0.0.tgz#5b40d83f3d53b84c4c6bce30ed4257e9a4c79d06"
+  resolved "https://registry.npmjs.org/micromark-util-chunked/-/micromark-util-chunked-1.0.0.tgz#5b40d83f3d53b84c4c6bce30ed4257e9a4c79d06"
   integrity sha512-5e8xTis5tEZKgesfbQMKRCyzvffRRUX+lK/y+DvsMFdabAicPkkZV6gO+FEWi9RfuKKoxxPwNL+dFF0SMImc1g==
   dependencies:
     micromark-util-symbol "^1.0.0"
 
 micromark-util-classify-character@^1.0.0:
   version "1.0.0"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/micromark-util-classify-character/-/micromark-util-classify-character-1.0.0.tgz#cbd7b447cb79ee6997dd274a46fc4eb806460a20"
+  resolved "https://registry.npmjs.org/micromark-util-classify-character/-/micromark-util-classify-character-1.0.0.tgz#cbd7b447cb79ee6997dd274a46fc4eb806460a20"
   integrity sha512-F8oW2KKrQRb3vS5ud5HIqBVkCqQi224Nm55o5wYLzY/9PwHGXC01tr3d7+TqHHz6zrKQ72Okwtvm/xQm6OVNZA==
   dependencies:
     micromark-util-character "^1.0.0"
@@ -9328,7 +9328,7 @@ micromark-util-classify-character@^1.0.0:
 
 micromark-util-combine-extensions@^1.0.0:
   version "1.0.0"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/micromark-util-combine-extensions/-/micromark-util-combine-extensions-1.0.0.tgz#91418e1e74fb893e3628b8d496085639124ff3d5"
+  resolved "https://registry.npmjs.org/micromark-util-combine-extensions/-/micromark-util-combine-extensions-1.0.0.tgz#91418e1e74fb893e3628b8d496085639124ff3d5"
   integrity sha512-J8H058vFBdo/6+AsjHp2NF7AJ02SZtWaVUjsayNFeAiydTxUwViQPxN0Hf8dp4FmCQi0UUFovFsEyRSUmFH3MA==
   dependencies:
     micromark-util-chunked "^1.0.0"
@@ -9336,14 +9336,14 @@ micromark-util-combine-extensions@^1.0.0:
 
 micromark-util-decode-numeric-character-reference@^1.0.0:
   version "1.0.0"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/micromark-util-decode-numeric-character-reference/-/micromark-util-decode-numeric-character-reference-1.0.0.tgz#dcc85f13b5bd93ff8d2868c3dba28039d490b946"
+  resolved "https://registry.npmjs.org/micromark-util-decode-numeric-character-reference/-/micromark-util-decode-numeric-character-reference-1.0.0.tgz#dcc85f13b5bd93ff8d2868c3dba28039d490b946"
   integrity sha512-OzO9AI5VUtrTD7KSdagf4MWgHMtET17Ua1fIpXTpuhclCqD8egFWo85GxSGvxgkGS74bEahvtM0WP0HjvV0e4w==
   dependencies:
     micromark-util-symbol "^1.0.0"
 
 micromark-util-decode-string@^1.0.0:
   version "1.0.2"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/micromark-util-decode-string/-/micromark-util-decode-string-1.0.2.tgz#942252ab7a76dec2dbf089cc32505ee2bc3acf02"
+  resolved "https://registry.npmjs.org/micromark-util-decode-string/-/micromark-util-decode-string-1.0.2.tgz#942252ab7a76dec2dbf089cc32505ee2bc3acf02"
   integrity sha512-DLT5Ho02qr6QWVNYbRZ3RYOSSWWFuH3tJexd3dgN1odEuPNxCngTCXJum7+ViRAd9BbdxCvMToPOD/IvVhzG6Q==
   dependencies:
     decode-named-character-reference "^1.0.0"
@@ -9353,31 +9353,31 @@ micromark-util-decode-string@^1.0.0:
 
 micromark-util-encode@^1.0.0:
   version "1.0.1"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/micromark-util-encode/-/micromark-util-encode-1.0.1.tgz#2c1c22d3800870ad770ece5686ebca5920353383"
+  resolved "https://registry.npmjs.org/micromark-util-encode/-/micromark-util-encode-1.0.1.tgz#2c1c22d3800870ad770ece5686ebca5920353383"
   integrity sha512-U2s5YdnAYexjKDel31SVMPbfi+eF8y1U4pfiRW/Y8EFVCy/vgxk/2wWTxzcqE71LHtCuCzlBDRU2a5CQ5j+mQA==
 
 micromark-util-html-tag-name@^1.0.0:
   version "1.1.0"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/micromark-util-html-tag-name/-/micromark-util-html-tag-name-1.1.0.tgz#eb227118befd51f48858e879b7a419fc0df20497"
+  resolved "https://registry.npmjs.org/micromark-util-html-tag-name/-/micromark-util-html-tag-name-1.1.0.tgz#eb227118befd51f48858e879b7a419fc0df20497"
   integrity sha512-BKlClMmYROy9UiV03SwNmckkjn8QHVaWkqoAqzivabvdGcwNGMMMH/5szAnywmsTBUzDsU57/mFi0sp4BQO6dA==
 
 micromark-util-normalize-identifier@^1.0.0:
   version "1.0.0"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/micromark-util-normalize-identifier/-/micromark-util-normalize-identifier-1.0.0.tgz#4a3539cb8db954bbec5203952bfe8cedadae7828"
+  resolved "https://registry.npmjs.org/micromark-util-normalize-identifier/-/micromark-util-normalize-identifier-1.0.0.tgz#4a3539cb8db954bbec5203952bfe8cedadae7828"
   integrity sha512-yg+zrL14bBTFrQ7n35CmByWUTFsgst5JhA4gJYoty4Dqzj4Z4Fr/DHekSS5aLfH9bdlfnSvKAWsAgJhIbogyBg==
   dependencies:
     micromark-util-symbol "^1.0.0"
 
 micromark-util-resolve-all@^1.0.0:
   version "1.0.0"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/micromark-util-resolve-all/-/micromark-util-resolve-all-1.0.0.tgz#a7c363f49a0162e931960c44f3127ab58f031d88"
+  resolved "https://registry.npmjs.org/micromark-util-resolve-all/-/micromark-util-resolve-all-1.0.0.tgz#a7c363f49a0162e931960c44f3127ab58f031d88"
   integrity sha512-CB/AGk98u50k42kvgaMM94wzBqozSzDDaonKU7P7jwQIuH2RU0TeBqGYJz2WY1UdihhjweivStrJ2JdkdEmcfw==
   dependencies:
     micromark-util-types "^1.0.0"
 
 micromark-util-sanitize-uri@^1.0.0, micromark-util-sanitize-uri@^1.1.0:
   version "1.1.0"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/micromark-util-sanitize-uri/-/micromark-util-sanitize-uri-1.1.0.tgz#f12e07a85106b902645e0364feb07cf253a85aee"
+  resolved "https://registry.npmjs.org/micromark-util-sanitize-uri/-/micromark-util-sanitize-uri-1.1.0.tgz#f12e07a85106b902645e0364feb07cf253a85aee"
   integrity sha512-RoxtuSCX6sUNtxhbmsEFQfWzs8VN7cTctmBPvYivo98xb/kDEoTCtJQX5wyzIYEmk/lvNFTat4hL8oW0KndFpg==
   dependencies:
     micromark-util-character "^1.0.0"
@@ -9386,7 +9386,7 @@ micromark-util-sanitize-uri@^1.0.0, micromark-util-sanitize-uri@^1.1.0:
 
 micromark-util-subtokenize@^1.0.0:
   version "1.0.2"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/micromark-util-subtokenize/-/micromark-util-subtokenize-1.0.2.tgz#ff6f1af6ac836f8bfdbf9b02f40431760ad89105"
+  resolved "https://registry.npmjs.org/micromark-util-subtokenize/-/micromark-util-subtokenize-1.0.2.tgz#ff6f1af6ac836f8bfdbf9b02f40431760ad89105"
   integrity sha512-d90uqCnXp/cy4G881Ub4psE57Sf8YD0pim9QdjCRNjfas2M1u6Lbt+XZK9gnHL2XFhnozZiEdCa9CNfXSfQ6xA==
   dependencies:
     micromark-util-chunked "^1.0.0"
@@ -9396,17 +9396,17 @@ micromark-util-subtokenize@^1.0.0:
 
 micromark-util-symbol@^1.0.0:
   version "1.0.1"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/micromark-util-symbol/-/micromark-util-symbol-1.0.1.tgz#b90344db62042ce454f351cf0bebcc0a6da4920e"
+  resolved "https://registry.npmjs.org/micromark-util-symbol/-/micromark-util-symbol-1.0.1.tgz#b90344db62042ce454f351cf0bebcc0a6da4920e"
   integrity sha512-oKDEMK2u5qqAptasDAwWDXq0tG9AssVwAx3E9bBF3t/shRIGsWIRG+cGafs2p/SnDSOecnt6hZPCE2o6lHfFmQ==
 
 micromark-util-types@^1.0.0, micromark-util-types@^1.0.1:
   version "1.0.2"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/micromark-util-types/-/micromark-util-types-1.0.2.tgz#f4220fdb319205812f99c40f8c87a9be83eded20"
+  resolved "https://registry.npmjs.org/micromark-util-types/-/micromark-util-types-1.0.2.tgz#f4220fdb319205812f99c40f8c87a9be83eded20"
   integrity sha512-DCfg/T8fcrhrRKTPjRrw/5LLvdGV7BHySf/1LOZx7TzWZdYRjogNtyNq885z3nNallwr3QUKARjqvHqX1/7t+w==
 
 micromark@^3.0.0:
   version "3.1.0"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/micromark/-/micromark-3.1.0.tgz#eeba0fe0ac1c9aaef675157b52c166f125e89f62"
+  resolved "https://registry.npmjs.org/micromark/-/micromark-3.1.0.tgz#eeba0fe0ac1c9aaef675157b52c166f125e89f62"
   integrity sha512-6Mj0yHLdUZjHnOPgr5xfWIMqMWS12zDN6iws9SLuSz76W8jTtAv24MN4/CL7gJrl5vtxGInkkqDv/JIoRsQOvA==
   dependencies:
     "@types/debug" "^4.0.0"
@@ -9554,7 +9554,7 @@ modify-values@^1.0.0:
 
 mri@^1.1.0:
   version "1.2.0"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/mri/-/mri-1.2.0.tgz#6721480fec2a11a4889861115a48b6cbe7cc8f0b"
+  resolved "https://registry.npmjs.org/mri/-/mri-1.2.0.tgz#6721480fec2a11a4889861115a48b6cbe7cc8f0b"
   integrity sha512-tzzskb3bG8LvYGFF/mDTpq3jpI6Q9wc3LEmBaghu+DdCssd1FakN7Bc0hVNmEyGq1bq3RgfkCb3cmQLpNPOroA==
 
 ms@2.0.0:
@@ -9574,7 +9574,7 @@ ms@2.1.3, ms@^2.1.1:
 
 msw@^0.49.0:
   version "0.49.2"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/msw/-/msw-0.49.2.tgz#c815fa514a1b3532e3d3af01d308bb63329ad1e2"
+  resolved "https://registry.npmjs.org/msw/-/msw-0.49.2.tgz#c815fa514a1b3532e3d3af01d308bb63329ad1e2"
   integrity sha512-70/E10f+POE2UmMw16v8PnKatpZplpkUwVRLBqiIdimpgaC3le7y2yOq9JmOrL15jpwWM5wAcPTOj0f550LI3g==
   dependencies:
     "@mswjs/cookies" "^0.2.2"
@@ -9621,7 +9621,7 @@ mz@^2.7.0:
 
 nano-css@^5.3.1:
   version "5.3.5"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/nano-css/-/nano-css-5.3.5.tgz#3075ea29ffdeb0c7cb6d25edb21d8f7fa8e8fe8e"
+  resolved "https://registry.npmjs.org/nano-css/-/nano-css-5.3.5.tgz#3075ea29ffdeb0c7cb6d25edb21d8f7fa8e8fe8e"
   integrity sha512-vSB9X12bbNu4ALBu7nigJgRViZ6ja3OU7CeuiV1zMIbXOdmkLahgtPmh3GBOlDxbKY0CitqlPdOReGlBLSp+yg==
   dependencies:
     css-tree "^1.1.2"
@@ -9817,7 +9817,7 @@ object-inspect@^1.12.2, object-inspect@^1.9.0:
 
 object-is@^1.1.5:
   version "1.1.5"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/object-is/-/object-is-1.1.5.tgz#b9deeaa5fc7f1846a0faecdceec138e5778f53ac"
+  resolved "https://registry.npmjs.org/object-is/-/object-is-1.1.5.tgz#b9deeaa5fc7f1846a0faecdceec138e5778f53ac"
   integrity sha512-3cyDsyHgtmi7I7DfSSI2LDp6SK2lwvtbg0p0R1e0RvTqF5ceGx+K2dfSjm1bKDMVCFEDAQvy+o8c6a7VujOddw==
   dependencies:
     call-bind "^1.0.2"
@@ -9971,7 +9971,7 @@ os-tmpdir@~1.0.2:
 
 outvariant@^1.2.1, outvariant@^1.3.0:
   version "1.3.0"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/outvariant/-/outvariant-1.3.0.tgz#c39723b1d2cba729c930b74bf962317a81b9b1c9"
+  resolved "https://registry.npmjs.org/outvariant/-/outvariant-1.3.0.tgz#c39723b1d2cba729c930b74bf962317a81b9b1c9"
   integrity sha512-yeWM9k6UPfG/nzxdaPlJkB2p08hCg4xP6Lx99F+vP8YF7xyZVfTmJjrrNalkmzudD4WFvNLVudQikqUmF8zhVQ==
 
 p-finally@^1.0.0:
@@ -10101,7 +10101,7 @@ parse-asn1@^5.0.0, parse-asn1@^5.1.5:
 
 parse-entities@^2.0.0:
   version "2.0.0"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/parse-entities/-/parse-entities-2.0.0.tgz#53c6eb5b9314a1f4ec99fa0fdf7ce01ecda0cbe8"
+  resolved "https://registry.npmjs.org/parse-entities/-/parse-entities-2.0.0.tgz#53c6eb5b9314a1f4ec99fa0fdf7ce01ecda0cbe8"
   integrity sha512-kkywGpCcRYhqQIchaWqZ875wzpS/bMKhz5HnN3p7wveJTkTtyAB/AlnS0f8DFSqYW1T82t6yEAkEcB+A1I3MbQ==
   dependencies:
     character-entities "^1.0.0"
@@ -10136,14 +10136,14 @@ parse-package-name@^0.1.0:
 
 parse-path@^7.0.0:
   version "7.0.0"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/parse-path/-/parse-path-7.0.0.tgz#605a2d58d0a749c8594405d8cc3a2bf76d16099b"
+  resolved "https://registry.npmjs.org/parse-path/-/parse-path-7.0.0.tgz#605a2d58d0a749c8594405d8cc3a2bf76d16099b"
   integrity sha512-Euf9GG8WT9CdqwuWJGdf3RkUcTBArppHABkO7Lm8IzRQp0e2r/kkFnmhu4TSK30Wcu5rVAZLmfPKSBBi9tWFog==
   dependencies:
     protocols "^2.0.0"
 
 parse-url@^8.1.0:
   version "8.1.0"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/parse-url/-/parse-url-8.1.0.tgz#972e0827ed4b57fc85f0ea6b0d839f0d8a57a57d"
+  resolved "https://registry.npmjs.org/parse-url/-/parse-url-8.1.0.tgz#972e0827ed4b57fc85f0ea6b0d839f0d8a57a57d"
   integrity sha512-xDvOoLU5XRrcOZvnI6b8zA6n9O9ejNk/GExuz1yBuWUGn9KA97GI6HTs6u02wKara1CeVmZhH+0TZFdWScR89w==
   dependencies:
     parse-path "^7.0.0"
@@ -10220,7 +10220,7 @@ path-to-regexp@0.1.7:
 
 path-to-regexp@^6.2.0:
   version "6.2.1"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/path-to-regexp/-/path-to-regexp-6.2.1.tgz#d54934d6798eb9e5ef14e7af7962c945906918e5"
+  resolved "https://registry.npmjs.org/path-to-regexp/-/path-to-regexp-6.2.1.tgz#d54934d6798eb9e5ef14e7af7962c945906918e5"
   integrity sha512-JLyh7xT1kizaEvcaXOQwOc2/Yhw6KZOvPf1S8401UyLk86CU79LN3vl7ztXGm/pZ+YjoyAJ4rxmHwbkBXJX+yw==
 
 path-type@^3.0.0:
@@ -10302,12 +10302,12 @@ pkg-up@^3.1.0:
 
 pluralize@^8.0.0:
   version "8.0.0"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/pluralize/-/pluralize-8.0.0.tgz#1a6fa16a38d12a1901e0320fa017051c539ce3b1"
+  resolved "https://registry.npmjs.org/pluralize/-/pluralize-8.0.0.tgz#1a6fa16a38d12a1901e0320fa017051c539ce3b1"
   integrity sha512-Nc3IT5yHzflTfbjgqWcCPpo7DaKy4FnpB0l/zCAW0Tc7jxAiuqSxHasntB3D7887LSrA93kDJ9IXovxJYxyLCA==
 
 popper.js@1.16.1-lts:
   version "1.16.1-lts"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/popper.js/-/popper.js-1.16.1-lts.tgz#cf6847b807da3799d80ee3d6d2f90df8a3f50b05"
+  resolved "https://registry.npmjs.org/popper.js/-/popper.js-1.16.1-lts.tgz#cf6847b807da3799d80ee3d6d2f90df8a3f50b05"
   integrity sha512-Kjw8nKRl1m+VrSFCoVGPph93W/qrSO7ZkqPpTf7F4bk/sqcfWK019dWBUpE/fBOsOQY1dks/Bmcbfn1heM/IsA==
 
 postcss-calc@^8.2.3:
@@ -10604,7 +10604,7 @@ pretty-error@^4.0.0:
 
 pretty-format@^27.0.2:
   version "27.5.1"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/pretty-format/-/pretty-format-27.5.1.tgz#2181879fdea51a7a5851fb39d920faa63f01d88e"
+  resolved "https://registry.npmjs.org/pretty-format/-/pretty-format-27.5.1.tgz#2181879fdea51a7a5851fb39d920faa63f01d88e"
   integrity sha512-Qb1gy5OrP5+zDf2Bvnzdl3jsTf1qXVMazbvCoKhtKqVs4/YK4ozX4gKQJJVyNe+cajNPn0KoC0MC3FUmaHWEmQ==
   dependencies:
     ansi-regex "^5.0.1"
@@ -10622,12 +10622,12 @@ pretty-format@^29.0.0, pretty-format@^29.3.1:
 
 prismjs@^1.27.0:
   version "1.29.0"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/prismjs/-/prismjs-1.29.0.tgz#f113555a8fa9b57c35e637bba27509dcf802dd12"
+  resolved "https://registry.npmjs.org/prismjs/-/prismjs-1.29.0.tgz#f113555a8fa9b57c35e637bba27509dcf802dd12"
   integrity sha512-Kx/1w86q/epKcmte75LNrEoT+lX8pBpavuAbvJWRXar7Hz8jrtF+e3vY751p0R8H9HdArwaCTNDDzHg/ScJK1Q==
 
 prismjs@~1.27.0:
   version "1.27.0"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/prismjs/-/prismjs-1.27.0.tgz#bb6ee3138a0b438a3653dd4d6ce0cc6510a45057"
+  resolved "https://registry.npmjs.org/prismjs/-/prismjs-1.27.0.tgz#bb6ee3138a0b438a3653dd4d6ce0cc6510a45057"
   integrity sha512-t13BGPUlFDR7wRB5kQDG4jjl7XeuH6jbJGt11JHPL96qwsEHNX2+68tFXqc1/k+/jALsbSWJKUOT/hcYAZ5LkA==
 
 process-nextick-args@~2.0.0:
@@ -10669,19 +10669,19 @@ property-expr@^2.0.4:
 
 property-information@^5.0.0:
   version "5.6.0"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/property-information/-/property-information-5.6.0.tgz#61675545fb23002f245c6540ec46077d4da3ed69"
+  resolved "https://registry.npmjs.org/property-information/-/property-information-5.6.0.tgz#61675545fb23002f245c6540ec46077d4da3ed69"
   integrity sha512-YUHSPk+A30YPv+0Qf8i9Mbfe/C0hdPXk1s1jPVToV8pk8BQtpw10ct89Eo7OWkutrwqvT0eicAxlOg3dOAu8JA==
   dependencies:
     xtend "^4.0.0"
 
 property-information@^6.0.0:
   version "6.2.0"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/property-information/-/property-information-6.2.0.tgz#b74f522c31c097b5149e3c3cb8d7f3defd986a1d"
+  resolved "https://registry.npmjs.org/property-information/-/property-information-6.2.0.tgz#b74f522c31c097b5149e3c3cb8d7f3defd986a1d"
   integrity sha512-kma4U7AFCTwpqq5twzC1YVIDXSqg6qQK6JN0smOw8fgRy1OkMi0CYSzFmsy6dnqSenamAtj0CyXMUJ1Mf6oROg==
 
 protocols@^2.0.0, protocols@^2.0.1:
   version "2.0.1"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/protocols/-/protocols-2.0.1.tgz#8f155da3fc0f32644e83c5782c8e8212ccf70a86"
+  resolved "https://registry.npmjs.org/protocols/-/protocols-2.0.1.tgz#8f155da3fc0f32644e83c5782c8e8212ccf70a86"
   integrity sha512-/XJ368cyBJ7fzLMwLKv1e4vLxOju2MNAIokcr7meSaNcVbWz/CPcW22cP04mwxOErdA5mwjA8Q6w/cdAQxVn7Q==
 
 proxy-addr@~2.0.7:
@@ -10763,7 +10763,7 @@ quick-lru@^4.0.1:
 
 raf-schd@^4.0.2:
   version "4.0.3"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/raf-schd/-/raf-schd-4.0.3.tgz#5d6c34ef46f8b2a0e880a8fcdb743efc5bfdbc1a"
+  resolved "https://registry.npmjs.org/raf-schd/-/raf-schd-4.0.3.tgz#5d6c34ef46f8b2a0e880a8fcdb743efc5bfdbc1a"
   integrity sha512-tQkJl2GRWh83ui2DiPTJz9wEiMN20syf+5oKfB03yYP7ioZcJwsIK8FjrtLwH1m7C7e+Tt2yYBlrOpdT+dyeIQ==
 
 randombytes@^2.0.0, randombytes@^2.0.1, randombytes@^2.0.5, randombytes@^2.1.0:
@@ -10798,7 +10798,7 @@ raw-body@2.5.1:
 
 rc-progress@3.4.1:
   version "3.4.1"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/rc-progress/-/rc-progress-3.4.1.tgz#a9ffe099e88a4fc03afb09d8603162bf0760d743"
+  resolved "https://registry.npmjs.org/rc-progress/-/rc-progress-3.4.1.tgz#a9ffe099e88a4fc03afb09d8603162bf0760d743"
   integrity sha512-eAFDHXlk8aWpoXl0llrenPMt9qKHQXphxcVsnKs0FHC6eCSk1ebJtyaVjJUzKe0233ogiLDeEFK1Uihz3s67hw==
   dependencies:
     "@babel/runtime" "^7.10.1"
@@ -10807,7 +10807,7 @@ rc-progress@3.4.1:
 
 rc-util@^5.16.1:
   version "5.27.1"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/rc-util/-/rc-util-5.27.1.tgz#d12f02b9577b04299c0f1a235c8acbcf56e2824b"
+  resolved "https://registry.npmjs.org/rc-util/-/rc-util-5.27.1.tgz#d12f02b9577b04299c0f1a235c8acbcf56e2824b"
   integrity sha512-PsjHA+f+KBCz+YTZxrl3ukJU5RoNKoe3KSNMh0xGiISbR67NaM9E9BiMjCwxa3AcCUOg/rZ+V0ZKLSimAA+e3w==
   dependencies:
     "@babel/runtime" "^7.18.3"
@@ -10815,7 +10815,7 @@ rc-util@^5.16.1:
 
 react-beautiful-dnd@^13.0.0:
   version "13.1.1"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/react-beautiful-dnd/-/react-beautiful-dnd-13.1.1.tgz#b0f3087a5840920abf8bb2325f1ffa46d8c4d0a2"
+  resolved "https://registry.npmjs.org/react-beautiful-dnd/-/react-beautiful-dnd-13.1.1.tgz#b0f3087a5840920abf8bb2325f1ffa46d8c4d0a2"
   integrity sha512-0Lvs4tq2VcrEjEgDXHjT98r+63drkKEgqyxdA7qD3mvKwga6a5SscbdLPO2IExotU1jW8L0Ksdl0Cj2AF67nPQ==
   dependencies:
     "@babel/runtime" "^7.9.2"
@@ -10867,7 +10867,7 @@ react-dom@^17.0.2:
 
 react-double-scrollbar@0.0.15:
   version "0.0.15"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/react-double-scrollbar/-/react-double-scrollbar-0.0.15.tgz#e915ab8cb3b959877075f49436debfdb04288fe4"
+  resolved "https://registry.npmjs.org/react-double-scrollbar/-/react-double-scrollbar-0.0.15.tgz#e915ab8cb3b959877075f49436debfdb04288fe4"
   integrity sha512-dLz3/WBIpgFnzFY0Kb4aIYBMT2BWomHuW2DH6/9jXfS6/zxRRBUFQ04My4HIB7Ma7QoRBpcy8NtkPeFgcGBpgg==
 
 react-error-overlay@^6.0.11:
@@ -10877,12 +10877,12 @@ react-error-overlay@^6.0.11:
 
 react-fast-compare@^3.1.1:
   version "3.2.0"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/react-fast-compare/-/react-fast-compare-3.2.0.tgz#641a9da81b6a6320f270e89724fb45a0b39e43bb"
+  resolved "https://registry.npmjs.org/react-fast-compare/-/react-fast-compare-3.2.0.tgz#641a9da81b6a6320f270e89724fb45a0b39e43bb"
   integrity sha512-rtGImPZ0YyLrscKI9xTpV8psd6I8VAtjKCzQDlzyDvqJA8XOW78TXYQwNRNd8g8JZnDu8q9Fu/1v4HPAVwVdHA==
 
 react-helmet@6.1.0:
   version "6.1.0"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/react-helmet/-/react-helmet-6.1.0.tgz#a750d5165cb13cf213e44747502652e794468726"
+  resolved "https://registry.npmjs.org/react-helmet/-/react-helmet-6.1.0.tgz#a750d5165cb13cf213e44747502652e794468726"
   integrity sha512-4uMzEY9nlDlgxr61NL3XbKRy1hEkXmKNXhjbAIOVw5vcFrsdYbH2FEwcNyWvWinl103nXgzYNlns9ca+8kFiWw==
   dependencies:
     object-assign "^4.1.1"
@@ -10892,7 +10892,7 @@ react-helmet@6.1.0:
 
 react-hook-form@^7.12.2:
   version "7.41.5"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/react-hook-form/-/react-hook-form-7.41.5.tgz#dcd0e7438c15044eadc99df6deb889da5858a03b"
+  resolved "https://registry.npmjs.org/react-hook-form/-/react-hook-form-7.41.5.tgz#dcd0e7438c15044eadc99df6deb889da5858a03b"
   integrity sha512-DAKjSJ7X9f16oQrP3TW2/eD9N6HOgrmIahP4LOdFphEWVfGZ2LulFd6f6AQ/YS/0cx/5oc4j8a1PXxuaurWp/Q==
 
 react-is@^16.12.0, react-is@^16.13.1, react-is@^16.7.0:
@@ -10902,7 +10902,7 @@ react-is@^16.12.0, react-is@^16.13.1, react-is@^16.7.0:
 
 "react-is@^16.8.0 || ^17.0.0", react-is@^17.0.1, react-is@^17.0.2:
   version "17.0.2"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/react-is/-/react-is-17.0.2.tgz#e691d4a8e9c789365655539ab372762b0efb54f0"
+  resolved "https://registry.npmjs.org/react-is/-/react-is-17.0.2.tgz#e691d4a8e9c789365655539ab372762b0efb54f0"
   integrity sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==
 
 react-is@^18.0.0:
@@ -10912,7 +10912,7 @@ react-is@^18.0.0:
 
 react-markdown@^8.0.0:
   version "8.0.4"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/react-markdown/-/react-markdown-8.0.4.tgz#b5ff1f0f29ead71a7a6f98815eb1a70bcc2a036e"
+  resolved "https://registry.npmjs.org/react-markdown/-/react-markdown-8.0.4.tgz#b5ff1f0f29ead71a7a6f98815eb1a70bcc2a036e"
   integrity sha512-2oxHa6oDxc1apg/Gnc1Goh06t3B617xeywqI/92wmDV9FELI6ayRkwge7w7DoEqM0gRpZGTNU6xQG+YpJISnVg==
   dependencies:
     "@types/hast" "^2.0.0"
@@ -10933,7 +10933,7 @@ react-markdown@^8.0.0:
 
 react-redux@^7.2.0:
   version "7.2.9"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/react-redux/-/react-redux-7.2.9.tgz#09488fbb9416a4efe3735b7235055442b042481d"
+  resolved "https://registry.npmjs.org/react-redux/-/react-redux-7.2.9.tgz#09488fbb9416a4efe3735b7235055442b042481d"
   integrity sha512-Gx4L3uM182jEEayZfRbI/G11ZpYdNAnBs70lFVMNdHJI76XYtR+7m0MN+eAs7UHBPhWXcnFPaS+9owSCJQHNpQ==
   dependencies:
     "@babel/runtime" "^7.15.4"
@@ -10965,19 +10965,19 @@ react-router@6.6.1, react-router@^6.3.0:
 
 react-side-effect@^2.1.0:
   version "2.1.2"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/react-side-effect/-/react-side-effect-2.1.2.tgz#dc6345b9e8f9906dc2eeb68700b615e0b4fe752a"
+  resolved "https://registry.npmjs.org/react-side-effect/-/react-side-effect-2.1.2.tgz#dc6345b9e8f9906dc2eeb68700b615e0b4fe752a"
   integrity sha512-PVjOcvVOyIILrYoyGEpDN3vmYNLdy1CajSFNt4TDsVQC5KpTijDvWVoR+/7Rz2xT978D8/ZtFceXxzsPwZEDvw==
 
 react-sparklines@^1.7.0:
   version "1.7.0"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/react-sparklines/-/react-sparklines-1.7.0.tgz#9b1d97e8c8610095eeb2ad658d2e1fcf91f91a60"
+  resolved "https://registry.npmjs.org/react-sparklines/-/react-sparklines-1.7.0.tgz#9b1d97e8c8610095eeb2ad658d2e1fcf91f91a60"
   integrity sha512-bJFt9K4c5Z0k44G8KtxIhbG+iyxrKjBZhdW6afP+R7EnIq+iKjbWbEFISrf3WKNFsda+C46XAfnX0StS5fbDcg==
   dependencies:
     prop-types "^15.5.10"
 
 react-syntax-highlighter@^15.4.5:
   version "15.5.0"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/react-syntax-highlighter/-/react-syntax-highlighter-15.5.0.tgz#4b3eccc2325fa2ec8eff1e2d6c18fa4a9e07ab20"
+  resolved "https://registry.npmjs.org/react-syntax-highlighter/-/react-syntax-highlighter-15.5.0.tgz#4b3eccc2325fa2ec8eff1e2d6c18fa4a9e07ab20"
   integrity sha512-+zq2myprEnQmH5yw6Gqc8lD55QHnpKaU8TOcFeC/Lg/MQSs8UknEA0JC4nTZGFAXC2J2Hyj/ijJ7NlabyPi2gg==
   dependencies:
     "@babel/runtime" "^7.3.1"
@@ -10988,14 +10988,14 @@ react-syntax-highlighter@^15.4.5:
 
 react-text-truncate@^0.19.0:
   version "0.19.0"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/react-text-truncate/-/react-text-truncate-0.19.0.tgz#60bc5ecf29a03ebc256f31f90a2d8402176aac91"
+  resolved "https://registry.npmjs.org/react-text-truncate/-/react-text-truncate-0.19.0.tgz#60bc5ecf29a03ebc256f31f90a2d8402176aac91"
   integrity sha512-QxHpZABfGG0Z3WEYbRTZ+rXdZn50Zvp+sWZXgVAd7FCKAMzv/kcwctTpNmWgXDTpAoHhMjOVwmgRtX3x5yeF4w==
   dependencies:
     prop-types "^15.5.7"
 
 react-transition-group@^4.0.0, react-transition-group@^4.4.0:
   version "4.4.5"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/react-transition-group/-/react-transition-group-4.4.5.tgz#e53d4e3f3344da8521489fbef8f2581d42becdd1"
+  resolved "https://registry.npmjs.org/react-transition-group/-/react-transition-group-4.4.5.tgz#e53d4e3f3344da8521489fbef8f2581d42becdd1"
   integrity sha512-pZcd1MCJoiKiBR2NRxeCRg13uCXbydPnmB4EOeRrY7480qNWO8IIgQG6zlDkm6uRMsURXPuKq0GWtiM59a5Q6g==
   dependencies:
     "@babel/runtime" "^7.5.5"
@@ -11005,12 +11005,12 @@ react-transition-group@^4.0.0, react-transition-group@^4.4.0:
 
 react-universal-interface@^0.6.2:
   version "0.6.2"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/react-universal-interface/-/react-universal-interface-0.6.2.tgz#5e8d438a01729a4dbbcbeeceb0b86be146fe2b3b"
+  resolved "https://registry.npmjs.org/react-universal-interface/-/react-universal-interface-0.6.2.tgz#5e8d438a01729a4dbbcbeeceb0b86be146fe2b3b"
   integrity sha512-dg8yXdcQmvgR13RIlZbTRQOoUrDciFVoSBZILwjE2LFISxZZ8loVJKAkuzswl5js8BHda79bIb2b84ehU8IjXw==
 
 react-use@^17.2.4, react-use@^17.3.2:
   version "17.4.0"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/react-use/-/react-use-17.4.0.tgz#cefef258b0a6c534a5c8021c2528ac6e1a4cdc6d"
+  resolved "https://registry.npmjs.org/react-use/-/react-use-17.4.0.tgz#cefef258b0a6c534a5c8021c2528ac6e1a4cdc6d"
   integrity sha512-TgbNTCA33Wl7xzIJegn1HndB4qTS9u03QUwyNycUnXaweZkE4Kq2SB+Yoxx8qbshkZGYBDvUXbXWRUmQDcZZ/Q==
   dependencies:
     "@types/js-cookie" "^2.2.6"
@@ -11030,12 +11030,12 @@ react-use@^17.2.4, react-use@^17.3.2:
 
 react-virtualized-auto-sizer@^1.0.6:
   version "1.0.7"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/react-virtualized-auto-sizer/-/react-virtualized-auto-sizer-1.0.7.tgz#bfb8414698ad1597912473de3e2e5f82180c1195"
+  resolved "https://registry.npmjs.org/react-virtualized-auto-sizer/-/react-virtualized-auto-sizer-1.0.7.tgz#bfb8414698ad1597912473de3e2e5f82180c1195"
   integrity sha512-Mxi6lwOmjwIjC1X4gABXMJcKHsOo0xWl3E3ugOgufB8GJU+MqrtY35aBuvCYv/razQ1Vbp7h1gWJjGjoNN5pmA==
 
 react-window@^1.8.6:
   version "1.8.8"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/react-window/-/react-window-1.8.8.tgz#1b52919f009ddf91970cbdb2050a6c7be44df243"
+  resolved "https://registry.npmjs.org/react-window/-/react-window-1.8.8.tgz#1b52919f009ddf91970cbdb2050a6c7be44df243"
   integrity sha512-D4IiBeRtGXziZ1n0XklnFGu7h9gU684zepqyKzgPNzrsrk7xOCxni+TCckjg2Nr/DiaEEGVVmnhYSlT2rB47dQ==
   dependencies:
     "@babel/runtime" "^7.0.0"
@@ -11141,14 +11141,14 @@ redent@^3.0.0:
 
 redux@^4.0.0, redux@^4.0.4:
   version "4.2.0"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/redux/-/redux-4.2.0.tgz#46f10d6e29b6666df758780437651eeb2b969f13"
+  resolved "https://registry.npmjs.org/redux/-/redux-4.2.0.tgz#46f10d6e29b6666df758780437651eeb2b969f13"
   integrity sha512-oSBmcKKIuIR4ME29/AeNUnl5L+hvBq7OaJWzaptTQJAntaPvxIJqfnjbaEiCzzaIz+XmVILfqAM3Ob0aXLPfjA==
   dependencies:
     "@babel/runtime" "^7.9.2"
 
 refractor@^3.6.0:
   version "3.6.0"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/refractor/-/refractor-3.6.0.tgz#ac318f5a0715ead790fcfb0c71f4dd83d977935a"
+  resolved "https://registry.npmjs.org/refractor/-/refractor-3.6.0.tgz#ac318f5a0715ead790fcfb0c71f4dd83d977935a"
   integrity sha512-MY9W41IOWxxk31o+YvFCNyNzdkc9M20NoZK5vq6jkv4I/uh2zkWcfudj0Q1fovjUQJrNewS9NMzeTtqPf+n5EA==
   dependencies:
     hastscript "^6.0.0"
@@ -11224,7 +11224,7 @@ relateurl@^0.2.7:
 
 remark-gfm@^3.0.1:
   version "3.0.1"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/remark-gfm/-/remark-gfm-3.0.1.tgz#0b180f095e3036545e9dddac0e8df3fa5cfee54f"
+  resolved "https://registry.npmjs.org/remark-gfm/-/remark-gfm-3.0.1.tgz#0b180f095e3036545e9dddac0e8df3fa5cfee54f"
   integrity sha512-lEFDoi2PICJyNrACFOfDD3JlLkuSbOa5Wd8EPt06HUdptv8Gn0bxYTdbU/XXQ3swAPkEaGxxPN9cbnMHvVu1Ig==
   dependencies:
     "@types/mdast" "^3.0.0"
@@ -11234,7 +11234,7 @@ remark-gfm@^3.0.1:
 
 remark-parse@^10.0.0:
   version "10.0.1"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/remark-parse/-/remark-parse-10.0.1.tgz#6f60ae53edbf0cf38ea223fe643db64d112e0775"
+  resolved "https://registry.npmjs.org/remark-parse/-/remark-parse-10.0.1.tgz#6f60ae53edbf0cf38ea223fe643db64d112e0775"
   integrity sha512-1fUyHr2jLsVOkhbvPRBJ5zTKZZyD6yZzYaWCS6BPBdQ8vEMBCH+9zNCDA6tET/zHCi/jLqjCWtlJZUPk+DbnFw==
   dependencies:
     "@types/mdast" "^3.0.0"
@@ -11243,7 +11243,7 @@ remark-parse@^10.0.0:
 
 remark-rehype@^10.0.0:
   version "10.1.0"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/remark-rehype/-/remark-rehype-10.1.0.tgz#32dc99d2034c27ecaf2e0150d22a6dcccd9a6279"
+  resolved "https://registry.npmjs.org/remark-rehype/-/remark-rehype-10.1.0.tgz#32dc99d2034c27ecaf2e0150d22a6dcccd9a6279"
   integrity sha512-EFmR5zppdBp0WQeDVZ/b66CWJipB2q2VLNFMabzDSGR66Z2fQii83G5gTBbgGEnEEA0QRussvrFHxk1HWGJskw==
   dependencies:
     "@types/hast" "^2.0.0"
@@ -11288,7 +11288,7 @@ requires-port@^1.0.0:
 
 resize-observer-polyfill@^1.5.1:
   version "1.5.1"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/resize-observer-polyfill/-/resize-observer-polyfill-1.5.1.tgz#0e9020dd3d21024458d4ebd27e23e40269810464"
+  resolved "https://registry.npmjs.org/resize-observer-polyfill/-/resize-observer-polyfill-1.5.1.tgz#0e9020dd3d21024458d4ebd27e23e40269810464"
   integrity sha512-LwZrotdHOo12nQuZlHEmtuXdqGoOD0OhaxopaNFxWzInpEgaLWoVuAMbTzixuosCx2nEG58ngzW3vxdWoxIgdg==
 
 resolve-cwd@^3.0.0:
@@ -11363,7 +11363,7 @@ rfdc@^1.3.0:
 
 rifm@^0.7.0:
   version "0.7.0"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/rifm/-/rifm-0.7.0.tgz#debe951a9c83549ca6b33e5919f716044c2230be"
+  resolved "https://registry.npmjs.org/rifm/-/rifm-0.7.0.tgz#debe951a9c83549ca6b33e5919f716044c2230be"
   integrity sha512-DSOJTWHD67860I5ojetXdEQRIBvF6YcpNe53j0vn1vp9EUb9N80EiZTxgP+FkDKorWC8PZw052kTF4C1GOivCQ==
   dependencies:
     "@babel/runtime" "^7.3.1"
@@ -11450,7 +11450,7 @@ rollup@^2.60.2:
 
 rtl-css-js@^1.14.0:
   version "1.16.1"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/rtl-css-js/-/rtl-css-js-1.16.1.tgz#4b48b4354b0ff917a30488d95100fbf7219a3e80"
+  resolved "https://registry.npmjs.org/rtl-css-js/-/rtl-css-js-1.16.1.tgz#4b48b4354b0ff917a30488d95100fbf7219a3e80"
   integrity sha512-lRQgou1mu19e+Ya0LsTvKrVJ5TYUbqCVPAiImX3UfLTenarvPUl1QFdvu5Z3PYmHT9RCcwIfbjRQBntExyj3Zg==
   dependencies:
     "@babel/runtime" "^7.1.2"
@@ -11481,7 +11481,7 @@ rxjs@^7.0.0, rxjs@^7.5.5, rxjs@^7.5.7:
 
 sade@^1.7.3:
   version "1.8.1"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/sade/-/sade-1.8.1.tgz#0a78e81d658d394887be57d2a409bf703a3b2701"
+  resolved "https://registry.npmjs.org/sade/-/sade-1.8.1.tgz#0a78e81d658d394887be57d2a409bf703a3b2701"
   integrity sha512-xal3CZX1Xlo/k4ApwCFrHVACi9fBqJ7V+mwhBsuf/1IOKbBy098Fex+Wa/5QMubw09pSZ/u8EY8PWgevJsXp1A==
   dependencies:
     mri "^1.1.0"
@@ -11565,7 +11565,7 @@ schema-utils@^4.0.0:
 
 screenfull@^5.1.0:
   version "5.2.0"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/screenfull/-/screenfull-5.2.0.tgz#6533d524d30621fc1283b9692146f3f13a93d1ba"
+  resolved "https://registry.npmjs.org/screenfull/-/screenfull-5.2.0.tgz#6533d524d30621fc1283b9692146f3f13a93d1ba"
   integrity sha512-9BakfsO2aUQN2K9Fdbj87RJIEZ82Q9IGim7FqM5OsebfoFC6ZHXgDq/KvniuLTPdeM8wY2o6Dj3WQ7KeQCj3cA==
 
 select-hose@^2.0.0:
@@ -11667,12 +11667,12 @@ serve-static@1.15.0:
 
 set-cookie-parser@^2.4.6:
   version "2.5.1"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/set-cookie-parser/-/set-cookie-parser-2.5.1.tgz#ddd3e9a566b0e8e0862aca974a6ac0e01349430b"
+  resolved "https://registry.npmjs.org/set-cookie-parser/-/set-cookie-parser-2.5.1.tgz#ddd3e9a566b0e8e0862aca974a6ac0e01349430b"
   integrity sha512-1jeBGaKNGdEq4FgIrORu/N570dwoPYio8lSoYLWmX7sQ//0JY08Xh9o5pBcgmHQ/MbsYp/aZnOe1s1lIsbLprQ==
 
 set-harmonic-interval@^1.0.1:
   version "1.0.1"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/set-harmonic-interval/-/set-harmonic-interval-1.0.1.tgz#e1773705539cdfb80ce1c3d99e7f298bb3995249"
+  resolved "https://registry.npmjs.org/set-harmonic-interval/-/set-harmonic-interval-1.0.1.tgz#e1773705539cdfb80ce1c3d99e7f298bb3995249"
   integrity sha512-AhICkFV84tBP1aWqPwLZqFvAwqEoVA9kxNMniGEUvzOlm4vLmOFLiTT3UZ6bziJTy4bOVpzWGTfSCbmaayGx8g==
 
 setimmediate@^1.0.4:
@@ -11807,7 +11807,7 @@ source-map-support@~0.5.20:
 
 source-map@0.5.6:
   version "0.5.6"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/source-map/-/source-map-0.5.6.tgz#75ce38f52bf0733c5a7f0c118d81334a2bb5f412"
+  resolved "https://registry.npmjs.org/source-map/-/source-map-0.5.6.tgz#75ce38f52bf0733c5a7f0c118d81334a2bb5f412"
   integrity sha512-MjZkVp0NHr5+TPihLcadqnlVoGIoWo4IBHptutGh9wI3ttUYvCG26HkSuDi+K6lsZ25syXJXcctwgyVCt//xqA==
 
 source-map@^0.6.0, source-map@^0.6.1, source-map@~0.6.0, source-map@~0.6.1:
@@ -11827,12 +11827,12 @@ sourcemap-codec@^1.4.8:
 
 space-separated-tokens@^1.0.0:
   version "1.1.5"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/space-separated-tokens/-/space-separated-tokens-1.1.5.tgz#85f32c3d10d9682007e917414ddc5c26d1aa6899"
+  resolved "https://registry.npmjs.org/space-separated-tokens/-/space-separated-tokens-1.1.5.tgz#85f32c3d10d9682007e917414ddc5c26d1aa6899"
   integrity sha512-q/JSVd1Lptzhf5bkYm4ob4iWPjx0KiRe3sRFBNrVqbJkFaBm5vbbowy1mymoPNLRa52+oadOhJ+K49wsSeSjTA==
 
 space-separated-tokens@^2.0.0:
   version "2.0.2"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/space-separated-tokens/-/space-separated-tokens-2.0.2.tgz#1ecd9d2350a3844572c3f4a312bceb018348859f"
+  resolved "https://registry.npmjs.org/space-separated-tokens/-/space-separated-tokens-2.0.2.tgz#1ecd9d2350a3844572c3f4a312bceb018348859f"
   integrity sha512-PEGlAwrG8yXGXRjW32fGbg66JAlOAwbObuqVoJpv/mRgoWDQfgH1wDPvtzWyUSNAXBGSk8h755YDbbcEy3SH2Q==
 
 spawn-command@^0.0.2-1:
@@ -11920,7 +11920,7 @@ stable@^0.1.8:
 
 stack-generator@^2.0.5:
   version "2.0.10"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/stack-generator/-/stack-generator-2.0.10.tgz#8ae171e985ed62287d4f1ed55a1633b3fb53bb4d"
+  resolved "https://registry.npmjs.org/stack-generator/-/stack-generator-2.0.10.tgz#8ae171e985ed62287d4f1ed55a1633b3fb53bb4d"
   integrity sha512-mwnua/hkqM6pF4k8SnmZ2zfETsRUpWXREfA/goT8SLCV4iOFa4bzOX2nDipWAZFPTjLvQB82f5yaodMVhK0yJQ==
   dependencies:
     stackframe "^1.3.4"
@@ -11939,7 +11939,7 @@ stackframe@^1.3.4:
 
 stacktrace-gps@^3.0.4:
   version "3.1.2"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/stacktrace-gps/-/stacktrace-gps-3.1.2.tgz#0c40b24a9b119b20da4525c398795338966a2fb0"
+  resolved "https://registry.npmjs.org/stacktrace-gps/-/stacktrace-gps-3.1.2.tgz#0c40b24a9b119b20da4525c398795338966a2fb0"
   integrity sha512-GcUgbO4Jsqqg6RxfyTHFiPxdPqF+3LFmQhm7MgCuYQOYuWyqxo5pwRPz5d/u6/WYJdEnWfK4r+jGbyD8TSggXQ==
   dependencies:
     source-map "0.5.6"
@@ -11947,7 +11947,7 @@ stacktrace-gps@^3.0.4:
 
 stacktrace-js@^2.0.2:
   version "2.0.2"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/stacktrace-js/-/stacktrace-js-2.0.2.tgz#4ca93ea9f494752d55709a081d400fdaebee897b"
+  resolved "https://registry.npmjs.org/stacktrace-js/-/stacktrace-js-2.0.2.tgz#4ca93ea9f494752d55709a081d400fdaebee897b"
   integrity sha512-Je5vBeY4S1r/RnLydLl0TBTi3F2qdfWmYsGvtfZgEI+SCprPppaIhQf5nGcal4gI4cGpCV/duLcAzT1np6sQqg==
   dependencies:
     error-stack-parser "^2.0.6"
@@ -12005,7 +12005,7 @@ stream-http@^2.7.2:
 
 strict-event-emitter@^0.2.4, strict-event-emitter@^0.2.6:
   version "0.2.8"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/strict-event-emitter/-/strict-event-emitter-0.2.8.tgz#b4e768927c67273c14c13d20e19d5e6c934b47ca"
+  resolved "https://registry.npmjs.org/strict-event-emitter/-/strict-event-emitter-0.2.8.tgz#b4e768927c67273c14c13d20e19d5e6c934b47ca"
   integrity sha512-KDf/ujU8Zud3YaLtMCcTI4xkZlZVIYxTLr+XIULexP+77EEVWixeXroLUXQXiVtH4XH2W7jr/3PT1v3zBuvc3A==
   dependencies:
     events "^3.3.0"
@@ -12162,7 +12162,7 @@ style-loader@^3.3.1:
 
 style-to-object@^0.3.0:
   version "0.3.0"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/style-to-object/-/style-to-object-0.3.0.tgz#b1b790d205991cc783801967214979ee19a76e46"
+  resolved "https://registry.npmjs.org/style-to-object/-/style-to-object-0.3.0.tgz#b1b790d205991cc783801967214979ee19a76e46"
   integrity sha512-CzFnRRXhzWIdItT3OmF8SQfWyahHhjq3HwcMNCNLn+N7klOOqPjMeG/4JSu77D7ypZdGvSzvkrbyeTMizz2VrA==
   dependencies:
     inline-style-parser "0.1.1"
@@ -12177,7 +12177,7 @@ stylehacks@^5.1.1:
 
 stylis@^4.0.6:
   version "4.1.3"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/stylis/-/stylis-4.1.3.tgz#fd2fbe79f5fed17c55269e16ed8da14c84d069f7"
+  resolved "https://registry.npmjs.org/stylis/-/stylis-4.1.3.tgz#fd2fbe79f5fed17c55269e16ed8da14c84d069f7"
   integrity sha512-GP6WDNWf+o403jrEp9c5jibKavrtLW+/qYGhFxFrG8maXhwTBI7gLLhiBb0o7uFccWN+EOS9aMO6cGHWAO07OA==
 
 sucrase@^3.20.2:
@@ -12243,7 +12243,7 @@ swc-loader@^0.2.3:
 
 swr@^1.1.2:
   version "1.3.0"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/swr/-/swr-1.3.0.tgz#c6531866a35b4db37b38b72c45a63171faf9f4e8"
+  resolved "https://registry.npmjs.org/swr/-/swr-1.3.0.tgz#c6531866a35b4db37b38b72c45a63171faf9f4e8"
   integrity sha512-dkghQrOl2ORX9HYrMDtPa7LTVHJjCTeZoB1dqTbnnEDlSvN8JEKpYIYurDfvbQFUUS8Cg8PceFVZNkW0KNNYPw==
 
 symbol-tree@^3.2.4:
@@ -12329,7 +12329,7 @@ thenify-all@^1.0.0:
 
 throttle-debounce@^3.0.1:
   version "3.0.1"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/throttle-debounce/-/throttle-debounce-3.0.1.tgz#32f94d84dfa894f786c9a1f290e7a645b6a19abb"
+  resolved "https://registry.npmjs.org/throttle-debounce/-/throttle-debounce-3.0.1.tgz#32f94d84dfa894f786c9a1f290e7a645b6a19abb"
   integrity sha512-dTEWWNu6JmeVXY0ZYoPuH5cRIwc0MeGbJwah9KUNYSJwommQpCzTySTpEe8Gs1J23aeWEuAobe4Ag7EHVt/LOg==
 
 through2@^2.0.0:
@@ -12366,12 +12366,12 @@ timers-browserify@^2.0.4:
 
 tiny-invariant@^1.0.6:
   version "1.3.1"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/tiny-invariant/-/tiny-invariant-1.3.1.tgz#8560808c916ef02ecfd55e66090df23a4b7aa642"
+  resolved "https://registry.npmjs.org/tiny-invariant/-/tiny-invariant-1.3.1.tgz#8560808c916ef02ecfd55e66090df23a4b7aa642"
   integrity sha512-AD5ih2NlSssTCwsMznbvwMZpJ1cbhkGd2uueNxzv2jDlEeZdU04JQfRnggJQ8DrcVBGjAsCKwFBbDlVNtEMlzw==
 
 tiny-warning@^1.0.2:
   version "1.0.3"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/tiny-warning/-/tiny-warning-1.0.3.tgz#94a30db453df4c643d0fd566060d60a875d84754"
+  resolved "https://registry.npmjs.org/tiny-warning/-/tiny-warning-1.0.3.tgz#94a30db453df4c643d0fd566060d60a875d84754"
   integrity sha512-lBN9zLN/oAf68o3zNXYrdCt1kP8WsiGW8Oo2ka41b2IM5JL/S1CTyX1rW0mb/zSuJun0ZUrDxx4sqvYS2FWzPA==
 
 tmp@^0.0.33:
@@ -12405,7 +12405,7 @@ to-regex-range@^5.0.1:
 
 toggle-selection@^1.0.6:
   version "1.0.6"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/toggle-selection/-/toggle-selection-1.0.6.tgz#6e45b1263f2017fa0acc7d89d78b15b8bf77da32"
+  resolved "https://registry.npmjs.org/toggle-selection/-/toggle-selection-1.0.6.tgz#6e45b1263f2017fa0acc7d89d78b15b8bf77da32"
   integrity sha512-BiZS+C1OS8g/q2RRbJmy59xpyghNBqrr6k5L/uKBGRsTfxmu3ffiRnd8mlGPUVayg8pvfi5urfnu8TU7DVOkLQ==
 
 toidentifier@1.0.1:
@@ -12452,7 +12452,7 @@ tree-kill@^1.2.2:
 
 trim-lines@^3.0.0:
   version "3.0.1"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/trim-lines/-/trim-lines-3.0.1.tgz#d802e332a07df861c48802c04321017b1bd87338"
+  resolved "https://registry.npmjs.org/trim-lines/-/trim-lines-3.0.1.tgz#d802e332a07df861c48802c04321017b1bd87338"
   integrity sha512-kRj8B+YHZCc9kQYdWfJB2/oUl9rA99qbowYYBtr4ui4mZyAQ2JpvVBd/6U2YloATfqBhBTSMhTpgBHtU0Mf3Rg==
 
 trim-newlines@^3.0.0:
@@ -12462,7 +12462,7 @@ trim-newlines@^3.0.0:
 
 trough@^2.0.0:
   version "2.1.0"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/trough/-/trough-2.1.0.tgz#0f7b511a4fde65a46f18477ab38849b22c554876"
+  resolved "https://registry.npmjs.org/trough/-/trough-2.1.0.tgz#0f7b511a4fde65a46f18477ab38849b22c554876"
   integrity sha512-AqTiAOLcj85xS7vQ8QkAV41hPDIJ71XJB4RCUrzo/1GM2CQwhkJGaf9Hgr7BOugMRpgGUrqRg/DrBDl4H40+8g==
 
 tryer@^1.0.1:
@@ -12472,7 +12472,7 @@ tryer@^1.0.1:
 
 ts-easing@^0.2.0:
   version "0.2.0"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/ts-easing/-/ts-easing-0.2.0.tgz#c8a8a35025105566588d87dbda05dd7fbfa5a4ec"
+  resolved "https://registry.npmjs.org/ts-easing/-/ts-easing-0.2.0.tgz#c8a8a35025105566588d87dbda05dd7fbfa5a4ec"
   integrity sha512-Z86EW+fFFh/IFB1fqQ3/+7Zpf9t2ebOAxNI/V6Wo7r5gqiqtxmgTlQ1qbqQcjLKYeSHPTsEmvlJUDg/EuL0uHQ==
 
 ts-interface-checker@^0.1.9:
@@ -12582,7 +12582,7 @@ type-fest@^0.8.1:
 
 type-fest@^2.19.0:
   version "2.19.0"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/type-fest/-/type-fest-2.19.0.tgz#88068015bb33036a598b952e55e9311a60fd3a9b"
+  resolved "https://registry.npmjs.org/type-fest/-/type-fest-2.19.0.tgz#88068015bb33036a598b952e55e9311a60fd3a9b"
   integrity sha512-RAH822pAdBgcNMAfWnCBU3CFZcfZ/i1eZjwFU/dsLKumyuuP3niueg2UAukXYF0E2AAoc82ZSSf9J0WQBinzHA==
 
 type-is@~1.6.18:
@@ -12676,7 +12676,7 @@ unicode-property-aliases-ecmascript@^2.0.0:
 
 unified@^10.0.0:
   version "10.1.2"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/unified/-/unified-10.1.2.tgz#b1d64e55dafe1f0b98bb6c719881103ecf6c86df"
+  resolved "https://registry.npmjs.org/unified/-/unified-10.1.2.tgz#b1d64e55dafe1f0b98bb6c719881103ecf6c86df"
   integrity sha512-pUSWAi/RAnVy1Pif2kAoeWNBa3JVrx0MId2LASj8G+7AiHWoKZNTomq6LG326T68U7/e263X6fTdcXIy7XnF7Q==
   dependencies:
     "@types/unist" "^2.0.0"
@@ -12689,38 +12689,38 @@ unified@^10.0.0:
 
 unist-builder@^3.0.0:
   version "3.0.0"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/unist-builder/-/unist-builder-3.0.0.tgz#728baca4767c0e784e1e64bb44b5a5a753021a04"
+  resolved "https://registry.npmjs.org/unist-builder/-/unist-builder-3.0.0.tgz#728baca4767c0e784e1e64bb44b5a5a753021a04"
   integrity sha512-GFxmfEAa0vi9i5sd0R2kcrI9ks0r82NasRq5QHh2ysGngrc6GiqD5CDf1FjPenY4vApmFASBIIlk/jj5J5YbmQ==
   dependencies:
     "@types/unist" "^2.0.0"
 
 unist-util-generated@^2.0.0:
   version "2.0.0"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/unist-util-generated/-/unist-util-generated-2.0.0.tgz#86fafb77eb6ce9bfa6b663c3f5ad4f8e56a60113"
+  resolved "https://registry.npmjs.org/unist-util-generated/-/unist-util-generated-2.0.0.tgz#86fafb77eb6ce9bfa6b663c3f5ad4f8e56a60113"
   integrity sha512-TiWE6DVtVe7Ye2QxOVW9kqybs6cZexNwTwSMVgkfjEReqy/xwGpAXb99OxktoWwmL+Z+Epb0Dn8/GNDYP1wnUw==
 
 unist-util-is@^5.0.0:
   version "5.1.1"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/unist-util-is/-/unist-util-is-5.1.1.tgz#e8aece0b102fa9bc097b0fef8f870c496d4a6236"
+  resolved "https://registry.npmjs.org/unist-util-is/-/unist-util-is-5.1.1.tgz#e8aece0b102fa9bc097b0fef8f870c496d4a6236"
   integrity sha512-F5CZ68eYzuSvJjGhCLPL3cYx45IxkqXSetCcRgUXtbcm50X2L9oOWQlfUfDdAf+6Pd27YDblBfdtmsThXmwpbQ==
 
 unist-util-position@^4.0.0:
   version "4.0.3"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/unist-util-position/-/unist-util-position-4.0.3.tgz#5290547b014f6222dff95c48d5c3c13a88fadd07"
+  resolved "https://registry.npmjs.org/unist-util-position/-/unist-util-position-4.0.3.tgz#5290547b014f6222dff95c48d5c3c13a88fadd07"
   integrity sha512-p/5EMGIa1qwbXjA+QgcBXaPWjSnZfQ2Sc3yBEEfgPwsEmJd8Qh+DSk3LGnmOM4S1bY2C0AjmMnB8RuEYxpPwXQ==
   dependencies:
     "@types/unist" "^2.0.0"
 
 unist-util-stringify-position@^3.0.0:
   version "3.0.2"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/unist-util-stringify-position/-/unist-util-stringify-position-3.0.2.tgz#5c6aa07c90b1deffd9153be170dce628a869a447"
+  resolved "https://registry.npmjs.org/unist-util-stringify-position/-/unist-util-stringify-position-3.0.2.tgz#5c6aa07c90b1deffd9153be170dce628a869a447"
   integrity sha512-7A6eiDCs9UtjcwZOcCpM4aPII3bAAGv13E96IkawkOAW0OhH+yRxtY0lzo8KiHpzEMfH7Q+FizUmwp8Iqy5EWg==
   dependencies:
     "@types/unist" "^2.0.0"
 
 unist-util-visit-parents@^5.0.0, unist-util-visit-parents@^5.1.1:
   version "5.1.1"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/unist-util-visit-parents/-/unist-util-visit-parents-5.1.1.tgz#868f353e6fce6bf8fa875b251b0f4fec3be709bb"
+  resolved "https://registry.npmjs.org/unist-util-visit-parents/-/unist-util-visit-parents-5.1.1.tgz#868f353e6fce6bf8fa875b251b0f4fec3be709bb"
   integrity sha512-gks4baapT/kNRaWxuGkl5BIhoanZo7sC/cUT/JToSRNL1dYoXRFl75d++NkjYk4TAu2uv2Px+l8guMajogeuiw==
   dependencies:
     "@types/unist" "^2.0.0"
@@ -12728,7 +12728,7 @@ unist-util-visit-parents@^5.0.0, unist-util-visit-parents@^5.1.1:
 
 unist-util-visit@^4.0.0:
   version "4.1.1"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/unist-util-visit/-/unist-util-visit-4.1.1.tgz#1c4842d70bd3df6cc545276f5164f933390a9aad"
+  resolved "https://registry.npmjs.org/unist-util-visit/-/unist-util-visit-4.1.1.tgz#1c4842d70bd3df6cc545276f5164f933390a9aad"
   integrity sha512-n9KN3WV9k4h1DxYR1LoajgN93wpEi/7ZplVe02IoB4gH5ctI1AaF2670BLHQYbwj+pY83gFtyeySFiyMHJklrg==
   dependencies:
     "@types/unist" "^2.0.0"
@@ -12737,7 +12737,7 @@ unist-util-visit@^4.0.0:
 
 universal-github-app-jwt@^1.1.1:
   version "1.1.1"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/universal-github-app-jwt/-/universal-github-app-jwt-1.1.1.tgz#d57cee49020662a95ca750a057e758a1a7190e6e"
+  resolved "https://registry.npmjs.org/universal-github-app-jwt/-/universal-github-app-jwt-1.1.1.tgz#d57cee49020662a95ca750a057e758a1a7190e6e"
   integrity sha512-G33RTLrIBMFmlDV4u4CBF7dh71eWwykck4XgaxaIVeZKOYZRAAxvcGMRFTUclVY6xoUPQvO4Ne5wKGxYm/Yy9w==
   dependencies:
     "@types/jsonwebtoken" "^9.0.0"
@@ -12801,7 +12801,7 @@ url@^0.11.0:
 
 use-memo-one@^1.1.1:
   version "1.1.3"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/use-memo-one/-/use-memo-one-1.1.3.tgz#2fd2e43a2169eabc7496960ace8c79efef975e99"
+  resolved "https://registry.npmjs.org/use-memo-one/-/use-memo-one-1.1.3.tgz#2fd2e43a2169eabc7496960ace8c79efef975e99"
   integrity sha512-g66/K7ZQGYrI6dy8GLpVcMsBp4s17xNkYJVSMvTEevGy3nDxHOfE6z8BVE22+5G5x7t3+bhzrlTDB7ObrEE0cQ==
 
 util-deprecate@^1.0.1, util-deprecate@^1.0.2, util-deprecate@~1.0.1:
@@ -12846,7 +12846,7 @@ utils-merge@1.0.1:
 
 uuid@^3.4.0:
   version "3.4.0"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/uuid/-/uuid-3.4.0.tgz#b23e4358afa8a202fe7a100af1f5f883f02007ee"
+  resolved "https://registry.npmjs.org/uuid/-/uuid-3.4.0.tgz#b23e4358afa8a202fe7a100af1f5f883f02007ee"
   integrity sha512-HjSDRw6gZE5JMggctHBcjVak08+KEVhSIiDzFnT9S9aegmp85S/bReBVTb4QTFaRNptJ9kuYaNhnbNEOkbKb/A==
 
 uuid@^8.0.0, uuid@^8.3.2:
@@ -12856,7 +12856,7 @@ uuid@^8.0.0, uuid@^8.3.2:
 
 uvu@^0.5.0:
   version "0.5.6"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/uvu/-/uvu-0.5.6.tgz#2754ca20bcb0bb59b64e9985e84d2e81058502df"
+  resolved "https://registry.npmjs.org/uvu/-/uvu-0.5.6.tgz#2754ca20bcb0bb59b64e9985e84d2e81058502df"
   integrity sha512-+g8ENReyr8YsOc6fv/NVJs2vFdHBnBNdfE49rshrTzDWOlUx4Gq7KOS2GD8eqhy2j+Ejq29+SbKH8yjkAqXqoA==
   dependencies:
     dequal "^2.0.0"
@@ -12923,7 +12923,7 @@ vary@~1.1.2:
 
 vfile-message@^3.0.0:
   version "3.1.3"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/vfile-message/-/vfile-message-3.1.3.tgz#1360c27a99234bebf7bddbbbca67807115e6b0dd"
+  resolved "https://registry.npmjs.org/vfile-message/-/vfile-message-3.1.3.tgz#1360c27a99234bebf7bddbbbca67807115e6b0dd"
   integrity sha512-0yaU+rj2gKAyEk12ffdSbBfjnnj+b1zqTBv3OQCTn8yEB02bsPizwdBPrLJjHnK+cU9EMMcUnNv938XcZIkmdA==
   dependencies:
     "@types/unist" "^2.0.0"
@@ -12931,7 +12931,7 @@ vfile-message@^3.0.0:
 
 vfile@^5.0.0:
   version "5.3.6"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/vfile/-/vfile-5.3.6.tgz#61b2e70690cc835a5d0d0fd135beae74e5a39546"
+  resolved "https://registry.npmjs.org/vfile/-/vfile-5.3.6.tgz#61b2e70690cc835a5d0d0fd135beae74e5a39546"
   integrity sha512-ADBsmerdGBs2WYckrLBEmuETSPyTD4TuLxTrw0DvjirxW1ra4ZwkbzG8ndsv3Q57smvHxo677MHaQrY9yxH8cA==
   dependencies:
     "@types/unist" "^2.0.0"
@@ -12982,7 +12982,7 @@ wcwidth@^1.0.1:
 
 web-encoding@^1.1.5:
   version "1.1.5"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/web-encoding/-/web-encoding-1.1.5.tgz#fc810cf7667364a6335c939913f5051d3e0c4864"
+  resolved "https://registry.npmjs.org/web-encoding/-/web-encoding-1.1.5.tgz#fc810cf7667364a6335c939913f5051d3e0c4864"
   integrity sha512-HYLeVCdJ0+lBYV2FvNZmv3HJ2Nt0QYXqZojk3d9FJOLkwnuhzM9tmamh8d7HPM8QqjKH8DeHkFTx+CFlWpZZDA==
   dependencies:
     util "^0.12.3"
@@ -13148,7 +13148,7 @@ which-boxed-primitive@^1.0.2:
 
 which-collection@^1.0.1:
   version "1.0.1"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/which-collection/-/which-collection-1.0.1.tgz#70eab71ebbbd2aefaf32f917082fc62cdcb70906"
+  resolved "https://registry.npmjs.org/which-collection/-/which-collection-1.0.1.tgz#70eab71ebbbd2aefaf32f917082fc62cdcb70906"
   integrity sha512-W8xeTUwaln8i3K/cY1nGXzdnVZlidBcagyNFtBdD5kxnb4TvGKR7FfSIS3mYpwWS1QUCutfKz8IY8RjftB0+1A==
   dependencies:
     is-map "^2.0.1"
@@ -13342,7 +13342,7 @@ yup@^0.32.9:
 
 zen-observable@^0.10.0:
   version "0.10.0"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/zen-observable/-/zen-observable-0.10.0.tgz#ee10eba75272897dbee5f152ab26bb5e0107f0c8"
+  resolved "https://registry.npmjs.org/zen-observable/-/zen-observable-0.10.0.tgz#ee10eba75272897dbee5f152ab26bb5e0107f0c8"
   integrity sha512-iI3lT0iojZhKwT5DaFy2Ce42n3yFcLdFyOh01G7H0flMY60P8MJuVFEoJoNwXlmAyQ45GrjL6AcZmmlv8A5rbw==
 
 zod@~3.18.0:
@@ -13352,5 +13352,5 @@ zod@~3.18.0:
 
 zwitch@^2.0.0:
   version "2.0.4"
-  resolved "https://oppartifactory.eficode.com/api/npm/op-npm-general/zwitch/-/zwitch-2.0.4.tgz#c827d4b0acb76fc3e685a4c6ec2902d51070e9d7"
+  resolved "https://registry.npmjs.org/zwitch/-/zwitch-2.0.4.tgz#c827d4b0acb76fc3e685a4c6ec2902d51070e9d7"
   integrity sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==

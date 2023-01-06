@@ -2,11 +2,15 @@ import {
   Button,
   ButtonGroup,
   FormControl,
+  Grid,
   TextField,
   Typography,
 } from '@material-ui/core';
 import React from 'react';
 import { useStyles } from '../../utils/hooks';
+import { CopyToClipboardButton } from '../Buttons/CopyToClipboardButton';
+import { PasteFromClipboardButton } from '../Buttons/PasteFromClipboardButton';
+import { ClearInputButton } from '../Buttons/ClearInputButton';
 
 type Props = {
   input: string;
@@ -23,21 +27,32 @@ export const VerticalConverter = (props: Props) => {
 
   return (
     <FormControl className={styles.fullWidth}>
-      <ButtonGroup
-        disableElevation
-        variant="contained"
-        aria-label="Disabled elevation buttons"
-        style={{ marginBottom: '1rem' }}
-      >
-        {modes.map(m => (
-          <Button
-            onClick={() => setMode(m)}
-            variant={mode === m ? 'contained' : 'outlined'}
+      <Grid container spacing={4}>
+        <Grid item>
+          <ButtonGroup
+            disableElevation
+            variant="contained"
+            aria-label="Disabled elevation buttons"
+            style={{ marginBottom: '1rem' }}
           >
-            {m}
-          </Button>
-        ))}
-      </ButtonGroup>
+            {modes.map(m => (
+              <Button
+                onClick={() => setMode(m)}
+                variant={mode === m ? 'contained' : 'outlined'}
+              >
+                {m}
+              </Button>
+            ))}
+          </ButtonGroup>
+        </Grid>
+        <Grid item>
+          <ButtonGroup>
+            <ClearInputButton setInput={setInput} />
+            <PasteFromClipboardButton setInput={setInput} />
+            <CopyToClipboardButton output={output} />
+          </ButtonGroup>
+        </Grid>
+      </Grid>
       <Typography variant="subtitle1">Input</Typography>
       <TextField
         id="input"

@@ -35,7 +35,7 @@ export const Root = () => {
       <Header title="DevTools" />
       <Content>
         <Grid container spacing={2} direction="row-reverse">
-          <Grid item xs={3}>
+          <Grid item xs={2}>
             <Tabs
               orientation="vertical"
               variant="fullWidth"
@@ -52,7 +52,7 @@ export const Root = () => {
               ))}
             </Tabs>
           </Grid>
-          <Grid item xs={9}>
+          <Grid item xs={10}>
             <TabContext value={`devtools-tabpanel-${value}`}>
               {tabs.map((tab, i) => {
                 return (

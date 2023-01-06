@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { VerticalConverter } from '../VerticalConverter/VerticalConverter';
+import { ContentHeader } from '@backstage/core-components';
 
 export const Base64Encode = () => {
   const [input, setInput] = React.useState('');
@@ -15,13 +16,16 @@ export const Base64Encode = () => {
   }, [input, mode]);
 
   return (
-    <VerticalConverter
-      input={input}
-      mode={mode}
-      setInput={setInput}
-      setMode={setMode}
-      output={output}
-      modes={['Encode', 'Decode']}
-    />
+    <>
+      <ContentHeader title="Base64 encode/decode" />
+      <VerticalConverter
+        input={input}
+        mode={mode}
+        setInput={setInput}
+        setMode={setMode}
+        output={output}
+        modes={['Encode', 'Decode']}
+      />
+    </>
   );
 };
