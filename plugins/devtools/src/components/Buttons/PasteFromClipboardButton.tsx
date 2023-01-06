@@ -15,7 +15,7 @@ export const PasteFromClipboardButton = (props: Props) => {
   };
   return (
     <Button startIcon={<AssignmentReturnedIcon />} onClick={pasteFromClipboard}>
-      Paste from clipboard
+      Clipboard
     </Button>
   );
 };

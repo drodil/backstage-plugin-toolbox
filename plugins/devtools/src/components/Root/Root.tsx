@@ -4,6 +4,7 @@ import { Grid, Tab, Tabs } from '@material-ui/core';
 import { Base64Encode } from '../Base64Encode/Base64Encode';
 import { TabContext, TabPanel } from '@material-ui/lab';
 import { UrlEncode } from '../UrlEncode/UrlEncode';
+import { NumberBase } from '../NumberBase/NumberBase';
 
 const tabs = [
   {
@@ -13,6 +14,10 @@ const tabs = [
   {
     name: 'URL encode/decode',
     component: <UrlEncode />,
+  },
+  {
+    name: 'Number base converter',
+    component: <NumberBase />,
   },
 ];
 

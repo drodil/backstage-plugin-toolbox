@@ -14,7 +14,7 @@ export const CopyToClipboardButton = (props: Props) => {
 
   return (
     <Button startIcon={<FileCopy />} onClick={copyToClipboard}>
-      Copy to clipboard
+      Copy
     </Button>
   );
 };
