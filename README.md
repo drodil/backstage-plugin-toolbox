@@ -8,3 +8,7 @@ tools easily within backstage.
 ## Setup
 
 Find [installation instructions](./docs/index.md#installation) in our documentation.
+
+## Examples
+
+![Example 1](./docs/images/example1.png)
