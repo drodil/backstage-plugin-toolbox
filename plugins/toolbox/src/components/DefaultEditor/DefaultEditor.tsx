@@ -44,6 +44,7 @@ export const DefaultEditor = (props: Props) => {
         {modes && modes.length > 0 && (
           <Grid item>
             <ButtonGroup
+              size="small"
               disableElevation
               variant="contained"
               aria-label="Disabled elevation buttons"
@@ -51,6 +52,7 @@ export const DefaultEditor = (props: Props) => {
             >
               {modes.map(m => (
                 <Button
+                  size="small"
                   key={m}
                   onClick={() => setMode && setMode(m)}
                   variant={mode === m ? 'contained' : 'outlined'}
@@ -62,7 +64,7 @@ export const DefaultEditor = (props: Props) => {
           </Grid>
         )}
         <Grid item>
-          <ButtonGroup>
+          <ButtonGroup size="small">
             <ClearInputButton setInput={setInput} />
             <PasteFromClipboardButton setInput={setInput} />
             {output && <CopyToClipboardButton output={output} />}

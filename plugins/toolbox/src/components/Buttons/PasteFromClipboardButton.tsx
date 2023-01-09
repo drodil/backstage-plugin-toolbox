@@ -16,6 +16,7 @@ export const PasteFromClipboardButton = (props: Props) => {
   return (
     <Tooltip arrow title="Paste input from clipboard">
       <Button
+        size="small"
         startIcon={<AssignmentReturnedIcon />}
         onClick={pasteFromClipboard}
       >

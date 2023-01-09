@@ -14,7 +14,7 @@ export const CopyToClipboardButton = (props: Props) => {
 
   return (
     <Tooltip arrow title="Copy output to clipboard">
-      <Button startIcon={<FileCopy />} onClick={copyToClipboard}>
+      <Button size="small" startIcon={<FileCopy />} onClick={copyToClipboard}>
         Copy
       </Button>
     </Tooltip>

@@ -11,6 +11,7 @@ export const SampleButton = (props: Props) => {
   return (
     <Tooltip arrow title="Input sample">
       <Button
+        size="small"
         startIcon={<Input />}
         onClick={() => props.setInput(props.sample)}
       >

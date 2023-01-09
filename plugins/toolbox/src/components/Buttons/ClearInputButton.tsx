@@ -9,7 +9,11 @@ type Props = {
 export const ClearInputButton = (props: Props) => {
   return (
     <Tooltip arrow title="Clear input value">
-      <Button startIcon={<Clear />} onClick={() => props.setInput('')}>
+      <Button
+        size="small"
+        startIcon={<Clear />}
+        onClick={() => props.setInput('')}
+      >
         Clear
       </Button>
     </Tooltip>
