@@ -6,7 +6,13 @@ import { TabContext, TabPanel } from '@material-ui/lab';
 import { UrlEncode } from '../Encoders/UrlEncode';
 import { NumberBase } from '../Converters/NumberBase';
 
-const tabs = [
+export type Tool = {
+  name: string;
+  component: JSX.Element;
+  description?: string;
+};
+
+const defaultTools: Tool[] = [
   {
     name: 'Base64 encode/decode',
     component: <Base64Encode />,
@@ -28,12 +34,19 @@ const tabProps = (index: number) => {
   };
 };
 
-export const Root = () => {
+type Props = {
+  extraTools?: Tool[];
+};
+
+export const Root = (props: Props) => {
+  const { extraTools } = props;
   const [value, setValue] = React.useState(0);
 
   const handleChange = (_: any, newValue: number) => {
     setValue(newValue);
   };
+
+  const tabs = [...(extraTools ?? []), ...defaultTools];
 
   return (
     <Page themeId="tool">
