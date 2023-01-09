@@ -17,6 +17,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import { MarkdownPreview } from '../Converters/MarkdownPreview';
 import { JsonToYaml } from '../Converters/JsonToYaml';
 import { YamlToJson } from '../Converters/YamlToJson';
+import { HtmlEntities } from '../Encoders/HtmlEntities';
 
 export type Tool = {
   name: string;
@@ -32,6 +33,10 @@ const defaultTools: Tool[] = [
   {
     name: 'URL encode/decode',
     component: <UrlEncode />,
+  },
+  {
+    name: 'HTML entity encode/decode',
+    component: <HtmlEntities />,
   },
   {
     name: 'Number base converter',

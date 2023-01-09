@@ -1,7 +1,7 @@
 import React from 'react';
 import { DefaultEditor } from '../DefaultEditor/DefaultEditor';
 import { ContentHeader, MarkdownContent } from '@backstage/core-components';
-import { Paper, Typography } from '@material-ui/core';
+import { Paper } from '@material-ui/core';
 import { useStyles } from '../../utils/hooks';
 
 export const MarkdownPreview = () => {
@@ -16,7 +16,6 @@ export const MarkdownPreview = () => {
         setInput={setInput}
         rightContent={
           <>
-            <Typography variant="subtitle1">Preview</Typography>
             <Paper elevation={0} className={styles.previewPaper}>
               <MarkdownContent content={input} />
             </Paper>
