@@ -4,7 +4,6 @@ import {
   FormControl,
   Grid,
   TextField,
-  Typography,
 } from '@material-ui/core';
 import React from 'react';
 import { useStyles } from '../../utils/hooks';
@@ -72,8 +71,10 @@ export const DefaultEditor = (props: Props) => {
             leftContent
           ) : (
             <>
-              <Typography variant="subtitle1">Input</Typography>
               <TextField
+                label="Input"
+                // eslint-disable-next-line
+                autoFocus
                 id="input"
                 multiline
                 className={styles.fullWidth}
@@ -90,10 +91,10 @@ export const DefaultEditor = (props: Props) => {
             rightContent
           ) : (
             <>
-              <Typography variant="subtitle1">Output</Typography>
               <TextField
                 id="output"
-                value={output}
+                label="Output"
+                value={output || ''}
                 className={styles.fullWidth}
                 multiline
                 minRows={20}

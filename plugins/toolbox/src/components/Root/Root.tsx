@@ -16,6 +16,7 @@ import { useStyles } from '../../utils/hooks';
 import SearchIcon from '@material-ui/icons/Search';
 import { MarkdownPreview } from '../Converters/MarkdownPreview';
 import { JsonToYaml } from '../Converters/JsonToYaml';
+import { YamlToJson } from '../Converters/YamlToJson';
 
 export type Tool = {
   name: string;
@@ -43,6 +44,10 @@ const defaultTools: Tool[] = [
   {
     name: 'JSON to YAML',
     component: <JsonToYaml />,
+  },
+  {
+    name: 'YAML to JSON',
+    component: <YamlToJson />,
   },
 ];
 

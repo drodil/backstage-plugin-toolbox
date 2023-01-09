@@ -3,7 +3,7 @@ import { DefaultEditor } from '../DefaultEditor/DefaultEditor';
 import { ContentHeader } from '@backstage/core-components';
 import YAML from 'yaml';
 
-export const JsonToYaml = () => {
+export const YamlToJson = () => {
   const [input, setInput] = React.useState('');
   const [output, setOutput] = React.useState('');
 
@@ -11,13 +11,13 @@ export const JsonToYaml = () => {
     let obj;
     let err;
     try {
-      obj = JSON.parse(input);
+      obj = YAML.parse(input);
     } catch (e) {
       err = e.message;
     }
 
     if (obj) {
-      setOutput(YAML.stringify(obj));
+      setOutput(JSON.stringify(obj, null, 4));
     } else if (input) {
       setOutput(err);
     } else {
@@ -27,7 +27,7 @@ export const JsonToYaml = () => {
 
   return (
     <>
-      <ContentHeader title="JSON to YAML" />
+      <ContentHeader title="YAML to JSON" />
       <DefaultEditor input={input} setInput={setInput} output={output} />
     </>
   );
