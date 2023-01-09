@@ -24,6 +24,12 @@ export const useStyles = makeStyles(theme => {
     menuTabs: {
       height: '100%',
     },
+    tabDivider: {
+      marginTop: theme.spacing(2),
+      paddingTop: theme.spacing(1),
+      color: theme.palette.primary.main,
+      borderTop: `1px solid ${theme.palette.divider}`,
+    },
     search: {
       margin: theme.spacing(2),
       display: 'flex',
