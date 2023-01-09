@@ -31,6 +31,7 @@
     "@material-ui/lab": "4.0.0-alpha.57",
     "csvtojson": "^2.0.10",
     "json2csv": "^5.0.7",
+    "lodash": "^4.17.21",
     "react-use": "^17.2.4",
     "yaml": "^2.2.1"
   },

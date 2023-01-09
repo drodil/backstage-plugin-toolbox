@@ -9,6 +9,7 @@ import { JsonToYaml } from '../Converters/JsonToYaml';
 import { YamlToJson } from '../Converters/YamlToJson';
 import React from 'react';
 import { Tool } from './Root';
+import { StringCase } from '../Converters/StringCase';
 
 export const defaultTools: Tool[] = [
   {
@@ -53,6 +54,11 @@ export const defaultTools: Tool[] = [
   {
     name: 'YAML to JSON',
     component: <YamlToJson />,
+    category: 'Conversion',
+  },
+  {
+    name: 'String case',
+    component: <StringCase />,
     category: 'Conversion',
   },
 ];
