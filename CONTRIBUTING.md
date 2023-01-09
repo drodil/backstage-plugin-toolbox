@@ -1,6 +1,6 @@
 # Contributing Guidelines
 
-`backstage-plugin-devtools` is [MIT licensed](LICENSE) and accepts contributions via
+`backstage-plugin-toolbox` is [MIT licensed](LICENSE) and accepts contributions via
 GitHub pull requests. This document outlines some of the conventions on
 development workflow, commit message formatting, contact points, and other
 resources to make it easier to get your contribution accepted.
@@ -11,7 +11,7 @@ Contributions are welcome, and they are greatly appreciated! Every little bit he
 
 The official support channels, for both users and contributors, are:
 
-- GitHub [issues](https://github.com/drodil/backstage-plugin-devtools/issues)
+- GitHub [issues](https://github.com/drodil/backstage-plugin-toolbox/issues)
 
 ## How to Contribute
 
@@ -24,9 +24,9 @@ Pull Requests (PRs) are the main and exclusive way to contribute to the project.
 [Fork][fork], then clone the repository:
 
 ```sh
-git clone git@github.com:your_github_username/backstage-plugin-devtools.git
+git clone git@github.com:your_github_username/backstage-plugin-toolbox.git
 cd dark
-git remote add upstream https://github.com/drodil/backstage-plugin-devtools.git
+git remote add upstream https://github.com/drodil/backstage-plugin-toolbox.git
 git fetch upstream
 ```
 

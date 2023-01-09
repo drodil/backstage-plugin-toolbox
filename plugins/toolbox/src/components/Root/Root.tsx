@@ -23,8 +23,8 @@ const tabs = [
 
 const tabProps = (index: number) => {
   return {
-    id: `devtools-tab-${index}`,
-    'aria-controls': `devtools-tabpanel-${index}`,
+    id: `toolbox-tab-${index}`,
+    'aria-controls': `toolbox-tabpanel-${index}`,
   };
 };
 
@@ -37,7 +37,7 @@ export const Root = () => {
 
   return (
     <Page themeId="tool">
-      <Header title="DevTools" />
+      <Header title="toolbox" />
       <Content>
         <Grid container spacing={2} direction="row-reverse">
           <Grid item xs={2}>
@@ -58,10 +58,10 @@ export const Root = () => {
             </Tabs>
           </Grid>
           <Grid item xs={10}>
-            <TabContext value={`devtools-tabpanel-${value}`}>
+            <TabContext value={`toolbox-tabpanel-${value}`}>
               {tabs.map((tab, i) => {
                 return (
-                  <TabPanel value={`devtools-tabpanel-${i}`}>
+                  <TabPanel value={`toolbox-tabpanel-${i}`}>
                     {tab.component}
                   </TabPanel>
                 );

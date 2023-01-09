@@ -1,12 +1,12 @@
 import React from 'react';
 import { createDevApp } from '@backstage/dev-utils';
-import { devtoolsPlugin, DevtoolsPage } from '../src/plugin';
+import { ToolboxPage, toolboxPlugin } from '../src/plugin';
 
 createDevApp()
-  .registerPlugin(devtoolsPlugin)
+  .registerPlugin(toolboxPlugin)
   .addPage({
-    element: <DevtoolsPage />,
+    element: <ToolboxPage />,
     title: 'Root Page',
-    path: '/devtools',
+    path: '/toolbox',
   })
   .render();

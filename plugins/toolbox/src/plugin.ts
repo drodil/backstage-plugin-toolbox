@@ -5,16 +5,16 @@ import {
 
 import { rootRouteRef } from './routes';
 
-export const devtoolsPlugin = createPlugin({
-  id: 'devtools',
+export const toolboxPlugin = createPlugin({
+  id: 'toolbox',
   routes: {
     root: rootRouteRef,
   },
 });
 
-export const DevtoolsPage = devtoolsPlugin.provide(
+export const ToolboxPage = toolboxPlugin.provide(
   createRoutableExtension({
-    name: 'DevtoolsPage',
+    name: 'ToolboxPage',
     component: () => import('./components/Root').then(m => m.Root),
     mountPoint: rootRouteRef,
   }),

@@ -5,24 +5,24 @@
 Add the plugin to your frontend app:
 
 ```bash
-cd packages/app && yarn add @drodil/backstage-plugin-devtools
+cd packages/app && yarn add @drodil/backstage-plugin-toolbox
 ```
 
 Expose the questions page:
 
 ```ts
 // packages/app/src/App.tsx
-import { DevtoolsPage } from '@drodil/backstage-plugin-devtools';
+import { ToolboxPage } from '@drodil/backstage-plugin-toolbox';
 
 // ...
 
 const AppRoutes = () => (
   <FlatRoutes>
     // ...
-    <Route path="/devtools" element={<DevtoolsPage />} />
+    <Route path="/toolbox" element={<ToolboxPage />} />
     // ...
   </FlatRoutes>
 );
 ```
 
-An interface for DevTools is now available at `/devtools`.
+An interface for toolbox is now available at `/toolbox`.

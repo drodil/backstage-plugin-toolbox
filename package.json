@@ -10,7 +10,7 @@
     "dev": "yarn start",
     "docker:up": "docker compose up -d",
     "docker:down": "docker compose down",
-    "start": "yarn workspace @drodil/backstage-plugin-devtools start",
+    "start": "yarn workspace @drodil/backstage-plugin-toolbox start",
     "build": "backstage-cli repo build --all",
     "tsc": "tsc",
     "tsc:full": "tsc --skipLibCheck false --incremental false",

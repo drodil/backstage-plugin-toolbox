@@ -83,7 +83,7 @@ jobs:
     needs: [tagged-release]
     defaults:
       run:
-        working-directory: ./plugins/devtools
+        working-directory: ./plugins/toolbox
     steps:
       - uses: actions/checkout@v3
         with:

@@ -1,5 +1,5 @@
 {
-  "name": "@drodil/backstage-plugin-devtools",
+  "name": "@drodil/backstage-plugin-toolbox",
   "version": "1.0.0",
   "main": "src/index.ts",
   "types": "src/index.ts",
