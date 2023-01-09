@@ -18,6 +18,7 @@ import { MarkdownPreview } from '../Converters/MarkdownPreview';
 import { JsonToYaml } from '../Converters/JsonToYaml';
 import { YamlToJson } from '../Converters/YamlToJson';
 import { HtmlEntities } from '../Encoders/HtmlEntities';
+import { CsvToJson } from '../Converters/CsvToJson';
 
 export type Tool = {
   name: string;
@@ -45,6 +46,10 @@ const defaultTools: Tool[] = [
   {
     name: 'Markdown preview',
     component: <MarkdownPreview />,
+  },
+  {
+    name: 'CSV to JSON',
+    component: <CsvToJson />,
   },
   {
     name: 'JSON to YAML',

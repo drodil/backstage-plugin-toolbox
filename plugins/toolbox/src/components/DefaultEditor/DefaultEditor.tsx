@@ -81,6 +81,7 @@ export const DefaultEditor = (props: Props) => {
                 value={input}
                 onChange={e => setInput(e.target.value)}
                 minRows={20}
+                maxRows={50}
                 variant="outlined"
               />
             </>
@@ -98,6 +99,7 @@ export const DefaultEditor = (props: Props) => {
                 className={styles.fullWidth}
                 multiline
                 minRows={20}
+                maxRows={50}
                 variant="outlined"
               />
             </>
