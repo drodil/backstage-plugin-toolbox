@@ -1,10 +1,10 @@
 import React from 'react';
 import { Content, Header, Page } from '@backstage/core-components';
 import { Grid, Tab, Tabs } from '@material-ui/core';
-import { Base64Encode } from '../Base64Encode/Base64Encode';
+import { Base64Encode } from '../Encoders/Base64Encode';
 import { TabContext, TabPanel } from '@material-ui/lab';
-import { UrlEncode } from '../UrlEncode/UrlEncode';
-import { NumberBase } from '../NumberBase/NumberBase';
+import { UrlEncode } from '../Encoders/UrlEncode';
+import { NumberBase } from '../Converters/NumberBase';
 
 const tabs = [
   {

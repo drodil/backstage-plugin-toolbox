@@ -21,7 +21,7 @@ type Props = {
   modes: Array<string>;
 };
 
-export const VerticalConverter = (props: Props) => {
+export const DefaultEditor = (props: Props) => {
   const { input, setInput, output, mode, setMode, modes } = props;
   const styles = useStyles();
 
