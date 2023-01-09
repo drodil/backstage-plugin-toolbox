@@ -1,10 +1,19 @@
 import React from 'react';
 import { Content, Header, Page } from '@backstage/core-components';
-import { Grid, Tab, Tabs } from '@material-ui/core';
+import {
+  Grid,
+  IconButton,
+  InputBase,
+  Paper,
+  Tab,
+  Tabs,
+} from '@material-ui/core';
 import { Base64Encode } from '../Encoders/Base64Encode';
 import { TabContext, TabPanel } from '@material-ui/lab';
 import { UrlEncode } from '../Encoders/UrlEncode';
 import { NumberBase } from '../Converters/NumberBase';
+import { useStyles } from '../../utils/hooks';
+import SearchIcon from '@material-ui/icons/Search';
 
 export type Tool = {
   name: string;
@@ -41,6 +50,8 @@ type Props = {
 export const Root = (props: Props) => {
   const { extraTools } = props;
   const [value, setValue] = React.useState(0);
+  const [search, setSearch] = React.useState('');
+  const styles = useStyles();
 
   const handleChange = (_: any, newValue: number) => {
     setValue(newValue);
@@ -51,26 +62,49 @@ export const Root = (props: Props) => {
   return (
     <Page themeId="tool">
       <Header title="toolbox" />
-      <Content>
-        <Grid container spacing={2} direction="row-reverse">
-          <Grid item xs={2}>
+      <Content className={styles.noPadding}>
+        <Grid
+          container
+          spacing={2}
+          direction="row-reverse"
+          className={`${styles.fullHeight} ${styles.noMargin} ${styles.fullWidth} ${styles.noPadding}`}
+        >
+          <Grid item xs={4} md={3} lg={2} className={styles.toolsBar}>
+            <Paper component="form" className={styles.search}>
+              <InputBase
+                placeholder="Search"
+                inputProps={{ 'aria-label': 'Search' }}
+                onChange={e => setSearch(e.target.value)}
+              />
+              <IconButton disabled aria-label="search">
+                <SearchIcon />
+              </IconButton>
+            </Paper>
             <Tabs
               orientation="vertical"
               variant="fullWidth"
               value={value}
               onChange={handleChange}
               aria-label="Tools selection"
+              className={styles.menuTabs}
             >
               {tabs.map((tab, i) => (
                 <Tab
-                  style={{ alignSelf: 'end' }}
+                  style={
+                    search &&
+                    !tab.name.toLowerCase().includes(search.toLowerCase())
+                      ? { display: 'none' }
+                      : {}
+                  }
+                  wrapped
+                  className={styles.fullWidth}
                   label={tab.name}
                   {...tabProps(i)}
                 />
               ))}
             </Tabs>
           </Grid>
-          <Grid item xs={10}>
+          <Grid item xs={8} md={9} lg={10}>
             <TabContext value={`toolbox-tabpanel-${value}`}>
               {tabs.map((tab, i) => {
                 return (

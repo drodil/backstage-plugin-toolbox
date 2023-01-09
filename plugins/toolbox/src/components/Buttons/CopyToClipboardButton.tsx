@@ -1,4 +1,4 @@
-import { Button } from '@material-ui/core';
+import { Button, Tooltip } from '@material-ui/core';
 import FileCopy from '@material-ui/icons/FileCopy';
 import React from 'react';
 
@@ -13,8 +13,10 @@ export const CopyToClipboardButton = (props: Props) => {
   };
 
   return (
-    <Button startIcon={<FileCopy />} onClick={copyToClipboard}>
-      Copy
-    </Button>
+    <Tooltip arrow title="Copy output to clipboard">
+      <Button startIcon={<FileCopy />} onClick={copyToClipboard}>
+        Copy
+      </Button>
+    </Tooltip>
   );
 };

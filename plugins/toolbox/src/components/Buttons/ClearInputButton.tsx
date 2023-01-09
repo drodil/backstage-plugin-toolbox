@@ -1,4 +1,4 @@
-import { Button } from '@material-ui/core';
+import { Button, Tooltip } from '@material-ui/core';
 import React from 'react';
 import Clear from '@material-ui/icons/Clear';
 
@@ -8,8 +8,10 @@ type Props = {
 
 export const ClearInputButton = (props: Props) => {
   return (
-    <Button startIcon={<Clear />} onClick={() => props.setInput('')}>
-      Clear
-    </Button>
+    <Tooltip arrow title="Clear input value">
+      <Button startIcon={<Clear />} onClick={() => props.setInput('')}>
+        Clear
+      </Button>
+    </Tooltip>
   );
 };

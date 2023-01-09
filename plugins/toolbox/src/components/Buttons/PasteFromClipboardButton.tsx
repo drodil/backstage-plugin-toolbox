@@ -1,4 +1,4 @@
-import { Button } from '@material-ui/core';
+import { Button, Tooltip } from '@material-ui/core';
 import React from 'react';
 import AssignmentReturnedIcon from '@material-ui/icons/AssignmentReturned';
 
@@ -14,8 +14,13 @@ export const PasteFromClipboardButton = (props: Props) => {
     );
   };
   return (
-    <Button startIcon={<AssignmentReturnedIcon />} onClick={pasteFromClipboard}>
-      Clipboard
-    </Button>
+    <Tooltip arrow title="Paste input from clipboard">
+      <Button
+        startIcon={<AssignmentReturnedIcon />}
+        onClick={pasteFromClipboard}
+      >
+        Clipboard
+      </Button>
+    </Tooltip>
   );
 };

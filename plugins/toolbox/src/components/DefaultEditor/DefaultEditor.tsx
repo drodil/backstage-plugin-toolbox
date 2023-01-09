@@ -53,23 +53,31 @@ export const DefaultEditor = (props: Props) => {
           </ButtonGroup>
         </Grid>
       </Grid>
-      <Typography variant="subtitle1">Input</Typography>
-      <TextField
-        id="input"
-        multiline
-        value={input}
-        onChange={e => setInput(e.target.value)}
-        minRows={20}
-        variant="outlined"
-      />
-      <Typography variant="subtitle1">Output</Typography>
-      <TextField
-        id="output"
-        value={output}
-        multiline
-        minRows={20}
-        variant="outlined"
-      />
+      <Grid container className={styles.fullWidth}>
+        <Grid item xs={12} lg={6}>
+          <Typography variant="subtitle1">Input</Typography>
+          <TextField
+            id="input"
+            multiline
+            className={styles.fullWidth}
+            value={input}
+            onChange={e => setInput(e.target.value)}
+            minRows={20}
+            variant="outlined"
+          />
+        </Grid>
+        <Grid item xs={12} lg={6}>
+          <Typography variant="subtitle1">Output</Typography>
+          <TextField
+            id="output"
+            value={output}
+            className={styles.fullWidth}
+            multiline
+            minRows={20}
+            variant="outlined"
+          />
+        </Grid>
+      </Grid>
     </FormControl>
   );
 };
