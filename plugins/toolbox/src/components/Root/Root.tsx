@@ -8,17 +8,10 @@ import {
   Tab,
   Tabs,
 } from '@material-ui/core';
-import { Base64Encode } from '../Encoders/Base64Encode';
 import { TabContext, TabPanel } from '@material-ui/lab';
-import { UrlEncode } from '../Encoders/UrlEncode';
-import { NumberBase } from '../Converters/NumberBase';
 import { useStyles } from '../../utils/hooks';
 import SearchIcon from '@material-ui/icons/Search';
-import { MarkdownPreview } from '../Converters/MarkdownPreview';
-import { JsonToYaml } from '../Converters/JsonToYaml';
-import { YamlToJson } from '../Converters/YamlToJson';
-import { HtmlEntities } from '../Encoders/HtmlEntities';
-import { CsvToJson } from '../Converters/CsvToJson';
+import { defaultTools } from './tools';
 
 export type Tool = {
   name: string;
@@ -26,48 +19,6 @@ export type Tool = {
   description?: string;
   category?: string;
 };
-
-const defaultTools: Tool[] = [
-  {
-    name: 'Base64 encode/decode',
-    component: <Base64Encode />,
-    category: 'Encoding/Decoding',
-  },
-  {
-    name: 'URL encode/decode',
-    component: <UrlEncode />,
-    category: 'Encoding/Decoding',
-  },
-  {
-    name: 'HTML entity encode/decode',
-    component: <HtmlEntities />,
-    category: 'Encoding/Decoding',
-  },
-  {
-    name: 'Number base converter',
-    component: <NumberBase />,
-    category: 'Conversion',
-  },
-  {
-    name: 'Markdown preview',
-    component: <MarkdownPreview />,
-  },
-  {
-    name: 'CSV to JSON',
-    component: <CsvToJson />,
-    category: 'Conversion',
-  },
-  {
-    name: 'JSON to YAML',
-    component: <JsonToYaml />,
-    category: 'Conversion',
-  },
-  {
-    name: 'YAML to JSON',
-    component: <YamlToJson />,
-    category: 'Conversion',
-  },
-];
 
 const tabProps = (index: number) => {
   return {
@@ -104,14 +55,21 @@ export const Root = (props: Props) => {
   const tabs: { tab: JSX.Element; component: JSX.Element | undefined }[] = [];
   Object.entries(categories).map(([category, tools]) => {
     tabs.push({
-      tab: <Tab label={category} disabled className={styles.tabDivider} />,
+      tab: (
+        <Tab
+          key={category}
+          label={category}
+          disabled
+          className={styles.tabDivider}
+        />
+      ),
       component: undefined,
     });
     tools.map((tool, i) => {
       tabs.push({
         tab: (
           <Tab
-            key={i}
+            key={tool.name}
             style={
               search && !tool.name.toLowerCase().includes(search.toLowerCase())
                 ? { display: 'none' }
@@ -163,7 +121,7 @@ export const Root = (props: Props) => {
             <TabContext value={`toolbox-tabpanel-${value}`}>
               {tabs.map((tool, i) => {
                 return (
-                  <TabPanel value={`toolbox-tabpanel-${i}`}>
+                  <TabPanel key={i} value={`toolbox-tabpanel-${i}`}>
                     {tool.component}
                   </TabPanel>
                 );

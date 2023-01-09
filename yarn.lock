@@ -1447,13 +1447,13 @@
   integrity sha512-LDQvVDv5Kb50ny2s25Fhm3d9QSZimsoUGBsUioj6MC3qbMUCuC8GPIvk/M6IvXx3lYhAs0lwWUQLb+VIEUCECw==
 
 "@commitlint/cli@^17.2.0":
-  version "17.4.0"
-  resolved "https://registry.npmjs.org/@commitlint/cli/-/cli-17.4.0.tgz#14a5f9b713a5b60ff1a0cfce66b0bb207954c1ad"
-  integrity sha512-SEY4sYe8yVlgxPP7X0wJb96DBAGBPsCsy6QbqJt/UECbIAjDeDV5xXBV4jnS7T/qMC10sk6Ub9kDhEX0VWvblw==
+  version "17.4.1"
+  resolved "https://registry.npmjs.org/@commitlint/cli/-/cli-17.4.1.tgz#71086653a42abafe5519c6c5f8ada35b17f1dc53"
+  integrity sha512-W8OJwz+izY+fVwyUt1HveCDmABMZNRVZHSVPw/Bh9Y62tp11SmmQaycgbsYLMiMy7JGn4mAJqEGlSHS9Uti9ZQ==
   dependencies:
     "@commitlint/format" "^17.4.0"
     "@commitlint/lint" "^17.4.0"
-    "@commitlint/load" "^17.4.0"
+    "@commitlint/load" "^17.4.1"
     "@commitlint/read" "^17.4.0"
     "@commitlint/types" "^17.4.0"
     execa "^5.0.0"
@@ -1520,15 +1520,16 @@
     "@commitlint/rules" "^17.4.0"
     "@commitlint/types" "^17.4.0"
 
-"@commitlint/load@^17.4.0":
-  version "17.4.0"
-  resolved "https://registry.npmjs.org/@commitlint/load/-/load-17.4.0.tgz#d0136d38f3d533e706340efbccc2fb38ebb97538"
-  integrity sha512-wDKNvAJqukqZqKmhRlf3KNo/12QGo1AQcd80EbV01SxtGvyHOsJ/g+/IbrZpopZv8rvzmEVktcpfDYH6ITepFA==
+"@commitlint/load@^17.4.1":
+  version "17.4.1"
+  resolved "https://registry.npmjs.org/@commitlint/load/-/load-17.4.1.tgz#e1073e0264c84b304f5ab22862217152daca5d27"
+  integrity sha512-6A7/LhIaQpL4ieciIDcVvK2d5z/UI1GBrtDaHm6sQSCL0265clB2/F7XKQNTJHXv9yG4LByT2r+QCpM4GugIfw==
   dependencies:
     "@commitlint/config-validator" "^17.4.0"
     "@commitlint/execute-rule" "^17.4.0"
     "@commitlint/resolve-extends" "^17.4.0"
     "@commitlint/types" "^17.4.0"
+    "@types/node" "*"
     chalk "^4.1.0"
     cosmiconfig "^8.0.0"
     cosmiconfig-typescript-loader "^4.0.0"
@@ -3065,6 +3066,13 @@
   resolved "https://registry.npmjs.org/@types/json-schema/-/json-schema-7.0.11.tgz#d421b6c527a3037f7c84433fd2c4229e016863d3"
   integrity sha512-wOuvG1SN4Us4rez+tylwwwCV1psiNVOkJeM3AUWUNWg/jDQY2+HE/444y5gc+jBmRqASOm2Oeh5c1axHobwRKQ==
 
+"@types/json2csv@^5.0.3":
+  version "5.0.3"
+  resolved "https://registry.npmjs.org/@types/json2csv/-/json2csv-5.0.3.tgz#759514772a90e35b08c10808dedeaf52248af418"
+  integrity sha512-ZJEv6SzhPhgpBpxZU4n/TZekbZqI4EcyXXRwms1lAITG2kIAtj85PfNYafUOY1zy8bWs5ujaub0GU4copaA0sw==
+  dependencies:
+    "@types/node" "*"
+
 "@types/json5@^0.0.29":
   version "0.0.29"
   resolved "https://registry.npmjs.org/@types/json5/-/json5-0.0.29.tgz#ee28707ae94e11d2b827bcbe5270bcea7f3e71ee"
@@ -4600,6 +4608,11 @@ commander@^4.0.0:
   version "4.1.1"
   resolved "https://registry.npmjs.org/commander/-/commander-4.1.1.tgz#9fd602bd936294e9e9ef46a3f4d6964044b18068"
   integrity sha512-NOKm8xhkzAjzFx8B2v5OAHT+u5pRQc2UCa2Vq9jYL/31o2wi9mxBA7LIFs3sV5VSC49z6pEhfbMULvShKj26WA==
+
+commander@^6.1.0:
+  version "6.2.1"
+  resolved "https://registry.npmjs.org/commander/-/commander-6.2.1.tgz#0792eb682dfbc325999bb2b84fddddba110ac73c"
+  integrity sha512-U7VdrJFnJgo4xjrHpTzu0yrHPGImdsmD95ZlgYSEajAn2JKzDhDTPG9kBTefmObL2w/ngeZnilk+OV9CG3d7UA==
 
 commander@^7.2.0:
   version "7.2.0"
@@ -8456,6 +8469,15 @@ json-stringify-safe@^5.0.1:
   resolved "https://registry.npmjs.org/json-stringify-safe/-/json-stringify-safe-5.0.1.tgz#1296a2d58fd45f19a0f6ce01d65701e2c735b6eb"
   integrity sha512-ZClg6AaYvamvYEE82d3Iyd3vSSIjQ+odgjaTzRuO3s7toCdFKczob2i0zCh7JE8kWn17yvAWhUVxvqGwUalsRA==
 
+json2csv@^5.0.7:
+  version "5.0.7"
+  resolved "https://registry.npmjs.org/json2csv/-/json2csv-5.0.7.tgz#f3a583c25abd9804be873e495d1e65ad8d1b54ae"
+  integrity sha512-YRZbUnyaJZLZUJSRi2G/MqahCyRv9n/ds+4oIetjDF3jWQA7AG7iSeKTiZiCNqtMZM7HDyt0e/W6lEnoGEmMGA==
+  dependencies:
+    commander "^6.1.0"
+    jsonparse "^1.3.1"
+    lodash.get "^4.4.2"
+
 json5@^1.0.1:
   version "1.0.2"
   resolved "https://registry.npmjs.org/json5/-/json5-1.0.2.tgz#63d98d60f21b313b77c4d6da18bfa69d80e1d593"
@@ -8489,7 +8511,7 @@ jsonfile@^6.0.1:
   optionalDependencies:
     graceful-fs "^4.1.6"
 
-jsonparse@^1.2.0:
+jsonparse@^1.2.0, jsonparse@^1.3.1:
   version "1.3.1"
   resolved "https://registry.npmjs.org/jsonparse/-/jsonparse-1.3.1.tgz#3f4dae4a91fac315f71062f8521cc239f1366280"
   integrity sha512-POQXvpdL69+CluYsillJ7SUhKvytYjW9vG/GKpnf+xP8UWgYEM/RaMzHHofbALDiKbbP1W8UEYmgGl39WkPZsg==
@@ -8777,6 +8799,11 @@ lodash.debounce@^4.0.8:
   version "4.0.8"
   resolved "https://registry.npmjs.org/lodash.debounce/-/lodash.debounce-4.0.8.tgz#82d79bff30a67c4005ffd5e2515300ad9ca4d7af"
   integrity sha512-FT1yDzDYEoYWhnSGnpE/4Kj1fLZkDFyqRb7fNt6FdYOSxlUWAtp42Eh6Wb0rGIv/m9Bgo7x4GhQbm5Ys4SG5ow==
+
+lodash.get@^4.4.2:
+  version "4.4.2"
+  resolved "https://registry.npmjs.org/lodash.get/-/lodash.get-4.4.2.tgz#2d177f652fa31e939b4438d5341499dfa3825e99"
+  integrity sha512-z+Uw/vLuy6gQe8cfaFWD7p0wVv8fJl3mbzXh33RS+0oW2wvUqiRXiQ69gLWSLpgB5/6sU+r6BlQR0MBILadqTQ==
 
 lodash.isfunction@^3.0.9:
   version "3.0.9"

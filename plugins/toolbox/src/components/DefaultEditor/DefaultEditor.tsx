@@ -48,6 +48,7 @@ export const DefaultEditor = (props: Props) => {
             >
               {modes.map(m => (
                 <Button
+                  key={m}
                   onClick={() => setMode && setMode(m)}
                   variant={mode === m ? 'contained' : 'outlined'}
                 >
