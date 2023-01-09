@@ -14,6 +14,7 @@ import { UrlEncode } from '../Encoders/UrlEncode';
 import { NumberBase } from '../Converters/NumberBase';
 import { useStyles } from '../../utils/hooks';
 import SearchIcon from '@material-ui/icons/Search';
+import { MarkdownPreview } from '../Converters/MarkdownPreview';
 
 export type Tool = {
   name: string;
@@ -33,6 +34,10 @@ const defaultTools: Tool[] = [
   {
     name: 'Number base converter',
     component: <NumberBase />,
+  },
+  {
+    name: 'Markdown preview',
+    component: <MarkdownPreview />,
   },
 ];
 
