@@ -6,6 +6,13 @@ import YAML from 'yaml';
 export const YamlToJson = () => {
   const [input, setInput] = React.useState('');
   const [output, setOutput] = React.useState('');
+  const sample =
+    '- type: car\n' +
+    '  name: pedro\n' +
+    '  stars: 3\n' +
+    '- type: plant\n' +
+    '  name: samuel\n' +
+    '  stars: 2\n';
 
   useEffect(() => {
     let obj;
@@ -28,7 +35,12 @@ export const YamlToJson = () => {
   return (
     <>
       <ContentHeader title="YAML to JSON" />
-      <DefaultEditor input={input} setInput={setInput} output={output} />
+      <DefaultEditor
+        input={input}
+        setInput={setInput}
+        output={output}
+        sample={sample}
+      />
     </>
   );
 };

@@ -25,6 +25,11 @@ export const UrlEncode = () => {
         setMode={setMode}
         output={output}
         modes={['Encode', 'Decode']}
+        sample={
+          mode === 'Encode'
+            ? 'https://backstage.io/?query= hello\\world{}'
+            : 'https://backstage.io/?query=%20hello%5Cworld%7B%7D'
+        }
       />{' '}
     </>
   );

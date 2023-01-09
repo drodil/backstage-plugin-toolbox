@@ -37,6 +37,11 @@ export const HtmlEntities = () => {
         setMode={setMode}
         output={output}
         modes={['Encode', 'Decode']}
+        sample={
+          mode === 'Encode'
+            ? '& there it was >.<'
+            : '&amp; there it was &gt;.&lt;'
+        }
       />
     </>
   );

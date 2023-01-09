@@ -7,6 +7,12 @@ export const CsvToJson = () => {
   const [input, setInput] = React.useState('');
   const [output, setOutput] = React.useState('');
 
+  const sample =
+    'color,maxSpeed,type\n' +
+    '"red",120,"truck"\n' +
+    '"blue",100,"panzerwagen"\n' +
+    '"green",130,"suv"';
+
   useEffect(() => {
     const getJson = async (value: string) => {
       const obj = await csvToJson().fromString(value);
@@ -21,7 +27,12 @@ export const CsvToJson = () => {
   return (
     <>
       <ContentHeader title="CSV to JSON" />
-      <DefaultEditor input={input} setInput={setInput} output={output} />
+      <DefaultEditor
+        input={input}
+        setInput={setInput}
+        output={output}
+        sample={sample}
+      />
     </>
   );
 };

@@ -10,6 +10,7 @@ import { useStyles } from '../../utils/hooks';
 import { CopyToClipboardButton } from '../Buttons/CopyToClipboardButton';
 import { PasteFromClipboardButton } from '../Buttons/PasteFromClipboardButton';
 import { ClearInputButton } from '../Buttons/ClearInputButton';
+import { SampleButton } from '../Buttons/SampleButton';
 
 type Props = {
   input: string;
@@ -20,6 +21,7 @@ type Props = {
   modes?: Array<string>;
   leftContent?: JSX.Element;
   rightContent?: JSX.Element;
+  sample?: string;
 };
 
 export const DefaultEditor = (props: Props) => {
@@ -32,6 +34,7 @@ export const DefaultEditor = (props: Props) => {
     modes,
     leftContent,
     rightContent,
+    sample,
   } = props;
   const styles = useStyles();
 
@@ -63,6 +66,7 @@ export const DefaultEditor = (props: Props) => {
             <ClearInputButton setInput={setInput} />
             <PasteFromClipboardButton setInput={setInput} />
             {output && <CopyToClipboardButton output={output} />}
+            {sample && <SampleButton setInput={setInput} sample={sample} />}
           </ButtonGroup>
         </Grid>
       </Grid>

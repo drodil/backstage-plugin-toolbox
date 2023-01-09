@@ -6,6 +6,14 @@ import { parse } from 'json2csv';
 export const JsonToCsv = () => {
   const [input, setInput] = React.useState('');
   const [output, setOutput] = React.useState('');
+  const sample = JSON.stringify(
+    [
+      { type: 'car', name: 'pedro', stars: 3 },
+      { type: 'plant', name: 'samuel', stars: 2 },
+    ],
+    null,
+    4,
+  );
 
   useEffect(() => {
     let obj;
@@ -35,7 +43,12 @@ export const JsonToCsv = () => {
   return (
     <>
       <ContentHeader title="JSON to CSV" />
-      <DefaultEditor input={input} setInput={setInput} output={output} />
+      <DefaultEditor
+        input={input}
+        setInput={setInput}
+        output={output}
+        sample={sample}
+      />
     </>
   );
 };

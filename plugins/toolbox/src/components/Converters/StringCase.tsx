@@ -14,6 +14,14 @@ export const StringCase = () => {
   const [input, setInput] = React.useState('');
   const [output, setOutput] = React.useState('');
   const [mode, setMode] = React.useState('Camel');
+  const sample = [
+    'requestURLDecoder',
+    'HTTP_CLIENT_FACTORY',
+    'generic_activity',
+    'WeirdActivity',
+    'kebab-is-good',
+    'Normal text',
+  ].join('\n');
 
   useEffect(() => {
     let strings = input.split('\n');
@@ -51,6 +59,7 @@ export const StringCase = () => {
         setMode={setMode}
         output={output}
         modes={['Camel', 'Snake', 'Kebab', 'Upper', 'Lower', 'Capitalize']}
+        sample={sample}
       />
     </>
   );

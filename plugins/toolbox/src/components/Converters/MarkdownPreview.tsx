@@ -7,6 +7,8 @@ import { useStyles } from '../../utils/hooks';
 export const MarkdownPreview = () => {
   const styles = useStyles();
   const [input, setInput] = React.useState('');
+  const sample =
+    '# Header 1\n\nHello. This is markdown.\n\n* List item 1\n* List item2\n';
 
   return (
     <>
@@ -14,6 +16,7 @@ export const MarkdownPreview = () => {
       <DefaultEditor
         input={input}
         setInput={setInput}
+        sample={sample}
         rightContent={
           <>
             <Paper elevation={0} className={styles.previewPaper}>
