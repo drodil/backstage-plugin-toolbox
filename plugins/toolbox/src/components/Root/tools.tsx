@@ -10,6 +10,7 @@ import { YamlToJson } from '../Converters/YamlToJson';
 import React from 'react';
 import { Tool } from './Root';
 import { StringCase } from '../Converters/StringCase';
+import { TimeConverter } from '../Converters/TimeConverter';
 
 export const defaultTools: Tool[] = [
   {
@@ -59,6 +60,11 @@ export const defaultTools: Tool[] = [
   {
     name: 'String case',
     component: <StringCase />,
+    category: 'Conversion',
+  },
+  {
+    name: 'Time converter',
+    component: <TimeConverter />,
     category: 'Conversion',
   },
 ];
