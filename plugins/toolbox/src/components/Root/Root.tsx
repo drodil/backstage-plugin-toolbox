@@ -15,6 +15,7 @@ import { NumberBase } from '../Converters/NumberBase';
 import { useStyles } from '../../utils/hooks';
 import SearchIcon from '@material-ui/icons/Search';
 import { MarkdownPreview } from '../Converters/MarkdownPreview';
+import { JsonToYaml } from '../Converters/JsonToYaml';
 
 export type Tool = {
   name: string;
@@ -38,6 +39,10 @@ const defaultTools: Tool[] = [
   {
     name: 'Markdown preview',
     component: <MarkdownPreview />,
+  },
+  {
+    name: 'JSON to YAML',
+    component: <JsonToYaml />,
   },
 ];
 
