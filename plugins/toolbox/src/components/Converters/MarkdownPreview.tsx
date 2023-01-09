@@ -1,9 +1,11 @@
 import React from 'react';
 import { DefaultEditor } from '../DefaultEditor/DefaultEditor';
 import { ContentHeader, MarkdownContent } from '@backstage/core-components';
-import { Typography } from '@material-ui/core';
+import { Paper, Typography } from '@material-ui/core';
+import { useStyles } from '../../utils/hooks';
 
 export const MarkdownPreview = () => {
+  const styles = useStyles();
   const [input, setInput] = React.useState('');
 
   return (
@@ -15,7 +17,9 @@ export const MarkdownPreview = () => {
         rightContent={
           <>
             <Typography variant="subtitle1">Preview</Typography>
-            <MarkdownContent content={input} />
+            <Paper elevation={0} className={styles.previewPaper}>
+              <MarkdownContent content={input} />
+            </Paper>
           </>
         }
       />
