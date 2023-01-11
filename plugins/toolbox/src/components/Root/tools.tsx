@@ -14,6 +14,7 @@ import { TimeConverter } from '../Converters/TimeConverter';
 import { EntityValidator } from '../Validators/EntityValidator';
 import { Backslash } from '../Encoders/Backslash';
 import { LoremIpsum } from '../Generators/LoremIpsum';
+import { Hash } from '../Generators/Hash';
 
 export const defaultTools: Tool[] = [
   {
@@ -83,6 +84,11 @@ export const defaultTools: Tool[] = [
   {
     name: 'Lorem Ipsum',
     component: <LoremIpsum />,
+    category: 'Generators',
+  },
+  {
+    name: 'Hash',
+    component: <Hash />,
     category: 'Generators',
   },
 ];
