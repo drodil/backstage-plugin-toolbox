@@ -76,7 +76,7 @@ export const Root = (props: Props) => {
                 : {}
             }
             wrapped
-            className={styles.fullWidth}
+            className={`${styles.fullWidth} ${styles.noPadding}`}
             label={tool.name}
             {...tabProps(i)}
           />
@@ -96,7 +96,7 @@ export const Root = (props: Props) => {
           direction="row-reverse"
           className={`${styles.fullHeight} ${styles.noMargin} ${styles.fullWidth} ${styles.noPadding}`}
         >
-          <Grid item xs={4} md={3} lg={2} className={styles.toolsBar}>
+          <Grid item xs={4} md={3} lg={2} xl="auto" className={styles.toolsBar}>
             <Paper component="form" className={styles.search}>
               <InputBase
                 placeholder="Search"
@@ -109,10 +109,13 @@ export const Root = (props: Props) => {
             </Paper>
             <Tabs
               orientation="vertical"
-              variant="fullWidth"
+              variant="scrollable"
+              scrollButtons="auto"
+              indicatorColor="primary"
               value={value}
               onChange={handleChange}
               aria-label="Tools selection"
+              style={{ height: 'calc(100% - 100px)' }}
             >
               {tabs.map(tab => tab.tab)}
             </Tabs>

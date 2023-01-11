@@ -25,8 +25,9 @@ export const useStyles = makeStyles(theme => {
       height: '100%',
     },
     tabDivider: {
-      marginTop: theme.spacing(2),
+      marginTop: theme.spacing(1),
       paddingTop: theme.spacing(1),
+      paddingBottom: 0,
       color: theme.palette.primary.main,
       borderTop: `1px solid ${theme.palette.divider}`,
     },
