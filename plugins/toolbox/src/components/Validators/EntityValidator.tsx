@@ -12,7 +12,28 @@ export const EntityValidator = () => {
   );
   const [input, setInput] = React.useState('');
   const sample =
-    '# Header 1\n\nHello. This is markdown.\n\n* List item 1\n* List item2\n';
+    'apiVersion: backstage.io/v1alpha1\n' +
+    'kind: Component\n' +
+    'metadata:\n' +
+    '  name: artist-web\n' +
+    '  description: The place to be, for great artists\n' +
+    '  labels:\n' +
+    '    example.com/custom: custom_label_value\n' +
+    '  annotations:\n' +
+    '    example.com/service-discovery: artistweb\n' +
+    '    circleci.com/project-slug: github/example-org/artist-website\n' +
+    '  tags:\n' +
+    '    - java\n' +
+    '  links:\n' +
+    '    - url: https://admin.example-org.com\n' +
+    '      title: Admin Dashboard\n' +
+    '      icon: dashboard\n' +
+    '      type: admin-dashboard\n' +
+    'spec:\n' +
+    '  type: website\n' +
+    '  lifecycle: production\n' +
+    '  owner: artist-relations-team\n' +
+    '  system: public-websites';
 
   const formatError = (err: Error) => {
     let msg = err.message;
