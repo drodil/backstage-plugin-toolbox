@@ -17,6 +17,13 @@ export const useStyles = makeStyles(theme => {
     marginBottomSmall: {
       marginBottom: theme.spacing(1),
     },
+    marginLeftSmall: {
+      marginLeft: theme.spacing(1),
+    },
+    editorButtonGroup: {
+      marginLeft: theme.spacing(2),
+      marginBottom: theme.spacing(2),
+    },
     toolsBar: {
       borderLeft: `1px solid ${theme.palette.divider}`,
       padding: '0 !important',

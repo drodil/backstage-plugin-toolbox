@@ -9,7 +9,7 @@ import React from 'react';
 import { useStyles } from '../../utils/hooks';
 import { CopyToClipboardButton } from '../Buttons/CopyToClipboardButton';
 import { PasteFromClipboardButton } from '../Buttons/PasteFromClipboardButton';
-import { ClearInputButton } from '../Buttons/ClearInputButton';
+import { ClearValueButton } from '../Buttons/ClearValueButton';
 import { SampleButton } from '../Buttons/SampleButton';
 
 type Props = {
@@ -65,7 +65,7 @@ export const DefaultEditor = (props: Props) => {
         )}
         <Grid item>
           <ButtonGroup size="small">
-            <ClearInputButton setInput={setInput} />
+            <ClearValueButton setValue={setInput} />
             <PasteFromClipboardButton setInput={setInput} />
             {output && <CopyToClipboardButton output={output} />}
             {sample && <SampleButton setInput={setInput} sample={sample} />}

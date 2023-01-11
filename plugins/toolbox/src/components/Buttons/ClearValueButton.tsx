@@ -3,16 +3,17 @@ import React from 'react';
 import Clear from '@material-ui/icons/Clear';
 
 type Props = {
-  setInput: (input: string) => void;
+  setValue: (input: string) => void;
+  tooltip?: string;
 };
 
-export const ClearInputButton = (props: Props) => {
+export const ClearValueButton = (props: Props) => {
   return (
-    <Tooltip arrow title="Clear input value">
+    <Tooltip arrow title={props.tooltip ? props.tooltip : 'Clear input value'}>
       <Button
         size="small"
         startIcon={<Clear />}
-        onClick={() => props.setInput('')}
+        onClick={() => props.setValue('')}
       >
         Clear
       </Button>

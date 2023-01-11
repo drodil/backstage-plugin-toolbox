@@ -3,7 +3,7 @@ import React from 'react';
 import { useStyles } from '../../utils/hooks';
 import { FormControl, TextField, Typography } from '@material-ui/core';
 import { PasteFromClipboardButton } from '../Buttons/PasteFromClipboardButton';
-import { ClearInputButton } from '../Buttons/ClearInputButton';
+import { ClearValueButton } from '../Buttons/ClearValueButton';
 
 export const NumberBase = () => {
   const styles = useStyles();
@@ -57,7 +57,7 @@ export const NumberBase = () => {
         <Typography variant="subtitle1">
           Base 2 (Binary)
           <PasteFromClipboardButton setInput={v => handleChange('binary', v)} />
-          <ClearInputButton setInput={() => handleChange('binary', '')} />
+          <ClearValueButton setValue={() => handleChange('binary', '')} />
         </Typography>
         <TextField
           className={styles.fullWidth}
@@ -70,7 +70,7 @@ export const NumberBase = () => {
         <Typography variant="subtitle1">
           Base 8 (Octal)
           <PasteFromClipboardButton setInput={v => handleChange('octal', v)} />
-          <ClearInputButton setInput={() => handleChange('octal', '')} />
+          <ClearValueButton setValue={() => handleChange('octal', '')} />
         </Typography>
         <TextField
           className={styles.fullWidth}
@@ -85,7 +85,7 @@ export const NumberBase = () => {
           <PasteFromClipboardButton
             setInput={v => handleChange('decimal', v)}
           />
-          <ClearInputButton setInput={() => handleChange('decimal', '')} />
+          <ClearValueButton setValue={() => handleChange('decimal', '')} />
         </Typography>
         <TextField
           className={styles.fullWidth}
@@ -98,7 +98,7 @@ export const NumberBase = () => {
         <Typography variant="subtitle1">
           Base 16 (Hex)
           <PasteFromClipboardButton setInput={v => handleChange('hex', v)} />
-          <ClearInputButton setInput={() => handleChange('hex', '')} />
+          <ClearValueButton setValue={() => handleChange('hex', '')} />
         </Typography>
         <TextField
           className={styles.fullWidth}

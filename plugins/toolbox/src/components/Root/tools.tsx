@@ -13,6 +13,7 @@ import { StringCase } from '../Converters/StringCase';
 import { TimeConverter } from '../Converters/TimeConverter';
 import { EntityValidator } from '../Validators/EntityValidator';
 import { Backslash } from '../Encoders/Backslash';
+import { LoremIpsum } from '../Generators/LoremIpsum';
 
 export const defaultTools: Tool[] = [
   {
@@ -78,5 +79,10 @@ export const defaultTools: Tool[] = [
     name: 'Backslash escape',
     component: <Backslash />,
     category: 'Encoding/Decoding',
+  },
+  {
+    name: 'Lorem Ipsum',
+    component: <LoremIpsum />,
+    category: 'Generators',
   },
 ];

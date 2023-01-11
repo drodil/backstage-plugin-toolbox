@@ -13,7 +13,7 @@ import {
   Typography,
 } from '@material-ui/core';
 import { PasteFromClipboardButton } from '../Buttons/PasteFromClipboardButton';
-import { ClearInputButton } from '../Buttons/ClearInputButton';
+import { ClearValueButton } from '../Buttons/ClearValueButton';
 import { CopyToClipboardButton } from '../Buttons/CopyToClipboardButton';
 
 export const TimeConverter = () => {
@@ -97,7 +97,7 @@ export const TimeConverter = () => {
             <Typography variant="subtitle1">
               Input
               <PasteFromClipboardButton setInput={v => handleChange(v)} />
-              <ClearInputButton setInput={() => handleChange('')} />
+              <ClearValueButton setValue={() => handleChange('')} />
               <Button size="small" onClick={() => setInput(DateTime.now())}>
                 Now
               </Button>
