@@ -12,6 +12,7 @@ import { Tool } from './Root';
 import { StringCase } from '../Converters/StringCase';
 import { TimeConverter } from '../Converters/TimeConverter';
 import { EntityValidator } from '../Validators/EntityValidator';
+import { Backslash } from '../Encoders/Backslash';
 
 export const defaultTools: Tool[] = [
   {
@@ -72,5 +73,10 @@ export const defaultTools: Tool[] = [
     name: 'Entity validator',
     component: <EntityValidator />,
     category: 'Backstage',
+  },
+  {
+    name: 'Backslash escape',
+    component: <Backslash />,
+    category: 'Encoding/Decoding',
   },
 ];
