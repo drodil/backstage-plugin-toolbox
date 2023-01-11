@@ -11,6 +11,7 @@ import React from 'react';
 import { Tool } from './Root';
 import { StringCase } from '../Converters/StringCase';
 import { TimeConverter } from '../Converters/TimeConverter';
+import { EntityValidator } from '../Validators/EntityValidator';
 
 export const defaultTools: Tool[] = [
   {
@@ -66,5 +67,10 @@ export const defaultTools: Tool[] = [
     name: 'Time converter',
     component: <TimeConverter />,
     category: 'Conversion',
+  },
+  {
+    name: 'Entity validator',
+    component: <EntityValidator />,
+    category: 'Backstage',
   },
 ];
