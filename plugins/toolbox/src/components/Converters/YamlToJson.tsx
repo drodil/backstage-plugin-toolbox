@@ -2,10 +2,12 @@ import React, { useEffect } from 'react';
 import { DefaultEditor } from '../DefaultEditor/DefaultEditor';
 import { ContentHeader } from '@backstage/core-components';
 import YAML from 'yaml';
+import { JsonSpaceSelector } from '../DefaultEditor/JsonSpaceSelector';
 
 export const YamlToJson = () => {
   const [input, setInput] = React.useState('');
   const [output, setOutput] = React.useState('');
+  const [spaces, setSpaces] = React.useState(4);
   const sample =
     '- type: car\n' +
     '  name: pedro\n' +
@@ -24,13 +26,13 @@ export const YamlToJson = () => {
     }
 
     if (obj) {
-      setOutput(JSON.stringify(obj, null, 4));
+      setOutput(JSON.stringify(obj, null, spaces));
     } else if (input) {
       setOutput(err);
     } else {
       setOutput('');
     }
-  }, [input]);
+  }, [input, spaces]);
 
   return (
     <>
@@ -40,6 +42,9 @@ export const YamlToJson = () => {
         setInput={setInput}
         output={output}
         sample={sample}
+        additionalTools={[
+          <JsonSpaceSelector spaces={spaces} onChange={setSpaces} />,
+        ]}
       />
     </>
   );

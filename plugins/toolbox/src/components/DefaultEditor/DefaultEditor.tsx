@@ -22,6 +22,7 @@ type Props = {
   leftContent?: JSX.Element;
   rightContent?: JSX.Element;
   sample?: string;
+  additionalTools?: JSX.Element[];
 };
 
 export const DefaultEditor = (props: Props) => {
@@ -35,6 +36,7 @@ export const DefaultEditor = (props: Props) => {
     leftContent,
     rightContent,
     sample,
+    additionalTools,
   } = props;
   const styles = useStyles();
 
@@ -71,6 +73,9 @@ export const DefaultEditor = (props: Props) => {
             {sample && <SampleButton setInput={setInput} sample={sample} />}
           </ButtonGroup>
         </Grid>
+        {additionalTools && additionalTools.length > 0 && (
+          <Grid item>{additionalTools.map(tool => tool)}</Grid>
+        )}
       </Grid>
       <Grid container className={styles.fullWidth}>
         <Grid item xs={12} lg={6}>
