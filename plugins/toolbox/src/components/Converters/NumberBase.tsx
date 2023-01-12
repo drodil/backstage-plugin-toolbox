@@ -112,3 +112,5 @@ export const NumberBase = () => {
     </>
   );
 };
+
+export default NumberBase;

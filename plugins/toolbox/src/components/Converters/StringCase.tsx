@@ -64,3 +64,5 @@ export const StringCase = () => {
     </>
   );
 };
+
+export default StringCase;

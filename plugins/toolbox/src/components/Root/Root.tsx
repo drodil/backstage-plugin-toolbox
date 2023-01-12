@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { Content, Header, Page } from '@backstage/core-components';
 import {
   Grid,
@@ -121,15 +121,17 @@ export const Root = (props: Props) => {
             </Tabs>
           </Grid>
           <Grid item xs={8} md={9} lg={10}>
-            <TabContext value={`toolbox-tabpanel-${value}`}>
-              {tabs.map((tool, i) => {
-                return (
-                  <TabPanel key={i} value={`toolbox-tabpanel-${i}`}>
-                    {tool.component}
-                  </TabPanel>
-                );
-              })}
-            </TabContext>
+            <Suspense>
+              <TabContext value={`toolbox-tabpanel-${value}`}>
+                {tabs.map((tool, i) => {
+                  return (
+                    <TabPanel key={i} value={`toolbox-tabpanel-${i}`}>
+                      {tool.component}
+                    </TabPanel>
+                  );
+                })}
+              </TabContext>
+            </Suspense>
           </Grid>
         </Grid>
       </Content>

@@ -36,3 +36,5 @@ export const CsvToJson = () => {
     </>
   );
 };
+
+export default CsvToJson;

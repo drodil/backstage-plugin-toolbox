@@ -44,3 +44,5 @@ export const JsonToYaml = () => {
     </>
   );
 };
+
+export default JsonToYaml;

@@ -30,3 +30,5 @@ export const Base64Encode = () => {
     </>
   );
 };
+
+export default Base64Encode;

@@ -46,3 +46,5 @@ export const HtmlEntities = () => {
     </>
   );
 };
+
+export default HtmlEntities;

@@ -245,3 +245,5 @@ export const LoremIpsum = () => {
     </FormControl>
   );
 };
+
+export default LoremIpsum;

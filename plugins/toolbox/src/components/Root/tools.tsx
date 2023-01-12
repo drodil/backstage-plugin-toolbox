@@ -1,21 +1,25 @@
-import { Base64Encode } from '../Encoders/Base64Encode';
-import { UrlEncode } from '../Encoders/UrlEncode';
-import { HtmlEntities } from '../Encoders/HtmlEntities';
-import { NumberBase } from '../Converters/NumberBase';
-import { MarkdownPreview } from '../Converters/MarkdownPreview';
-import { CsvToJson } from '../Converters/CsvToJson';
-import { JsonToCsv } from '../Converters/JsonToCsv';
-import { JsonToYaml } from '../Converters/JsonToYaml';
-import { YamlToJson } from '../Converters/YamlToJson';
-import React from 'react';
+import React, { lazy } from 'react';
 import { Tool } from './Root';
-import { StringCase } from '../Converters/StringCase';
-import { TimeConverter } from '../Converters/TimeConverter';
-import { EntityValidator } from '../Validators/EntityValidator';
-import { Backslash } from '../Encoders/Backslash';
-import { LoremIpsum } from '../Generators/LoremIpsum';
-import { Hash } from '../Generators/Hash';
-import { XmlToJson } from '../Converters/XmlToJson';
+
+const Base64Encode = lazy(() => import('../Encoders/Base64Encode'));
+const UrlEncode = lazy(() => import('../Encoders/UrlEncode'));
+const HtmlEntities = lazy(() => import('../Encoders/HtmlEntities'));
+const Backslash = lazy(() => import('../Encoders/Backslash'));
+
+const NumberBase = lazy(() => import('../Converters/NumberBase'));
+const MarkdownPreview = lazy(() => import('../Converters/MarkdownPreview'));
+const CsvToJson = lazy(() => import('../Converters/CsvToJson'));
+const JsonToCsv = lazy(() => import('../Converters/JsonToCsv'));
+const JsonToYaml = lazy(() => import('../Converters/JsonToYaml'));
+const YamlToJson = lazy(() => import('../Converters/YamlToJson'));
+const StringCase = lazy(() => import('../Converters/StringCase'));
+const TimeConverter = lazy(() => import('../Converters/TimeConverter'));
+const XmlToJson = lazy(() => import('../Converters/XmlToJson'));
+
+const EntityValidator = lazy(() => import('../Validators/EntityValidator'));
+
+const LoremIpsum = lazy(() => import('../Generators/LoremIpsum'));
+const Hash = lazy(() => import('../Generators/Hash'));
 
 export const defaultTools: Tool[] = [
   {

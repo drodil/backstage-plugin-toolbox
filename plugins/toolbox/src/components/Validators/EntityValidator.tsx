@@ -94,3 +94,5 @@ export const EntityValidator = () => {
     </>
   );
 };
+
+export default EntityValidator;

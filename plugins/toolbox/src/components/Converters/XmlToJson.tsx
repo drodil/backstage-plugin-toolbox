@@ -32,3 +32,5 @@ export const XmlToJson = () => {
     </>
   );
 };
+
+export default XmlToJson;

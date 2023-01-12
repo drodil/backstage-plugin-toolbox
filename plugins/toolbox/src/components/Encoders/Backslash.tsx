@@ -44,3 +44,5 @@ export const Backslash = () => {
     </>
   );
 };
+
+export default Backslash;

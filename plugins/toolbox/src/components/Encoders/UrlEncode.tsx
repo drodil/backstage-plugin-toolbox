@@ -34,3 +34,5 @@ export const UrlEncode = () => {
     </>
   );
 };
+
+export default UrlEncode;

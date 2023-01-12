@@ -178,3 +178,5 @@ export const TimeConverter = () => {
     </>
   );
 };
+
+export default TimeConverter;

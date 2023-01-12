@@ -52,3 +52,5 @@ export const JsonToCsv = () => {
     </>
   );
 };
+
+export default JsonToCsv;

@@ -44,3 +44,5 @@ export const YamlToJson = () => {
     </>
   );
 };
+
+export default YamlToJson;

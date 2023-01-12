@@ -85,3 +85,5 @@ export const Hash = () => {
     </>
   );
 };
+
+export default Hash;
