@@ -15,6 +15,7 @@ import { EntityValidator } from '../Validators/EntityValidator';
 import { Backslash } from '../Encoders/Backslash';
 import { LoremIpsum } from '../Generators/LoremIpsum';
 import { Hash } from '../Generators/Hash';
+import { XmlToJson } from '../Converters/XmlToJson';
 
 export const defaultTools: Tool[] = [
   {
@@ -49,6 +50,11 @@ export const defaultTools: Tool[] = [
   {
     name: 'JSON to CSV',
     component: <JsonToCsv />,
+    category: 'Conversion',
+  },
+  {
+    name: 'XML to JSON',
+    component: <XmlToJson />,
     category: 'Conversion',
   },
   {
