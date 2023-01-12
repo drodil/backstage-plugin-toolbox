@@ -1,6 +1,8 @@
 import React, { Suspense } from 'react';
 import { Content, Header, Page } from '@backstage/core-components';
 import {
+  Box,
+  CircularProgress,
   Grid,
   IconButton,
   InputBase,
@@ -121,7 +123,19 @@ export const Root = (props: Props) => {
             </Tabs>
           </Grid>
           <Grid item xs={8} md={9} lg={10}>
-            <Suspense>
+            <Suspense
+              fallback={
+                <Box
+                  display="flex"
+                  width="100%"
+                  height="50%"
+                  alignItems="center"
+                  justifyContent="center"
+                >
+                  <CircularProgress />
+                </Box>
+              }
+            >
               <TabContext value={`toolbox-tabpanel-${value}`}>
                 {tabs.map((tool, i) => {
                   return (
