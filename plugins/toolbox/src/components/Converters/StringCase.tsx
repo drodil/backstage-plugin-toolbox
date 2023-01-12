@@ -51,7 +51,7 @@ export const StringCase = () => {
 
   return (
     <>
-      <ContentHeader title="String Case Converter" />
+      <ContentHeader title="String case converter" />
       <DefaultEditor
         input={input}
         mode={mode}
