@@ -24,7 +24,7 @@ export const XmlToJson = () => {
 
   return (
     <>
-      <ContentHeader title="CSV to JSON" />
+      <ContentHeader title="XML to JSON" />
       <DefaultEditor
         input={input}
         setInput={setInput}
