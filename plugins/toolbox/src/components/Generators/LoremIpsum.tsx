@@ -14,6 +14,7 @@ import { faker } from '@faker-js/faker';
 import { lowerCase, upperFirst } from 'lodash';
 import { ClearValueButton } from '../Buttons/ClearValueButton';
 import { CopyToClipboardButton } from '../Buttons/CopyToClipboardButton';
+import { ContentHeader } from '@backstage/core-components';
 
 const randomInt = (min: number, max: number) => {
   return Math.floor(Math.random() * max) + min;
@@ -155,94 +156,97 @@ export const LoremIpsum = () => {
   };
 
   return (
-    <FormControl className={styles.fullWidth}>
-      <Grid container style={{ marginBottom: '5px' }}>
-        <Grid item>
-          <InputLabel id="multiplier-label">Count</InputLabel>
-          <Select
-            style={{ minWidth: '100px' }}
-            labelId="multiplier-label"
-            value={multiplier.toString(10)}
-            onChange={e =>
-              setMultiplier(Number.parseInt(e.target.value as string, 10))
-            }
-          >
-            <MenuItem value={1}>1</MenuItem>
-            <MenuItem value={5}>5</MenuItem>
-            <MenuItem value={10}>10</MenuItem>
-            <MenuItem value={25}>25</MenuItem>
-            <MenuItem value={50}>50</MenuItem>
-            <MenuItem value={100}>100</MenuItem>
-            <MenuItem value={250}>250</MenuItem>
-            <MenuItem value={500}>500</MenuItem>
-            <MenuItem value={1000}>1000</MenuItem>
-          </Select>
-          <ButtonGroup className={styles.editorButtonGroup}>
-            <ClearValueButton setValue={setOutput} tooltip="Clear output" />
-            <CopyToClipboardButton output={output} />
-          </ButtonGroup>
-          <ButtonGroup className={styles.editorButtonGroup}>
-            <GenerateButton type="line" />
-            <GenerateButton type="paragraph" />
-            <GenerateButton type="slug" />
-            <GenerateButton type="word" />
-            <GenerateButton type="hack" />
-          </ButtonGroup>
-          <ButtonGroup className={styles.editorButtonGroup}>
-            <GenerateButton type="hex" />
-            <GenerateButton type="datetime" />
-            <GenerateButton type="number" />
-            <GenerateButton type="string" />
-            <GenerateButton type="uuid" />
-          </ButtonGroup>
-          <ButtonGroup className={styles.editorButtonGroup}>
-            <GenerateButton type="ipv4" title="IPv4" />
-            <GenerateButton type="ipv6" title="IPv6" />
-            <GenerateButton type="mac" title="MAC" />
-            <GenerateButton type="imei" />
-            <GenerateButton type="cron" />
-          </ButtonGroup>
-          <ButtonGroup className={styles.editorButtonGroup}>
-            <GenerateButton type="domain" />
-            <GenerateButton type="password" />
-            <GenerateButton type="url" title="URL" />
-            <GenerateButton type="user-agent" title="User agent" />
-            <GenerateButton type="emoji" />
-          </ButtonGroup>
-          <ButtonGroup className={styles.editorButtonGroup}>
-            <GenerateButton type="address" />
-            <GenerateButton type="name" title="Name" />
-            <GenerateButton type="job-title" title="Job title" />
-          </ButtonGroup>
-          <ButtonGroup className={styles.editorButtonGroup}>
-            <GenerateButton type="product-name" title="Product name" />
-            <GenerateButton
-              type="product-description"
-              title="Product description"
+    <>
+      <ContentHeader title="Lorem ipsum generator" />
+      <FormControl className={styles.fullWidth}>
+        <Grid container style={{ marginBottom: '5px' }}>
+          <Grid item>
+            <InputLabel id="multiplier-label">Count</InputLabel>
+            <Select
+              style={{ minWidth: '100px' }}
+              labelId="multiplier-label"
+              value={multiplier.toString(10)}
+              onChange={e =>
+                setMultiplier(Number.parseInt(e.target.value as string, 10))
+              }
+            >
+              <MenuItem value={1}>1</MenuItem>
+              <MenuItem value={5}>5</MenuItem>
+              <MenuItem value={10}>10</MenuItem>
+              <MenuItem value={25}>25</MenuItem>
+              <MenuItem value={50}>50</MenuItem>
+              <MenuItem value={100}>100</MenuItem>
+              <MenuItem value={250}>250</MenuItem>
+              <MenuItem value={500}>500</MenuItem>
+              <MenuItem value={1000}>1000</MenuItem>
+            </Select>
+            <ButtonGroup className={styles.editorButtonGroup}>
+              <ClearValueButton setValue={setOutput} tooltip="Clear output" />
+              <CopyToClipboardButton output={output} />
+            </ButtonGroup>
+            <ButtonGroup className={styles.editorButtonGroup}>
+              <GenerateButton type="line" />
+              <GenerateButton type="paragraph" />
+              <GenerateButton type="slug" />
+              <GenerateButton type="word" />
+              <GenerateButton type="hack" />
+            </ButtonGroup>
+            <ButtonGroup className={styles.editorButtonGroup}>
+              <GenerateButton type="hex" />
+              <GenerateButton type="datetime" />
+              <GenerateButton type="number" />
+              <GenerateButton type="string" />
+              <GenerateButton type="uuid" />
+            </ButtonGroup>
+            <ButtonGroup className={styles.editorButtonGroup}>
+              <GenerateButton type="ipv4" title="IPv4" />
+              <GenerateButton type="ipv6" title="IPv6" />
+              <GenerateButton type="mac" title="MAC" />
+              <GenerateButton type="imei" />
+              <GenerateButton type="cron" />
+            </ButtonGroup>
+            <ButtonGroup className={styles.editorButtonGroup}>
+              <GenerateButton type="domain" />
+              <GenerateButton type="password" />
+              <GenerateButton type="url" title="URL" />
+              <GenerateButton type="user-agent" title="User agent" />
+              <GenerateButton type="emoji" />
+            </ButtonGroup>
+            <ButtonGroup className={styles.editorButtonGroup}>
+              <GenerateButton type="address" />
+              <GenerateButton type="name" title="Name" />
+              <GenerateButton type="job-title" title="Job title" />
+            </ButtonGroup>
+            <ButtonGroup className={styles.editorButtonGroup}>
+              <GenerateButton type="product-name" title="Product name" />
+              <GenerateButton
+                type="product-description"
+                title="Product description"
+              />
+              <GenerateButton type="catch-phrase" title="Catch phrase" />
+              <GenerateButton type="song" title="Song name" />
+            </ButtonGroup>
+            <ButtonGroup className={styles.editorButtonGroup}>
+              <GenerateButton type="bic" title="BIC" />
+              <GenerateButton type="credit-card" title="Credit card" />
+              <GenerateButton type="iban" title="IBAN" />
+            </ButtonGroup>
+          </Grid>
+          <Grid item className={styles.fullWidth}>
+            <TextField
+              id="output"
+              label="Output"
+              value={output || ''}
+              className={styles.fullWidth}
+              multiline
+              minRows={20}
+              maxRows={50}
+              variant="outlined"
             />
-            <GenerateButton type="catch-phrase" title="Catch phrase" />
-            <GenerateButton type="song" title="Song name" />
-          </ButtonGroup>
-          <ButtonGroup className={styles.editorButtonGroup}>
-            <GenerateButton type="bic" title="BIC" />
-            <GenerateButton type="credit-card" title="Credit card" />
-            <GenerateButton type="iban" title="IBAN" />
-          </ButtonGroup>
+          </Grid>
         </Grid>
-        <Grid item className={styles.fullWidth}>
-          <TextField
-            id="output"
-            label="Output"
-            value={output || ''}
-            className={styles.fullWidth}
-            multiline
-            minRows={20}
-            maxRows={50}
-            variant="outlined"
-          />
-        </Grid>
-      </Grid>
-    </FormControl>
+      </FormControl>
+    </>
   );
 };
 
