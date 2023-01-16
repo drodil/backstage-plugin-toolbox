@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.1.0...v1.2.0) (2023-01-16)
+
+
+### Features
+
+* add backslash escape/unescape tool ([15c9f37](https://github.com/drodil/backstage-plugin-toolbox/commit/15c9f37eb41b94887e96a1baccb3fd16eb397e10))
+* add hash generator tool ([57f368c](https://github.com/drodil/backstage-plugin-toolbox/commit/57f368c99697092268f0b77604acc4869a221a3d))
+* add lorem ipsum generator ([d445ba3](https://github.com/drodil/backstage-plugin-toolbox/commit/d445ba31018f7e712a64f41571983ac2b00c622f))
+* add tool to convert xml to json ([e570fd8](https://github.com/drodil/backstage-plugin-toolbox/commit/e570fd8cc18cd984f05fc126359ad530ce0cbca7))
+* allow selecting spaces count for json output ([a6a217c](https://github.com/drodil/backstage-plugin-toolbox/commit/a6a217c72aa3ce143209b91a5163cd3e5d7e111b))
+* lazy load tools for better performance ([0201981](https://github.com/drodil/backstage-plugin-toolbox/commit/0201981997718a572db616377762fbfeda971f3b))
+* use scrollable tabs for tools ([8a9cc0a](https://github.com/drodil/backstage-plugin-toolbox/commit/8a9cc0a3ecad90249fdf8f10e315bfaa1173c986))
+
+
+### Bug Fixes
+
+* add missing header to lorem ipsum generator ([95eed03](https://github.com/drodil/backstage-plugin-toolbox/commit/95eed03ead1e1f67dcedac0f32a469179e64e6e6))
+* sample of backstage entity ([2cd0cb8](https://github.com/drodil/backstage-plugin-toolbox/commit/2cd0cb8eef83a8b8ca954d19c3793c1b8ac9b702))
+* xml to json header ([c57819e](https://github.com/drodil/backstage-plugin-toolbox/commit/c57819e3c1bd61af4a15c96b79589d7b69862571))
+
 ## 1.1.0 (2023-01-11)
 
 
