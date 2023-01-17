@@ -29,7 +29,10 @@ export const useStyles = makeStyles(theme => {
       padding: '0 !important',
     },
     menuTabs: {
-      height: '100%',
+      height: 'calc(100vh - 160px);',
+      '& div[class*="MuiTabScrollButton-vertical"]': {
+        height: '10px',
+      },
     },
     tabDivider: {
       marginTop: theme.spacing(1),
@@ -40,6 +43,7 @@ export const useStyles = makeStyles(theme => {
     },
     search: {
       margin: theme.spacing(2),
+      marginBottom: theme.spacing(1),
       display: 'flex',
       '& input': {
         marginLeft: theme.spacing(2),

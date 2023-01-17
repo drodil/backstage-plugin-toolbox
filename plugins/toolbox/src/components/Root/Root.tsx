@@ -96,7 +96,7 @@ export const Root = (props: Props) => {
           container
           spacing={2}
           direction="row-reverse"
-          className={`${styles.fullHeight} ${styles.noMargin} ${styles.fullWidth} ${styles.noPadding}`}
+          className={`${styles.noMargin} ${styles.fullWidth} ${styles.noPadding}`}
         >
           <Grid item xs={4} md={3} lg={2} xl="auto" className={styles.toolsBar}>
             <Paper component="form" className={styles.search}>
@@ -117,7 +117,7 @@ export const Root = (props: Props) => {
               value={value}
               onChange={handleChange}
               aria-label="Tools selection"
-              style={{ height: 'calc(100% - 100px)' }}
+              className={styles.menuTabs}
             >
               {tabs.map(tab => tab.tab)}
             </Tabs>
