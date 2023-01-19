@@ -16,6 +16,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import { defaultTools } from './tools';
 
 export type Tool = {
+  id: string;
   name: string;
   component: JSX.Element;
   description?: string;
