@@ -14,7 +14,6 @@ import { faker } from '@faker-js/faker';
 import { lowerCase, upperFirst } from 'lodash';
 import { ClearValueButton } from '../Buttons/ClearValueButton';
 import { CopyToClipboardButton } from '../Buttons/CopyToClipboardButton';
-import { ContentHeader } from '@backstage/core-components';
 
 const randomInt = (min: number, max: number) => {
   return Math.floor(Math.random() * max) + min;
@@ -157,7 +156,6 @@ export const LoremIpsum = () => {
 
   return (
     <>
-      <ContentHeader title="Lorem ipsum generator" />
       <FormControl className={styles.fullWidth}>
         <Grid container style={{ marginBottom: '5px' }}>
           <Grid item>

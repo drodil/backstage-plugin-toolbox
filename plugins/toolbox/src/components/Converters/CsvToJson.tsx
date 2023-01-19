@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { DefaultEditor } from '../DefaultEditor/DefaultEditor';
-import { ContentHeader } from '@backstage/core-components';
 import csvToJson from 'csvtojson';
 import { JsonSpaceSelector } from '../DefaultEditor/JsonSpaceSelector';
 
@@ -27,18 +26,15 @@ export const CsvToJson = () => {
   }, [input, spaces]);
 
   return (
-    <>
-      <ContentHeader title="CSV to JSON" />
-      <DefaultEditor
-        input={input}
-        setInput={setInput}
-        output={output}
-        sample={sample}
-        additionalTools={[
-          <JsonSpaceSelector spaces={spaces} onChange={setSpaces} />,
-        ]}
-      />
-    </>
+    <DefaultEditor
+      input={input}
+      setInput={setInput}
+      output={output}
+      sample={sample}
+      additionalTools={[
+        <JsonSpaceSelector spaces={spaces} onChange={setSpaces} />,
+      ]}
+    />
   );
 };
 

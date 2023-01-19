@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { DefaultEditor } from '../DefaultEditor/DefaultEditor';
-import { ContentHeader } from '@backstage/core-components';
 import { xml2json } from 'xml-js';
 import { JsonSpaceSelector } from '../DefaultEditor/JsonSpaceSelector';
 
@@ -23,18 +22,15 @@ export const XmlToJson = () => {
   }, [input, spaces]);
 
   return (
-    <>
-      <ContentHeader title="XML to JSON" />
-      <DefaultEditor
-        input={input}
-        setInput={setInput}
-        output={output}
-        sample={sample}
-        additionalTools={[
-          <JsonSpaceSelector spaces={spaces} onChange={setSpaces} />,
-        ]}
-      />
-    </>
+    <DefaultEditor
+      input={input}
+      setInput={setInput}
+      output={output}
+      sample={sample}
+      additionalTools={[
+        <JsonSpaceSelector spaces={spaces} onChange={setSpaces} />,
+      ]}
+    />
   );
 };
 

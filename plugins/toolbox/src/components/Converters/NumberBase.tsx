@@ -1,4 +1,3 @@
-import { ContentHeader } from '@backstage/core-components';
 import React from 'react';
 import { useStyles } from '../../utils/hooks';
 import { FormControl, TextField, Typography } from '@material-ui/core';
@@ -52,7 +51,6 @@ export const NumberBase = () => {
 
   return (
     <>
-      <ContentHeader title="Number base converter" />
       <FormControl className={styles.fullWidth}>
         <Typography variant="subtitle1">
           Base 2 (Binary)

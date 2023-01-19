@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { DefaultEditor } from '../DefaultEditor/DefaultEditor';
-import { ContentHeader } from '@backstage/core-components';
 import YAML from 'yaml';
 import { JsonSpaceSelector } from '../DefaultEditor/JsonSpaceSelector';
 
@@ -35,18 +34,15 @@ export const YamlToJson = () => {
   }, [input, spaces]);
 
   return (
-    <>
-      <ContentHeader title="YAML to JSON" />
-      <DefaultEditor
-        input={input}
-        setInput={setInput}
-        output={output}
-        sample={sample}
-        additionalTools={[
-          <JsonSpaceSelector spaces={spaces} onChange={setSpaces} />,
-        ]}
-      />
-    </>
+    <DefaultEditor
+      input={input}
+      setInput={setInput}
+      output={output}
+      sample={sample}
+      additionalTools={[
+        <JsonSpaceSelector spaces={spaces} onChange={setSpaces} />,
+      ]}
+    />
   );
 };
 

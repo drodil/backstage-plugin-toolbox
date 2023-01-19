@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { DefaultEditor } from '../DefaultEditor/DefaultEditor';
-import { ContentHeader } from '@backstage/core-components';
 
 const charCodeMap = {
   '\\n': 13,
@@ -30,18 +29,15 @@ export const Backslash = () => {
   }, [input, mode]);
 
   return (
-    <>
-      <ContentHeader title="Backslash escape/unescape" />
-      <DefaultEditor
-        input={input}
-        mode={mode}
-        setInput={setInput}
-        setMode={setMode}
-        output={output}
-        modes={['Escape', 'Unescape']}
-        sample={mode === 'Escape' ? 'Hello\t"World"' : 'Hello\\t\\"World\\"'}
-      />
-    </>
+    <DefaultEditor
+      input={input}
+      mode={mode}
+      setInput={setInput}
+      setMode={setMode}
+      output={output}
+      modes={['Escape', 'Unescape']}
+      sample={mode === 'Escape' ? 'Hello\t"World"' : 'Hello\\t\\"World\\"'}
+    />
   );
 };
 

@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { DefaultEditor } from '../DefaultEditor/DefaultEditor';
-import { ContentHeader } from '@backstage/core-components';
 import { TextField } from '@material-ui/core';
 import { useStyles } from '../../utils/hooks';
 import { faker } from '@faker-js/faker';
@@ -64,25 +63,22 @@ export const Hash = () => {
   };
 
   return (
-    <>
-      <ContentHeader title="Hash generator" />
-      <DefaultEditor
-        input={input}
-        setInput={setInput}
-        sample={sample}
-        rightContent={
-          <>
-            <OutputField label="MD2" value={hash.md2} />
-            <OutputField label="MD4" value={hash.md4} />
-            <OutputField label="MD5" value={hash.md5} />
-            <OutputField label="SHA1" value={hash.sha1} />
-            <OutputField label="SHA256" value={hash.sha256} />
-            <OutputField label="SHA384" value={hash.sha384} />
-            <OutputField label="SHA512" value={hash.sha512} />
-          </>
-        }
-      />
-    </>
+    <DefaultEditor
+      input={input}
+      setInput={setInput}
+      sample={sample}
+      rightContent={
+        <>
+          <OutputField label="MD2" value={hash.md2} />
+          <OutputField label="MD4" value={hash.md4} />
+          <OutputField label="MD5" value={hash.md5} />
+          <OutputField label="SHA1" value={hash.sha1} />
+          <OutputField label="SHA256" value={hash.sha256} />
+          <OutputField label="SHA384" value={hash.sha384} />
+          <OutputField label="SHA512" value={hash.sha512} />
+        </>
+      }
+    />
   );
 };
 

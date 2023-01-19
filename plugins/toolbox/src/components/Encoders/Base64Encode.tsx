@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { DefaultEditor } from '../DefaultEditor/DefaultEditor';
-import { ContentHeader } from '@backstage/core-components';
 
 export const Base64Encode = () => {
   const [input, setInput] = React.useState('');
@@ -16,18 +15,15 @@ export const Base64Encode = () => {
   }, [input, mode]);
 
   return (
-    <>
-      <ContentHeader title="Base64 encode/decode" />
-      <DefaultEditor
-        input={input}
-        mode={mode}
-        setInput={setInput}
-        setMode={setMode}
-        output={output}
-        modes={['Encode', 'Decode']}
-        sample={mode === 'Encode' ? 'Hello world!' : 'SGVsbG8gd29ybGQh'}
-      />
-    </>
+    <DefaultEditor
+      input={input}
+      mode={mode}
+      setInput={setInput}
+      setMode={setMode}
+      output={output}
+      modes={['Encode', 'Decode']}
+      sample={mode === 'Encode' ? 'Hello world!' : 'SGVsbG8gd29ybGQh'}
+    />
   );
 };
 

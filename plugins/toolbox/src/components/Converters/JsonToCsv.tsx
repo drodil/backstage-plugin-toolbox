@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { DefaultEditor } from '../DefaultEditor/DefaultEditor';
-import { ContentHeader } from '@backstage/core-components';
 import { parse } from 'json2csv';
 
 export const JsonToCsv = () => {
@@ -41,15 +40,12 @@ export const JsonToCsv = () => {
   }, [input]);
 
   return (
-    <>
-      <ContentHeader title="JSON to CSV" />
-      <DefaultEditor
-        input={input}
-        setInput={setInput}
-        output={output}
-        sample={sample}
-      />
-    </>
+    <DefaultEditor
+      input={input}
+      setInput={setInput}
+      output={output}
+      sample={sample}
+    />
   );
 };
 

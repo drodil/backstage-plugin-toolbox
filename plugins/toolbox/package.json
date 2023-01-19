@@ -50,7 +50,8 @@
     "yaml": "^2.2.1"
   },
   "peerDependencies": {
-    "react": "^16.13.1 || ^17.0.0"
+    "react": "^16.13.1 || ^17.0.0",
+    "react-router-dom": "^6.3.0"
   },
   "devDependencies": {
     "@backstage/cli": "^0.22.0",

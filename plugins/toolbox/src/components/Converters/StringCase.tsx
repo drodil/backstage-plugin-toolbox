@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { DefaultEditor } from '../DefaultEditor/DefaultEditor';
-import { ContentHeader } from '@backstage/core-components';
 import {
   camelCase,
   capitalize,
@@ -50,18 +49,15 @@ export const StringCase = () => {
   }, [input, mode]);
 
   return (
-    <>
-      <ContentHeader title="String case converter" />
-      <DefaultEditor
-        input={input}
-        mode={mode}
-        setInput={setInput}
-        setMode={setMode}
-        output={output}
-        modes={['Camel', 'Snake', 'Kebab', 'Upper', 'Lower', 'Capitalize']}
-        sample={sample}
-      />
-    </>
+    <DefaultEditor
+      input={input}
+      mode={mode}
+      setInput={setInput}
+      setMode={setMode}
+      output={output}
+      modes={['Camel', 'Snake', 'Kebab', 'Upper', 'Lower', 'Capitalize']}
+      sample={sample}
+    />
   );
 };
 

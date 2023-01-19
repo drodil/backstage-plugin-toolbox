@@ -1,10 +1,7 @@
 import React, { useEffect } from 'react';
 import { DefaultEditor } from '../DefaultEditor/DefaultEditor';
-import { ContentHeader } from '@backstage/core-components';
 import { validate } from '@roadiehq/roadie-backstage-entity-validator';
 import { Alert, AlertTitle } from '@material-ui/lab';
-import { Button } from '@material-ui/core';
-import DescriptionIcon from '@material-ui/icons/Description';
 
 export const EntityValidator = () => {
   const [output, setOutput] = React.useState(
@@ -73,25 +70,12 @@ export const EntityValidator = () => {
   }, [input]);
 
   return (
-    <>
-      <ContentHeader title="Backstage entity validator">
-        <Button
-          variant="contained"
-          size="small"
-          target="_blank"
-          href="https://backstage.io/docs/features/software-catalog/descriptor-format"
-          startIcon={<DescriptionIcon />}
-        >
-          Entity descriptor format
-        </Button>
-      </ContentHeader>
-      <DefaultEditor
-        input={input}
-        setInput={setInput}
-        sample={sample}
-        rightContent={<>{output}</>}
-      />
-    </>
+    <DefaultEditor
+      input={input}
+      setInput={setInput}
+      sample={sample}
+      rightContent={<>{output}</>}
+    />
   );
 };
 

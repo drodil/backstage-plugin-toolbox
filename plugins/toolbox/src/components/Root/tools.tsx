@@ -1,5 +1,7 @@
 import React, { lazy } from 'react';
-import { Tool } from './Root';
+import { Tool } from './ToolsPage';
+import { Button } from '@material-ui/core';
+import DescriptionIcon from '@material-ui/icons/Description';
 
 const Base64Encode = lazy(() => import('../Encoders/Base64Encode'));
 const UrlEncode = lazy(() => import('../Encoders/UrlEncode'));
@@ -98,6 +100,17 @@ export const defaultTools: Tool[] = [
     name: 'Entity validator',
     component: <EntityValidator />,
     category: 'Backstage',
+    headerButtons: [
+      <Button
+        variant="contained"
+        size="small"
+        target="_blank"
+        href="https://backstage.io/docs/features/software-catalog/descriptor-format"
+        startIcon={<DescriptionIcon />}
+      >
+        Entity descriptor format
+      </Button>,
+    ],
   },
   {
     id: 'backslash-encode',

@@ -1,7 +1,6 @@
 import { useStyles } from '../../utils/hooks';
 import React from 'react';
 import { DateTime } from 'luxon';
-import { ContentHeader } from '@backstage/core-components';
 import {
   Button,
   Divider,
@@ -90,7 +89,6 @@ export const TimeConverter = () => {
 
   return (
     <>
-      <ContentHeader title="Time converter" />
       <FormControl className={styles.fullWidth}>
         <Grid container>
           <Grid item xs={12} lg={8}>

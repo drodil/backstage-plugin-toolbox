@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { DefaultEditor } from '../DefaultEditor/DefaultEditor';
-import { ContentHeader } from '@backstage/core-components';
 import YAML from 'yaml';
 
 export const JsonToYaml = () => {
@@ -33,15 +32,12 @@ export const JsonToYaml = () => {
   }, [input]);
 
   return (
-    <>
-      <ContentHeader title="JSON to YAML" />
-      <DefaultEditor
-        input={input}
-        setInput={setInput}
-        output={output}
-        sample={sample}
-      />
-    </>
+    <DefaultEditor
+      input={input}
+      setInput={setInput}
+      output={output}
+      sample={sample}
+    />
   );
 };
 
