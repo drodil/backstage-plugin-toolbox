@@ -23,6 +23,11 @@ const EntityValidator = lazy(() => import('../Validators/EntityValidator'));
 const LoremIpsum = lazy(() => import('../Generators/LoremIpsum'));
 const Hash = lazy(() => import('../Generators/Hash'));
 
+const JSBeautify = lazy(() => import('../Formatters/JSBeautify'));
+const HTMLBeautify = lazy(() => import('../Formatters/HTMLBeautify'));
+const CSSBeautify = lazy(() => import('../Formatters/CSSBeautify'));
+const SQLBeautify = lazy(() => import('../Formatters/SQLBeautify'));
+
 export const defaultTools: Tool[] = [
   {
     id: 'base64-encode',
@@ -129,5 +134,29 @@ export const defaultTools: Tool[] = [
     name: 'Hash',
     component: <Hash />,
     category: 'Generate',
+  },
+  {
+    id: 'format-js',
+    name: 'JS Beautify',
+    component: <JSBeautify />,
+    category: 'Format',
+  },
+  {
+    id: 'format-html',
+    name: 'HTML Beautify',
+    component: <HTMLBeautify />,
+    category: 'Format',
+  },
+  {
+    id: 'format-css',
+    name: 'CSS Beautify',
+    component: <CSSBeautify />,
+    category: 'Format',
+  },
+  {
+    id: 'format-sql',
+    name: 'SQL Beautify',
+    component: <SQLBeautify />,
+    category: 'Format',
   },
 ];
