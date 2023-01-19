@@ -29,6 +29,7 @@
     "postpack": "backstage-cli package postpack"
   },
   "dependencies": {
+    "@types/js-beautify": "^1.13.3",
     "@backstage/core-components": "^0.12.1",
     "@backstage/core-plugin-api": "^1.2.0",
     "@backstage/theme": "^0.2.16",
