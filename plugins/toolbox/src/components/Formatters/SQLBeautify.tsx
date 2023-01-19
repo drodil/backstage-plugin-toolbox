@@ -5,7 +5,7 @@ import { format } from 'sql-formatter';
 export const SQLBeautify = () => {
   const [input, setInput] = React.useState('');
   const [output, setOutput] = React.useState('');
-  const sample = 'SELECT bar, foo FROM foo_bar WHERE foo=\'bar\' GROUP BY bar';
+  const sample = "SELECT bar, foo FROM foo_bar WHERE foo='bar' GROUP BY bar";
 
   useEffect(() => {
     let err;
@@ -24,12 +24,12 @@ export const SQLBeautify = () => {
   }, [input]);
 
   return (
-      <DefaultEditor
-          input={input}
-          setInput={setInput}
-          output={output}
-          sample={sample}
-      />
+    <DefaultEditor
+      input={input}
+      setInput={setInput}
+      output={output}
+      sample={sample}
+    />
   );
 };
 

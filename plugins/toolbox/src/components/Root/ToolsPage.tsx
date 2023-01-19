@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import React, { Suspense, useEffect } from 'react';
 import {
   Content,
   ContentHeader,
@@ -18,10 +18,11 @@ import {
   Tooltip,
 } from '@material-ui/core';
 import { TabContext, TabPanel } from '@material-ui/lab';
-import { useStyles } from '../../utils/hooks';
+import { useFavoriteStorage, useStyles } from '../../utils/hooks';
 import SearchIcon from '@material-ui/icons/Search';
 import { defaultTools } from './tools';
 import OpenInNew from '@material-ui/icons/OpenInNew';
+import { FavoriteButton } from '../Buttons/FavoriteButton';
 
 export type Tool = {
   id: string;
@@ -48,6 +49,7 @@ export const ToolsPage = (props: ToolsPageProps) => {
   const { extraTools } = props;
   const [value, setValue] = React.useState(1);
   const [search, setSearch] = React.useState('');
+  const favorites = useFavoriteStorage();
   const styles = useStyles();
 
   const handleChange = (_: any, newValue: number) => {
@@ -59,9 +61,31 @@ export const ToolsPage = (props: ToolsPageProps) => {
     return false;
   };
 
-  const allTools = [...(extraTools ?? []), ...defaultTools].sort((a, b) =>
-    (b.category ?? '').localeCompare(a.category ?? ''),
-  );
+  useEffect(() => {
+    setValue(favorites.length);
+  }, [favorites]);
+
+  useEffect(() => {
+    if (value === 0) {
+      setValue(1);
+    }
+  }, [value]);
+
+  const allTools = [...(extraTools ?? []), ...defaultTools]
+    .map(tool => {
+      if (favorites.includes(tool.id)) {
+        return { ...tool, category: 'Favorites' };
+      }
+      return tool;
+    })
+    .sort((a, b) => {
+      if (a.category === 'Favorites') {
+        return -1;
+      } else if (b.category === 'Favorites') {
+        return 1;
+      }
+      return (b.category ?? '').localeCompare(a.category ?? '');
+    });
 
   const categories: { [key: string]: Tool[] } = allTools.reduce(
     (ctgs, tool) => {
@@ -168,6 +192,9 @@ export const ToolsPage = (props: ToolsPageProps) => {
             >
               <TabContext value={`toolbox-tabpanel-${value}`}>
                 {tabs.map((tool, i) => {
+                  if (!tool.title) {
+                    return null;
+                  }
                   return (
                     <TabPanel key={i} value={`toolbox-tabpanel-${i}`}>
                       <ContentHeader
@@ -183,6 +210,7 @@ export const ToolsPage = (props: ToolsPageProps) => {
                             <OpenInNew />
                           </Button>
                         </Tooltip>
+                        <FavoriteButton toolId={tool.id} />
                       </ContentHeader>
                       {tool.component}
                     </TabPanel>

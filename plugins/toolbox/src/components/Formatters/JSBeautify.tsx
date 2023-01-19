@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react';
 import { DefaultEditor } from '../DefaultEditor/DefaultEditor';
-import beautify from "js-beautify";
+import beautify from 'js-beautify';
 
 export const JSBeautify = () => {
   const [input, setInput] = React.useState('');
   const [output, setOutput] = React.useState('');
-  const sample = '[{"type": "car","name": "pedro","stars": 3},{"type": "plant","name": "samuel","stars": 2}]';
+  const sample =
+    '[{"type": "car","name": "pedro","stars": 3},{"type": "plant","name": "samuel","stars": 2}]';
 
   useEffect(() => {
     let err;
@@ -25,12 +26,12 @@ export const JSBeautify = () => {
   }, [input]);
 
   return (
-      <DefaultEditor
-          input={input}
-          setInput={setInput}
-          output={output}
-          sample={sample}
-      />
+    <DefaultEditor
+      input={input}
+      setInput={setInput}
+      output={output}
+      sample={sample}
+    />
   );
 };
 
