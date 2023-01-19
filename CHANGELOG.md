@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.2.0...v1.3.0) (2023-01-19)
+
+
+### Features
+
+* add id for all tools ([1dfa326](https://github.com/drodil/backstage-plugin-toolbox/commit/1dfa326576ac164d17505d78ae159c463c68dec9))
+* allow opening tools in new window ([abdee5b](https://github.com/drodil/backstage-plugin-toolbox/commit/abdee5b0a856137b02e01804acc372585c4abd52)), closes [#3](https://github.com/drodil/backstage-plugin-toolbox/issues/3)
+
+
+### Bug Fixes
+
+* tabs styling to match viewport ([f9701d0](https://github.com/drodil/backstage-plugin-toolbox/commit/f9701d096833a9c5bb2d53ddd7d77a07c8d5d366))
+
 ## [1.2.0](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.1.0...v1.2.0) (2023-01-16)
 
 
