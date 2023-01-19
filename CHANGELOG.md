@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.4.0](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.3.1...v1.4.0) (2023-01-19)
+
+
+### Features
+
+* allow user to select favorite tools ([9e9d778](https://github.com/drodil/backstage-plugin-toolbox/commit/9e9d77850a13112f7bccf7e446af706c11614c8e)), closes [#2](https://github.com/drodil/backstage-plugin-toolbox/issues/2)
+
 ### [1.3.1](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.3.0...v1.3.1) (2023-01-19)
 
 ## [1.3.0](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.2.0...v1.3.0) (2023-01-19)
