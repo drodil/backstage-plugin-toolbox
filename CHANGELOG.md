@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.5.0](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.4.0...v1.5.0) (2023-01-20)
+
+
+### Features
+
+* add backstage entity describer tool ([0dfddf1](https://github.com/drodil/backstage-plugin-toolbox/commit/0dfddf12b0c9715be06c009858615a078b616860))
+
 ## [1.4.0](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.3.1...v1.4.0) (2023-01-19)
 
 
