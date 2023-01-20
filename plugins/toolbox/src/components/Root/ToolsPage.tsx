@@ -35,6 +35,15 @@ export type Tool = {
   headerButtons?: JSX.Element[];
 };
 
+type TabInfo = {
+  tab: JSX.Element;
+  component: JSX.Element | undefined;
+  id: string;
+  title: string;
+  description?: string;
+  headerButtons?: JSX.Element[];
+};
+
 const tabProps = (index: number) => {
   return {
     id: `toolbox-tab-${index}`,
@@ -61,86 +70,78 @@ export const ToolsPage = (props: ToolsPageProps) => {
   };
 
   useEffect(() => {
-    setValue(favorites.length);
-  }, [favorites]);
-
-  useEffect(() => {
     if (value === 0) {
       setValue(1);
     }
   }, [value]);
 
-  const allTools = [...(extraTools ?? []), ...defaultTools]
-    .map(tool => {
-      if (favorites.includes(tool.id)) {
-        return { ...tool, category: 'Favorites' };
-      }
-      return tool;
-    })
-    .sort((a, b) => {
-      if (a.category === 'Favorites') {
-        return -1;
-      } else if (b.category === 'Favorites') {
-        return 1;
-      }
-      return (b.category ?? '').localeCompare(a.category ?? '');
-    });
+  const tabs: TabInfo[] = useMemo(() => {
+    const t: TabInfo[] = [];
+    const allTools = [...(extraTools ?? []), ...defaultTools]
+      .map(tool => {
+        if (favorites.includes(tool.id)) {
+          return { ...tool, category: 'Favorites' };
+        }
+        return tool;
+      })
+      .sort((a, b) => {
+        if (a.category === 'Favorites') {
+          return -1;
+        } else if (b.category === 'Favorites') {
+          return 1;
+        }
+        return (b.category ?? '').localeCompare(a.category ?? '');
+      });
 
-  const categories: { [key: string]: Tool[] } = allTools.reduce(
-    (ctgs, tool) => {
-      const categoryStr = tool.category ?? 'Miscellaneous';
-      const toolList: Tool[] = ctgs[categoryStr] || [];
-      toolList.push(tool);
-      ctgs[categoryStr] = toolList;
-      return ctgs;
-    },
-    {} as Record<string, Tool[]>,
-  );
+    const categories: { [key: string]: Tool[] } = allTools.reduce(
+      (ctgs, tool) => {
+        const categoryStr = tool.category ?? 'Miscellaneous';
+        const toolList: Tool[] = ctgs[categoryStr] || [];
+        toolList.push(tool);
+        ctgs[categoryStr] = toolList;
+        return ctgs;
+      },
+      {} as Record<string, Tool[]>,
+    );
 
-  const tabs: {
-    tab: JSX.Element;
-    component: JSX.Element | undefined;
-    id: string;
-    title: string;
-    description?: string;
-    headerButtons?: JSX.Element[];
-  }[] = useMemo(() => [], []);
-
-  Object.entries(categories).map(([category, tools]) => {
-    tabs.push({
-      tab: (
-        <Tab
-          key={category}
-          label={category}
-          disabled
-          className={styles.tabDivider}
-        />
-      ),
-      component: undefined,
-      id: category,
-      title: '',
-    });
-    tools.map((tool, i) => {
-      tabs.push({
+    Object.entries(categories).map(([category, tools]) => {
+      t.push({
         tab: (
           <Tab
-            key={tool.name}
-            style={
-              search && !tool.name.toLowerCase().includes(search.toLowerCase())
-                ? { display: 'none' }
-                : {}
-            }
-            wrapped
-            className={`${styles.fullWidth} ${styles.noPadding}`}
-            label={tool.name}
-            {...tabProps(i)}
+            key={category}
+            label={category}
+            disabled
+            className={styles.tabDivider}
           />
         ),
-        title: `${category} - ${tool.name}`,
-        ...tool,
+        component: undefined,
+        id: category,
+        title: '',
+      });
+      tools.map((tool, i) => {
+        t.push({
+          tab: (
+            <Tab
+              key={tool.name}
+              style={
+                search &&
+                !tool.name.toLowerCase().includes(search.toLowerCase())
+                  ? { display: 'none' }
+                  : {}
+              }
+              wrapped
+              className={`${styles.fullWidth} ${styles.noPadding}`}
+              label={tool.name}
+              {...tabProps(i)}
+            />
+          ),
+          title: `${category} - ${tool.name}`,
+          ...tool,
+        });
       });
     });
-  });
+    return t;
+  }, [favorites, search, styles, extraTools]);
 
   useEffect(() => {
     const idx = tabs.findIndex(tab => tab.id === hash.slice(1));
