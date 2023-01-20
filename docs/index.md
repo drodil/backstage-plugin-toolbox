@@ -8,7 +8,7 @@ Add the plugin to your frontend app:
 cd packages/app && yarn add @drodil/backstage-plugin-toolbox
 ```
 
-Expose the questions page:
+Expose the toolbox page:
 
 ```ts
 // packages/app/src/App.tsx
@@ -37,6 +37,21 @@ import { ToolboxPage, Tool } from '@drodil/backstage-plugin-toolbox';
 const extraToolExample: Tool = {
   name: 'Extra',
   component: <div>Extra tool</div>,
+};
+
+<ToolboxPage extraTools={[extraToolExample]} />;
+```
+
+Also lazy loading is supported:
+
+```ts
+import React, { lazy } from 'react';
+import { ToolboxPage, Tool } from '@drodil/backstage-plugin-toolbox';
+const MyTool = lazy(() => import('./MyTool'));
+
+const extraToolExample: Tool = {
+  name: 'Extra',
+  component: <MyTool />,
 };
 
 <ToolboxPage extraTools={[extraToolExample]} />;
