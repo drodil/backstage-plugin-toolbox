@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.6.0](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.5.0...v1.6.0) (2023-01-20)
+
+
+### Features
+
+* allow bookmarking tools by moving to hash navigation ([77b43ef](https://github.com/drodil/backstage-plugin-toolbox/commit/77b43ef6472d6dbbef8f9e51c3c5806db2a32f7f))
+
+
+### Bug Fixes
+
+* memo usage for tabs ([5aa7394](https://github.com/drodil/backstage-plugin-toolbox/commit/5aa73941f275ccd1a744181e095b370a9139e156))
+
 ## [1.5.0](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.4.0...v1.5.0) (2023-01-20)
 
 
