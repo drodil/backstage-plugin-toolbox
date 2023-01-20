@@ -4,18 +4,19 @@ import { defaultTools } from './tools';
 import { useParams } from 'react-router-dom';
 import { ContentHeader } from '@backstage/core-components';
 import { Box, CircularProgress } from '@material-ui/core';
+import { useStyles } from '../../utils/hooks';
 
 export const ToolPage = (props: ToolsPageProps) => {
-  require('./ToolPage.css');
   const { extraTools } = props;
   const params = useParams();
+  const styles = useStyles();
   const allTools = [...(extraTools ?? []), ...defaultTools];
   const tool = allTools.find(({ id }) => id === params.id);
   if (!tool) {
     return <>Tool not available</>;
   }
   return (
-    <div id="toolContainer">
+    <div id="toolContainer" className={styles.toolContainer}>
       <Suspense
         fallback={
           <Box
