@@ -1,6 +1,16 @@
 import React from 'react';
 import { createDevApp } from '@backstage/dev-utils';
-import { ToolboxPage, toolboxPlugin } from '../src/plugin';
+import { ToolboxPage } from '../src/plugin';
+import {
+  AnyApiFactory,
+  createApiFactory,
+  createPlugin,
+  discoveryApiRef,
+  fetchApiRef,
+} from '@backstage/core-plugin-api';
+import { catalogApiRef } from '@backstage/plugin-catalog-react';
+import { rootRouteRef } from '../src/routes';
+import { CatalogApiMock } from './CatalogApiMock';
 
 const extraToolExample = {
   id: 'extra-test',
@@ -8,8 +18,24 @@ const extraToolExample = {
   component: <div>Extra tool</div>,
 };
 
+const apiFactories: AnyApiFactory[] = [
+  createApiFactory({
+    api: catalogApiRef,
+    deps: { discoveryApi: discoveryApiRef, fetchApi: fetchApiRef },
+    factory: () => new CatalogApiMock(),
+  }),
+];
+
+const toolboxDevPlugin = createPlugin({
+  id: 'toolboxDev',
+  routes: {
+    root: rootRouteRef,
+  },
+  apis: apiFactories,
+});
+
 createDevApp()
-  .registerPlugin(toolboxPlugin)
+  .registerPlugin(toolboxDevPlugin)
   .addPage({
     element: <ToolboxPage extraTools={[extraToolExample]} />,
     title: 'Root Page',

@@ -19,6 +19,7 @@ const TimeConverter = lazy(() => import('../Converters/TimeConverter'));
 const XmlToJson = lazy(() => import('../Converters/XmlToJson'));
 
 const EntityValidator = lazy(() => import('../Validators/EntityValidator'));
+const EntityDescriber = lazy(() => import('../Misc/EntityDescriber'));
 
 const LoremIpsum = lazy(() => import('../Generators/LoremIpsum'));
 const Hash = lazy(() => import('../Generators/Hash'));
@@ -116,6 +117,13 @@ export const defaultTools: Tool[] = [
         Entity descriptor format
       </Button>,
     ],
+  },
+  {
+    id: 'entity-describer',
+    name: 'Entity describer',
+    component: <EntityDescriber />,
+    category: 'Backstage',
+    description: 'Describes catalog entities in YAML',
   },
   {
     id: 'backslash-encode',

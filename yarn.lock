@@ -2375,10 +2375,10 @@
     "@octokit/types" "^8.0.0"
     btoa-lite "^1.0.0"
 
-"@octokit/openapi-types@^14.0.0":
-  version "14.0.0"
-  resolved "https://registry.yarnpkg.com/@octokit/openapi-types/-/openapi-types-14.0.0.tgz#949c5019028c93f189abbc2fb42f333290f7134a"
-  integrity sha512-HNWisMYlR8VCnNurDU6os2ikx0s0VyEjDYHNS/h4cgb8DeOxQ0n72HyinUtdDVxJhFy3FWLGl0DJhfEWk3P5Iw==
+"@octokit/openapi-types@^16.0.0":
+  version "16.0.0"
+  resolved "https://registry.yarnpkg.com/@octokit/openapi-types/-/openapi-types-16.0.0.tgz#d92838a6cd9fb4639ca875ddb3437f1045cc625e"
+  integrity sha512-JbFWOqTJVLHZSUUoF4FzAZKYtqdxWu9Z5m2QQnOyEa04fOFljvyh7D3GYKbfuaSWisqehImiVIMG4eyJeP5VEA==
 
 "@octokit/plugin-paginate-rest@^5.0.0":
   version "5.0.1"
@@ -2432,11 +2432,11 @@
     "@octokit/plugin-rest-endpoint-methods" "^6.7.0"
 
 "@octokit/types@^8.0.0":
-  version "8.1.1"
-  resolved "https://registry.yarnpkg.com/@octokit/types/-/types-8.1.1.tgz#92e304e0f00d563667dfdbe0ae6b52e70d5149bb"
-  integrity sha512-7tjk+6DyhYAmei8FOEwPfGKc0VE1x56CKPJ+eE44zhDbOyMT+9yan8apfQFxo8oEFsy+0O7PiBtH8w0Yo0Y9Kw==
+  version "8.2.0"
+  resolved "https://registry.yarnpkg.com/@octokit/types/-/types-8.2.0.tgz#de82a04bcb74b42128c12fcfb3d4606b9756f9d9"
+  integrity sha512-v40LBJjw973X7sP6CuldlXDwIdgmVhry3Jq4jveVJgN1XBhqpCEDYTyDeXW/YS0bBGN3CRvTvON5IvZpaxcu0g==
   dependencies:
-    "@octokit/openapi-types" "^14.0.0"
+    "@octokit/openapi-types" "^16.0.0"
 
 "@open-draft/until@^1.0.3":
   version "1.0.3"
@@ -2576,19 +2576,19 @@
     "@sinonjs/commons" "^1.7.0"
 
 "@spotify/eslint-config-base@^14.0.0":
-  version "14.1.3"
-  resolved "https://registry.yarnpkg.com/@spotify/eslint-config-base/-/eslint-config-base-14.1.3.tgz#a3f6771cf497be6cf303ba1cb30c8ebb3861e459"
-  integrity sha512-Uy2yDkUF7yHjSUB+/b3QO3zLwvU94UkIAFYb6l+kJMhgHHgR8pUpPZdyYY+ThLnMpcOJZKd60quwIx/vyvdvEA==
+  version "14.1.4"
+  resolved "https://registry.yarnpkg.com/@spotify/eslint-config-base/-/eslint-config-base-14.1.4.tgz#508a01d96a3ccad6f9d2949f3f519cbefd6c8823"
+  integrity sha512-wdQ8cCsR3KffuOgF8zYXmrO80fPC8vap9QRJVRznvVP7J9VicI1C7i4SXbjT17/Ld7CYTt5qLOrUTU7iFTnG/w==
 
 "@spotify/eslint-config-react@^14.0.0":
-  version "14.1.3"
-  resolved "https://registry.yarnpkg.com/@spotify/eslint-config-react/-/eslint-config-react-14.1.3.tgz#e9c9bd37ff2dd0051538f5dfc38e06a37d165214"
-  integrity sha512-ZvTc9eIAuGvj1nfJhIMb5LbX6DbGXUBcLsB7B+DnaL0BB1e6WmtaDxJJ4QyPpLkLSu5fTTlziej8Jov1k4gCFg==
+  version "14.1.4"
+  resolved "https://registry.yarnpkg.com/@spotify/eslint-config-react/-/eslint-config-react-14.1.4.tgz#947555a80c88e53e9822084611341fc75e86c488"
+  integrity sha512-39jBj6O8Zc1Y1lvN6anfVwytU1+sh9wPHyPaGPjBLuKm5R4fps8k0lMjvTxGg4cbOYRjDbVx0AualJQJ1se9Zw==
 
 "@spotify/eslint-config-typescript@^14.0.0":
-  version "14.1.3"
-  resolved "https://registry.yarnpkg.com/@spotify/eslint-config-typescript/-/eslint-config-typescript-14.1.3.tgz#37de8d3cdb4b42ed473cf1dc14dcc147c10b63d2"
-  integrity sha512-dqHuWIyq73J3QkDAO0DIokouex7e+xMpx2XeNmaa4DmLyU7AoYUqd6LEoLdq8w5cJouuVHHNxBOQEw9TAH5zhw==
+  version "14.1.4"
+  resolved "https://registry.yarnpkg.com/@spotify/eslint-config-typescript/-/eslint-config-typescript-14.1.4.tgz#59b467866714d8da5694f79726488dad4fcd1a67"
+  integrity sha512-JNTqTpZUa7qVIiRl3D+sX9fDVlhD/K2oqMVlk54LEK4uFXk3xZA7i94dawcmOvjR3+Wtk3s2RNGBc9jZ466uqw==
 
 "@spotify/prettier-config@^12.0.0":
   version "12.0.0"
@@ -6735,9 +6735,9 @@ get-caller-file@^2.0.5:
   integrity sha512-DyFP3BM/3YHTQOCUL/w0OZHR0lpKeGrxotcHWcqNEdnltqFwXVfhEBQ94eIo34AfQpo0rGki4cyIiftY06h2Fg==
 
 get-intrinsic@^1.0.2, get-intrinsic@^1.1.1, get-intrinsic@^1.1.3:
-  version "1.1.3"
-  resolved "https://registry.yarnpkg.com/get-intrinsic/-/get-intrinsic-1.1.3.tgz#063c84329ad93e83893c7f4f243ef63ffa351385"
-  integrity sha512-QJVz1Tj7MS099PevUG5jvnt9tSkXN8K14dxQlikJuPt4uD9hHAHjLyLBiLR5zELelBdD9QNRAXZzsJx0WaDL9A==
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/get-intrinsic/-/get-intrinsic-1.2.0.tgz#7ad1dc0535f3a2904bba075772763e5051f6d05f"
+  integrity sha512-L049y6nFOuom5wGyRc3/gdTLO94dySVKRACj1RmJZBQXlbTMhtNIgkWkUHq+jYmZvKf14EW1EoJnnjbmoHij0Q==
   dependencies:
     function-bind "^1.1.1"
     has "^1.0.3"
@@ -8320,9 +8320,9 @@ js-md4@^0.3.2:
   integrity sha512-/GDnfQYsltsjRswQhN9fhv3EMw2sCpUdrdxyWDOUK7eyD++r3gRhzgiQgc/x4MAv2i1iuQ4lxO5mvqM3vj4bwA==
 
 js-sdsl@^4.1.4:
-  version "4.2.0"
-  resolved "https://registry.yarnpkg.com/js-sdsl/-/js-sdsl-4.2.0.tgz#278e98b7bea589b8baaf048c20aeb19eb7ad09d0"
-  integrity sha512-dyBIzQBDkCqCu+0upx25Y2jGdbTGxE9fshMsCdK0ViOongpV+n5tXRcZY9v7CaVQ79AGS9KA1KHtojxiM7aXSQ==
+  version "4.3.0"
+  resolved "https://registry.yarnpkg.com/js-sdsl/-/js-sdsl-4.3.0.tgz#aeefe32a451f7af88425b11fdb5f58c90ae1d711"
+  integrity sha512-mifzlm2+5nZ+lEcLJMoBK0/IH/bDg8XnJfd/Wq6IP+xoCjLZsTOnV2QpxlVbX9bMnkl5PdEjNtBJ9Cj1NjifhQ==
 
 "js-tokens@^3.0.0 || ^4.0.0", js-tokens@^4.0.0:
   version "4.0.0"
@@ -10786,9 +10786,9 @@ punycode@^1.2.4:
   integrity sha512-jmYNElW7yvO7TV33CjSmvSiE2yco3bV2czu/OzDKdMNVZQWfxCblURLhf+47syQRBntjfLdd/H0egrzIG+oaFQ==
 
 punycode@^2.1.0, punycode@^2.1.1:
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/punycode/-/punycode-2.2.0.tgz#2092cc57cd2582c38e4e7e8bb869dc8d3148bc74"
-  integrity sha512-LN6QV1IJ9ZhxWTNdktaPClrNfp8xdSAYS0Zk2ddX7XsXZAxckMHPCBcHRo0cTcEIgYPRiGEkmji3Idkh2yFtYw==
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/punycode/-/punycode-2.3.0.tgz#f67fa67c94da8f4d0cfff981aee4118064199b8f"
+  integrity sha512-rRV+zQD8tVFys26lAGR9WUuS4iUAngJScM+ZRSKtvl5tKeZ2t5bvdNFdNHBW9FWR4guGHlgmsZ1G7BSm2wTbuA==
 
 q@^1.5.1:
   version "1.5.1"
@@ -12828,9 +12828,9 @@ unist-builder@^3.0.0:
     "@types/unist" "^2.0.0"
 
 unist-util-generated@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/unist-util-generated/-/unist-util-generated-2.0.0.tgz#86fafb77eb6ce9bfa6b663c3f5ad4f8e56a60113"
-  integrity sha512-TiWE6DVtVe7Ye2QxOVW9kqybs6cZexNwTwSMVgkfjEReqy/xwGpAXb99OxktoWwmL+Z+Epb0Dn8/GNDYP1wnUw==
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/unist-util-generated/-/unist-util-generated-2.0.1.tgz#e37c50af35d3ed185ac6ceacb6ca0afb28a85cae"
+  integrity sha512-qF72kLmPxAw0oN2fwpWIqbXAVyEqUzDHMsbtPvOudIlUzXYFIeQIuxXQCRCFh22B7cixvU0MG7m3MW8FTq/S+A==
 
 unist-util-is@^5.0.0:
   version "5.1.1"
