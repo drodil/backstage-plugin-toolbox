@@ -1,4 +1,4 @@
-import React, { Suspense, useEffect } from 'react';
+import React, { Suspense, useEffect, useMemo } from 'react';
 import {
   Content,
   ContentHeader,
@@ -23,6 +23,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import { defaultTools } from './tools';
 import OpenInNew from '@material-ui/icons/OpenInNew';
 import { FavoriteButton } from '../Buttons/FavoriteButton';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 export type Tool = {
   id: string;
@@ -47,14 +48,12 @@ export type ToolsPageProps = {
 
 export const ToolsPage = (props: ToolsPageProps) => {
   const { extraTools } = props;
+  const { hash } = useLocation();
+  const navigate = useNavigate();
   const [value, setValue] = React.useState(1);
   const [search, setSearch] = React.useState('');
   const favorites = useFavoriteStorage();
   const styles = useStyles();
-
-  const handleChange = (_: any, newValue: number) => {
-    setValue(newValue);
-  };
 
   const openToolInWindow = (id: string) => {
     window.open(`/toolbox/tool/${id}`, 'newwindow', 'width=1000,height=800');
@@ -105,7 +104,8 @@ export const ToolsPage = (props: ToolsPageProps) => {
     title: string;
     description?: string;
     headerButtons?: JSX.Element[];
-  }[] = [];
+  }[] = useMemo(() => [], []);
+
   Object.entries(categories).map(([category, tools]) => {
     tabs.push({
       tab: (
@@ -141,6 +141,20 @@ export const ToolsPage = (props: ToolsPageProps) => {
       });
     });
   });
+
+  useEffect(() => {
+    const idx = tabs.findIndex(tab => tab.id === hash.slice(1));
+    if (idx > -1) {
+      setValue(idx);
+    }
+  }, [hash, value, tabs]);
+
+  const handleChange = (_: any, newValue: number) => {
+    const tab = tabs[newValue];
+    if (tab) {
+      navigate(`#${tab.id}`);
+    }
+  };
 
   return (
     <Page themeId="tool">
