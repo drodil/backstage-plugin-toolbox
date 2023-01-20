@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.6.1](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.6.0...v1.6.1) (2023-01-20)
+
+
+### Bug Fixes
+
+* missing css on install ([5fe20f1](https://github.com/drodil/backstage-plugin-toolbox/commit/5fe20f17f0907d9867c6eb90a24233ed16220c51))
+* zindex in tool page ([31ffd24](https://github.com/drodil/backstage-plugin-toolbox/commit/31ffd24be3b8ed62d9b47ddb8216d2dfb8a6635e))
+
 ## [1.6.0](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.5.0...v1.6.0) (2023-01-20)
 
 
