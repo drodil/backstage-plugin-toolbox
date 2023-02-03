@@ -24,6 +24,22 @@ const AppRoutes = () => (
   </FlatRoutes>
 );
 ```
+Add the navigation in the frontend:
+
+```ts
+// packages/app/src/components/Root/Root.tsx
+import BuildIcon from '@material-ui/icons/Build';
+
+// ...
+
+export const Root = ({ children }: PropsWithChildren<{}>) => (
+  <SidebarPage>
+    // ...
+    <SidebarItem icon={BuildIcon} to="toolbox" text="ToolBox" />
+    // ...
+  </SidebarPage>
+);
+```
 
 An interface for toolbox is now available at `/toolbox`.
 
