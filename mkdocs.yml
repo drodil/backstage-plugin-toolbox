@@ -1,5 +1,5 @@
-site_name: 'Backstage Announcements plugin'
-site_description: 'Announcements management for Backstage'
+site_name: 'Backstage Toolbox plugin'
+site_description: 'Developer tools for Backstage'
 
 nav:
   - Home: index.md

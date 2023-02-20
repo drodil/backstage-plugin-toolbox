@@ -1,5 +1,5 @@
 app:
-  title: Announcements Dev App
+  title: Toolbox Dev App
   baseUrl: http://localhost:3000
 
 backend:
