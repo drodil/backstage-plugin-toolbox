@@ -1,0 +1,1 @@
+export { DefaultEditor } from './DefaultEditor';

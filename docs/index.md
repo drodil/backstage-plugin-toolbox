@@ -24,6 +24,7 @@ const AppRoutes = () => (
   </FlatRoutes>
 );
 ```
+
 Add the navigation in the frontend:
 
 ```ts
