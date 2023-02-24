@@ -167,7 +167,7 @@ export const ToolsPage = (props: ToolsPageProps) => {
           direction="row-reverse"
           className={`${styles.noMargin} ${styles.fullWidth} ${styles.noPadding}`}
         >
-          <Grid item xs={4} md={3} lg={2} xl="auto" className={styles.toolsBar}>
+          <Grid item xs={4} md={3} lg={2} className={styles.toolsBar}>
             <Paper component="form" className={styles.search}>
               <InputBase
                 placeholder="Search"
