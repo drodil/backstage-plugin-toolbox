@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.6.3](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.6.2...v1.6.3) (2023-02-24)
+
+
+### Bug Fixes
+
+* app config ([01861d2](https://github.com/drodil/backstage-plugin-toolbox/commit/01861d2cd272bb4a2a431272b99e90e7a507599b))
+* remove xl breakpoint for grid ([a20dda3](https://github.com/drodil/backstage-plugin-toolbox/commit/a20dda386ac5abbe58e9d83a613b7cd2b0bcc2e2))
+
 ### [1.6.2](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.6.1...v1.6.2) (2023-02-20)
 
 
