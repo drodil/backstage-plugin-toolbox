@@ -7,6 +7,7 @@ const Base64Encode = lazy(() => import('../Encoders/Base64Encode'));
 const UrlEncode = lazy(() => import('../Encoders/UrlEncode'));
 const HtmlEntities = lazy(() => import('../Encoders/HtmlEntities'));
 const Backslash = lazy(() => import('../Encoders/Backslash'));
+const JwtDecoder = lazy(() => import('../Encoders/JwtDecoder'));
 
 const NumberBase = lazy(() => import('../Converters/NumberBase'));
 const MarkdownPreview = lazy(() => import('../Converters/MarkdownPreview'));
@@ -46,6 +47,18 @@ export const defaultTools: Tool[] = [
     id: 'html-entity-encode',
     name: 'HTML entities',
     component: <HtmlEntities />,
+    category: 'Encode/Decode',
+  },
+  {
+    id: 'backslash-encode',
+    name: 'Backslash escape',
+    component: <Backslash />,
+    category: 'Encode/Decode',
+  },
+  {
+    id: 'jwt-decoder-encode',
+    name: 'JWT decoder',
+    component: <JwtDecoder />,
     category: 'Encode/Decode',
   },
   {
@@ -124,12 +137,6 @@ export const defaultTools: Tool[] = [
     component: <EntityDescriber />,
     category: 'Backstage',
     description: 'Describes catalog entities in YAML',
-  },
-  {
-    id: 'backslash-encode',
-    name: 'Backslash escape',
-    component: <Backslash />,
-    category: 'Encode/Decode',
   },
   {
     id: 'lorem-ipsum-generate',
