@@ -117,7 +117,7 @@ export const defaultTools: Tool[] = [
   },
   {
     id: 'sla-calculator',
-    name: 'SLA Calculator',
+    name: 'SLA calculator',
     component: <SLACalculator />,
     category: 'Convert',
   },

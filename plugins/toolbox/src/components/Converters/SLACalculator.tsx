@@ -1,6 +1,7 @@
 import { useStyles } from '../../utils/hooks';
 import React from 'react';
 import {
+  Button,
   Divider,
   FormControl,
   Grid,
@@ -10,6 +11,7 @@ import {
 import { PasteFromClipboardButton } from '../Buttons/PasteFromClipboardButton';
 import { ClearValueButton } from '../Buttons/ClearValueButton';
 import { CopyToClipboardButton } from '../Buttons/CopyToClipboardButton';
+import Alert from '@material-ui/lab/Alert/Alert';
 
 export const SLACalculator = () => {
   const styles = useStyles();
@@ -20,6 +22,10 @@ export const SLACalculator = () => {
     monthly: '',
     quarterly: '',
     yearly: '',
+  });
+  const [error, setError] = React.useState({
+    show: false,
+    msg: '',
   });
 
   const convertTime = (value: number) => {
@@ -32,6 +38,10 @@ export const SLACalculator = () => {
     }
 
     return `${minutes}m ${seconds}s`;
+  };
+
+  const isValidFloat = (value: string) => {
+    return /^\d+(\.\d*)?$/.test(value);
   };
 
   const handleChange = (value: string) => {
@@ -47,15 +57,19 @@ export const SLACalculator = () => {
       return;
     }
 
-    const base = parseFloat(value);
-    if (isNaN(base)) {
+    if (!isValidFloat(value)) {
+      setError({ show: true, msg: 'Only float values are supported!' });
       return;
     }
-    if (base >= 100) {
-      return;
-    }
-
     setInput(value);
+    setError({ show: false, msg: '' });
+
+    let base = parseFloat(value);
+    if (base > 100) {
+      setError({ show: true, msg: 'Max value is 100!' });
+      base = 100;
+      setInput('100');
+    }
 
     const daily = (24 - (base * 24) / 100) * 60 * 60;
 
@@ -92,7 +106,15 @@ export const SLACalculator = () => {
             <Typography variant="subtitle1">
               Agreed SLA level in %
               <PasteFromClipboardButton setInput={v => handleChange(v)} />
-              <ClearValueButton setValue={() => handleChange('')} />
+              <ClearValueButton
+                setValue={() => {
+                  handleChange('');
+                  setError({ show: false, msg: '' });
+                }}
+              />
+              <Button size="small" onClick={() => handleChange('99.9')}>
+                Sample
+              </Button>
             </Typography>
             <TextField
               className={styles.fullWidth}
@@ -102,6 +124,7 @@ export const SLACalculator = () => {
               onChange={e => handleChange(e.target.value)}
               variant="outlined"
             />
+            {error.show ? <Alert severity="error">{error.msg}</Alert> : null}
           </Grid>
         </Grid>
         <Divider style={{ marginTop: '1rem', marginBottom: '1rem' }} />
@@ -120,3 +143,5 @@ export const SLACalculator = () => {
 };
 
 export default SLACalculator;
+
+// Only float values are supported!
