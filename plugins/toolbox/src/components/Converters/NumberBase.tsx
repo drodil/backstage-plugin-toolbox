@@ -3,6 +3,7 @@ import { useStyles } from '../../utils/hooks';
 import { FormControl, TextField, Typography } from '@material-ui/core';
 import { PasteFromClipboardButton } from '../Buttons/PasteFromClipboardButton';
 import { ClearValueButton } from '../Buttons/ClearValueButton';
+import { CopyToClipboardButton } from '../Buttons/CopyToClipboardButton';
 
 export const NumberBase = () => {
   const styles = useStyles();
@@ -56,6 +57,7 @@ export const NumberBase = () => {
           Base 2 (Binary)
           <PasteFromClipboardButton setInput={v => handleChange('binary', v)} />
           <ClearValueButton setValue={() => handleChange('binary', '')} />
+          <CopyToClipboardButton output={state.binary} />
         </Typography>
         <TextField
           className={styles.fullWidth}
@@ -69,6 +71,7 @@ export const NumberBase = () => {
           Base 8 (Octal)
           <PasteFromClipboardButton setInput={v => handleChange('octal', v)} />
           <ClearValueButton setValue={() => handleChange('octal', '')} />
+          <CopyToClipboardButton output={state.octal} />
         </Typography>
         <TextField
           className={styles.fullWidth}
@@ -84,6 +87,7 @@ export const NumberBase = () => {
             setInput={v => handleChange('decimal', v)}
           />
           <ClearValueButton setValue={() => handleChange('decimal', '')} />
+          <CopyToClipboardButton output={state.decimal} />
         </Typography>
         <TextField
           className={styles.fullWidth}
@@ -97,6 +101,7 @@ export const NumberBase = () => {
           Base 16 (Hex)
           <PasteFromClipboardButton setInput={v => handleChange('hex', v)} />
           <ClearValueButton setValue={() => handleChange('hex', '')} />
+          <CopyToClipboardButton output={state.hex} />
         </Typography>
         <TextField
           className={styles.fullWidth}
