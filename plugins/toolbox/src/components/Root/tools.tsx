@@ -18,6 +18,7 @@ const YamlToJson = lazy(() => import('../Converters/YamlToJson'));
 const StringCase = lazy(() => import('../Converters/StringCase'));
 const TimeConverter = lazy(() => import('../Converters/TimeConverter'));
 const XmlToJson = lazy(() => import('../Converters/XmlToJson'));
+const SLACalculator = lazy(() => import('../Converters/SLACalculator'));
 
 const EntityValidator = lazy(() => import('../Validators/EntityValidator'));
 const EntityDescriber = lazy(() => import('../Misc/EntityDescriber'));
@@ -112,6 +113,12 @@ export const defaultTools: Tool[] = [
     id: 'time-convert',
     name: 'Time converter',
     component: <TimeConverter />,
+    category: 'Convert',
+  },
+  {
+    id: 'sla-calculator',
+    name: 'SLA calculator',
+    component: <SLACalculator />,
     category: 'Convert',
   },
   {
