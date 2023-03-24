@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.7.0](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.6.3...v1.7.0) (2023-03-24)
+
+
+### Features
+
+* add JWT decoder ([4287c00](https://github.com/drodil/backstage-plugin-toolbox/commit/4287c00ead5b1e6e9c88471831042d3b5a09ea4a))
+* **converters:** add copy button to number base ([9c6e59e](https://github.com/drodil/backstage-plugin-toolbox/commit/9c6e59ee681ef1986ebf595ecb16a27ed68a0706))
+* **converters:** add sla calculator ([6901995](https://github.com/drodil/backstage-plugin-toolbox/commit/6901995dd2dce6b3a3e67bc8f0438f562d2ff894))
+
+
+### Bug Fixes
+
+* **converters:** changes to sla calculator after review ([4d34403](https://github.com/drodil/backstage-plugin-toolbox/commit/4d344030e87b12153e3c9ac9bbe4a898721c1ce1))
+* **encoders:** add error handling to en/decodeURI ([4eb84b0](https://github.com/drodil/backstage-plugin-toolbox/commit/4eb84b0ca4bbbee4df55514018d5199b571bfcb7))
+
 ### [1.6.3](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.6.2...v1.6.3) (2023-02-24)
 
 
