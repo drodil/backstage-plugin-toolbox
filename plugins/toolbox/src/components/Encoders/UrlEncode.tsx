@@ -7,11 +7,16 @@ export const UrlEncode = () => {
   const [mode, setMode] = React.useState('Encode');
 
   useEffect(() => {
-    if (mode === 'Encode') {
-      setOutput(encodeURI(input));
-    } else {
-      setOutput(decodeURI(input));
+    let url = '';
+    let errorMessage = '';
+    try {
+      url = mode === 'Encode' ? encodeURI(input) : decodeURI(input);
+    } catch (error) {
+      errorMessage = `couldn't ${
+        mode === 'Encode' ? 'encode' : 'decode'
+      } URL...`;
     }
+    setOutput(url || errorMessage);
   }, [input, mode]);
 
   return (
