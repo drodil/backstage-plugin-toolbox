@@ -19,6 +19,7 @@ const StringCase = lazy(() => import('../Converters/StringCase'));
 const TimeConverter = lazy(() => import('../Converters/TimeConverter'));
 const XmlToJson = lazy(() => import('../Converters/XmlToJson'));
 const SLACalculator = lazy(() => import('../Converters/SLACalculator'));
+const ColorConverter = lazy(() => import('../Converters/ColorConverter'));
 
 const EntityValidator = lazy(() => import('../Validators/EntityValidator'));
 const EntityDescriber = lazy(() => import('../Misc/EntityDescriber'));
@@ -113,6 +114,12 @@ export const defaultTools: Tool[] = [
     id: 'time-convert',
     name: 'Time converter',
     component: <TimeConverter />,
+    category: 'Convert',
+  },
+  {
+    id: 'color-convert',
+    name: 'Color converter',
+    component: <ColorConverter />,
     category: 'Convert',
   },
   {
