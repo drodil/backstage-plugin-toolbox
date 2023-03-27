@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.8.0](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.7.0...v1.8.0) (2023-03-27)
+
+
+### Features
+
+* add countdown and stopwatch timers ([6adff2b](https://github.com/drodil/backstage-plugin-toolbox/commit/6adff2b464a8f3b5fac9fa3b2d52a9f222c5bca0)), closes [#27](https://github.com/drodil/backstage-plugin-toolbox/issues/27)
+* capture tab changes to analytics ([b36b061](https://github.com/drodil/backstage-plugin-toolbox/commit/b36b061561323cebb12b3f998fb71e7bf8c955b2)), closes [#29](https://github.com/drodil/backstage-plugin-toolbox/issues/29)
+* **converters:** add color converter tool ([31a15c0](https://github.com/drodil/backstage-plugin-toolbox/commit/31a15c0165980cad6d9c87925f6ee75104d04a68))
+
 ## [1.7.0](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.6.3...v1.7.0) (2023-03-24)
 
 
