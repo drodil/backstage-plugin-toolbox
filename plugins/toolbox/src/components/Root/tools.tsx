@@ -23,6 +23,8 @@ const ColorConverter = lazy(() => import('../Converters/ColorConverter'));
 
 const EntityValidator = lazy(() => import('../Validators/EntityValidator'));
 const EntityDescriber = lazy(() => import('../Misc/EntityDescriber'));
+const Countdown = lazy(() => import('../Misc/Countdown'));
+const Timer = lazy(() => import('../Misc/Timer'));
 
 const LoremIpsum = lazy(() => import('../Generators/LoremIpsum'));
 const Hash = lazy(() => import('../Generators/Hash'));
@@ -187,5 +189,17 @@ export const defaultTools: Tool[] = [
     name: 'SQL Beautify',
     component: <SQLBeautify />,
     category: 'Format',
+  },
+  {
+    id: 'countdown',
+    name: 'Countdown timer',
+    component: <Countdown />,
+    category: 'Miscellaneous',
+  },
+  {
+    id: 'stopwatch',
+    name: 'Stopwatch timer',
+    component: <Timer />,
+    category: 'Miscellaneous',
   },
 ];
