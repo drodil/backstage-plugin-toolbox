@@ -24,6 +24,7 @@ import { defaultTools } from './tools';
 import OpenInNew from '@material-ui/icons/OpenInNew';
 import { FavoriteButton } from '../Buttons/FavoriteButton';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { useAnalytics } from '@backstage/core-plugin-api';
 
 export type Tool = {
   id: string;
@@ -59,6 +60,7 @@ export const ToolsPage = (props: ToolsPageProps) => {
   const { extraTools } = props;
   const { hash } = useLocation();
   const navigate = useNavigate();
+  const analytics = useAnalytics();
   const [value, setValue] = React.useState(1);
   const [search, setSearch] = React.useState('');
   const favorites = useFavoriteStorage();
@@ -153,6 +155,9 @@ export const ToolsPage = (props: ToolsPageProps) => {
   const handleChange = (_: any, newValue: number) => {
     const tab = tabs[newValue];
     if (tab) {
+      analytics.captureEvent('click', tab.id, {
+        attributes: { toolName: tab.title },
+      });
       navigate(`#${tab.id}`);
     }
   };
