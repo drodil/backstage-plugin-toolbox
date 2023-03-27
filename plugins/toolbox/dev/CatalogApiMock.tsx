@@ -12,6 +12,8 @@ import {
   GetEntityFacetsRequest,
   GetEntityFacetsResponse,
   Location,
+  QueryEntitiesRequest,
+  QueryEntitiesResponse,
   ValidateEntityResponse,
 } from '@backstage/catalog-client';
 import { CompoundEntityRef, Entity } from '@backstage/catalog-model';
@@ -135,6 +137,13 @@ export class CatalogApiMock implements CatalogApi {
     _locationRef: string,
     _options?: CatalogRequestOptions,
   ): Promise<ValidateEntityResponse> {
+    return Promise.reject();
+  }
+
+  queryEntities(
+    _request?: QueryEntitiesRequest,
+    _options?: CatalogRequestOptions,
+  ): Promise<QueryEntitiesResponse> {
     return Promise.reject();
   }
 }
