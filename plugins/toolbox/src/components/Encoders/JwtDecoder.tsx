@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import jwtDecode from 'jwt-decode';
+import jwtDecode, { JwtPayload } from 'jwt-decode';
 import { DefaultEditor } from '../DefaultEditor';
 
 export const JwtDecoder = () => {
@@ -12,12 +12,12 @@ export const JwtDecoder = () => {
   useEffect(() => {
     if (input) {
       try {
-        const jwtPayload = jwtDecode(input) as { iat?: number; exp?: number };
+        const jwtPayload = jwtDecode<JwtPayload>(input);
         setOutput(`Issued date:
-${jwtPayload.iat && new Date(jwtPayload.iat)}
+${jwtPayload.iat && new Date(jwtPayload.iat * 1000)}
 
 Expiration date:
-${jwtPayload.exp && new Date(jwtPayload.exp)}
+${jwtPayload.exp && new Date(jwtPayload.exp * 1000)}
 
 Header:
 ${JSON.stringify(jwtDecode(input, { header: true }), null, 2)}
