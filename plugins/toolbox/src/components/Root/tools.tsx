@@ -34,7 +34,8 @@ const HTMLBeautify = lazy(() => import('../Formatters/HTMLBeautify'));
 const CSSBeautify = lazy(() => import('../Formatters/CSSBeautify'));
 const SQLBeautify = lazy(() => import('../Formatters/SQLBeautify'));
 
-const CidrCalculator = lazy(() => import('../Networking/CidrCalculator'));
+// const CidrCalculator = lazy(() => import('../Networking/CidrCalculator'));
+
 export const defaultTools: Tool[] = [
   {
     id: 'base64-encode',
@@ -203,10 +204,12 @@ export const defaultTools: Tool[] = [
     component: <Timer />,
     category: 'Miscellaneous',
   },
+  /**
   {
     id: 'cidr-calculator',
     name: 'CIDR calculator',
     component: <CidrCalculator />,
     category: 'Networking',
   },
+  */
 ];

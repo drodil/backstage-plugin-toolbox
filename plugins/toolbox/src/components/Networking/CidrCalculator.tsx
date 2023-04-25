@@ -1,3 +1,7 @@
+/**
+ * This is disabled for now, fails to build the Backstage app for some reason
+ * ERROR: Big integer literals are not available in the configured target environment ("es2019")
+ * FIXME.
 import React, { useEffect } from 'react';
 import { DefaultEditor } from '../DefaultEditor/DefaultEditor';
 import { TextField } from '@material-ui/core';
@@ -120,3 +124,4 @@ export const CidrCalculator = () => {
 };
 
 export default CidrCalculator;
+*/
