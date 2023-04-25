@@ -73,3 +73,28 @@ const extraToolExample: Tool = {
 
 <ToolboxPage extraTools={[extraToolExample]} />;
 ```
+
+## Adding tools to custom home page
+
+You can add tools to the Backstage custom home page as follows:
+
+```tsx
+import { CustomHomepageGrid } from '@backstage/plugin-home';
+import { ToolboxHomepageCard } from '@drodil/backstage-plugin-toolbox';
+import { Content, Page } from '@backstage/core-components';
+
+export const HomePage = () => {
+  return (
+    <Page themeId="home">
+      <Content>
+        <CustomHomepageGrid>
+          <ToolboxHomepageCard />
+        </CustomHomepageGrid>
+      </Content>
+    </Page>
+  );
+};
+```
+
+This allows the home page users to configure the card so that their favorite tool is available in their home page.
+For more information, see https://github.com/backstage/backstage/pull/16744
