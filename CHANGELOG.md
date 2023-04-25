@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.9.0](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.8.0...v1.9.0) (2023-04-25)
+
+
+### Features
+
+* add CIDR networking calculator ([b031451](https://github.com/drodil/backstage-plugin-toolbox/commit/b031451012cc8dc742c373485dfa572d7cec2dec)), closes [#16](https://github.com/drodil/backstage-plugin-toolbox/issues/16)
+* add home page card extension for tools ([92d44f0](https://github.com/drodil/backstage-plugin-toolbox/commit/92d44f0585504a49e4d1b9d4197e0297116200eb)), closes [#37](https://github.com/drodil/backstage-plugin-toolbox/issues/37)
+
+
+### Bug Fixes
+
+* add react types as resolution ([b9c555c](https://github.com/drodil/backstage-plugin-toolbox/commit/b9c555caaa53a75b2f2842234160fffdce146a7a))
+* date constructor expects milliseconds ([f49096b](https://github.com/drodil/backstage-plugin-toolbox/commit/f49096bc010c6baa846af1a6f18b883f10620580))
+
 ## [1.8.0](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.7.0...v1.8.0) (2023-03-27)
 
 
