@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.9.2](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.9.1...v1.9.2) (2023-04-25)
+
+
+### Bug Fixes
+
+* disable cidr calculator for now due to build error ([78dd8f4](https://github.com/drodil/backstage-plugin-toolbox/commit/78dd8f48466e108f17b20ed77eed8ad0f2b47b2c))
+
 ### [1.9.1](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.9.0...v1.9.1) (2023-04-25)
 
 
