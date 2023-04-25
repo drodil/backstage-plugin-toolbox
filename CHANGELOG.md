@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.9.1](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.9.0...v1.9.1) (2023-04-25)
+
+
+### Bug Fixes
+
+* add missing export for homepage card ([4703e82](https://github.com/drodil/backstage-plugin-toolbox/commit/4703e82fce0c7c19fe85f362b1cbf1ebe75b7669))
+
 ## [1.9.0](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.8.0...v1.9.0) (2023-04-25)
 
 
