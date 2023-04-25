@@ -25,7 +25,7 @@ ${JSON.stringify(jwtDecode(input, { header: true }), null, 2)}
 Payload:
 ${JSON.stringify(jwtPayload, null, 2)}`);
       } catch (error) {
-        setOutput("couldn't decode JWT token...");
+        setOutput(`Couldn't decode JWT token: ${error}`);
       }
     }
   }, [input]);
