@@ -25,6 +25,7 @@ const EntityValidator = lazy(() => import('../Validators/EntityValidator'));
 const EntityDescriber = lazy(() => import('../Misc/EntityDescriber'));
 const Countdown = lazy(() => import('../Misc/Countdown'));
 const Timer = lazy(() => import('../Misc/Timer'));
+const Diff = lazy(() => import('../Misc/Diff'));
 
 const LoremIpsum = lazy(() => import('../Generators/LoremIpsum'));
 const Hash = lazy(() => import('../Generators/Hash'));
@@ -202,6 +203,12 @@ export const defaultTools: Tool[] = [
     id: 'stopwatch',
     name: 'Stopwatch timer',
     component: <Timer />,
+    category: 'Miscellaneous',
+  },
+  {
+    id: 'diff',
+    name: 'File Diff',
+    component: <Diff />,
     category: 'Miscellaneous',
   },
   /**
