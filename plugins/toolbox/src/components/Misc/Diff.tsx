@@ -29,6 +29,11 @@ const options: monaco.editor.IDiffEditorConstructionOptions = {
     renderSideBySide: true,
 };
 
+function getLanguage(allowedLanguages: MonacoLanguages[], extension: string) {
+    return allowedLanguages.find(monacoLanguage =>
+        monacoLanguage.extensions.includes(extension as string))?.name;
+}
+
 function readFileAndSetText(
     file: File | undefined,
     setText: (value: ((prevState: string) => string) | string) => void,
@@ -48,12 +53,7 @@ function readFileAndSetText(
     let newLanguage = 'plaintext';
     const extension = `.${file.name.split('.').pop()}`;
     if (allowedLanguages?.length) {
-        for (let i = 0; i < allowedLanguages.length; i++) {
-            if (allowedLanguages[i].extensions.includes(extension as string)) {
-                newLanguage = allowedLanguages[i].name;
-                break;
-            }
-        }
+        newLanguage = getLanguage(allowedLanguages, extension) || newLanguage;
     }
     setLanguage(newLanguage);
 }
