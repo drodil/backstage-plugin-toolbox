@@ -1,10 +1,25 @@
 import { DiffEditor } from '@monaco-editor/react';
 import React, { useEffect, useState } from 'react';
-import { Button, FormControl, Grid } from '@material-ui/core';
+import {Button, ButtonGroup, FormControl, Grid, Tooltip} from '@material-ui/core';
 import { useStyles } from '../../utils/hooks';
 import * as monaco from 'monaco-editor';
 import { useEffectOnce } from 'react-use';
 import { Select, SelectItem } from '@backstage/core-components';
+
+import {
+    ClearValueButton,
+    FileUploadButton,
+    CopyToClipboardButton,
+    PasteFromClipboardButton
+} from "../Buttons";
+import Input from "@material-ui/icons/Input";
+
+export type MonacoLanguages = { name: string; extensions: string[] };
+
+type SampleButtonProps = {
+    sample: string[];
+    setInput: (input: string[]) => void;
+};
 
 const options: monaco.editor.IDiffEditorConstructionOptions = {
     originalEditable: true,
@@ -14,84 +29,63 @@ const options: monaco.editor.IDiffEditorConstructionOptions = {
     renderSideBySide: true,
 };
 
-const FileUploader = ({
-                          onFileLoad,
-                          id,
-                          buttonText,
-                      }: {
-    onFileLoad: Function;
-    id: string;
-    buttonText: string;
-}) => {
-    return (
-        <>
-            <input
-                type="file"
-                accept="*/*"
-                id={id}
-                hidden
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                    if (e?.target?.files && e.target.files.length) {
-                        return onFileLoad(e.target.files[0]);
-                    }
-                    return null;
-                }}
-            />
-            <label htmlFor={id}>
-                <Button variant="contained" color="primary" component="span">
-                    {buttonText}
-                </Button>
-            </label>
-        </>
-    );
-};
-
 function readFileAndSetText(
     file: File | undefined,
     setText: (value: ((prevState: string) => string) | string) => void,
     setLanguage: (value: ((prevState: string) => string) | string) => void,
     allowedLanguages: MonacoLanguages[],
 ) {
-    if (file) {
-        const reader = new FileReader();
-        reader.onload = async e => {
-            // @ts-ignore
-            setText(e.target.result);
-        };
-        reader.readAsText(file);
-        let newLanguage = 'plaintext';
-        const extension = `.${file.name.split('.').pop()}`;
-        if (allowedLanguages?.length) {
-            for (let i = 0; i < allowedLanguages.length; i++) {
-                if (allowedLanguages[i].extensions.includes(extension as string)) {
-                    newLanguage = allowedLanguages[i].name;
-                    break;
-                }
+    if(!file) {
+        return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = async e => {
+        // @ts-ignore
+        setText(e.target.result);
+    };
+    reader.readAsText(file);
+    let newLanguage = 'plaintext';
+    const extension = `.${file.name.split('.').pop()}`;
+    if (allowedLanguages?.length) {
+        for (let i = 0; i < allowedLanguages.length; i++) {
+            if (allowedLanguages[i].extensions.includes(extension as string)) {
+                newLanguage = allowedLanguages[i].name;
+                break;
             }
         }
-        setLanguage(newLanguage);
     }
+    setLanguage(newLanguage);
 }
 
-export type MonacoLanguages = { name: string; extensions: string[] };
+export const SampleButton = (props: SampleButtonProps) => {
+    const { sample, setInput } = props;
+    return (
+        <Tooltip arrow title="Input sample">
+            <Button
+                size="small"
+                startIcon={<Input />}
+                onClick={() => setInput(sample)}
+            >
+                Sample
+            </Button>
+        </Tooltip>
+    );
+};
 
 function Diff() {
     const styles = useStyles();
     const [originalFile, setOriginalFile] = useState<File>();
     const [modifiedFile, setModifiedFile] = useState<File>();
 
-    const [originalText, setOriginalText] = useState(
-        `Backstage toolbox\n\ncompare text`,
-    );
-    const [modifiedText, setModifiedText] = useState(
-        `Backstage toolbox\ndiff editor`,
-    );
+    const [originalText, setOriginalText] = useState('');
+    const [modifiedText, setModifiedText] = useState('');
+
     const [language, setLanguage] = useState('plaintext');
+    const [allowedLanguages, setAllowedLanguages] = useState<MonacoLanguages[]>([],);
 
-    const [allowedLanguages, setAllowedLanguages] = useState<MonacoLanguages[]>(
-        [],
-    );
-
+    const exampleOriginalText = 'Backstage toolbox\n\ncompare text';
+    const exampleModifiedText = 'Backstage toolbox\ndiff editor';
     const handleLanguageSelect = (selected: any) => {
         setLanguage(selected);
     };
@@ -136,24 +130,46 @@ function Diff() {
                             selected={language}
                             onChange={handleLanguageSelect}
                             items={languageOptions}
-                            label="Select File Language Type"
+                            label="Select Text Language"
                         />
+                    </Grid>
+                </Grid>
+                <Grid container style={{ width: '100%' }}>
+                    <Grid item>
+                    {exampleOriginalText && exampleModifiedText &&
+                        <SampleButton
+                            setInput={input => {
+                                setOriginalText( input[0] );
+                                setModifiedText( input[1] );
+                            }}
+                            sample={[exampleOriginalText, exampleModifiedText]}
+                        />}
                     </Grid>
                 </Grid>
                 <Grid container style={{ marginBottom: '5px', width: '100%' }}>
                     <Grid item style={{ width: '50%' }}>
-                        <FileUploader
-                            onFileLoad={setOriginalFile}
-                            id="originalFile"
-                            buttonText="Upload Original File"
-                        />
+                        <ButtonGroup size="small">
+                            <FileUploadButton
+                                onFileLoad={setOriginalFile}
+                                id="originalFile"
+                                buttonText="Original File"
+                            />
+                            <ClearValueButton setValue={setOriginalText} />
+                            <PasteFromClipboardButton setInput={setOriginalText} />
+                            {originalText && <CopyToClipboardButton output={originalText} />}
+                        </ButtonGroup>
                     </Grid>
                     <Grid item style={{ width: '50%' }}>
-                        <FileUploader
-                            onFileLoad={setModifiedFile}
-                            id="modifiedFile"
-                            buttonText="Upload Modified File"
-                        />
+                        <ButtonGroup size="small">
+                            <FileUploadButton
+                                onFileLoad={setModifiedFile}
+                                id="modifiedFile"
+                                buttonText="Modified File"
+                            />
+                            <ClearValueButton setValue={setModifiedText} />
+                            <PasteFromClipboardButton setInput={setModifiedText} />
+                            {modifiedText && <CopyToClipboardButton output={modifiedText} />}
+                        </ButtonGroup>
                     </Grid>
                 </Grid>
                 <DiffEditor
