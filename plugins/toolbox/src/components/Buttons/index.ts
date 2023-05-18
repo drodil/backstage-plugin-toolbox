@@ -3,3 +3,4 @@ export { CopyToClipboardButton } from './CopyToClipboardButton';
 export { FavoriteButton } from './FavoriteButton';
 export { PasteFromClipboardButton } from './PasteFromClipboardButton';
 export { SampleButton } from './SampleButton';
+export { FileUploadButton } from './FileUploadButton';
