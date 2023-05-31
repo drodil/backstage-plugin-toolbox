@@ -3,11 +3,41 @@ import {
   Button,
   ButtonGroup,
   FormControl,
+  FormControlLabel,
   Grid,
   TextField,
+  Switch,
 } from '@material-ui/core';
 import { useStyles } from '../../utils/hooks';
 import { TimePaper } from './TimePaper';
+
+function sleep(ms: number) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+const audioContext = new AudioContext();
+const beep = (frequency: number) => {
+  const beep_decay = 1.5;
+  const o = audioContext.createOscillator();
+  const g = audioContext.createGain();
+  o.connect(g);
+  o.type = 'sine';
+  o.frequency.value = frequency;
+  g.connect(audioContext.destination);
+  o.start();
+  g.gain.exponentialRampToValueAtTime(
+    0.00001,
+    audioContext.currentTime + beep_decay,
+  );
+};
+
+async function playAlert() {
+  beep(440.0);
+  await sleep(200);
+  beep(440.0);
+  await sleep(200);
+  beep(440.0);
+}
 
 const Countdown = () => {
   const [secondsLeft, setSecondsLeft] = useState(0);
@@ -16,6 +46,8 @@ const Countdown = () => {
   const [seconds, setSeconds] = useState(0);
   const styles = useStyles();
   const [isRunning, setIsRunning] = useState(false);
+  const [chime, setChime] = useState(true);
+
   const formatTime = (timeInSeconds: number) => {
     const hoursLeft = Math.floor(timeInSeconds / 3600);
     const minutesLeft = Math.floor((timeInSeconds / 60) % 60);
@@ -46,22 +78,29 @@ const Countdown = () => {
     }
   };
 
+  const handleChimeToggle = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setChime(event.target.checked);
+  };
+
   useEffect(() => {
     let intervalId: NodeJS.Timer | undefined;
 
     if (isRunning) {
       intervalId = setInterval(() => {
         const time = secondsLeft - 1;
-        if (time >= 0) {
+        if (time > 0) {
           setSecondsLeft(time);
-        } else if (time < 0) {
+        } else if (time <= 0) {
           setIsRunning(false);
+          if (chime) {
+            playAlert();
+          }
         }
       }, 1000);
     }
 
     return () => clearInterval(intervalId);
-  }, [hours, minutes, seconds, secondsLeft, isRunning]);
+  }, [hours, minutes, seconds, secondsLeft, isRunning, chime]);
 
   const timeLeft = formatTime(secondsLeft);
   return (
@@ -92,6 +131,11 @@ const Countdown = () => {
                 Reset
               </Button>
             </ButtonGroup>
+            <FormControlLabel
+              control={<Switch defaultChecked onChange={handleChimeToggle} />}
+              label="Chime"
+              labelPlacement="start"
+            />
           </Grid>
         </Grid>
       </FormControl>
