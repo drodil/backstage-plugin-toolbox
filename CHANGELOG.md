@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.10.0](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.9.2...v1.10.0) (2023-05-31)
+
+
+### Features
+
+* add chime to countdown timer ([ff6d759](https://github.com/drodil/backstage-plugin-toolbox/commit/ff6d759c41b312e9161332ef432d1eba04d544a9))
+* add diff tool ([696ae98](https://github.com/drodil/backstage-plugin-toolbox/commit/696ae987cbf2b6e2a802c083a00029d009c814d8))
+* add FileUploadButton ([4cfe7ec](https://github.com/drodil/backstage-plugin-toolbox/commit/4cfe7ec8225a5f45fdf648f8db214e4fe413debf))
+
+
+### Bug Fixes
+
+* Diff tool implement shared button groups ([851cd68](https://github.com/drodil/backstage-plugin-toolbox/commit/851cd687bd4086cf7556f749ddb1e1785e1cdc00))
+* revert package version ([1a297b4](https://github.com/drodil/backstage-plugin-toolbox/commit/1a297b43739b3f49b10d3b153df00c6eae047a7d))
+
 ### [1.9.2](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.9.1...v1.9.2) (2023-04-25)
 
 
