@@ -31,20 +31,20 @@
   },
   "devDependencies": {
     "@backstage/cli": "^0.22.7",
+    "@commitlint/cli": "^17.2.0",
+    "@commitlint/config-conventional": "^17.2.0",
     "@spotify/prettier-config": "^12.0.0",
     "@types/webpack": "^5.28.0",
     "concurrently": "^7.0.0",
+    "husky": "^8.0.1",
     "lint-staged": "^13.0.3",
     "prettier": "^2.4.1",
     "react": "^17.0.2",
-    "@commitlint/cli": "^17.2.0",
-    "@commitlint/config-conventional": "^17.2.0",
-    "husky": "^8.0.1",
     "react-dom": "^17.0.2",
     "react-router": "^6.3.0",
     "react-router-dom": "^6.3.0",
-    "typescript": "~5.0.0",
-    "standard-version": "^9.5.0"
+    "standard-version": "^9.5.0",
+    "typescript": "~5.0.0"
   },
   "resolutions": {
     "@types/react": "^17",
@@ -60,5 +60,5 @@
       "prettier --write"
     ]
   },
-  "packageManager": "yarn@3.2.4"
+  "packageManager": "yarn@3.6.0"
 }
