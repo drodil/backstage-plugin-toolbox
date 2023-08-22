@@ -29,6 +29,7 @@ const Diff = lazy(() => import('../Misc/Diff'));
 
 const LoremIpsum = lazy(() => import('../Generators/LoremIpsum'));
 const Hash = lazy(() => import('../Generators/Hash'));
+const QR = lazy(() => import('../Generators/QR'));
 
 const JSBeautify = lazy(() => import('../Formatters/JSBeautify'));
 const HTMLBeautify = lazy(() => import('../Formatters/HTMLBeautify'));
@@ -156,6 +157,12 @@ export const defaultTools: Tool[] = [
     component: <EntityDescriber />,
     category: 'Backstage',
     description: 'Describes catalog entities in YAML',
+  },
+  {
+    id: 'qr-generator',
+    name: 'QR generator',
+    component: <QR />,
+    category: 'Generate',
   },
   {
     id: 'lorem-ipsum-generate',
