@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.11.0](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.10.0...v1.11.0) (2023-08-23)
+
+
+### Features
+
+* Add QR generator ([f8da9f5](https://github.com/drodil/backstage-plugin-toolbox/commit/f8da9f5dbcc4e27998e0b076a5f9eb6e027d8a98))
+
 ## [1.10.0](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.9.2...v1.10.0) (2023-05-31)
 
 
