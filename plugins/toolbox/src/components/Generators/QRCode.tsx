@@ -3,10 +3,9 @@ import { DefaultEditor } from '../DefaultEditor';
 import { faker } from '@faker-js/faker';
 import QRCode from "react-qr-code";
 
-export const QR = () => {
+export const QRCodeGenerator = () => {
   const [input, setInput] = React.useState('');
   const sample = faker.internet.url();
-
 
   return (
     <DefaultEditor
@@ -14,12 +13,10 @@ export const QR = () => {
       setInput={setInput}
       sample={sample}
       rightContent={
-        <>
-            <QRCode value={input} />
-        </>
+        <QRCode value={input} />
       }
     />
   );
 };
 
-export default QR;
+export default QRCodeGenerator;

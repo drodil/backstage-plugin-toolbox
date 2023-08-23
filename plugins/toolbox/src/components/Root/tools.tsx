@@ -29,7 +29,7 @@ const Diff = lazy(() => import('../Misc/Diff'));
 
 const LoremIpsum = lazy(() => import('../Generators/LoremIpsum'));
 const Hash = lazy(() => import('../Generators/Hash'));
-const QR = lazy(() => import('../Generators/QR'));
+const QRCode = lazy(() => import('../Generators/QRCode'));
 
 const JSBeautify = lazy(() => import('../Formatters/JSBeautify'));
 const HTMLBeautify = lazy(() => import('../Formatters/HTMLBeautify'));
@@ -159,9 +159,9 @@ export const defaultTools: Tool[] = [
     description: 'Describes catalog entities in YAML',
   },
   {
-    id: 'qr-generator',
-    name: 'QR generator',
-    component: <QR />,
+    id: 'qr-code-generate',
+    name: 'QR Code',
+    component: <QRCode />,
     category: 'Generate',
   },
   {
