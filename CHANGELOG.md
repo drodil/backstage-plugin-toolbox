@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.11.1](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.11.0...v1.11.1) (2023-08-24)
+
+
+### Bug Fixes
+
+* add missing tsc script to package.json ([c5386ac](https://github.com/drodil/backstage-plugin-toolbox/commit/c5386acd93399a42f616bb71add57b4ab4cc2b86))
+
 ## [1.11.0](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.10.0...v1.11.0) (2023-08-23)
 
 
