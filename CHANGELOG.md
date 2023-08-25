@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.11.3](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.11.2...v1.11.3) (2023-08-25)
+
+
+### Bug Fixes
+
+* publish script in release workflow ([fce681f](https://github.com/drodil/backstage-plugin-toolbox/commit/fce681fb4d25e2f845adb7109647b065289c2bd0))
+
 ### [1.11.2](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.11.1...v1.11.2) (2023-08-24)
 
 ### [1.11.1](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.11.0...v1.11.1) (2023-08-24)
