@@ -24,7 +24,6 @@ export const LoremIpsum = () => {
   const [output, setOutput] = React.useState('');
   const [multiplier, setMultiplier] = React.useState(1);
 
-  faker.locale = 'en';
   const generate = (type: string) => {
     let outputs = [];
     switch (type) {
