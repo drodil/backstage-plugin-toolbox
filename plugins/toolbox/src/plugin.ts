@@ -4,7 +4,7 @@ import {
 } from '@backstage/core-plugin-api';
 
 import { rootRouteRef } from './routes';
-import { createCardExtension } from '@backstage/plugin-home';
+import { createCardExtension } from '@backstage/plugin-home-react';
 import { defaultTools } from './components/Root/tools';
 
 export const toolboxPlugin = createPlugin({
