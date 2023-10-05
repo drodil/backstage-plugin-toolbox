@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.11.5](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.11.4...v1.11.5) (2023-10-05)
+
+
+### Bug Fixes
+
+* change to plugin-home-react for createCardExtension ([4d934a7](https://github.com/drodil/backstage-plugin-toolbox/commit/4d934a7739f4d4f9e28bdf9dd4e6ed2e4ad60765))
+
 ### [1.11.4](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.11.3...v1.11.4) (2023-09-22)
 
 
