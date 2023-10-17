@@ -20,6 +20,9 @@ const TimeConverter = lazy(() => import('../Converters/TimeConverter'));
 const XmlToJson = lazy(() => import('../Converters/XmlToJson'));
 const SLACalculator = lazy(() => import('../Converters/SLACalculator'));
 const ColorConverter = lazy(() => import('../Converters/ColorConverter'));
+const RichTextToMarkdown = lazy(
+  () => import('../Converters/RichTextToMarkdown'),
+);
 
 const EntityValidator = lazy(() => import('../Validators/EntityValidator'));
 const EntityDescriber = lazy(() => import('../Misc/EntityDescriber'));
@@ -126,6 +129,12 @@ export const defaultTools: Tool[] = [
     id: 'color-convert',
     name: 'Color converter',
     component: <ColorConverter />,
+    category: 'Convert',
+  },
+  {
+    id: 'rich-text-to-markdown-convert',
+    name: 'Rich text to markdown',
+    component: <RichTextToMarkdown />,
     category: 'Convert',
   },
   {
