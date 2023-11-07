@@ -31,6 +31,11 @@ export const HTMLBeautify = () => {
       setInput={setInput}
       output={output}
       sample={sample}
+      allowFileUpload
+      acceptFileTypes=".html,.htm"
+      allowFileDownload
+      downloadFileName="download.html"
+      downloadFileType="text/html"
     />
   );
 };

@@ -15,6 +15,8 @@ export const MarkdownPreview = () => {
       input={input}
       setInput={setInput}
       sample={sample}
+      allowFileUpload
+      acceptFileTypes=".md"
       rightContent={
         <>
           <Paper elevation={0} className={styles.previewPaper}>

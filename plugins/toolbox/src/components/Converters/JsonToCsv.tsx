@@ -45,6 +45,11 @@ export const JsonToCsv = () => {
       setInput={setInput}
       output={output}
       sample={sample}
+      allowFileUpload
+      acceptFileTypes=".json"
+      allowFileDownload
+      downloadFileName="download.csv"
+      downloadFileType="text/csv"
     />
   );
 };

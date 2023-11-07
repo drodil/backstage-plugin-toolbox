@@ -31,6 +31,11 @@ export const JSBeautify = () => {
       setInput={setInput}
       output={output}
       sample={sample}
+      allowFileUpload
+      acceptFileTypes=".js,.jsx,.ts,.tsx"
+      allowFileDownload
+      downloadFileName="download.js"
+      downloadFileType="text/javascript"
     />
   );
 };

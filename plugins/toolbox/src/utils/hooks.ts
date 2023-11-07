@@ -51,7 +51,7 @@ export const useStyles = makeStyles(theme => {
       marginBottom: theme.spacing(2),
     },
     toolsBar: {
-      borderLeft: `1px solid ${theme.palette.divider}`,
+      borderRight: `1px solid ${theme.palette.divider}`,
       padding: '0 !important',
     },
     menuTabs: {

@@ -37,6 +37,11 @@ export const JsonToYaml = () => {
       setInput={setInput}
       output={output}
       sample={sample}
+      allowFileUpload
+      acceptFileTypes=".json"
+      allowFileDownload
+      downloadFileName="download.yaml"
+      downloadFileType="application/yaml"
     />
   );
 };

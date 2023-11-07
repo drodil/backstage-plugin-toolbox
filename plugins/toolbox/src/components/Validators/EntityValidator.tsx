@@ -75,6 +75,11 @@ export const EntityValidator = () => {
       setInput={setInput}
       sample={sample}
       rightContent={<>{output}</>}
+      allowFileUpload
+      acceptFileTypes=".yaml,.yml"
+      allowFileDownload
+      downloadFileName="catalog-info.yaml"
+      downloadFileType="application/yaml"
     />
   );
 };

@@ -27,9 +27,14 @@ export const XmlToJson = () => {
       setInput={setInput}
       output={output}
       sample={sample}
+      allowFileUpload
+      acceptFileTypes=".xml"
       additionalTools={[
         <JsonSpaceSelector spaces={spaces} onChange={setSpaces} />,
       ]}
+      allowFileDownload
+      downloadFileName="download.json"
+      downloadFileType="application/json"
     />
   );
 };

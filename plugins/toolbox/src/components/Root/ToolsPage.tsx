@@ -25,14 +25,16 @@ import OpenInNew from '@material-ui/icons/OpenInNew';
 import { FavoriteButton } from '../Buttons/FavoriteButton';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useAnalytics } from '@backstage/core-plugin-api';
+import { WelcomePage } from '../WelcomePage/WelcomePage';
 
 export type Tool = {
   id: string;
   name: string;
   component: JSX.Element;
+  showOpenInNewWindowButton?: boolean;
+  showFavoriteButton?: boolean;
   description?: string;
   category?: string;
-
   headerButtons?: JSX.Element[];
 };
 
@@ -41,6 +43,8 @@ type TabInfo = {
   component: JSX.Element | undefined;
   id: string;
   title: string;
+  showOpenInNewWindowButton?: boolean;
+  showFavoriteButton?: boolean;
   description?: string;
   headerButtons?: JSX.Element[];
 };
@@ -94,6 +98,37 @@ export const ToolsPage = (props: ToolsPageProps) => {
         }
         return (b.category ?? '').localeCompare(a.category ?? '');
       });
+
+    t.push({
+      tab: (
+        <Tab
+          key="Home"
+          label=""
+          disabled
+          className={styles.tabDivider}
+          style={{ minHeight: '2px' }}
+        />
+      ),
+      component: undefined,
+      id: 'home',
+      title: '',
+    });
+
+    t.push({
+      id: '',
+      tab: (
+        <Tab
+          key="home"
+          wrapped
+          className={`${styles.fullWidth} ${styles.noPadding}`}
+          label="Home"
+        />
+      ),
+      title: 'Toolbox',
+      component: <WelcomePage tools={allTools} />,
+      showFavoriteButton: false,
+      showOpenInNewWindowButton: false,
+    });
 
     const categories: { [key: string]: Tool[] } = allTools.reduce(
       (ctgs, tool) => {
@@ -169,7 +204,7 @@ export const ToolsPage = (props: ToolsPageProps) => {
         <Grid
           container
           spacing={2}
-          direction="row-reverse"
+          direction="row"
           className={`${styles.noMargin} ${styles.fullWidth} ${styles.noPadding}`}
         >
           <Grid item xs={4} md={3} lg={2} className={styles.toolsBar}>
@@ -216,21 +251,25 @@ export const ToolsPage = (props: ToolsPageProps) => {
                     return null;
                   }
                   return (
-                    <TabPanel key={i} value={`toolbox-tabpanel-${i}`}>
+                    <TabPanel key={tool.id} value={`toolbox-tabpanel-${i}`}>
                       <ContentHeader
                         title={tool.title}
                         description={tool.description}
                       >
                         {tool.headerButtons}
-                        <Tooltip title="Open tool in new window" arrow>
-                          <Button
-                            size="small"
-                            onClick={() => openToolInWindow(tool.id)}
-                          >
-                            <OpenInNew />
-                          </Button>
-                        </Tooltip>
-                        <FavoriteButton toolId={tool.id} />
+                        {tool.showOpenInNewWindowButton !== false && (
+                          <Tooltip title="Open tool in new window" arrow>
+                            <Button
+                              size="small"
+                              onClick={() => openToolInWindow(tool.id)}
+                            >
+                              <OpenInNew />
+                            </Button>
+                          </Tooltip>
+                        )}
+                        {tool.showFavoriteButton !== false && (
+                          <FavoriteButton toolId={tool.id} />
+                        )}
                       </ContentHeader>
                       {tool.component}
                     </TabPanel>

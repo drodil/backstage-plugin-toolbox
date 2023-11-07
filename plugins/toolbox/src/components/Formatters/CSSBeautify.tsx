@@ -31,6 +31,11 @@ export const CSSBeautify = () => {
       setInput={setInput}
       output={output}
       sample={sample}
+      allowFileUpload
+      acceptFileTypes=".css"
+      allowFileDownload
+      downloadFileName="download.css"
+      downloadFileType="text/css"
     />
   );
 };

@@ -29,6 +29,11 @@ export const SQLBeautify = () => {
       setInput={setInput}
       output={output}
       sample={sample}
+      allowFileUpload
+      acceptFileTypes=".sql"
+      allowFileDownload
+      downloadFileName="download.sql"
+      downloadFileType="text/plain"
     />
   );
 };

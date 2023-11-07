@@ -11,6 +11,8 @@ import { CopyToClipboardButton } from '../Buttons/CopyToClipboardButton';
 import { PasteFromClipboardButton } from '../Buttons/PasteFromClipboardButton';
 import { ClearValueButton } from '../Buttons/ClearValueButton';
 import { SampleButton } from '../Buttons/SampleButton';
+import { FileUploadButton } from '../Buttons';
+import { FileDownloadButton } from '../Buttons/FileDownloadButton';
 
 type Props = {
   input: string;
@@ -20,9 +22,16 @@ type Props = {
   setMode?: (value: string) => void;
   modes?: Array<string>;
   leftContent?: JSX.Element;
+  extraLeftContent?: JSX.Element;
   rightContent?: JSX.Element;
+  extraRightContent?: JSX.Element;
   sample?: string;
   additionalTools?: JSX.Element[];
+  allowFileUpload?: boolean;
+  acceptFileTypes?: string;
+  allowFileDownload?: boolean;
+  downloadFileType?: string;
+  downloadFileName?: string;
 };
 
 export const DefaultEditor = (props: Props) => {
@@ -34,14 +43,66 @@ export const DefaultEditor = (props: Props) => {
     setMode,
     modes,
     leftContent,
+    extraLeftContent,
     rightContent,
+    extraRightContent,
     sample,
     additionalTools,
+    allowFileUpload,
+    acceptFileTypes,
+    allowFileDownload,
+    downloadFileName,
+    downloadFileType,
   } = props;
   const styles = useStyles();
 
+  const [fileName, setFileName] = React.useState(
+    downloadFileName ?? 'download.txt',
+  );
+  const [fileType, setFileType] = React.useState(
+    downloadFileType ?? 'text/plain',
+  );
+
+  const readFileAndSetInput = (file?: File) => {
+    if (!file) {
+      setInput('');
+      return;
+    }
+
+    setFileName(file.name);
+    setFileType(file.type);
+    const reader = new FileReader();
+    reader.onload = async e => {
+      // @ts-ignore
+      setInput(e.target.result);
+    };
+    reader.readAsText(file);
+  };
+
+  const handleDrop = (ev: React.DragEvent<HTMLDivElement>) => {
+    if (allowFileUpload !== true) {
+      return;
+    }
+    ev.preventDefault();
+    if (ev.dataTransfer.items) {
+      [...ev.dataTransfer.items].forEach(item => {
+        if (item.kind !== 'file') {
+          return;
+        }
+        const file = item.getAsFile();
+        if (file) {
+          readFileAndSetInput(file);
+        }
+      });
+    } else {
+      [...ev.dataTransfer.files].forEach(file => {
+        readFileAndSetInput(file);
+      });
+    }
+  };
+
   return (
-    <FormControl className={styles.fullWidth}>
+    <FormControl className={styles.fullWidth} onDrop={handleDrop}>
       <Grid container spacing={4} style={{ marginBottom: '5px' }}>
         {modes && modes.length > 0 && (
           <Grid item>
@@ -71,6 +132,19 @@ export const DefaultEditor = (props: Props) => {
             <PasteFromClipboardButton setInput={setInput} />
             {output && <CopyToClipboardButton output={output} />}
             {sample && <SampleButton setInput={setInput} sample={sample} />}
+            {allowFileUpload && (
+              <FileUploadButton
+                accept={acceptFileTypes}
+                onFileLoad={readFileAndSetInput}
+              />
+            )}
+            {output && allowFileDownload && (
+              <FileDownloadButton
+                content={output}
+                fileName={fileName}
+                fileType={fileType}
+              />
+            )}
           </ButtonGroup>
         </Grid>
         {additionalTools && additionalTools.length > 0 && (
@@ -92,12 +166,13 @@ export const DefaultEditor = (props: Props) => {
                 className={styles.fullWidth}
                 value={input}
                 onChange={e => setInput(e.target.value)}
+                inputProps={{ style: { resize: 'vertical' } }}
                 minRows={20}
-                maxRows={50}
                 variant="outlined"
               />
             </>
           )}
+          {extraLeftContent}
         </Grid>
         <Grid item xs={12} lg={6}>
           {rightContent ? (
@@ -109,13 +184,14 @@ export const DefaultEditor = (props: Props) => {
                 label="Output"
                 value={output || ''}
                 className={styles.fullWidth}
+                inputProps={{ style: { resize: 'vertical' } }}
                 multiline
                 minRows={20}
-                maxRows={50}
                 variant="outlined"
               />
             </>
           )}
+          {extraRightContent}
         </Grid>
       </Grid>
     </FormControl>

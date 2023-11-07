@@ -4,12 +4,18 @@ import React from 'react';
 
 type Props = {
   onFileLoad: (input: File) => void;
-  id: string;
+  id?: string;
   buttonText?: string;
+  accept?: string;
 };
 
 export const FileUploadButton = (props: Props) => {
-  const { onFileLoad, id, buttonText = 'Upload File' } = props;
+  const {
+    onFileLoad,
+    id = 'uploadBtn',
+    buttonText = 'Upload File',
+    accept = '*/*',
+  } = props;
 
   return (
     <>
@@ -22,7 +28,7 @@ export const FileUploadButton = (props: Props) => {
       </Tooltip>
       <input
         type="file"
-        accept="*/*"
+        accept={accept}
         id={id}
         hidden
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => {

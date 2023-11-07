@@ -31,6 +31,11 @@ export const CsvToJson = () => {
       setInput={setInput}
       output={output}
       sample={sample}
+      allowFileUpload
+      acceptFileTypes=".csv"
+      allowFileDownload
+      downloadFileName="download.json"
+      downloadFileType="application/json"
       additionalTools={[
         <JsonSpaceSelector spaces={spaces} onChange={setSpaces} />,
       ]}

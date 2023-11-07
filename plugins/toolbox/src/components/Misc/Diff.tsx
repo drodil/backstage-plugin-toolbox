@@ -1,5 +1,6 @@
-import { DiffEditor } from '@monaco-editor/react';
-import React, { useEffect, useState } from 'react';
+import { DiffEditor, loader } from '@monaco-editor/react';
+import * as monaco from 'monaco-editor';
+import React, { useEffect, useMemo, useState } from 'react';
 import {
   Button,
   ButtonGroup,
@@ -8,17 +9,19 @@ import {
   Tooltip,
 } from '@material-ui/core';
 import { useStyles } from '../../utils/hooks';
-import * as monaco from 'monaco-editor';
 import { useEffectOnce } from 'react-use';
 import { Select, SelectItem } from '@backstage/core-components';
 
 import {
   ClearValueButton,
-  FileUploadButton,
   CopyToClipboardButton,
+  FileUploadButton,
   PasteFromClipboardButton,
 } from '../Buttons';
 import Input from '@material-ui/icons/Input';
+import { appThemeApiRef, useApi } from '@backstage/core-plugin-api';
+
+loader.config({ monaco });
 
 export type MonacoLanguages = { name: string; extensions: string[] };
 
@@ -82,6 +85,11 @@ export const SampleButton = (props: SampleButtonProps) => {
 
 function Diff() {
   const styles = useStyles();
+  const appThemeApi = useApi(appThemeApiRef);
+  const theme = useMemo(
+    () => appThemeApi.getActiveThemeId() ?? 'light',
+    [appThemeApi],
+  );
   const [originalFile, setOriginalFile] = useState<File>();
   const [modifiedFile, setModifiedFile] = useState<File>();
 
@@ -185,6 +193,7 @@ function Diff() {
         <DiffEditor
           height="100vh"
           original={originalText}
+          theme={theme.includes('dark') ? 'vs-dark' : 'vs-light'}
           modified={modifiedText}
           options={options}
           language={language}

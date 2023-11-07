@@ -7,6 +7,7 @@ import { CopyToClipboardButton } from '../Buttons/CopyToClipboardButton';
 import { useStyles } from '../../utils/hooks';
 import YAML from 'yaml';
 import { Autocomplete } from '@material-ui/lab';
+import { FileDownloadButton } from '../Buttons/FileDownloadButton';
 
 export const EntityDescriber = () => {
   const catalogApi = useApi(catalogApiRef);
@@ -49,6 +50,13 @@ export const EntityDescriber = () => {
         <Grid item>
           <ButtonGroup size="small">
             {output && <CopyToClipboardButton output={output} />}
+            {output && (
+              <FileDownloadButton
+                content={output}
+                fileName="catalog-info.yaml"
+                fileType="catalog-info.yaml"
+              />
+            )}
           </ButtonGroup>
         </Grid>
       </Grid>

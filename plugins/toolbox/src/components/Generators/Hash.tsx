@@ -67,6 +67,7 @@ export const Hash = () => {
       input={input}
       setInput={setInput}
       sample={sample}
+      allowFileUpload
       rightContent={
         <>
           <OutputField label="MD2" value={hash.md2} />
