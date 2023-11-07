@@ -115,3 +115,5 @@ dist-types/
 !**/.yarn/versions
 
 dist-types/
+
+.DS_Store
