@@ -90,6 +90,7 @@ export const useStyles = makeStyles(theme => {
       left: '0px',
       width: '100%',
       height: '100%',
+      overflow: 'auto',
       zIndex: 10000,
       backgroundColor: theme.palette.background.default,
     },
