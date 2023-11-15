@@ -2676,6 +2676,7 @@ __metadata:
     "@types/color-convert": ^2.0.1
     "@types/js-beautify": ^1.14.1
     "@types/json2csv": ^5.0.4
+    "@types/lodash": ^4.14.201
     "@types/luxon": ^3.3.2
     "@types/node": "*"
     "@types/turndown": ^5.0.2
@@ -5609,6 +5610,13 @@ __metadata:
   dependencies:
     "@types/node": "*"
   checksum: a7f0925e9a42ad3ae970364c63c5986d40da5c83d51d3f4e624eb0f064a380376f9e3fb3f2f837390a9ab80143f5d75fd51866da30e110f6b486a3379e1c768f
+  languageName: node
+  linkType: hard
+
+"@types/lodash@npm:^4.14.201":
+  version: 4.14.201
+  resolution: "@types/lodash@npm:4.14.201"
+  checksum: 484be655298e9b2dc2d218ea934071b2ea31e4a531c561dd220dbda65237e8d08c20dc2d457ac24f29be7fe167415bf7bb9360ea0d80bdb8b0f0ec8d8db92fae
   languageName: node
   linkType: hard
 
