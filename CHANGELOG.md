@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.12.2](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.12.1...v1.12.2) (2023-11-15)
+
+
+### Bug Fixes
+
+* add missing lodash types ([1379ffa](https://github.com/drodil/backstage-plugin-toolbox/commit/1379ffac28b6fa8a6e48b69376732536042a048f))
+
 ### [1.12.1](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.12.0...v1.12.1) (2023-11-09)
 
 
