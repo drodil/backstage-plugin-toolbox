@@ -31,6 +31,9 @@ const useStyles = makeStyles(theme => {
         borderColor: theme.palette.primary.light,
       },
     },
+    textBlock: {
+      marginTop: '1rem',
+    },
   };
 });
 
@@ -39,18 +42,16 @@ export const WelcomePage = (props: WelcomePageProps) => {
   const classes = useStyles();
   return (
     <Box>
-      <Typography variant="subtitle1">Welcome to Toolbox!</Typography>
-      <Typography style={{ marginTop: '1rem' }}>
-        Toolbox contains commonly used tools in development and other areas.
-        These tools include encoding, generation of data, conversion tools and
-        other utilities to make working easier. All data is kept in this domain
-        so you don't have to worry about your data getting in to wrong hands.
+      <Typography className={classes.textBlock}>
+        Toolbox contains commonly used tools in development and design. These
+        tools include encoding, generation of data, conversion tools and other
+        utilities to make working easier. All data is kept in this domain so you
+        don't have to worry about your data getting into wrong hands.
       </Typography>
-      <Typography style={{ marginTop: '1rem' }}>
-        You can find all available tools from the left side navigation, or from
-        this page.
+      <Typography className={classes.textBlock}>
+        To select tools click cards below or the left side navigation.
       </Typography>
-      <Grid container style={{ marginTop: '1rem' }} alignContent="center">
+      <Grid container className={classes.textBlock} alignContent="center">
         {tools.map(tool => {
           return (
             <Grid item key={tool.id} xs={3}>

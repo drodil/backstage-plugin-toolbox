@@ -60,11 +60,18 @@ export const useStyles = makeStyles(theme => {
         height: '10px',
       },
     },
+    tab: {
+      color: theme.palette.link,
+      '&:hover': {
+        color: theme.palette.linkHover,
+        background: 'transparent',
+      },
+    },
     tabDivider: {
       marginTop: theme.spacing(1),
       paddingTop: theme.spacing(1),
       paddingBottom: 0,
-      color: theme.palette.primary.main,
+      color: theme.palette.text.primary,
       borderTop: `1px solid ${theme.palette.divider}`,
     },
     search: {

@@ -120,7 +120,7 @@ export const ToolsPage = (props: ToolsPageProps) => {
         <Tab
           key="home"
           wrapped
-          className={`${styles.fullWidth} ${styles.noPadding}`}
+          className={`${styles.fullWidth} ${styles.noPadding} ${styles.tab}`}
           label="Home"
         />
       ),
@@ -167,7 +167,7 @@ export const ToolsPage = (props: ToolsPageProps) => {
                   : {}
               }
               wrapped
-              className={`${styles.fullWidth} ${styles.noPadding}`}
+              className={`${styles.fullWidth} ${styles.noPadding} ${styles.tab}`}
               label={tool.name}
               {...tabProps(i)}
             />
