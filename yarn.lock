@@ -2674,6 +2674,7 @@ __metadata:
     "@roadiehq/roadie-backstage-entity-validator": ^2.3.6
     "@testing-library/jest-dom": ^6.1.3
     "@types/color-convert": ^2.0.1
+    "@types/crypto-hash": ^1.1.2
     "@types/js-beautify": ^1.14.1
     "@types/json2csv": ^5.0.4
     "@types/lodash": ^4.14.201
@@ -2682,7 +2683,7 @@ __metadata:
     "@types/turndown": ^5.0.2
     color-convert: ^2.0.1
     cross-fetch: ^3.1.5
-    crypto-hash: ^2.0.1
+    crypto-hash: ^3.0.0
     csvtojson: ^2.0.10
     js-beautify: ^1.14.9
     js-md2: ^0.2.2
@@ -5394,6 +5395,15 @@ __metadata:
   dependencies:
     "@types/node": "*"
   checksum: fe81351470f2d3165e8b12ce33542eef89ea893e36dd62e8f7d72566dfb7e448376ae962f9f3ea888547ce8b55a40020ca0e01d637fab5d99567673084542641
+  languageName: node
+  linkType: hard
+
+"@types/crypto-hash@npm:^1.1.2":
+  version: 1.1.2
+  resolution: "@types/crypto-hash@npm:1.1.2"
+  dependencies:
+    crypto-hash: "*"
+  checksum: 622c1a7fef47b485bb94fd8a42d95ba0a1b0dca79fd4937a1e282412736a4f7f530959e71439a413b8f76d3b2ae3de079d3fa9d5e2426112514733fbda61b889
   languageName: node
   linkType: hard
 
@@ -8443,10 +8453,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"crypto-hash@npm:^2.0.1":
-  version: 2.0.1
-  resolution: "crypto-hash@npm:2.0.1"
-  checksum: 08d304024166ef4856d71ec16f9429dfe6ddd8126d07b2a798e0f586eb60106c0f05b210b6d6f6f8189f8304ec33e7f1a880d5a38c2fadca19c4801fb5bd3e36
+"crypto-hash@npm:*, crypto-hash@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "crypto-hash@npm:3.0.0"
+  checksum: 90ad0488b1ce58ca9b22cefa83e789d95cfe9eef91e40b9601bc79b60f6bd74ba9f3e0449b5ba62efc1539aad932553e7b96918cccb7cf31260d34d80c3ec887
   languageName: node
   linkType: hard
 
@@ -17522,6 +17532,7 @@ __metadata:
     "@commitlint/cli": ^17.7.1
     "@commitlint/config-conventional": ^17.7.0
     "@spotify/prettier-config": ^15.0.0
+    "@types/crypto-hash": ^1.1.2
     "@types/webpack": ^5.28.2
     husky: ^8.0.1
     lint-staged: ^14.0.1

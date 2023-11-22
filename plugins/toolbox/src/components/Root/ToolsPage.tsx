@@ -58,10 +58,11 @@ const tabProps = (index: number) => {
 
 export type ToolsPageProps = {
   extraTools?: Tool[];
+  tools?: Tool[];
 };
 
 export const ToolsPage = (props: ToolsPageProps) => {
-  const { extraTools } = props;
+  const { extraTools, tools } = props;
   const { hash } = useLocation();
   const navigate = useNavigate();
   const analytics = useAnalytics();
@@ -83,7 +84,8 @@ export const ToolsPage = (props: ToolsPageProps) => {
 
   const tabs: TabInfo[] = useMemo(() => {
     const t: TabInfo[] = [];
-    const allTools = [...(extraTools ?? []), ...defaultTools]
+    const shownTools = tools ? tools : [...(extraTools ?? []), ...defaultTools];
+    const allTools = shownTools
       .map(tool => {
         if (favorites.includes(tool.id)) {
           return { ...tool, category: 'Favorites' };
@@ -141,7 +143,7 @@ export const ToolsPage = (props: ToolsPageProps) => {
       {} as Record<string, Tool[]>,
     );
 
-    Object.entries(categories).map(([category, tools]) => {
+    Object.entries(categories).map(([category, categoryTools]) => {
       t.push({
         tab: (
           <Tab
@@ -155,7 +157,7 @@ export const ToolsPage = (props: ToolsPageProps) => {
         id: category,
         title: '',
       });
-      tools.map((tool, i) => {
+      categoryTools.map((tool, i) => {
         t.push({
           tab: (
             <Tab
@@ -178,7 +180,7 @@ export const ToolsPage = (props: ToolsPageProps) => {
       });
     });
     return t;
-  }, [favorites, search, styles, extraTools]);
+  }, [favorites, search, styles, extraTools, tools]);
 
   useEffect(() => {
     const idx = tabs.findIndex(tab => tab.id === hash.slice(1));
