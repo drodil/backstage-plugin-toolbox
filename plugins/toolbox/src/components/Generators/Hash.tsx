@@ -4,7 +4,7 @@ import { TextField } from '@material-ui/core';
 import { useStyles } from '../../utils/hooks';
 import { faker } from '@faker-js/faker';
 import { CopyToClipboardButton } from '../Buttons/CopyToClipboardButton';
-import { sha1, sha256, sha384, sha512 } from 'crypto-hash';
+import { sha1, sha256, sha384, sha512 } from 'crypto-hash/browser';
 import { Md5 } from 'ts-md5';
 // @ts-ignore
 import md2 from 'js-md2';
