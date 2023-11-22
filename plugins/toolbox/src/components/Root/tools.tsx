@@ -33,6 +33,7 @@ const Diff = lazy(() => import('../Misc/Diff'));
 const LoremIpsum = lazy(() => import('../Generators/LoremIpsum'));
 const Hash = lazy(() => import('../Generators/Hash'));
 const QRCode = lazy(() => import('../Generators/QRCode'));
+const BarCode = lazy(() => import('../Generators/BarCode'));
 
 const JSBeautify = lazy(() => import('../Formatters/JSBeautify'));
 const HTMLBeautify = lazy(() => import('../Formatters/HTMLBeautify'));
@@ -193,6 +194,13 @@ export const defaultTools: Tool[] = [
     component: <QRCode />,
     category: 'Generate',
     description: 'Generate QR code from text',
+  },
+  {
+    id: 'bar-code-generate',
+    name: 'Barcode',
+    component: <BarCode />,
+    category: 'Generate',
+    description: 'Generate Barcode from text',
   },
   {
     id: 'lorem-ipsum-generate',

@@ -2693,6 +2693,7 @@ __metadata:
     lodash: ^4.17.21
     luxon: ^3.4.3
     monaco-editor: ^0.44.0
+    react-barcode: ^1.4.6
     react-dom: ^17.0.2
     react-qr-code: ^2.0.12
     react-use: ^17.2.4
@@ -12979,6 +12980,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"jsbarcode@npm:^3.8.0":
+  version: 3.11.6
+  resolution: "jsbarcode@npm:3.11.6"
+  checksum: 6a713eb4e7eb2f0a283226e71a481c26eda433ab6e3e3db815e961ea262a5409e4b680e6dc0b5f2c7d9ffa9ff894959b5ae529cac614ad5958db5178bea47277
+  languageName: node
+  linkType: hard
+
 "jsdom@npm:^20.0.0":
   version: 20.0.3
   resolution: "jsdom@npm:20.0.3"
@@ -16537,6 +16545,18 @@ __metadata:
     react: ">=16.9.0"
     react-dom: ">=16.9.0"
   checksum: d7bf508bd3236cbb2abebbf16d271c50ab05be12cd3be46981979608b0b6d304735cc081650ab2f967f99a144c23189a6f682d52956c0eb4b6e4f41064b8a4ae
+  languageName: node
+  linkType: hard
+
+"react-barcode@npm:^1.4.6":
+  version: 1.4.6
+  resolution: "react-barcode@npm:1.4.6"
+  dependencies:
+    jsbarcode: ^3.8.0
+    prop-types: ^15.6.2
+  peerDependencies:
+    react: ^16.0.0 || ^17.0.0 || ^18.0.0
+  checksum: b6debc6fdac17064ddd9b26b5b7d128f54b595673b2964ee5b10a650b697a0960a67152cea12b6e09d5276ac578a725a2d86e89b7ba8371afd059a023dfa5519
   languageName: node
   linkType: hard
 
