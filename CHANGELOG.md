@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.13.0](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.12.2...v1.13.0) (2023-11-22)
+
+
+### Features
+
+* add barcode generator ([00dc42c](https://github.com/drodil/backstage-plugin-toolbox/commit/00dc42cda1124c616947eb3b3ec2b765a7c5cabb)), closes [#10](https://github.com/drodil/backstage-plugin-toolbox/issues/10)
+* improve welcome text and navigation colors ([5fc0af1](https://github.com/drodil/backstage-plugin-toolbox/commit/5fc0af138442e263ad74be8b8e4ca5d09486f960))
+* show html for markdown preview ([e9ec20d](https://github.com/drodil/backstage-plugin-toolbox/commit/e9ec20dc50c9b221eaf5bc9b25855fbc4cc76029)), closes [#51](https://github.com/drodil/backstage-plugin-toolbox/issues/51)
+
+
+### Bug Fixes
+
+* imported crypto-hash methods from browser api ([b280c8f](https://github.com/drodil/backstage-plugin-toolbox/commit/b280c8fc9b6d23a1b8698b113ee852ed35f44286))
+
 ### [1.12.2](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.12.1...v1.12.2) (2023-11-15)
 
 
