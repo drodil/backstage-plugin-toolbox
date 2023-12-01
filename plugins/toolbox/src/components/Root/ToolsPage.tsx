@@ -59,10 +59,12 @@ const tabProps = (index: number) => {
 export type ToolsPageProps = {
   extraTools?: Tool[];
   tools?: Tool[];
+  categorySortFunction?: (category1: string, caregory2: string) => number;
+  toolSortFunction?: (tool1: Tool, tool2: Tool) => number;
 };
 
 export const ToolsPage = (props: ToolsPageProps) => {
-  const { extraTools, tools } = props;
+  const { extraTools, tools, categorySortFunction, toolSortFunction } = props;
   const { hash } = useLocation();
   const navigate = useNavigate();
   const analytics = useAnalytics();
@@ -104,7 +106,7 @@ export const ToolsPage = (props: ToolsPageProps) => {
     t.push({
       tab: (
         <Tab
-          key="Home"
+          key="Toolbox"
           label=""
           disabled
           className={styles.tabDivider}
@@ -112,7 +114,7 @@ export const ToolsPage = (props: ToolsPageProps) => {
         />
       ),
       component: undefined,
-      id: 'home',
+      id: 'toolbox',
       title: '',
     });
 
@@ -120,10 +122,10 @@ export const ToolsPage = (props: ToolsPageProps) => {
       id: '',
       tab: (
         <Tab
-          key="home"
+          key="toolbox"
           wrapped
           className={`${styles.fullWidth} ${styles.noPadding} ${styles.tab}`}
-          label="Home"
+          label="Toolbox"
         />
       ),
       title: 'Toolbox',
@@ -143,44 +145,66 @@ export const ToolsPage = (props: ToolsPageProps) => {
       {} as Record<string, Tool[]>,
     );
 
-    Object.entries(categories).map(([category, categoryTools]) => {
-      t.push({
-        tab: (
-          <Tab
-            key={category}
-            label={category}
-            disabled
-            className={styles.tabDivider}
-          />
-        ),
-        component: undefined,
-        id: category,
-        title: '',
-      });
-      categoryTools.map((tool, i) => {
+    Object.entries(categories)
+      .sort(([a, _], [b, __]) => {
+        if (categorySortFunction) {
+          return categorySortFunction(a, b);
+        }
+        return a.localeCompare(b);
+      })
+      .map(([category, categoryTools]) => {
         t.push({
           tab: (
             <Tab
-              key={tool.name}
-              style={
-                search &&
-                !tool.name.toLowerCase().includes(search.toLowerCase())
-                  ? { display: 'none' }
-                  : {}
-              }
-              wrapped
-              className={`${styles.fullWidth} ${styles.noPadding} ${styles.tab}`}
-              label={tool.name}
-              {...tabProps(i)}
+              key={category}
+              label={category}
+              disabled
+              className={styles.tabDivider}
             />
           ),
-          title: `${category} - ${tool.name}`,
-          ...tool,
+          component: undefined,
+          id: category,
+          title: '',
         });
+        categoryTools
+          .sort((a, b) => {
+            if (toolSortFunction) {
+              return toolSortFunction(a, b);
+            }
+            return a.name.localeCompare(b.name);
+          })
+          .map((tool, i) => {
+            t.push({
+              tab: (
+                <Tab
+                  key={tool.name}
+                  style={
+                    search &&
+                    !tool.name.toLowerCase().includes(search.toLowerCase())
+                      ? { display: 'none' }
+                      : {}
+                  }
+                  wrapped
+                  className={`${styles.fullWidth} ${styles.noPadding} ${styles.tab}`}
+                  label={tool.name}
+                  {...tabProps(i)}
+                />
+              ),
+              title: `${category} - ${tool.name}`,
+              ...tool,
+            });
+          });
       });
-    });
     return t;
-  }, [favorites, search, styles, extraTools, tools]);
+  }, [
+    favorites,
+    search,
+    styles,
+    extraTools,
+    tools,
+    categorySortFunction,
+    toolSortFunction,
+  ]);
 
   useEffect(() => {
     const idx = tabs.findIndex(tab => tab.id === hash.slice(1));

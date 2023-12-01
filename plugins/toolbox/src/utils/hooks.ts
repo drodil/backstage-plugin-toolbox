@@ -66,6 +66,9 @@ export const useStyles = makeStyles(theme => {
         color: theme.palette.linkHover,
         background: 'transparent',
       },
+      '&[aria-selected="true"]': {
+        fontWeight: 'bold',
+      },
     },
     tabDivider: {
       marginTop: theme.spacing(1),
