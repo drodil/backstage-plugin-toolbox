@@ -32,7 +32,7 @@ export const JSBeautify = () => {
       output={output}
       sample={sample}
       allowFileUpload
-      acceptFileTypes=".js,.jsx,.ts,.tsx"
+      acceptFileTypes=".js,.jsx,.ts,.tsx,.json"
       allowFileDownload
       downloadFileName="download.js"
       downloadFileType="text/javascript"
