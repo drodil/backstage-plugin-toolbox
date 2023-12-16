@@ -218,10 +218,10 @@ export const defaultTools: Tool[] = [
   },
   {
     id: 'format-js',
-    name: 'Javascript',
+    name: 'Javascript / JSON',
     component: <JSBeautify />,
     category: 'Format',
-    description: 'Reformat Javascript code with Beautify',
+    description: 'Reformat Javascript / JSON code with Beautify',
   },
   {
     id: 'format-html',
