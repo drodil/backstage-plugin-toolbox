@@ -11,7 +11,16 @@ import {
   Typography,
 } from '@material-ui/core';
 import * as colorConvert from 'color-convert';
-import { CMYK, HSV, RGB, HSL, KEYWORD, HEX, LAB, LCH } from 'color-convert/conversions';
+import {
+  CMYK,
+  HEX,
+  HSL,
+  HSV,
+  KEYWORD,
+  LAB,
+  LCH,
+  RGB,
+} from 'color-convert/conversions';
 import { PasteFromClipboardButton } from '../Buttons/PasteFromClipboardButton';
 import { ClearValueButton } from '../Buttons/ClearValueButton';
 import { CopyToClipboardButton } from '../Buttons/CopyToClipboardButton';
@@ -74,8 +83,8 @@ export const ColorConverter = () => {
   const parseCmyk = ([c, m, y, k]: CMYK): string =>
     `cmyk(${c}%,${m}%,${y}%,${k}%)`;
 
-  const parseLab = ([l,a,b]: LAB): string => `lab(${l},${a},${b})`;
-  const parseLch = ([l,c,h]: LCH): string => `lch(${l},${c},${h})`;
+  const parseLab = ([l, a, b]: LAB): string => `lab(${l},${a},${b})`;
+  const parseLch = ([l, c, h]: LCH): string => `lch(${l},${c},${h})`;
 
   const removeCharacters = (value: string, colorType: string) => {
     return value
@@ -187,8 +196,8 @@ export const ColorConverter = () => {
 
   const handleLab = (value: string) => {
     const values: LAB = removeCharacters(value, 'lab')
-        .split(',')
-        .map((val: string) => parseInt(val, 10)) as LAB;
+      .split(',')
+      .map((val: string) => parseInt(val, 10)) as LAB;
 
     try {
       setHex(`#${colorConvert.lab.hex(values)}`);
@@ -205,8 +214,8 @@ export const ColorConverter = () => {
 
   const handleLch = (value: string) => {
     const values: LCH = removeCharacters(value, 'lch')
-        .split(',')
-        .map((val: string) => parseInt(val, 10)) as LCH;
+      .split(',')
+      .map((val: string) => parseInt(val, 10)) as LCH;
 
     try {
       setHex(`#${colorConvert.lch.hex(values)}`);
@@ -272,8 +281,8 @@ export const ColorConverter = () => {
         setHsv([0, 0, 0]);
         setCmyk([0, 0, 0, 0]);
         setHtml(null);
-        setLab([0,0,0]);
-        setLch([0,0,0]);
+        setLab([0, 0, 0]);
+        setLch([0, 0, 0]);
         break;
     }
   };
