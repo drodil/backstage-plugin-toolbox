@@ -32,6 +32,8 @@ type Props = {
   allowFileDownload?: boolean;
   downloadFileType?: string;
   downloadFileName?: string;
+  inputProps?: any;
+  outputProps?: any;
 };
 
 export const DefaultEditor = (props: Props) => {
@@ -53,6 +55,8 @@ export const DefaultEditor = (props: Props) => {
     allowFileDownload,
     downloadFileName,
     downloadFileType,
+    inputProps,
+    outputProps,
   } = props;
   const styles = useStyles();
 
@@ -166,7 +170,10 @@ export const DefaultEditor = (props: Props) => {
                 className={styles.fullWidth}
                 value={input}
                 onChange={e => setInput(e.target.value)}
-                inputProps={{ style: { resize: 'vertical' } }}
+                inputProps={{
+                  style: { resize: 'vertical' },
+                  ...inputProps,
+                }}
                 minRows={20}
                 variant="outlined"
               />
@@ -184,7 +191,10 @@ export const DefaultEditor = (props: Props) => {
                 label="Output"
                 value={output || ''}
                 className={styles.fullWidth}
-                inputProps={{ style: { resize: 'vertical' } }}
+                inputProps={{
+                  style: { resize: 'vertical' },
+                  ...outputProps,
+                }}
                 multiline
                 minRows={20}
                 variant="outlined"

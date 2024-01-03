@@ -11,8 +11,9 @@ export const QRCodeGenerator = () => {
     <DefaultEditor
       input={input}
       setInput={setInput}
+      inputProps={{ maxLength: 2048 }}
       sample={sample}
-      rightContent={<QRCode value={input} />}
+      rightContent={<QRCode size={512} value={input.substring(0, 2048)} />}
     />
   );
 };
