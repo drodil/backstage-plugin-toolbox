@@ -13,17 +13,17 @@ export const JwtDecoder = () => {
   const exampleJSON = {
     header: {
       alg: 'HS256',
-      typ: 'JWT'
+      typ: 'JWT',
     },
     payload: {
       sub: 1234567890,
       iat: 1516239022,
       iss: 'John Doe',
-      exp: 1516239022
+      exp: 1516239022,
     },
-    key: "exampleSecretKey"
+    key: 'exampleSecretKey',
   };
-  
+
   useEffect(() => {
     if (mode === 'Decode') {
       try {
@@ -46,17 +46,16 @@ ${JSON.stringify(jwtPayload, null, 2)}`);
       try {
         const inputJSON = JSON.parse(input);
         const secret = new TextEncoder().encode(inputJSON.key);
-        (async () => { 
-          const token =  await new SignJWT(inputJSON.payload)
-          .setProtectedHeader(inputJSON.header)
-          .setIssuedAt(inputJSON.payload.iat)
-          .setIssuer(inputJSON.payload.iss)
-          .setExpirationTime(inputJSON.payload.exp)
-          .sign(secret);
-        setOutput(token);
+        (async () => {
+          const token = await new SignJWT(inputJSON.payload)
+            .setProtectedHeader(inputJSON.header)
+            .setIssuedAt(inputJSON.payload.iat)
+            .setIssuer(inputJSON.payload.iss)
+            .setExpirationTime(inputJSON.payload.exp)
+            .sign(secret);
+          setOutput(token);
         })();
-      }
-      catch (error) {
+      } catch (error) {
         setOutput(`Couldn't encode JWT token: ${error}`);
       }
     }
@@ -69,7 +68,9 @@ ${JSON.stringify(jwtPayload, null, 2)}`);
       setInput={setInput}
       setMode={setMode}
       modes={['Encode', 'Decode']}
-      sample={mode === 'Encode' ? JSON.stringify(exampleJSON, null, 4) : exampleJwt}
+      sample={
+        mode === 'Encode' ? JSON.stringify(exampleJSON, null, 4) : exampleJwt
+      }
       output={output}
     />
   );

@@ -76,7 +76,7 @@ export const defaultTools: Tool[] = [
     name: 'JSON Web Token',
     component: <JwtDecoder />,
     category: 'Encode/Decode',
-    description: 'Decode JSON Web Tokens tokens',
+    description: 'Encode and decode JSON Web Tokens',
   },
 
   {
