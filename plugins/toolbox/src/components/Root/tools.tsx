@@ -40,6 +40,8 @@ const HTMLBeautify = lazy(() => import('../Formatters/HTMLBeautify'));
 const CSSBeautify = lazy(() => import('../Formatters/CSSBeautify'));
 const SQLBeautify = lazy(() => import('../Formatters/SQLBeautify'));
 
+const IbanValidator = lazy(() => import('../Validators/IbanValidator'));
+
 // const CidrCalculator = lazy(() => import('../Networking/CidrCalculator'));
 
 export const defaultTools: Tool[] = [
@@ -264,6 +266,13 @@ export const defaultTools: Tool[] = [
     component: <Diff />,
     category: 'Miscellaneous',
     description: 'Shows differences between two texts',
+  },
+  {
+    id: 'iban',
+    name: 'IBAN validator',
+    component: <IbanValidator />,
+    category: 'Validate',
+    description: 'Validates IBAN based on ISO 13616',
   },
   /**
   {

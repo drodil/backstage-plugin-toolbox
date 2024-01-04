@@ -19,6 +19,9 @@ type Props = {
   setInput: (value: string) => void;
   output?: string;
   mode?: string;
+  minRows?: number;
+  inputLabel?: string;
+  outputLabel?: string;
   setMode?: (value: string) => void;
   modes?: Array<string>;
   leftContent?: JSX.Element;
@@ -41,6 +44,8 @@ export const DefaultEditor = (props: Props) => {
     input,
     setInput,
     output,
+    inputLabel = 'Input',
+    outputLabel = 'Output',
     mode,
     setMode,
     modes,
@@ -57,6 +62,7 @@ export const DefaultEditor = (props: Props) => {
     downloadFileType,
     inputProps,
     outputProps,
+    minRows = 20,
   } = props;
   const styles = useStyles();
 
@@ -162,7 +168,7 @@ export const DefaultEditor = (props: Props) => {
           ) : (
             <>
               <TextField
-                label="Input"
+                label={inputLabel}
                 // eslint-disable-next-line
                 autoFocus
                 id="input"
@@ -174,7 +180,7 @@ export const DefaultEditor = (props: Props) => {
                   style: { resize: 'vertical' },
                   ...inputProps,
                 }}
-                minRows={20}
+                minRows={minRows}
                 variant="outlined"
               />
             </>
@@ -188,7 +194,7 @@ export const DefaultEditor = (props: Props) => {
             <>
               <TextField
                 id="output"
-                label="Output"
+                label={outputLabel}
                 value={output || ''}
                 className={styles.fullWidth}
                 inputProps={{
@@ -196,7 +202,7 @@ export const DefaultEditor = (props: Props) => {
                   ...outputProps,
                 }}
                 multiline
-                minRows={20}
+                minRows={minRows}
                 variant="outlined"
               />
             </>

@@ -32,6 +32,8 @@ export const CSSBeautify = () => {
       output={output}
       sample={sample}
       allowFileUpload
+      inputLabel="Unformatted CSS"
+      outputLabel="Formatted CSS"
       acceptFileTypes=".css"
       allowFileDownload
       downloadFileName="download.css"

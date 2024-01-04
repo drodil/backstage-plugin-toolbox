@@ -93,7 +93,6 @@ export const TimeConverter = () => {
         <Grid container>
           <Grid item xs={12} lg={8}>
             <Typography variant="subtitle1">
-              Input
               <PasteFromClipboardButton setInput={v => handleChange(v)} />
               <ClearValueButton setValue={() => handleChange('')} />
               <Button size="small" onClick={() => setInput(DateTime.now())}>
@@ -104,6 +103,7 @@ export const TimeConverter = () => {
               className={styles.fullWidth}
               id="input"
               name="input"
+              label="Input"
               value={getInputStr()}
               onChange={e => handleChange(e.target.value)}
               variant="outlined"

@@ -38,6 +38,8 @@ export const JsonToYaml = () => {
       output={output}
       sample={sample}
       allowFileUpload
+      inputLabel="JSON"
+      outputLabel="YAML"
       acceptFileTypes=".json"
       allowFileDownload
       downloadFileName="download.yaml"

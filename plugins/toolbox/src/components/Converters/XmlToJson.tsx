@@ -28,6 +28,8 @@ export const XmlToJson = () => {
       output={output}
       sample={sample}
       allowFileUpload
+      inputLabel="XML"
+      outputLabel="JSON"
       acceptFileTypes=".xml"
       additionalTools={[
         <JsonSpaceSelector spaces={spaces} onChange={setSpaces} />,

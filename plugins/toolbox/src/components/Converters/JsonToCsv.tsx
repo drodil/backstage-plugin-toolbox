@@ -45,6 +45,8 @@ export const JsonToCsv = () => {
       setInput={setInput}
       output={output}
       sample={sample}
+      inputLabel="JSON"
+      outputLabel="CSV"
       allowFileUpload
       acceptFileTypes=".json"
       allowFileDownload

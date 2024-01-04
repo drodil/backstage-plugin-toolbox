@@ -40,6 +40,8 @@ export const YamlToJson = () => {
       output={output}
       sample={sample}
       allowFileUpload
+      inputLabel="YAML"
+      outputLabel="JSON"
       acceptFileTypes=".yaml,.yml"
       additionalTools={[
         <JsonSpaceSelector spaces={spaces} onChange={setSpaces} />,

@@ -32,6 +32,8 @@ export const HTMLBeautify = () => {
       output={output}
       sample={sample}
       allowFileUpload
+      inputLabel="Unformatted HTML"
+      outputLabel="Formatted HTML"
       acceptFileTypes=".html,.htm"
       allowFileDownload
       downloadFileName="download.html"

@@ -104,7 +104,6 @@ export const SLACalculator = () => {
         <Grid container>
           <Grid item xs={12} lg={8}>
             <Typography variant="subtitle1">
-              Agreed SLA level in %
               <PasteFromClipboardButton setInput={v => handleChange(v)} />
               <ClearValueButton
                 setValue={() => {
@@ -119,6 +118,7 @@ export const SLACalculator = () => {
             <TextField
               className={styles.fullWidth}
               id="input"
+              label="Agreed SLA level in %"
               name="input"
               value={input}
               onChange={e => handleChange(e.target.value)}

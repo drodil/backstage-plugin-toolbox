@@ -309,7 +309,6 @@ export const ColorConverter = () => {
         <Grid container>
           <Grid item xs={12} lg={6}>
             <Typography variant="subtitle1">
-              Input
               <PasteFromClipboardButton setInput={v => handleChange(v)} />
               <ClearValueButton setValue={() => handleChange('')} />
               <Tooltip arrow title="Input sample">
@@ -321,6 +320,7 @@ export const ColorConverter = () => {
             <TextField
               id="input"
               name="input"
+              label="Color"
               value={getInputStr()}
               className={styles.fullWidth}
               onChange={e => handleChange(e.target.value)}

@@ -31,6 +31,8 @@ export const SQLBeautify = () => {
       sample={sample}
       allowFileUpload
       acceptFileTypes=".sql"
+      inputLabel="Unformatted SQL"
+      outputLabel="Formatted SQL"
       allowFileDownload
       downloadFileName="download.sql"
       downloadFileType="text/plain"

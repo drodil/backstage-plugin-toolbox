@@ -1,18 +1,15 @@
 import React, { useEffect } from 'react';
 import { DefaultEditor } from '../DefaultEditor/DefaultEditor';
-import { TextField } from '@material-ui/core';
-import { useStyles } from '../../utils/hooks';
 import { faker } from '@faker-js/faker';
-import { CopyToClipboardButton } from '../Buttons/CopyToClipboardButton';
 import { sha1, sha256, sha384, sha512 } from 'crypto-hash';
 import { Md5 } from 'ts-md5';
 // @ts-ignore
 import md2 from 'js-md2';
 // @ts-ignore
 import md4 from 'js-md4';
+import { OutputField } from '../DefaultEditor/OutputField';
 
 export const Hash = () => {
-  const styles = useStyles();
   const [input, setInput] = React.useState('');
   const [hash, setHash] = React.useState({
     md2: '',
@@ -46,21 +43,6 @@ export const Hash = () => {
       });
     });
   }, [input]);
-
-  const OutputField = (props: { label: string; value?: string | null }) => {
-    const { label, value } = props;
-    return (
-      <>
-        <TextField
-          label={label}
-          className={styles.fullWidth}
-          disabled
-          value={value ?? ''}
-        />
-        <CopyToClipboardButton output={value ?? ''} />
-      </>
-    );
-  };
 
   return (
     <DefaultEditor

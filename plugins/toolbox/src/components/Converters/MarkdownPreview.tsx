@@ -24,6 +24,7 @@ export const MarkdownPreview = () => {
     <DefaultEditor
       input={input}
       setInput={setInput}
+      inputLabel="Markdown"
       sample={sample}
       allowFileUpload
       acceptFileTypes=".md"
