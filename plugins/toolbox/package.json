@@ -43,6 +43,7 @@
     "color-convert": "^2.0.1",
     "crypto-hash": "^3.0.0",
     "csvtojson": "^2.0.10",
+    "jose": "^5.2.0",
     "js-beautify": "^1.14.9",
     "js-md2": "^0.2.2",
     "js-md4": "^0.3.2",

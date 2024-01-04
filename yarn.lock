@@ -2703,6 +2703,7 @@ __metadata:
     cross-fetch: ^3.1.5
     crypto-hash: ^3.0.0
     csvtojson: ^2.0.10
+    jose: ^5.2.0
     js-beautify: ^1.14.9
     js-md2: ^0.2.2
     js-md4: ^0.3.2
@@ -12951,6 +12952,13 @@ __metadata:
   bin:
     jest: bin/jest.js
   checksum: a8ff2eb0f421623412236e23cbe67c638127fffde466cba9606bc0c0553b4c1e5cb116d7e0ef990b5d1712851652c8ee461373b578df50857fe635b94ff455d5
+  languageName: node
+  linkType: hard
+
+"jose@npm:^5.2.0":
+  version: 5.2.0
+  resolution: "jose@npm:5.2.0"
+  checksum: 277ef57dcfb2552c3f769e07235ace4d206b8959ca72dff58128be9af480ab591c8cd8724140d0110fd3bc88a020178d552ab29d418a97f98724d5c82593ac93
   languageName: node
   linkType: hard
 
