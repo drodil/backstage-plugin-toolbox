@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.15.1](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.15.0...v1.15.1) (2024-01-04)
+
+
+### Bug Fixes
+
+* add missing iban depdenceny ([e68db07](https://github.com/drodil/backstage-plugin-toolbox/commit/e68db0778a91c333186335907488daf11e41d3a8)), closes [#69](https://github.com/drodil/backstage-plugin-toolbox/issues/69)
+
 ## [1.15.0](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.14.0...v1.15.0) (2024-01-04)
 
 
