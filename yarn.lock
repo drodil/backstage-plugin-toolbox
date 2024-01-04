@@ -2704,6 +2704,7 @@ __metadata:
     cross-fetch: ^3.1.5
     crypto-hash: ^3.0.0
     csvtojson: ^2.0.10
+    iban: ^0.0.14
     jose: ^5.2.0
     js-beautify: ^1.14.9
     js-md2: ^0.2.2
@@ -11705,6 +11706,13 @@ __metadata:
   dependencies:
     "@babel/runtime": ^7.20.6
   checksum: 175f8ab7fac2abcee147b00cc2d8e7d4fa9b05cdc227f02cac841fc2fd9545ed4a6d88774f594f8ad12dc944e4d34cc8e88aa00c8b9947baef9e859d93abd305
+  languageName: node
+  linkType: hard
+
+"iban@npm:^0.0.14":
+  version: 0.0.14
+  resolution: "iban@npm:0.0.14"
+  checksum: 91a94aa0bc461767e20b31677361d54778b8a3ab209db220950d7487c409e756a69bd683fab7f673ec782cee9bb1613bbba126f1fe351af2918acc549f232960
   languageName: node
   linkType: hard
 
