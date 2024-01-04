@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.15.0](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.14.0...v1.15.0) (2024-01-04)
+
+
+### Features
+
+* add iban validator tool ([5a995d8](https://github.com/drodil/backstage-plugin-toolbox/commit/5a995d8a6e901dad30a3b54e055bcd2e1433576e))
+
+
+### Bug Fixes
+
+* prevent too long qr code inputs ([036f6b6](https://github.com/drodil/backstage-plugin-toolbox/commit/036f6b6481fb19da5e7f735ccdbf2b93eaa21209)), closes [#67](https://github.com/drodil/backstage-plugin-toolbox/issues/67)
+
 ## [1.14.0](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.13.0...v1.14.0) (2023-12-01)
 
 
