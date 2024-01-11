@@ -4,6 +4,7 @@ import AssignmentReturnedIcon from '@material-ui/icons/AssignmentReturned';
 
 type Props = {
   setInput: (input: string) => void;
+  title?: string;
 };
 
 export const PasteFromClipboardButton = (props: Props) => {
@@ -14,7 +15,7 @@ export const PasteFromClipboardButton = (props: Props) => {
     );
   };
   return (
-    <Tooltip arrow title="Paste input from clipboard">
+    <Tooltip arrow title={props.title ?? 'Paste input from clipboard'}>
       <Button
         size="small"
         startIcon={<AssignmentReturnedIcon />}

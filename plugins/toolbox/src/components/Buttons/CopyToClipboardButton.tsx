@@ -4,6 +4,7 @@ import React from 'react';
 
 type Props = {
   output: string | number;
+  title?: string;
 };
 
 export const CopyToClipboardButton = (props: Props) => {
@@ -13,7 +14,7 @@ export const CopyToClipboardButton = (props: Props) => {
   };
 
   return (
-    <Tooltip arrow title="Copy output to clipboard">
+    <Tooltip arrow title={props.title ?? 'Copy output to clipboard'}>
       <Button size="small" startIcon={<FileCopy />} onClick={copyToClipboard}>
         Copy
       </Button>

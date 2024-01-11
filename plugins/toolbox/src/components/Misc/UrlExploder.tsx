@@ -1,7 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Grid, TextField } from '@material-ui/core';
 import { useStyles } from '../../utils/hooks';
-import { SampleButton } from '../Buttons';
+import {
+  ClearValueButton,
+  CopyToClipboardButton,
+  PasteFromClipboardButton,
+  SampleButton,
+} from '../Buttons';
 import { faker } from '@faker-js/faker';
 
 const UrlExploder = () => {
@@ -75,12 +80,24 @@ const UrlExploder = () => {
     <Grid container>
       <Grid item xs={12}>
         <SampleButton setInput={onInput} sample={faker.internet.url()} />
+        <ClearValueButton setValue={onInput} />
+        <PasteFromClipboardButton
+          title="Paste URL from clipboard"
+          setInput={onInput}
+        />
+        {rawInput && (
+          <CopyToClipboardButton
+            title="Copy URL to clipboard"
+            output={rawInput}
+          />
+        )}
         <TextField
           label="URL"
           variant="outlined"
           className={styles.fullWidth}
           value={rawInput}
           onChange={e => onInput(e.target.value)}
+          style={{ marginTop: '10px', marginBottom: '10px' }}
         />
       </Grid>
       <Grid item xs={6}>
