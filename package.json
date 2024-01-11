@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "engines": {
-    "node": "16 || 18"
+    "node": "18 || 20"
   },
   "jest": {
     "rootDir": "./plugins/toolbox/src/"
