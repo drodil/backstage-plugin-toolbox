@@ -41,6 +41,7 @@ const CSSBeautify = lazy(() => import('../Formatters/CSSBeautify'));
 const SQLBeautify = lazy(() => import('../Formatters/SQLBeautify'));
 
 const IbanValidator = lazy(() => import('../Validators/IbanValidator'));
+const UrlExploder = lazy(() => import('../Misc/UrlExploder'));
 
 // const CidrCalculator = lazy(() => import('../Networking/CidrCalculator'));
 
@@ -273,6 +274,13 @@ export const defaultTools: Tool[] = [
     component: <IbanValidator />,
     category: 'Validate',
     description: 'Validates IBAN based on ISO 13616',
+  },
+  {
+    id: 'url-exploder',
+    name: 'URL exploder',
+    component: <UrlExploder />,
+    category: 'Miscellaneous',
+    description: 'Explode and modify parts of URL easily',
   },
   /**
   {
