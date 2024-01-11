@@ -61,8 +61,5 @@
       "prettier --write"
     ]
   },
-  "packageManager": "yarn@3.6.0",
-  "dependencies": {
-    "@backstage/plugin-catalog-react": "^1.9.2"
-  }
+  "packageManager": "yarn@3.6.0"
 }
