@@ -5,6 +5,9 @@
   "engines": {
     "node": "16 || 18"
   },
+  "jest": {
+    "rootDir": "./plugins/toolbox/src/"
+  },
   "scripts": {
     "prepare": "husky install",
     "dev": "yarn start",
@@ -40,8 +43,8 @@
     "husky": "^8.0.1",
     "lint-staged": "^14.0.1",
     "prettier": "^2.4.1",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-router": "^6.3.0",
     "react-router-dom": "^6.3.0",
     "standard-version": "^9.5.0",

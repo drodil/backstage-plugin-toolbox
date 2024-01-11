@@ -33,6 +33,7 @@
   "dependencies": {
     "@backstage/core-components": "^0.13.9",
     "@backstage/core-plugin-api": "^1.8.1",
+    "@backstage/plugin-catalog-react": "^1.9.2",
     "@backstage/plugin-home-react": "^0.1.6",
     "@faker-js/faker": "^8.1.0",
     "@material-ui/core": "^4.12.2",
@@ -67,7 +68,6 @@
   "peerDependencies": {
     "@backstage/catalog-client": "^1.5.1",
     "@backstage/catalog-model": "^1.4.3",
-    "@backstage/plugin-catalog-react": "^1.9.2",
     "react": "^16.13.1 || ^17.0.0",
     "react-router-dom": "^6.3.0"
   },

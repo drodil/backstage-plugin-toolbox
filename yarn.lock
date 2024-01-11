@@ -2681,6 +2681,7 @@ __metadata:
     "@backstage/core-components": ^0.13.9
     "@backstage/core-plugin-api": ^1.8.1
     "@backstage/dev-utils": ^1.0.25
+    "@backstage/plugin-catalog-react": ^1.9.2
     "@backstage/plugin-home": ^0.6.0
     "@backstage/plugin-home-react": ^0.1.6
     "@faker-js/faker": ^8.1.0
@@ -2727,7 +2728,6 @@ __metadata:
   peerDependencies:
     "@backstage/catalog-client": ^1.5.1
     "@backstage/catalog-model": ^1.4.3
-    "@backstage/plugin-catalog-react": ^1.9.2
     react: ^16.13.1 || ^17.0.0
     react-router-dom: ^6.3.0
   languageName: unknown
@@ -16729,6 +16729,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-dom@npm:^18.2.0":
+  version: 18.2.0
+  resolution: "react-dom@npm:18.2.0"
+  dependencies:
+    loose-envify: ^1.1.0
+    scheduler: ^0.23.0
+  peerDependencies:
+    react: ^18.2.0
+  checksum: 7d323310bea3a91be2965f9468d552f201b1c27891e45ddc2d6b8f717680c95a75ae0bc1e3f5cf41472446a2589a75aed4483aee8169287909fcd59ad149e8cc
+  languageName: node
+  linkType: hard
+
 "react-double-scrollbar@npm:0.0.15":
   version: 0.0.15
   resolution: "react-double-scrollbar@npm:0.0.15"
@@ -17062,13 +17074,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react@npm:^17.0.2":
-  version: 17.0.2
-  resolution: "react@npm:17.0.2"
+"react@npm:^18.2.0":
+  version: 18.2.0
+  resolution: "react@npm:18.2.0"
   dependencies:
     loose-envify: ^1.1.0
-    object-assign: ^4.1.1
-  checksum: b254cc17ce3011788330f7bbf383ab653c6848902d7936a87b09d835d091e3f295f7e9dd1597c6daac5dc80f90e778c8230218ba8ad599f74adcc11e33b9d61b
+  checksum: 88e38092da8839b830cda6feef2e8505dec8ace60579e46aa5490fc3dc9bba0bd50336507dc166f43e3afc1c42939c09fe33b25fae889d6f402721dcd78fca1b
   languageName: node
   linkType: hard
 
@@ -17663,8 +17674,8 @@ __metadata:
     husky: ^8.0.1
     lint-staged: ^14.0.1
     prettier: ^2.4.1
-    react: ^17.0.2
-    react-dom: ^17.0.2
+    react: ^18.2.0
+    react-dom: ^18.2.0
     react-router: ^6.3.0
     react-router-dom: ^6.3.0
     standard-version: ^9.5.0
@@ -17791,6 +17802,15 @@ __metadata:
     loose-envify: ^1.1.0
     object-assign: ^4.1.1
   checksum: c4b35cf967c8f0d3e65753252d0f260271f81a81e427241295c5a7b783abf4ea9e905f22f815ab66676f5313be0a25f47be582254db8f9241b259213e999b8fc
+  languageName: node
+  linkType: hard
+
+"scheduler@npm:^0.23.0":
+  version: 0.23.0
+  resolution: "scheduler@npm:0.23.0"
+  dependencies:
+    loose-envify: ^1.1.0
+  checksum: d79192eeaa12abef860c195ea45d37cbf2bbf5f66e3c4dcd16f54a7da53b17788a70d109ee3d3dde1a0fd50e6a8fc171f4300356c5aee4fc0171de526bf35f8a
   languageName: node
   linkType: hard
 
