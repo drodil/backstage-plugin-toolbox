@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.16.0](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.15.1...v1.16.0) (2024-01-11)
+
+
+### Features
+
+* add more buttons to url exploder tool ([70bc521](https://github.com/drodil/backstage-plugin-toolbox/commit/70bc521db0bed8dd4e249f26ae49be830b38b164))
+* add new url exploder tool ([f347c4b](https://github.com/drodil/backstage-plugin-toolbox/commit/f347c4b1d86a848151e98280ab853273622e3ac9))
+
 ### [1.15.1](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.15.0...v1.15.1) (2024-01-04)
 
 
