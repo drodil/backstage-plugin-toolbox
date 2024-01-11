@@ -5,6 +5,9 @@
   "engines": {
     "node": "16 || 18"
   },
+  "jest": {
+    "rootDir": "./plugins/toolbox/src/"
+  },
   "scripts": {
     "prepare": "husky install",
     "dev": "yarn start",
