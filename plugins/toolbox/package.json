@@ -55,7 +55,6 @@
     "luxon": "^3.4.3",
     "monaco-editor": "^0.44.0",
     "react-barcode": "^1.4.6",
-    "react-dom": "^18",
     "react-qr-code": "^2.0.12",
     "react-use": "^17.2.4",
     "sql-formatter": "^13.0.0",
@@ -68,8 +67,9 @@
   "peerDependencies": {
     "@backstage/catalog-client": "^1.5.1",
     "@backstage/catalog-model": "^1.4.3",
-    "react": "^16.13.1 || ^17.0.0",
-    "react-router-dom": "^6.3.0"
+    "react": "^16.13.1 || ^17.0.0 || ^18.0.0",
+    "react-dom": "^16.13.1 || ^17.0.0 || ^18.0.0",
+    "react-router-dom": "6.0.0-beta.0 || ^6.3.0"
   },
   "devDependencies": {
     "@backstage/cli": "^0.25.0",

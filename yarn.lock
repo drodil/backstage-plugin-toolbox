@@ -2716,7 +2716,6 @@ __metadata:
     luxon: ^3.4.3
     monaco-editor: ^0.44.0
     react-barcode: ^1.4.6
-    react-dom: ^18
     react-qr-code: ^2.0.12
     react-use: ^17.2.4
     sql-formatter: ^13.0.0
@@ -2728,8 +2727,9 @@ __metadata:
   peerDependencies:
     "@backstage/catalog-client": ^1.5.1
     "@backstage/catalog-model": ^1.4.3
-    react: ^16.13.1 || ^17.0.0
-    react-router-dom: ^6.3.0
+    react: ^16.13.1 || ^17.0.0 || ^18.0.0
+    react-dom: ^16.13.1 || ^17.0.0 || ^18.0.0
+    react-router-dom: 6.0.0-beta.0 || ^6.3.0
   languageName: unknown
   linkType: soft
 
@@ -5818,7 +5818,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:^18":
+"@types/react@npm:*":
   version: 18.2.47
   resolution: "@types/react@npm:18.2.47"
   dependencies:
@@ -5826,6 +5826,17 @@ __metadata:
     "@types/scheduler": "*"
     csstype: ^3.0.2
   checksum: 49608f07f73374e535b21f99fee28e6cfd5801d887c6ed88c41b4dc701dbcee9f0c4d289d9af7b2b23114f76dbf203ffe2c9191bfb4958cf18dae5a25daedbd0
+  languageName: node
+  linkType: hard
+
+"@types/react@npm:^16.13.1 || ^17.0.0":
+  version: 17.0.74
+  resolution: "@types/react@npm:17.0.74"
+  dependencies:
+    "@types/prop-types": "*"
+    "@types/scheduler": "*"
+    csstype: ^3.0.2
+  checksum: 0234cee33281607db663a9d878e799458d9ab7e31f818528c75f0d0047175fb06db0672b0d2b93977ff066c07636a9a09b121178a55cbb4a4fe82ff61dae7474
   languageName: node
   linkType: hard
 
@@ -16716,7 +16727,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-dom@npm:^18, react-dom@npm:^18.2.0":
+"react-dom@npm:^18.2.0":
   version: 18.2.0
   resolution: "react-dom@npm:18.2.0"
   dependencies:
