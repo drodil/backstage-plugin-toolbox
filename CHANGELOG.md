@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.17.0](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.16.1...v1.17.0) (2024-01-12)
+
+
+### Features
+
+* introduce react plugin for external tools ([ad85d01](https://github.com/drodil/backstage-plugin-toolbox/commit/ad85d01c5cec6108a30548477e2e8c38eb759335))
+
+
+### Bug Fixes
+
+* yet another react18 fix ([804a5aa](https://github.com/drodil/backstage-plugin-toolbox/commit/804a5aad2aed6d556ee82e375de2fc71044a8eb9)), closes [#71](https://github.com/drodil/backstage-plugin-toolbox/issues/71)
+
 ### [1.16.1](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.16.0...v1.16.1) (2024-01-11)
 
 
