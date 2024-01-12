@@ -9,7 +9,7 @@ const Timer = () => {
   const [isRunning, setIsRunning] = useState(false);
 
   useEffect(() => {
-    let intervalId: NodeJS.Timer | undefined;
+    let intervalId: any;
 
     if (isRunning) {
       intervalId = setInterval(() => {

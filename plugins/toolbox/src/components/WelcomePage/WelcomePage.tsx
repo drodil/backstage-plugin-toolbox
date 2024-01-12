@@ -1,5 +1,5 @@
 import React from 'react';
-import { Tool } from '../Root';
+import { Tool } from '@drodil/backstage-plugin-toolbox-react';
 import {
   Box,
   Card,

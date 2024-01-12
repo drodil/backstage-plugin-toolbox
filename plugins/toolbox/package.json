@@ -35,6 +35,7 @@
     "@backstage/core-plugin-api": "^1.8.1",
     "@backstage/plugin-catalog-react": "^1.9.2",
     "@backstage/plugin-home-react": "^0.1.6",
+    "@drodil/backstage-plugin-toolbox-react": "workspace:^",
     "@faker-js/faker": "^8.1.0",
     "@material-ui/core": "^4.12.2",
     "@material-ui/icons": "^4.9.1",

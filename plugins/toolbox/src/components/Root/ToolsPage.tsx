@@ -1,4 +1,4 @@
-import React, { Suspense, useEffect, useMemo } from 'react';
+import React, { ReactElement, Suspense, useEffect, useMemo } from 'react';
 import {
   Content,
   ContentHeader,
@@ -26,27 +26,29 @@ import { FavoriteButton } from '../Buttons/FavoriteButton';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useAnalytics } from '@backstage/core-plugin-api';
 import { WelcomePage } from '../WelcomePage/WelcomePage';
+import { Tool as ReactTool } from '@drodil/backstage-plugin-toolbox-react';
 
+/** @deprecated Use `Tool` from `@drodil/backstage-plugin-toolbox-react` instead */
 export type Tool = {
   id: string;
   name: string;
-  component: JSX.Element;
+  component: ReactElement;
   showOpenInNewWindowButton?: boolean;
   showFavoriteButton?: boolean;
   description?: string;
   category?: string;
-  headerButtons?: JSX.Element[];
+  headerButtons?: ReactElement[];
 };
 
 type TabInfo = {
-  tab: JSX.Element;
-  component: JSX.Element | undefined;
+  tab: ReactElement;
+  component: ReactElement | undefined;
   id: string;
   title: string;
   showOpenInNewWindowButton?: boolean;
   showFavoriteButton?: boolean;
   description?: string;
-  headerButtons?: JSX.Element[];
+  headerButtons?: ReactElement[];
 };
 
 const tabProps = (index: number) => {
@@ -57,10 +59,10 @@ const tabProps = (index: number) => {
 };
 
 export type ToolsPageProps = {
-  extraTools?: Tool[];
-  tools?: Tool[];
+  extraTools?: ReactTool[];
+  tools?: ReactTool[];
   categorySortFunction?: (category1: string, caregory2: string) => number;
-  toolSortFunction?: (tool1: Tool, tool2: Tool) => number;
+  toolSortFunction?: (tool1: ReactTool, tool2: ReactTool) => number;
 };
 
 export const ToolsPage = (props: ToolsPageProps) => {
@@ -134,15 +136,15 @@ export const ToolsPage = (props: ToolsPageProps) => {
       showOpenInNewWindowButton: false,
     });
 
-    const categories: { [key: string]: Tool[] } = allTools.reduce(
+    const categories: { [key: string]: ReactTool[] } = allTools.reduce(
       (ctgs, tool) => {
         const categoryStr = tool.category ?? 'Miscellaneous';
-        const toolList: Tool[] = ctgs[categoryStr] || [];
+        const toolList: ReactTool[] = ctgs[categoryStr] || [];
         toolList.push(tool);
         ctgs[categoryStr] = toolList;
         return ctgs;
       },
-      {} as Record<string, Tool[]>,
+      {} as Record<string, ReactTool[]>,
     );
 
     Object.entries(categories)

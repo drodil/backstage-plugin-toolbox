@@ -1,8 +1,15 @@
 {
-  "packageFiles": ["plugins/toolbox/package.json"],
+  "packageFiles": [
+    "plugins/toolbox/package.json",
+    "plugins/toolbox-react/package.json"
+  ],
   "bumpFiles": [
     {
       "filename": "plugins/toolbox/package.json",
+      "type": "json"
+    },
+    {
+      "filename": "plugins/toolbox-react/package.json",
       "type": "json"
     }
   ]

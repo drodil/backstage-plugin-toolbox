@@ -5,7 +5,7 @@ import {
   Grid,
   TextField,
 } from '@material-ui/core';
-import React from 'react';
+import React, { ReactElement } from 'react';
 import { useStyles } from '../../utils/hooks';
 import { CopyToClipboardButton } from '../Buttons/CopyToClipboardButton';
 import { PasteFromClipboardButton } from '../Buttons/PasteFromClipboardButton';
@@ -24,12 +24,12 @@ type Props = {
   outputLabel?: string;
   setMode?: (value: string) => void;
   modes?: Array<string>;
-  leftContent?: JSX.Element;
-  extraLeftContent?: JSX.Element;
-  rightContent?: JSX.Element;
-  extraRightContent?: JSX.Element;
+  leftContent?: ReactElement;
+  extraLeftContent?: ReactElement;
+  rightContent?: ReactElement;
+  extraRightContent?: ReactElement;
   sample?: string;
-  additionalTools?: JSX.Element[];
+  additionalTools?: ReactElement[];
   allowFileUpload?: boolean;
   acceptFileTypes?: string;
   allowFileDownload?: boolean;

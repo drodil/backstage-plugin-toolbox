@@ -1,10 +1,12 @@
+import { ReactElement } from 'react';
+
 export type Tool = {
   id: string;
   name: string;
-  component: JSX.Element;
+  component: ReactElement;
   showOpenInNewWindowButton?: boolean;
   showFavoriteButton?: boolean;
   description?: string;
   category?: string;
-  headerButtons?: JSX.Element[];
+  headerButtons?: ReactElement[];
 };

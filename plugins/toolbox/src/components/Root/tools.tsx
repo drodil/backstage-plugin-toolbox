@@ -1,5 +1,5 @@
 import React, { lazy } from 'react';
-import { Tool } from './ToolsPage';
+import { Tool } from '@drodil/backstage-plugin-toolbox-react';
 import { Button } from '@material-ui/core';
 import DescriptionIcon from '@material-ui/icons/Description';
 

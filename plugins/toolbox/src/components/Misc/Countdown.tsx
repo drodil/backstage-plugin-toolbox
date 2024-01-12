@@ -5,8 +5,8 @@ import {
   FormControl,
   FormControlLabel,
   Grid,
-  TextField,
   Switch,
+  TextField,
 } from '@material-ui/core';
 import { useStyles } from '../../utils/hooks';
 import { TimePaper } from './TimePaper';
@@ -83,7 +83,7 @@ const Countdown = () => {
   };
 
   useEffect(() => {
-    let intervalId: NodeJS.Timer | undefined;
+    let intervalId: any;
 
     if (isRunning) {
       intervalId = setInterval(() => {
