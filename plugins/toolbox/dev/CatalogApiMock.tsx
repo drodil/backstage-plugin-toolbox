@@ -146,4 +146,11 @@ export class CatalogApiMock implements CatalogApi {
   ): Promise<QueryEntitiesResponse> {
     return Promise.reject();
   }
+
+  getLocationByEntity(
+    _entity: string | CompoundEntityRef,
+    _options?: CatalogRequestOptions,
+  ): Promise<Location | undefined> {
+    return Promise.resolve(undefined);
+  }
 }

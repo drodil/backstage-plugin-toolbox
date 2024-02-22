@@ -9,7 +9,7 @@ import {
   Tooltip,
 } from '@material-ui/core';
 import { useStyles } from '../../utils/hooks';
-import { useEffectOnce } from 'react-use';
+import useEffectOnce from 'react-use/lib/useEffectOnce';
 import { Select, SelectItem } from '@backstage/core-components';
 
 import {
