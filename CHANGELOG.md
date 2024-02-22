@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.18.0](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.17.1...v1.18.0) (2024-02-22)
+
+
+### Features
+
+* support base64 encoded jwt token ([ecd539c](https://github.com/drodil/backstage-plugin-toolbox/commit/ecd539c2cd9c2477c586714c40a838f916d686d7)), closes [#75](https://github.com/drodil/backstage-plugin-toolbox/issues/75)
+
+
+### Bug Fixes
+
+* catalog mock with new function ([2701b4e](https://github.com/drodil/backstage-plugin-toolbox/commit/2701b4ee191241751ac189eb7a346dda1b35aa12))
+
 ### [1.17.1](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.17.0...v1.17.1) (2024-01-17)
 
 ## [1.17.0](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.16.1...v1.17.0) (2024-01-12)
