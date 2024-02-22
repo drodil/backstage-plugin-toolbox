@@ -3,6 +3,9 @@ import jwtDecode, { JwtPayload } from 'jwt-decode';
 import { DefaultEditor } from '../DefaultEditor';
 import { SignJWT } from 'jose';
 
+const BASE64_REGEX =
+  /^([0-9a-zA-Z+/]{4})*(([0-9a-zA-Z+/]{2}==)|([0-9a-zA-Z+/]{3}=))?$/;
+
 export const JwtDecoder = () => {
   const [input, setInput] = React.useState('');
   const [output, setOutput] = React.useState('');
@@ -26,8 +29,13 @@ export const JwtDecoder = () => {
 
   useEffect(() => {
     if (mode === 'Decode') {
+      let value = input;
+      if (BASE64_REGEX.test(value)) {
+        value = atob(value);
+      }
+
       try {
-        const jwtPayload = jwtDecode<JwtPayload>(input);
+        const jwtPayload = jwtDecode<JwtPayload>(value);
         setOutput(`Issued date:
 ${jwtPayload.iat && new Date(jwtPayload.iat * 1000)}
 
