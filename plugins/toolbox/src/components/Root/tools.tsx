@@ -80,6 +80,7 @@ export const defaultTools: Tool[] = [
     component: <JwtDecoder />,
     category: 'Encode/Decode',
     description: 'Encode and decode JSON Web Tokens',
+    aliases: ['jwt'],
   },
 
   {
@@ -87,6 +88,7 @@ export const defaultTools: Tool[] = [
     name: 'Markdown preview',
     component: <MarkdownPreview />,
     description: 'Render markdown as HTML',
+    aliases: ['md'],
   },
   {
     id: 'csv-to-json-convert',
@@ -158,7 +160,6 @@ export const defaultTools: Tool[] = [
     category: 'Convert',
     description: 'Convert to color between different representation models',
   },
-
   {
     id: 'sla-calculator',
     name: 'Service level agreement',
@@ -218,6 +219,7 @@ export const defaultTools: Tool[] = [
     component: <Hash />,
     category: 'Calculate',
     description: 'Calculate hash from given text',
+    aliases: ['md2', 'md5', 'sha1', 'sha256', 'sha512'],
   },
   {
     id: 'format-js',
@@ -225,6 +227,7 @@ export const defaultTools: Tool[] = [
     component: <JSBeautify />,
     category: 'Format',
     description: 'Reformat Javascript / JSON code with Beautify',
+    aliases: ['js-beautify', 'js'],
   },
   {
     id: 'format-html',

@@ -4,6 +4,7 @@ export type Tool = {
   id: string;
   name: string;
   component: ReactElement;
+  aliases?: string[];
   showOpenInNewWindowButton?: boolean;
   showFavoriteButton?: boolean;
   description?: string;

@@ -147,6 +147,20 @@ export const ToolsPage = (props: ToolsPageProps) => {
       {} as Record<string, ReactTool[]>,
     );
 
+    const matchesSearch = (tool: ReactTool) => {
+      if (!search) {
+        return true;
+      }
+      return (
+        tool.name.toLowerCase().includes(search.toLowerCase()) ||
+        tool.id.toLowerCase().includes(search.toLowerCase()) ||
+        tool.aliases?.some(alias =>
+          alias.toLowerCase().includes(search.toLowerCase()),
+        ) ||
+        tool.description?.toLowerCase().includes(search.toLowerCase())
+      );
+    };
+
     Object.entries(categories)
       .sort(([a, _], [b, __]) => {
         if (categorySortFunction) {
@@ -155,9 +169,12 @@ export const ToolsPage = (props: ToolsPageProps) => {
         return a.localeCompare(b);
       })
       .map(([category, categoryTools]) => {
+        const anyMatchSearch = categoryTools.some(tool => matchesSearch(tool));
+
         t.push({
           tab: (
             <Tab
+              style={!anyMatchSearch ? { display: 'none' } : {}}
               key={category}
               label={category}
               disabled
@@ -168,6 +185,7 @@ export const ToolsPage = (props: ToolsPageProps) => {
           id: category,
           title: '',
         });
+
         categoryTools
           .sort((a, b) => {
             if (toolSortFunction) {
@@ -180,12 +198,7 @@ export const ToolsPage = (props: ToolsPageProps) => {
               tab: (
                 <Tab
                   key={tool.name}
-                  style={
-                    search &&
-                    !tool.name.toLowerCase().includes(search.toLowerCase())
-                      ? { display: 'none' }
-                      : {}
-                  }
+                  style={!matchesSearch(tool) ? { display: 'none' } : {}}
                   wrapped
                   className={`${styles.fullWidth} ${styles.noPadding} ${styles.tab}`}
                   label={tool.name}
