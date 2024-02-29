@@ -29,14 +29,14 @@ Add the navigation in the frontend:
 
 ```ts
 // packages/app/src/components/Root/Root.tsx
-import BuildIcon from '@material-ui/icons/Build';
+import CardTravel from '@material-ui/icons/CardTravel';
 
 // ...
 
 export const Root = ({ children }: PropsWithChildren<{}>) => (
   <SidebarPage>
     // ...
-    <SidebarItem icon={BuildIcon} to="toolbox" text="ToolBox" />
+    <SidebarItem icon={CardTravel} to="toolbox" text="ToolBox" />
     // ...
   </SidebarPage>
 );
