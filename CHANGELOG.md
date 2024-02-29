@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.19.0](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.18.0...v1.19.0) (2024-02-29)
+
+
+### Features
+
+* allow defining aliases for tools to improve search ([f811dd2](https://github.com/drodil/backstage-plugin-toolbox/commit/f811dd2c47ffe48b6362f4c5cf1adedfea7c21c8)), closes [#77](https://github.com/drodil/backstage-plugin-toolbox/issues/77)
+
 ## [1.18.0](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.17.1...v1.18.0) (2024-02-22)
 
 
