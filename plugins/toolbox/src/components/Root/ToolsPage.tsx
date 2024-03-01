@@ -26,19 +26,7 @@ import { FavoriteButton } from '../Buttons/FavoriteButton';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useAnalytics } from '@backstage/core-plugin-api';
 import { WelcomePage } from '../WelcomePage/WelcomePage';
-import { Tool as ReactTool } from '@drodil/backstage-plugin-toolbox-react';
-
-/** @deprecated Use `Tool` from `@drodil/backstage-plugin-toolbox-react` instead */
-export type Tool = {
-  id: string;
-  name: string;
-  component: ReactElement;
-  showOpenInNewWindowButton?: boolean;
-  showFavoriteButton?: boolean;
-  description?: string;
-  category?: string;
-  headerButtons?: ReactElement[];
-};
+import { Tool } from '@drodil/backstage-plugin-toolbox-react';
 
 type TabInfo = {
   tab: ReactElement;
@@ -59,10 +47,14 @@ const tabProps = (index: number) => {
 };
 
 export type ToolsPageProps = {
-  extraTools?: ReactTool[];
-  tools?: ReactTool[];
+  /** extra custom local tools to add into the tool page */
+  extraTools?: Tool[];
+  /** A list of which tools to have by default. Defaults to defaultTools.*/
+  tools?: Tool[];
+  /** Allows for custom sorting of the categories in the sidebar. Defaults to alphabetic sort with Favorites at top. */
   categorySortFunction?: (category1: string, caregory2: string) => number;
-  toolSortFunction?: (tool1: ReactTool, tool2: ReactTool) => number;
+  /** Allows for custom sorting of the tools within a category. Defaults to alphabetic sort. */
+  toolSortFunction?: (tool1: Tool, tool2: Tool) => number;
 };
 
 export const ToolsPage = (props: ToolsPageProps) => {
@@ -136,18 +128,18 @@ export const ToolsPage = (props: ToolsPageProps) => {
       showOpenInNewWindowButton: false,
     });
 
-    const categories: { [key: string]: ReactTool[] } = allTools.reduce(
+    const categories: { [key: string]: Tool[] } = allTools.reduce(
       (ctgs, tool) => {
         const categoryStr = tool.category ?? 'Miscellaneous';
-        const toolList: ReactTool[] = ctgs[categoryStr] || [];
+        const toolList: Tool[] = ctgs[categoryStr] || [];
         toolList.push(tool);
         ctgs[categoryStr] = toolList;
         return ctgs;
       },
-      {} as Record<string, ReactTool[]>,
+      {} as Record<string, Tool[]>,
     );
 
-    const matchesSearch = (tool: ReactTool) => {
+    const matchesSearch = (tool: Tool) => {
       if (!search) {
         return true;
       }
