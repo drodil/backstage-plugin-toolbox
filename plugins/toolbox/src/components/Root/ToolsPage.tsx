@@ -55,6 +55,8 @@ export type ToolsPageProps = {
   categorySortFunction?: (category1: string, caregory2: string) => number;
   /** Allows for custom sorting of the tools within a category. Defaults to alphabetic sort. */
   toolSortFunction?: (tool1: Tool, tool2: Tool) => number;
+  /** customize the landing page */
+  welcomePage?: ReactElement;
 };
 
 export const ToolsPage = (props: ToolsPageProps) => {
@@ -123,7 +125,7 @@ export const ToolsPage = (props: ToolsPageProps) => {
         />
       ),
       title: 'Toolbox',
-      component: <WelcomePage tools={allTools} />,
+      component: props.welcomePage || <WelcomePage tools={allTools} />,
       showFavoriteButton: false,
       showOpenInNewWindowButton: false,
     });
