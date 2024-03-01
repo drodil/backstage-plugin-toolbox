@@ -165,6 +165,10 @@ export const ToolsPage = (props: ToolsPageProps) => {
       .sort(([a, _], [b, __]) => {
         if (categorySortFunction) {
           return categorySortFunction(a, b);
+        } else if (a === 'Favorites') {
+          return -1;
+        } else if (b === 'Favorites') {
+          return 1;
         }
         return a.localeCompare(b);
       })
