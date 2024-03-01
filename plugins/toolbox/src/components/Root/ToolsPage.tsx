@@ -60,7 +60,13 @@ export type ToolsPageProps = {
 };
 
 export const ToolsPage = (props: ToolsPageProps) => {
-  const { extraTools, tools, categorySortFunction, toolSortFunction } = props;
+  const {
+    extraTools,
+    tools,
+    categorySortFunction,
+    toolSortFunction,
+    welcomePage,
+  } = props;
   const { hash } = useLocation();
   const navigate = useNavigate();
   const analytics = useAnalytics();
@@ -125,7 +131,7 @@ export const ToolsPage = (props: ToolsPageProps) => {
         />
       ),
       title: 'Toolbox',
-      component: props.welcomePage || <WelcomePage tools={allTools} />,
+      component: welcomePage || <WelcomePage tools={allTools} />,
       showFavoriteButton: false,
       showOpenInNewWindowButton: false,
     });
@@ -217,6 +223,7 @@ export const ToolsPage = (props: ToolsPageProps) => {
     tools,
     categorySortFunction,
     toolSortFunction,
+    welcomePage,
   ]);
 
   useEffect(() => {
