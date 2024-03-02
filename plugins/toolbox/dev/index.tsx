@@ -43,6 +43,19 @@ createDevApp()
     path: '/toolbox',
   })
   .addPage({
+    element: (
+      <ToolboxPage
+        welcomePage={
+          <p>
+            This is a customized home page for toolbox. Use your imagination!
+          </p>
+        }
+      />
+    ),
+    title: 'Custom Page',
+    path: '/toolbox-custom',
+  })
+  .addPage({
     element: <HomePage />,
     title: 'Home Page',
     path: '/home',
