@@ -2589,6 +2589,7 @@ __metadata:
     "@backstage/plugin-home-react": ^0.1.8
     "@drodil/backstage-plugin-toolbox-react": "workspace:^"
     "@faker-js/faker": ^8.1.0
+    "@json2csv/plainjs": ^7.0.6
     "@material-ui/core": ^4.12.2
     "@material-ui/icons": ^4.9.1
     "@material-ui/lab": 4.0.0-alpha.57
@@ -2614,7 +2615,6 @@ __metadata:
     js-beautify: ^1.14.9
     js-md2: ^0.2.2
     js-md4: ^0.3.2
-    json2csv: ^5.0.7
     jwt-decode: ^3.1.2
     lodash: ^4.17.21
     luxon: ^3.4.3
@@ -3583,6 +3583,23 @@ __metadata:
     "@jridgewell/resolve-uri": ^3.1.0
     "@jridgewell/sourcemap-codec": ^1.4.14
   checksum: e91d3943c6d84687503ba033600d42b2a81d9eaf32758fee06449cd1415c59b944af08841e99f030b71f83bb5f814969e96fc8aa29e469eb3ea1b46597d13cff
+  languageName: node
+  linkType: hard
+
+"@json2csv/formatters@npm:^7.0.6":
+  version: 7.0.6
+  resolution: "@json2csv/formatters@npm:7.0.6"
+  checksum: 9589566ea925f19597664f7a253624f4392c0b5da4bca709cbca188761c9d8068e275e26829d3bc0b386ad1872295acf2c5d4da097026fd3ac4423690c5eff9b
+  languageName: node
+  linkType: hard
+
+"@json2csv/plainjs@npm:^7.0.6":
+  version: 7.0.6
+  resolution: "@json2csv/plainjs@npm:7.0.6"
+  dependencies:
+    "@json2csv/formatters": ^7.0.6
+    "@streamparser/json": ^0.0.20
+  checksum: e02ba6e5ea554493c60f4767a93d21a7c61a377591e6cb0e0768aeeeef82c4b3adb5c0decc4c70077bf1ff30015379aea32f97f8e6e781672184b30de1f9bc78
   languageName: node
   linkType: hard
 
@@ -4670,6 +4687,13 @@ __metadata:
   peerDependencies:
     prettier: 2.x
   checksum: aa5ec5739427f9acdb9d62ae6c04f04a344898567239f7ee45c75c6205ebdffbc61747ea8de6e83baf0bc3785359967de4b7097a8723c4b4063ff57dc5cb6c44
+  languageName: node
+  linkType: hard
+
+"@streamparser/json@npm:^0.0.20":
+  version: 0.0.20
+  resolution: "@streamparser/json@npm:0.0.20"
+  checksum: fd17c94c03411cc852512bd196a9ea2e85a3404391b64525384821d3b04b1cd03f5899d51da135a4bf9d88185acb5de42d1a99a9ea440d652555ef70e0a9a081
   languageName: node
   linkType: hard
 
@@ -7727,13 +7751,6 @@ __metadata:
   version: 4.1.1
   resolution: "commander@npm:4.1.1"
   checksum: d7b9913ff92cae20cb577a4ac6fcc121bd6223319e54a40f51a14740a681ad5c574fd29a57da478a5f234a6fa6c52cbf0b7c641353e03c648b1ae85ba670b977
-  languageName: node
-  linkType: hard
-
-"commander@npm:^6.1.0":
-  version: 6.2.1
-  resolution: "commander@npm:6.2.1"
-  checksum: d7090410c0de6bc5c67d3ca41c41760d6d268f3c799e530aafb73b7437d1826bbf0d2a3edac33f8b57cc9887b4a986dce307fa5557e109be40eadb7c43b21742
   languageName: node
   linkType: hard
 
@@ -13070,19 +13087,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"json2csv@npm:^5.0.7":
-  version: 5.0.7
-  resolution: "json2csv@npm:5.0.7"
-  dependencies:
-    commander: ^6.1.0
-    jsonparse: ^1.3.1
-    lodash.get: ^4.4.2
-  bin:
-    json2csv: bin/json2csv.js
-  checksum: 81b511e4f5abba1dcda90593c193d15e5f05f1def91377b6289536e31fdb629889da6a2b4612b9ff699116a29b1758d20c0d71f7921fcfb09863da5b2d883139
-  languageName: node
-  linkType: hard
-
 "json5@npm:^1.0.1, json5@npm:^1.0.2":
   version: 1.0.2
   resolution: "json5@npm:1.0.2"
@@ -13135,7 +13139,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jsonparse@npm:^1.2.0, jsonparse@npm:^1.3.1":
+"jsonparse@npm:^1.2.0":
   version: 1.3.1
   resolution: "jsonparse@npm:1.3.1"
   checksum: 6514a7be4674ebf407afca0eda3ba284b69b07f9958a8d3113ef1005f7ec610860c312be067e450c569aab8b89635e332cee3696789c750692bb60daba627f4d
@@ -13582,13 +13586,6 @@ __metadata:
   version: 4.0.8
   resolution: "lodash.debounce@npm:4.0.8"
   checksum: a3f527d22c548f43ae31c861ada88b2637eb48ac6aa3eb56e82d44917971b8aa96fbb37aa60efea674dc4ee8c42074f90f7b1f772e9db375435f6c83a19b3bc6
-  languageName: node
-  linkType: hard
-
-"lodash.get@npm:^4.4.2":
-  version: 4.4.2
-  resolution: "lodash.get@npm:4.4.2"
-  checksum: e403047ddb03181c9d0e92df9556570e2b67e0f0a930fcbbbd779370972368f5568e914f913e93f3b08f6d492abc71e14d4e9b7a18916c31fa04bd2306efe545
   languageName: node
   linkType: hard
 

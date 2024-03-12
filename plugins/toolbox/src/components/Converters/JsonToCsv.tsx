@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { DefaultEditor } from '../DefaultEditor/DefaultEditor';
-import { parse } from 'json2csv';
+import { Parser } from '@json2csv/plainjs';
 
 export const JsonToCsv = () => {
   const [input, setInput] = React.useState('');
@@ -25,7 +25,8 @@ export const JsonToCsv = () => {
 
     if (obj) {
       try {
-        setOutput(parse(obj));
+        const parser = new Parser();
+        setOutput(parser.parse(obj));
         return;
       } catch (e) {
         err = e.message;
