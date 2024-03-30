@@ -27,6 +27,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { useAnalytics } from '@backstage/core-plugin-api';
 import { WelcomePage } from '../WelcomePage/WelcomePage';
 import { Tool } from '@drodil/backstage-plugin-toolbox-react';
+import { useBackendTools } from '../../hooks';
 
 type TabInfo = {
   tab: ReactElement;
@@ -72,6 +73,7 @@ export const ToolsPage = (props: ToolsPageProps) => {
   const analytics = useAnalytics();
   const [value, setValue] = React.useState(1);
   const [search, setSearch] = React.useState('');
+  const backendTools = useBackendTools();
   const favorites = useFavoriteStorage();
   const styles = useStyles();
 
@@ -89,7 +91,12 @@ export const ToolsPage = (props: ToolsPageProps) => {
   const tabs: TabInfo[] = useMemo(() => {
     const t: TabInfo[] = [];
     const shownTools = tools ? tools : [...(extraTools ?? []), ...defaultTools];
-    const allTools = shownTools
+    const filteredTools = shownTools.filter(
+      tool =>
+        (tool.requiresBackend === true && backendTools.includes(tool.id)) ||
+        tool.requiresBackend !== true,
+    );
+    const allTools = filteredTools
       .map(tool => {
         if (favorites.includes(tool.id)) {
           return { ...tool, category: 'Favorites' };
@@ -224,6 +231,7 @@ export const ToolsPage = (props: ToolsPageProps) => {
     categorySortFunction,
     toolSortFunction,
     welcomePage,
+    backendTools,
   ]);
 
   useEffect(() => {

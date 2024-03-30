@@ -10,4 +10,5 @@ export type Tool = {
   description?: string;
   category?: string;
   headerButtons?: ReactElement[];
+  requiresBackend?: boolean;
 };

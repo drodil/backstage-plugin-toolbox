@@ -10,10 +10,12 @@
   },
   "scripts": {
     "prepare": "husky install",
-    "dev": "yarn start",
+    "dev": "concurrently \"yarn start\" \"yarn start:app\"",
+    "docker:dev": "yarn docker:up && yarn dev",
     "docker:up": "docker compose up -d",
     "docker:down": "docker compose down",
-    "start": "yarn workspace @drodil/backstage-plugin-toolbox start",
+    "start:app": "yarn workspace @drodil/backstage-plugin-toolbox start --config ../../app-config.yaml",
+    "start": "yarn workspace @drodil/backstage-plugin-toolbox-backend start --config ../../app-config.yaml",
     "build": "backstage-cli repo build --all",
     "tsc": "tsc",
     "tsc:full": "tsc --skipLibCheck false --incremental false",
@@ -26,7 +28,8 @@
     "prettier:fix": "prettier --write .",
     "backstage:bump": "backstage-cli versions:bump",
     "bump": "yarn run standard-version --no-verify --releaseCommitMessageFormat 'v{{currentTag}}'",
-    "fix": "backstage-cli repo fix"
+    "fix": "backstage-cli repo fix",
+    "new": "backstage-cli new --scope @drodil"
   },
   "workspaces": {
     "packages": [
@@ -37,9 +40,11 @@
     "@backstage/cli": "^0.26.2",
     "@commitlint/cli": "^17.7.1",
     "@commitlint/config-conventional": "^17.7.0",
+    "@drodil/backstage-plugin-toolbox-backend-module-whois": "workspace:^",
     "@spotify/prettier-config": "^15.0.0",
     "@types/crypto-hash": "^1.1.2",
     "@types/webpack": "^5.28.2",
+    "concurrently": "^8.0.0",
     "husky": "^8.0.1",
     "lint-staged": "^14.0.1",
     "prettier": "^2.4.1",
@@ -64,5 +69,9 @@
       "prettier --write"
     ]
   },
-  "packageManager": "yarn@3.6.0"
+  "packageManager": "yarn@3.6.0",
+  "dependencies": {
+    "@backstage/backend-plugin-api": "^0.6.16",
+    "express": "^4.19.2"
+  }
 }

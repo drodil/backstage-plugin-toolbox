@@ -1,0 +1,46 @@
+{
+  "name": "@drodil/backstage-plugin-toolbox-backend-module-whois",
+  "description": "The whois backend module for the toolbox plugin.",
+  "version": "1.19.1",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "license": "MIT",
+  "keywords": [
+    "backstage",
+    "plugin",
+    "backend-module",
+    "backstage.io"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "main": "dist/index.cjs.js",
+    "types": "dist/index.d.ts"
+  },
+  "backstage": {
+    "role": "backend-plugin-module"
+  },
+  "scripts": {
+    "start": "backstage-cli package start",
+    "build": "backstage-cli package build",
+    "lint": "backstage-cli package lint",
+    "test": "backstage-cli package test",
+    "clean": "backstage-cli package clean",
+    "prepack": "backstage-cli package prepack",
+    "postpack": "backstage-cli package postpack",
+    "tsc": "tsc"
+  },
+  "dependencies": {
+    "@backstage/backend-common": "^0.21.6",
+    "@backstage/backend-plugin-api": "^0.6.16",
+    "@drodil/backstage-plugin-toolbox-node": "workspace:^",
+    "express": "^4.19.2",
+    "whoiser": "^1.17.3"
+  },
+  "devDependencies": {
+    "@backstage/backend-test-utils": "^0.3.6",
+    "@backstage/cli": "^0.26.2"
+  },
+  "files": [
+    "dist"
+  ]
+}

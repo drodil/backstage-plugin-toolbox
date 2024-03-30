@@ -42,6 +42,7 @@ const SQLBeautify = lazy(() => import('../Formatters/SQLBeautify'));
 
 const IbanValidator = lazy(() => import('../Validators/IbanValidator'));
 const UrlExploder = lazy(() => import('../Misc/UrlExploder'));
+const Whois = lazy(() => import('../Networking/Whois'));
 
 // const CidrCalculator = lazy(() => import('../Networking/CidrCalculator'));
 
@@ -284,6 +285,14 @@ export const defaultTools: Tool[] = [
     component: <UrlExploder />,
     category: 'Miscellaneous',
     description: 'Explode and modify parts of URL easily',
+  },
+  {
+    id: 'whois',
+    name: 'Whois lookup',
+    component: <Whois />,
+    category: 'Networking',
+    description: 'Lookup domain WHOIS information',
+    requiresBackend: true,
   },
   /**
   {

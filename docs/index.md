@@ -5,7 +5,7 @@
 Add the plugin to your frontend app:
 
 ```bash
-cd packages/app && yarn add @drodil/backstage-plugin-toolbox
+yarn --cwd packages/app add @drodil/backstage-plugin-toolbox
 ```
 
 Expose the toolbox page:
@@ -98,3 +98,27 @@ export const HomePage = () => {
 
 This allows the home page users to configure the card so that their favorite tool is available in their home page.
 For more information, see https://github.com/backstage/backstage/pull/16744
+
+## Optional backend
+
+The plugin also supports additional backend for tools that cannot work only in the frontend. The backend can be extended with
+additional handlers by utilizing the extension point. See `plugins/toolbox-backend-module-whois` for an example.
+
+To install backend and additional tools to it, add the following to your `packages/backend/src/index.ts`:
+
+```ts
+import { createBackend } from '@backstage/backend-defaults';
+
+const backend = createBackend();
+
+backend.add(import('@drodil/backstage-plugin-toolbox-backend'));
+backend.add(import('@drodil/backstage-plugin-toolbox-backend-module-whois'));
+
+backend.start();
+```
+
+Also add the necessary dependencies to your `packages/backend/package.json`:
+
+```bash
+yarn --cwd packages/backend add @drodil/backstage-plugin-toolbox-backend @drodil/backstage-plugin-toolbox-backend-module-whois
+```

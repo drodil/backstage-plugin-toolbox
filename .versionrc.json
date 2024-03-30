@@ -1,7 +1,10 @@
 {
   "packageFiles": [
     "plugins/toolbox/package.json",
-    "plugins/toolbox-react/package.json"
+    "plugins/toolbox-react/package.json",
+    "plugins/toolbox-backend/package.json",
+    "plugins/toolbox-node/package.json",
+    "plugins/toolbox-backend-module-whois/package.json"
   ],
   "bumpFiles": [
     {
@@ -10,6 +13,18 @@
     },
     {
       "filename": "plugins/toolbox-react/package.json",
+      "type": "json"
+    },
+    {
+      "filename": "plugins/toolbox-backend/package.json",
+      "type": "json"
+    },
+    {
+      "filename": "plugins/toolbox-node/package.json",
+      "type": "json"
+    },
+    {
+      "filename": "plugins/toolbox-backend-module-whois/package.json",
       "type": "json"
     }
   ]

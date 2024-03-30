@@ -1,17 +1,29 @@
 import {
+  createApiFactory,
   createPlugin,
   createRoutableExtension,
+  discoveryApiRef,
+  fetchApiRef,
 } from '@backstage/core-plugin-api';
 
 import { rootRouteRef } from './routes';
 import { createCardExtension } from '@backstage/plugin-home-react';
 import { defaultTools } from './components/Root/tools';
+import { toolboxApiRef, ToolboxClient } from './api';
 
 export const toolboxPlugin = createPlugin({
   id: 'toolbox',
   routes: {
     root: rootRouteRef,
   },
+  apis: [
+    createApiFactory({
+      api: toolboxApiRef,
+      deps: { fetchApi: fetchApiRef, discoveryApi: discoveryApiRef },
+      factory: ({ fetchApi, discoveryApi }) =>
+        new ToolboxClient({ fetchApi, discoveryApi }),
+    }),
+  ],
 });
 
 export const ToolboxPage = toolboxPlugin.provide(
