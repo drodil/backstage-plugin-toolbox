@@ -4,12 +4,17 @@
   "main": "src/index.ts",
   "types": "src/index.ts",
   "license": "MIT",
+  "prepublishOnly": "yarn tsc && yarn build",
   "keywords": [
     "backstage",
     "plugin",
     "backend",
     "backstage.io"
   ],
+  "homepage": "https://github.com/drodil/backstage-plugin-toolbox",
+  "bugs": {
+    "url": "https://github.com/drodil/backstage-plugin-toolbox/issues"
+  },
   "publishConfig": {
     "access": "public",
     "main": "dist/index.cjs.js",

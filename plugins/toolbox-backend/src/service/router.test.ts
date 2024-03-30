@@ -27,4 +27,13 @@ describe('createRouter', () => {
       expect(response.body).toEqual({ status: 'ok' });
     });
   });
+
+  describe('GET /tools', () => {
+    it('should return empty array', async () => {
+      const response = await request(app).get('/tools');
+
+      expect(response.status).toEqual(200);
+      expect(response.body).toEqual({ tools: [] });
+    });
+  });
 });

@@ -5,9 +5,6 @@
   "engines": {
     "node": "18 || 20"
   },
-  "jest": {
-    "rootDir": "./plugins/toolbox/src/"
-  },
   "scripts": {
     "prepare": "husky install",
     "dev": "concurrently \"yarn start\" \"yarn start:app\"",
@@ -40,7 +37,6 @@
     "@backstage/cli": "^0.26.2",
     "@commitlint/cli": "^17.7.1",
     "@commitlint/config-conventional": "^17.7.0",
-    "@drodil/backstage-plugin-toolbox-backend-module-whois": "workspace:^",
     "@spotify/prettier-config": "^15.0.0",
     "@types/crypto-hash": "^1.1.2",
     "@types/webpack": "^5.28.2",
@@ -69,9 +65,5 @@
       "prettier --write"
     ]
   },
-  "packageManager": "yarn@3.6.0",
-  "dependencies": {
-    "@backstage/backend-plugin-api": "^0.6.16",
-    "express": "^4.19.2"
-  }
+  "packageManager": "yarn@3.6.0"
 }

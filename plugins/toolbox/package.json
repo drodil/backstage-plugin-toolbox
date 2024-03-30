@@ -11,6 +11,10 @@
     "frontend",
     "backstage.io"
   ],
+  "homepage": "https://github.com/drodil/backstage-plugin-toolbox",
+  "bugs": {
+    "url": "https://github.com/drodil/backstage-plugin-toolbox/issues"
+  },
   "publishConfig": {
     "access": "public",
     "main": "dist/index.esm.js",
