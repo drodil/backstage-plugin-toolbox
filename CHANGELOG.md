@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.20.0](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.19.1...v1.20.0) (2024-03-30)
+
+
+### Features
+
+* support for tools that utilize backend ([fecc93c](https://github.com/drodil/backstage-plugin-toolbox/commit/fecc93c163e1a340214b9953630c115f7e3dedb1))
+
+
+### Bug Fixes
+
+* barcode options ([c1b538b](https://github.com/drodil/backstage-plugin-toolbox/commit/c1b538b5b4ffbcfac7322abaae51b2b08bd47802))
+* test root for new plugins ([0c1b4ec](https://github.com/drodil/backstage-plugin-toolbox/commit/0c1b4ec81f9996f27dbd17b6d9c8f8c40d60fc8b))
+
 ### [1.19.1](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.19.0...v1.19.1) (2024-03-12)
 
 ## [1.19.0](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.18.0...v1.19.0) (2024-02-29)
