@@ -1,6 +1,7 @@
-import { Button, Tooltip } from '@material-ui/core';
 import React from 'react';
-import AssignmentReturnedIcon from '@material-ui/icons/AssignmentReturned';
+import Tooltip from '@mui/material/Tooltip';
+import Button from '@mui/material/Button';
+import AssignmentReturnedIcon from '@mui/icons-material/AssignmentReturned';
 
 type Props = {
   setInput: (input: string) => void;
@@ -20,6 +21,8 @@ export const PasteFromClipboardButton = (props: Props) => {
         size="small"
         startIcon={<AssignmentReturnedIcon />}
         onClick={pasteFromClipboard}
+        variant="text"
+        color="inherit"
       >
         Clipboard
       </Button>

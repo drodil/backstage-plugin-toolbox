@@ -1,25 +1,23 @@
 import React from 'react';
 import { Tool } from '@drodil/backstage-plugin-toolbox-react';
-import {
-  Box,
-  Card,
-  CardContent,
-  Grid,
-  makeStyles,
-  Typography,
-} from '@material-ui/core';
+import { makeStyles } from 'tss-react/mui';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import Grid from '@mui/material/Grid';
+import CardContent from '@mui/material/CardContent';
+import Card from '@mui/material/Card';
 
 export type WelcomePageProps = {
   tools: Tool[];
 };
 
-const useStyles = makeStyles(theme => {
+const useStyles = makeStyles()(theme => {
   return {
     root: {
       minWidth: 275,
     },
     title: {
-      fontSize: 14,
+      fontSize: '14px !important',
     },
     card: {
       cursor: 'pointer',
@@ -32,14 +30,14 @@ const useStyles = makeStyles(theme => {
       },
     },
     textBlock: {
-      marginTop: '1rem',
+      marginTop: '1rem !important',
     },
   };
 });
 
 export const WelcomePage = (props: WelcomePageProps) => {
   const { tools } = props;
-  const classes = useStyles();
+  const { classes } = useStyles();
   return (
     <Box>
       <Typography className={classes.textBlock}>
@@ -51,15 +49,25 @@ export const WelcomePage = (props: WelcomePageProps) => {
       <Typography className={classes.textBlock}>
         To select tools click cards below or the left side navigation.
       </Typography>
-      <Grid container className={classes.textBlock} alignContent="center">
+      <Grid
+        container
+        className={classes.textBlock}
+        sx={{ p: 0, mx: '-8px', mb: '-8px' }}
+        alignContent="center"
+      >
         {tools.map(tool => {
           return (
-            <Grid item key={tool.id} xs={3}>
+            <Grid
+              item
+              key={tool.id}
+              xs={3}
+              sx={{ p: '8px', pt: '8px !important', pl: '8px !important' }}
+            >
               <Card
                 onClick={() => (window.location.hash = tool.id)}
                 className={classes.card}
               >
-                <CardContent>
+                <CardContent sx={{ p: '16px', pb: '16px !important' }}>
                   <Typography
                     className={classes.title}
                     color="textSecondary"

@@ -1,6 +1,7 @@
-import { Button, Tooltip } from '@material-ui/core';
 import React from 'react';
-import Clear from '@material-ui/icons/Clear';
+import Tooltip from '@mui/material/Tooltip';
+import Button from '@mui/material/Button';
+import Clear from '@mui/icons-material/Clear';
 
 type Props = {
   setValue: (input: string) => void;
@@ -14,6 +15,8 @@ export const ClearValueButton = (props: Props) => {
         size="small"
         startIcon={<Clear />}
         onClick={() => props.setValue('')}
+        variant="text"
+        color="inherit"
       >
         Clear
       </Button>

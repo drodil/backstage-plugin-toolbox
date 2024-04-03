@@ -1,6 +1,6 @@
 import React from 'react';
 import { defaultTools } from '../Root/tools';
-import { Typography } from '@material-ui/core';
+import Typography from '@mui/material/Typography';
 
 export const Content = (props?: { toolId?: string }) => {
   const tool = defaultTools.find(t => t.id === props?.toolId);

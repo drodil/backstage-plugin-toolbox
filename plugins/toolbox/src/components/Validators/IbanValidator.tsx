@@ -2,7 +2,8 @@ import React, { useEffect } from 'react';
 import * as IBAN from 'iban';
 import { DefaultEditor } from '../DefaultEditor/DefaultEditor';
 import { OutputField } from '../DefaultEditor/OutputField';
-import { Alert, AlertTitle } from '@material-ui/lab';
+import Alert from '@mui/material/Alert';
+import AlertTitle from '@mui/material/AlertTitle';
 
 export const IbanValidator = () => {
   const [input, setInput] = React.useState('');

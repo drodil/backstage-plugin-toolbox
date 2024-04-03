@@ -5,28 +5,27 @@ import {
   Header,
   Page,
 } from '@backstage/core-components';
-import {
-  Box,
-  Button,
-  CircularProgress,
-  Grid,
-  IconButton,
-  InputBase,
-  Paper,
-  Tab,
-  Tabs,
-  Tooltip,
-} from '@material-ui/core';
-import { TabContext, TabPanel } from '@material-ui/lab';
 import { useFavoriteStorage, useStyles } from '../../utils/hooks';
-import SearchIcon from '@material-ui/icons/Search';
+import SearchIcon from '@mui/icons-material/Search';
 import { defaultTools } from './tools';
-import OpenInNew from '@material-ui/icons/OpenInNew';
+import OpenInNew from '@mui/icons-material/OpenInNew';
 import { FavoriteButton } from '../Buttons/FavoriteButton';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useAnalytics } from '@backstage/core-plugin-api';
 import { WelcomePage } from '../WelcomePage/WelcomePage';
 import { Tool } from '@drodil/backstage-plugin-toolbox-react';
+import Tab from '@mui/material/Tab';
+import Grid from '@mui/material/Grid';
+import InputBase from '@mui/material/InputBase';
+import Paper from '@mui/material/Paper';
+import IconButton from '@mui/material/IconButton';
+import Tabs from '@mui/material/Tabs';
+import Box from '@mui/material/Box';
+import CircularProgress from '@mui/material/CircularProgress';
+import Tooltip from '@mui/material/Tooltip';
+import Button from '@mui/material/Button';
+import TabPanel from '@mui/lab/TabPanel';
+import TabContext from '@mui/lab/TabContext';
 import { useBackendTools } from '../../hooks';
 
 type TabInfo = {
@@ -75,7 +74,7 @@ export const ToolsPage = (props: ToolsPageProps) => {
   const [search, setSearch] = React.useState('');
   const backendTools = useBackendTools();
   const favorites = useFavoriteStorage();
-  const styles = useStyles();
+  const { classes } = useStyles();
 
   const openToolInWindow = (id: string) => {
     window.open(`/toolbox/tool/${id}`, 'newwindow', 'width=1000,height=800');
@@ -118,7 +117,7 @@ export const ToolsPage = (props: ToolsPageProps) => {
           key="Toolbox"
           label=""
           disabled
-          className={styles.tabDivider}
+          className={classes.tabDivider}
           style={{ minHeight: '2px' }}
         />
       ),
@@ -133,7 +132,7 @@ export const ToolsPage = (props: ToolsPageProps) => {
         <Tab
           key="toolbox"
           wrapped
-          className={`${styles.fullWidth} ${styles.noPadding} ${styles.tab}`}
+          className={`${classes.fullWidth} ${classes.noPadding} ${classes.tab}`}
           label="Toolbox"
         />
       ),
@@ -189,7 +188,7 @@ export const ToolsPage = (props: ToolsPageProps) => {
               key={category}
               label={category}
               disabled
-              className={styles.tabDivider}
+              className={classes.tabDivider}
             />
           ),
           component: undefined,
@@ -211,7 +210,7 @@ export const ToolsPage = (props: ToolsPageProps) => {
                   key={tool.name}
                   style={!matchesSearch(tool) ? { display: 'none' } : {}}
                   wrapped
-                  className={`${styles.fullWidth} ${styles.noPadding} ${styles.tab}`}
+                  className={`${classes.fullWidth} ${classes.noPadding} ${classes.tab}`}
                   label={tool.name}
                   {...tabProps(i)}
                 />
@@ -225,7 +224,7 @@ export const ToolsPage = (props: ToolsPageProps) => {
   }, [
     favorites,
     search,
-    styles,
+    classes,
     extraTools,
     tools,
     categorySortFunction,
@@ -254,21 +253,29 @@ export const ToolsPage = (props: ToolsPageProps) => {
   return (
     <Page themeId="tool">
       <Header title="Toolbox" />
-      <Content className={styles.noPadding}>
+      <Content className={classes.noPadding}>
         <Grid
           container
           spacing={2}
           direction="row"
-          className={`${styles.noMargin} ${styles.fullWidth} ${styles.noPadding}`}
+          className={`${classes.noMargin} ${classes.fullWidth} ${classes.noPadding}`}
         >
-          <Grid item xs={4} md={3} lg={2} className={styles.toolsBar}>
-            <Paper component="form" className={styles.search}>
+          <Grid item xs={4} md={3} lg={2} className={classes.toolsBar}>
+            <Paper
+              component="form"
+              className={classes.search}
+              sx={{ justifyContent: 'space-between' }}
+            >
               <InputBase
                 placeholder="Search"
                 inputProps={{ 'aria-label': 'Search' }}
                 onChange={e => setSearch(e.target.value)}
               />
-              <IconButton disabled aria-label="search">
+              <IconButton
+                disabled
+                aria-label="search"
+                sx={{ mr: '16px !important', pr: '0 !important' }}
+              >
                 <SearchIcon />
               </IconButton>
             </Paper>
@@ -280,12 +287,12 @@ export const ToolsPage = (props: ToolsPageProps) => {
               value={value}
               onChange={handleChange}
               aria-label="Tools selection"
-              className={styles.menuTabs}
+              className={classes.menuTabs}
             >
               {tabs.map(tab => tab.tab)}
             </Tabs>
           </Grid>
-          <Grid item xs={8} md={9} lg={10}>
+          <Grid item xs={8} md={9} lg={10} style={{ padding: '8px' }}>
             <Suspense
               fallback={
                 <Box
@@ -316,6 +323,7 @@ export const ToolsPage = (props: ToolsPageProps) => {
                             <Button
                               size="small"
                               onClick={() => openToolInWindow(tool.id)}
+                              color="inherit"
                             >
                               <OpenInNew />
                             </Button>

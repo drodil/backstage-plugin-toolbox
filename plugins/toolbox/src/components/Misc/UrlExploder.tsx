@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { Grid, TextField } from '@material-ui/core';
 import { useStyles } from '../../utils/hooks';
 import {
   ClearValueButton,
@@ -8,6 +7,8 @@ import {
   SampleButton,
 } from '../Buttons';
 import { faker } from '@faker-js/faker';
+import Grid from '@mui/material/Grid';
+import TextField from '@mui/material/TextField';
 
 const UrlExploder = () => {
   const [url, setUrl] = useState<null | URL>(null);
@@ -21,7 +22,7 @@ const UrlExploder = () => {
   const [hash, setHash] = useState('');
   const [query, setQuery] = useState('');
   const [origin, setOrigin] = useState('');
-  const styles = useStyles();
+  const { classes } = useStyles();
 
   const onInput = (value: string) => {
     setRawInput(value);
@@ -94,7 +95,7 @@ const UrlExploder = () => {
         <TextField
           label="URL"
           variant="outlined"
-          className={styles.fullWidth}
+          className={classes.fullWidth}
           value={rawInput}
           onChange={e => onInput(e.target.value)}
           style={{ marginTop: '10px', marginBottom: '10px' }}
@@ -103,28 +104,28 @@ const UrlExploder = () => {
       <Grid item xs={6}>
         <TextField
           label="Protocol"
-          className={styles.fullWidth}
+          className={classes.fullWidth}
           value={protocol}
           style={{ marginBottom: '10px' }}
           onChange={e => setProtocol(e.target.value)}
         />
         <TextField
           label="Path"
-          className={styles.fullWidth}
+          className={classes.fullWidth}
           value={path}
           style={{ marginBottom: '10px' }}
           onChange={e => setPath(e.target.value)}
         />
         <TextField
           label="Username"
-          className={styles.fullWidth}
+          className={classes.fullWidth}
           value={username}
           style={{ marginBottom: '10px' }}
           onChange={e => setUsername(e.target.value)}
         />
         <TextField
           label="Query"
-          className={styles.fullWidth}
+          className={classes.fullWidth}
           value={query}
           multiline
           minRows={10}
@@ -137,14 +138,14 @@ const UrlExploder = () => {
       <Grid item xs={6}>
         <TextField
           label="Host"
-          className={styles.fullWidth}
+          className={classes.fullWidth}
           value={host}
           style={{ marginBottom: '10px' }}
           onChange={e => setHost(e.target.value)}
         />
         <TextField
           label="Port"
-          className={styles.fullWidth}
+          className={classes.fullWidth}
           type="number"
           value={port}
           style={{ marginBottom: '10px' }}
@@ -152,21 +153,21 @@ const UrlExploder = () => {
         />
         <TextField
           label="Password"
-          className={styles.fullWidth}
+          className={classes.fullWidth}
           value={password}
           style={{ marginBottom: '10px' }}
           onChange={e => setPassword(e.target.value)}
         />
         <TextField
           label="Hash"
-          className={styles.fullWidth}
+          className={classes.fullWidth}
           value={hash}
           style={{ marginBottom: '10px' }}
           onChange={e => setHash(e.target.value)}
         />
         <TextField
           label="Origin"
-          className={styles.fullWidth}
+          className={classes.fullWidth}
           value={origin}
           InputProps={{
             readOnly: true,

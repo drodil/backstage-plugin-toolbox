@@ -1,4 +1,4 @@
-import { makeStyles } from '@material-ui/core';
+import { makeStyles } from 'tss-react/mui';
 import React, { useEffect } from 'react';
 import { FAVORITES_STORAGE } from '../components/Buttons/FavoriteButton';
 
@@ -26,7 +26,7 @@ export const useFavoriteStorage = () => {
   return favorites;
 };
 
-export const useStyles = makeStyles(theme => {
+export const useStyles = makeStyles()(theme => {
   return {
     fullWidth: {
       width: '100%',
@@ -59,6 +59,13 @@ export const useStyles = makeStyles(theme => {
       '& div[class*="MuiTabScrollButton-vertical"]': {
         height: '10px',
       },
+      '& button[class*="MuiTab-wrapped"]': {
+        fontSize: '12px',
+      },
+      '& button[class*="Mui-disabled"]': {
+        paddingTop: '8px !important',
+        paddingBottom: '8px !important',
+      },
     },
     tab: {
       color: theme.palette.link,
@@ -73,9 +80,9 @@ export const useStyles = makeStyles(theme => {
     tabDivider: {
       marginTop: theme.spacing(1),
       paddingTop: theme.spacing(1),
-      paddingBottom: 0,
+      paddingBottom: '50px',
       color: theme.palette.text.primary,
-      borderTop: `1px solid ${theme.palette.divider}`,
+      borderTop: `1px solid ${theme.palette.divider} !important`,
     },
     search: {
       margin: theme.spacing(2),
@@ -86,6 +93,7 @@ export const useStyles = makeStyles(theme => {
         width: '100%',
         flex: 1,
       },
+      height: '48px',
     },
     previewPaper: {
       paddingTop: theme.spacing(1),

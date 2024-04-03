@@ -1,8 +1,9 @@
-import { Button, Tooltip } from '@material-ui/core';
 import React from 'react';
-import StarOutline from '@material-ui/icons/StarOutline';
-import Star from '@material-ui/icons/Star';
 import { useFavoriteStorage } from '../../utils/hooks';
+import Tooltip from '@mui/material/Tooltip';
+import Button from '@mui/material/Button';
+import Star from '@mui/icons-material/Star';
+import StarOutline from '@mui/icons-material/StarOutline';
 
 type Props = {
   toolId: string;
@@ -44,7 +45,7 @@ export const FavoriteButton = (props: Props) => {
       }
       arrow
     >
-      <Button onClick={handleClick}>
+      <Button onClick={handleClick} color="inherit">
         {isFavorite ? <Star /> : <StarOutline />}
       </Button>
     </Tooltip>

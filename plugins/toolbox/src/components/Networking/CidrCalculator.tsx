@@ -4,12 +4,13 @@
  * FIXME.
 import React, { useEffect } from 'react';
 import { DefaultEditor } from '../DefaultEditor/DefaultEditor';
-import { TextField } from '@material-ui/core';
+ import TextField from '@mui/material/TextField';
 import { useStyles } from '../../utils/hooks';
 import { faker } from '@faker-js/faker';
 import { CopyToClipboardButton } from '../Buttons/CopyToClipboardButton';
 import { IPv4CidrRange, IPv6CidrRange, Validator } from 'ip-num';
-import { Alert, AlertTitle } from '@material-ui/lab';
+import Alert from '@mui/material/Alert';
+import AlertTitle from '@mui/material/AlertTitle';
 
 export const CidrCalculator = () => {
   const styles = useStyles();

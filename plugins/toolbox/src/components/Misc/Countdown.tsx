@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import {
-  Button,
-  ButtonGroup,
-  FormControl,
-  FormControlLabel,
-  Grid,
-  Switch,
-  TextField,
-} from '@material-ui/core';
 import { useStyles } from '../../utils/hooks';
 import { TimePaper } from './TimePaper';
+import FormControl from '@mui/material/FormControl';
+import Grid from '@mui/material/Grid';
+import ButtonGroup from '@mui/material/ButtonGroup';
+import Button from '@mui/material/Button';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Switch from '@mui/material/Switch';
+import TextField from '@mui/material/TextField';
 
 function sleep(ms: number) {
   return new Promise(resolve => setTimeout(resolve, ms));
@@ -44,7 +42,7 @@ const Countdown = () => {
   const [hours, setHours] = useState(0);
   const [minutes, setMinutes] = useState(0);
   const [seconds, setSeconds] = useState(0);
-  const styles = useStyles();
+  const { classes } = useStyles();
   const [isRunning, setIsRunning] = useState(false);
   const [chime, setChime] = useState(true);
 
@@ -105,10 +103,16 @@ const Countdown = () => {
   const timeLeft = formatTime(secondsLeft);
   return (
     <>
-      <FormControl className={styles.fullWidth}>
+      <FormControl className={classes.fullWidth}>
         <Grid container spacing={4} style={{ marginBottom: '5px' }}>
           <Grid item>
-            <ButtonGroup>
+            <ButtonGroup
+              sx={{
+                p: '16px !important',
+                pl: '0 !important',
+                pt: '0 !important',
+              }}
+            >
               {!isRunning && (
                 <Button
                   variant="contained"
@@ -127,7 +131,17 @@ const Countdown = () => {
                   Stop
                 </Button>
               )}
-              <Button variant="contained" onClick={handleReset}>
+              <Button
+                variant="contained"
+                onClick={handleReset}
+                sx={{
+                  backgroundColor: '#E0E0E0',
+                  color: '#000000 !important',
+                  '&:hover': {
+                    backgroundColor: '#E0E0E0',
+                  },
+                }}
+              >
                 Reset
               </Button>
             </ButtonGroup>
@@ -146,6 +160,7 @@ const Countdown = () => {
               label="Hours"
               type="number"
               value={hours}
+              variant="standard"
               onChange={e => {
                 const val = parseInt(e.target.value, 10);
                 if (!isNaN(val)) {
@@ -159,6 +174,7 @@ const Countdown = () => {
               label="Minutes"
               type="number"
               value={minutes}
+              variant="standard"
               onChange={e => {
                 const val = parseInt(e.target.value, 10);
                 if (!isNaN(val)) {
@@ -172,6 +188,7 @@ const Countdown = () => {
               label="Seconds"
               type="number"
               value={seconds}
+              variant="standard"
               onChange={e => {
                 const val = parseInt(e.target.value, 10);
                 if (!isNaN(val)) {

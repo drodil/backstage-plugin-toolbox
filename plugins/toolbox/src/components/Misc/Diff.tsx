@@ -1,13 +1,6 @@
 import { DiffEditor, loader } from '@monaco-editor/react';
 import * as monaco from 'monaco-editor';
 import React, { useEffect, useMemo, useState } from 'react';
-import {
-  Button,
-  ButtonGroup,
-  FormControl,
-  Grid,
-  Tooltip,
-} from '@material-ui/core';
 import { useStyles } from '../../utils/hooks';
 import useEffectOnce from 'react-use/lib/useEffectOnce';
 import { Select, SelectItem } from '@backstage/core-components';
@@ -18,8 +11,13 @@ import {
   FileUploadButton,
   PasteFromClipboardButton,
 } from '../Buttons';
-import Input from '@material-ui/icons/Input';
+import Input from '@mui/icons-material/Input';
 import { appThemeApiRef, useApi } from '@backstage/core-plugin-api';
+import Tooltip from '@mui/material/Tooltip';
+import Button from '@mui/material/Button';
+import FormControl from '@mui/material/FormControl';
+import Grid from '@mui/material/Grid';
+import ButtonGroup from '@mui/material/ButtonGroup';
 
 loader.config({ monaco });
 
@@ -76,6 +74,7 @@ export const SampleButton = (props: SampleButtonProps) => {
         size="small"
         startIcon={<Input />}
         onClick={() => setInput(sample)}
+        color="inherit"
       >
         Sample
       </Button>
@@ -84,7 +83,7 @@ export const SampleButton = (props: SampleButtonProps) => {
 };
 
 function Diff() {
-  const styles = useStyles();
+  const { classes } = useStyles();
   const appThemeApi = useApi(appThemeApiRef);
   const theme = useMemo(
     () => appThemeApi.getActiveThemeId() ?? 'light',
@@ -140,7 +139,7 @@ function Diff() {
 
   return (
     <>
-      <FormControl className={styles.fullWidth}>
+      <FormControl className={classes.fullWidth}>
         <Grid container style={{ width: '100%' }}>
           <Grid item style={{ minWidth: '200px' }}>
             <Select

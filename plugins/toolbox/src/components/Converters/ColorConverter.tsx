@@ -1,15 +1,5 @@
 import { useStyles } from '../../utils/hooks';
 import React from 'react';
-import {
-  Box,
-  Button,
-  Divider,
-  FormControl,
-  Grid,
-  TextField,
-  Tooltip,
-  Typography,
-} from '@material-ui/core';
 import * as colorConvert from 'color-convert';
 import {
   CMYK,
@@ -24,9 +14,17 @@ import {
 import { PasteFromClipboardButton } from '../Buttons/PasteFromClipboardButton';
 import { ClearValueButton } from '../Buttons/ClearValueButton';
 import { CopyToClipboardButton } from '../Buttons/CopyToClipboardButton';
+import TextField from '@mui/material/TextField';
+import FormControl from '@mui/material/FormControl';
+import Grid from '@mui/material/Grid';
+import Typography from '@mui/material/Typography';
+import Tooltip from '@mui/material/Tooltip';
+import Button from '@mui/material/Button';
+import Divider from '@mui/material/Divider';
+import Box from '@mui/material/Box';
 
 export const ColorConverter = () => {
-  const styles = useStyles();
+  const { classes } = useStyles();
   const [input, setInput] = React.useState('');
   const [hex, setHex] = React.useState<HEX>('');
   const [rgb, setRgb] = React.useState<RGB>([0, 0, 0]);
@@ -294,7 +292,7 @@ export const ColorConverter = () => {
         <TextField
           label={label}
           style={{ marginTop: '1rem' }}
-          className={styles.fullWidth}
+          className={classes.fullWidth}
           disabled
           value={value ?? ''}
         />
@@ -305,14 +303,18 @@ export const ColorConverter = () => {
 
   return (
     <>
-      <FormControl className={styles.fullWidth}>
+      <FormControl className={classes.fullWidth}>
         <Grid container>
           <Grid item xs={12} lg={6}>
             <Typography variant="subtitle1">
               <PasteFromClipboardButton setInput={v => handleChange(v)} />
               <ClearValueButton setValue={() => handleChange('')} />
               <Tooltip arrow title="Input sample">
-                <Button size="small" onClick={() => handleChange(sample)}>
+                <Button
+                  size="small"
+                  onClick={() => handleChange(sample)}
+                  color="inherit"
+                >
                   Sample
                 </Button>
               </Tooltip>
@@ -322,7 +324,7 @@ export const ColorConverter = () => {
               name="input"
               label="Color"
               value={getInputStr()}
-              className={styles.fullWidth}
+              className={classes.fullWidth}
               onChange={e => handleChange(e.target.value)}
               variant="outlined"
             />

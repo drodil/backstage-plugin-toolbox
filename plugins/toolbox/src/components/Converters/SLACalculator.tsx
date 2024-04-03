@@ -1,20 +1,18 @@
 import { useStyles } from '../../utils/hooks';
 import React from 'react';
-import {
-  Button,
-  Divider,
-  FormControl,
-  Grid,
-  TextField,
-  Typography,
-} from '@material-ui/core';
 import { PasteFromClipboardButton } from '../Buttons/PasteFromClipboardButton';
 import { ClearValueButton } from '../Buttons/ClearValueButton';
 import { CopyToClipboardButton } from '../Buttons/CopyToClipboardButton';
-import Alert from '@material-ui/lab/Alert/Alert';
+import TextField from '@mui/material/TextField';
+import FormControl from '@mui/material/FormControl';
+import Grid from '@mui/material/Grid';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+import Divider from '@mui/material/Divider';
+import Alert from '@mui/material/Alert';
 
 export const SLACalculator = () => {
-  const styles = useStyles();
+  const { classes } = useStyles();
   const [input, setInput] = React.useState('');
   const [output, setOutput] = React.useState({
     daily: '',
@@ -89,7 +87,7 @@ export const SLACalculator = () => {
         <TextField
           label={label}
           style={{ marginTop: '1rem' }}
-          className={styles.fullWidth}
+          className={classes.fullWidth}
           disabled
           value={value ?? ''}
         />
@@ -100,7 +98,7 @@ export const SLACalculator = () => {
 
   return (
     <>
-      <FormControl className={styles.fullWidth}>
+      <FormControl className={classes.fullWidth}>
         <Grid container>
           <Grid item xs={12} lg={8}>
             <Typography variant="subtitle1">
@@ -111,12 +109,16 @@ export const SLACalculator = () => {
                   setError({ show: false, msg: '' });
                 }}
               />
-              <Button size="small" onClick={() => handleChange('99.9')}>
+              <Button
+                size="small"
+                onClick={() => handleChange('99.9')}
+                color="inherit"
+              >
                 Sample
               </Button>
             </Typography>
             <TextField
-              className={styles.fullWidth}
+              className={classes.fullWidth}
               id="input"
               label="Agreed SLA level in %"
               name="input"

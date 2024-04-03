@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { Button, ButtonGroup, FormControl, Grid } from '@material-ui/core';
 import { useStyles } from '../../utils/hooks';
 import { TimePaper } from './TimePaper';
+import FormControl from '@mui/material/FormControl';
+import Grid from '@mui/material/Grid';
+import ButtonGroup from '@mui/material/ButtonGroup';
+import Button from '@mui/material/Button';
 
 const Timer = () => {
-  const styles = useStyles();
+  const { classes } = useStyles();
   const [elapsedTime, setElapsedTime] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
 
@@ -44,7 +47,7 @@ const Timer = () => {
 
   return (
     <>
-      <FormControl className={styles.fullWidth}>
+      <FormControl className={classes.fullWidth}>
         <Grid container spacing={4} style={{ marginBottom: '5px' }}>
           <Grid item>
             <ButtonGroup>
@@ -66,7 +69,17 @@ const Timer = () => {
                   Stop
                 </Button>
               )}
-              <Button variant="contained" onClick={handleReset}>
+              <Button
+                variant="contained"
+                onClick={handleReset}
+                sx={{
+                  backgroundColor: '#E0E0E0',
+                  color: '#000000 !important',
+                  '&:hover': {
+                    backgroundColor: '#E0E0E0',
+                  },
+                }}
+              >
                 Reset
               </Button>
             </ButtonGroup>
