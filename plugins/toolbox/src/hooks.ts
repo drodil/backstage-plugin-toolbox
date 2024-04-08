@@ -1,6 +1,6 @@
 import { ToolboxApi, toolboxApiRef } from './api';
 import { useApi } from '@backstage/core-plugin-api';
-import { useAsync } from 'react-use';
+import useAsync from 'react-use/lib/useAsync';
 import { useEffect, useState } from 'react';
 
 export const useBackendTools = () => {
