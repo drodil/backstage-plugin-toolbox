@@ -68,8 +68,10 @@ export const useStyles = makeStyles()(theme => {
       },
     },
     tab: {
+      // @ts-ignore
       color: theme.palette.link,
       '&:hover': {
+        // @ts-ignore
         color: theme.palette.linkHover,
         background: 'transparent',
       },

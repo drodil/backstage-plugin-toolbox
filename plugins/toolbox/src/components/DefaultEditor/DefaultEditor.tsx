@@ -58,8 +58,6 @@ export const DefaultEditor = (props: Props) => {
     allowFileDownload,
     downloadFileName,
     downloadFileType,
-    inputProps,
-    outputProps,
     minRows = 20,
   } = props;
   const { classes } = useStyles();
@@ -190,10 +188,6 @@ export const DefaultEditor = (props: Props) => {
                 className={classes.fullWidth}
                 value={input}
                 onChange={e => setInput(e.target.value)}
-                inputProps={{
-                  style: { resize: 'vertical' },
-                  ...inputProps,
-                }}
                 minRows={minRows}
                 variant="outlined"
                 sx={{
@@ -218,10 +212,6 @@ export const DefaultEditor = (props: Props) => {
                 label={outputLabel}
                 value={output || ''}
                 className={classes.fullWidth}
-                inputProps={{
-                  style: { resize: 'vertical' },
-                  ...outputProps,
-                }}
                 multiline
                 minRows={minRows}
                 variant="outlined"
