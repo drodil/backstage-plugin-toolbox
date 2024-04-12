@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.20.2](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.20.1...v1.20.2) (2024-04-12)
+
+
+### Bug Fixes
+
+* remove manual resizing for textfields ([e1ed88b](https://github.com/drodil/backstage-plugin-toolbox/commit/e1ed88b0ecb9ce0691d32cf296fab4149b63a121))
+
 ### [1.20.1](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.20.0...v1.20.1) (2024-04-08)
 
 
