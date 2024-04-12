@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import { DefaultEditor } from '../DefaultEditor/DefaultEditor';
 import { validate } from '@roadiehq/roadie-backstage-entity-validator';
-import { Alert, AlertTitle } from '@material-ui/lab';
+import Alert from '@mui/material/Alert';
+import AlertTitle from '@mui/material/AlertTitle';
 
 export const EntityValidator = () => {
   const [output, setOutput] = React.useState(

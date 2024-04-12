@@ -1,7 +1,7 @@
 import React, { lazy } from 'react';
 import { Tool } from '@drodil/backstage-plugin-toolbox-react';
-import { Button } from '@material-ui/core';
-import DescriptionIcon from '@material-ui/icons/Description';
+import DescriptionIcon from '@mui/icons-material/Description';
+import Button from '@mui/material/Button';
 
 const Base64Encode = lazy(() => import('../Encoders/Base64Encode'));
 const UrlEncode = lazy(() => import('../Encoders/UrlEncode'));
@@ -180,6 +180,14 @@ export const defaultTools: Tool[] = [
         target="_blank"
         href="https://backstage.io/docs/features/software-catalog/descriptor-format"
         startIcon={<DescriptionIcon />}
+        color="inherit"
+        sx={{
+          backgroundColor: '#E0E0E0',
+          color: '#000000 !important',
+          '&:hover': {
+            backgroundColor: '#E0E0E0',
+          },
+        }}
       >
         Entity descriptor format
       </Button>,

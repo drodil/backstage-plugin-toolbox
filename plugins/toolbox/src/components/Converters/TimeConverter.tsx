@@ -1,22 +1,20 @@
 import { useStyles } from '../../utils/hooks';
 import React from 'react';
 import { DateTime } from 'luxon';
-import {
-  Button,
-  Divider,
-  FormControl,
-  Grid,
-  MenuItem,
-  Select,
-  TextField,
-  Typography,
-} from '@material-ui/core';
 import { PasteFromClipboardButton } from '../Buttons/PasteFromClipboardButton';
 import { ClearValueButton } from '../Buttons/ClearValueButton';
 import { CopyToClipboardButton } from '../Buttons/CopyToClipboardButton';
+import TextField from '@mui/material/TextField';
+import FormControl from '@mui/material/FormControl';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+import Select from '@mui/material/Select';
+import Grid from '@mui/material/Grid';
+import MenuItem from '@mui/material/MenuItem';
+import Divider from '@mui/material/Divider';
 
 export const TimeConverter = () => {
-  const styles = useStyles();
+  const { classes } = useStyles();
   const [input, setInput] = React.useState<DateTime | null>(null);
   const [inputType, setInputType] = React.useState('unix');
 
@@ -78,7 +76,7 @@ export const TimeConverter = () => {
         <TextField
           label={label}
           style={{ marginTop: '1rem' }}
-          className={styles.fullWidth}
+          className={classes.fullWidth}
           disabled
           value={value ?? ''}
         />
@@ -89,18 +87,22 @@ export const TimeConverter = () => {
 
   return (
     <>
-      <FormControl className={styles.fullWidth}>
+      <FormControl className={classes.fullWidth}>
         <Grid container>
           <Grid item xs={12} lg={8}>
             <Typography variant="subtitle1">
               <PasteFromClipboardButton setInput={v => handleChange(v)} />
               <ClearValueButton setValue={() => handleChange('')} />
-              <Button size="small" onClick={() => setInput(DateTime.now())}>
+              <Button
+                size="small"
+                onClick={() => setInput(DateTime.now())}
+                color="inherit"
+              >
                 Now
               </Button>
             </Typography>
             <TextField
-              className={styles.fullWidth}
+              className={classes.fullWidth}
               id="input"
               name="input"
               label="Input"

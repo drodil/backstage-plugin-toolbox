@@ -29,7 +29,7 @@ Add the navigation in the frontend:
 
 ```ts
 // packages/app/src/components/Root/Root.tsx
-import CardTravel from '@material-ui/icons/CardTravel';
+import CardTravel from '@mui/icons-material/CardTravel';
 
 // ...
 

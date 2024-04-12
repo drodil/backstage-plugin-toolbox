@@ -1,6 +1,7 @@
-import { Button, Tooltip } from '@material-ui/core';
 import React from 'react';
-import Input from '@material-ui/icons/Input';
+import Tooltip from '@mui/material/Tooltip';
+import Button from '@mui/material/Button';
+import Input from '@mui/icons-material/Input';
 
 type Props = {
   sample: string;
@@ -14,6 +15,8 @@ export const SampleButton = (props: Props) => {
         size="small"
         startIcon={<Input />}
         onClick={() => props.setInput(props.sample)}
+        variant="text"
+        color="inherit"
       >
         Sample
       </Button>

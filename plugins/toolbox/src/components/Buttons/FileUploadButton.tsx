@@ -1,6 +1,7 @@
-import { Button, Tooltip } from '@material-ui/core';
-import AttachFile from '@material-ui/icons/AttachFile';
 import React from 'react';
+import AttachFile from '@mui/icons-material/AttachFile';
+import Tooltip from '@mui/material/Tooltip';
+import Button from '@mui/material/Button';
 
 type Props = {
   onFileLoad: (input: File) => void;
@@ -21,7 +22,13 @@ export const FileUploadButton = (props: Props) => {
     <>
       <Tooltip arrow title="Upload File">
         <label htmlFor={id}>
-          <Button component="span" size="small" startIcon={<AttachFile />}>
+          <Button
+            component="span"
+            size="small"
+            startIcon={<AttachFile />}
+            variant="text"
+            color="inherit"
+          >
             {buttonText}
           </Button>
         </label>

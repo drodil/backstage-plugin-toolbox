@@ -1,6 +1,7 @@
-import { Button, Tooltip } from '@material-ui/core';
 import React from 'react';
-import GetAppIcon from '@material-ui/icons/GetApp';
+import GetAppIcon from '@mui/icons-material/GetApp';
+import Tooltip from '@mui/material/Tooltip';
+import Button from '@mui/material/Button';
 
 export type FileDownloadButtonProps = {
   content: string;
@@ -20,7 +21,13 @@ export const FileDownloadButton = (props: FileDownloadButtonProps) => {
 
   return (
     <Tooltip title="Download file" arrow>
-      <Button size="small" startIcon={<GetAppIcon />} onClick={download}>
+      <Button
+        size="small"
+        startIcon={<GetAppIcon />}
+        onClick={download}
+        variant="text"
+        color="inherit"
+      >
         Download file
       </Button>
     </Tooltip>

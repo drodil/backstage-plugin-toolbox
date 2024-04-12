@@ -1,12 +1,14 @@
 import React from 'react';
 import { useStyles } from '../../utils/hooks';
-import { FormControl, TextField, Typography } from '@material-ui/core';
 import { PasteFromClipboardButton } from '../Buttons/PasteFromClipboardButton';
 import { ClearValueButton } from '../Buttons/ClearValueButton';
 import { CopyToClipboardButton } from '../Buttons/CopyToClipboardButton';
+import FormControl from '@mui/material/FormControl';
+import Typography from '@mui/material/Typography';
+import TextField from '@mui/material/TextField';
 
 export const NumberBase = () => {
-  const styles = useStyles();
+  const { classes } = useStyles();
   const [state, setState] = React.useState({
     binary: '',
     octal: '',
@@ -52,7 +54,7 @@ export const NumberBase = () => {
 
   return (
     <>
-      <FormControl className={styles.fullWidth}>
+      <FormControl className={classes.fullWidth}>
         <Typography variant="subtitle1">
           Base 2 (Binary)
           <PasteFromClipboardButton setInput={v => handleChange('binary', v)} />
@@ -60,7 +62,7 @@ export const NumberBase = () => {
           <CopyToClipboardButton output={state.binary} />
         </Typography>
         <TextField
-          className={styles.fullWidth}
+          className={classes.fullWidth}
           id="binary"
           name="binary"
           value={state.binary}
@@ -74,7 +76,7 @@ export const NumberBase = () => {
           <CopyToClipboardButton output={state.octal} />
         </Typography>
         <TextField
-          className={styles.fullWidth}
+          className={classes.fullWidth}
           id="octal"
           name="octal"
           value={state.octal}
@@ -90,7 +92,7 @@ export const NumberBase = () => {
           <CopyToClipboardButton output={state.decimal} />
         </Typography>
         <TextField
-          className={styles.fullWidth}
+          className={classes.fullWidth}
           id="decimal"
           name="decimal"
           value={state.decimal}
@@ -104,7 +106,7 @@ export const NumberBase = () => {
           <CopyToClipboardButton output={state.hex} />
         </Typography>
         <TextField
-          className={styles.fullWidth}
+          className={classes.fullWidth}
           id="hex"
           name="hex"
           value={state.hex}

@@ -1,16 +1,18 @@
 import React, { useState } from 'react';
-import { Button, Grid, TextField } from '@material-ui/core';
 import { useApi } from '@backstage/core-plugin-api';
 import { toolboxApiRef } from '../../api';
 import { useStyles } from '../../utils/hooks';
 import { Progress } from '@backstage/core-components';
+import Grid from '@mui/material/Grid';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
 
 const Whois = () => {
   const [domain, setDomain] = useState('');
   const [response, setResponse] = useState({});
   const [loading, setLoading] = useState(false);
   const toolboxApi = useApi(toolboxApiRef);
-  const styles = useStyles();
+  const { classes } = useStyles();
 
   const lookup = () => {
     setResponse({});
@@ -67,7 +69,7 @@ const Whois = () => {
                 label={key}
                 id="output"
                 multiline
-                className={styles.fullWidth}
+                className={classes.fullWidth}
                 value={Object.entries(value as any)
                   .map(([k, v]) => `${k}: ${v}`)
                   .join('\n')}

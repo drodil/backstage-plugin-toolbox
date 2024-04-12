@@ -1,5 +1,6 @@
-import { Paper, Typography } from '@material-ui/core';
 import React from 'react';
+import Paper from '@mui/material/Paper';
+import Typography from '@mui/material/Typography';
 
 export const TimePaper = (props: { value: number; title: string }) => {
   const formattedValue = props.value.toLocaleString('en-US', {
