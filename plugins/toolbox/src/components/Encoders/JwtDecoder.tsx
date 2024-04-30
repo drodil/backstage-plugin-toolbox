@@ -2,11 +2,13 @@ import React, { useEffect } from 'react';
 import jwtDecode, { JwtPayload } from 'jwt-decode';
 import { DefaultEditor } from '../DefaultEditor';
 import { SignJWT } from 'jose';
+import {alertApiRef, useApi} from "@backstage/core-plugin-api";
 
 const BASE64_REGEX =
   /^([0-9a-zA-Z+/]{4})*(([0-9a-zA-Z+/]{2}==)|([0-9a-zA-Z+/]{3}=))?$/;
 
 export const JwtDecoder = () => {
+  const alertApi = useApi(alertApiRef);
   const [input, setInput] = React.useState('');
   const [output, setOutput] = React.useState('');
   const [mode, setMode] = React.useState('Encode');
@@ -26,6 +28,52 @@ export const JwtDecoder = () => {
     },
     key: 'exampleSecretKey',
   };
+
+  const showError = (attribute) => {
+    const errorMessage = `Couldn't encode JWT token: missing attribute '${attribute}'`;
+    setOutput(errorMessage);
+    alertApi.post({
+      message: errorMessage,
+      severity: 'error',
+      display: 'transient',
+    });
+    return false;
+  }
+
+  const keyExists = ((json) => {
+    if(!('key' in json)) {
+      return showError('key');
+    }
+    return true;
+  });
+
+  const payloadExists = ((json) => {
+    if(!('payload' in json)) {
+      return showError('payload');
+    } else {
+      if(!('iat' in json.payload)) {
+        return showError('payload.iat');
+      }
+      if(!('iss' in json.payload)) {
+        return showError('payload.iss');
+      }
+      if(!('exp' in json.payload)) {
+        return showError('payload.exp');
+      }
+    }
+    return true;
+  });
+
+  const headerExists = ((json) => {
+    if(!('header' in json)) {
+      return showError('header');
+    } else {
+      if(!('alg' in json.header)) {
+        return showError('header.alg');
+      }
+    }
+    return true;
+  });
 
   useEffect(() => {
     if (mode === 'Decode') {
@@ -53,16 +101,22 @@ ${JSON.stringify(jwtPayload, null, 2)}`);
     } else {
       try {
         const inputJSON = JSON.parse(input);
-        const secret = new TextEncoder().encode(inputJSON.key);
-        (async () => {
-          const token = await new SignJWT(inputJSON.payload)
-            .setProtectedHeader(inputJSON.header)
-            .setIssuedAt(inputJSON.payload.iat)
-            .setIssuer(inputJSON.payload.iss)
-            .setExpirationTime(inputJSON.payload.exp)
-            .sign(secret);
-          setOutput(token);
-        })();
+        if (keyExists(inputJSON) && payloadExists(inputJSON) && headerExists(inputJSON)) {
+          const secret = new TextEncoder().encode(inputJSON.key);
+          (async () => {
+              const token = await new SignJWT(inputJSON.payload)
+                .setProtectedHeader(inputJSON.header)
+                .setIssuedAt(inputJSON.payload.iat)
+                .setIssuer(inputJSON.payload.iss)
+                .setExpirationTime(inputJSON.payload.exp)
+                .sign(secret);
+              setOutput(token);
+          })();
+        }
+
+        if(!('header' in inputJSON)) {
+          setOutput(`Couldn't encode JWT token: missing attribute 'header'`);
+        }
       } catch (error) {
         setOutput(`Couldn't encode JWT token: ${error}`);
       }
