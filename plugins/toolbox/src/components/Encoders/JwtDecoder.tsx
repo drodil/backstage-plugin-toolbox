@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import jwtDecode, { JwtPayload } from 'jwt-decode';
 import { DefaultEditor } from '../DefaultEditor';
 import { SignJWT } from 'jose';
-import {alertApiRef, useApi} from "@backstage/core-plugin-api";
+import { alertApiRef, useApi } from '@backstage/core-plugin-api';
 
 const BASE64_REGEX =
   /^([0-9a-zA-Z+/]{4})*(([0-9a-zA-Z+/]{2}==)|([0-9a-zA-Z+/]{3}=))?$/;
@@ -29,51 +29,61 @@ export const JwtDecoder = () => {
     key: 'exampleSecretKey',
   };
 
-  const showError = (attribute) => {
-    const errorMessage = `Couldn't encode JWT token: missing attribute '${attribute}'`;
-    setOutput(errorMessage);
-    alertApi.post({
-      message: errorMessage,
-      severity: 'error',
-      display: 'transient',
-    });
-    return false;
-  }
+  const showError = useCallback(
+    attribute => {
+      const errorMessage = `Couldn't encode JWT token: missing attribute '${attribute}'`;
+      setOutput(errorMessage);
+      alertApi.post({
+        message: errorMessage,
+        severity: 'error',
+        display: 'transient',
+      });
+      return false;
+    },
+    [alertApi],
+  );
 
-  const keyExists = ((json) => {
-    if(!('key' in json)) {
-      return showError('key');
-    }
-    return true;
-  });
+  const keyExists = useCallback(
+    json => {
+      if (!('key' in json)) {
+        return showError('key');
+      }
+      return true;
+    },
+    [showError],
+  );
 
-  const payloadExists = ((json) => {
-    if(!('payload' in json)) {
-      return showError('payload');
-    } else {
-      if(!('iat' in json.payload)) {
+  const payloadExists = useCallback(
+    json => {
+      if (!('payload' in json)) {
+        return showError('payload');
+      }
+      if (!('iat' in json.payload)) {
         return showError('payload.iat');
       }
-      if(!('iss' in json.payload)) {
+      if (!('iss' in json.payload)) {
         return showError('payload.iss');
       }
-      if(!('exp' in json.payload)) {
+      if (!('exp' in json.payload)) {
         return showError('payload.exp');
       }
-    }
-    return true;
-  });
+      return true;
+    },
+    [showError],
+  );
 
-  const headerExists = ((json) => {
-    if(!('header' in json)) {
-      return showError('header');
-    } else {
-      if(!('alg' in json.header)) {
+  const headerExists = useCallback(
+    json => {
+      if (!('header' in json)) {
+        return showError('header');
+      }
+      if (!('alg' in json.header)) {
         return showError('header.alg');
       }
-    }
-    return true;
-  });
+      return true;
+    },
+    [showError],
+  );
 
   useEffect(() => {
     if (mode === 'Decode') {
@@ -101,27 +111,31 @@ ${JSON.stringify(jwtPayload, null, 2)}`);
     } else {
       try {
         const inputJSON = JSON.parse(input);
-        if (keyExists(inputJSON) && payloadExists(inputJSON) && headerExists(inputJSON)) {
+        if (
+          keyExists(inputJSON) &&
+          payloadExists(inputJSON) &&
+          headerExists(inputJSON)
+        ) {
           const secret = new TextEncoder().encode(inputJSON.key);
           (async () => {
-              const token = await new SignJWT(inputJSON.payload)
-                .setProtectedHeader(inputJSON.header)
-                .setIssuedAt(inputJSON.payload.iat)
-                .setIssuer(inputJSON.payload.iss)
-                .setExpirationTime(inputJSON.payload.exp)
-                .sign(secret);
-              setOutput(token);
+            const token = await new SignJWT(inputJSON.payload)
+              .setProtectedHeader(inputJSON.header)
+              .setIssuedAt(inputJSON.payload.iat)
+              .setIssuer(inputJSON.payload.iss)
+              .setExpirationTime(inputJSON.payload.exp)
+              .sign(secret);
+            setOutput(token);
           })();
         }
 
-        if(!('header' in inputJSON)) {
+        if (!('header' in inputJSON)) {
           setOutput(`Couldn't encode JWT token: missing attribute 'header'`);
         }
       } catch (error) {
         setOutput(`Couldn't encode JWT token: ${error}`);
       }
     }
-  }, [input, mode]);
+  }, [input, mode, headerExists, keyExists, payloadExists]);
 
   return (
     <DefaultEditor
