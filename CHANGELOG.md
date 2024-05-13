@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.20.4](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.20.3...v1.20.4) (2024-05-13)
+
 ### [1.20.3](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.20.2...v1.20.3) (2024-05-01)
 
 ### [1.20.2](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.20.1...v1.20.2) (2024-04-12)
