@@ -35,15 +35,15 @@
     "tsc": "tsc"
   },
   "dependencies": {
-    "@backstage/backend-common": "^0.21.7",
-    "@backstage/backend-plugin-api": "^0.6.17",
+    "@backstage/backend-common": "^0.22.0",
+    "@backstage/backend-plugin-api": "^0.6.18",
     "@drodil/backstage-plugin-toolbox-node": "workspace:^",
     "express": "^4.19.2",
     "whoiser": "^1.17.3"
   },
   "devDependencies": {
-    "@backstage/backend-test-utils": "^0.3.7",
-    "@backstage/cli": "^0.26.4"
+    "@backstage/backend-test-utils": "^0.3.8",
+    "@backstage/cli": "^0.26.5"
   },
   "files": [
     "dist"
