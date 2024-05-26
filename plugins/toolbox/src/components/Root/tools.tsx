@@ -232,11 +232,12 @@ export const defaultTools: Tool[] = [
     aliases: ['md2', 'md5', 'sha1', 'sha256', 'sha512'],
   },
   {
-    id: 'ts-interface-generate',
+    id: 'interface-generate',
     name: 'JSON to Interface',
     component: <Interface />,
     category: 'Generate',
-    description: 'Instantly generate TypeScript interfaces from JSON',
+    description:
+      'Generate interfaces for different programming languages from JSON',
   },
   {
     id: 'format-js',
