@@ -2,8 +2,6 @@ import {
   quicktype,
   InputData,
   jsonInputForTargetLanguage,
-  JSONSchemaInput,
-  FetchingJSONSchemaStore,
 } from 'quicktype-core';
 
 import React, { useEffect } from 'react';
@@ -11,7 +9,30 @@ import { DefaultEditor } from '../DefaultEditor/DefaultEditor';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 
-const formatOptions = ['TypeScript', undefined] as const;
+const formatOptions = [
+  'TypeScript',
+  'Ruby',
+  'JavaScript',
+  'Flow',
+  'Rust',
+  'Kotlin',
+  'Dart',
+  'Python',
+  'C#',
+  'Go',
+  'C++',
+  'Java',
+  'Scala3',
+  'Swift',
+  'Objective-C',
+  'Elm',
+  'JSON Schema',
+  'Pike',
+  'JavaScript PropTypes',
+  'Haskell',
+  'PHP',
+  undefined,
+] as const;
 type FormatOption = (typeof formatOptions)[number];
 
 export const Interface = () => {
@@ -35,14 +56,14 @@ export const Interface = () => {
   useEffect(() => {
     async function toInterface() {
       try {
-        const { lines } = await quicktypeJSON('typescript', input);
+        const { lines } = await quicktypeJSON(format, input);
         setOutput(lines.join('\n'));
       } catch (error: any) {
         setOutput(error);
       }
     }
     toInterface();
-  }, [input]);
+  }, [input, format]);
 
   return (
     <DefaultEditor
@@ -56,8 +77,8 @@ export const Interface = () => {
 
 export default Interface;
 
-async function quicktypeJSON(targetLanguage, jsonString) {
-  const jsonInput = jsonInputForTargetLanguage(targetLanguage);
+async function quicktypeJSON(targetLanguage: FormatOption, jsonString: string) {
+  const jsonInput = jsonInputForTargetLanguage(targetLanguage!);
 
   await jsonInput.addSource({
     name: 'MyInterface',
