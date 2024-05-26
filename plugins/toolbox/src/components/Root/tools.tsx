@@ -34,6 +34,7 @@ const LoremIpsum = lazy(() => import('../Generators/LoremIpsum'));
 const Hash = lazy(() => import('../Generators/Hash'));
 const QRCode = lazy(() => import('../Generators/QRCode'));
 const BarCode = lazy(() => import('../Generators/BarCode'));
+const Interface = lazy(() => import('../Generators/Interface'));
 
 const JSBeautify = lazy(() => import('../Formatters/JSBeautify'));
 const HTMLBeautify = lazy(() => import('../Formatters/HTMLBeautify'));
@@ -229,6 +230,14 @@ export const defaultTools: Tool[] = [
     category: 'Calculate',
     description: 'Calculate hash from given text',
     aliases: ['md2', 'md5', 'sha1', 'sha256', 'sha512'],
+  },
+  {
+    id: 'interface-generate',
+    name: 'JSON to Interface',
+    component: <Interface />,
+    category: 'Generate',
+    description:
+      'Generate interfaces for different programming languages from JSON',
   },
   {
     id: 'format-js',
