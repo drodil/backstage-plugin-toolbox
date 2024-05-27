@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.21.0](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.20.5...v1.21.0) (2024-05-27)
+
+
+### Features
+
+* generate typescript ([fd1e01d](https://github.com/drodil/backstage-plugin-toolbox/commit/fd1e01df1301133874585afd1cf09ddb4f8f7117))
+
+
+### Bug Fixes
+
+* add more types ([152ae42](https://github.com/drodil/backstage-plugin-toolbox/commit/152ae4281940e99ad4efd72ed3edb0ba4c2fee07))
+
 ### [1.20.5](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.20.4...v1.20.5) (2024-05-15)
 
 ### [1.20.4](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.20.3...v1.20.4) (2024-05-13)
