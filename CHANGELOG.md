@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.22.0](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.21.0...v1.22.0) (2024-06-13)
+
+
+### Features
+
+* add string analyzer tool ([abe3397](https://github.com/drodil/backstage-plugin-toolbox/commit/abe33976e9b9a7aac2c4f58fa127a2b273274507)), closes [#107](https://github.com/drodil/backstage-plugin-toolbox/issues/107)
+
 ## [1.21.0](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.20.5...v1.21.0) (2024-05-27)
 
 
