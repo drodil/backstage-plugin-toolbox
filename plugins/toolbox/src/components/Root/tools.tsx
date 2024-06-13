@@ -44,6 +44,7 @@ const SQLBeautify = lazy(() => import('../Formatters/SQLBeautify'));
 const IbanValidator = lazy(() => import('../Validators/IbanValidator'));
 const UrlExploder = lazy(() => import('../Misc/UrlExploder'));
 const Whois = lazy(() => import('../Networking/Whois'));
+const StringAnalyzer = lazy(() => import('../Misc/StringAnalyzer'));
 
 // const CidrCalculator = lazy(() => import('../Networking/CidrCalculator'));
 
@@ -147,6 +148,13 @@ export const defaultTools: Tool[] = [
     component: <StringCase />,
     category: 'Convert',
     description: 'Convert string to different casing styles',
+  },
+  {
+    id: 'string-analyzer',
+    name: 'String analyzer',
+    component: <StringAnalyzer />,
+    category: 'Miscellaneous',
+    description: 'Analyze string and get statistics',
   },
   {
     id: 'time-convert',
@@ -312,11 +320,11 @@ export const defaultTools: Tool[] = [
     requiresBackend: true,
   },
   /**
-  {
-    id: 'cidr-calculator',
-    name: 'CIDR calculator',
-    component: <CidrCalculator />,
-    category: 'Networking',
-  },
-  */
+   {
+   id: 'cidr-calculator',
+   name: 'CIDR calculator',
+   component: <CidrCalculator />,
+   category: 'Networking',
+   },
+   */
 ];
