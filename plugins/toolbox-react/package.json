@@ -22,7 +22,14 @@
     "types": "dist/index.d.ts"
   },
   "backstage": {
-    "role": "web-library"
+    "role": "web-library",
+    "pluginId": "toolbox",
+    "pluginPackages": [
+      "@drodil/backstage-plugin-toolbox",
+      "@drodil/backstage-plugin-toolbox-backend",
+      "@drodil/backstage-plugin-toolbox-node",
+      "@drodil/backstage-plugin-toolbox-react"
+    ]
   },
   "sideEffects": false,
   "scripts": {
@@ -36,15 +43,15 @@
     "tsc": "tsc"
   },
   "dependencies": {
-    "@backstage/core-plugin-api": "^1.9.2",
+    "@backstage/core-plugin-api": "^1.9.3",
     "@mui/material": "^5.15.14"
   },
   "peerDependencies": {
     "react": "^16.13.1 || ^17.0.0 || ^18.0.0"
   },
   "devDependencies": {
-    "@backstage/cli": "^0.26.5",
-    "@backstage/test-utils": "^1.5.5",
+    "@backstage/cli": "^0.26.7",
+    "@backstage/test-utils": "^1.5.6",
     "@testing-library/jest-dom": "^5.10.1",
     "@testing-library/react": "^12.1.3"
   },

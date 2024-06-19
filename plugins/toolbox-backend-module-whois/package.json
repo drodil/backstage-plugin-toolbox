@@ -22,7 +22,9 @@
     "types": "dist/index.d.ts"
   },
   "backstage": {
-    "role": "backend-plugin-module"
+    "role": "backend-plugin-module",
+    "pluginId": "toolbox",
+    "pluginPackage": "@drodil/backstage-plugin-toolbox-backend"
   },
   "scripts": {
     "start": "backstage-cli package start",
@@ -35,15 +37,15 @@
     "tsc": "tsc"
   },
   "dependencies": {
-    "@backstage/backend-common": "^0.22.0",
-    "@backstage/backend-plugin-api": "^0.6.18",
+    "@backstage/backend-common": "^0.23.0",
+    "@backstage/backend-plugin-api": "^0.6.19",
     "@drodil/backstage-plugin-toolbox-node": "workspace:^",
     "express": "^4.19.2",
     "whoiser": "^1.17.3"
   },
   "devDependencies": {
-    "@backstage/backend-test-utils": "^0.3.8",
-    "@backstage/cli": "^0.26.5"
+    "@backstage/backend-test-utils": "^0.4.0",
+    "@backstage/cli": "^0.26.7"
   },
   "files": [
     "dist"
