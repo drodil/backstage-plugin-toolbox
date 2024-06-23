@@ -182,7 +182,6 @@ export const DefaultEditor = (props: Props) => {
               <TextField
                 label={inputLabel}
                 // eslint-disable-next-line
-                autoFocus
                 id="input"
                 multiline
                 className={classes.fullWidth}
