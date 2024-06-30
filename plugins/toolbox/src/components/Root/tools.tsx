@@ -15,7 +15,7 @@ const CsvToJson = lazy(() => import('../Converters/CsvToJson'));
 const JsonToCsv = lazy(() => import('../Converters/JsonToCsv'));
 const JsonToYaml = lazy(() => import('../Converters/JsonToYaml'));
 const YamlToJson = lazy(() => import('../Converters/YamlToJson'));
-const StringCase = lazy(() => import('../Converters/StringCase'));
+const StringUtilities = lazy(() => import('../Converters/StringUtilities'));
 const TimeConverter = lazy(() => import('../Converters/TimeConverter'));
 const XmlToJson = lazy(() => import('../Converters/XmlToJson'));
 const SLACalculator = lazy(() => import('../Converters/SLACalculator'));
@@ -143,11 +143,11 @@ export const defaultTools: Tool[] = [
     description: 'Convert numbers between different bases',
   },
   {
-    id: 'string-case-convert',
-    name: 'String case',
-    component: <StringCase />,
+    id: 'string-utilities-convert',
+    name: 'String utilities',
+    component: <StringUtilities />,
     category: 'Convert',
-    description: 'Convert string to different casing styles',
+    description: 'Convert string to different case or string',
   },
   {
     id: 'string-analyzer',
