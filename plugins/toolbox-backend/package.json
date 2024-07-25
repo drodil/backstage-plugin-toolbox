@@ -41,9 +41,9 @@
     "tsc": "tsc"
   },
   "dependencies": {
-    "@backstage/backend-common": "^0.23.0",
-    "@backstage/backend-defaults": "^0.3.0",
-    "@backstage/backend-plugin-api": "^0.6.19",
+    "@backstage/backend-common": "^0.23.3",
+    "@backstage/backend-defaults": "^0.4.1",
+    "@backstage/backend-plugin-api": "^0.7.0",
     "@backstage/config": "^1.2.0",
     "@drodil/backstage-plugin-toolbox-node": "workspace:^",
     "@types/express": "*",
@@ -54,9 +54,9 @@
     "yn": "^4.0.0"
   },
   "devDependencies": {
-    "@backstage/cli": "^0.26.7",
-    "@backstage/plugin-auth-backend": "^0.22.6",
-    "@backstage/plugin-auth-backend-module-guest-provider": "^0.1.5",
+    "@backstage/cli": "^0.26.11",
+    "@backstage/plugin-auth-backend": "^0.22.9",
+    "@backstage/plugin-auth-backend-module-guest-provider": "^0.1.8",
     "@drodil/backstage-plugin-toolbox-backend-module-whois": "workspace:^",
     "@types/supertest": "^2.0.12",
     "msw": "^1.0.0",
