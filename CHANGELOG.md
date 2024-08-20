@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.23.0](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.22.1...v1.23.0) (2024-08-20)
+
+
+### Features
+
+* allow filtering tools on runtime ([57f5df3](https://github.com/drodil/backstage-plugin-toolbox/commit/57f5df39e46fff492862dfca0760bdf230c113ae)), closes [#122](https://github.com/drodil/backstage-plugin-toolbox/issues/122)
+
+
+### Bug Fixes
+
+* removed autofocus prop from widgets using textarea ([49296ef](https://github.com/drodil/backstage-plugin-toolbox/commit/49296ef6c23776fca18ee78023f77a60061e7126))
+
 ### [1.22.1](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.22.0...v1.22.1) (2024-06-19)
 
 ## [1.22.0](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.21.0...v1.22.0) (2024-06-13)
