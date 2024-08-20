@@ -2,8 +2,7 @@ import React from 'react';
 import { useStyles } from '../../utils/hooks';
 import { faker } from '@faker-js/faker';
 import { lowerCase, upperFirst } from 'lodash';
-import { ClearValueButton } from '../Buttons/ClearValueButton';
-import { CopyToClipboardButton } from '../Buttons/CopyToClipboardButton';
+import { ClearValueButton, CopyToClipboardButton } from '../Buttons';
 import Button from '@mui/material/Button';
 import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
@@ -44,30 +43,27 @@ export const LoremIpsum = () => {
         break;
       case 'hex':
         outputs = [...Array(multiplier)].map(() =>
-          faker.datatype.hexadecimal({
+          faker.string.hexadecimal({
             length: randomInt(1, 50),
-            case: 'lower',
+            casing: 'lower',
           }),
         );
         break;
       case 'datetime':
-        outputs = [...Array(multiplier)].map(faker.datatype.datetime);
-        break;
-      case 'json':
-        outputs = [...Array(multiplier)].map(faker.datatype.json);
+        outputs = [...Array(multiplier)].map(faker.date.anytime);
         break;
       case 'number':
         outputs = [...Array(multiplier)].map(() =>
-          faker.datatype.number({ min: 1, max: 100000000000000000 }),
+          faker.number.int({ min: 1, max: 100000000000000000 }),
         );
         break;
       case 'string':
         outputs = [...Array(multiplier)].map(() =>
-          faker.datatype.string(randomInt(10, 100)),
+          faker.string.sample(randomInt(10, 100)),
         );
         break;
       case 'uuid':
-        outputs = [...Array(multiplier)].map(faker.datatype.uuid);
+        outputs = [...Array(multiplier)].map(faker.string.uuid);
         break;
       case 'ipv4':
         outputs = [...Array(multiplier)].map(faker.internet.ipv4);
@@ -83,7 +79,10 @@ export const LoremIpsum = () => {
         break;
       case 'password':
         outputs = [...Array(multiplier)].map(() =>
-          faker.internet.password(randomInt(10, 100), false),
+          faker.internet.password({
+            length: randomInt(10, 100),
+            memorable: false,
+          }),
         );
         break;
       case 'url':
@@ -104,9 +103,9 @@ export const LoremIpsum = () => {
       case 'address':
         outputs = [...Array(multiplier)].map(
           () =>
-            `${faker.address.streetAddress(
+            `${faker.location.streetAddress(
               true,
-            )}, ${faker.address.zipCode()} ${faker.address.city()}, ${faker.address.country()}`,
+            )}, ${faker.location.zipCode()} ${faker.location.city()}, ${faker.location.country()}`,
         );
         break;
       case 'product-name':
@@ -125,16 +124,18 @@ export const LoremIpsum = () => {
         outputs = [...Array(multiplier)].map(faker.finance.creditCardNumber);
         break;
       case 'iban':
-        outputs = [...Array(multiplier)].map(() => faker.finance.iban(true));
+        outputs = [...Array(multiplier)].map(() =>
+          faker.finance.iban({ formatted: true }),
+        );
         break;
       case 'song':
         outputs = [...Array(multiplier)].map(faker.music.songName);
         break;
       case 'name':
-        outputs = [...Array(multiplier)].map(faker.name.fullName);
+        outputs = [...Array(multiplier)].map(faker.person.fullName);
         break;
       case 'job-title':
-        outputs = [...Array(multiplier)].map(faker.name.jobTitle);
+        outputs = [...Array(multiplier)].map(faker.person.jobTitle);
         break;
     }
     setOutput(outputs.join('\n'));

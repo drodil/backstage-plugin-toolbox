@@ -1,10 +1,12 @@
-import { errorHandler } from '@backstage/backend-common';
 import { LoggerService } from '@backstage/backend-plugin-api';
 import express from 'express';
 import Router from 'express-promise-router';
 import { ToolRequestHandler } from '@drodil/backstage-plugin-toolbox-node';
+import { MiddlewareFactory } from '@backstage/backend-defaults/rootHttpRouter';
+import { Config } from '@backstage/config';
 
 export interface RouterOptions {
+  config: Config;
   logger: LoggerService;
   handlers: ToolRequestHandler[];
 }
@@ -12,7 +14,7 @@ export interface RouterOptions {
 export async function createRouter(
   options: RouterOptions,
 ): Promise<express.Router> {
-  const { logger } = options;
+  const { logger, config } = options;
 
   const router = Router();
   router.use(express.json());
@@ -43,6 +45,6 @@ export async function createRouter(
     }
   });
 
-  router.use(errorHandler());
+  router.use(MiddlewareFactory.create({ logger, config }).error);
   return router;
 }

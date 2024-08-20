@@ -27,13 +27,15 @@ export const toolboxPlugin = createBackendPlugin({
     env.registerInit({
       deps: {
         httpRouter: coreServices.httpRouter,
+        config: coreServices.rootConfig,
         logger: coreServices.logger,
       },
-      async init({ httpRouter, logger }) {
+      async init({ httpRouter, logger, config }) {
         httpRouter.use(
           await createRouter({
             logger,
             handlers,
+            config,
           }),
         );
         httpRouter.addAuthPolicy({
