@@ -1,6 +1,6 @@
 import React from 'react';
 import { createDevApp } from '@backstage/dev-utils';
-import { ToolboxPage } from '../src/plugin';
+import { ToolboxPage } from '../src';
 import {
   AnyApiFactory,
   createApiFactory,

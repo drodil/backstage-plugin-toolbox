@@ -9,7 +9,7 @@ import { useFavoriteStorage, useStyles } from '../../utils/hooks';
 import SearchIcon from '@mui/icons-material/Search';
 import { defaultTools } from './tools';
 import OpenInNew from '@mui/icons-material/OpenInNew';
-import { FavoriteButton } from '../Buttons/FavoriteButton';
+import { FavoriteButton } from '../Buttons';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useAnalytics } from '@backstage/core-plugin-api';
 import { WelcomePage } from '../WelcomePage/WelcomePage';
@@ -55,6 +55,8 @@ export type ToolsPageProps = {
   categorySortFunction?: (category1: string, caregory2: string) => number;
   /** Allows for custom sorting of the tools within a category. Defaults to alphabetic sort. */
   toolSortFunction?: (tool1: Tool, tool2: Tool) => number;
+  /** Filter tools to be shown in runtime */
+  toolFilterFunction?: (tool: Tool) => boolean;
   /** customize the landing page */
   welcomePage?: ReactElement;
 };
@@ -66,6 +68,7 @@ export const ToolsPage = (props: ToolsPageProps) => {
     categorySortFunction,
     toolSortFunction,
     welcomePage,
+    toolFilterFunction,
   } = props;
   const { hash } = useLocation();
   const navigate = useNavigate();
@@ -90,11 +93,14 @@ export const ToolsPage = (props: ToolsPageProps) => {
   const tabs: TabInfo[] = useMemo(() => {
     const t: TabInfo[] = [];
     const shownTools = tools ? tools : [...(extraTools ?? []), ...defaultTools];
-    const filteredTools = shownTools.filter(
-      tool =>
-        (tool.requiresBackend === true && backendTools.includes(tool.id)) ||
-        tool.requiresBackend !== true,
-    );
+    const filteredTools = shownTools
+      .filter(
+        tool =>
+          (tool.requiresBackend === true && backendTools.includes(tool.id)) ||
+          tool.requiresBackend !== true,
+      )
+      .filter(tool => toolFilterFunction?.(tool) ?? true);
+
     const allTools = filteredTools
       .map(tool => {
         if (favorites.includes(tool.id)) {
@@ -231,6 +237,7 @@ export const ToolsPage = (props: ToolsPageProps) => {
     toolSortFunction,
     welcomePage,
     backendTools,
+    toolFilterFunction,
   ]);
 
   useEffect(() => {
