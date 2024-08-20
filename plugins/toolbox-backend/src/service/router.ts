@@ -45,6 +45,6 @@ export async function createRouter(
     }
   });
 
-  router.use(MiddlewareFactory.create({ logger, config }).error);
+  router.use(MiddlewareFactory.create({ logger, config }).error());
   return router;
 }
