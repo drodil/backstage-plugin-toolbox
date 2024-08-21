@@ -9,6 +9,7 @@ import {
 import { faker } from '@faker-js/faker';
 import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
+import { useToolboxTranslation } from '../../hooks';
 
 const UrlExploder = () => {
   const [url, setUrl] = useState<null | URL>(null);
@@ -23,6 +24,7 @@ const UrlExploder = () => {
   const [query, setQuery] = useState('');
   const [origin, setOrigin] = useState('');
   const { classes } = useStyles();
+  const { t } = useToolboxTranslation();
 
   const onInput = (value: string) => {
     setRawInput(value);
@@ -83,12 +85,12 @@ const UrlExploder = () => {
         <SampleButton setInput={onInput} sample={faker.internet.url()} />
         <ClearValueButton setValue={onInput} />
         <PasteFromClipboardButton
-          title="Paste URL from clipboard"
+          title={t('tool.url-exploder.pasteFromClipboard')}
           setInput={onInput}
         />
         {rawInput && (
           <CopyToClipboardButton
-            title="Copy URL to clipboard"
+            title={t('tool.url-exploder.copyToClipboard')}
             output={rawInput}
           />
         )}
@@ -103,48 +105,48 @@ const UrlExploder = () => {
       </Grid>
       <Grid item xs={6}>
         <TextField
-          label="Protocol"
+          label={t('tool.url-exploder.protocolLabel')}
           className={classes.fullWidth}
           value={protocol}
           style={{ marginBottom: '10px' }}
           onChange={e => setProtocol(e.target.value)}
         />
         <TextField
-          label="Path"
+          label={t('tool.url-exploder.pathLabel')}
           className={classes.fullWidth}
           value={path}
           style={{ marginBottom: '10px' }}
           onChange={e => setPath(e.target.value)}
         />
         <TextField
-          label="Username"
+          label={t('tool.url-exploder.usernameLabel')}
           className={classes.fullWidth}
           value={username}
           style={{ marginBottom: '10px' }}
           onChange={e => setUsername(e.target.value)}
         />
         <TextField
-          label="Query"
+          label={t('tool.url-exploder.queryLabel')}
           className={classes.fullWidth}
           value={query}
           multiline
           minRows={10}
           style={{ marginBottom: '10px' }}
           onChange={e => setQuery(e.target.value)}
-          helperText="Each parameter on it's own row, format is key=value"
+          helperText={t('tool.url-exploder.queryHelperText')}
         />
       </Grid>
 
       <Grid item xs={6}>
         <TextField
-          label="Host"
+          label={t('tool.url-exploder.hostLabel')}
           className={classes.fullWidth}
           value={host}
           style={{ marginBottom: '10px' }}
           onChange={e => setHost(e.target.value)}
         />
         <TextField
-          label="Port"
+          label={t('tool.url-exploder.portLabel')}
           className={classes.fullWidth}
           type="number"
           value={port}
@@ -152,21 +154,21 @@ const UrlExploder = () => {
           onChange={e => setPort(e.target.value)}
         />
         <TextField
-          label="Password"
+          label={t('tool.url-exploder.passwordLabel')}
           className={classes.fullWidth}
           value={password}
           style={{ marginBottom: '10px' }}
           onChange={e => setPassword(e.target.value)}
         />
         <TextField
-          label="Hash"
+          label={t('tool.url-exploder.hashLabel')}
           className={classes.fullWidth}
           value={hash}
           style={{ marginBottom: '10px' }}
           onChange={e => setHash(e.target.value)}
         />
         <TextField
-          label="Origin"
+          label={t('tool.url-exploder.originLabel')}
           className={classes.fullWidth}
           value={origin}
           InputProps={{

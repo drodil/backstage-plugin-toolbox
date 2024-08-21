@@ -1,10 +1,13 @@
 import React, { useEffect } from 'react';
 import { DefaultEditor } from '../DefaultEditor/DefaultEditor';
 import { format } from 'sql-formatter';
+import { useToolboxTranslation } from '../../hooks';
 
 export const SQLBeautify = () => {
   const [input, setInput] = React.useState('');
   const [output, setOutput] = React.useState('');
+  const { t } = useToolboxTranslation();
+
   const sample = "SELECT bar, foo FROM foo_bar WHERE foo='bar' GROUP BY bar";
 
   useEffect(() => {
@@ -31,8 +34,8 @@ export const SQLBeautify = () => {
       sample={sample}
       allowFileUpload
       acceptFileTypes=".sql"
-      inputLabel="Unformatted SQL"
-      outputLabel="Formatted SQL"
+      inputLabel={t('tool.format-sql.inputLabel')}
+      outputLabel={t('tool.format-sql.outputLabel')}
       allowFileDownload
       downloadFileName="download.sql"
       downloadFileType="text/plain"

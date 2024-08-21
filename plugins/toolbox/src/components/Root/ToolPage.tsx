@@ -6,15 +6,18 @@ import { ContentHeader } from '@backstage/core-components';
 import { useStyles } from '../../utils/hooks';
 import Box from '@mui/material/Box';
 import CircularProgress from '@mui/material/CircularProgress';
+import { useToolboxTranslation } from '../../hooks';
 
 export const ToolPage = (props: ToolsPageProps) => {
   const { extraTools } = props;
   const params = useParams();
   const { classes } = useStyles();
+  const { t, i18n_UNSAFE } = useToolboxTranslation();
+
   const allTools = [...(extraTools ?? []), ...defaultTools];
   const tool = allTools.find(({ id }) => id === params.id);
   if (!tool) {
-    return <>Tool not available</>;
+    return <>{t('toolPage.toolNotAvailable')}</>;
   }
   return (
     <div id="toolContainer" className={classes.toolContainer}>
@@ -32,8 +35,8 @@ export const ToolPage = (props: ToolsPageProps) => {
         }
       >
         <ContentHeader
-          title={`${tool.category} - ${tool.name}`}
-          description={tool.description}
+          title={`${tool.category} - ${i18n_UNSAFE(`tool.${tool.id}.name`, tool.name)}`}
+          description={i18n_UNSAFE(`tool.${tool.id}.description`, tool.description)}
         >
           {tool.headerButtons}
         </ContentHeader>

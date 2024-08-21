@@ -18,6 +18,7 @@ import Button from '@mui/material/Button';
 import FormControl from '@mui/material/FormControl';
 import Grid from '@mui/material/Grid';
 import ButtonGroup from '@mui/material/ButtonGroup';
+import { useToolboxTranslation } from '../../hooks';
 
 loader.config({ monaco });
 
@@ -68,15 +69,16 @@ function readFileAndSetText(
 
 export const SampleButton = (props: SampleButtonProps) => {
   const { sample, setInput } = props;
+  const { t } = useToolboxTranslation();
   return (
-    <Tooltip arrow title="Input sample">
+    <Tooltip arrow title={t('components.sampleButton.tooltipTitle')}>
       <Button
         size="small"
         startIcon={<Input />}
         onClick={() => setInput(sample)}
         color="inherit"
       >
-        Sample
+        {t('components.sampleButton.buttonText')}
       </Button>
     </Tooltip>
   );
@@ -99,6 +101,7 @@ function Diff() {
   const [allowedLanguages, setAllowedLanguages] = useState<MonacoLanguages[]>(
     [],
   );
+  const { t } = useToolboxTranslation();
 
   const exampleOriginalText = 'Backstage toolbox\n\ncompare text';
   const exampleModifiedText = 'Backstage toolbox\ndiff editor';
@@ -135,7 +138,7 @@ function Diff() {
 
   const languageOptions: SelectItem[] = allowedLanguages
     ? allowedLanguages.map(i => ({ label: i.name, value: i.name }))
-    : [{ label: 'Loading...', value: 'loading' }];
+    : [{ label: t('tool.diff.loadingLabel'), value: 'loading' }];
 
   return (
     <>
@@ -146,7 +149,7 @@ function Diff() {
               selected={language}
               onChange={handleLanguageSelect}
               items={languageOptions}
-              label="Select Text Language"
+              label={t('tool.diff.selectLanguage')}
             />
           </Grid>
         </Grid>
@@ -169,7 +172,7 @@ function Diff() {
               <FileUploadButton
                 onFileLoad={setOriginalFile}
                 id="originalFile"
-                buttonText="Original File"
+                buttonText={t('tool.diff.originalFileUploadButton')}
               />
               <ClearValueButton setValue={setOriginalText} />
               <PasteFromClipboardButton setInput={setOriginalText} />
@@ -181,7 +184,7 @@ function Diff() {
               <FileUploadButton
                 onFileLoad={setModifiedFile}
                 id="modifiedFile"
-                buttonText="Modified File"
+                buttonText={t('tool.diff.modifiedFilUploadButton')}
               />
               <ClearValueButton setValue={setModifiedText} />
               <PasteFromClipboardButton setInput={setModifiedText} />

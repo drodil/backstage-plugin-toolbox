@@ -4,6 +4,7 @@ import { faker } from '@faker-js/faker';
 import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
+import { useToolboxTranslation } from '../../hooks';
 
 const ANALYZED_CHARS =
   'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 :;,.!?*+^${}()|/\\';
@@ -17,6 +18,7 @@ export const StringAnalyzer = () => {
   const [alphabets, setAlphabets] = React.useState<
     { char: string; count: number }[]
   >([]);
+  const { t } = useToolboxTranslation();
 
   useEffect(() => {
     setCharacters(input.length);
@@ -44,7 +46,7 @@ export const StringAnalyzer = () => {
         <>
           <Grid container>
             <Grid item xs={12}>
-              <Typography variant="h6">Overall stats</Typography>
+              <Typography variant="h6">{t('tool.string-analyzer.overallStats')}</Typography>
             </Grid>
             <Grid item>
               <TextField
@@ -62,7 +64,7 @@ export const StringAnalyzer = () => {
           </Grid>
           <Grid container style={{ marginTop: '1rem' }}>
             <Grid item xs={12}>
-              <Typography variant="h6">Character stats</Typography>
+              <Typography variant="h6">{t('tool.string-analyzer.characterStats')}</Typography>
             </Grid>
             {alphabets.map(({ char, count }) => (
               <Grid item key={char}>

@@ -2,6 +2,7 @@ import React from 'react';
 import GetAppIcon from '@mui/icons-material/GetApp';
 import Tooltip from '@mui/material/Tooltip';
 import Button from '@mui/material/Button';
+import { useToolboxTranslation } from '../../hooks';
 
 export type FileDownloadButtonProps = {
   content: string;
@@ -11,6 +12,7 @@ export type FileDownloadButtonProps = {
 
 export const FileDownloadButton = (props: FileDownloadButtonProps) => {
   const { content, fileName, fileType } = props;
+  const { t } = useToolboxTranslation();
   const download = () => {
     const link = document.createElement('a');
     const file = new Blob([content], { type: fileType });
@@ -20,7 +22,7 @@ export const FileDownloadButton = (props: FileDownloadButtonProps) => {
   };
 
   return (
-    <Tooltip title="Download file" arrow>
+    <Tooltip title={t('components.fileDownloadButton.tooltipTitle')} arrow>
       <Button
         size="small"
         startIcon={<GetAppIcon />}
@@ -28,7 +30,7 @@ export const FileDownloadButton = (props: FileDownloadButtonProps) => {
         variant="text"
         color="inherit"
       >
-        Download file
+        {t('components.fileDownloadButton.buttonText')}
       </Button>
     </Tooltip>
   );

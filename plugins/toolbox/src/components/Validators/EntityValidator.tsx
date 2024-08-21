@@ -3,10 +3,12 @@ import { DefaultEditor } from '../DefaultEditor/DefaultEditor';
 import { validate } from '@roadiehq/roadie-backstage-entity-validator';
 import Alert from '@mui/material/Alert';
 import AlertTitle from '@mui/material/AlertTitle';
+import { useToolboxTranslation } from '../../hooks';
 
 export const EntityValidator = () => {
+  const { t } = useToolboxTranslation();
   const [output, setOutput] = React.useState(
-    <Alert severity="info">Empty value provided</Alert>,
+    <Alert severity="info">{t('tool.entity-validator.alertEmptyValue')}</Alert>,
   );
   const [input, setInput] = React.useState('');
   const sample =
@@ -48,7 +50,7 @@ export const EntityValidator = () => {
 
   useEffect(() => {
     if (!input) {
-      setOutput(<Alert severity="info">Empty value provided</Alert>);
+      setOutput(<Alert severity="info">{t('tool.entity-validator.alertEmptyValue')}</Alert>);
       return;
     }
 
@@ -56,19 +58,19 @@ export const EntityValidator = () => {
       .then(() => {
         setOutput(
           <Alert severity="success">
-            <AlertTitle>Success!</AlertTitle>Entity is valid!
+            <AlertTitle>{t('tool.entity-validator.alertSuccessTitle')}</AlertTitle>{t('tool.entity-validator.alertValidEntity')}
           </Alert>,
         );
       })
       .catch(err => {
         setOutput(
           <Alert severity="error">
-            <AlertTitle>Error!</AlertTitle>
+            <AlertTitle>{t('tool.entity-validator.alertErrorTitle')}</AlertTitle>
             <div dangerouslySetInnerHTML={{ __html: formatError(err) }} />
           </Alert>,
         );
       });
-  }, [input]);
+  }, [input,t]);
 
   return (
     <DefaultEditor
@@ -77,7 +79,7 @@ export const EntityValidator = () => {
       sample={sample}
       rightContent={<>{output}</>}
       allowFileUpload
-      inputLabel="Entity YAML"
+      inputLabel={t('tool.entity-validator.inputLabel')}
       acceptFileTypes=".yaml,.yml"
       allowFileDownload
       downloadFileName="catalog-info.yaml"

@@ -18,10 +18,10 @@ import TextField from '@mui/material/TextField';
 import FormControl from '@mui/material/FormControl';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
-import Tooltip from '@mui/material/Tooltip';
-import Button from '@mui/material/Button';
 import Divider from '@mui/material/Divider';
 import Box from '@mui/material/Box';
+import { useToolboxTranslation } from '../../hooks';
+import { SampleButton } from '../Buttons';
 
 export const ColorConverter = () => {
   const { classes } = useStyles();
@@ -35,6 +35,7 @@ export const ColorConverter = () => {
   const [lab, setLab] = React.useState<LAB>([0, 0, 0]);
   const [lch, setLch] = React.useState<LCH>([0, 0, 0]);
   const sample = '#d50032';
+  const { t } = useToolboxTranslation();
 
   enum ColorType {
     Hex = 'HEX',
@@ -309,20 +310,12 @@ export const ColorConverter = () => {
             <Typography variant="subtitle1">
               <PasteFromClipboardButton setInput={v => handleChange(v)} />
               <ClearValueButton setValue={() => handleChange('')} />
-              <Tooltip arrow title="Input sample">
-                <Button
-                  size="small"
-                  onClick={() => handleChange(sample)}
-                  color="inherit"
-                >
-                  Sample
-                </Button>
-              </Tooltip>
+              {sample && <SampleButton setInput={handleChange} sample={sample} />}
             </Typography>
             <TextField
               id="input"
               name="input"
-              label="Color"
+              label={t('tool.color-convert.inputLabel')}
               value={getInputStr()}
               className={classes.fullWidth}
               onChange={e => handleChange(e.target.value)}

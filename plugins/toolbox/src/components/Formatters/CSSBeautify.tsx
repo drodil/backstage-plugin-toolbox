@@ -1,10 +1,13 @@
 import React, { useEffect } from 'react';
 import { DefaultEditor } from '../DefaultEditor/DefaultEditor';
 import beautify from 'js-beautify';
+import { useToolboxTranslation } from '../../hooks';
 
 export const CSSBeautify = () => {
   const [input, setInput] = React.useState('');
   const [output, setOutput] = React.useState('');
+  const { t } = useToolboxTranslation();
+
   const sample =
     '.selector_1 {width: 10px;font-size:2px;} #backstage_ftw {font-size: 200px; content: "BACKSTAGE IS THE BEST!"}';
 
@@ -32,8 +35,8 @@ export const CSSBeautify = () => {
       output={output}
       sample={sample}
       allowFileUpload
-      inputLabel="Unformatted CSS"
-      outputLabel="Formatted CSS"
+      inputLabel={t('tool.format-css.inputLabel')}
+      outputLabel={t('tool.format-css.outputLabel')}
       acceptFileTypes=".css"
       allowFileDownload
       downloadFileName="download.css"
