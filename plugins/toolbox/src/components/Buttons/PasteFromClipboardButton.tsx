@@ -18,7 +18,12 @@ export const PasteFromClipboardButton = (props: Props) => {
     );
   };
   return (
-    <Tooltip arrow title={props.title ?? t('components.pasteFromClipboardButton.tooltipTitle')}>
+    <Tooltip
+      arrow
+      title={
+        props.title ?? t('components.pasteFromClipboardButton.tooltipTitle')
+      }
+    >
       <Button
         size="small"
         startIcon={<AssignmentReturnedIcon />}

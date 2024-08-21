@@ -12,7 +12,14 @@ type Props = {
 export const ClearValueButton = (props: Props) => {
   const { t } = useToolboxTranslation();
   return (
-    <Tooltip arrow title={props.tooltip ? props.tooltip : t('components.clearValueButton.tooltipTitle')}>
+    <Tooltip
+      arrow
+      title={
+        props.tooltip
+          ? props.tooltip
+          : t('components.clearValueButton.tooltipTitle')
+      }
+    >
       <Button
         size="small"
         startIcon={<Clear />}

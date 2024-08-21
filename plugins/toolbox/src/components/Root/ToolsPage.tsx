@@ -166,7 +166,7 @@ export const ToolsPage = (props: ToolsPageProps) => {
       if (!search) {
         return true;
       }
-      const toolName = i18n_UNSAFE(`tool.${tool.id}.name`, tool.name)
+      const toolName = i18n_UNSAFE(`tool.${tool.id}.name`, tool.name);
       return (
         toolName.toLowerCase().includes(search.toLowerCase()) ||
         tool.id.toLowerCase().includes(search.toLowerCase()) ||
@@ -225,7 +225,10 @@ export const ToolsPage = (props: ToolsPageProps) => {
                   {...tabProps(i)}
                 />
               ),
-              title: `${category} - ${i18n_UNSAFE(`tool.${tool.id}.name`, tool.name)}`,
+              title: `${category} - ${i18n_UNSAFE(
+                `tool.${tool.id}.name`,
+                tool.name,
+              )}`,
               ...tool,
             });
           });
@@ -331,7 +334,12 @@ export const ToolsPage = (props: ToolsPageProps) => {
                       >
                         {tool.headerButtons}
                         {tool.showOpenInNewWindowButton !== false && (
-                          <Tooltip title={i18n_UNSAFE('toolsPage.tabPanel.tooltipTitle')} arrow>
+                          <Tooltip
+                            title={i18n_UNSAFE(
+                              'toolsPage.tabPanel.tooltipTitle',
+                            )}
+                            arrow
+                          >
                             <Button
                               size="small"
                               onClick={() => openToolInWindow(tool.id)}

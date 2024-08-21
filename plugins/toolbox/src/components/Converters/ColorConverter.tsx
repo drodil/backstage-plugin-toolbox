@@ -310,7 +310,9 @@ export const ColorConverter = () => {
             <Typography variant="subtitle1">
               <PasteFromClipboardButton setInput={v => handleChange(v)} />
               <ClearValueButton setValue={() => handleChange('')} />
-              {sample && <SampleButton setInput={handleChange} sample={sample} />}
+              {sample && (
+                <SampleButton setInput={handleChange} sample={sample} />
+              )}
             </Typography>
             <TextField
               id="input"

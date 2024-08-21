@@ -35,8 +35,14 @@ export const ToolPage = (props: ToolsPageProps) => {
         }
       >
         <ContentHeader
-          title={`${tool.category} - ${i18n_UNSAFE(`tool.${tool.id}.name`, tool.name)}`}
-          description={i18n_UNSAFE(`tool.${tool.id}.description`, tool.description)}
+          title={`${tool.category} - ${i18n_UNSAFE(
+            `tool.${tool.id}.name`,
+            tool.name,
+          )}`}
+          description={i18n_UNSAFE(
+            `tool.${tool.id}.description`,
+            tool.description,
+          )}
         >
           {tool.headerButtons}
         </ContentHeader>

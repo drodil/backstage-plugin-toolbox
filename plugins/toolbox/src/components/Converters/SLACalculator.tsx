@@ -111,7 +111,7 @@ export const SLACalculator = () => {
                   setError({ show: false, msg: '' });
                 }}
               />
-              <SampleButton setInput={handleChange} sample={'99.9'} />
+              <SampleButton setInput={handleChange} sample="99.9" />
             </Typography>
             <TextField
               className={classes.fullWidth}
@@ -128,11 +128,26 @@ export const SLACalculator = () => {
         <Divider style={{ marginTop: '1rem', marginBottom: '1rem' }} />
         <Grid container>
           <Grid item lg={5} md={8} xs={12}>
-            <OutputField label={t('tool.sla-calculator.dailylabel')} value={output.daily} />
-            <OutputField label={t('tool.sla-calculator.weeklylabel')} value={output.weekly} />
-            <OutputField label={t('tool.sla-calculator.monthlylabel')} value={output.monthly} />
-            <OutputField label={t('tool.sla-calculator.quaterlylabel')} value={output.quarterly} />
-            <OutputField label={t('tool.sla-calculator.yearlylabel')} value={output.yearly} />
+            <OutputField
+              label={t('tool.sla-calculator.dailylabel')}
+              value={output.daily}
+            />
+            <OutputField
+              label={t('tool.sla-calculator.weeklylabel')}
+              value={output.weekly}
+            />
+            <OutputField
+              label={t('tool.sla-calculator.monthlylabel')}
+              value={output.monthly}
+            />
+            <OutputField
+              label={t('tool.sla-calculator.quaterlylabel')}
+              value={output.quarterly}
+            />
+            <OutputField
+              label={t('tool.sla-calculator.yearlylabel')}
+              value={output.yearly}
+            />
           </Grid>
         </Grid>
       </FormControl>

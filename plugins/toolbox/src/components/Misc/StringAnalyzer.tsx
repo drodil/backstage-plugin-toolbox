@@ -46,7 +46,9 @@ export const StringAnalyzer = () => {
         <>
           <Grid container>
             <Grid item xs={12}>
-              <Typography variant="h6">{t('tool.string-analyzer.overallStats')}</Typography>
+              <Typography variant="h6">
+                {t('tool.string-analyzer.overallStats')}
+              </Typography>
             </Grid>
             <Grid item>
               <TextField
@@ -64,7 +66,9 @@ export const StringAnalyzer = () => {
           </Grid>
           <Grid container style={{ marginTop: '1rem' }}>
             <Grid item xs={12}>
-              <Typography variant="h6">{t('tool.string-analyzer.characterStats')}</Typography>
+              <Typography variant="h6">
+                {t('tool.string-analyzer.characterStats')}
+              </Typography>
             </Grid>
             {alphabets.map(({ char, count }) => (
               <Grid item key={char}>

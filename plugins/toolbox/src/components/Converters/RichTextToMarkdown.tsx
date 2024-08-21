@@ -48,7 +48,9 @@ export const RichTextToMarkdown = () => {
               className={classes.previewPaper}
               style={{ marginTop: '1rem' }}
             >
-              <Typography variant="subtitle1">{t('tool.rich-text-to-markdown-convert.preview')}:</Typography>
+              <Typography variant="subtitle1">
+                {t('tool.rich-text-to-markdown-convert.preview')}:
+              </Typography>
               <MarkdownContent content={output} />
             </Paper>
           )}

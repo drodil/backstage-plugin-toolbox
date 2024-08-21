@@ -18,7 +18,10 @@ export const CopyToClipboardButton = (props: Props) => {
   };
 
   return (
-    <Tooltip arrow title={props.title ??  t('components.copyToClipboardButton.tooltipTitle')}>
+    <Tooltip
+      arrow
+      title={props.title ?? t('components.copyToClipboardButton.tooltipTitle')}
+    >
       <Button
         size="small"
         startIcon={<FileCopy />}

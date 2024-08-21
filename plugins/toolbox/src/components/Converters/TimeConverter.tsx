@@ -114,12 +114,16 @@ export const TimeConverter = () => {
             />
           </Grid>
           <Grid item xs={12} lg={4}>
-            <Typography variant="subtitle1">{t('tool.time-convert.inputType')}</Typography>
+            <Typography variant="subtitle1">
+              {t('tool.time-convert.inputType')}
+            </Typography>
             <Select
               value={inputType}
               onChange={e => setInputType(e.target.value as string)}
             >
-              <MenuItem value="unix">{t('tool.time-convert.unixTime')}</MenuItem>
+              <MenuItem value="unix">
+                {t('tool.time-convert.unixTime')}
+              </MenuItem>
               <MenuItem value="milliseconds">
                 {t('tool.time-convert.millisecondsTime')}
               </MenuItem>
@@ -150,10 +154,22 @@ export const TimeConverter = () => {
             <OutputField label="HTTP" value={input?.toHTTP()} />
           </Grid>
           <Grid item lg={2} md={4} xs={12}>
-            <OutputField label={t('tool.time-convert.outputLabel.dayOfTheWeek')} value={input?.toFormat('c')} />
-            <OutputField label={t('tool.time-convert.outputLabel.weekNumber')} value={input?.toFormat('W')} />
-            <OutputField label={t('tool.time-convert.outputLabel.quarter')} value={input?.toFormat('q')} />
-            <OutputField label={t('tool.time-convert.outputLabel.dayOfTheYear')} value={input?.toFormat('o')} />
+            <OutputField
+              label={t('tool.time-convert.outputLabel.dayOfTheWeek')}
+              value={input?.toFormat('c')}
+            />
+            <OutputField
+              label={t('tool.time-convert.outputLabel.weekNumber')}
+              value={input?.toFormat('W')}
+            />
+            <OutputField
+              label={t('tool.time-convert.outputLabel.quarter')}
+              value={input?.toFormat('q')}
+            />
+            <OutputField
+              label={t('tool.time-convert.outputLabel.dayOfTheYear')}
+              value={input?.toFormat('o')}
+            />
             <OutputField
               label={t('tool.time-convert.outputLabel.leapYear')}
               value={input?.isInLeapYear ? 'true' : 'false'}
@@ -173,7 +189,10 @@ export const TimeConverter = () => {
               label="DD/MM/YYYY"
               value={input?.toFormat('dd/MM/yyyy')}
             />
-            <OutputField label={t('tool.time-convert.outputLabel.timezone')} value={input?.toFormat('z')} />
+            <OutputField
+              label={t('tool.time-convert.outputLabel.timezone')}
+              value={input?.toFormat('z')}
+            />
           </Grid>
         </Grid>
       </FormControl>

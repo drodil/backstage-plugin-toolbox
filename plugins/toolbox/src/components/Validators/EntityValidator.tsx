@@ -50,7 +50,11 @@ export const EntityValidator = () => {
 
   useEffect(() => {
     if (!input) {
-      setOutput(<Alert severity="info">{t('tool.entity-validator.alertEmptyValue')}</Alert>);
+      setOutput(
+        <Alert severity="info">
+          {t('tool.entity-validator.alertEmptyValue')}
+        </Alert>,
+      );
       return;
     }
 
@@ -58,19 +62,24 @@ export const EntityValidator = () => {
       .then(() => {
         setOutput(
           <Alert severity="success">
-            <AlertTitle>{t('tool.entity-validator.alertSuccessTitle')}</AlertTitle>{t('tool.entity-validator.alertValidEntity')}
+            <AlertTitle>
+              {t('tool.entity-validator.alertSuccessTitle')}
+            </AlertTitle>
+            {t('tool.entity-validator.alertValidEntity')}
           </Alert>,
         );
       })
       .catch(err => {
         setOutput(
           <Alert severity="error">
-            <AlertTitle>{t('tool.entity-validator.alertErrorTitle')}</AlertTitle>
+            <AlertTitle>
+              {t('tool.entity-validator.alertErrorTitle')}
+            </AlertTitle>
             <div dangerouslySetInnerHTML={{ __html: formatError(err) }} />
           </Alert>,
         );
       });
-  }, [input,t]);
+  }, [input, t]);
 
   return (
     <DefaultEditor

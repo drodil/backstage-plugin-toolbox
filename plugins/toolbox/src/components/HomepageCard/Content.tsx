@@ -9,7 +9,9 @@ export const Content = (props?: { toolId?: string }) => {
   const tool = defaultTools.find(t => t.id === props?.toolId);
   if (!tool) {
     return (
-      <Typography variant="h4">{intl('components.homePageCard.selectToolText')}</Typography>
+      <Typography variant="h4">
+        {intl('components.homePageCard.selectToolText')}
+      </Typography>
     );
   }
   return tool.component;

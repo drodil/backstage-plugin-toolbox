@@ -75,7 +75,11 @@ export const EntityDescriber = () => {
             value={entity}
             onChange={(_e, value) => setEntity(value)}
             renderInput={params => (
-              <TextField {...params} label={t('tool.entity-describer.entityLabel')} variant="outlined" />
+              <TextField
+                {...params}
+                label={t('tool.entity-describer.entityLabel')}
+                variant="outlined"
+              />
             )}
           />
         </Grid>

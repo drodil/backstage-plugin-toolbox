@@ -204,13 +204,22 @@ const Countdown = () => {
       {isRunning && (
         <Grid container spacing={2} justifyContent="center" alignItems="center">
           <Grid item>
-            <TimePaper value={timeLeft.hours} title={t('tool.countdown.hoursLabel')} />
+            <TimePaper
+              value={timeLeft.hours}
+              title={t('tool.countdown.hoursLabel')}
+            />
           </Grid>
           <Grid item>
-            <TimePaper value={timeLeft.minutes} title={t('tool.countdown.minutesLabel')} />
+            <TimePaper
+              value={timeLeft.minutes}
+              title={t('tool.countdown.minutesLabel')}
+            />
           </Grid>
           <Grid item>
-            <TimePaper value={timeLeft.seconds} title={t('tool.countdown.secondsLabel')} />
+            <TimePaper
+              value={timeLeft.seconds}
+              title={t('tool.countdown.secondsLabel')}
+            />
           </Grid>
         </Grid>
       )}

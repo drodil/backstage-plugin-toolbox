@@ -75,9 +75,14 @@ export const WelcomePage = (props: WelcomePageProps) => {
                   >
                     {tool.category ?? 'Miscellaneous'}
                   </Typography>
-                  <Typography variant="h6">{i18n_UNSAFE(`tool.${tool.id}.name`, tool.name)}</Typography>
+                  <Typography variant="h6">
+                    {i18n_UNSAFE(`tool.${tool.id}.name`, tool.name)}
+                  </Typography>
                   <Typography variant="body2" component="p">
-                    {i18n_UNSAFE(`tool.${tool.id}.description`, tool.description)}
+                    {i18n_UNSAFE(
+                      `tool.${tool.id}.description`,
+                      tool.description,
+                    )}
                   </Typography>
                 </CardContent>
               </Card>
