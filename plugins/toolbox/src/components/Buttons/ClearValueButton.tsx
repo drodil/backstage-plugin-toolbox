@@ -2,6 +2,7 @@ import React from 'react';
 import Tooltip from '@mui/material/Tooltip';
 import Button from '@mui/material/Button';
 import Clear from '@mui/icons-material/Clear';
+import { useToolboxTranslation } from '../../hooks';
 
 type Props = {
   setValue: (input: string) => void;
@@ -9,8 +10,16 @@ type Props = {
 };
 
 export const ClearValueButton = (props: Props) => {
+  const { t } = useToolboxTranslation();
   return (
-    <Tooltip arrow title={props.tooltip ? props.tooltip : 'Clear input value'}>
+    <Tooltip
+      arrow
+      title={
+        props.tooltip
+          ? props.tooltip
+          : t('components.clearValueButton.tooltipTitle')
+      }
+    >
       <Button
         size="small"
         startIcon={<Clear />}
@@ -18,7 +27,7 @@ export const ClearValueButton = (props: Props) => {
         variant="text"
         color="inherit"
       >
-        Clear
+        {t('components.clearValueButton.buttonText')}
       </Button>
     </Tooltip>
   );

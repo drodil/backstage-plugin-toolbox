@@ -27,6 +27,7 @@ import Button from '@mui/material/Button';
 import TabPanel from '@mui/lab/TabPanel';
 import TabContext from '@mui/lab/TabContext';
 import { useBackendTools } from '../../hooks';
+import { useToolboxTranslation } from '../../hooks';
 
 type TabInfo = {
   tab: ReactElement;
@@ -78,6 +79,8 @@ export const ToolsPage = (props: ToolsPageProps) => {
   const backendTools = useBackendTools();
   const favorites = useFavoriteStorage();
   const { classes } = useStyles();
+
+  const { i18n_UNSAFE } = useToolboxTranslation();
 
   const openToolInWindow = (id: string) => {
     window.open(`/toolbox/tool/${id}`, 'newwindow', 'width=1000,height=800');
@@ -139,10 +142,10 @@ export const ToolsPage = (props: ToolsPageProps) => {
           key="toolbox"
           wrapped
           className={`${classes.fullWidth} ${classes.noPadding} ${classes.tab}`}
-          label="Toolbox"
+          label={i18n_UNSAFE('toolsPage.tabPanel.mainLabel')}
         />
       ),
-      title: 'Toolbox',
+      title: i18n_UNSAFE('toolsPage.pageTitle'),
       component: welcomePage || <WelcomePage tools={allTools} />,
       showFavoriteButton: false,
       showOpenInNewWindowButton: false,
@@ -163,8 +166,9 @@ export const ToolsPage = (props: ToolsPageProps) => {
       if (!search) {
         return true;
       }
+      const toolName = i18n_UNSAFE(`tool.${tool.id}.name`, tool.name);
       return (
-        tool.name.toLowerCase().includes(search.toLowerCase()) ||
+        toolName.toLowerCase().includes(search.toLowerCase()) ||
         tool.id.toLowerCase().includes(search.toLowerCase()) ||
         tool.aliases?.some(alias =>
           alias.toLowerCase().includes(search.toLowerCase()),
@@ -217,11 +221,14 @@ export const ToolsPage = (props: ToolsPageProps) => {
                   style={!matchesSearch(tool) ? { display: 'none' } : {}}
                   wrapped
                   className={`${classes.fullWidth} ${classes.noPadding} ${classes.tab}`}
-                  label={tool.name}
+                  label={i18n_UNSAFE(`tool.${tool.id}.name`, tool.name)}
                   {...tabProps(i)}
                 />
               ),
-              title: `${category} - ${tool.name}`,
+              title: `${category} - ${i18n_UNSAFE(
+                `tool.${tool.id}.name`,
+                tool.name,
+              )}`,
               ...tool,
             });
           });
@@ -238,6 +245,7 @@ export const ToolsPage = (props: ToolsPageProps) => {
     welcomePage,
     backendTools,
     toolFilterFunction,
+    i18n_UNSAFE,
   ]);
 
   useEffect(() => {
@@ -259,7 +267,7 @@ export const ToolsPage = (props: ToolsPageProps) => {
 
   return (
     <Page themeId="tool">
-      <Header title="Toolbox" />
+      <Header title={i18n_UNSAFE('toolsPage.title')} />
       <Content className={classes.noPadding}>
         <Grid
           container
@@ -274,7 +282,7 @@ export const ToolsPage = (props: ToolsPageProps) => {
               sx={{ justifyContent: 'space-between' }}
             >
               <InputBase
-                placeholder="Search"
+                placeholder={i18n_UNSAFE('toolsPage.input.search')}
                 inputProps={{ 'aria-label': 'Search' }}
                 onChange={e => setSearch(e.target.value)}
               />
@@ -326,7 +334,12 @@ export const ToolsPage = (props: ToolsPageProps) => {
                       >
                         {tool.headerButtons}
                         {tool.showOpenInNewWindowButton !== false && (
-                          <Tooltip title="Open tool in new window" arrow>
+                          <Tooltip
+                            title={i18n_UNSAFE(
+                              'toolsPage.tabPanel.tooltipTitle',
+                            )}
+                            arrow
+                          >
                             <Button
                               size="small"
                               onClick={() => openToolInWindow(tool.id)}

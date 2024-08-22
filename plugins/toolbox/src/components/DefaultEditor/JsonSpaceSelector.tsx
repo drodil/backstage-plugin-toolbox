@@ -1,11 +1,13 @@
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import React from 'react';
+import { useToolboxTranslation } from '../../hooks';
 
 export const JsonSpaceSelector = (props: {
   spaces: number;
   onChange: (spaces: number) => void;
 }) => {
+  const { t } = useToolboxTranslation();
   return (
     <Select
       value={props.spaces}
@@ -25,16 +27,16 @@ export const JsonSpaceSelector = (props: {
       }}
     >
       <MenuItem value={2} sx={{ p: '6px 16px !important' }}>
-        2 spaces
+        {t('components.jsonSpaceSelector.space', { count: 2 })}
       </MenuItem>
       <MenuItem value={3} sx={{ p: '6px 16px !important' }}>
-        3 spaces
+        {t('components.jsonSpaceSelector.space', { count: 3 })}
       </MenuItem>
       <MenuItem value={4} sx={{ p: '6px 16px !important' }}>
-        4 spaces
+        {t('components.jsonSpaceSelector.space', { count: 4 })}
       </MenuItem>
       <MenuItem value={8} sx={{ p: '6px 16px !important' }}>
-        8 spaces
+        {t('components.jsonSpaceSelector.space', { count: 8 })}
       </MenuItem>
     </Select>
   );

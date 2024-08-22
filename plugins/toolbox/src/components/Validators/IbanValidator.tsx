@@ -4,12 +4,14 @@ import { DefaultEditor } from '../DefaultEditor/DefaultEditor';
 import { OutputField } from '../DefaultEditor/OutputField';
 import Alert from '@mui/material/Alert';
 import AlertTitle from '@mui/material/AlertTitle';
+import { useToolboxTranslation } from '../../hooks';
 
 export const IbanValidator = () => {
   const [input, setInput] = React.useState('');
   const [bban, setBban] = React.useState('');
   const [electronic, setElectronic] = React.useState('');
   const [isValid, setIsValid] = React.useState(true);
+  const { t } = useToolboxTranslation();
 
   useEffect(() => {
     let valid = true;
@@ -33,8 +35,8 @@ export const IbanValidator = () => {
         <>
           {!isValid && (
             <Alert severity="error">
-              <AlertTitle>Error!</AlertTitle>
-              Invalid IBAN provided
+              <AlertTitle>{t('tool.iban.alertErrorTitle')}</AlertTitle>
+              {t('tool.iban.alertInvalidIBAN')}
             </Alert>
           )}
           {isValid && (

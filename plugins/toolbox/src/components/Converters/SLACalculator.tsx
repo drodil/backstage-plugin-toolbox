@@ -7,9 +7,10 @@ import TextField from '@mui/material/TextField';
 import FormControl from '@mui/material/FormControl';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
 import Divider from '@mui/material/Divider';
 import Alert from '@mui/material/Alert';
+import { useToolboxTranslation } from '../../hooks';
+import { SampleButton } from '../Buttons';
 
 export const SLACalculator = () => {
   const { classes } = useStyles();
@@ -25,6 +26,7 @@ export const SLACalculator = () => {
     show: false,
     msg: '',
   });
+  const { t } = useToolboxTranslation();
 
   const convertTime = (value: number) => {
     let minutes = Math.floor(value / 60);
@@ -56,7 +58,7 @@ export const SLACalculator = () => {
     }
 
     if (!isValidFloat(value)) {
-      setError({ show: true, msg: 'Only float values are supported!' });
+      setError({ show: true, msg: t('tool.sla-calculator.invalidFormat') });
       return;
     }
     setInput(value);
@@ -64,7 +66,7 @@ export const SLACalculator = () => {
 
     let base = parseFloat(value);
     if (base > 100) {
-      setError({ show: true, msg: 'Max value is 100!' });
+      setError({ show: true, msg: t('tool.sla-calculator.maxValueError') });
       base = 100;
       setInput('100');
     }
@@ -109,18 +111,12 @@ export const SLACalculator = () => {
                   setError({ show: false, msg: '' });
                 }}
               />
-              <Button
-                size="small"
-                onClick={() => handleChange('99.9')}
-                color="inherit"
-              >
-                Sample
-              </Button>
+              <SampleButton setInput={handleChange} sample="99.9" />
             </Typography>
             <TextField
               className={classes.fullWidth}
               id="input"
-              label="Agreed SLA level in %"
+              label={t('tool.sla-calculator.inputLabel')}
               name="input"
               value={input}
               onChange={e => handleChange(e.target.value)}
@@ -132,11 +128,26 @@ export const SLACalculator = () => {
         <Divider style={{ marginTop: '1rem', marginBottom: '1rem' }} />
         <Grid container>
           <Grid item lg={5} md={8} xs={12}>
-            <OutputField label="Daily" value={output.daily} />
-            <OutputField label="Weekly" value={output.weekly} />
-            <OutputField label="Monthly" value={output.monthly} />
-            <OutputField label="Quarterly" value={output.quarterly} />
-            <OutputField label="Yearly" value={output.yearly} />
+            <OutputField
+              label={t('tool.sla-calculator.dailylabel')}
+              value={output.daily}
+            />
+            <OutputField
+              label={t('tool.sla-calculator.weeklylabel')}
+              value={output.weekly}
+            />
+            <OutputField
+              label={t('tool.sla-calculator.monthlylabel')}
+              value={output.monthly}
+            />
+            <OutputField
+              label={t('tool.sla-calculator.quaterlylabel')}
+              value={output.quarterly}
+            />
+            <OutputField
+              label={t('tool.sla-calculator.yearlylabel')}
+              value={output.yearly}
+            />
           </Grid>
         </Grid>
       </FormControl>

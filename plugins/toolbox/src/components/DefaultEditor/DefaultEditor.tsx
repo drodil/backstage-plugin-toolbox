@@ -11,6 +11,7 @@ import ButtonGroup from '@mui/material/ButtonGroup';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import FormControl from '@mui/material/FormControl';
+import { useToolboxTranslation } from '../../hooks';
 
 type Props = {
   input: string;
@@ -38,12 +39,13 @@ type Props = {
 };
 
 export const DefaultEditor = (props: Props) => {
+  const { t } = useToolboxTranslation();
   const {
     input,
     setInput,
     output,
-    inputLabel = 'Input',
-    outputLabel = 'Output',
+    inputLabel = t('components.defaultEditor.inputLabel'),
+    outputLabel = t('components.defaultEditor.outputLabel'),
     mode,
     setMode,
     modes,

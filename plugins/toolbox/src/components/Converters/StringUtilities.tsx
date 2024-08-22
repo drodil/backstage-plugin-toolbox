@@ -12,6 +12,7 @@ import TextField from '@mui/material/TextField';
 import CheckBox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Box from '@mui/material/Box';
+import { useToolboxTranslation } from '../../hooks';
 
 export const StringUtilities = () => {
   const [input, setInput] = React.useState('');
@@ -20,6 +21,7 @@ export const StringUtilities = () => {
   const [searchWord, setSearchWord] = React.useState('');
   const [replaceWord, setReplaceWord] = React.useState('');
   const [isUseRegexpEnabled, setIsUseRegexpEnabled] = React.useState(false);
+  const { t } = useToolboxTranslation();
 
   const sample = [
     'requestURLDecoder',
@@ -106,7 +108,7 @@ export const StringUtilities = () => {
         style={{ alignItems: 'center', padding: '8px 0 0 8px' }}
       >
         <TextField
-          label="search"
+          label={t('tool.string-utilities-convert.inputSearch')}
           onChange={event => setSearchWord(event.target.value)}
           variant="outlined"
         />
@@ -122,7 +124,7 @@ export const StringUtilities = () => {
           />
         </Box>
         <TextField
-          label="replace"
+          label={t('tool.string-utilities-convert.inputReplace')}
           onChange={event => setReplaceWord(event.target.value)}
         />
       </Box>

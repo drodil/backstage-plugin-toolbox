@@ -2,6 +2,7 @@ import React from 'react';
 import Tooltip from '@mui/material/Tooltip';
 import Button from '@mui/material/Button';
 import Input from '@mui/icons-material/Input';
+import { useToolboxTranslation } from '../../hooks';
 
 type Props = {
   sample: string;
@@ -9,8 +10,9 @@ type Props = {
 };
 
 export const SampleButton = (props: Props) => {
+  const { t } = useToolboxTranslation();
   return (
-    <Tooltip arrow title="Input sample">
+    <Tooltip arrow title={t('components.sampleButton.tooltipTitle')}>
       <Button
         size="small"
         startIcon={<Input />}
@@ -18,7 +20,7 @@ export const SampleButton = (props: Props) => {
         variant="text"
         color="inherit"
       >
-        Sample
+        {t('components.sampleButton.buttonText')}
       </Button>
     </Tooltip>
   );
