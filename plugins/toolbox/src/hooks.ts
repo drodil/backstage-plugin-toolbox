@@ -31,14 +31,8 @@ export const useToolboxTranslation = () => {
   const hookRef = useTranslationRef(toolboxTranslationRef);
 
   const i18n_UNSAFE = useCallback(
-    (str: string, defaultValue?: string): string => {
-      const intl = hookRef.t as (string: string) => string;
-      const value = intl(str);
-      if (value === str && defaultValue) {
-        return defaultValue;
-      }
-      return value;
-    },
+    (str: string, defaultValue?: string): string =>
+      hookRef.t(str as any, defaultValue as any),
     [hookRef],
   );
   return {

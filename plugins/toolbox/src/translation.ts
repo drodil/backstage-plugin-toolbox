@@ -295,7 +295,9 @@ export const toolboxTranslationRef = createTranslationRef({
         outputLabel: 'Output',
       },
       jsonSpaceSelector: {
-        count: '{{ spaceCount }} spaces',
+        space_one: '1 space',
+        space_two: '2 spaces',
+        space_other: '{{count}} spaces',
       },
       homePageCard: {
         selectToolText: 'Select tool from widget settings',

@@ -27,16 +27,16 @@ export const JsonSpaceSelector = (props: {
       }}
     >
       <MenuItem value={2} sx={{ p: '6px 16px !important' }}>
-        {t('components.jsonSpaceSelector.count', { spaceCount: '2' })}
+        {t('components.jsonSpaceSelector.space', { count: 2 })}
       </MenuItem>
       <MenuItem value={3} sx={{ p: '6px 16px !important' }}>
-        {t('components.jsonSpaceSelector.count', { spaceCount: '3' })}
+        {t('components.jsonSpaceSelector.space', { count: 3 })}
       </MenuItem>
       <MenuItem value={4} sx={{ p: '6px 16px !important' }}>
-        {t('components.jsonSpaceSelector.count', { spaceCount: '4' })}
+        {t('components.jsonSpaceSelector.space', { count: 4 })}
       </MenuItem>
       <MenuItem value={8} sx={{ p: '6px 16px !important' }}>
-        {t('components.jsonSpaceSelector.count', { spaceCount: '8' })}
+        {t('components.jsonSpaceSelector.space', { count: 8 })}
       </MenuItem>
     </Select>
   );
