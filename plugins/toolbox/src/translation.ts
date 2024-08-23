@@ -13,7 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { createTranslationRef } from '@backstage/core-plugin-api/alpha';
+import {
+  createTranslationRef,
+  createTranslationResource,
+} from '@backstage/core-plugin-api/alpha';
 
 /** @public */
 export const toolboxTranslationRef = createTranslationRef({
@@ -69,7 +72,10 @@ export const toolboxTranslationRef = createTranslationRef({
       'jwt-decoder-encode': {
         name: 'JSON Web Token',
         description: 'Encode and decode JSON Web Tokens',
-        missingAtribute: "Couldn't encode JWT token: missing attribute",
+        decodeError: "Couldn't decode JWT token: {{error}}",
+        encodeError: "Couldn't encode JWT token: {{error}}",
+        missingAttribute:
+          "Couldn't encode JWT token: missing attribute {{attribute}}",
       },
       'markdown-preview': {
         name: 'Markdown preview',
@@ -108,8 +114,8 @@ export const toolboxTranslationRef = createTranslationRef({
       'string-utilities-convert': {
         name: 'String utilities',
         description: 'Convert string to different case or string',
-        inputSearch: 'search',
-        inputReplace: 'replace',
+        inputSearch: 'Search',
+        inputReplace: 'Replace',
       },
       'string-analyzer': {
         name: 'String analyzer',
@@ -148,11 +154,11 @@ export const toolboxTranslationRef = createTranslationRef({
         invalidFormat: 'Only float values are supported!',
         maxValueError: 'Max value is 100!',
         inputLabel: 'Agreed SLA level in %',
-        dailylabel: 'Daily',
-        weeklylabel: 'Weekly',
-        monthlylabel: 'Monthly',
-        quaterlylabel: 'Quarterly',
-        yearlylabel: 'Yearly',
+        dailyLabel: 'Daily',
+        weeklyLabel: 'Weekly',
+        monthlyLabel: 'Monthly',
+        quarterlyLabel: 'Quarterly',
+        yearlyLabel: 'Yearly',
       },
       'entity-validator': {
         name: 'Entity validator',
@@ -176,11 +182,43 @@ export const toolboxTranslationRef = createTranslationRef({
       },
       'bar-code-generate': {
         name: 'Barcode',
-        description: 'Generate Barcode from text',
+        description: 'Generate barcode from text',
       },
       'lorem-ipsum-generate': {
-        name: 'Barcode',
+        name: 'Lorem ipsum',
         description: 'Generate random text for placeholders',
+        button: {
+          line: 'Line',
+          paragraph: 'Paragraph',
+          slug: 'Slug',
+          word: 'Word',
+          hack: 'Hack',
+          hex: 'Hex',
+          datetime: 'Datetime',
+          number: 'Number',
+          string: 'String',
+          uuid: 'UUID',
+          ipv4: 'IPv4',
+          ipv6: 'IPv6',
+          mac: 'MAC',
+          imei: 'IMEI',
+          cron: 'Cron',
+          domain: 'Domain',
+          password: 'Password',
+          url: 'URL',
+          'user-agent': 'User agent',
+          emoji: 'Emoji',
+          address: 'Address',
+          name: 'Name',
+          'job-title': 'Job title',
+          'product-name': 'Product name',
+          'product-description': 'Product description',
+          'catch-phrase': 'Catch phrase',
+          song: 'Song name',
+          bic: 'BIC',
+          'credit-card': 'Credit card',
+          iban: 'IBAN',
+        },
       },
       'hash-generate': {
         name: 'Hash',
@@ -233,9 +271,9 @@ export const toolboxTranslationRef = createTranslationRef({
         name: 'Text diff',
         description: 'Shows differences between two texts',
         loadingLabel: 'Loading...',
-        selectLanguage: 'Select Text Language',
-        originalFileUploadButton: 'Original File',
-        modifiedFilUploadButton: 'Modified File',
+        selectLanguage: 'Select text language',
+        originalFileUploadButton: 'Original file',
+        modifiedFileUploadButton: 'Modified file',
       },
       iban: {
         name: 'IBAN validator',
@@ -260,11 +298,11 @@ export const toolboxTranslationRef = createTranslationRef({
         originLabel: 'Origin',
       },
       whois: {
-        name: 'Whois lookup',
+        name: 'WHOIS lookup',
         description: 'Lookup domain WHOIS information',
         domainInput: 'Domain',
         lookupButton: 'Lookup',
-        exampleButton: 'Lookup',
+        exampleButton: 'Example',
       },
     },
     components: {
@@ -282,11 +320,11 @@ export const toolboxTranslationRef = createTranslationRef({
       },
       fileDownloadButton: {
         tooltipTitle: 'Download file',
-        buttonText: 'Download file',
+        buttonText: 'Download',
       },
       fileUploadButton: {
-        tooltipTitle: 'Upload File',
-        buttonText: 'Upload File',
+        tooltipTitle: 'Upload file',
+        buttonText: 'Upload',
       },
       pasteFromClipboardButton: {
         tooltipTitle: 'Paste input from clipboard',
@@ -299,6 +337,19 @@ export const toolboxTranslationRef = createTranslationRef({
       defaultEditor: {
         inputLabel: 'Input',
         outputLabel: 'Output',
+        mode: {
+          encode: 'Encode',
+          decode: 'Decode',
+          replace: 'Replace',
+          camel: 'Camel',
+          snake: 'Snake',
+          kebab: 'Kebab',
+          upper: 'Upper',
+          lower: 'Lower',
+          capitalize: 'Capitalize',
+          escape: 'Escape',
+          unescape: 'Unescape',
+        },
       },
       jsonSpaceSelector: {
         space_one: '1 space',
@@ -309,5 +360,12 @@ export const toolboxTranslationRef = createTranslationRef({
         selectToolText: 'Select tool from widget settings',
       },
     },
+  },
+});
+
+export const toolboxTranslations = createTranslationResource({
+  ref: toolboxTranslationRef,
+  translations: {
+    fi: () => import('./locales/fi'),
   },
 });

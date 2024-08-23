@@ -12,6 +12,7 @@ import ButtonGroup from '@mui/material/ButtonGroup';
 import Select from '@mui/material/Select';
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
+import { useToolboxTranslation } from '../../hooks';
 
 const randomInt = (min: number, max: number) => {
   return Math.floor(Math.random() * max) + min;
@@ -142,6 +143,12 @@ export const LoremIpsum = () => {
   };
 
   const GenerateButton = (props: { type: string; title?: string }) => {
+    const { t } = useToolboxTranslation();
+    const title = props.title ? props.title : upperFirst(lowerCase(props.type));
+    const translatedTitle = t(
+      `tool.lorem-ipsum-generate.button.${props.type.toLowerCase()}`,
+      { defaultValue: title },
+    );
     return (
       <Button
         size="small"
@@ -154,7 +161,7 @@ export const LoremIpsum = () => {
           borderRadius: '4px !important',
         }}
       >
-        {props.title ? props.title : upperFirst(lowerCase(props.type))}
+        {translatedTitle}
       </Button>
     );
   };

@@ -12,17 +12,21 @@ Expose the toolbox page:
 
 ```ts
 // packages/app/src/App.tsx
-import { ToolboxPage } from '@drodil/backstage-plugin-toolbox';
+import {ToolboxPage} from '@drodil/backstage-plugin-toolbox';
 
 // ...
 
 const AppRoutes = () => (
   <FlatRoutes>
     // ...
-    <Route path="/toolbox" element={<ToolboxPage />} />
-    // ...
-  </FlatRoutes>
-);
+    <Route path = "/toolbox"
+element = { < ToolboxPage / >
+}
+/>
+// ...
+< /FlatRoutes>
+)
+;
 ```
 
 Add the navigation in the frontend:
@@ -64,6 +68,7 @@ Also lazy loading is supported:
 ```ts
 import React, { lazy } from 'react';
 import { ToolboxPage, Tool } from '@drodil/backstage-plugin-toolbox';
+
 const MyTool = lazy(() => import('./MyTool'));
 
 const extraToolExample: Tool = {
@@ -101,7 +106,8 @@ For more information, see https://github.com/backstage/backstage/pull/16744
 
 ## Optional backend
 
-The plugin also supports additional backend for tools that cannot work only in the frontend. The backend can be extended with
+The plugin also supports additional backend for tools that cannot work only in the frontend. The backend can be extended
+with
 additional handlers by utilizing the extension point. See `plugins/toolbox-backend-module-whois` for an example.
 
 To install backend and additional tools to it, add the following to your `packages/backend/src/index.ts`:
@@ -122,3 +128,96 @@ Also add the necessary dependencies to your `packages/backend/package.json`:
 ```bash
 yarn --cwd packages/backend add @drodil/backstage-plugin-toolbox-backend @drodil/backstage-plugin-toolbox-backend-module-whois
 ```
+
+# Translations (alpha)
+
+The plugin supports translations. To add a new language, create a new file in `packages/app/src/locales` with the
+language code (e.g. `toolbox-fi.ts`).
+Create the translations as described here https://backstage.io/docs/plugins/internationalization/ using the
+`toolboxTranslationRef` from `@drodil/backstage-plugin-toolbox` as the translation reference:
+
+```ts
+// packages/app/src/locales/toolbox-fi.ts
+import { toolboxTranslationRef } from '@drodil/backstage-plugin-toolbox';
+import { createTranslationMessages } from '@backstage/core-plugin-api/alpha';
+
+const fi = createTranslationMessages({
+  ref: toolboxTranslationRef,
+  full: false,
+  translations: {
+    'toolsPage.title': 'Työkalut',
+    'welcomePage.introText': 'Käytä työkaluja helposti',
+  },
+});
+
+export default fi;
+```
+
+Then add the translation to your `packages/app/src/App.tsx`:
+
+```tsx
+import { createTranslationResource } from '@backstage/core-plugin-api/alpha';
+import { toolboxTranslationRef } from '@drodil/backstage-plugin-toolbox';
+
+const app = createApp({
+  //...
+  __experimentalTranslations: {
+    availableLanguages: ['en', 'fi'],
+    resources: [
+      createTranslationResource({
+        ref: toolboxTranslationRef,
+        translations: {
+          fi: () => import('./locales/toolbox-fi'),
+        },
+      }),
+    ],
+  },
+});
+```
+
+## Tool specific translations
+
+The `tool` object inside translation ref works as a namespace for the tool translations. You can add translations for
+specific tools by adding a new object inside the tools object with the tool id as the key:
+
+```ts
+createTranslationMessages({
+  ref: toolboxTranslationRef,
+  messages: {
+    'tool.backslash-encode.name': 'My translation',
+  },
+});
+```
+
+This works also for custom tools added to the plugin.
+
+Tool categories are also supported and the category key is always in lowercase:
+
+```ts
+createTranslationMessages({
+  ref: toolboxTranslationRef,
+  messages: {
+    'tool.category.encode/decode': 'My translation',
+  },
+});
+```
+
+## Using predefined translations
+
+You can also use the predefined translations from the plugin:
+
+```ts
+import { toolboxTranslations } from '@drodil/backstage-plugin-toolbox';
+
+const app = createApp({
+  //...
+  __experimentalTranslations: {
+    availableLanguages: ['en', 'fi'],
+    resources: [toolboxTranslations],
+  },
+});
+```
+
+Note that these translations might not contain your desired language. If you want to add a new language, you need to
+contribute it to the plugin in `plugins/toolbox/src/locales/` and add it in the `plugins/toolbox/src/translation.ts`
+with the right language code.

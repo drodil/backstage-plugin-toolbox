@@ -129,23 +129,23 @@ export const SLACalculator = () => {
         <Grid container>
           <Grid item lg={5} md={8} xs={12}>
             <OutputField
-              label={t('tool.sla-calculator.dailylabel')}
+              label={t('tool.sla-calculator.dailyLabel')}
               value={output.daily}
             />
             <OutputField
-              label={t('tool.sla-calculator.weeklylabel')}
+              label={t('tool.sla-calculator.weeklyLabel')}
               value={output.weekly}
             />
             <OutputField
-              label={t('tool.sla-calculator.monthlylabel')}
+              label={t('tool.sla-calculator.monthlyLabel')}
               value={output.monthly}
             />
             <OutputField
-              label={t('tool.sla-calculator.quaterlylabel')}
+              label={t('tool.sla-calculator.quarterlyLabel')}
               value={output.quarterly}
             />
             <OutputField
-              label={t('tool.sla-calculator.yearlylabel')}
+              label={t('tool.sla-calculator.yearlyLabel')}
               value={output.yearly}
             />
           </Grid>

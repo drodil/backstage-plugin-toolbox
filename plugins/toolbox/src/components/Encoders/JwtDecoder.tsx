@@ -3,6 +3,7 @@ import jwtDecode, { JwtPayload } from 'jwt-decode';
 import { DefaultEditor } from '../DefaultEditor';
 import { SignJWT } from 'jose';
 import { alertApiRef, useApi } from '@backstage/core-plugin-api';
+import { useToolboxTranslation } from '../../hooks';
 
 const BASE64_REGEX =
   /^([0-9a-zA-Z+/]{4})*(([0-9a-zA-Z+/]{2}==)|([0-9a-zA-Z+/]{3}=))?$/;
@@ -12,6 +13,7 @@ export const JwtDecoder = () => {
   const [input, setInput] = React.useState('');
   const [output, setOutput] = React.useState('');
   const [mode, setMode] = React.useState('Encode');
+  const { t } = useToolboxTranslation();
 
   const exampleJwt =
     'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyLCJleHAiOjE1MTYyMzkwMjJ9.4Adcj3UFYzPUVaVF43FmMab6RlaQD8A9V8wFzzht-KQ';
@@ -31,7 +33,9 @@ export const JwtDecoder = () => {
 
   const showError = useCallback(
     attribute => {
-      const errorMessage = `Couldn't encode JWT token: missing attribute '${attribute}'`;
+      const errorMessage = t(`tool.jwt-decoder-encode.missingAttribute`, {
+        attribute,
+      });
       setOutput(errorMessage);
       alertApi.post({
         message: errorMessage,
@@ -40,7 +44,7 @@ export const JwtDecoder = () => {
       });
       return false;
     },
-    [alertApi],
+    [t, alertApi],
   );
 
   const keyExists = useCallback(
@@ -106,7 +110,7 @@ ${JSON.stringify(jwtDecode(input, { header: true }), null, 2)}
 Payload:
 ${JSON.stringify(jwtPayload, null, 2)}`);
       } catch (error) {
-        setOutput(`Couldn't decode JWT token: ${error}`);
+        setOutput(t('tool.jwt-decoder-encode.decodeError', { error }));
       }
     } else {
       try {
@@ -129,13 +133,16 @@ ${JSON.stringify(jwtPayload, null, 2)}`);
         }
 
         if (!('header' in inputJSON)) {
-          setOutput(`Couldn't encode JWT token: missing attribute 'header'`);
+          const errorMessage = t(`tool.jwt-decoder-encode.missingAttribute`, {
+            attribute: 'header',
+          });
+          setOutput(errorMessage);
         }
       } catch (error) {
-        setOutput(`Couldn't encode JWT token: ${error}`);
+        setOutput(t('tool.jwt-decoder-encode.encodeError', { error }));
       }
     }
-  }, [input, mode, headerExists, keyExists, payloadExists]);
+  }, [input, mode, headerExists, keyExists, payloadExists, t]);
 
   return (
     <DefaultEditor

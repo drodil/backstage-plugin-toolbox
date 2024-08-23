@@ -184,7 +184,7 @@ function Diff() {
               <FileUploadButton
                 onFileLoad={setModifiedFile}
                 id="modifiedFile"
-                buttonText={t('tool.diff.modifiedFilUploadButton')}
+                buttonText={t('tool.diff.modifiedFileUploadButton')}
               />
               <ClearValueButton setValue={setModifiedText} />
               <PasteFromClipboardButton setInput={setModifiedText} />

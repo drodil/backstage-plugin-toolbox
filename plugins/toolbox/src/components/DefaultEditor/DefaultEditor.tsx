@@ -139,7 +139,9 @@ export const DefaultEditor = (props: Props) => {
                     }),
                   }}
                 >
-                  {m}
+                  {t(`components.defaultEditor.mode.${m.toLowerCase()}`, {
+                    defaultValue: m,
+                  })}
                 </Button>
               ))}
             </ButtonGroup>

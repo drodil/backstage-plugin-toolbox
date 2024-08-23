@@ -4,3 +4,4 @@ export * from './components/Root';
 export * from './components/DefaultEditor';
 export * from './components/Buttons';
 export * from './hooks';
+export * from './translation';
