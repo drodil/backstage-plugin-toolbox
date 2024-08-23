@@ -32,10 +32,11 @@ type TabInfo = {
   tab: ReactElement;
   component: ReactElement | undefined;
   id: string;
-  title: string;
+  localizedTitle: string;
   showOpenInNewWindowButton?: boolean;
   showFavoriteButton?: boolean;
   description?: string;
+  localizedDescription?: string;
   headerButtons?: ReactElement[];
 };
 
@@ -144,7 +145,7 @@ export const ToolsPage = (props: ToolsPageProps) => {
       ),
       component: undefined,
       id: 'toolbox',
-      title: '',
+      localizedTitle: '',
     });
 
     tabInfos.push({
@@ -157,7 +158,7 @@ export const ToolsPage = (props: ToolsPageProps) => {
           label={t('toolsPage.tabPanel.mainLabel')}
         />
       ),
-      title: t('toolsPage.pageTitle'),
+      localizedTitle: t('toolsPage.pageTitle'),
       component: welcomePage || <WelcomePage tools={allTools} />,
       showFavoriteButton: false,
       showOpenInNewWindowButton: false,
@@ -184,13 +185,16 @@ export const ToolsPage = (props: ToolsPageProps) => {
         return true;
       }
       const toolName = t(`tool.${tool.id}.name`, { defaultValue: tool.name });
+      const description = t(`tool.${tool.id}.description`, {
+        defaultValue: tool.description,
+      });
       return (
         toolName.toLowerCase().includes(search.toLowerCase()) ||
         tool.id.toLowerCase().includes(search.toLowerCase()) ||
         tool.aliases?.some(alias =>
           alias.toLowerCase().includes(search.toLowerCase()),
         ) ||
-        tool.description?.toLowerCase().includes(search.toLowerCase())
+        description?.toLowerCase().includes(search.toLowerCase())
       );
     };
 
@@ -220,7 +224,7 @@ export const ToolsPage = (props: ToolsPageProps) => {
           ),
           component: undefined,
           id: category,
-          title: '',
+          localizedTitle: '',
         });
 
         categoryTools
@@ -242,9 +246,12 @@ export const ToolsPage = (props: ToolsPageProps) => {
                   {...tabProps(i)}
                 />
               ),
-              title: `${category} - ${t(`tool.${tool.id}.name`, {
+              localizedTitle: `${category} - ${t(`tool.${tool.id}.name`, {
                 defaultValue: tool.name,
               })}`,
+              localizedDescription: t(`tool.${tool.id}.description`, {
+                defaultValue: tool.description,
+              }),
               ...tool,
             });
           });
@@ -275,7 +282,7 @@ export const ToolsPage = (props: ToolsPageProps) => {
     const tab = tabs[newValue];
     if (tab) {
       analytics.captureEvent('click', tab.id, {
-        attributes: { toolName: tab.title },
+        attributes: { toolName: tab.localizedTitle },
       });
       navigate(`#${tab.id}`);
     }
@@ -339,14 +346,14 @@ export const ToolsPage = (props: ToolsPageProps) => {
             >
               <TabContext value={`toolbox-tabpanel-${value}`}>
                 {tabs.map((tool, i) => {
-                  if (!tool.title) {
+                  if (!tool.localizedTitle) {
                     return null;
                   }
                   return (
                     <TabPanel key={tool.id} value={`toolbox-tabpanel-${i}`}>
                       <ContentHeader
-                        title={tool.title}
-                        description={tool.description}
+                        title={tool.localizedTitle}
+                        description={tool.localizedDescription}
                       >
                         {tool.headerButtons}
                         {tool.showOpenInNewWindowButton !== false && (

@@ -73,9 +73,14 @@ export const WelcomePage = (props: WelcomePageProps) => {
                     color="textSecondary"
                     gutterBottom
                   >
-                    {t(`tool.${tool.id}.category`, {
-                      defaultValue: tool.category ?? 'Miscellaneous',
-                    })}
+                    {t(
+                      `tool.category.${(
+                        tool.category ?? 'miscellaneous'
+                      ).toLowerCase()}`,
+                      {
+                        defaultValue: tool.category ?? 'Miscellaneous',
+                      },
+                    )}
                   </Typography>
                   <Typography variant="h6">
                     {t(`tool.${tool.id}.name`, { defaultValue: tool.name })}
