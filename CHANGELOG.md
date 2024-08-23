@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.24.0](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.23.0...v1.24.0) (2024-08-23)
+
+
+### Features
+
+* add docs and finnish translations + some translation fixes ([bd49038](https://github.com/drodil/backstage-plugin-toolbox/commit/bd490381f96642ce50b45799b0ece9824a85418d))
+* allow translating categories + fix for unsafe translation ([6911e23](https://github.com/drodil/backstage-plugin-toolbox/commit/6911e23a5f2dcd8f2376f80a22ddd2dff81b3b27))
+* **lang:** add internalization support. ([8254b41](https://github.com/drodil/backstage-plugin-toolbox/commit/8254b41f06343a1ac896f563a0dbdf46c3cd5860))
+
+
+### Bug Fixes
+
+* internationalization pr review ([dfaac80](https://github.com/drodil/backstage-plugin-toolbox/commit/dfaac80a9262b830c5b26fb7497569d31061468b))
+* remove deprecated functionalities ([f9881fe](https://github.com/drodil/backstage-plugin-toolbox/commit/f9881fee1f3351eabbfbdcc9d1409c319efb14d5))
+* use error call for router ([741c6d9](https://github.com/drodil/backstage-plugin-toolbox/commit/741c6d975e25e87c13e823a7f3c1a114f191aa98))
+
 ## [1.23.0](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.22.1...v1.23.0) (2024-08-20)
 
 
