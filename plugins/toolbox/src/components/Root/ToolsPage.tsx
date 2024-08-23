@@ -26,8 +26,7 @@ import Tooltip from '@mui/material/Tooltip';
 import Button from '@mui/material/Button';
 import TabPanel from '@mui/lab/TabPanel';
 import TabContext from '@mui/lab/TabContext';
-import { useBackendTools } from '../../hooks';
-import { useToolboxTranslation } from '../../hooks';
+import { useBackendTools, useToolboxTranslation } from '../../hooks';
 
 type TabInfo = {
   tab: ReactElement;
@@ -80,7 +79,7 @@ export const ToolsPage = (props: ToolsPageProps) => {
   const favorites = useFavoriteStorage();
   const { classes } = useStyles();
 
-  const { i18n_UNSAFE } = useToolboxTranslation();
+  const { t } = useToolboxTranslation();
 
   const openToolInWindow = (id: string) => {
     window.open(`/toolbox/tool/${id}`, 'newwindow', 'width=1000,height=800');
@@ -94,7 +93,8 @@ export const ToolsPage = (props: ToolsPageProps) => {
   }, [value]);
 
   const tabs: TabInfo[] = useMemo(() => {
-    const t: TabInfo[] = [];
+    const tabInfos: TabInfo[] = [];
+    const favoritesCategory = t('tool.category.favorites');
     const shownTools = tools ? tools : [...(extraTools ?? []), ...defaultTools];
     const filteredTools = shownTools
       .filter(
@@ -107,20 +107,32 @@ export const ToolsPage = (props: ToolsPageProps) => {
     const allTools = filteredTools
       .map(tool => {
         if (favorites.includes(tool.id)) {
-          return { ...tool, category: 'Favorites' };
+          return { ...tool, category: favoritesCategory };
         }
         return tool;
       })
       .sort((a, b) => {
-        if (a.category === 'Favorites') {
+        const aCategoryStr = t(
+          `tool.category.${(a.category ?? 'miscellaneous').toLowerCase()}`,
+          {
+            defaultValue: a.category ?? 'Miscellaneous',
+          },
+        );
+        const bCategoryStr = t(
+          `tool.category.${(b.category ?? 'miscellaneous').toLowerCase()}`,
+          {
+            defaultValue: b.category ?? 'Miscellaneous',
+          },
+        );
+        if (aCategoryStr === favoritesCategory) {
           return -1;
-        } else if (b.category === 'Favorites') {
+        } else if (bCategoryStr === favoritesCategory) {
           return 1;
         }
-        return (b.category ?? '').localeCompare(a.category ?? '');
+        return (aCategoryStr ?? '').localeCompare(bCategoryStr ?? '');
       });
 
-    t.push({
+    tabInfos.push({
       tab: (
         <Tab
           key="Toolbox"
@@ -135,17 +147,17 @@ export const ToolsPage = (props: ToolsPageProps) => {
       title: '',
     });
 
-    t.push({
+    tabInfos.push({
       id: '',
       tab: (
         <Tab
           key="toolbox"
           wrapped
           className={`${classes.fullWidth} ${classes.noPadding} ${classes.tab}`}
-          label={i18n_UNSAFE('toolsPage.tabPanel.mainLabel')}
+          label={t('toolsPage.tabPanel.mainLabel')}
         />
       ),
-      title: i18n_UNSAFE('toolsPage.pageTitle'),
+      title: t('toolsPage.pageTitle'),
       component: welcomePage || <WelcomePage tools={allTools} />,
       showFavoriteButton: false,
       showOpenInNewWindowButton: false,
@@ -153,7 +165,12 @@ export const ToolsPage = (props: ToolsPageProps) => {
 
     const categories: { [key: string]: Tool[] } = allTools.reduce(
       (ctgs, tool) => {
-        const categoryStr = tool.category ?? 'Miscellaneous';
+        const categoryStr = t(
+          `tool.category.${(tool.category ?? 'miscellaneous').toLowerCase()}`,
+          {
+            defaultValue: tool.category ?? 'Miscellaneous',
+          },
+        );
         const toolList: Tool[] = ctgs[categoryStr] || [];
         toolList.push(tool);
         ctgs[categoryStr] = toolList;
@@ -166,7 +183,7 @@ export const ToolsPage = (props: ToolsPageProps) => {
       if (!search) {
         return true;
       }
-      const toolName = i18n_UNSAFE(`tool.${tool.id}.name`, tool.name);
+      const toolName = t(`tool.${tool.id}.name`, { defaultValue: tool.name });
       return (
         toolName.toLowerCase().includes(search.toLowerCase()) ||
         tool.id.toLowerCase().includes(search.toLowerCase()) ||
@@ -181,9 +198,9 @@ export const ToolsPage = (props: ToolsPageProps) => {
       .sort(([a, _], [b, __]) => {
         if (categorySortFunction) {
           return categorySortFunction(a, b);
-        } else if (a === 'Favorites') {
+        } else if (a === favoritesCategory) {
           return -1;
-        } else if (b === 'Favorites') {
+        } else if (b === favoritesCategory) {
           return 1;
         }
         return a.localeCompare(b);
@@ -191,7 +208,7 @@ export const ToolsPage = (props: ToolsPageProps) => {
       .map(([category, categoryTools]) => {
         const anyMatchSearch = categoryTools.some(tool => matchesSearch(tool));
 
-        t.push({
+        tabInfos.push({
           tab: (
             <Tab
               style={!anyMatchSearch ? { display: 'none' } : {}}
@@ -214,26 +231,25 @@ export const ToolsPage = (props: ToolsPageProps) => {
             return a.name.localeCompare(b.name);
           })
           .map((tool, i) => {
-            t.push({
+            tabInfos.push({
               tab: (
                 <Tab
                   key={tool.name}
                   style={!matchesSearch(tool) ? { display: 'none' } : {}}
                   wrapped
                   className={`${classes.fullWidth} ${classes.noPadding} ${classes.tab}`}
-                  label={i18n_UNSAFE(`tool.${tool.id}.name`, tool.name)}
+                  label={t(`tool.${tool.id}.name`, { defaultValue: tool.name })}
                   {...tabProps(i)}
                 />
               ),
-              title: `${category} - ${i18n_UNSAFE(
-                `tool.${tool.id}.name`,
-                tool.name,
-              )}`,
+              title: `${category} - ${t(`tool.${tool.id}.name`, {
+                defaultValue: tool.name,
+              })}`,
               ...tool,
             });
           });
       });
-    return t;
+    return tabInfos;
   }, [
     favorites,
     search,
@@ -245,7 +261,7 @@ export const ToolsPage = (props: ToolsPageProps) => {
     welcomePage,
     backendTools,
     toolFilterFunction,
-    i18n_UNSAFE,
+    t,
   ]);
 
   useEffect(() => {
@@ -267,7 +283,7 @@ export const ToolsPage = (props: ToolsPageProps) => {
 
   return (
     <Page themeId="tool">
-      <Header title={i18n_UNSAFE('toolsPage.title')} />
+      <Header title={t('toolsPage.title')} />
       <Content className={classes.noPadding}>
         <Grid
           container
@@ -282,7 +298,7 @@ export const ToolsPage = (props: ToolsPageProps) => {
               sx={{ justifyContent: 'space-between' }}
             >
               <InputBase
-                placeholder={i18n_UNSAFE('toolsPage.input.search')}
+                placeholder={t('toolsPage.input.search')}
                 inputProps={{ 'aria-label': 'Search' }}
                 onChange={e => setSearch(e.target.value)}
               />
@@ -335,9 +351,7 @@ export const ToolsPage = (props: ToolsPageProps) => {
                         {tool.headerButtons}
                         {tool.showOpenInNewWindowButton !== false && (
                           <Tooltip
-                            title={i18n_UNSAFE(
-                              'toolsPage.tabPanel.tooltipTitle',
-                            )}
+                            title={t('toolsPage.tabPanel.tooltipTitle')}
                             arrow
                           >
                             <Button

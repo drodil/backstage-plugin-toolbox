@@ -40,6 +40,16 @@ export const toolboxTranslationRef = createTranslationRef({
         'To select tools, click the cards below or use the left-side navigation.',
     },
     tool: {
+      category: {
+        favorites: 'Favorites',
+        backstage: 'Backstage',
+        calculate: 'Calculate',
+        convert: 'Convert',
+        'encode/decode': 'Encode/Decode',
+        format: 'Format',
+        generate: 'Generate',
+        miscellaneous: 'Miscellaneous',
+      },
       'base64-encode': {
         name: 'Base64',
         description: 'Encode and decode base64 strings',
@@ -68,10 +78,6 @@ export const toolboxTranslationRef = createTranslationRef({
       'csv-to-json-convert': {
         name: 'CSV to JSON',
         description: 'Convert CSV text to JSON',
-      },
-      'json-to-csv-convert': {
-        name: 'JSON to CSV',
-        description: 'Convert to JSON text to CSV',
       },
       'xml-to-json-convert': {
         name: 'XML to JSON',

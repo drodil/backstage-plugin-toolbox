@@ -39,7 +39,7 @@ const useStyles = makeStyles()(theme => {
 export const WelcomePage = (props: WelcomePageProps) => {
   const { tools } = props;
   const { classes } = useStyles();
-  const { t, i18n_UNSAFE } = useToolboxTranslation();
+  const { t } = useToolboxTranslation();
 
   return (
     <Box>
@@ -73,16 +73,17 @@ export const WelcomePage = (props: WelcomePageProps) => {
                     color="textSecondary"
                     gutterBottom
                   >
-                    {tool.category ?? 'Miscellaneous'}
+                    {t(`tool.${tool.id}.category`, {
+                      defaultValue: tool.category ?? 'Miscellaneous',
+                    })}
                   </Typography>
                   <Typography variant="h6">
-                    {i18n_UNSAFE(`tool.${tool.id}.name`, tool.name)}
+                    {t(`tool.${tool.id}.name`, { defaultValue: tool.name })}
                   </Typography>
                   <Typography variant="body2" component="p">
-                    {i18n_UNSAFE(
-                      `tool.${tool.id}.description`,
-                      tool.description,
-                    )}
+                    {t(`tool.${tool.id}.description`, {
+                      defaultValue: tool.description,
+                    })}
                   </Typography>
                 </CardContent>
               </Card>

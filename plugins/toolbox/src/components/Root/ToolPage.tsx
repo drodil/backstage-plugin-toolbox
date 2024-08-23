@@ -12,13 +12,26 @@ export const ToolPage = (props: ToolsPageProps) => {
   const { extraTools } = props;
   const params = useParams();
   const { classes } = useStyles();
-  const { t, i18n_UNSAFE } = useToolboxTranslation();
+  const { t } = useToolboxTranslation();
 
   const allTools = [...(extraTools ?? []), ...defaultTools];
   const tool = allTools.find(({ id }) => id === params.id);
   if (!tool) {
     return <>{t('toolPage.toolNotAvailable')}</>;
   }
+
+  const title = `${t(
+    `tool.category.${(tool.category ?? 'miscellaneous').toLowerCase()}`,
+    {
+      defaultValue: tool.category ?? 'Miscellaneous',
+    },
+  )} - ${t(`tool.${tool.id}.name`, {
+    defaultValue: tool.name,
+  })}`;
+  const description = t(`tool.${tool.id}.description`, {
+    defaultValue: tool.description,
+  });
+
   return (
     <div id="toolContainer" className={classes.toolContainer}>
       <Suspense
@@ -34,16 +47,7 @@ export const ToolPage = (props: ToolsPageProps) => {
           </Box>
         }
       >
-        <ContentHeader
-          title={`${tool.category} - ${i18n_UNSAFE(
-            `tool.${tool.id}.name`,
-            tool.name,
-          )}`}
-          description={i18n_UNSAFE(
-            `tool.${tool.id}.description`,
-            tool.description,
-          )}
-        >
+        <ContentHeader title={title} description={description}>
           {tool.headerButtons}
         </ContentHeader>
         {tool.component}
