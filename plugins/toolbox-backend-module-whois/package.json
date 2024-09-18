@@ -40,7 +40,7 @@
     "@backstage/backend-common": "^0.25.0",
     "@backstage/backend-plugin-api": "^1.0.0",
     "@drodil/backstage-plugin-toolbox-node": "workspace:^",
-    "express": "^4.19.2",
+    "express": "^4.20.0",
     "whoiser": "^1.17.3"
   },
   "devDependencies": {
