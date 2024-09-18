@@ -11,9 +11,12 @@ import {
   LCH,
   RGB,
 } from 'color-convert/conversions';
-import { PasteFromClipboardButton } from '../Buttons/PasteFromClipboardButton';
-import { ClearValueButton } from '../Buttons/ClearValueButton';
-import { CopyToClipboardButton } from '../Buttons/CopyToClipboardButton';
+import {
+  ClearValueButton,
+  CopyToClipboardButton,
+  PasteFromClipboardButton,
+  SampleButton,
+} from '../Buttons';
 import TextField from '@mui/material/TextField';
 import FormControl from '@mui/material/FormControl';
 import Grid from '@mui/material/Grid';
@@ -21,7 +24,6 @@ import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import Box from '@mui/material/Box';
 import { useToolboxTranslation } from '../../hooks';
-import { SampleButton } from '../Buttons';
 
 export const ColorConverter = () => {
   const { classes } = useStyles();

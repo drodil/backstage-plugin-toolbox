@@ -10,28 +10,22 @@ yarn --cwd packages/app add @drodil/backstage-plugin-toolbox
 
 Expose the toolbox page:
 
-```ts
+```tsx
 // packages/app/src/App.tsx
-import {ToolboxPage} from '@drodil/backstage-plugin-toolbox';
-
-// ...
+import { ToolboxPage } from '@drodil/backstage-plugin-toolbox';
 
 const AppRoutes = () => (
   <FlatRoutes>
     // ...
-    <Route path = "/toolbox"
-element = { < ToolboxPage / >
-}
-/>
-// ...
-< /FlatRoutes>
-)
-;
+    <Route path="/toolbox" element={<ToolboxPage />} />
+    // ...
+  </FlatRoutes>
+);
 ```
 
 Add the navigation in the frontend:
 
-```ts
+```tsx
 // packages/app/src/components/Root/Root.tsx
 import CardTravel from '@mui/icons-material/CardTravel';
 
@@ -52,7 +46,7 @@ An interface for toolbox is now available at `/toolbox`.
 
 You can also add your own tools to the plugin by passing them to the ToolboxPage as a property:
 
-```ts
+```tsx
 import { ToolboxPage, Tool } from '@drodil/backstage-plugin-toolbox';
 
 const extraToolExample: Tool = {
@@ -65,7 +59,7 @@ const extraToolExample: Tool = {
 
 Also lazy loading is supported:
 
-```ts
+```tsx
 import React, { lazy } from 'react';
 import { ToolboxPage, Tool } from '@drodil/backstage-plugin-toolbox';
 

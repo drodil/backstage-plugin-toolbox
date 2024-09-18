@@ -2,7 +2,7 @@ import { useApi } from '@backstage/core-plugin-api';
 import { catalogApiRef } from '@backstage/plugin-catalog-react';
 import React, { useEffect } from 'react';
 import { Entity } from '@backstage/catalog-model';
-import { CopyToClipboardButton } from '../Buttons/CopyToClipboardButton';
+import { CopyToClipboardButton } from '../Buttons';
 import { useStyles } from '../../utils/hooks';
 import YAML from 'yaml';
 import { FileDownloadButton } from '../Buttons/FileDownloadButton';

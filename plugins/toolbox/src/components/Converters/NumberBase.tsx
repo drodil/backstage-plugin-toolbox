@@ -1,8 +1,10 @@
 import React from 'react';
 import { useStyles } from '../../utils/hooks';
-import { PasteFromClipboardButton } from '../Buttons/PasteFromClipboardButton';
-import { ClearValueButton } from '../Buttons/ClearValueButton';
-import { CopyToClipboardButton } from '../Buttons/CopyToClipboardButton';
+import {
+  ClearValueButton,
+  CopyToClipboardButton,
+  PasteFromClipboardButton,
+} from '../Buttons';
 import FormControl from '@mui/material/FormControl';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';

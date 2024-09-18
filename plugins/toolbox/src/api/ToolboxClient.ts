@@ -30,15 +30,11 @@ export class ToolboxClient implements ToolboxApi {
     request: ToolRequest,
   ): Promise<ToolResponse> {
     const url = `${await this.getBaseUrl()}/${toolName}`;
-    try {
-      const response = await this.fetchApi.fetch(url, request);
-      if (response.ok) {
-        return response;
-      }
-      throw new Error(`Request failed with status ${response.status}`);
-    } catch (error) {
-      throw new Error(`Request failed: ${error}`);
+    const response = await this.fetchApi.fetch(url, request);
+    if (response.ok) {
+      return response;
     }
+    throw new Error(`Request failed with status ${response.status}`);
   }
 
   async toolJsonRequest(toolName: string, data: any): Promise<unknown> {

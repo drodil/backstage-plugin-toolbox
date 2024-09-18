@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import * as IBAN from 'iban';
-import { DefaultEditor } from '../DefaultEditor/DefaultEditor';
+import { DefaultEditor } from '../DefaultEditor';
 import { OutputField } from '../DefaultEditor/OutputField';
 import Alert from '@mui/material/Alert';
 import AlertTitle from '@mui/material/AlertTitle';
@@ -14,7 +14,7 @@ export const IbanValidator = () => {
   const { t } = useToolboxTranslation();
 
   useEffect(() => {
-    let valid = true;
+    let valid: boolean;
     try {
       valid = IBAN.isValid(input);
       setBban(IBAN.toBBAN(input));

@@ -1,11 +1,11 @@
 import {
-  quicktype,
   InputData,
   jsonInputForTargetLanguage,
+  quicktype,
 } from 'quicktype-core';
 
 import React, { useEffect } from 'react';
-import { DefaultEditor } from '../DefaultEditor/DefaultEditor';
+import { DefaultEditor } from '../DefaultEditor';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 
@@ -54,15 +54,13 @@ export const Interface = () => {
   );
 
   useEffect(() => {
-    async function toInterface() {
-      try {
-        const { lines } = await quicktypeJSON(format, input);
+    quicktypeJSON(format, input)
+      .then(({ lines }) => {
         setOutput(lines.join('\n'));
-      } catch (error: any) {
+      })
+      .catch((error: any) => {
         setOutput(error);
-      }
-    }
-    toInterface();
+      });
   }, [input, format]);
 
   return (

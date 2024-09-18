@@ -6,7 +6,8 @@ _This plugin was created through the Backstage CLI_
 
 ## Getting started
 
-Your plugin has been added to the example app in this repository, meaning you'll be able to access it by running `yarn start` in the root directory, and then navigating to [/toolbox](http://localhost:3000/toolbox).
+Your plugin has been added to the example app in this repository, meaning you'll be able to access it by running
+`yarn start` in the root directory, and then navigating to [/toolbox](http://localhost:3000/toolbox).
 
 You can also serve the plugin in isolation by running `yarn start` in the plugin directory.
 This method of serving the plugin provides quicker iteration speed and a faster startup and hot reloads.
@@ -22,7 +23,7 @@ cd packages/app && yarn add @drodil/backstage-plugin-toolbox
 
 Expose the questions page:
 
-```ts
+```tsx
 // packages/app/src/App.tsx
 import { ToolboxPage } from '@drodil/backstage-plugin-toolbox';
 
@@ -43,7 +44,7 @@ An interface for toolbox is now available at `/toolbox`.
 
 You can also add your own tools to the plugin by passing them to the ToolboxPage as a property:
 
-```ts
+```tsx
 import { ToolboxPage, Tool } from '@drodil/backstage-plugin-toolbox';
 
 const extraToolExample: Tool = {
@@ -56,9 +57,10 @@ const extraToolExample: Tool = {
 
 Also lazy loading is supported:
 
-```ts
+```tsx
 import React, { lazy } from 'react';
 import { ToolboxPage, Tool } from '@drodil/backstage-plugin-toolbox';
+
 const MyTool = lazy(() => import('./MyTool'));
 
 const extraToolExample: Tool = {

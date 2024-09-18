@@ -1,8 +1,11 @@
 import { useStyles } from '../../utils/hooks';
 import React from 'react';
-import { PasteFromClipboardButton } from '../Buttons/PasteFromClipboardButton';
-import { ClearValueButton } from '../Buttons/ClearValueButton';
-import { CopyToClipboardButton } from '../Buttons/CopyToClipboardButton';
+import {
+  ClearValueButton,
+  CopyToClipboardButton,
+  PasteFromClipboardButton,
+  SampleButton,
+} from '../Buttons';
 import TextField from '@mui/material/TextField';
 import FormControl from '@mui/material/FormControl';
 import Grid from '@mui/material/Grid';
@@ -10,7 +13,6 @@ import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import Alert from '@mui/material/Alert';
 import { useToolboxTranslation } from '../../hooks';
-import { SampleButton } from '../Buttons';
 
 export const SLACalculator = () => {
   const { classes } = useStyles();

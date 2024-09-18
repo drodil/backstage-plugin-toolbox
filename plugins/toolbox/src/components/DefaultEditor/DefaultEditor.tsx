@@ -1,10 +1,12 @@
 import React, { ReactElement } from 'react';
 import { useStyles } from '../../utils/hooks';
-import { CopyToClipboardButton } from '../Buttons/CopyToClipboardButton';
-import { PasteFromClipboardButton } from '../Buttons/PasteFromClipboardButton';
-import { ClearValueButton } from '../Buttons/ClearValueButton';
-import { SampleButton } from '../Buttons/SampleButton';
-import { FileUploadButton } from '../Buttons';
+import {
+  ClearValueButton,
+  CopyToClipboardButton,
+  FileUploadButton,
+  PasteFromClipboardButton,
+  SampleButton,
+} from '../Buttons';
 import { FileDownloadButton } from '../Buttons/FileDownloadButton';
 import Grid from '@mui/material/Grid';
 import ButtonGroup from '@mui/material/ButtonGroup';

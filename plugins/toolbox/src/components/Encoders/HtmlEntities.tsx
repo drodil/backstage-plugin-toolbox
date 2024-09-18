@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { DefaultEditor } from '../DefaultEditor/DefaultEditor';
+import { DefaultEditor } from '../DefaultEditor';
 
 const decode = (value: string): string => {
   const textArea = document.createElement('textarea');

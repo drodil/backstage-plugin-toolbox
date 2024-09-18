@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { DefaultEditor } from '../DefaultEditor/DefaultEditor';
+import { DefaultEditor } from '../DefaultEditor';
 import { faker } from '@faker-js/faker';
 import { sha1, sha256, sha384, sha512 } from 'crypto-hash';
 import { Md5 } from 'ts-md5';

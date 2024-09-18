@@ -1,5 +1,5 @@
-import React, { useEffect, useCallback } from 'react';
-import { DefaultEditor } from '../DefaultEditor/DefaultEditor';
+import React, { useCallback, useEffect } from 'react';
+import { DefaultEditor } from '../DefaultEditor';
 import {
   camelCase,
   capitalize,

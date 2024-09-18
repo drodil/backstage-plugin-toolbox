@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { DefaultEditor } from '../DefaultEditor/DefaultEditor';
+import { DefaultEditor } from '../DefaultEditor';
 
 export const UrlEncode = () => {
   const [input, setInput] = React.useState('');

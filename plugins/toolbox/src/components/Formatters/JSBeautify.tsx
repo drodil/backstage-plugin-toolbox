@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { DefaultEditor } from '../DefaultEditor/DefaultEditor';
+import { DefaultEditor } from '../DefaultEditor';
 import beautify from 'js-beautify';
 import { useToolboxTranslation } from '../../hooks';
 

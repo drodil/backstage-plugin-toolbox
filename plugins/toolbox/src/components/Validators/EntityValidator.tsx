@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { DefaultEditor } from '../DefaultEditor/DefaultEditor';
+import { DefaultEditor } from '../DefaultEditor';
 import { validate } from '@roadiehq/roadie-backstage-entity-validator';
 import Alert from '@mui/material/Alert';
 import AlertTitle from '@mui/material/AlertTitle';

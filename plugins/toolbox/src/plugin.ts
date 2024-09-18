@@ -8,7 +8,7 @@ import {
 
 import { rootRouteRef } from './routes';
 import { createCardExtension } from '@backstage/plugin-home-react';
-import { defaultTools } from './components/Root/tools';
+import { defaultTools } from './components/Root';
 import { toolboxApiRef, ToolboxClient } from './api';
 
 export const toolboxPlugin = createPlugin({
