@@ -99,7 +99,9 @@
     "@types/lodash": "^4.14.201",
     "@types/luxon": "^3.3.2",
     "@types/node": "*",
+    "@types/readable-stream": "^4.0.15",
     "@types/turndown": "^5.0.2",
+    "@types/urijs": "^1.19.25",
     "cross-fetch": "^3.1.5"
   },
   "files": [
