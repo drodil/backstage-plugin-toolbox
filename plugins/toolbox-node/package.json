@@ -40,13 +40,13 @@
     "tsc": "tsc"
   },
   "devDependencies": {
-    "@backstage/cli": "^0.28.0"
+    "@backstage/cli": "backstage:^"
   },
   "files": [
     "dist"
   ],
   "dependencies": {
-    "@backstage/backend-plugin-api": "^1.0.1",
+    "@backstage/backend-plugin-api": "backstage:^",
     "express": "^4.20.0"
   }
 }
