@@ -42,7 +42,6 @@ const CSSBeautify = lazy(() => import('../Formatters/CSSBeautify'));
 const SQLBeautify = lazy(() => import('../Formatters/SQLBeautify'));
 
 const IbanValidator = lazy(() => import('../Validators/IbanValidator'));
-const PznValidator = lazy(() => import('../Validators/PznValidator'));
 const RegexValidator = lazy(() => import('../Validators/RegexValidator'));
 const UrlExploder = lazy(() => import('../Misc/UrlExploder'));
 const Whois = lazy(() => import('../Networking/Whois'));
@@ -305,13 +304,6 @@ export const defaultTools: Tool[] = [
     component: <IbanValidator />,
     category: 'Validate',
     description: 'Validates IBAN based on ISO 13616',
-  },
-  {
-    id: 'pzn',
-    name: 'PZN validator',
-    component: <PznValidator />,
-    category: 'Validate',
-    description: 'Validates PZN (8-digits) from german pharmaceutical system',
   },
   {
     id: 'regex',
