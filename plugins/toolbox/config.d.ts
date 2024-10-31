@@ -1,58 +1,51 @@
-import type {
-  CornerDotType,
-  CornerSquareType,
-  DotType,
-  ShapeType,
-} from 'qr-code-styling';
-
 export interface Config {
   app: {
-    toolbox: {
+    toolbox?: {
       /**
        * QR code settings
        * @visibility frontend
        */
-      qrCode: {
+      qrCode?: {
         /**
          * all the defaults for the qr code generator
          * @deepVisibility frontend
          */
-        defaults: {
+        defaults?: {
           /**
            * Dot type
            * @visibility frontend
            */
-          dotType: DotType;
+          dotType?: string;
           /**
            * Dot color
            * @visibility frontend
            */
-          dotColor: string;
+          dotColor?: string;
           /**
            * Corner square type
            * @visibility frontend
            */
-          cornerSquareType: CornerSquareType;
+          cornerSquareType?: string;
           /**
            * Corner square color
            * @visibility frontend
            */
-          cornerSquareColor: string;
+          cornerSquareColor?: string;
           /**
            * Corner dot type
            * @visibility frontend
            */
-          cornerDotType: CornerDotType;
+          cornerDotType?: string;
           /**
            * Corner dot color
            * @visibility frontend
            */
-          cornerDotColor: string;
+          cornerDotColor?: string;
           /**
            * Shape
            * @visibility frontend
            */
-          shape: ShapeType;
+          shape?: string;
         };
       };
     };
