@@ -1,13 +1,19 @@
-import React, {ChangeEvent, useCallback, useMemo} from 'react';
-import {DefaultEditor} from '../DefaultEditor';
+import type { ChangeEvent } from 'react';
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+
 import {faker} from '@faker-js/faker';
-import QRCodeStyling, {CornerDotType, CornerSquareType, DotType, FileExtension, ShapeType} from "qr-code-styling";
-import {Box, Button, Select, SelectChangeEvent} from '@mui/material';
-import MenuItem from "@mui/material/MenuItem";
-import InputLabel from "@mui/material/InputLabel";
-import FormControl from "@mui/material/FormControl";
-import TextField from "@mui/material/TextField";
-import {configApiRef, useApi} from "@backstage/core-plugin-api";
+import type { CornerDotType, CornerSquareType, DotType, FileExtension, ShapeType } from 'qr-code-styling';
+import QRCodeStyling from 'qr-code-styling';
+import MenuItem from '@mui/material/MenuItem';
+import InputLabel from '@mui/material/InputLabel';
+import FormControl from '@mui/material/FormControl';
+import TextField from '@mui/material/TextField';
+import { DefaultEditor } from '@drodil/backstage-plugin-toolbox';
+
+import { configApiRef, useApi } from '@backstage/core-plugin-api';
+import Select, { SelectChangeEvent } from '@mui/material/Select';
+import Button from "@mui/material/Button";
+import Box from "@mui/material/Box";
 
 interface QrCodeSettings {
     cornerSquareType: CornerSquareType;
@@ -19,16 +25,81 @@ interface QrCodeSettings {
     shape: ShapeType;
 }
 
+const ConfigSelect = (props: {
+  readonly settingKey: keyof QrCodeSettings;
+  readonly name: string;
+  readonly types: DotType[] | CornerDotType[] | CornerSquareType[] | ShapeType[];
+  readonly settings: QrCodeSettings;
+  readonly setSettings: (settings: QrCodeSettings) => void;
+}) => {
+  const onChange = useCallback((event: SelectChangeEvent) => props.setSettings({
+    ...props.settings,
+    [props.settingKey]: event.target.value as DotType,
+  }), [props]);
+
+  const labelId = `label-for-${props.settingKey}`;
+  const between = '3px';
+  const colorSetting = props.settingKey.replace('Type', 'Color') as keyof QrCodeSettings;
+  const onChangeColor = useCallback((event: ChangeEvent<HTMLInputElement>) => props.setSettings({
+    ...props.settings,
+    [colorSetting]: event.target.value as DotType,
+  }), [colorSetting, props]);
+
+  return (
+    <FormControl key={`formcontrol-for-select-${props.settingKey}`}>
+      <InputLabel id={labelId}>
+        {props.name}
+      </InputLabel>
+      <Select
+        id={`id-${props.settingKey}`}
+        key={`select-for-${props.settingKey}`}
+        label={props.name}
+        labelId={labelId}
+        name="select"
+        onChange={onChange}
+        sx={{ width: 140, margin: `0 ${between}` }}
+        value={props.settings[props.settingKey]}
+        variant="outlined"
+      >
+        {
+          props.types
+            ? props.types.map((value) =>
+              (
+                <MenuItem
+                  key={`selectFor${props.name}menu${value}`}
+                  value={value}
+                >
+                  {value}
+                </MenuItem>))
+            : null
+        }
+      </Select>
+      {props.name !== 'Shape'
+        ? (
+          <TextField
+            defaultValue={props.settings[colorSetting]}
+            id="input"
+            label={`${props.name} color`}
+            name="input"
+            onChange={onChangeColor}
+            sx={{ width: 140, margin: `10px ${between} 0 ${between}` }}
+            variant="outlined"
+          />)
+        : null}
+    </FormControl>
+  );
+};
+
 export const QRCodeGenerator = () => {
-    const [input, setInput] = React.useState('');
+  const [input, setInput] = useState('');
     const sample = faker.internet.url();
 
-    const [fileExt, setFileExt] = React.useState<FileExtension>("png");
-    const ref = React.useRef(null);
+  const [fileExt, setFileExt] = useState<FileExtension>('png');
+  const ref = useRef(null);
 
     const config = useApi(configApiRef).getOptionalConfig('app.toolbox.qrCode');
 
-    let defaultColor = '#000';
+    const defaultColor = '#000';
     const defaults: QrCodeSettings = {
         cornerSquareType: config?.getOptionalString('defaults.cornerSquareType') as CornerSquareType ?? 'square',
         cornerSquareColor: config?.getOptionalString('defaults.cornerSquareColor') ?? defaultColor,
@@ -46,7 +117,7 @@ export const QRCodeGenerator = () => {
         const qr = new QRCodeStyling({
             width: 500,
             height: 500,
-            image: "",
+      image: '',
             dotsOptions: {
                 color: settings.dotColor,
                 type: settings.dotType,
@@ -61,19 +132,17 @@ export const QRCodeGenerator = () => {
             },
             shape: settings.shape,
             imageOptions: {
-                crossOrigin: "anonymous",
-                margin: 20
+        crossOrigin: 'anonymous',
+        margin: 20,
             },
             margin: 5,
         });
 
         if (ref.current) {
             qr.append(ref.current);
-            console.log("Connected")
         }
         return qr;
-    }, [ref.current]);
-
+  }, [settings.cornerDotColor, settings.cornerDotType, settings.cornerSquareColor, settings.cornerSquareType, settings.dotColor, settings.dotType, settings.shape]);
 
     React.useEffect(() => {
         qrCode.update({
@@ -92,139 +161,113 @@ export const QRCodeGenerator = () => {
             },
             shape: settings.shape,
         });
-        console.log(input)
-    }, [input, settings]);
+  }, [input, qrCode, settings]);
 
-    const onExtensionChange = (event: SelectChangeEvent) => {
+  const onExtensionChange = useCallback((event: SelectChangeEvent) => {
         setFileExt(event.target.value as FileExtension);
-    };
+  }, [setFileExt]);
 
-    const onDownloadClick = () => {
+  const onDownloadClick = useCallback(() => {
         void qrCode.download({
-            extension: fileExt
+      extension: fileExt,
         });
-    };
+  }, [fileExt, qrCode]);
 
-
-    let DownloadOptions = <span>{'File type: '}
-        <Select onChange={onExtensionChange}
-                label={'file extension'}
-                variant={'standard'}
-                placeholder={'file extension'}
-                defaultValue={'png'}
-                key={'selectExtensionChanger'}>
-        <MenuItem key={'png'} value={'png'}>png</MenuItem>
-        <MenuItem key={'webp'} value={'webp'}>webp</MenuItem>
-        <MenuItem key={'jpeg'} value={'jpeg'}>jpeg</MenuItem>
-        <MenuItem key={'svg'} value={'svg'}>svg</MenuItem>
+  const DownloadOptions = (
+    <span>
+      {'File type: '}
+      <Select
+        defaultValue="png"
+        key="selectExtensionChanger"
+        label="file extension"
+        onChange={onExtensionChange}
+        placeholder="file extension"
+        variant="standard"
+      >
+        <MenuItem
+          key="png"
+          value="png"
+        >
+          png
+        </MenuItem>
+        <MenuItem
+          key="webp"
+          value="webp"
+        >
+          webp
+        </MenuItem>
+        <MenuItem
+          key="jpeg"
+          value="jpeg"
+        >
+          jpeg
+        </MenuItem>
+        <MenuItem
+          key="svg"
+          value="svg"
+        >
+          svg
+        </MenuItem>
     </Select>
-        <Button onClick={onDownloadClick} key={'downloadbutton'}>Download</Button>
-    </span>;
+      <Button
+        key="downloadbutton"
+        onClick={onDownloadClick}
+      >
+        Download
+      </Button>
+    </span>);
 
     return (
         <>
             <Box
-                sx={{margin: 5}}>
-            </Box>
+                sx={{margin: 5}} />
 
             <DefaultEditor
-                input={input}
-                setInput={(value) => {
-                    setInput(value);
-                }}
-                inputProps={{maxLength: 2048}}
-                sample={sample}
-                rightContent={<div ref={ref}/>}
-                extraRightContent={DownloadOptions}
                 additionalTools={[
-                    <ConfigSelect settingKey={"dotType" as const}
-                                  name={"Dot"}
-                                  key={'dotSelect'}
-                                  types={["square", 'classy', "dots", "classy-rounded", "extra-rounded", 'rounded'] as DotType[]}
+          <ConfigSelect
+            key="dotSelect"
+            name="Dot"
+            setSettings={setSettings}
+            settingKey={'dotType' as const}
                                   settings={settings}
+            types={['square', 'classy', 'dots', 'classy-rounded', 'extra-rounded', 'rounded'] as DotType[]}
+          />,
+          <ConfigSelect
+            key="cornerSquareSelect"
+            name="Corner Square"
                                   setSettings={setSettings}
-                    />,
-                    <ConfigSelect settingKey={"cornerSquareType" as const}
-                                  name={"Corner Square"}
-                                  key={'cornerSquareSelect'}
+            settingKey={'cornerSquareType' as const}
+            settings={settings}
                                   types={['square', 'dot', 'extra-rounded'] as CornerSquareType[]}
+          />,
+          <ConfigSelect
+            key="cornerDotSelect"
+            name="Corner Dot"
+            setSettings={setSettings}
+            settingKey={'cornerDotType' as const}
                                   settings={settings}
-                                  setSettings={setSettings}
-                    />,
-                    <ConfigSelect settingKey={"cornerDotType" as const}
-                                  name={"Corner Dot"}
-                                  key={'cornerDotSelect'}
                                   types={['dot', 'square'] as CornerDotType[]}
-                                  settings={settings}
+          />,
+          <ConfigSelect
+            key="shapeSelect"
+            name="Shape"
                                   setSettings={setSettings}
-                    />,
-                    <ConfigSelect settingKey={"shape" as const}
-                                  name={"Shape"}
-                                  key={'shapeSelect'}
-                                  types={['circle', 'square'] as ShapeType[]}
+            settingKey={'shape' as const}
                                   settings={settings}
-                                  setSettings={setSettings}
+            types={['circle', 'square'] as ShapeType[]}
                     />,
                 ]}
+        extraRightContent={DownloadOptions}
+        input={input}
+        inputProps={{ maxLength: 2048 }}
+        rightContent={<div ref={ref} />}
+        sample={sample}
+        setInput={useCallback((value) => {
+          setInput(value);
+        }, [setInput])}
             />
         </>
     );
 };
-
-
-let ConfigSelect = (props: {
-    settingKey: keyof QrCodeSettings,
-    name: string,
-    types: DotType[] | CornerDotType[] | CornerSquareType[] | ShapeType[]
-    settings : QrCodeSettings,
-    setSettings : (settings: QrCodeSettings) => void,
-}) => {
-    const onChange = useCallback((event: SelectChangeEvent) => props.setSettings({
-        ...props.settings,
-        [props.settingKey]: event.target.value as DotType
-    }), [props.settings]);
-
-    const labelId = `label-for-${props.settingKey}`
-    let between = '3px';
-    let colorSetting = props.settingKey.replace('Type', 'Color') as keyof QrCodeSettings;
-    const onChangeColor = useCallback((event: ChangeEvent<HTMLInputElement>) => props.setSettings({
-        ...props.settings,
-        [colorSetting]: event.target.value as DotType
-    }), [props.settings]);
-
-    return (<FormControl key={`formcontrol-for-select-${props.settingKey}`}>
-            <InputLabel id={labelId}>{props.name}</InputLabel>
-            <Select
-                key={`select-for-${props.settingKey}`}
-                name={'select'}
-                variant="outlined"
-                labelId={labelId}
-                label={props.name}
-                id={`id-${props.settingKey}`}
-                onChange={onChange}
-                value={props.settings[props.settingKey]}
-                sx={{width: 140, margin: `0 ${between}`}}
-            >
-                {
-                    props.types ? props.types.map((value) =>
-                        <MenuItem value={value} key={`selectFor${props.name}menu${value}`}>
-                            {value}
-                        </MenuItem>
-                    ) : null
-                }
-            </Select>
-            {props.name !== 'Shape' ? <TextField
-                id="input"
-                name="input"
-                label={`${props.name} color`}
-                defaultValue={props.settings[colorSetting]}
-                onChange={onChangeColor}
-                variant="outlined"
-                sx={{width: 140, margin: `10px ${between} 0 ${between}`}}
-            /> : null}
-        </FormControl>
-    );
-};
-
 export default QRCodeGenerator;
 

@@ -1,4 +1,4 @@
-import {CornerDotType, CornerSquareType, DotType, ShapeType} from "qr-code-styling";
+import type {CornerDotType, CornerSquareType, DotType, ShapeType} from "qr-code-styling";
 
 export interface Config {
     app: {
