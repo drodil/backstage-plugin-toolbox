@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.25.0](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.24.3...v1.25.0) (2024-10-31)
+
+
+### Features
+
+* allow customization and download of qr code ([0b1ba28](https://github.com/drodil/backstage-plugin-toolbox/commit/0b1ba2814448d20051871eb615965a3ce3d04adc))
+
+
+### Bug Fixes
+
+* linting ([d0cd2c4](https://github.com/drodil/backstage-plugin-toolbox/commit/d0cd2c4b7ecc83b1839c16e0bd15f9a752abfdd4))
+
 ### [1.24.3](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.24.2...v1.24.3) (2024-10-15)
 
 ### [1.24.2](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.24.1...v1.24.2) (2024-09-18)
