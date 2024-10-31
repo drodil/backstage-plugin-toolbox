@@ -185,6 +185,7 @@ export const defaultTools: Tool[] = [
     headerButtons: [
       <Button
         variant="contained"
+        key="entity-validator-button"
         size="small"
         target="_blank"
         href="https://backstage.io/docs/features/software-catalog/descriptor-format"
