@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.25.1](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.25.0...v1.25.1) (2024-11-05)
+
+
+### Bug Fixes
+
+* show qr code also in the tool and use translations ([bace909](https://github.com/drodil/backstage-plugin-toolbox/commit/bace90925a264facdab230c13d7ef8d1e46cb4ff))
+
 ## [1.25.0](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.24.3...v1.25.0) (2024-10-31)
 
 
