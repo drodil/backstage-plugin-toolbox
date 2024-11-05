@@ -14,7 +14,10 @@ import MenuItem from '@mui/material/MenuItem';
 import InputLabel from '@mui/material/InputLabel';
 import FormControl from '@mui/material/FormControl';
 import TextField from '@mui/material/TextField';
-import { DefaultEditor } from '@drodil/backstage-plugin-toolbox';
+import {
+  DefaultEditor,
+  useToolboxTranslation,
+} from '@drodil/backstage-plugin-toolbox';
 
 import { configApiRef, useApi } from '@backstage/core-plugin-api';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
@@ -50,6 +53,7 @@ const ConfigSelect = (props: {
       }),
     [props],
   );
+  const { t } = useToolboxTranslation();
 
   const labelId = `label-for-${props.settingKey}`;
   const between = '3px';
@@ -86,7 +90,7 @@ const ConfigSelect = (props: {
                 key={`selectFor${props.name}menu${value}`}
                 value={value}
               >
-                {value}
+                {t(`tool.qr-code-generate.${value}`)}
               </MenuItem>
             ))
           : null}
@@ -95,7 +99,7 @@ const ConfigSelect = (props: {
         <TextField
           defaultValue={props.settings[colorSetting]}
           id="input"
-          label={`${props.name} color`}
+          label={`${props.name} ${t('tool.qr-code-generate.color')}`}
           name="input"
           onChange={onChangeColor}
           sx={{ width: 140, margin: `10px ${between} 0 ${between}` }}
@@ -111,7 +115,9 @@ export const QRCodeGenerator = () => {
   const sample = faker.internet.url();
 
   const [fileExt, setFileExt] = useState<FileExtension>('png');
+  const [image, setImage] = useState<string | null>(null);
   const ref = useRef(null);
+  const { t } = useToolboxTranslation();
 
   const config = useApi(configApiRef).getOptionalConfig('app.toolbox.qrCode');
 
@@ -194,7 +200,24 @@ export const QRCodeGenerator = () => {
       },
       shape: settings.shape,
     });
-  }, [input, qrCode, settings]);
+    qrCode
+      .getRawData()
+      .then(data => {
+        if (!data) {
+          setImage(null);
+          return;
+        }
+
+        if (Buffer.isBuffer(data)) {
+          const blob = new Blob([data], { type: 'image/png' });
+          setImage(window.URL.createObjectURL(blob));
+          return;
+        }
+
+        setImage(window.URL.createObjectURL(data));
+      })
+      .catch(() => setImage(null));
+  }, [qrCode, settings, input]);
 
   const onExtensionChange = useCallback(
     (event: SelectChangeEvent) => {
@@ -210,31 +233,26 @@ export const QRCodeGenerator = () => {
   }, [fileExt, qrCode]);
 
   const DownloadOptions = (
-    <span>
-      {'File type: '}
-      <Select
-        defaultValue="png"
-        key="selectExtensionChanger"
-        label="file extension"
-        onChange={onExtensionChange}
-        placeholder="file extension"
-        variant="standard"
-      >
-        <MenuItem key="png" value="png">
-          png
-        </MenuItem>
-        <MenuItem key="webp" value="webp">
-          webp
-        </MenuItem>
-        <MenuItem key="jpeg" value="jpeg">
-          jpeg
-        </MenuItem>
-        <MenuItem key="svg" value="svg">
-          svg
-        </MenuItem>
-      </Select>
-      <Button key="downloadbutton" onClick={onDownloadClick}>
-        Download
+    <span style={{ marginLeft: '2rem' }}>
+      <FormControl>
+        <InputLabel id="file-type">
+          {t('tool.qr-code-generate.downloadAs')}
+        </InputLabel>
+        <Select
+          defaultValue="png"
+          labelId="file-type"
+          onChange={onExtensionChange}
+          label={t('tool.qr-code-generate.downloadAs')}
+          variant="outlined"
+        >
+          <MenuItem value="png">png</MenuItem>
+          <MenuItem value="webp">webp</MenuItem>
+          <MenuItem value="jpeg">jpeg</MenuItem>
+          <MenuItem value="svg">svg</MenuItem>
+        </Select>
+      </FormControl>
+      <Button key="downloadbutton" onClick={onDownloadClick} disabled={!input}>
+        {t('tool.qr-code-generate.download')}
       </Button>
     </span>
   );
@@ -247,7 +265,7 @@ export const QRCodeGenerator = () => {
         additionalTools={[
           <ConfigSelect
             key="dotSelect"
-            name="Dot"
+            name={t('tool.qr-code-generate.dotType')}
             setSettings={setSettings}
             settingKey={'dotType' as const}
             settings={settings}
@@ -264,7 +282,7 @@ export const QRCodeGenerator = () => {
           />,
           <ConfigSelect
             key="cornerSquareSelect"
-            name="Corner Square"
+            name={t('tool.qr-code-generate.cornerSquareType')}
             setSettings={setSettings}
             settingKey={'cornerSquareType' as const}
             settings={settings}
@@ -272,7 +290,7 @@ export const QRCodeGenerator = () => {
           />,
           <ConfigSelect
             key="cornerDotSelect"
-            name="Corner Dot"
+            name={t('tool.qr-code-generate.cornerDotType')}
             setSettings={setSettings}
             settingKey={'cornerDotType' as const}
             settings={settings}
@@ -280,17 +298,28 @@ export const QRCodeGenerator = () => {
           />,
           <ConfigSelect
             key="shapeSelect"
-            name="Shape"
+            name={t('tool.qr-code-generate.shapeType')}
             setSettings={setSettings}
             settingKey={'shape' as const}
             settings={settings}
             types={['circle', 'square'] as ShapeType[]}
           />,
+          DownloadOptions,
         ]}
-        extraRightContent={DownloadOptions}
         input={input}
         inputProps={{ maxLength: 2048 }}
-        rightContent={<div ref={ref} />}
+        rightContent={
+          image ? (
+            <img
+              ref={ref}
+              className="blob-to-image"
+              src={image}
+              alt="QR code"
+            />
+          ) : (
+            <div ref={ref} />
+          )
+        }
         sample={sample}
         setInput={useCallback(
           value => {
