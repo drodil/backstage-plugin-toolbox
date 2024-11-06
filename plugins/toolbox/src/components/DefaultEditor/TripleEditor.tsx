@@ -11,6 +11,7 @@ import ButtonGroup from '@mui/material/ButtonGroup';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import FormControl from '@mui/material/FormControl';
+import { useToolboxTranslation } from '../../hooks';
 
 type Props = {
   input: string;
@@ -44,6 +45,7 @@ type Props = {
 };
 
 export const TripleEditor = (props: Props) => {
+  const { t } = useToolboxTranslation();
   const {
     input,
     setInput,
@@ -51,9 +53,9 @@ export const TripleEditor = (props: Props) => {
     setPattern,
     output,
     setOutput,
-    inputLabel = 'Input',
-    patternLabel = 'Pattern',
-    outputLabel = 'Output',
+    inputLabel = t('components.defaultEditor.inputLabel'),
+    patternLabel = t('components.defaultEditor.patternLabel'),
+    outputLabel = t('components.defaultEditor.outputLabel'),
     mode,
     setMode,
     modes,

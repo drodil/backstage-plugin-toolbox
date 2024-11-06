@@ -349,6 +349,7 @@ export const toolboxTranslationRef = createTranslationRef({
       defaultEditor: {
         inputLabel: 'Input',
         outputLabel: 'Output',
+        patternLabel: 'Pattern',
         mode: {
           encode: 'Encode',
           decode: 'Decode',

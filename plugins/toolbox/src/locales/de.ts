@@ -32,6 +32,7 @@ const de = createTranslationMessages({
     'components.sampleButton.buttonText': 'Sampledaten',
     'components.defaultEditor.inputLabel': 'Eingabe',
     'components.defaultEditor.outputLabel': 'Ausgabe',
+    'components.defaultEditor.patternLabel': 'Pattern',
     'components.defaultEditor.mode.encode': 'Encode',
     'components.defaultEditor.mode.decode': 'Decode',
     'components.defaultEditor.mode.replace': 'Ersetzen',
