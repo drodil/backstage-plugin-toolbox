@@ -44,7 +44,7 @@
   },
   "dependencies": {
     "@backstage/core-plugin-api": "backstage:^",
-    "@mui/material": "^5.15.14"
+    "@mui/material": "^5.16.7"
   },
   "peerDependencies": {
     "react": "^16.13.1 || ^17.0.0 || ^18.0.0"

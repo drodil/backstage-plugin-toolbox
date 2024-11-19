@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useApi } from '@backstage/core-plugin-api';
 import { toolboxApiRef } from '../../api';
-import { useStyles } from '../../utils/hooks';
 import { Progress } from '@backstage/core-components';
 import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
@@ -13,7 +12,6 @@ const Whois = () => {
   const [response, setResponse] = useState({});
   const [loading, setLoading] = useState(false);
   const toolboxApi = useApi(toolboxApiRef);
-  const { classes } = useStyles();
   const { t } = useToolboxTranslation();
 
   const lookup = () => {
@@ -71,14 +69,13 @@ const Whois = () => {
                 label={key}
                 id="output"
                 multiline
-                className={classes.fullWidth}
                 value={Object.entries(value as any)
                   .map(([k, v]) => `${k}: ${v}`)
                   .join('\n')}
                 inputProps={{
                   style: { resize: 'vertical' },
                 }}
-                style={{ marginBottom: '1rem' }}
+                style={{ marginBottom: '1rem', width: '100%' }}
                 minRows={30}
                 variant="outlined"
               />

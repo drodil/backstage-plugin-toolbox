@@ -3,15 +3,26 @@ import { ToolsPageProps } from './ToolsPage';
 import { defaultTools } from './tools';
 import { useParams } from 'react-router-dom';
 import { ContentHeader } from '@backstage/core-components';
-import { useStyles } from '../../utils/hooks';
 import Box from '@mui/material/Box';
 import CircularProgress from '@mui/material/CircularProgress';
 import { useToolboxTranslation } from '../../hooks';
+import { styled } from '@mui/material/styles';
+
+const ToolContainer = styled('div')(({ theme }) => ({
+  padding: '1rem',
+  position: 'absolute',
+  top: '0px',
+  left: '0px',
+  width: '100%',
+  height: '100%',
+  overflow: 'auto',
+  zIndex: 10000,
+  backgroundColor: theme.palette.background.default,
+}));
 
 export const ToolPage = (props: ToolsPageProps) => {
   const { extraTools } = props;
   const params = useParams();
-  const { classes } = useStyles();
   const { t } = useToolboxTranslation();
 
   const allTools = [...(extraTools ?? []), ...defaultTools];
@@ -33,7 +44,7 @@ export const ToolPage = (props: ToolsPageProps) => {
   });
 
   return (
-    <div id="toolContainer" className={classes.toolContainer}>
+    <ToolContainer>
       <Suspense
         fallback={
           <Box
@@ -52,6 +63,6 @@ export const ToolPage = (props: ToolsPageProps) => {
         </ContentHeader>
         {tool.component}
       </Suspense>
-    </div>
+    </ToolContainer>
   );
 };

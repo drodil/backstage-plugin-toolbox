@@ -1,5 +1,4 @@
 import React from 'react';
-import { useStyles } from '../../utils/hooks';
 import { faker } from '@faker-js/faker';
 import { lowerCase, upperFirst } from 'lodash';
 import { ClearValueButton, CopyToClipboardButton } from '../Buttons';
@@ -19,7 +18,6 @@ const randomInt = (min: number, max: number) => {
 };
 
 export const LoremIpsum = () => {
-  const { classes } = useStyles();
   const [output, setOutput] = React.useState('');
   const [multiplier, setMultiplier] = React.useState(1);
 
@@ -168,13 +166,12 @@ export const LoremIpsum = () => {
 
   return (
     <>
-      <FormControl className={classes.fullWidth}>
+      <FormControl sx={{ width: '100%' }}>
         <Grid container style={{ marginBottom: '5px' }}>
           <Grid item>
             <InputLabel id="multiplier-label">Count</InputLabel>
             <Box sx={{ ml: '16px ' }}>
               <Select
-                style={{ minWidth: '100px' }}
                 labelId="multiplier-label"
                 value={multiplier.toString(10)}
                 onChange={e =>
@@ -192,45 +189,45 @@ export const LoremIpsum = () => {
                 <MenuItem value={500}>500</MenuItem>
                 <MenuItem value={1000}>1000</MenuItem>
               </Select>
-              <ButtonGroup className={classes.editorButtonGroup}>
+              <ButtonGroup sx={{ marginLeft: 2, marginBottom: 2 }}>
                 <ClearValueButton setValue={setOutput} tooltip="Clear output" />
                 <CopyToClipboardButton output={output} />
               </ButtonGroup>
             </Box>
-            <ButtonGroup className={classes.editorButtonGroup}>
+            <ButtonGroup sx={{ marginLeft: 2, marginBottom: 2 }}>
               <GenerateButton type="line" />
               <GenerateButton type="paragraph" />
               <GenerateButton type="slug" />
               <GenerateButton type="word" />
               <GenerateButton type="hack" />
             </ButtonGroup>
-            <ButtonGroup className={classes.editorButtonGroup}>
+            <ButtonGroup sx={{ marginLeft: 2, marginBottom: 2 }}>
               <GenerateButton type="hex" />
               <GenerateButton type="datetime" />
               <GenerateButton type="number" />
               <GenerateButton type="string" />
               <GenerateButton type="uuid" />
             </ButtonGroup>
-            <ButtonGroup className={classes.editorButtonGroup}>
+            <ButtonGroup sx={{ marginLeft: 2, marginBottom: 2 }}>
               <GenerateButton type="ipv4" title="IPv4" />
               <GenerateButton type="ipv6" title="IPv6" />
               <GenerateButton type="mac" title="MAC" />
               <GenerateButton type="imei" />
               <GenerateButton type="cron" />
             </ButtonGroup>
-            <ButtonGroup className={classes.editorButtonGroup}>
+            <ButtonGroup sx={{ marginLeft: 2, marginBottom: 2 }}>
               <GenerateButton type="domain" />
               <GenerateButton type="password" />
               <GenerateButton type="url" title="URL" />
               <GenerateButton type="user-agent" title="User agent" />
               <GenerateButton type="emoji" />
             </ButtonGroup>
-            <ButtonGroup className={classes.editorButtonGroup}>
+            <ButtonGroup sx={{ marginLeft: 2, marginBottom: 2 }}>
               <GenerateButton type="address" />
               <GenerateButton type="name" title="Name" />
               <GenerateButton type="job-title" title="Job title" />
             </ButtonGroup>
-            <ButtonGroup className={classes.editorButtonGroup}>
+            <ButtonGroup sx={{ marginLeft: 2, marginBottom: 2 }}>
               <GenerateButton type="product-name" title="Product name" />
               <GenerateButton
                 type="product-description"
@@ -239,18 +236,18 @@ export const LoremIpsum = () => {
               <GenerateButton type="catch-phrase" title="Catch phrase" />
               <GenerateButton type="song" title="Song name" />
             </ButtonGroup>
-            <ButtonGroup className={classes.editorButtonGroup}>
+            <ButtonGroup sx={{ marginLeft: 2, marginBottom: 2 }}>
               <GenerateButton type="bic" title="BIC" />
               <GenerateButton type="credit-card" title="Credit card" />
               <GenerateButton type="iban" title="IBAN" />
             </ButtonGroup>
           </Grid>
-          <Grid item className={classes.fullWidth}>
+          <Grid item sx={{ width: '100%' }}>
             <TextField
               id="output"
               label="Output"
               value={output || ''}
-              className={classes.fullWidth}
+              style={{ width: '100%' }}
               multiline
               minRows={20}
               maxRows={50}

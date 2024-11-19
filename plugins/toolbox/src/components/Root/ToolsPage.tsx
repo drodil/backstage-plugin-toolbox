@@ -5,7 +5,7 @@ import {
   Header,
   Page,
 } from '@backstage/core-components';
-import { useFavoriteStorage, useStyles } from '../../utils/hooks';
+import { useFavoriteStorage } from '../../utils/hooks';
 import SearchIcon from '@mui/icons-material/Search';
 import { defaultTools } from './tools';
 import OpenInNew from '@mui/icons-material/OpenInNew';
@@ -78,7 +78,6 @@ export const ToolsPage = (props: ToolsPageProps) => {
   const [search, setSearch] = React.useState('');
   const backendTools = useBackendTools();
   const favorites = useFavoriteStorage();
-  const { classes } = useStyles();
 
   const { t } = useToolboxTranslation();
 
@@ -139,8 +138,11 @@ export const ToolsPage = (props: ToolsPageProps) => {
           key="Toolbox"
           label=""
           disabled
-          className={classes.tabDivider}
-          style={{ minHeight: '2px' }}
+          sx={{
+            marginTop: 1,
+            paddingTop: 1,
+            paddingBottom: '50px',
+          }}
         />
       ),
       component: undefined,
@@ -154,7 +156,20 @@ export const ToolsPage = (props: ToolsPageProps) => {
         <Tab
           key="toolbox"
           wrapped
-          className={`${classes.fullWidth} ${classes.noPadding} ${classes.tab}`}
+          sx={{
+            width: '100%',
+            padding: 0,
+            '&:hover': {
+              background: 'transparent',
+            },
+            '&[aria-selected="true"]': {
+              fontWeight: 'bold',
+            },
+            marginTop: 1,
+            paddingTop: 1,
+            paddingBottom: '50px',
+            color: 'text.primary',
+          }}
           label={t('toolsPage.tabPanel.mainLabel')}
         />
       ),
@@ -215,11 +230,12 @@ export const ToolsPage = (props: ToolsPageProps) => {
         tabInfos.push({
           tab: (
             <Tab
-              style={!anyMatchSearch ? { display: 'none' } : {}}
+              style={
+                !anyMatchSearch ? { display: 'none' } : { marginTop: '0.5rem' }
+              }
               key={category}
               label={category}
               disabled
-              className={classes.tabDivider}
             />
           ),
           component: undefined,
@@ -241,7 +257,16 @@ export const ToolsPage = (props: ToolsPageProps) => {
                   key={tool.name}
                   style={!matchesSearch(tool) ? { display: 'none' } : {}}
                   wrapped
-                  className={`${classes.fullWidth} ${classes.noPadding} ${classes.tab}`}
+                  sx={{
+                    width: '100%',
+                    padding: 0,
+                    '&:hover': {
+                      background: 'transparent',
+                    },
+                    '&[aria-selected="true"]': {
+                      fontWeight: 'bold',
+                    },
+                  }}
                   label={t(`tool.${tool.id}.name`, { defaultValue: tool.name })}
                   {...tabProps(i)}
                 />
@@ -260,7 +285,6 @@ export const ToolsPage = (props: ToolsPageProps) => {
   }, [
     favorites,
     search,
-    classes,
     extraTools,
     tools,
     categorySortFunction,
@@ -291,18 +315,37 @@ export const ToolsPage = (props: ToolsPageProps) => {
   return (
     <Page themeId="tool">
       <Header title={t('toolsPage.title')} />
-      <Content className={classes.noPadding}>
+      <Content noPadding>
         <Grid
           container
           spacing={2}
           direction="row"
-          className={`${classes.noMargin} ${classes.fullWidth} ${classes.noPadding}`}
+          sx={{ margin: 0, width: '100%', padding: 0 }}
         >
-          <Grid item xs={4} md={3} lg={2} className={classes.toolsBar}>
+          <Grid
+            item
+            xs={4}
+            md={3}
+            lg={2}
+            sx={theme => ({
+              borderRight: `1px solid ${theme.palette.divider}`,
+              padding: '0 !important',
+            })}
+          >
             <Paper
               component="form"
-              className={classes.search}
-              sx={{ justifyContent: 'space-between' }}
+              sx={{
+                justifyContent: 'space-between',
+                margin: 2,
+                marginBottom: 1,
+                display: 'flex',
+                '& input': {
+                  marginLeft: 2,
+                  width: '100%',
+                  flex: 1,
+                },
+                height: '48px',
+              }}
             >
               <InputBase
                 placeholder={t('toolsPage.input.search')}
@@ -325,12 +368,24 @@ export const ToolsPage = (props: ToolsPageProps) => {
               value={value}
               onChange={handleChange}
               aria-label="Tools selection"
-              className={classes.menuTabs}
+              sx={{
+                height: 'calc(100vh - 160px);',
+                '& div[class*="MuiTabScrollButton-vertical"]': {
+                  height: '10px',
+                },
+                '& button[class*="MuiTab-wrapped"]': {
+                  fontSize: '12px',
+                },
+                '& button[class*="Mui-disabled"]': {
+                  paddingTop: '8px !important',
+                  paddingBottom: '8px !important',
+                },
+              }}
             >
               {tabs.map(tab => tab.tab)}
             </Tabs>
           </Grid>
-          <Grid item xs={8} md={9} lg={10} style={{ padding: '8px' }}>
+          <Grid item xs={8} md={9} lg={10} sx={{ padding: 0 }}>
             <Suspense
               fallback={
                 <Box

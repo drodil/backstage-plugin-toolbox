@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import TurndownService from 'turndown';
 import { DefaultEditor } from '../DefaultEditor';
 import { MarkdownContent } from '@backstage/core-components';
-import { useStyles } from '../../utils/hooks';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import { useToolboxTranslation } from '../../hooks';
@@ -13,7 +12,6 @@ const { gfm } = require('turndown-plugin-gfm') as {
 };
 
 export const RichTextToMarkdown = () => {
-  const { classes } = useStyles();
   const [input, setInput] = React.useState('');
   const [output, setOutput] = React.useState('');
   const { t } = useToolboxTranslation();
@@ -45,7 +43,7 @@ export const RichTextToMarkdown = () => {
           {output && (
             <Paper
               elevation={0}
-              className={classes.previewPaper}
+              sx={{ padding: 2 }}
               style={{ marginTop: '1rem' }}
             >
               <Typography variant="subtitle1">

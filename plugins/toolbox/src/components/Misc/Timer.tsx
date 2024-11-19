@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { useStyles } from '../../utils/hooks';
 import { TimePaper } from './TimePaper';
 import FormControl from '@mui/material/FormControl';
 import Grid from '@mui/material/Grid';
@@ -8,7 +7,6 @@ import Button from '@mui/material/Button';
 import { useToolboxTranslation } from '../../hooks';
 
 const Timer = () => {
-  const { classes } = useStyles();
   const [elapsedTime, setElapsedTime] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
   const { t } = useToolboxTranslation();
@@ -49,7 +47,7 @@ const Timer = () => {
 
   return (
     <>
-      <FormControl className={classes.fullWidth}>
+      <FormControl style={{ width: '100%' }}>
         <Grid container spacing={4} style={{ marginBottom: '5px' }}>
           <Grid item>
             <ButtonGroup>

@@ -1,7 +1,6 @@
 import { DiffEditor, loader } from '@monaco-editor/react';
 import * as monaco from 'monaco-editor';
 import React, { useEffect, useMemo, useState } from 'react';
-import { useStyles } from '../../utils/hooks';
 import useEffectOnce from 'react-use/lib/useEffectOnce';
 import { Select, SelectItem } from '@backstage/core-components';
 
@@ -85,7 +84,6 @@ export const SampleButton = (props: SampleButtonProps) => {
 };
 
 function Diff() {
-  const { classes } = useStyles();
   const appThemeApi = useApi(appThemeApiRef);
   const theme = useMemo(
     () => appThemeApi.getActiveThemeId() ?? 'light',
@@ -142,7 +140,7 @@ function Diff() {
 
   return (
     <>
-      <FormControl className={classes.fullWidth}>
+      <FormControl style={{ width: '100%' }}>
         <Grid container style={{ width: '100%' }}>
           <Grid item style={{ minWidth: '200px' }}>
             <Select

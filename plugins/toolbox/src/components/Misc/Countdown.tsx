@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { useStyles } from '../../utils/hooks';
 import { TimePaper } from './TimePaper';
 import FormControl from '@mui/material/FormControl';
 import Grid from '@mui/material/Grid';
@@ -43,7 +42,6 @@ const Countdown = () => {
   const [hours, setHours] = useState(0);
   const [minutes, setMinutes] = useState(0);
   const [seconds, setSeconds] = useState(0);
-  const { classes } = useStyles();
   const [isRunning, setIsRunning] = useState(false);
   const [chime, setChime] = useState(true);
   const { t } = useToolboxTranslation();
@@ -105,7 +103,7 @@ const Countdown = () => {
   const timeLeft = formatTime(secondsLeft);
   return (
     <>
-      <FormControl className={classes.fullWidth}>
+      <FormControl style={{ width: '100%' }}>
         <Grid container spacing={4} style={{ marginBottom: '5px' }}>
           <Grid item>
             <ButtonGroup
