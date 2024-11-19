@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.25.2](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.25.1...v1.25.2) (2024-11-19)
+
+
+### Bug Fixes
+
+* remove deprecated makeStyles ([cd374d5](https://github.com/drodil/backstage-plugin-toolbox/commit/cd374d5f9d85826aff1bb2e95bcf3426412b2161))
+
 ### [1.25.1](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.25.0...v1.25.1) (2024-11-05)
 
 
