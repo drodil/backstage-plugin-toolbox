@@ -310,7 +310,8 @@ export const defaultTools: Tool[] = [
     name: 'Regex validator',
     component: <RegexValidator />,
     category: 'Validate',
-    description: 'Validates regex patterns against a test-text and shows possible matches',
+    description:
+      'Validates regex patterns against a test-text and shows possible matches',
   },
   {
     id: 'url-exploder',

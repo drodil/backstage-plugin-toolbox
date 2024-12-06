@@ -183,7 +183,12 @@ export const TripleEditor = (props: Props) => {
         )}
       </Grid>
       <Grid container columns={3}>
-        <Grid item xs={1} lg={1} sx={{ pt: '8px !important', pl: '8px !important' }}>
+        <Grid
+          item
+          xs={1}
+          lg={1}
+          sx={{ pt: '8px !important', pl: '8px !important' }}
+        >
           {leftContent ? (
             leftContent
           ) : (
@@ -210,7 +215,12 @@ export const TripleEditor = (props: Props) => {
           )}
           {extraLeftContent}
         </Grid>
-        <Grid item xs={1} lg={1} sx={{ pt: '8px !important', pl: '8px !important' }}>
+        <Grid
+          item
+          xs={1}
+          lg={1}
+          sx={{ pt: '8px !important', pl: '8px !important' }}
+        >
           {middleContent ? (
             middleContent
           ) : (
@@ -237,7 +247,12 @@ export const TripleEditor = (props: Props) => {
           )}
           {extraMiddleContent}
         </Grid>
-        <Grid item xs={1} lg={1} sx={{ pt: '8px !important', pl: '8px !important' }}>
+        <Grid
+          item
+          xs={1}
+          lg={1}
+          sx={{ pt: '8px !important', pl: '8px !important' }}
+        >
           {rightContent ? (
             rightContent
           ) : (

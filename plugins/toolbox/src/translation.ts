@@ -286,8 +286,9 @@ export const toolboxTranslationRef = createTranslationRef({
         description: 'Validates Regex pattern',
         patternDoesntMatch: "pattern doesn't match the input text",
         patternNoMatchOrEmpty: 'no match or empty!',
-        patternMatch: "{{myNum}}. match={{myRes}} on index={{myIdx}}\n",
-        exceptionError: "pattern validation got exception\n\nmsg='{{errorMsg}}'",
+        patternMatch: '{{myNum}}. match={{myRes}} on index={{myIdx}}\n',
+        exceptionError:
+          "pattern validation got exception\n\nmsg='{{errorMsg}}'",
         inputField: 'Input',
         outputField: 'Output',
         patternField: 'Regex-Pattern',

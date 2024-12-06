@@ -10,7 +10,7 @@ export const RegexValidator = () => {
 
   useEffect(() => {
     function isRegexValid(inputString: string, patternString: string): string {
-      const flags = 'gim' // g=global, m=match line start/end, i=case insensitive
+      const flags = 'gim'; // g=global, m=match line start/end, i=case insensitive
       const regex = new RegExp(patternString, flags);
       const testResults = regex.exec(inputString);
       if (testResults === null) {
@@ -22,10 +22,10 @@ export const RegexValidator = () => {
         if (testResults[i].length === 0) {
           result += t('tool.regex.patternNoMatchOrEmpty');
         } else {
-          const myNum = i+1;
+          const myNum = i + 1;
           const myRes = testResults[i];
           const myIdx = testResults.index;
-          result += t('tool.regex.patternMatch', {myNum, myRes, myIdx});
+          result += t('tool.regex.patternMatch', { myNum, myRes, myIdx });
         }
       }
       return result;
@@ -33,11 +33,11 @@ export const RegexValidator = () => {
 
     let outputString;
     try {
-     // regex check
+      // regex check
       outputString = isRegexValid(input, pattern);
     } catch (error) {
       const errorMsg = error.message;
-      outputString = t('tool.regex.exceptionError', {errorMsg});
+      outputString = t('tool.regex.exceptionError', { errorMsg });
     }
     setOutput(outputString);
   }, [input, pattern, t]); // changes in these three fields trigger the change of output
