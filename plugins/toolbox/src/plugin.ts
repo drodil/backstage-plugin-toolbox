@@ -2,6 +2,7 @@ import {
   createApiFactory,
   createPlugin,
   createRoutableExtension,
+  createComponentExtension,
   discoveryApiRef,
   fetchApiRef,
 } from '@backstage/core-plugin-api';
@@ -31,6 +32,24 @@ export const ToolboxPage = toolboxPlugin.provide(
     name: 'ToolboxPage',
     component: () => import('./components/Root').then(m => m.Root),
     mountPoint: rootRouteRef,
+  }),
+);
+
+export const ToolsContainer = toolboxPlugin.provide(
+  createComponentExtension({
+    name: 'ToolboxContainer',
+    component: {
+      lazy: () => import('./components/Root').then(m => m.ToolsContainer),
+    },
+  }),
+);
+
+export const ToolContainer = toolboxPlugin.provide(
+  createComponentExtension({
+    name: 'ToolContainer',
+    component: {
+      lazy: () => import('./components/Root').then(m => m.ToolContainer),
+    },
   }),
 );
 
