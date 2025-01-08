@@ -1,3 +1,5 @@
 export { Root } from './Root';
+export { ToolsContainer } from './ToolsContainer';
+export { ToolContainer } from './ToolContainer';
 export { defaultTools } from './tools';
-export type { ToolsPageProps } from './ToolsPage';
+export type { ToolsContainerProps } from './ToolsContainer';
