@@ -45,6 +45,7 @@ const IbanValidator = lazy(() => import('../Validators/IbanValidator'));
 const UrlExploder = lazy(() => import('../Misc/UrlExploder'));
 const Whois = lazy(() => import('../Networking/Whois'));
 const StringAnalyzer = lazy(() => import('../Misc/StringAnalyzer'));
+const AlertBuilder = lazy(() => import('../Monitoring/AlertBuilder'));
 
 // const CidrCalculator = lazy(() => import('../Networking/CidrCalculator'));
 
@@ -319,6 +320,13 @@ export const defaultTools: Tool[] = [
     category: 'Networking',
     description: 'Lookup domain WHOIS information',
     requiresBackend: true,
+  },
+  {
+    id: 'alert-builder',
+    name: 'MasStack Alert Builder',
+    component: <AlertBuilder />,
+    category: 'Monitoring & Alerting',
+    description: 'Build mas-stack alerts with an interactive interface',
   },
   /**
    {
