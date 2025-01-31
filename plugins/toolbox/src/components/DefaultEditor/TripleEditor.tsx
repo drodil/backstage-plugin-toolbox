@@ -1,5 +1,4 @@
 import React, { ReactElement } from 'react';
-import { useStyles } from '../../utils/hooks';
 import { CopyToClipboardButton } from '../Buttons/CopyToClipboardButton';
 import { PasteFromClipboardButton } from '../Buttons/PasteFromClipboardButton';
 import { ClearValueButton } from '../Buttons/ClearValueButton';
@@ -74,7 +73,6 @@ export const TripleEditor = (props: Props) => {
     downloadFileType,
     minRows = 20,
   } = props;
-  const { classes } = useStyles();
 
   const [fileName, setFileName] = React.useState(
     downloadFileName ?? 'download.txt',
@@ -122,7 +120,7 @@ export const TripleEditor = (props: Props) => {
   };
 
   return (
-    <FormControl className={classes.fullWidth} onDrop={handleDrop}>
+    <FormControl style={{ width: '100%' }} onDrop={handleDrop}>
       <Grid container spacing={4} style={{ marginBottom: '5px' }}>
         {modes && modes.length > 0 && (
           <Grid item sx={{ pl: '16px', pt: '32px !important' }}>
@@ -198,7 +196,7 @@ export const TripleEditor = (props: Props) => {
                 // eslint-disable-next-line
                 id="input"
                 multiline
-                className={classes.fullWidth}
+                style={{ width: '100%' }}
                 value={input}
                 onChange={e => setInput(e.target.value)}
                 minRows={minRows}
@@ -230,7 +228,7 @@ export const TripleEditor = (props: Props) => {
                 // eslint-disable-next-line
                 id="pattern"
                 multiline
-                className={classes.fullWidth}
+                style={{ width: '100%' }}
                 value={pattern}
                 onChange={e => setPattern(e.target.value)}
                 minRows={minRows}
@@ -265,7 +263,7 @@ export const TripleEditor = (props: Props) => {
                 // eslint-disable-next-line
                 id="output"
                 multiline
-                className={classes.fullWidth}
+                style={{ width: '100%' }}
                 value={output}
                 onChange={e => setOutput(e.target.value)}
                 minRows={minRows}
