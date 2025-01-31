@@ -1,4 +1,3 @@
-import { useStyles } from '../../utils/hooks';
 import React from 'react';
 import { DateTime } from 'luxon';
 import {
@@ -17,7 +16,6 @@ import Divider from '@mui/material/Divider';
 import { useToolboxTranslation } from '../../hooks';
 
 export const TimeConverter = () => {
-  const { classes } = useStyles();
   const [input, setInput] = React.useState<DateTime | null>(null);
   const [inputType, setInputType] = React.useState('unix');
   const { t } = useToolboxTranslation();
@@ -79,8 +77,7 @@ export const TimeConverter = () => {
       <>
         <TextField
           label={label}
-          style={{ marginTop: '1rem' }}
-          className={classes.fullWidth}
+          style={{ marginTop: '1rem', width: '100%' }}
           disabled
           value={value ?? ''}
         />
@@ -91,7 +88,7 @@ export const TimeConverter = () => {
 
   return (
     <>
-      <FormControl className={classes.fullWidth}>
+      <FormControl style={{ width: '100%' }}>
         <Grid container>
           <Grid item xs={12} lg={8}>
             <Typography variant="subtitle1">
@@ -106,7 +103,7 @@ export const TimeConverter = () => {
               </Button>
             </Typography>
             <TextField
-              className={classes.fullWidth}
+              style={{ width: '100%' }}
               id="input"
               name="input"
               label={t('tool.time-convert.labelInput')}

@@ -1,6 +1,11 @@
 import React from 'react';
 import { createDevApp } from '@backstage/dev-utils';
-import { ToolboxPage } from '../src';
+import {
+  ToolboxPage,
+  ToolsContainer,
+  ToolContainer,
+  defaultTools,
+} from '../src';
 import {
   AnyApiFactory,
   createApiFactory,
@@ -54,6 +59,16 @@ createDevApp()
     ),
     title: 'Custom Page',
     path: '/toolbox-custom',
+  })
+  .addPage({
+    element: <ToolsContainer />,
+    title: 'Container Page',
+    path: '/toolbox-container',
+  })
+  .addPage({
+    element: <ToolContainer tool={defaultTools[0]} />,
+    title: 'Tool Page',
+    path: '/tool',
   })
   .addPage({
     element: <HomePage />,

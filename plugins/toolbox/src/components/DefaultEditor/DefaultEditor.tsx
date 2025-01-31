@@ -1,5 +1,4 @@
 import React, { ReactElement } from 'react';
-import { useStyles } from '../../utils/hooks';
 import {
   ClearValueButton,
   CopyToClipboardButton,
@@ -64,7 +63,6 @@ export const DefaultEditor = (props: Props) => {
     downloadFileType,
     minRows = 20,
   } = props;
-  const { classes } = useStyles();
 
   const [fileName, setFileName] = React.useState(
     downloadFileName ?? 'download.txt',
@@ -112,7 +110,7 @@ export const DefaultEditor = (props: Props) => {
   };
 
   return (
-    <FormControl className={classes.fullWidth} onDrop={handleDrop}>
+    <FormControl style={{ width: '100%' }} onDrop={handleDrop}>
       <Grid container spacing={4} style={{ marginBottom: '5px' }}>
         {modes && modes.length > 0 && (
           <Grid item sx={{ pl: '16px', pt: '32px !important' }}>
@@ -190,12 +188,12 @@ export const DefaultEditor = (props: Props) => {
                 // eslint-disable-next-line
                 id="input"
                 multiline
-                className={classes.fullWidth}
                 value={input}
                 onChange={e => setInput(e.target.value)}
                 minRows={minRows}
                 variant="outlined"
                 sx={{
+                  width: '100%',
                   p: '8px',
                   '& label[class*="MuiFormLabel-root"]': {
                     paddingTop: '10px !important',
@@ -216,7 +214,7 @@ export const DefaultEditor = (props: Props) => {
                 id="output"
                 label={outputLabel}
                 value={output || ''}
-                className={classes.fullWidth}
+                style={{ width: '100%' }}
                 multiline
                 minRows={minRows}
                 variant="outlined"

@@ -1,5 +1,4 @@
 import React from 'react';
-import { useStyles } from '../../utils/hooks';
 import {
   ClearValueButton,
   CopyToClipboardButton,
@@ -11,7 +10,6 @@ import TextField from '@mui/material/TextField';
 import { useToolboxTranslation } from '../../hooks';
 
 export const NumberBase = () => {
-  const { classes } = useStyles();
   const [state, setState] = React.useState({
     binary: '',
     octal: '',
@@ -58,7 +56,7 @@ export const NumberBase = () => {
 
   return (
     <>
-      <FormControl className={classes.fullWidth}>
+      <FormControl style={{ width: '100%' }}>
         <Typography variant="subtitle1">
           {t('tool.number-base-convert.base2')}
           <PasteFromClipboardButton setInput={v => handleChange('binary', v)} />
@@ -66,7 +64,7 @@ export const NumberBase = () => {
           <CopyToClipboardButton output={state.binary} />
         </Typography>
         <TextField
-          className={classes.fullWidth}
+          style={{ width: '100%' }}
           id="binary"
           name="binary"
           value={state.binary}
@@ -80,7 +78,7 @@ export const NumberBase = () => {
           <CopyToClipboardButton output={state.octal} />
         </Typography>
         <TextField
-          className={classes.fullWidth}
+          style={{ width: '100%' }}
           id="octal"
           name="octal"
           value={state.octal}
@@ -96,7 +94,7 @@ export const NumberBase = () => {
           <CopyToClipboardButton output={state.decimal} />
         </Typography>
         <TextField
-          className={classes.fullWidth}
+          style={{ width: '100%' }}
           id="decimal"
           name="decimal"
           value={state.decimal}
@@ -110,7 +108,7 @@ export const NumberBase = () => {
           <CopyToClipboardButton output={state.hex} />
         </Typography>
         <TextField
-          className={classes.fullWidth}
+          style={{ width: '100%' }}
           id="hex"
           name="hex"
           value={state.hex}

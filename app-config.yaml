@@ -2,6 +2,17 @@ app:
   title: Toolbox Dev App
   baseUrl: http://localhost:3000
 
+  toolbox:
+    qrCode:
+      defaults:
+        dotType: rounded
+        dotColor: 'blue'
+        cornerSquareType: extra-rounded
+        cornerSquareColor: 'blue'
+        cornerDotType: dot
+        cornerDotColor: 'blue'
+        shape: square
+
 backend:
   baseUrl: http://localhost:7007
   listen:

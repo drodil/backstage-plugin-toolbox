@@ -1,17 +1,13 @@
-import React, { Suspense } from 'react';
-import { ToolsPageProps } from './ToolsPage';
+import React from 'react';
+import { ToolsContainerProps } from './ToolsContainer';
 import { defaultTools } from './tools';
 import { useParams } from 'react-router-dom';
-import { ContentHeader } from '@backstage/core-components';
-import { useStyles } from '../../utils/hooks';
-import Box from '@mui/material/Box';
-import CircularProgress from '@mui/material/CircularProgress';
 import { useToolboxTranslation } from '../../hooks';
+import { ToolContainer } from './ToolContainer';
 
-export const ToolPage = (props: ToolsPageProps) => {
+export const ToolPage = (props: ToolsContainerProps) => {
   const { extraTools } = props;
   const params = useParams();
-  const { classes } = useStyles();
   const { t } = useToolboxTranslation();
 
   const allTools = [...(extraTools ?? []), ...defaultTools];
@@ -33,25 +29,12 @@ export const ToolPage = (props: ToolsPageProps) => {
   });
 
   return (
-    <div id="toolContainer" className={classes.toolContainer}>
-      <Suspense
-        fallback={
-          <Box
-            display="flex"
-            width="100%"
-            height="50%"
-            alignItems="center"
-            justifyContent="center"
-          >
-            <CircularProgress />
-          </Box>
-        }
-      >
-        <ContentHeader title={title} description={description}>
-          {tool.headerButtons}
-        </ContentHeader>
-        {tool.component}
-      </Suspense>
-    </div>
+    <ToolContainer
+      tool={{
+        ...tool,
+        name: title,
+        description,
+      }}
+    />
   );
 };

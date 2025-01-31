@@ -3,7 +3,6 @@ import { catalogApiRef } from '@backstage/plugin-catalog-react';
 import React, { useEffect } from 'react';
 import { Entity } from '@backstage/catalog-model';
 import { CopyToClipboardButton } from '../Buttons';
-import { useStyles } from '../../utils/hooks';
 import YAML from 'yaml';
 import { FileDownloadButton } from '../Buttons/FileDownloadButton';
 import FormControl from '@mui/material/FormControl';
@@ -15,7 +14,6 @@ import { useToolboxTranslation } from '../../hooks';
 
 export const EntityDescriber = () => {
   const catalogApi = useApi(catalogApiRef);
-  const { classes } = useStyles();
 
   const [entity, setEntity] = React.useState<Entity | null>(null);
   const [output, setOutput] = React.useState('');
@@ -50,7 +48,7 @@ export const EntityDescriber = () => {
   };
 
   return (
-    <FormControl className={classes.fullWidth}>
+    <FormControl style={{ width: '100%' }}>
       <Grid container spacing={4} style={{ marginBottom: '5px' }}>
         <Grid item>
           <ButtonGroup size="small">
@@ -65,10 +63,10 @@ export const EntityDescriber = () => {
           </ButtonGroup>
         </Grid>
       </Grid>
-      <Grid container className={classes.fullWidth}>
+      <Grid container style={{ width: '100%' }}>
         <Grid item xs={4} lg={3}>
           <Autocomplete
-            className={classes.fullWidth}
+            style={{ width: '100%' }}
             options={availableEntities ?? []}
             getOptionLabel={option => getEntityTitle(option)}
             groupBy={option => option.kind}
@@ -88,7 +86,7 @@ export const EntityDescriber = () => {
             id="output"
             label={t('tool.entity-describer.outputLabel')}
             value={output || ''}
-            className={classes.fullWidth}
+            style={{ width: '100%' }}
             multiline
             minRows={20}
             maxRows={50}

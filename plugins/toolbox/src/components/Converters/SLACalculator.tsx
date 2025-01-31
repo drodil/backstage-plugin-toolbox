@@ -1,4 +1,3 @@
-import { useStyles } from '../../utils/hooks';
 import React from 'react';
 import {
   ClearValueButton,
@@ -15,7 +14,6 @@ import Alert from '@mui/material/Alert';
 import { useToolboxTranslation } from '../../hooks';
 
 export const SLACalculator = () => {
-  const { classes } = useStyles();
   const [input, setInput] = React.useState('');
   const [output, setOutput] = React.useState({
     daily: '',
@@ -90,8 +88,7 @@ export const SLACalculator = () => {
       <>
         <TextField
           label={label}
-          style={{ marginTop: '1rem' }}
-          className={classes.fullWidth}
+          style={{ marginTop: '1rem', width: '100%' }}
           disabled
           value={value ?? ''}
         />
@@ -102,7 +99,7 @@ export const SLACalculator = () => {
 
   return (
     <>
-      <FormControl className={classes.fullWidth}>
+      <FormControl style={{ width: '100%' }}>
         <Grid container>
           <Grid item xs={12} lg={8}>
             <Typography variant="subtitle1">
@@ -116,7 +113,7 @@ export const SLACalculator = () => {
               <SampleButton setInput={handleChange} sample="99.9" />
             </Typography>
             <TextField
-              className={classes.fullWidth}
+              style={{ width: '100%' }}
               id="input"
               label={t('tool.sla-calculator.inputLabel')}
               name="input"

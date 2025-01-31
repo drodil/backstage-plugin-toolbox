@@ -1,4 +1,3 @@
-import { useStyles } from '../../utils/hooks';
 import React from 'react';
 import * as colorConvert from 'color-convert';
 import {
@@ -26,7 +25,6 @@ import Box from '@mui/material/Box';
 import { useToolboxTranslation } from '../../hooks';
 
 export const ColorConverter = () => {
-  const { classes } = useStyles();
   const [input, setInput] = React.useState('');
   const [hex, setHex] = React.useState<HEX>('');
   const [rgb, setRgb] = React.useState<RGB>([0, 0, 0]);
@@ -294,8 +292,7 @@ export const ColorConverter = () => {
       <>
         <TextField
           label={label}
-          style={{ marginTop: '1rem' }}
-          className={classes.fullWidth}
+          style={{ marginTop: '1rem', width: '100%' }}
           disabled
           value={value ?? ''}
         />
@@ -306,7 +303,7 @@ export const ColorConverter = () => {
 
   return (
     <>
-      <FormControl className={classes.fullWidth}>
+      <FormControl style={{ width: '100%' }}>
         <Grid container>
           <Grid item xs={12} lg={6}>
             <Typography variant="subtitle1">
@@ -321,7 +318,7 @@ export const ColorConverter = () => {
               name="input"
               label={t('tool.color-convert.inputLabel')}
               value={getInputStr()}
-              className={classes.fullWidth}
+              style={{ width: '100%' }}
               onChange={e => handleChange(e.target.value)}
               variant="outlined"
             />
@@ -340,7 +337,7 @@ export const ColorConverter = () => {
             <OutputField label="lch" value={parseLch(lch)} />
           </Grid>
           <Grid item lg={6} md={4} xs={12}>
-            <Box bgcolor={hex} style={{ height: '50vh' }} />
+            <Box bgcolor={hex} style={{ margin: '1rem', height: '50vh' }} />
           </Grid>
         </Grid>
       </FormControl>

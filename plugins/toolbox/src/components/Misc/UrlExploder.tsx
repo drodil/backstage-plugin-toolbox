@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { useStyles } from '../../utils/hooks';
 import {
   ClearValueButton,
   CopyToClipboardButton,
@@ -23,7 +22,6 @@ const UrlExploder = () => {
   const [hash, setHash] = useState('');
   const [query, setQuery] = useState('');
   const [origin, setOrigin] = useState('');
-  const { classes } = useStyles();
   const { t } = useToolboxTranslation();
 
   const onInput = (value: string) => {
@@ -97,41 +95,36 @@ const UrlExploder = () => {
         <TextField
           label="URL"
           variant="outlined"
-          className={classes.fullWidth}
           value={rawInput}
           onChange={e => onInput(e.target.value)}
-          style={{ marginTop: '10px', marginBottom: '10px' }}
+          style={{ marginTop: '10px', marginBottom: '10px', width: '100%' }}
         />
       </Grid>
       <Grid item xs={6}>
         <TextField
           label={t('tool.url-exploder.protocolLabel')}
-          className={classes.fullWidth}
           value={protocol}
-          style={{ marginBottom: '10px' }}
+          style={{ marginBottom: '10px', width: '100%' }}
           onChange={e => setProtocol(e.target.value)}
         />
         <TextField
           label={t('tool.url-exploder.pathLabel')}
-          className={classes.fullWidth}
           value={path}
-          style={{ marginBottom: '10px' }}
+          style={{ marginBottom: '10px', width: '100%' }}
           onChange={e => setPath(e.target.value)}
         />
         <TextField
           label={t('tool.url-exploder.usernameLabel')}
-          className={classes.fullWidth}
           value={username}
-          style={{ marginBottom: '10px' }}
+          style={{ marginBottom: '10px', width: '100%' }}
           onChange={e => setUsername(e.target.value)}
         />
         <TextField
           label={t('tool.url-exploder.queryLabel')}
-          className={classes.fullWidth}
           value={query}
           multiline
           minRows={10}
-          style={{ marginBottom: '10px' }}
+          style={{ marginBottom: '10px', width: '100%' }}
           onChange={e => setQuery(e.target.value)}
           helperText={t('tool.url-exploder.queryHelperText')}
         />
@@ -140,41 +133,36 @@ const UrlExploder = () => {
       <Grid item xs={6}>
         <TextField
           label={t('tool.url-exploder.hostLabel')}
-          className={classes.fullWidth}
           value={host}
-          style={{ marginBottom: '10px' }}
+          style={{ marginBottom: '10px', width: '100%' }}
           onChange={e => setHost(e.target.value)}
         />
         <TextField
           label={t('tool.url-exploder.portLabel')}
-          className={classes.fullWidth}
           type="number"
           value={port}
-          style={{ marginBottom: '10px' }}
+          style={{ marginBottom: '10px', width: '100%' }}
           onChange={e => setPort(e.target.value)}
         />
         <TextField
           label={t('tool.url-exploder.passwordLabel')}
-          className={classes.fullWidth}
           value={password}
-          style={{ marginBottom: '10px' }}
+          style={{ marginBottom: '10px', width: '100%' }}
           onChange={e => setPassword(e.target.value)}
         />
         <TextField
           label={t('tool.url-exploder.hashLabel')}
-          className={classes.fullWidth}
           value={hash}
-          style={{ marginBottom: '10px' }}
+          style={{ marginBottom: '10px', width: '100%' }}
           onChange={e => setHash(e.target.value)}
         />
         <TextField
           label={t('tool.url-exploder.originLabel')}
-          className={classes.fullWidth}
           value={origin}
           InputProps={{
             readOnly: true,
           }}
-          style={{ marginBottom: '10px' }}
+          style={{ marginBottom: '10px', width: '100%' }}
         />
       </Grid>
     </Grid>

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Tool } from '@drodil/backstage-plugin-toolbox-react';
-import { makeStyles } from 'tss-react/mui';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
@@ -12,47 +11,17 @@ export type WelcomePageProps = {
   tools: Tool[];
 };
 
-const useStyles = makeStyles()(theme => {
-  return {
-    root: {
-      minWidth: 275,
-    },
-    title: {
-      fontSize: '14px !important',
-    },
-    card: {
-      cursor: 'pointer',
-      borderWidth: '1px',
-      borderStyle: 'solid',
-      borderColor: 'transparent',
-      height: '100%',
-      '&:hover': {
-        borderColor: theme.palette.primary.light,
-      },
-    },
-    textBlock: {
-      marginTop: '1rem !important',
-    },
-  };
-});
-
 export const WelcomePage = (props: WelcomePageProps) => {
   const { tools } = props;
-  const { classes } = useStyles();
   const { t } = useToolboxTranslation();
 
   return (
     <Box>
-      <Typography className={classes.textBlock}>
-        {t('welcomePage.introText')}
-      </Typography>
-      <Typography className={classes.textBlock}>
-        {t('welcomePage.secondText')}
-      </Typography>
+      <Typography mt={1}>{t('welcomePage.introText')}</Typography>
+      <Typography mt={1}>{t('welcomePage.secondText')}</Typography>
       <Grid
         container
-        className={classes.textBlock}
-        sx={{ p: 0, mx: '-8px', mb: '-8px' }}
+        sx={{ p: 0, mx: '-8px', mb: '-8px', mt: 1 }}
         alignContent="center"
       >
         {tools.map(tool => {
@@ -65,14 +34,19 @@ export const WelcomePage = (props: WelcomePageProps) => {
             >
               <Card
                 onClick={() => (window.location.hash = tool.id)}
-                className={classes.card}
+                sx={theme => ({
+                  cursor: 'pointer',
+                  borderWidth: '1px',
+                  borderStyle: 'solid',
+                  borderColor: 'transparent',
+                  height: '100%',
+                  '&:hover': {
+                    borderColor: theme.palette.primary.light,
+                  },
+                })}
               >
                 <CardContent sx={{ p: '16px', pb: '16px !important' }}>
-                  <Typography
-                    className={classes.title}
-                    color="textSecondary"
-                    gutterBottom
-                  >
+                  <Typography color="textSecondary" gutterBottom>
                     {t(
                       `tool.category.${(
                         tool.category ?? 'miscellaneous'
