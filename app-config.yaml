@@ -12,6 +12,12 @@ app:
         cornerDotType: dot
         cornerDotColor: 'blue'
         shape: square
+    csr:
+      defaults:
+        country: 'AU'
+        state: 'Victoria'
+        locality: 'Melbourne'
+        organization: 'Example Limited'
 
 backend:
   baseUrl: http://localhost:7007

@@ -48,6 +48,38 @@ export interface Config {
           shape?: string;
         };
       };
-    };
+      /**
+       * CSR Generator settings
+       * @visibility frontend
+       */
+      csr?: {
+        /**
+         * all the defaults for the csr generator
+         * @deepVisibility frontend
+         */
+        defaults?: {
+          /**
+           * country
+           * @visibility frontend
+           */
+          country?: string;
+          /**
+           * state
+           * @visibility frontend
+           */
+          state?: string;
+          /**
+           * locality
+           * @visibility frontend
+           */
+          locality?: string;
+          /**
+           * organization
+           * @visibility frontend
+           */
+          organization?: string;
+        };
+      };
+    },
   };
 }
