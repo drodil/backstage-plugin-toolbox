@@ -41,12 +41,13 @@ export const CSRGenerator = () => {
   const [algorithmName, setAlgorithmName] = React.useState('rsa-4096-sha2');
   const alertApi = useApi(alertApiRef);
   const config = useApi(configApiRef);
-  const defaultSubject = config.getOptionalConfig('app.toolbox.csr.defaults');
   const [subjectValues, setSubjectValues] = React.useState({
-    country: defaultSubject?.getString('country') || '',
-    state: defaultSubject?.getOptionalString('state') || '',
-    locality: defaultSubject?.getOptionalString('locality') || '',
-    organization: defaultSubject?.getOptionalString('organization') || '',
+    country: config.getOptionalString('app.toolbox.csr.defaults.country') || '',
+    state: config.getOptionalString('app.toolbox.csr.defaults.state') || '',
+    locality:
+      config.getOptionalString('app.toolbox.csr.defaults.locality') || '',
+    organization:
+      config.getOptionalString('app.toolbox.csr.defaults.organization') || '',
   });
 
   useEffect(() => {
@@ -269,9 +270,7 @@ async function generateNewKeyPair(
     };
     return crypto.generateKey(keyspec, true, ['sign', 'verify']);
   }
-  return new Promise((_resolve, reject) => {
-    reject(Error(`Unknown algorithm: ${algorithmName}`));
-  });
+  throw new Error(`Unknown algorithm: ${algorithmName}`);
 }
 
 function arrayBufferToBase64(buffer: ArrayBuffer): string {
@@ -286,19 +285,14 @@ function arrayBufferToBase64(buffer: ArrayBuffer): string {
 
 async function getPrivateKeyPEM(kp: CryptoKeyPair): Promise<string> {
   if (typeof kp === 'undefined') {
-    return new Promise((_resolve, reject) => {
-      reject(Error('No keypair generated'));
-    });
+    throw new Error('No keypair generated');
   }
-  return new Promise(resolve => {
-    const crypto = getCrypto(true);
-    crypto.exportKey('pkcs8', kp.privateKey).then(exported => {
-      const pem = `-----BEGIN \x50RIVATE \x4BEY-----\n${arrayBufferToBase64(
-        exported,
-      ).replace(/(.{64})/g, '$1\n')}\n-----END \x50RIVATE \x4BEY-----`;
-      resolve(pem);
-    });
-  });
+  const crypto = getCrypto(true);
+  const exported = await crypto.exportKey('pkcs8', kp.privateKey);
+  const pem = `-----BEGIN \x50RIVATE \x4BEY-----\n${arrayBufferToBase64(
+    exported,
+  ).replace(/(.{64})/g, '$1\n')}\n-----END \x50RIVATE \x4BEY-----`;
+  return pem;
 }
 
 async function createCSR(
@@ -312,97 +306,94 @@ async function createCSR(
     organization: string;
   },
 ): Promise<string> {
-  return new Promise((resolve, reject) => {
-    if (typeof kp === 'undefined') {
-      reject(Error('No keypair available'));
-    }
-    if (fqdns.length === 0 || fqdns[0] === '') {
-      reject(Error('Provide some domain names first'));
-    }
+  if (typeof kp === 'undefined') {
+    throw new Error('No keypair available');
+  }
+  if (fqdns.length === 0 || fqdns[0] === '') {
+    throw new Error('Provide some domain names first');
+  }
 
-    const pkcs10 = new CertificationRequest();
-    pkcs10.version = 0;
+  const pkcs10 = new CertificationRequest();
+  pkcs10.version = 0;
 
-    const subjectAttributes = [
-      new AttributeTypeAndValue({
-        type: '2.5.4.6',
-        value: new asn1js.PrintableString({ value: subjectValues.country }),
-      }),
-      new AttributeTypeAndValue({
-        type: '2.5.4.8',
-        value: new asn1js.Utf8String({ value: subjectValues.state }),
-      }),
-      new AttributeTypeAndValue({
-        type: '2.5.4.7',
-        value: new asn1js.Utf8String({ value: subjectValues.locality }),
-      }),
-      new AttributeTypeAndValue({
-        type: '2.5.4.10',
-        value: new asn1js.Utf8String({ value: subjectValues.organization }),
-      }),
-      new AttributeTypeAndValue({
-        type: '2.5.4.3',
-        value: new asn1js.Utf8String({ value: fqdns[0] }),
-      }),
-    ];
+  const subjectAttributes = [
+    new AttributeTypeAndValue({
+      type: '2.5.4.6',
+      value: new asn1js.PrintableString({ value: subjectValues.country }),
+    }),
+    new AttributeTypeAndValue({
+      type: '2.5.4.8',
+      value: new asn1js.Utf8String({ value: subjectValues.state }),
+    }),
+    new AttributeTypeAndValue({
+      type: '2.5.4.7',
+      value: new asn1js.Utf8String({ value: subjectValues.locality }),
+    }),
+    new AttributeTypeAndValue({
+      type: '2.5.4.10',
+      value: new asn1js.Utf8String({ value: subjectValues.organization }),
+    }),
+    new AttributeTypeAndValue({
+      type: '2.5.4.3',
+      value: new asn1js.Utf8String({ value: fqdns[0] }),
+    }),
+  ];
 
-    const subject = new RelativeDistinguishedNames({
-      typesAndValues: subjectAttributes,
-    });
-
-    const subjectSchema = new asn1js.Sequence({
-      value: subjectAttributes.map(
-        attr => new asn1js.Set({ value: [attr.toSchema()] }),
-      ),
-    });
-    subject.toSchema = function toSchema() {
-      return subjectSchema;
-    };
-    pkcs10.subject = subject;
-
-    const altNames = new GeneralNames({
-      names: fqdns.map(x => new GeneralName({ type: 2, value: x })),
-    });
-
-    pkcs10.attributes = [
-      new Attribute({
-        type: '1.2.840.113549.1.9.14', // OID for Extension Request
-        values: [
-          new Extensions({
-            extensions: [
-              new Extension({
-                extnID: '2.5.29.17', // OID for Subject Alternative Name, allows multiple domain names or IPs
-                critical: false,
-                extnValue: altNames.toSchema().toBER(false),
-              }),
-            ],
-          }).toSchema(),
-        ],
-      }),
-    ];
-
-    if (typeof kp !== 'undefined') {
-      // Import the public key into the PKCS#10 structure
-      pkcs10.subjectPublicKeyInfo.importKey(kp.publicKey).then(() => {
-        const ha = hashAlgName || 'SHA-256';
-        // Sign the PKCS#10 CSR with the private key
-        pkcs10.sign(kp.privateKey, ha).then(() => {
-          const ber = pkcs10.toSchema().toBER(false);
-          const pem =
-            `-----BEGIN CERTIFICATE REQUEST-----\n${arrayBufferToBase64(
-              ber,
-            ).replace(
-              /(.{64})/g,
-              '$1\n',
-            )}\n-----END CERTIFICATE REQUEST-----`.trim();
-          resolve(pem);
-        });
-      });
-    }
+  const subject = new RelativeDistinguishedNames({
+    typesAndValues: subjectAttributes,
   });
+
+  const subjectSchema = new asn1js.Sequence({
+    value: subjectAttributes.map(
+      attr => new asn1js.Set({ value: [attr.toSchema()] }),
+    ),
+  });
+  subject.toSchema = function toSchema() {
+    return subjectSchema;
+  };
+  pkcs10.subject = subject;
+
+  const altNames = new GeneralNames({
+    names: fqdns.map(x => new GeneralName({ type: 2, value: x })),
+  });
+
+  pkcs10.attributes = [
+    new Attribute({
+      type: '1.2.840.113549.1.9.14', // OID for Extension Request
+      values: [
+        new Extensions({
+          extensions: [
+            new Extension({
+              extnID: '2.5.29.17', // OID for Subject Alternative Name, allows multiple domain names or IPs
+              critical: false,
+              extnValue: altNames.toSchema().toBER(false),
+            }),
+          ],
+        }).toSchema(),
+      ],
+    }),
+  ];
+
+  if (typeof kp !== 'undefined') {
+    try {
+      // Import the public key into the PKCS#10 structure
+      await pkcs10.subjectPublicKeyInfo.importKey(kp.publicKey);
+      const ha = hashAlgName || 'SHA-256';
+      // Sign the PKCS#10 CSR with the private key
+      await pkcs10.sign(kp.privateKey, ha);
+      const ber = pkcs10.toSchema().toBER(false);
+      const pem = `-----BEGIN CERTIFICATE REQUEST-----\n${arrayBufferToBase64(
+        ber,
+      ).replace(/(.{64})/g, '$1\n')}\n-----END CERTIFICATE REQUEST-----`.trim();
+      return pem;
+    } catch (error) {
+      throw new Error(`Failed to create CSR: ${error.message}`);
+    }
+  }
+  throw new Error('No key pair available to create CSR');
 }
 
-async function decodeCSR(csrPEM: string): Promise<string> {
+function decodeCSR(csrPEM: string): Promise<string> {
   try {
     const base64Csr = csrPEM.replace(
       /-----BEGIN CERTIFICATE REQUEST-----|-----END CERTIFICATE REQUEST-----|\n/g,
@@ -502,9 +493,11 @@ async function decodeCSR(csrPEM: string): Promise<string> {
         signatureAlgorithm = `Unknown${csr.signatureAlgorithm.algorithmId}`;
         break;
     }
-    return `Subject:\n${subjectInfo}\n\nPublic Key:\nType: ${publicKeyType} \nSize: ${publicKeySize} bits\n \nSubject Alternative Names:\n${sanInfo}\n\nSignature Algorithm:\n${signatureAlgorithm}`;
+    return Promise.resolve(
+      `Subject:\n${subjectInfo}\n\nPublic Key:\nType: ${publicKeyType} \nSize: ${publicKeySize} bits\n \nSubject Alternative Names:\n${sanInfo}\n\nSignature Algorithm:\n${signatureAlgorithm}`,
+    );
   } catch (error) {
-    return 'Invalid CSR or failed to parse.';
+    return Promise.reject('Invalid CSR or failed to parse.');
   }
 }
 
