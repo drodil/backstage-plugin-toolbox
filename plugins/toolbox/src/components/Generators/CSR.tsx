@@ -393,7 +393,7 @@ async function createCSR(
   throw new Error('No key pair available to create CSR');
 }
 
-function decodeCSR(csrPEM: string): Promise<string> {
+function decodeCSR(csrPEM: string): string {
   try {
     const base64Csr = csrPEM.replace(
       /-----BEGIN CERTIFICATE REQUEST-----|-----END CERTIFICATE REQUEST-----|\n/g,
@@ -493,11 +493,9 @@ function decodeCSR(csrPEM: string): Promise<string> {
         signatureAlgorithm = `Unknown${csr.signatureAlgorithm.algorithmId}`;
         break;
     }
-    return Promise.resolve(
-      `Subject:\n${subjectInfo}\n\nPublic Key:\nType: ${publicKeyType} \nSize: ${publicKeySize} bits\n \nSubject Alternative Names:\n${sanInfo}\n\nSignature Algorithm:\n${signatureAlgorithm}`,
-    );
+    return `Subject:\n${subjectInfo}\n\nPublic Key:\nType: ${publicKeyType} \nSize: ${publicKeySize} bits\n \nSubject Alternative Names:\n${sanInfo}\n\nSignature Algorithm:\n${signatureAlgorithm}`;
   } catch (error) {
-    return Promise.reject('Invalid CSR or failed to parse.');
+    throw new Error('Invalid CSR or failed to parse.');
   }
 }
 
@@ -505,9 +503,12 @@ function handleDecodeCSR(
   csrPEM: string,
   setDecodedCSR: (value: string) => void,
 ) {
-  decodeCSR(csrPEM).then(decoded => {
+  try {
+    const decoded = decodeCSR(csrPEM);
     setDecodedCSR(decoded);
-  });
+  } catch (error) {
+    throw new Error('Failed to decode CSR.');
+  }
 }
 
 export default CSRGenerator;
