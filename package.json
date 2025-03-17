@@ -68,9 +68,5 @@
       "yarn fix"
     ]
   },
-  "packageManager": "yarn@4.5.0",
-  "dependencies": {
-    "asn1js": "^3.0.5",
-    "pkijs": "^3.2.4"
-  }
+  "packageManager": "yarn@4.5.0"
 }
