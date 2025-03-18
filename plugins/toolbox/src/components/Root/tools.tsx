@@ -35,6 +35,7 @@ const Hash = lazy(() => import('../Generators/Hash'));
 const QRCode = lazy(() => import('../Generators/QRCode'));
 const BarCode = lazy(() => import('../Generators/BarCode'));
 const Interface = lazy(() => import('../Generators/Interface'));
+const CSR = lazy(() => import('../Generators/CSR'));
 
 const JSBeautify = lazy(() => import('../Formatters/JSBeautify'));
 const HTMLBeautify = lazy(() => import('../Formatters/HTMLBeautify'));
@@ -210,6 +211,13 @@ export const defaultTools: Tool[] = [
     component: <EntityDescriber />,
     category: 'Backstage',
     description: 'Describes existing catalog entity in YAML',
+  },
+  {
+    id: 'csr-generate',
+    name: 'CSR',
+    component: <CSR />,
+    category: 'Generate',
+    description: 'Generate CSR',
   },
   {
     id: 'qr-code-generate',
