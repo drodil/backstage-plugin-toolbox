@@ -82,8 +82,8 @@
     "yaml": "^2.3.2"
   },
   "peerDependencies": {
-    "@backstage/catalog-client": "^1.7.1",
-    "@backstage/catalog-model": "^1.7.0",
+    "@backstage/catalog-client": "^1.9.1",
+    "@backstage/catalog-model": "^1.7.3",
     "react": "^16.13.1 || ^17.0.0 || ^18.0.0",
     "react-dom": "^16.13.1 || ^17.0.0 || ^18.0.0",
     "react-router-dom": "6.0.0-beta.0 || ^6.3.0"
