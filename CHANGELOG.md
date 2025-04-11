@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.26.0](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.25.2...v1.26.0) (2025-03-19)
+
+
+### Features
+
+* **csr-generator:** add CSR generator tool with layout and basic functionality ([ddab2a6](https://github.com/drodil/backstage-plugin-toolbox/commit/ddab2a6d6edefc47a179542dac5259f007581fb9))
+* separate ToolsContainer and ToolContainer ([205a7ca](https://github.com/drodil/backstage-plugin-toolbox/commit/205a7caa9740d4ceec7e2e5e7fbb334d2ab40594))
+
+
+### Bug Fixes
+
+* code changed based on feedback ([5622219](https://github.com/drodil/backstage-plugin-toolbox/commit/56222191f800ef2a1104b900561195b0b4b625ed))
+* no prmises ([f730708](https://github.com/drodil/backstage-plugin-toolbox/commit/f7307080d3e3526552cdbc5a70a392c09920e4b9))
+
 ### [1.25.2](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.25.1...v1.25.2) (2024-11-19)
 
 
