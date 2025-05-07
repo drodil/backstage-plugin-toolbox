@@ -314,6 +314,19 @@ export const toolboxTranslationRef = createTranslationRef({
         alertErrorTitle: 'Error!',
         alertInvalidIBAN: 'Invalid IBAN provided',
       },
+      regex: {
+        name: 'Regex validator',
+        description: 'Validates Regex pattern',
+        patternDoesntMatch: "pattern doesn't match the input text",
+        patternNoMatchOrEmpty: 'no match or empty!',
+        patternMatch: '{{myNum}}. match={{myRes}} on index={{myIdx}}\n',
+        exceptionError:
+          "pattern validation got exception\n\nmsg='{{errorMsg}}'",
+        inputField: 'Input',
+        outputField: 'Output',
+        patternField: 'Regex-Pattern',
+        sampleField: 'this is a sample regex pattern to test your patterns',
+      },
       'url-exploder': {
         name: 'URL exploder',
         description: 'Explode and modify parts of URL easily',
@@ -369,6 +382,7 @@ export const toolboxTranslationRef = createTranslationRef({
       },
       defaultEditor: {
         inputLabel: 'Input',
+        patternLabel: 'Pattern',
         outputLabel: 'Output',
         mode: {
           encode: 'Encode',
