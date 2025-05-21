@@ -1,12 +1,12 @@
-import React, { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { DefaultEditor } from '../DefaultEditor';
 import YAML from 'yaml';
 import { JsonSpaceSelector } from '../DefaultEditor/JsonSpaceSelector';
 
 export const YamlToJson = () => {
-  const [input, setInput] = React.useState('');
-  const [output, setOutput] = React.useState('');
-  const [spaces, setSpaces] = React.useState(4);
+  const [input, setInput] = useState('');
+  const [output, setOutput] = useState('');
+  const [spaces, setSpaces] = useState(4);
   const sample =
     '- type: car\n' +
     '  name: pedro\n' +
@@ -44,7 +44,11 @@ export const YamlToJson = () => {
       outputLabel="JSON"
       acceptFileTypes=".yaml,.yml"
       additionalTools={[
-        <JsonSpaceSelector spaces={spaces} onChange={setSpaces} />,
+        <JsonSpaceSelector
+          key="spaceSelector"
+          spaces={spaces}
+          onChange={setSpaces}
+        />,
       ]}
       allowFileDownload
       downloadFileName="download.json"

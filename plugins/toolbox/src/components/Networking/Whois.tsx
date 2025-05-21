@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useApi } from '@backstage/core-plugin-api';
 import { toolboxApiRef } from '../../api';
 import { Progress } from '@backstage/core-components';

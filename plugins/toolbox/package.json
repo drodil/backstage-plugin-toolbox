@@ -69,7 +69,7 @@
     "monaco-editor": "^0.44.0",
     "pkijs": "^3.2.4",
     "qr-code-styling": "^1.6.2",
-    "quicktype-core": "^23.0.168",
+    "quicktype-core": "23.0.168",
     "react-barcode": "^1.4.6",
     "react-qr-code": "^2.0.12",
     "react-use": "^17.2.4",
@@ -84,8 +84,8 @@
   "peerDependencies": {
     "@backstage/catalog-client": "^1.10.0",
     "@backstage/catalog-model": "^1.7.4",
-    "react": "^16.13.1 || ^17.0.0 || ^18.0.0",
-    "react-dom": "^16.13.1 || ^17.0.0 || ^18.0.0",
+    "react": "^18.0.0 || ^19.0.0",
+    "react-dom": "^18.0.0 || ^19.0.0",
     "react-router-dom": "6.0.0-beta.0 || ^6.3.0"
   },
   "devDependencies": {

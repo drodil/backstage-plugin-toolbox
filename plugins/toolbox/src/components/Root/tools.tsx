@@ -1,4 +1,4 @@
-import React, { lazy } from 'react';
+import { lazy } from 'react';
 import { Tool } from '@drodil/backstage-plugin-toolbox-react';
 import DescriptionIcon from '@mui/icons-material/Description';
 import Button from '@mui/material/Button';

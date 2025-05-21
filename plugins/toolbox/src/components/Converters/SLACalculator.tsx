@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState } from 'react';
 import {
   ClearValueButton,
   CopyToClipboardButton,
@@ -14,15 +14,15 @@ import Alert from '@mui/material/Alert';
 import { useToolboxTranslation } from '../../hooks';
 
 export const SLACalculator = () => {
-  const [input, setInput] = React.useState('');
-  const [output, setOutput] = React.useState({
+  const [input, setInput] = useState('');
+  const [output, setOutput] = useState({
     daily: '',
     weekly: '',
     monthly: '',
     quarterly: '',
     yearly: '',
   });
-  const [error, setError] = React.useState({
+  const [error, setError] = useState({
     show: false,
     msg: '',
   });
@@ -98,59 +98,57 @@ export const SLACalculator = () => {
   };
 
   return (
-    <>
-      <FormControl style={{ width: '100%' }}>
-        <Grid container>
-          <Grid item xs={12} lg={8}>
-            <Typography variant="subtitle1">
-              <PasteFromClipboardButton setInput={v => handleChange(v)} />
-              <ClearValueButton
-                setValue={() => {
-                  handleChange('');
-                  setError({ show: false, msg: '' });
-                }}
-              />
-              <SampleButton setInput={handleChange} sample="99.9" />
-            </Typography>
-            <TextField
-              style={{ width: '100%' }}
-              id="input"
-              label={t('tool.sla-calculator.inputLabel')}
-              name="input"
-              value={input}
-              onChange={e => handleChange(e.target.value)}
-              variant="outlined"
+    <FormControl style={{ width: '100%' }}>
+      <Grid container>
+        <Grid item xs={12} lg={8}>
+          <Typography variant="subtitle1">
+            <PasteFromClipboardButton setInput={v => handleChange(v)} />
+            <ClearValueButton
+              setValue={() => {
+                handleChange('');
+                setError({ show: false, msg: '' });
+              }}
             />
-            {error.show ? <Alert severity="error">{error.msg}</Alert> : null}
-          </Grid>
+            <SampleButton setInput={handleChange} sample="99.9" />
+          </Typography>
+          <TextField
+            style={{ width: '100%' }}
+            id="input"
+            label={t('tool.sla-calculator.inputLabel')}
+            name="input"
+            value={input}
+            onChange={e => handleChange(e.target.value)}
+            variant="outlined"
+          />
+          {error.show ? <Alert severity="error">{error.msg}</Alert> : null}
         </Grid>
-        <Divider style={{ marginTop: '1rem', marginBottom: '1rem' }} />
-        <Grid container>
-          <Grid item lg={5} md={8} xs={12}>
-            <OutputField
-              label={t('tool.sla-calculator.dailyLabel')}
-              value={output.daily}
-            />
-            <OutputField
-              label={t('tool.sla-calculator.weeklyLabel')}
-              value={output.weekly}
-            />
-            <OutputField
-              label={t('tool.sla-calculator.monthlyLabel')}
-              value={output.monthly}
-            />
-            <OutputField
-              label={t('tool.sla-calculator.quarterlyLabel')}
-              value={output.quarterly}
-            />
-            <OutputField
-              label={t('tool.sla-calculator.yearlyLabel')}
-              value={output.yearly}
-            />
-          </Grid>
+      </Grid>
+      <Divider style={{ marginTop: '1rem', marginBottom: '1rem' }} />
+      <Grid container>
+        <Grid item lg={5} md={8} xs={12}>
+          <OutputField
+            label={t('tool.sla-calculator.dailyLabel')}
+            value={output.daily}
+          />
+          <OutputField
+            label={t('tool.sla-calculator.weeklyLabel')}
+            value={output.weekly}
+          />
+          <OutputField
+            label={t('tool.sla-calculator.monthlyLabel')}
+            value={output.monthly}
+          />
+          <OutputField
+            label={t('tool.sla-calculator.quarterlyLabel')}
+            value={output.quarterly}
+          />
+          <OutputField
+            label={t('tool.sla-calculator.yearlyLabel')}
+            value={output.yearly}
+          />
         </Grid>
-      </FormControl>
-    </>
+      </Grid>
+    </FormControl>
   );
 };
 

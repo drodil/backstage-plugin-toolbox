@@ -1,5 +1,6 @@
 import type { ChangeEvent } from 'react';
-import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { useCallback, useMemo, useRef, useState } from 'react';
+import * as React from 'react';
 
 import { faker } from '@faker-js/faker';
 import type {

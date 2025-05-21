@@ -4,7 +4,7 @@ import {
   quicktype,
 } from 'quicktype-core';
 
-import React, { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { DefaultEditor } from '../DefaultEditor';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
@@ -36,9 +36,9 @@ const formatOptions = [
 type FormatOption = (typeof formatOptions)[number];
 
 export const Interface = () => {
-  const [input, setInput] = React.useState('');
-  const [output, setOutput] = React.useState('');
-  const [format, setFormat] = React.useState<FormatOption>('TypeScript');
+  const [input, setInput] = useState('');
+  const [output, setOutput] = useState('');
+  const [format, setFormat] = useState<FormatOption>('TypeScript');
 
   const typeSelect = (
     <Select
@@ -48,7 +48,9 @@ export const Interface = () => {
       variant="standard"
     >
       {formatOptions.map(opt => (
-        <MenuItem value={opt}>{opt}</MenuItem>
+        <MenuItem key={opt} value={opt}>
+          {opt}
+        </MenuItem>
       ))}
     </Select>
   );

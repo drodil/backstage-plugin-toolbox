@@ -1,4 +1,3 @@
-import React from 'react';
 import Tooltip from '@mui/material/Tooltip';
 import Button from '@mui/material/Button';
 import Clear from '@mui/icons-material/Clear';
@@ -14,11 +13,7 @@ export const ClearValueButton = (props: Props) => {
   return (
     <Tooltip
       arrow
-      title={
-        props.tooltip
-          ? props.tooltip
-          : t('components.clearValueButton.tooltipTitle')
-      }
+      title={props.tooltip ?? t('components.clearValueButton.tooltipTitle')}
     >
       <Button
         size="small"

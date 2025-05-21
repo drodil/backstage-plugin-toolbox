@@ -1,6 +1,6 @@
 import { useApi } from '@backstage/core-plugin-api';
 import { catalogApiRef } from '@backstage/plugin-catalog-react';
-import React, { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Entity } from '@backstage/catalog-model';
 import { CopyToClipboardButton } from '../Buttons';
 import YAML from 'yaml';
@@ -15,11 +15,11 @@ import { useToolboxTranslation } from '../../hooks';
 export const EntityDescriber = () => {
   const catalogApi = useApi(catalogApiRef);
 
-  const [entity, setEntity] = React.useState<Entity | null>(null);
-  const [output, setOutput] = React.useState('');
-  const [availableEntities, setAvailableEntities] = React.useState<
-    Entity[] | null
-  >([]);
+  const [entity, setEntity] = useState<Entity | null>(null);
+  const [output, setOutput] = useState('');
+  const [availableEntities, setAvailableEntities] = useState<Entity[] | null>(
+    [],
+  );
   const { t } = useToolboxTranslation();
   useEffect(() => {
     catalogApi.getEntities().then(data => {

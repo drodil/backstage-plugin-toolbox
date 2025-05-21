@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import { Suspense } from 'react';
 import { ContentHeader } from '@backstage/core-components';
 import Box from '@mui/material/Box';
 import CircularProgress from '@mui/material/CircularProgress';

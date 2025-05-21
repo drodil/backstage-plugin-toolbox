@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { DefaultEditor } from '../DefaultEditor';
 import { format } from 'sql-formatter';
 import { useToolboxTranslation } from '../../hooks';
 
 export const SQLBeautify = () => {
-  const [input, setInput] = React.useState('');
-  const [output, setOutput] = React.useState('');
+  const [input, setInput] = useState('');
+  const [output, setOutput] = useState('');
   const { t } = useToolboxTranslation();
 
   const sample = "SELECT bar, foo FROM foo_bar WHERE foo='bar' GROUP BY bar";

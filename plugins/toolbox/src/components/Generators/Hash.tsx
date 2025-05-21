@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { DefaultEditor } from '../DefaultEditor';
 import { faker } from '@faker-js/faker';
 import { sha1, sha256, sha384, sha512 } from 'crypto-hash';
@@ -10,8 +10,8 @@ import md4 from 'js-md4';
 import { OutputField } from '../DefaultEditor/OutputField';
 
 export const Hash = () => {
-  const [input, setInput] = React.useState('');
-  const [hash, setHash] = React.useState({
+  const [input, setInput] = useState('');
+  const [hash, setHash] = useState({
     md2: '',
     md4: '',
     md5: '',

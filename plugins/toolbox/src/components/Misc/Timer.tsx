@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { TimePaper } from './TimePaper';
 import FormControl from '@mui/material/FormControl';
 import Grid from '@mui/material/Grid';

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import TurndownService from 'turndown';
 import { DefaultEditor } from '../DefaultEditor';
 import { MarkdownContent } from '@backstage/core-components';
@@ -12,8 +12,8 @@ const { gfm } = require('turndown-plugin-gfm') as {
 };
 
 export const RichTextToMarkdown = () => {
-  const [input, setInput] = React.useState('');
-  const [output, setOutput] = React.useState('');
+  const [input, setInput] = useState('');
+  const [output, setOutput] = useState('');
   const { t } = useToolboxTranslation();
 
   const sample = '<h1>Hello world</h1><p>This is some content</p>';

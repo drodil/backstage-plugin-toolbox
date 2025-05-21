@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState } from 'react';
 import { DefaultEditor } from '../DefaultEditor';
 import { faker } from '@faker-js/faker';
 import Barcode from 'react-barcode';
@@ -32,8 +32,8 @@ const formatOptions = [
 type FormatOption = (typeof formatOptions)[number];
 
 export const BarCodeGenerator = () => {
-  const [input, setInput] = React.useState('');
-  const [format, setFormat] = React.useState<FormatOption>('CODE128');
+  const [input, setInput] = useState('');
+  const [format, setFormat] = useState<FormatOption>('CODE128');
   const sample = faker.number.bigInt().toString(10);
 
   const typeSelect = (
@@ -44,7 +44,9 @@ export const BarCodeGenerator = () => {
       variant="standard"
     >
       {formatOptions.map(opt => (
-        <MenuItem value={opt}>{opt}</MenuItem>
+        <MenuItem key={opt} value={opt}>
+          {opt}
+        </MenuItem>
       ))}
     </Select>
   );

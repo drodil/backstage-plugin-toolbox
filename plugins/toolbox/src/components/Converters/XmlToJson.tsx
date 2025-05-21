@@ -1,13 +1,13 @@
-import React, { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { DefaultEditor } from '../DefaultEditor';
 import { xml2json } from 'xml-js';
 import { JsonSpaceSelector } from '../DefaultEditor/JsonSpaceSelector';
 import { useToolboxTranslation } from '../../hooks';
 
 export const XmlToJson = () => {
-  const [input, setInput] = React.useState('');
-  const [output, setOutput] = React.useState('');
-  const [spaces, setSpaces] = React.useState(4);
+  const [input, setInput] = useState('');
+  const [output, setOutput] = useState('');
+  const [spaces, setSpaces] = useState(4);
   const { t } = useToolboxTranslation();
 
   const sample =
@@ -34,7 +34,11 @@ export const XmlToJson = () => {
       outputLabel="JSON"
       acceptFileTypes=".xml"
       additionalTools={[
-        <JsonSpaceSelector spaces={spaces} onChange={setSpaces} />,
+        <JsonSpaceSelector
+          key="spaceSelector"
+          spaces={spaces}
+          onChange={setSpaces}
+        />,
       ]}
       allowFileDownload
       downloadFileName="download.json"

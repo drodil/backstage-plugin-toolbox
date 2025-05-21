@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
 import { TimePaper } from './TimePaper';
 import FormControl from '@mui/material/FormControl';
 import Grid from '@mui/material/Grid';
@@ -76,7 +76,7 @@ const Countdown = () => {
     }
   };
 
-  const handleChimeToggle = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChimeToggle = (event: ChangeEvent<HTMLInputElement>) => {
     setChime(event.target.checked);
   };
 

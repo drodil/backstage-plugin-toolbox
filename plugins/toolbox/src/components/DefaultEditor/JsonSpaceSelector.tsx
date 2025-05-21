@@ -1,6 +1,5 @@
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
-import React from 'react';
 import { useToolboxTranslation } from '../../hooks';
 
 export const JsonSpaceSelector = (props: {

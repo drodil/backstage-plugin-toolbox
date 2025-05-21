@@ -1,6 +1,6 @@
 import { DiffEditor, loader } from '@monaco-editor/react';
 import * as monaco from 'monaco-editor';
-import React, { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import useEffectOnce from 'react-use/lib/useEffectOnce';
 import { Select, SelectItem } from '@backstage/core-components';
 
@@ -38,7 +38,7 @@ const options: monaco.editor.IDiffEditorConstructionOptions = {
 
 function getLanguage(allowedLanguages: MonacoLanguages[], extension: string) {
   return allowedLanguages.find(monacoLanguage =>
-    monacoLanguage.extensions.includes(extension as string),
+    monacoLanguage.extensions.includes(extension),
   )?.name;
 }
 
@@ -61,7 +61,7 @@ function readFileAndSetText(
   let newLanguage = 'plaintext';
   const extension = `.${file.name.split('.').pop()}`;
   if (allowedLanguages?.length) {
-    newLanguage = getLanguage(allowedLanguages, extension) || newLanguage;
+    newLanguage = getLanguage(allowedLanguages, extension) ?? newLanguage;
   }
   setLanguage(newLanguage);
 }
@@ -139,67 +139,65 @@ function Diff() {
     : [{ label: t('tool.diff.loadingLabel'), value: 'loading' }];
 
   return (
-    <>
-      <FormControl style={{ width: '100%' }}>
-        <Grid container style={{ width: '100%' }}>
-          <Grid item style={{ minWidth: '200px' }}>
-            <Select
-              selected={language}
-              onChange={handleLanguageSelect}
-              items={languageOptions}
-              label={t('tool.diff.selectLanguage')}
+    <FormControl style={{ width: '100%' }}>
+      <Grid container style={{ width: '100%' }}>
+        <Grid item style={{ minWidth: '200px' }}>
+          <Select
+            selected={language}
+            onChange={handleLanguageSelect}
+            items={languageOptions}
+            label={t('tool.diff.selectLanguage')}
+          />
+        </Grid>
+      </Grid>
+      <Grid container style={{ width: '100%' }}>
+        <Grid item>
+          {exampleOriginalText && exampleModifiedText && (
+            <SampleButton
+              setInput={input => {
+                setOriginalText(input[0]);
+                setModifiedText(input[1]);
+              }}
+              sample={[exampleOriginalText, exampleModifiedText]}
             />
-          </Grid>
+          )}
         </Grid>
-        <Grid container style={{ width: '100%' }}>
-          <Grid item>
-            {exampleOriginalText && exampleModifiedText && (
-              <SampleButton
-                setInput={input => {
-                  setOriginalText(input[0]);
-                  setModifiedText(input[1]);
-                }}
-                sample={[exampleOriginalText, exampleModifiedText]}
-              />
-            )}
-          </Grid>
+      </Grid>
+      <Grid container style={{ marginBottom: '5px', width: '100%' }}>
+        <Grid item style={{ width: '50%' }}>
+          <ButtonGroup size="small">
+            <FileUploadButton
+              onFileLoad={setOriginalFile}
+              id="originalFile"
+              buttonText={t('tool.diff.originalFileUploadButton')}
+            />
+            <ClearValueButton setValue={setOriginalText} />
+            <PasteFromClipboardButton setInput={setOriginalText} />
+            {originalText && <CopyToClipboardButton output={originalText} />}
+          </ButtonGroup>
         </Grid>
-        <Grid container style={{ marginBottom: '5px', width: '100%' }}>
-          <Grid item style={{ width: '50%' }}>
-            <ButtonGroup size="small">
-              <FileUploadButton
-                onFileLoad={setOriginalFile}
-                id="originalFile"
-                buttonText={t('tool.diff.originalFileUploadButton')}
-              />
-              <ClearValueButton setValue={setOriginalText} />
-              <PasteFromClipboardButton setInput={setOriginalText} />
-              {originalText && <CopyToClipboardButton output={originalText} />}
-            </ButtonGroup>
-          </Grid>
-          <Grid item style={{ width: '50%' }}>
-            <ButtonGroup size="small">
-              <FileUploadButton
-                onFileLoad={setModifiedFile}
-                id="modifiedFile"
-                buttonText={t('tool.diff.modifiedFileUploadButton')}
-              />
-              <ClearValueButton setValue={setModifiedText} />
-              <PasteFromClipboardButton setInput={setModifiedText} />
-              {modifiedText && <CopyToClipboardButton output={modifiedText} />}
-            </ButtonGroup>
-          </Grid>
+        <Grid item style={{ width: '50%' }}>
+          <ButtonGroup size="small">
+            <FileUploadButton
+              onFileLoad={setModifiedFile}
+              id="modifiedFile"
+              buttonText={t('tool.diff.modifiedFileUploadButton')}
+            />
+            <ClearValueButton setValue={setModifiedText} />
+            <PasteFromClipboardButton setInput={setModifiedText} />
+            {modifiedText && <CopyToClipboardButton output={modifiedText} />}
+          </ButtonGroup>
         </Grid>
-        <DiffEditor
-          height="100vh"
-          original={originalText}
-          theme={theme.includes('dark') ? 'vs-dark' : 'vs-light'}
-          modified={modifiedText}
-          options={options}
-          language={language}
-        />
-      </FormControl>
-    </>
+      </Grid>
+      <DiffEditor
+        height="100vh"
+        original={originalText}
+        theme={theme.includes('dark') ? 'vs-dark' : 'vs-light'}
+        modified={modifiedText}
+        options={options}
+        language={language}
+      />
+    </FormControl>
   );
 }
 

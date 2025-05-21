@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { FAVORITES_STORAGE } from '../components/Buttons/FavoriteButton';
 
 export const useFavoriteStorage = () => {
-  const [favorites, setFavorites] = React.useState<string[]>([]);
+  const [favorites, setFavorites] = useState<string[]>([]);
   useEffect(() => {
     function checkFavorites() {
       const item = localStorage.getItem(FAVORITES_STORAGE);

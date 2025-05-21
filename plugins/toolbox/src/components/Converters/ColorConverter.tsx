@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState } from 'react';
 import * as colorConvert from 'color-convert';
 import {
   CMYK,
@@ -25,15 +25,15 @@ import Box from '@mui/material/Box';
 import { useToolboxTranslation } from '../../hooks';
 
 export const ColorConverter = () => {
-  const [input, setInput] = React.useState('');
-  const [hex, setHex] = React.useState<HEX>('');
-  const [rgb, setRgb] = React.useState<RGB>([0, 0, 0]);
-  const [hsl, setHsl] = React.useState<HSL>([0, 0, 0]);
-  const [hsv, setHsv] = React.useState<HSV>([0, 0, 0]);
-  const [cmyk, setCmyk] = React.useState<CMYK>([0, 0, 0, 0]);
-  const [html, setHtml] = React.useState<KEYWORD | null>(null);
-  const [lab, setLab] = React.useState<LAB>([0, 0, 0]);
-  const [lch, setLch] = React.useState<LCH>([0, 0, 0]);
+  const [input, setInput] = useState('');
+  const [hex, setHex] = useState<HEX>('');
+  const [rgb, setRgb] = useState<RGB>([0, 0, 0]);
+  const [hsl, setHsl] = useState<HSL>([0, 0, 0]);
+  const [hsv, setHsv] = useState<HSV>([0, 0, 0]);
+  const [cmyk, setCmyk] = useState<CMYK>([0, 0, 0, 0]);
+  const [html, setHtml] = useState<KEYWORD | null>(null);
+  const [lab, setLab] = useState<LAB>([0, 0, 0]);
+  const [lch, setLch] = useState<LCH>([0, 0, 0]);
   const sample = '#d50032';
   const { t } = useToolboxTranslation();
 
@@ -302,46 +302,42 @@ export const ColorConverter = () => {
   };
 
   return (
-    <>
-      <FormControl style={{ width: '100%' }}>
-        <Grid container>
-          <Grid item xs={12} lg={6}>
-            <Typography variant="subtitle1">
-              <PasteFromClipboardButton setInput={v => handleChange(v)} />
-              <ClearValueButton setValue={() => handleChange('')} />
-              {sample && (
-                <SampleButton setInput={handleChange} sample={sample} />
-              )}
-            </Typography>
-            <TextField
-              id="input"
-              name="input"
-              label={t('tool.color-convert.inputLabel')}
-              value={getInputStr()}
-              style={{ width: '100%' }}
-              onChange={e => handleChange(e.target.value)}
-              variant="outlined"
-            />
-          </Grid>
+    <FormControl style={{ width: '100%' }}>
+      <Grid container>
+        <Grid item xs={12} lg={6}>
+          <Typography variant="subtitle1">
+            <PasteFromClipboardButton setInput={v => handleChange(v)} />
+            <ClearValueButton setValue={() => handleChange('')} />
+            {sample && <SampleButton setInput={handleChange} sample={sample} />}
+          </Typography>
+          <TextField
+            id="input"
+            name="input"
+            label={t('tool.color-convert.inputLabel')}
+            value={getInputStr()}
+            style={{ width: '100%' }}
+            onChange={e => handleChange(e.target.value)}
+            variant="outlined"
+          />
         </Grid>
-        <Divider style={{ marginTop: '1rem', marginBottom: '1rem' }} />
-        <Grid container>
-          <Grid item lg={6} md={8} xs={12}>
-            <OutputField label="Hex" value={hex} />
-            <OutputField label="RGB" value={parseRgb(rgb)} />
-            <OutputField label="HSL" value={parseHsl(hsl)} />
-            <OutputField label="HSV" value={parseHsv(hsv)} />
-            <OutputField label="CMYK" value={parseCmyk(cmyk)} />
-            <OutputField label="HTML" value={html} />
-            <OutputField label="Lab" value={parseLab(lab)} />
-            <OutputField label="lch" value={parseLch(lch)} />
-          </Grid>
-          <Grid item lg={6} md={4} xs={12}>
-            <Box bgcolor={hex} style={{ margin: '1rem', height: '50vh' }} />
-          </Grid>
+      </Grid>
+      <Divider style={{ marginTop: '1rem', marginBottom: '1rem' }} />
+      <Grid container>
+        <Grid item lg={6} md={8} xs={12}>
+          <OutputField label="Hex" value={hex} />
+          <OutputField label="RGB" value={parseRgb(rgb)} />
+          <OutputField label="HSL" value={parseHsl(hsl)} />
+          <OutputField label="HSV" value={parseHsv(hsv)} />
+          <OutputField label="CMYK" value={parseCmyk(cmyk)} />
+          <OutputField label="HTML" value={html} />
+          <OutputField label="Lab" value={parseLab(lab)} />
+          <OutputField label="lch" value={parseLch(lch)} />
         </Grid>
-      </FormControl>
-    </>
+        <Grid item lg={6} md={4} xs={12}>
+          <Box bgcolor={hex} style={{ margin: '1rem', height: '50vh' }} />
+        </Grid>
+      </Grid>
+    </FormControl>
   );
 };
 

@@ -1,25 +1,26 @@
-import React, { ChangeEvent, useEffect } from 'react';
+import * as React from 'react';
+import { ChangeEvent, useEffect } from 'react';
 import TextField from '@mui/material/TextField';
 import Grid from '@mui/material/Grid';
 import Autocomplete from '@mui/material/Autocomplete';
 import FormControl from '@mui/material/FormControl';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import Button from '@mui/material/Button';
-import { configApiRef, alertApiRef, useApi } from '@backstage/core-plugin-api';
+import { alertApiRef, configApiRef, useApi } from '@backstage/core-plugin-api';
 import { useToolboxTranslation } from '../../hooks';
 import { CopyToClipboardButton } from '../Buttons/CopyToClipboardButton';
 import { FileDownloadButton } from '../Buttons/FileDownloadButton';
 import PlayCircleOutlineRoundedIcon from '@mui/icons-material/PlayCircleOutlineRounded';
 import * as asn1js from 'asn1js';
 import {
-  CertificationRequest,
-  AttributeTypeAndValue,
-  RelativeDistinguishedNames,
-  GeneralNames,
-  GeneralName,
-  Extensions,
-  Extension,
   Attribute,
+  AttributeTypeAndValue,
+  CertificationRequest,
+  Extension,
+  Extensions,
+  GeneralName,
+  GeneralNames,
+  RelativeDistinguishedNames,
 } from 'pkijs/build';
 import { getCrypto } from 'pkijs';
 
@@ -289,10 +290,9 @@ async function getPrivateKeyPEM(kp: CryptoKeyPair): Promise<string> {
   }
   const crypto = getCrypto(true);
   const exported = await crypto.exportKey('pkcs8', kp.privateKey);
-  const pem = `-----BEGIN \x50RIVATE \x4BEY-----\n${arrayBufferToBase64(
+  return `-----BEGIN \x50RIVATE \x4BEY-----\n${arrayBufferToBase64(
     exported,
   ).replace(/(.{64})/g, '$1\n')}\n-----END \x50RIVATE \x4BEY-----`;
-  return pem;
 }
 
 async function createCSR(
@@ -382,10 +382,9 @@ async function createCSR(
       // Sign the PKCS#10 CSR with the private key
       await pkcs10.sign(kp.privateKey, ha);
       const ber = pkcs10.toSchema().toBER(false);
-      const pem = `-----BEGIN CERTIFICATE REQUEST-----\n${arrayBufferToBase64(
+      return `-----BEGIN CERTIFICATE REQUEST-----\n${arrayBufferToBase64(
         ber,
       ).replace(/(.{64})/g, '$1\n')}\n-----END CERTIFICATE REQUEST-----`.trim();
-      return pem;
     } catch (error) {
       throw new Error(`Failed to create CSR: ${error.message}`);
     }
@@ -411,20 +410,16 @@ function decodeCSR(csrPEM: string): string {
       })
       .join('\n');
     const publicKeyInfo = csr.subjectPublicKeyInfo;
-    let publicKeyType = 'Unknown';
+    let publicKeyType;
     let publicKeySize = 0;
     switch (publicKeyInfo.algorithm.algorithmId) {
       case '1.2.840.113549.1.1.1': {
         // OID for RSA
         publicKeyType = 'RSA';
         if (publicKeyInfo.parsedKey && 'modulus' in publicKeyInfo.parsedKey) {
-          const keySizeBits =
+          publicKeySize =
             publicKeyInfo.parsedKey.modulus.valueBlock.valueHex.byteLength *
               8 || 0;
-
-          publicKeySize = keySizeBits;
-        } else {
-          publicKeySize = 0; // Fallback to 0
         }
 
         break;
@@ -444,7 +439,6 @@ function decodeCSR(csrPEM: string): string {
       }
       default: {
         publicKeyType = 'Unknown';
-        publicKeySize = 0;
         break;
       }
     }
@@ -466,7 +460,7 @@ function decodeCSR(csrPEM: string): string {
       }
     }
 
-    let signatureAlgorithm = `Unknown${csr.signatureAlgorithm.algorithmId}`;
+    let signatureAlgorithm;
     switch (csr.signatureAlgorithm.algorithmId) {
       case '1.2.840.113549.1.1.5': // OID for SHA-1 with RSA
         signatureAlgorithm = 'SHA-1 with RSA';
@@ -495,7 +489,7 @@ function decodeCSR(csrPEM: string): string {
     }
     return `Subject:\n${subjectInfo}\n\nPublic Key:\nType: ${publicKeyType} \nSize: ${publicKeySize} bits\n \nSubject Alternative Names:\n${sanInfo}\n\nSignature Algorithm:\n${signatureAlgorithm}`;
   } catch (error) {
-    throw new Error('Invalid CSR or failed to parse.');
+    throw new Error('Invalid CSR or failed to parse.', { cause: error });
   }
 }
 
@@ -507,7 +501,7 @@ function handleDecodeCSR(
     const decoded = decodeCSR(csrPEM);
     setDecodedCSR(decoded);
   } catch (error) {
-    throw new Error('Failed to decode CSR.');
+    throw new Error('Failed to decode CSR.', { cause: error });
   }
 }
 

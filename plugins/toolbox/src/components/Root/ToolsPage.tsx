@@ -1,4 +1,3 @@
-import React from 'react';
 import { Header, Page } from '@backstage/core-components';
 import { ToolsContainer, ToolsContainerProps } from './ToolsContainer';
 import { useToolboxTranslation } from '../../hooks';

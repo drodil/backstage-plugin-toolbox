@@ -1,4 +1,3 @@
-import React from 'react';
 import { ToolsContainerProps } from './ToolsContainer';
 import { defaultTools } from './tools';
 import { useParams } from 'react-router-dom';

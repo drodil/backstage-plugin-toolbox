@@ -1,4 +1,4 @@
-import React from 'react';
+import { ChangeEvent } from 'react';
 import AttachFile from '@mui/icons-material/AttachFile';
 import Tooltip from '@mui/material/Tooltip';
 import Button from '@mui/material/Button';
@@ -40,7 +40,7 @@ export const FileUploadButton = (props: Props) => {
         accept={accept}
         id={id}
         hidden
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+        onChange={(e: ChangeEvent<HTMLInputElement>) => {
           if (!e?.target?.files?.length) {
             return null;
           }

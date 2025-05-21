@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { DefaultEditor } from '../DefaultEditor';
 import beautify from 'js-beautify';
 import { useToolboxTranslation } from '../../hooks';
 
 export const CSSBeautify = () => {
-  const [input, setInput] = React.useState('');
-  const [output, setOutput] = React.useState('');
+  const [input, setInput] = useState('');
+  const [output, setOutput] = useState('');
   const { t } = useToolboxTranslation();
 
   const sample =

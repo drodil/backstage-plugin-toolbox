@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { DefaultEditor } from '../DefaultEditor';
 
 const decode = (value: string): string => {
@@ -14,9 +14,9 @@ const encode = (value: string): string => {
 };
 
 export const HtmlEntities = () => {
-  const [input, setInput] = React.useState('');
-  const [output, setOutput] = React.useState('');
-  const [mode, setMode] = React.useState('Encode');
+  const [input, setInput] = useState('');
+  const [output, setOutput] = useState('');
+  const [mode, setMode] = useState('Encode');
 
   useEffect(() => {
     if (mode === 'Encode') {

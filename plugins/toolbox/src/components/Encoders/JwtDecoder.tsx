@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import jwtDecode, { JwtPayload } from 'jwt-decode';
 import { DefaultEditor } from '../DefaultEditor';
 import { SignJWT } from 'jose';
@@ -10,9 +10,9 @@ const BASE64_REGEX =
 
 export const JwtDecoder = () => {
   const alertApi = useApi(alertApiRef);
-  const [input, setInput] = React.useState('');
-  const [output, setOutput] = React.useState('');
-  const [mode, setMode] = React.useState('Encode');
+  const [input, setInput] = useState('');
+  const [output, setOutput] = useState('');
+  const [mode, setMode] = useState('Encode');
   const { t } = useToolboxTranslation();
 
   const exampleJwt =
@@ -32,7 +32,7 @@ export const JwtDecoder = () => {
   };
 
   const showError = useCallback(
-    attribute => {
+    (attribute: string) => {
       const errorMessage = t(`tool.jwt-decoder-encode.missingAttribute`, {
         attribute,
       });
@@ -48,7 +48,7 @@ export const JwtDecoder = () => {
   );
 
   const keyExists = useCallback(
-    json => {
+    (json: any) => {
       if (!('key' in json)) {
         return showError('key');
       }
@@ -58,7 +58,7 @@ export const JwtDecoder = () => {
   );
 
   const payloadExists = useCallback(
-    json => {
+    (json: any) => {
       if (!('payload' in json)) {
         return showError('payload');
       }
@@ -77,7 +77,7 @@ export const JwtDecoder = () => {
   );
 
   const headerExists = useCallback(
-    json => {
+    (json: any) => {
       if (!('header' in json)) {
         return showError('header');
       }

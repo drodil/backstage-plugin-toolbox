@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { DefaultEditor } from '../DefaultEditor';
 import { faker } from '@faker-js/faker';
 import Grid from '@mui/material/Grid';
@@ -11,13 +11,13 @@ const ANALYZED_CHARS =
 const escapeRegex = (str: string) => str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
 export const StringAnalyzer = () => {
-  const [input, setInput] = React.useState('');
-  const [characters, setCharacters] = React.useState(0);
-  const [lines, setLines] = React.useState(0);
-  const [words, setWords] = React.useState(0);
-  const [alphabets, setAlphabets] = React.useState<
-    { char: string; count: number }[]
-  >([]);
+  const [input, setInput] = useState('');
+  const [characters, setCharacters] = useState(0);
+  const [lines, setLines] = useState(0);
+  const [words, setWords] = useState(0);
+  const [alphabets, setAlphabets] = useState<{ char: string; count: number }[]>(
+    [],
+  );
   const { t } = useToolboxTranslation();
 
   useEffect(() => {

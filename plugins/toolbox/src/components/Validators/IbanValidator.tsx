@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import * as IBAN from 'iban';
 import { DefaultEditor } from '../DefaultEditor';
 import { OutputField } from '../DefaultEditor/OutputField';
@@ -7,10 +7,10 @@ import AlertTitle from '@mui/material/AlertTitle';
 import { useToolboxTranslation } from '../../hooks';
 
 export const IbanValidator = () => {
-  const [input, setInput] = React.useState('');
-  const [bban, setBban] = React.useState('');
-  const [electronic, setElectronic] = React.useState('');
-  const [isValid, setIsValid] = React.useState(true);
+  const [input, setInput] = useState('');
+  const [bban, setBban] = useState('');
+  const [electronic, setElectronic] = useState('');
+  const [isValid, setIsValid] = useState(true);
   const { t } = useToolboxTranslation();
 
   useEffect(() => {

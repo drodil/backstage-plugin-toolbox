@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import { DragEvent, ReactElement, useState } from 'react';
 import {
   ClearValueButton,
   CopyToClipboardButton,
@@ -64,12 +64,8 @@ export const DefaultEditor = (props: Props) => {
     minRows = 20,
   } = props;
 
-  const [fileName, setFileName] = React.useState(
-    downloadFileName ?? 'download.txt',
-  );
-  const [fileType, setFileType] = React.useState(
-    downloadFileType ?? 'text/plain',
-  );
+  const [fileName, setFileName] = useState(downloadFileName ?? 'download.txt');
+  const [fileType, setFileType] = useState(downloadFileType ?? 'text/plain');
 
   const readFileAndSetInput = (file?: File) => {
     if (!file) {
@@ -87,7 +83,7 @@ export const DefaultEditor = (props: Props) => {
     reader.readAsText(file);
   };
 
-  const handleDrop = (ev: React.DragEvent<HTMLDivElement>) => {
+  const handleDrop = (ev: DragEvent<HTMLDivElement>) => {
     if (allowFileUpload !== true) {
       return;
     }
@@ -179,47 +175,39 @@ export const DefaultEditor = (props: Props) => {
           lg={6}
           sx={{ pt: '8px !important', pl: '8px !important' }}
         >
-          {leftContent ? (
-            leftContent
-          ) : (
-            <>
-              <TextField
-                label={inputLabel}
-                // eslint-disable-next-line
-                id="input"
-                multiline
-                value={input}
-                onChange={e => setInput(e.target.value)}
-                minRows={minRows}
-                variant="outlined"
-                sx={{
-                  width: '100%',
-                  p: '8px',
-                  '& label[class*="MuiFormLabel-root"]': {
-                    paddingTop: '10px !important',
-                    paddingLeft: '10px !important',
-                  },
-                }}
-              />
-            </>
+          {leftContent ?? (
+            <TextField
+              label={inputLabel}
+              // eslint-disable-next-line
+              id="input"
+              multiline
+              value={input}
+              onChange={e => setInput(e.target.value)}
+              minRows={minRows}
+              variant="outlined"
+              sx={{
+                width: '100%',
+                p: '8px',
+                '& label[class*="MuiFormLabel-root"]': {
+                  paddingTop: '10px !important',
+                  paddingLeft: '10px !important',
+                },
+              }}
+            />
           )}
           {extraLeftContent}
         </Grid>
         <Grid item xs={12} lg={6} sx={{ p: '8px !important', mt: '8px' }}>
-          {rightContent ? (
-            rightContent
-          ) : (
-            <>
-              <TextField
-                id="output"
-                label={outputLabel}
-                value={output || ''}
-                style={{ width: '100%' }}
-                multiline
-                minRows={minRows}
-                variant="outlined"
-              />
-            </>
+          {rightContent ?? (
+            <TextField
+              id="output"
+              label={outputLabel}
+              value={output || ''}
+              style={{ width: '100%' }}
+              multiline
+              minRows={minRows}
+              variant="outlined"
+            />
           )}
           {extraRightContent}
         </Grid>

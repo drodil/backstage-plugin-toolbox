@@ -1,4 +1,4 @@
-import React, { ReactElement, Suspense, useEffect, useMemo } from 'react';
+import { ReactElement, Suspense, useEffect, useMemo, useState } from 'react';
 import { Content, ContentHeader } from '@backstage/core-components';
 import { useFavoriteStorage } from '../../utils/hooks';
 import SearchIcon from '@mui/icons-material/Search';
@@ -69,8 +69,8 @@ export const ToolsContainer = (props: ToolsContainerProps) => {
   const { hash } = useLocation();
   const navigate = useNavigate();
   const analytics = useAnalytics();
-  const [value, setValue] = React.useState(1);
-  const [search, setSearch] = React.useState('');
+  const [value, setValue] = useState(1);
+  const [search, setSearch] = useState('');
   const backendTools = useBackendTools();
   const favorites = useFavoriteStorage();
 
@@ -90,7 +90,7 @@ export const ToolsContainer = (props: ToolsContainerProps) => {
   const tabs: TabInfo[] = useMemo(() => {
     const tabInfos: TabInfo[] = [];
     const favoritesCategory = t('tool.category.favorites');
-    const shownTools = tools ? tools : [...(extraTools ?? []), ...defaultTools];
+    const shownTools = tools ?? [...(extraTools ?? []), ...defaultTools];
     const filteredTools = shownTools
       .filter(
         tool =>
@@ -219,7 +219,7 @@ export const ToolsContainer = (props: ToolsContainerProps) => {
         }
         return a.localeCompare(b);
       })
-      .map(([category, categoryTools]) => {
+      .forEach(([category, categoryTools]) => {
         const anyMatchSearch = categoryTools.some(tool => matchesSearch(tool));
 
         tabInfos.push({
@@ -245,7 +245,7 @@ export const ToolsContainer = (props: ToolsContainerProps) => {
             }
             return a.name.localeCompare(b.name);
           })
-          .map((tool, i) => {
+          .forEach((tool, i) => {
             tabInfos.push({
               tab: (
                 <Tab

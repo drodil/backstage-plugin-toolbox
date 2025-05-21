@@ -1,4 +1,3 @@
-import React from 'react';
 import { Tool } from '@drodil/backstage-plugin-toolbox-react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';

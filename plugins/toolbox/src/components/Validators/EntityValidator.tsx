@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { DefaultEditor } from '../DefaultEditor';
 import { validate } from '@roadiehq/roadie-backstage-entity-validator';
 import Alert from '@mui/material/Alert';
@@ -7,10 +7,10 @@ import { useToolboxTranslation } from '../../hooks';
 
 export const EntityValidator = () => {
   const { t } = useToolboxTranslation();
-  const [output, setOutput] = React.useState(
+  const [output, setOutput] = useState(
     <Alert severity="info">{t('tool.entity-validator.alertEmptyValue')}</Alert>,
   );
-  const [input, setInput] = React.useState('');
+  const [input, setInput] = useState('');
   const sample =
     'apiVersion: backstage.io/v1alpha1\n' +
     'kind: Component\n' +

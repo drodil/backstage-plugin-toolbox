@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { DefaultEditor } from '../DefaultEditor';
 import { Parser } from '@json2csv/plainjs';
 
 export const JsonToCsv = () => {
-  const [input, setInput] = React.useState('');
-  const [output, setOutput] = React.useState('');
+  const [input, setInput] = useState('');
+  const [output, setOutput] = useState('');
   const sample = JSON.stringify(
     [
       { type: 'car', name: 'pedro', stars: 3 },

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { DefaultEditor } from '../DefaultEditor';
 import { MarkdownContent } from '@backstage/core-components';
 import beautify from 'js-beautify';
@@ -6,8 +6,8 @@ import { unescape } from 'lodash';
 import Paper from '@mui/material/Paper';
 
 export const MarkdownPreview = () => {
-  const [input, setInput] = React.useState('');
-  const [html, setHtml] = React.useState('');
+  const [input, setInput] = useState('');
+  const [html, setHtml] = useState('');
   const sample =
     '# Header 1\n\nHello. This is markdown.\n\n* List item 1\n* List item2\n';
 

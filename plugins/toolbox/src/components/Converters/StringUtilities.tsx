@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { DefaultEditor } from '../DefaultEditor';
 import {
   camelCase,
@@ -15,12 +15,12 @@ import Box from '@mui/material/Box';
 import { useToolboxTranslation } from '../../hooks';
 
 export const StringUtilities = () => {
-  const [input, setInput] = React.useState('');
-  const [output, setOutput] = React.useState('');
-  const [mode, setMode] = React.useState('Replace');
-  const [searchWord, setSearchWord] = React.useState('');
-  const [replaceWord, setReplaceWord] = React.useState('');
-  const [isUseRegexpEnabled, setIsUseRegexpEnabled] = React.useState(false);
+  const [input, setInput] = useState('');
+  const [output, setOutput] = useState('');
+  const [mode, setMode] = useState('Replace');
+  const [searchWord, setSearchWord] = useState('');
+  const [replaceWord, setReplaceWord] = useState('');
+  const [isUseRegexpEnabled, setIsUseRegexpEnabled] = useState(false);
   const { t } = useToolboxTranslation();
 
   const sample = [

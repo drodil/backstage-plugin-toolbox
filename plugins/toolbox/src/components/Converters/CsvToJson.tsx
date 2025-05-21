@@ -1,12 +1,12 @@
-import React, { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { DefaultEditor } from '../DefaultEditor';
 import csvToJson from 'csvtojson';
 import { JsonSpaceSelector } from '../DefaultEditor/JsonSpaceSelector';
 
 export const CsvToJson = () => {
-  const [input, setInput] = React.useState('');
-  const [output, setOutput] = React.useState('');
-  const [spaces, setSpaces] = React.useState(4);
+  const [input, setInput] = useState('');
+  const [output, setOutput] = useState('');
+  const [spaces, setSpaces] = useState(4);
 
   const sample =
     'color,maxSpeed,type\n' +
@@ -39,7 +39,11 @@ export const CsvToJson = () => {
       downloadFileName="download.json"
       downloadFileType="application/json"
       additionalTools={[
-        <JsonSpaceSelector spaces={spaces} onChange={setSpaces} />,
+        <JsonSpaceSelector
+          key="spaceSelector"
+          spaces={spaces}
+          onChange={setSpaces}
+        />,
       ]}
     />
   );

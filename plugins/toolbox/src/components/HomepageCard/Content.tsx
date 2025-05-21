@@ -1,4 +1,3 @@
-import React from 'react';
 import { defaultTools } from '../Root';
 import Typography from '@mui/material/Typography';
 import { useToolboxTranslation } from '../../hooks';
