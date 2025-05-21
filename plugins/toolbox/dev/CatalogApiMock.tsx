@@ -11,6 +11,7 @@ import {
   GetEntityAncestorsResponse,
   GetEntityFacetsRequest,
   GetEntityFacetsResponse,
+  GetLocationsResponse,
   Location,
   QueryEntitiesRequest,
   QueryEntitiesResponse,
@@ -152,5 +153,12 @@ export class CatalogApiMock implements CatalogApi {
     _options?: CatalogRequestOptions,
   ): Promise<Location | undefined> {
     return Promise.resolve(undefined);
+  }
+
+  getLocations(
+    _request?: {} | undefined,
+    _options?: CatalogRequestOptions | undefined,
+  ): Promise<GetLocationsResponse> {
+    throw new Error('Method not implemented.');
   }
 }
