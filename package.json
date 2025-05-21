@@ -49,7 +49,7 @@
     "react-router": "^6.3.0",
     "react-router-dom": "^6.3.0",
     "standard-version": "^9.5.0",
-    "typescript": "~5.0.0"
+    "typescript": "~5.8.0"
   },
   "resolutions": {
     "@types/react": "^18",
