@@ -48,7 +48,7 @@ const ConfigSelect = (props: {
   readonly setSettings: (settings: QrCodeSettings) => void;
 }) => {
   const onChange = useCallback(
-    (event: SelectChangeEvent) =>
+    (event: SelectChangeEvent<unknown>) =>
       props.setSettings({
         ...props.settings,
         [props.settingKey]: event.target.value as DotType,
@@ -222,7 +222,7 @@ export const QRCodeGenerator = () => {
   }, [qrCode, settings, input]);
 
   const onExtensionChange = useCallback(
-    (event: SelectChangeEvent) => {
+    (event: SelectChangeEvent<unknown>) => {
       setFileExt(event.target.value as FileExtension);
     },
     [setFileExt],
