@@ -9,7 +9,7 @@ import TextField from '@mui/material/TextField';
 import FormControl from '@mui/material/FormControl';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import Select from '@mui/material/Select';
+import { DefaultSelect } from '../Selects';
 import Grid from '@mui/material/Grid';
 import MenuItem from '@mui/material/MenuItem';
 import Divider from '@mui/material/Divider';
@@ -115,7 +115,7 @@ export const TimeConverter = () => {
           <Typography variant="subtitle1">
             {t('tool.time-convert.inputType')}
           </Typography>
-          <Select
+          <DefaultSelect
             value={inputType}
             onChange={e => setInputType(e.target.value as string)}
           >
@@ -127,7 +127,7 @@ export const TimeConverter = () => {
             <MenuItem value="sql">SQL</MenuItem>
             <MenuItem value="rfc2822">RFC2822</MenuItem>
             <MenuItem value="http">HTTP</MenuItem>
-          </Select>
+          </DefaultSelect>
         </Grid>
       </Grid>
       <Divider style={{ marginTop: '1rem', marginBottom: '1rem' }} />
