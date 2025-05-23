@@ -8,7 +8,7 @@ import InputLabel from '@mui/material/InputLabel';
 import Grid from '@mui/material/Grid';
 import MenuItem from '@mui/material/MenuItem';
 import ButtonGroup from '@mui/material/ButtonGroup';
-import Select from '@mui/material/Select';
+import { DefaultSelect } from '../Selects';
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
 import { useToolboxTranslation } from '../../hooks';
@@ -170,7 +170,7 @@ export const LoremIpsum = () => {
         <Grid item>
           <InputLabel id="multiplier-label">Count</InputLabel>
           <Box sx={{ ml: '16px ' }}>
-            <Select
+            <DefaultSelect
               labelId="multiplier-label"
               value={multiplier.toString(10)}
               onChange={e =>
@@ -187,7 +187,7 @@ export const LoremIpsum = () => {
               <MenuItem value={250}>250</MenuItem>
               <MenuItem value={500}>500</MenuItem>
               <MenuItem value={1000}>1000</MenuItem>
-            </Select>
+            </DefaultSelect>
             <ButtonGroup sx={{ marginLeft: 2, marginBottom: 2 }}>
               <ClearValueButton setValue={setOutput} tooltip="Clear output" />
               <CopyToClipboardButton output={output} />

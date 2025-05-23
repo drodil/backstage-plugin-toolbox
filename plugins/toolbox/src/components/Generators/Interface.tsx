@@ -6,7 +6,7 @@ import {
 
 import { useEffect, useState } from 'react';
 import { DefaultEditor } from '../DefaultEditor';
-import Select from '@mui/material/Select';
+import { DefaultSelect } from '../Selects';
 import MenuItem from '@mui/material/MenuItem';
 
 const formatOptions = [
@@ -41,7 +41,7 @@ export const Interface = () => {
   const [format, setFormat] = useState<FormatOption>('TypeScript');
 
   const typeSelect = (
-    <Select
+    <DefaultSelect
       label="format"
       value={format}
       onChange={val => setFormat(val.target.value as FormatOption)}
@@ -52,7 +52,7 @@ export const Interface = () => {
           {opt}
         </MenuItem>
       ))}
-    </Select>
+    </DefaultSelect>
   );
 
   useEffect(() => {

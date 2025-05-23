@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { DefaultEditor } from '../DefaultEditor';
 import { faker } from '@faker-js/faker';
 import Barcode from 'react-barcode';
-import Select from '@mui/material/Select';
+import { DefaultSelect } from '../Selects';
 import MenuItem from '@mui/material/MenuItem';
 
 const formatOptions = [
@@ -37,7 +37,7 @@ export const BarCodeGenerator = () => {
   const sample = faker.number.bigInt().toString(10);
 
   const typeSelect = (
-    <Select
+    <DefaultSelect
       label="format"
       value={format}
       onChange={val => setFormat(val.target.value as FormatOption)}
@@ -48,7 +48,7 @@ export const BarCodeGenerator = () => {
           {opt}
         </MenuItem>
       ))}
-    </Select>
+    </DefaultSelect>
   );
 
   return (

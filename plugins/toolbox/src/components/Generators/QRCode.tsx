@@ -21,7 +21,8 @@ import {
 } from '@drodil/backstage-plugin-toolbox';
 
 import { configApiRef, useApi } from '@backstage/core-plugin-api';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
+import { DefaultSelect } from '../Selects';
+import { SelectChangeEvent } from '@mui/material/Select';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 
@@ -74,7 +75,7 @@ const ConfigSelect = (props: {
   return (
     <FormControl key={`formcontrol-for-select-${props.settingKey}`}>
       <InputLabel id={labelId}>{props.name}</InputLabel>
-      <Select
+      <DefaultSelect
         id={`id-${props.settingKey}`}
         key={`select-for-${props.settingKey}`}
         label={props.name}
@@ -95,7 +96,7 @@ const ConfigSelect = (props: {
               </MenuItem>
             ))
           : null}
-      </Select>
+      </DefaultSelect>
       {props.name !== 'Shape' ? (
         <TextField
           defaultValue={props.settings[colorSetting]}
@@ -239,7 +240,7 @@ export const QRCodeGenerator = () => {
         <InputLabel id="file-type">
           {t('tool.qr-code-generate.downloadAs')}
         </InputLabel>
-        <Select
+        <DefaultSelect
           defaultValue="png"
           labelId="file-type"
           onChange={onExtensionChange}
@@ -250,7 +251,7 @@ export const QRCodeGenerator = () => {
           <MenuItem value="webp">webp</MenuItem>
           <MenuItem value="jpeg">jpeg</MenuItem>
           <MenuItem value="svg">svg</MenuItem>
-        </Select>
+        </DefaultSelect>
       </FormControl>
       <Button key="downloadbutton" onClick={onDownloadClick} disabled={!input}>
         {t('tool.qr-code-generate.download')}
