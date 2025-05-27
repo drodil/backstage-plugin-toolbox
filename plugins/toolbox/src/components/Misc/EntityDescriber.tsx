@@ -1,6 +1,6 @@
 import { useApi } from '@backstage/core-plugin-api';
 import { catalogApiRef } from '@backstage/plugin-catalog-react';
-import { useEffect, useState } from 'react';
+import { ComponentType, HTMLAttributes, useEffect, useState } from 'react';
 import { Entity } from '@backstage/catalog-model';
 import { CopyToClipboardButton } from '../Buttons';
 import YAML from 'yaml';
@@ -11,18 +11,21 @@ import ButtonGroup from '@mui/material/ButtonGroup';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import { useToolboxTranslation } from '../../hooks';
+import { AutocompleteListboxComponent } from './AutocompleteListComponent.tsx';
 
 export const EntityDescriber = () => {
   const catalogApi = useApi(catalogApiRef);
 
   const [entity, setEntity] = useState<Entity | null>(null);
   const [output, setOutput] = useState('');
+  const [loading, setLoading] = useState(true);
   const [availableEntities, setAvailableEntities] = useState<Entity[] | null>(
     [],
   );
   const { t } = useToolboxTranslation();
   useEffect(() => {
     catalogApi.getEntities().then(data => {
+      setLoading(false);
       if (data) {
         setAvailableEntities(data.items);
       }
@@ -68,6 +71,12 @@ export const EntityDescriber = () => {
           <Autocomplete
             style={{ width: '100%' }}
             options={availableEntities ?? []}
+            ListboxComponent={
+              AutocompleteListboxComponent as ComponentType<
+                HTMLAttributes<HTMLElement>
+              >
+            }
+            loading={loading}
             getOptionLabel={option => getEntityTitle(option)}
             groupBy={option => option.kind}
             value={entity}
