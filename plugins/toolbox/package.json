@@ -55,7 +55,6 @@
     "@mui/icons-material": "^5.16.7",
     "@mui/lab": "^5.0.0-alpha.169",
     "@mui/material": "^5.16.7",
-    "@roadiehq/roadie-backstage-entity-validator": "^2.3.6",
     "asn1js": "3.0.5",
     "color-convert": "^2.0.1",
     "crypto-hash": "^3.0.0",

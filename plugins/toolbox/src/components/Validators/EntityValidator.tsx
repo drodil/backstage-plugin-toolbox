@@ -1,9 +1,14 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { DefaultEditor } from '../DefaultEditor';
-import { validate } from '@roadiehq/roadie-backstage-entity-validator';
 import Alert from '@mui/material/Alert';
 import AlertTitle from '@mui/material/AlertTitle';
 import { useToolboxTranslation } from '../../hooks';
+import { useApi } from '@backstage/core-plugin-api';
+import { catalogApiRef } from '@backstage/plugin-catalog-react';
+import YAML from 'yaml';
+import { Entity } from '@backstage/catalog-model';
+
+type AnyError = { name: string; message: string };
 
 export const EntityValidator = () => {
   const { t } = useToolboxTranslation();
@@ -11,6 +16,7 @@ export const EntityValidator = () => {
     <Alert severity="info">{t('tool.entity-validator.alertEmptyValue')}</Alert>,
   );
   const [input, setInput] = useState('');
+  const catalogApi = useApi(catalogApiRef);
   const sample =
     'apiVersion: backstage.io/v1alpha1\n' +
     'kind: Component\n' +
@@ -35,17 +41,11 @@ export const EntityValidator = () => {
     '  owner: artist-relations-team\n' +
     '  system: public-websites';
 
-  const formatError = (err: Error) => {
-    let msg = err.message;
-    msg = msg
-      .replace(
-        /TypeError: Cannot read properties of undefined \(reading 'namespace'\)/,
-        "Must have required property: 'metadata' - missingProperty: 'metadata'",
-      )
-      .replace(/TypeError: (.*)/, '$1')
-      .replace(/YAMLException: (.*)/, 'YAML error: $1')
-      .replaceAll('|', '<br>');
-    return msg;
+  const formatError = (err: AnyError | AnyError[]) => {
+    const msgs = Array.isArray(err) ? err : [err];
+    return msgs
+      .map(msg => `${msg.name}: ${msg.message.replaceAll('|', '<br>')}`)
+      .join('<hr><br>');
   };
 
   useEffect(() => {
@@ -58,14 +58,43 @@ export const EntityValidator = () => {
       return;
     }
 
-    validate(input, true)
-      .then(() => {
+    let entity;
+    try {
+      entity = YAML.parse(input);
+    } catch (err) {
+      setOutput(
+        <Alert severity="error">
+          <AlertTitle>{t('tool.entity-validator.alertErrorTitle')}</AlertTitle>
+          <div dangerouslySetInnerHTML={{ __html: formatError(err) }} />
+        </Alert>,
+      );
+      return;
+    }
+    catalogApi
+      .validateEntity(
+        entity as Entity,
+        'url:https://localhost/entity-validator',
+      )
+      .then(resp => {
+        if (resp.valid) {
+          setOutput(
+            <Alert severity="success">
+              <AlertTitle>
+                {t('tool.entity-validator.alertSuccessTitle')}
+              </AlertTitle>
+              {t('tool.entity-validator.alertValidEntity')}
+            </Alert>,
+          );
+          return;
+        }
         setOutput(
-          <Alert severity="success">
+          <Alert severity="error">
             <AlertTitle>
-              {t('tool.entity-validator.alertSuccessTitle')}
+              {t('tool.entity-validator.alertErrorTitle')}
             </AlertTitle>
-            {t('tool.entity-validator.alertValidEntity')}
+            <div
+              dangerouslySetInnerHTML={{ __html: formatError(resp.errors) }}
+            />
           </Alert>,
         );
       })
@@ -79,7 +108,7 @@ export const EntityValidator = () => {
           </Alert>,
         );
       });
-  }, [input, t]);
+  }, [catalogApi, input, t]);
 
   return (
     <DefaultEditor

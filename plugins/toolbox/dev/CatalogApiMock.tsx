@@ -138,7 +138,7 @@ export class CatalogApiMock implements CatalogApi {
     _locationRef: string,
     _options?: CatalogRequestOptions,
   ): Promise<ValidateEntityResponse> {
-    return Promise.reject();
+    return Promise.resolve({ valid: true });
   }
 
   queryEntities(

@@ -12,26 +12,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@actions/core@npm:^1.10.0":
-  version: 1.10.1
-  resolution: "@actions/core@npm:1.10.1"
-  dependencies:
-    "@actions/http-client": "npm:^2.0.1"
-    uuid: "npm:^8.3.2"
-  checksum: 10c0/7a61446697a23dcad3545cf0634dedbdedf20ae9a0ee6ee977554589a15deb4a93593ee48a41258933d58ce0778f446b0d2c162b60750956fb75e0b9560fb832
-  languageName: node
-  linkType: hard
-
-"@actions/http-client@npm:^2.0.1":
-  version: 2.2.1
-  resolution: "@actions/http-client@npm:2.2.1"
-  dependencies:
-    tunnel: "npm:^0.0.6"
-    undici: "npm:^5.25.4"
-  checksum: 10c0/371771e68fcfe1383e59657eb5bc421aba5e1826f5e497efd826236b64fc1ff11f0bc91f936d7f1086f6bb3fd209736425a4d357b98fdfb7a8d054cbb84680e8
-  languageName: node
-  linkType: hard
-
 "@adobe/css-tools@npm:^4.0.1, @adobe/css-tools@npm:^4.3.2":
   version: 4.3.3
   resolution: "@adobe/css-tools@npm:4.3.3"
@@ -3209,18 +3189,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@backstage/catalog-model@npm:^1.4.5, @backstage/catalog-model@npm:^1.5.0":
-  version: 1.5.0
-  resolution: "@backstage/catalog-model@npm:1.5.0"
-  dependencies:
-    "@backstage/errors": "npm:^1.2.4"
-    "@backstage/types": "npm:^1.1.1"
-    ajv: "npm:^8.10.0"
-    lodash: "npm:^4.17.21"
-  checksum: 10c0/f3315b407e1bf59ac624120bd531bbbe3b5795a08b884cba447cdfc2e47fe6517bf75078b82a8701007b14716e14a5884a91c3c21227745eb5e75e6b7165187e
-  languageName: node
-  linkType: hard
-
 "@backstage/catalog-model@npm:^1.7.0":
   version: 1.7.0
   resolution: "@backstage/catalog-model@npm:1.7.0"
@@ -4107,20 +4075,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@backstage/plugin-permission-common@npm:^0.8.0":
-  version: 0.8.0
-  resolution: "@backstage/plugin-permission-common@npm:0.8.0"
-  dependencies:
-    "@backstage/config": "npm:^1.2.0"
-    "@backstage/errors": "npm:^1.2.4"
-    "@backstage/types": "npm:^1.1.1"
-    cross-fetch: "npm:^4.0.0"
-    uuid: "npm:^9.0.0"
-    zod: "npm:^3.22.4"
-  checksum: 10c0/976516a308ca9fd3d626be3e3c14d8d171f35fd27badc87c3178de49f5603cd71ffb6e0a750fef6deeafeeab07ea0a66bae930068b5315949e522f2b517e7e82
-  languageName: node
-  linkType: hard
-
 "@backstage/plugin-permission-common@npm:^0.8.1":
   version: 0.8.1
   resolution: "@backstage/plugin-permission-common@npm:0.8.1"
@@ -4186,17 +4140,6 @@ __metadata:
     "@types/react":
       optional: true
   checksum: 10c0/cf896080906b3b84250145c43de8640a4eddf594815cb3f5f29d7cffedda1844aae800dcce3a9a1355c7f407c842d65430124f1f12e5fa44095d3600a578bee6
-  languageName: node
-  linkType: hard
-
-"@backstage/plugin-scaffolder-common@npm:^1.5.1":
-  version: 1.5.4
-  resolution: "@backstage/plugin-scaffolder-common@npm:1.5.4"
-  dependencies:
-    "@backstage/catalog-model": "npm:^1.5.0"
-    "@backstage/plugin-permission-common": "npm:^0.8.0"
-    "@backstage/types": "npm:^1.1.1"
-  checksum: 10c0/2e3d04d8e1ffb5383b91694ac7a39c6740ce81f30de448a77df8d3bb1e4fab1d9652c20855fde9db6574f66b97f4210642142b4d947ae4e30ac9b1a186cecbe4
   languageName: node
   linkType: hard
 
@@ -4660,7 +4603,6 @@ __metadata:
     "@mui/lab": "npm:^5.0.0-alpha.169"
     "@mui/material": "npm:^5.16.7"
     "@rjsf/core": "npm:^3.0.0"
-    "@roadiehq/roadie-backstage-entity-validator": "npm:^2.3.6"
     "@testing-library/jest-dom": "npm:^6.1.3"
     "@types/color-convert": "npm:^2.0.1"
     "@types/crypto-hash": "npm:^1.1.2"
@@ -5253,13 +5195,6 @@ __metadata:
   version: 8.4.1
   resolution: "@faker-js/faker@npm:8.4.1"
   checksum: 10c0/4f2aecddcfdc2cc8b50b2d15d1e37302a7c7a5bbd184ae910a9d271bc11248533ca74dcdd4a9ccbe20410553e7af0f6a4d334c5b955635e09a32ddf4a64942d4
-  languageName: node
-  linkType: hard
-
-"@fastify/busboy@npm:^2.0.0":
-  version: 2.1.1
-  resolution: "@fastify/busboy@npm:2.1.1"
-  checksum: 10c0/6f8027a8cba7f8f7b736718b013f5a38c0476eea67034c94a0d3c375e2b114366ad4419e6a6fa7ffc2ef9c6d3e0435d76dd584a7a1cbac23962fda7650b579e3
   languageName: node
   linkType: hard
 
@@ -7428,23 +7363,6 @@ __metadata:
   peerDependencies:
     "@rjsf/utils": ^5.23.x
   checksum: 10c0/3993fb7da2bac7683f58f924fa005ba141b67144156aab08eadf3726866a88dce2c76824ca52c2b12350e4f3f0317bfe261301c86ba6fbfe8f7e2f42c9c453e5
-  languageName: node
-  linkType: hard
-
-"@roadiehq/roadie-backstage-entity-validator@npm:^2.3.6":
-  version: 2.4.9
-  resolution: "@roadiehq/roadie-backstage-entity-validator@npm:2.4.9"
-  dependencies:
-    "@actions/core": "npm:^1.10.0"
-    "@backstage/catalog-model": "npm:^1.4.5"
-    "@backstage/plugin-scaffolder-common": "npm:^1.5.1"
-    ajv: "npm:^8.4.0"
-    ajv-formats: "npm:^2.1.0"
-    glob: "npm:^7.1.7"
-    js-yaml: "npm:^4.1.0"
-    memfs: "npm:^4.7.7"
-    minimist: "npm:^1.2.5"
-  checksum: 10c0/3dda641669b74f970261e5ddb3f926fbb3a70afbe8dffcae8f01aa3faa05857cf3e32a02c40a3728bcd3bceb171c8007974968b8ee12799660fe914533d10440
   languageName: node
   linkType: hard
 
@@ -10492,7 +10410,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ajv-formats@npm:^2.1.0, ajv-formats@npm:^2.1.1":
+"ajv-formats@npm:^2.1.1":
   version: 2.1.1
   resolution: "ajv-formats@npm:2.1.1"
   dependencies:
@@ -10538,7 +10456,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ajv@npm:^8.0.0, ajv@npm:^8.10.0, ajv@npm:^8.11.0, ajv@npm:^8.12.0, ajv@npm:^8.4.0, ajv@npm:^8.9.0":
+"ajv@npm:^8.0.0, ajv@npm:^8.10.0, ajv@npm:^8.11.0, ajv@npm:^8.12.0, ajv@npm:^8.9.0":
   version: 8.12.0
   resolution: "ajv@npm:8.12.0"
   dependencies:
@@ -20707,15 +20625,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"memfs@npm:^4.7.7":
-  version: 4.8.1
-  resolution: "memfs@npm:4.8.1"
-  dependencies:
-    tslib: "npm:^2.0.0"
-  checksum: 10c0/08d24ef25bf158b6e59b20ca4d414a161018c5c34a54b725bd6df0a9a196d67155ea8f990915d3869ef8ebb0acb5d1eeda78d4ff5a87e435cdbe3a353d8c97e5
-  languageName: node
-  linkType: hard
-
 "memjs@npm:^1.3.2":
   version: 1.3.2
   resolution: "memjs@npm:1.3.2"
@@ -27498,13 +27407,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tunnel@npm:^0.0.6":
-  version: 0.0.6
-  resolution: "tunnel@npm:0.0.6"
-  checksum: 10c0/e27e7e896f2426c1c747325b5f54efebc1a004647d853fad892b46d64e37591ccd0b97439470795e5262b5c0748d22beb4489a04a0a448029636670bfd801b75
-  languageName: node
-  linkType: hard
-
 "turndown-plugin-gfm@npm:^1.0.2":
   version: 1.0.2
   resolution: "turndown-plugin-gfm@npm:1.0.2"
@@ -27869,15 +27771,6 @@ __metadata:
   version: 5.26.5
   resolution: "undici-types@npm:5.26.5"
   checksum: 10c0/bb673d7876c2d411b6eb6c560e0c571eef4a01c1c19925175d16e3a30c4c428181fb8d7ae802a261f283e4166a0ac435e2f505743aa9e45d893f9a3df017b501
-  languageName: node
-  linkType: hard
-
-"undici@npm:^5.25.4":
-  version: 5.29.0
-  resolution: "undici@npm:5.29.0"
-  dependencies:
-    "@fastify/busboy": "npm:^2.0.0"
-  checksum: 10c0/e4e4d631ca54ee0ad82d2e90e7798fa00a106e27e6c880687e445cc2f13b4bc87c5eba2a88c266c3eecffb18f26e227b778412da74a23acc374fca7caccec49b
   languageName: node
   linkType: hard
 
