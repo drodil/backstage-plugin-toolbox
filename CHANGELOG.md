@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.28.0](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.27.0...v1.28.0) (2025-07-04)
+
+
+### Features
+
+* new regex validator ([7f907c4](https://github.com/drodil/backstage-plugin-toolbox/commit/7f907c4fc8eb34ca96b2fe2c79a68f7a7696f1f8))
+* new regex validator ([d67d894](https://github.com/drodil/backstage-plugin-toolbox/commit/d67d894a0ceb4d853bfc32aad436911edd77bd6a))
+* new regex validator ([4e2ec57](https://github.com/drodil/backstage-plugin-toolbox/commit/4e2ec57d045c71e2596e169b4f1323f59b5e4ef5))
+* new regex validator ([a84444c](https://github.com/drodil/backstage-plugin-toolbox/commit/a84444cbfcf5447a3fb1165f4bdc6863d36f3eff))
+
 ## [1.27.0](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.26.1...v1.27.0) (2025-05-28)
 
 
