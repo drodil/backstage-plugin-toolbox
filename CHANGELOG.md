@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.27.0](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.26.1...v1.27.0) (2025-05-28)
+
+
+### Features
+
+* use catalog api for entity validation ([3e658cb](https://github.com/drodil/backstage-plugin-toolbox/commit/3e658cb0deb3020990cd3ca954d745435b7cc4aa))
+
+
+### Bug Fixes
+
+* align dropdown menu items in select component ([f316e30](https://github.com/drodil/backstage-plugin-toolbox/commit/f316e30a98a681bf2d0ca7b4c8047f264c3382bd))
+* use virtualized list for entity describer ([63949df](https://github.com/drodil/backstage-plugin-toolbox/commit/63949dfc742599172b004738510c09a7ff8f9487)), closes [#136](https://github.com/drodil/backstage-plugin-toolbox/issues/136)
+* yarn tsc error TS2322 ([52151f8](https://github.com/drodil/backstage-plugin-toolbox/commit/52151f85e9afbd888c947edb5c561ad4b4a3e550))
+
 ### [1.26.1](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.26.0...v1.26.1) (2025-05-21)
 
 ## [1.26.0](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.25.2...v1.26.0) (2025-03-19)
