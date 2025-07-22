@@ -15,10 +15,10 @@ export const EncoderModeSelector = (props: {
       }
       variant="standard"
     >
-      <MenuItem value={'withSpecialCharacters'} sx={{ p: '6px 16px !important' }}>
+      <MenuItem value='withSpecialCharacters' sx={{ p: '6px 16px !important' }}>
         {t('components.encoderModeSelector.withSpecialCharacters')}
       </MenuItem>
-      <MenuItem value={'withoutSpecialCharacters'} sx={{ p: '6px 16px !important' }}>
+      <MenuItem value='withoutSpecialCharacters' sx={{ p: '6px 16px !important' }}>
         {t('components.encoderModeSelector.withoutSpecialCharacters')}
       </MenuItem>
     </DefaultSelect>
