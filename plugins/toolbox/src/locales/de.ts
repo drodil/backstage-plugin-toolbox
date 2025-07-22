@@ -47,6 +47,9 @@ const de = createTranslationMessages({
     'components.defaultEditor.mode.kebab': 'Kebabcase',
     'components.defaultEditor.mode.upper': 'Großbuchstaben',
     'components.defaultEditor.mode.lower': 'Kleinbuchstaben',
+    'components.encoderModeSelector.withSpecialCharacters': 'Sonderzeichen kodieren',
+    'components.encoderModeSelector.withoutSpecialCharacters':
+      'Keine Sonderzeichen kodieren',
     'components.jsonSpaceSelector.space_one': '1 Leerzeichen',
     'components.jsonSpaceSelector.space_two': '2 Leerzeichen',
     'components.jsonSpaceSelector.space_other': '{{count}} Leerzeichen',

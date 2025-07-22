@@ -403,6 +403,10 @@ export const toolboxTranslationRef = createTranslationRef({
         space_two: '2 spaces',
         space_other: '{{count}} spaces',
       },
+      encoderModeSelector: {
+        withSpecialCharacters: 'Encode special characters',
+        withoutSpecialCharacters: 'Don\'t encode special characters',
+      },
       homePageCard: {
         selectToolText: 'Select tool from widget settings',
       },
