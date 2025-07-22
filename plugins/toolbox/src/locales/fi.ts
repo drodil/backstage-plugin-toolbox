@@ -38,8 +38,10 @@ const fi = createTranslationMessages({
     'components.defaultEditor.outputLabel': 'Ulostulo',
     'components.defaultEditor.mode.encode': 'Koodaa',
     'components.defaultEditor.mode.decode': 'Pura',
-    'components.encoderModeSelector.withSpecialCharacters': 'Koodata erikoismerkkejä',
-    'components.encoderModeSelector.withoutSpecialCharacters': 'Älä koodaa erikoismerkkejä',
+    'components.encoderModeSelector.withSpecialCharacters':
+      'Koodata erikoismerkkejä',
+    'components.encoderModeSelector.withoutSpecialCharacters':
+      'Älä koodaa erikoismerkkejä',
     'components.jsonSpaceSelector.space_one': '1 välilyönti',
     'components.jsonSpaceSelector.space_two': '2 välilyöntiä',
     'components.jsonSpaceSelector.space_other': '{{count}} välilyöntiä',

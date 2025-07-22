@@ -10,15 +10,16 @@ export const EncoderModeSelector = (props: {
   return (
     <DefaultSelect
       value={props.value}
-      onChange={e =>
-        props.onChange(e.target.value as string)
-      }
+      onChange={e => props.onChange(e.target.value as string)}
       variant="standard"
     >
-      <MenuItem value='withSpecialCharacters' sx={{ p: '6px 16px !important' }}>
+      <MenuItem value="withSpecialCharacters" sx={{ p: '6px 16px !important' }}>
         {t('components.encoderModeSelector.withSpecialCharacters')}
       </MenuItem>
-      <MenuItem value='withoutSpecialCharacters' sx={{ p: '6px 16px !important' }}>
+      <MenuItem
+        value="withoutSpecialCharacters"
+        sx={{ p: '6px 16px !important' }}
+      >
         {t('components.encoderModeSelector.withoutSpecialCharacters')}
       </MenuItem>
     </DefaultSelect>

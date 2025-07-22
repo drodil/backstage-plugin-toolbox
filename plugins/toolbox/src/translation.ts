@@ -405,7 +405,7 @@ export const toolboxTranslationRef = createTranslationRef({
       },
       encoderModeSelector: {
         withSpecialCharacters: 'Encode special characters',
-        withoutSpecialCharacters: 'Don\'t encode special characters',
+        withoutSpecialCharacters: "Don't encode special characters",
       },
       homePageCard: {
         selectToolText: 'Select tool from widget settings',

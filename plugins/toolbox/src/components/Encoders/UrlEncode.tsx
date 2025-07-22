@@ -6,21 +6,24 @@ export const UrlEncode = () => {
   const [input, setInput] = useState('');
   const [output, setOutput] = useState('');
   const [mode, setMode] = useState('Encode');
-  const [specialCharsMode, setSpecialCharsMode] = useState('withoutSpecialCharacters');
+  const [specialCharsMode, setSpecialCharsMode] = useState(
+    'withoutSpecialCharacters',
+  );
 
   useEffect(() => {
     let url = '';
     let errorMessage = '';
     try {
       if (mode === 'Encode') {
-        url = specialCharsMode === 'withSpecialCharacters'
-          ? encodeURIComponent(input)
-          : encodeURI(input);
-      }
-      else {
-        url = specialCharsMode === 'withSpecialCharacters'
-          ? decodeURIComponent(input) 
-          : decodeURI(input);
+        url =
+          specialCharsMode === 'withSpecialCharacters'
+            ? encodeURIComponent(input)
+            : encodeURI(input);
+      } else {
+        url =
+          specialCharsMode === 'withSpecialCharacters'
+            ? decodeURIComponent(input)
+            : decodeURI(input);
       }
     } catch (error) {
       errorMessage = `couldn't ${
@@ -38,7 +41,12 @@ export const UrlEncode = () => {
       setMode={setMode}
       output={output}
       modes={['Encode', 'Decode']}
-      additionalTools={[<EncoderModeSelector value={specialCharsMode} onChange={setSpecialCharsMode}/>]}
+      additionalTools={[
+        <EncoderModeSelector
+          value={specialCharsMode}
+          onChange={setSpecialCharsMode}
+        />,
+      ]}
       sample={
         mode === 'Encode'
           ? 'https://backstage.io/?query= hello\\world{}'
