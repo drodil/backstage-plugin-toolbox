@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.29.0](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.28.0...v1.29.0) (2025-07-31)
+
+
+### Features
+
+* give the user the option to encode the url with our without special characters ([2281bac](https://github.com/drodil/backstage-plugin-toolbox/commit/2281bac12199862760c933d89e2fbb9841eb776a))
+
+
+### Bug Fixes
+
+* fix linting error ([95fb15a](https://github.com/drodil/backstage-plugin-toolbox/commit/95fb15ab18fe582dfa5e5f8b3bf0a17c2ceaaa01))
+* prettier formatting issues ([67d3c0e](https://github.com/drodil/backstage-plugin-toolbox/commit/67d3c0ea51a9e71a741c24ec460513fb80c85ed6))
+
 ## [1.28.0](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.27.0...v1.28.0) (2025-07-04)
 
 
