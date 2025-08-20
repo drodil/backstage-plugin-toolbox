@@ -2452,7 +2452,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@backstage/core-compat-api@npm:^0.5.0":
+"@backstage/core-compat-api@backstage:^::backstage=1.42.0&npm=0.5.0, @backstage/core-compat-api@npm:^0.5.0":
   version: 0.5.0
   resolution: "@backstage/core-compat-api@npm:0.5.0"
   dependencies:
@@ -2654,7 +2654,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@backstage/frontend-plugin-api@npm:^0.11.0":
+"@backstage/frontend-plugin-api@backstage:^::backstage=1.42.0&npm=0.11.0, @backstage/frontend-plugin-api@npm:^0.11.0":
   version: 0.11.0
   resolution: "@backstage/frontend-plugin-api@npm:0.11.0"
   dependencies:
@@ -3569,9 +3569,11 @@ __metadata:
   resolution: "@drodil/backstage-plugin-toolbox@workspace:plugins/toolbox"
   dependencies:
     "@backstage/cli": "backstage:^"
+    "@backstage/core-compat-api": "backstage:^"
     "@backstage/core-components": "backstage:^"
     "@backstage/core-plugin-api": "backstage:^"
     "@backstage/dev-utils": "backstage:^"
+    "@backstage/frontend-plugin-api": "backstage:^"
     "@backstage/plugin-catalog-common": "backstage:^"
     "@backstage/plugin-catalog-react": "backstage:^"
     "@backstage/plugin-home": "backstage:^"
