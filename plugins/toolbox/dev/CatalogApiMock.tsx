@@ -18,6 +18,10 @@ import {
   ValidateEntityResponse,
 } from '@backstage/catalog-client';
 import { CompoundEntityRef, Entity } from '@backstage/catalog-model';
+import {
+  AnalyzeLocationRequest,
+  AnalyzeLocationResponse,
+} from '@backstage/plugin-catalog-common';
 
 export class CatalogApiMock implements CatalogApi {
   addLocation(
@@ -159,6 +163,13 @@ export class CatalogApiMock implements CatalogApi {
     _request?: {} | undefined,
     _options?: CatalogRequestOptions | undefined,
   ): Promise<GetLocationsResponse> {
+    throw new Error('Method not implemented.');
+  }
+
+  analyzeLocation(
+    _: AnalyzeLocationRequest,
+    __?: CatalogRequestOptions,
+  ): Promise<AnalyzeLocationResponse> {
     throw new Error('Method not implemented.');
   }
 }
