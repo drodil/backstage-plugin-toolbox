@@ -1,6 +1,6 @@
 import type { ChangeEvent } from 'react';
-import { useCallback, useMemo, useRef, useState } from 'react';
 import * as React from 'react';
+import { useCallback, useMemo, useRef, useState } from 'react';
 
 import { faker } from '@faker-js/faker';
 import type {
@@ -211,7 +211,7 @@ export const QRCodeGenerator = () => {
         }
 
         if (Buffer.isBuffer(data)) {
-          const blob = new Blob([data], { type: 'image/png' });
+          const blob = new Blob([data as BlobPart], { type: 'image/png' });
           setImage(window.URL.createObjectURL(blob));
           return;
         }

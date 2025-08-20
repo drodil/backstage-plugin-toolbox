@@ -7,6 +7,7 @@ export type ToolRequest = typeof globalThis extends { onmessage: any }
       body?:
         | string
         | ArrayBuffer
+        | SharedArrayBuffer
         | ArrayBufferView
         | Blob
         | FormData
