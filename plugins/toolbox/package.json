@@ -16,9 +16,7 @@
     "url": "https://github.com/drodil/backstage-plugin-toolbox/issues"
   },
   "publishConfig": {
-    "access": "public",
-    "main": "dist/index.esm.js",
-    "types": "dist/index.d.ts"
+    "access": "public"
   },
   "exports": {
     ".": "./src/index.ts",

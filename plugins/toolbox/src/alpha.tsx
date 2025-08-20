@@ -28,7 +28,7 @@ const toolboxApi = ApiBlueprint.make({
 
 const toolboxPage = PageBlueprint.make({
   params: {
-    path: '/qeta',
+    path: '/toolbox',
     routeRef: convertLegacyRouteRef(rootRouteRef),
     loader: () =>
       import('./components/Root').then(m => compatWrapper(<m.Root />)),
@@ -42,8 +42,11 @@ const toolboxPage = PageBlueprint.make({
  */
 export default createFrontendPlugin({
   pluginId: 'toolbox',
+  info: { packageJson: () => import('../package.json') },
   routes: convertLegacyRouteRefs({
     root: rootRouteRef,
   }),
   extensions: [toolboxApi, toolboxPage],
 });
+
+export { toolboxTranslationRef } from './translation';
