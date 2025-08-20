@@ -1,6 +1,7 @@
 import {
   ApiBlueprint,
   createFrontendPlugin,
+  NavItemBlueprint,
   PageBlueprint,
 } from '@backstage/frontend-plugin-api';
 import {
@@ -11,6 +12,7 @@ import {
 import { discoveryApiRef, fetchApiRef } from '@backstage/core-plugin-api';
 import { toolboxApiRef, ToolboxClient } from './api';
 import { rootRouteRef } from './routes.ts';
+import CardTravel from '@mui/icons-material/CardTravel';
 
 const toolboxApi = ApiBlueprint.make({
   params: defineParams =>
@@ -35,6 +37,15 @@ const toolboxPage = PageBlueprint.make({
   },
 });
 
+/** @alpha */
+export const toolboxNavItem = NavItemBlueprint.make({
+  params: {
+    title: 'Toolbox',
+    routeRef: convertLegacyRouteRef(rootRouteRef),
+    icon: CardTravel,
+  },
+});
+
 /**
  * Backstage frontend plugin.
  *
@@ -46,7 +57,7 @@ export default createFrontendPlugin({
   routes: convertLegacyRouteRefs({
     root: rootRouteRef,
   }),
-  extensions: [toolboxApi, toolboxPage],
+  extensions: [toolboxApi, toolboxPage, toolboxNavItem],
 });
 
 export { toolboxTranslationRef } from './translation';
