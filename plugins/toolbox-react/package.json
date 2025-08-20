@@ -1,7 +1,7 @@
 {
   "name": "@drodil/backstage-plugin-toolbox-react",
   "description": "Web library for the toolbox plugin",
-  "version": "1.29.3",
+  "version": "1.29.4",
   "main": "src/index.ts",
   "types": "src/index.ts",
   "prepublishOnly": "yarn tsc && yarn build",
