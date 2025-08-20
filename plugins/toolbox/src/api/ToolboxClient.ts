@@ -1,4 +1,4 @@
-import { ToolboxApi, ToolRequest, ToolResponse } from './ToolboxApi';
+import { ToolboxApi } from './ToolboxApi';
 import { DiscoveryApi, FetchApi } from '@backstage/core-plugin-api';
 
 export class ToolboxClient implements ToolboxApi {
@@ -25,10 +25,7 @@ export class ToolboxClient implements ToolboxApi {
     }
   }
 
-  async toolRequest(
-    toolName: string,
-    request: ToolRequest,
-  ): Promise<ToolResponse> {
+  async toolRequest(toolName: string, request: any): Promise<any> {
     const url = `${await this.getBaseUrl()}/${toolName}`;
     const response = await this.fetchApi.fetch(url, request);
     if (response.ok) {
@@ -38,7 +35,7 @@ export class ToolboxClient implements ToolboxApi {
   }
 
   async toolJsonRequest(toolName: string, data: any): Promise<unknown> {
-    const request: ToolRequest = {
+    const request = {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
