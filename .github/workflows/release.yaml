@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'yarn'
@@ -31,7 +31,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'yarn'
@@ -47,7 +47,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: Use Node.js 22.x
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: 22.x
           cache: 'yarn'
@@ -95,7 +95,7 @@ jobs:
           echo "npmAlwaysAuth: true" >> ~/.yarnrc.yml
           echo "npmPublishRegistry: https://registry.npmjs.org" >> ~/.yarnrc.yml
       - name: Use Node.js 22.x
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: 22.x
           cache: 'yarn'
@@ -122,7 +122,7 @@ jobs:
           echo "npmAlwaysAuth: true" >> ~/.yarnrc.yml
           echo "npmPublishRegistry: https://registry.npmjs.org" >> ~/.yarnrc.yml
       - name: Use Node.js 22.x
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: 22.x
           cache: 'yarn'
@@ -149,7 +149,7 @@ jobs:
           echo "npmAlwaysAuth: true" >> ~/.yarnrc.yml
           echo "npmPublishRegistry: https://registry.npmjs.org" >> ~/.yarnrc.yml
       - name: Use Node.js 22.x
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: 22.x
           cache: 'yarn'
@@ -176,7 +176,7 @@ jobs:
           echo "npmAlwaysAuth: true" >> ~/.yarnrc.yml
           echo "npmPublishRegistry: https://registry.npmjs.org" >> ~/.yarnrc.yml
       - name: Use Node.js 22.x
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: 22.x
           cache: 'yarn'
@@ -203,7 +203,7 @@ jobs:
           echo "npmAlwaysAuth: true" >> ~/.yarnrc.yml
           echo "npmPublishRegistry: https://registry.npmjs.org" >> ~/.yarnrc.yml
       - name: Use Node.js 22.x
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: 22.x
           cache: 'yarn'
