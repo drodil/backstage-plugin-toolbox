@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.29.5](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.29.4...v1.29.5) (2025-08-20)
+
+
+### Bug Fixes
+
+* get rid of types req/resp ([c35af5f](https://github.com/drodil/backstage-plugin-toolbox/commit/c35af5f2ba4b847b2966adeca9deb6bcf26752a3))
+
 ### [1.29.4](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.29.3...v1.29.4) (2025-08-20)
 
 
