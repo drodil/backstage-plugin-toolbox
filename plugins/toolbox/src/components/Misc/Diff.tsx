@@ -1,6 +1,6 @@
 import { DiffEditor, loader } from '@monaco-editor/react';
 import * as monaco from 'monaco-editor';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState, useRef, useCallback } from 'react';
 import useEffectOnce from 'react-use/lib/useEffectOnce';
 import { Select, SelectItem } from '@backstage/core-components';
 
@@ -83,6 +83,18 @@ export const SampleButton = (props: SampleButtonProps) => {
   );
 };
 
+const useSyncEditorValue = (
+  getEditor: () => monaco.editor.IStandaloneCodeEditor | undefined,
+  value: string,
+) => {
+  useEffect(() => {
+    const editor = getEditor();
+    if (editor && editor.getValue() !== value) {
+      editor.setValue(value);
+    }
+  }, [value, getEditor]);
+};
+
 function Diff() {
   const appThemeApi = useApi(appThemeApiRef);
   const theme = useMemo(
@@ -100,6 +112,43 @@ function Diff() {
     [],
   );
   const { t } = useToolboxTranslation();
+
+  const diffEditorRef = useRef<monaco.editor.IStandaloneDiffEditor | null>(
+    null,
+  );
+
+  const onMount = useCallback(
+    (editor: monaco.editor.IStandaloneDiffEditor) => {
+      diffEditorRef.current = editor;
+
+      const originalEditor = editor.getOriginalEditor();
+      const modifiedEditor = editor.getModifiedEditor();
+
+      const disposables = [
+        originalEditor.onDidChangeModelContent(() => {
+          setOriginalText(originalEditor.getValue());
+        }),
+        modifiedEditor.onDidChangeModelContent(() => {
+          setModifiedText(modifiedEditor.getValue());
+        }),
+      ];
+
+      return () => {
+        disposables.forEach(d => d.dispose());
+      };
+    },
+    [setOriginalText, setModifiedText],
+  );
+
+  useSyncEditorValue(
+    useCallback(() => diffEditorRef.current?.getOriginalEditor(), []),
+    originalText,
+  );
+
+  useSyncEditorValue(
+    useCallback(() => diffEditorRef.current?.getModifiedEditor(), []),
+    modifiedText,
+  );
 
   const exampleOriginalText = 'Backstage toolbox\n\ncompare text';
   const exampleModifiedText = 'Backstage toolbox\ndiff editor';
@@ -191,11 +240,10 @@ function Diff() {
       </Grid>
       <DiffEditor
         height="100vh"
-        original={originalText}
         theme={theme.includes('dark') ? 'vs-dark' : 'vs-light'}
-        modified={modifiedText}
         options={options}
         language={language}
+        onMount={onMount}
       />
     </FormControl>
   );
