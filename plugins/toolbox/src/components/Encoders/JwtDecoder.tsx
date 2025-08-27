@@ -12,7 +12,7 @@ export const JwtDecoder = () => {
   const alertApi = useApi(alertApiRef);
   const [input, setInput] = useState('');
   const [output, setOutput] = useState('');
-  const [mode, setMode] = useState('Encode');
+  const [mode, setMode] = useState('Decode');
   const { t } = useToolboxTranslation();
 
   const exampleJwt =
@@ -150,7 +150,7 @@ ${JSON.stringify(jwtPayload, null, 2)}`);
       mode={mode}
       setInput={setInput}
       setMode={setMode}
-      modes={['Encode', 'Decode']}
+      modes={['Decode', 'Encode']}
       sample={
         mode === 'Encode' ? JSON.stringify(exampleJSON, null, 4) : exampleJwt
       }
