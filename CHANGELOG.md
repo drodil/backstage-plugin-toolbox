@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.30.0](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.29.5...v1.30.0) (2025-08-27)
+
+
+### Features
+
+* set default mode in JwtDecoder.tsx to Decode ([0039af2](https://github.com/drodil/backstage-plugin-toolbox/commit/0039af2f7dcee50bb0f570a482b1fa8d8466ada7))
+
+
+### Bug Fixes
+
+* clear button in text diff tool does nothing ([58200eb](https://github.com/drodil/backstage-plugin-toolbox/commit/58200eb0c5f05c240a8208549736294c4dddd7a1))
+
 ### [1.29.5](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.29.4...v1.29.5) (2025-08-20)
 
 
