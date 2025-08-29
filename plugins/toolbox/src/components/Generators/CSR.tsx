@@ -467,13 +467,6 @@ function decodeCSR(csrPEM: string): string {
       })
       .join('\n');
 
-    let emailAttribute = '';
-    const emailAttr = csr.attributes
-      ? csr.attributes.find(attr => attr.type === '1.2.840.113549.1.9.1')
-      : undefined;
-    if (emailAttr) {
-      emailAttribute = `\nEmail Address: ${emailAttr.values[0].valueBlock.value}`;
-    }
     const publicKeyInfo = csr.subjectPublicKeyInfo;
     let publicKeyType;
     let publicKeySize = 0;
@@ -552,7 +545,7 @@ function decodeCSR(csrPEM: string): string {
         signatureAlgorithm = `Unknown${csr.signatureAlgorithm.algorithmId}`;
         break;
     }
-    return `Subject:\n${subjectInfo}${emailAttribute}\n\nPublic Key:\nType: ${publicKeyType} \nSize: ${publicKeySize} bits\n \nSubject Alternative Names:\n${sanInfo}\n\nSignature Algorithm:\n${signatureAlgorithm}`;
+    return `Subject:\n${subjectInfo}\n\nPublic Key:\nType: ${publicKeyType} \nSize: ${publicKeySize} bits\n \nSubject Alternative Names:\n${sanInfo}\n\nSignature Algorithm:\n${signatureAlgorithm}`;
   } catch (error) {
     throw new Error('Invalid CSR or failed to parse.', { cause: error });
   }
