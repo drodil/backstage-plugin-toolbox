@@ -50,9 +50,9 @@ export const CSRGenerator = () => {
       config.getOptionalString('app.toolbox.csr.defaults.locality') || '',
     organization:
       config.getOptionalString('app.toolbox.csr.defaults.organization') || '',
-    // New optional field for Organizational Unit
+    // Optional field for Organizational Unit
     organizationalUnit: '',
-    // New optional field for Email Address
+    // Optional field for Email Address
     emailAddress: '',
   });
 
@@ -104,28 +104,26 @@ export const CSRGenerator = () => {
     if (fqdns.length === 0) {
       alertApi.post({
         message: t('tool.csr-generate.alertMsg'),
-        severity: 'info',
-      });
-      return;
-    } else {
-      alertApi.post({
-        message: t('tool.csr-generate.remindMsg'),
         severity: 'warning',
       });
+      return;
     }
     setCertReq('');
-    createCSR(key, hashAlgName, fqdns, subjectValues)
-      .then(csr => {
-        setCertReq(csr);
-        handleDecodeCSR(csr, setDecodedCSR);
-      })
-      .catch(() => {
-        alertApi.post({
-          message: t('tool.csr-generate.errorMsg'),
-          severity: 'error',
-        });
-        return;
+    try {
+      const csr = await createCSR(key, hashAlgName, fqdns, subjectValues);
+      setCertReq(csr);
+      handleDecodeCSR(csr, setDecodedCSR);
+      // Remind user to download the key.
+      alertApi.post({
+        message: t('tool.csr-generate.remindMsg'),
+        severity: 'info',
       });
+    } catch (error) {
+      alertApi.post({
+        message: `${t('tool.csr-generate.errorMsg')}: ${error.message}`,
+        severity: 'error',
+      });
+    }
   };
 
   return (
@@ -215,14 +213,14 @@ export const CSRGenerator = () => {
               style={{ marginBottom: '10px', width: '100%' }}
               onChange={handleSubjectChange('organization')}
             />
-            {/* New optional field for Organizational Unit */}
+            {/* Optional field for Organizational Unit */}
             <TextField
               label={t('tool.csr-generate.organizationalUnitNameLabel')}
               value={subjectValues.organizationalUnit}
               style={{ marginBottom: '10px', width: '100%' }}
               onChange={handleSubjectChange('organizationalUnit')}
             />
-            {/* New optional field for Email Address */}
+            {/* Optional field for Email Address */}
             <TextField
               label={t('tool.csr-generate.emailAddressLabel')}
               value={subjectValues.emailAddress}
@@ -284,7 +282,7 @@ async function generateNewKeyPair(
     let modLen = 4096;
     let hashAlgName = 'SHA-256';
 
-    // New logic to handle RSA-2048 SHA2
+    // Handle RSA-2048 SHA2
     if (algorithmName === 'rsa-2048-sha2') {
       modLen = 2048;
       hashAlgName = 'SHA-256';
@@ -335,7 +333,6 @@ async function createCSR(
     state: string;
     locality: string;
     organization: string;
-    // Added new field to function signature
     organizationalUnit: string;
     emailAddress: string;
   },
@@ -367,23 +364,31 @@ async function createCSR(
       type: '2.5.4.10',
       value: new asn1js.Utf8String({ value: subjectValues.organization }),
     }),
+    // Conditionally add the optional Organizational Unit
+    ...(subjectValues.organizationalUnit
+      ? [
+          new AttributeTypeAndValue({
+            type: '2.5.4.11',
+            value: new asn1js.Utf8String({
+              value: subjectValues.organizationalUnit,
+            }),
+          }),
+        ]
+      : []),
     new AttributeTypeAndValue({
       type: '2.5.4.3',
       value: new asn1js.Utf8String({ value: fqdns[0] }),
     }),
+    // Conditionally add the optional Email Address
+    ...(subjectValues.emailAddress
+      ? [
+          new AttributeTypeAndValue({
+            type: '1.2.840.113549.1.9.1',
+            value: new asn1js.Utf8String({ value: subjectValues.emailAddress }),
+          }),
+        ]
+      : []),
   ];
-
-  // Conditionally add the optional Organizational Unit and Email attributes.
-  if (subjectValues.organizationalUnit) {
-    subjectAttributes.push(
-      new AttributeTypeAndValue({
-        type: '2.5.4.11', // OID for Organizational Unit Name
-        value: new asn1js.Utf8String({
-          value: subjectValues.organizationalUnit,
-        }),
-      }),
-    );
-  }
 
   const subject = new RelativeDistinguishedNames({
     typesAndValues: subjectAttributes,
@@ -420,15 +425,6 @@ async function createCSR(
       ],
     }),
   ];
-
-  if (subjectValues.emailAddress) {
-    attributes.push(
-      new Attribute({
-        type: '1.2.840.113549.1.9.1', // OID for Email Address
-        values: [new asn1js.Utf8String({ value: subjectValues.emailAddress })],
-      }),
-    );
-  }
 
   pkcs10.attributes = attributes;
 
