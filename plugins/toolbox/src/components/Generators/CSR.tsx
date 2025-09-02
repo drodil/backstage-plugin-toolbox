@@ -26,6 +26,7 @@ import { getCrypto } from 'pkijs';
 
 const keyOptions = [
   { label: 'RSA 4096', value: 'rsa-4096-sha2' },
+  { label: 'RSA 2048 SHA2', value: 'rsa-2048-sha2' },
   { label: 'ECDSA p384', value: 'ecdsa-p384' },
   { label: 'ECDSA p256', value: 'ecdsa-p256' },
   { label: '⚠️RSA 2048 (SHA1 - Legacy systems only)', value: 'rsa-2048-sha1' },
@@ -49,6 +50,10 @@ export const CSRGenerator = () => {
       config.getOptionalString('app.toolbox.csr.defaults.locality') || '',
     organization:
       config.getOptionalString('app.toolbox.csr.defaults.organization') || '',
+    // Optional field for Organizational Unit
+    organizationalUnit: '',
+    // Optional field for Email Address
+    emailAddress: '',
   });
 
   useEffect(() => {
@@ -99,23 +104,26 @@ export const CSRGenerator = () => {
     if (fqdns.length === 0) {
       alertApi.post({
         message: t('tool.csr-generate.alertMsg'),
-        severity: 'info',
+        severity: 'warning',
       });
       return;
     }
     setCertReq('');
-    createCSR(key, hashAlgName, fqdns, subjectValues)
-      .then(csr => {
-        setCertReq(csr);
-        handleDecodeCSR(csr, setDecodedCSR);
-      })
-      .catch(() => {
-        alertApi.post({
-          message: t('tool.csr-generate.errorMsg'),
-          severity: 'error',
-        });
-        return;
+    try {
+      const csr = await createCSR(key, hashAlgName, fqdns, subjectValues);
+      setCertReq(csr);
+      handleDecodeCSR(csr, setDecodedCSR);
+      // Remind user to download the key.
+      alertApi.post({
+        message: t('tool.csr-generate.remindMsg'),
+        severity: 'info',
       });
+    } catch (error) {
+      alertApi.post({
+        message: `${t('tool.csr-generate.errorMsg')}: ${error.message}`,
+        severity: 'error',
+      });
+    }
   };
 
   return (
@@ -205,6 +213,20 @@ export const CSRGenerator = () => {
               style={{ marginBottom: '10px', width: '100%' }}
               onChange={handleSubjectChange('organization')}
             />
+            {/* Optional field for Organizational Unit */}
+            <TextField
+              label={t('tool.csr-generate.organizationalUnitNameLabel')}
+              value={subjectValues.organizationalUnit}
+              style={{ marginBottom: '10px', width: '100%' }}
+              onChange={handleSubjectChange('organizationalUnit')}
+            />
+            {/* Optional field for Email Address */}
+            <TextField
+              label={t('tool.csr-generate.emailAddressLabel')}
+              value={subjectValues.emailAddress}
+              style={{ marginBottom: '10px', width: '100%' }}
+              onChange={handleSubjectChange('emailAddress')}
+            />
           </Grid>
           <Grid item xs={12} lg={8} sx={{ p: '8px !important' }}>
             <TextField
@@ -259,6 +281,13 @@ async function generateNewKeyPair(
   } else if (algorithmName.startsWith('rsa-')) {
     let modLen = 4096;
     let hashAlgName = 'SHA-256';
+
+    // Handle RSA-2048 SHA2
+    if (algorithmName === 'rsa-2048-sha2') {
+      modLen = 2048;
+      hashAlgName = 'SHA-256';
+    }
+
     if (algorithmName === 'rsa-2048-sha1') {
       hashAlgName = 'SHA-1';
       modLen = 2048;
@@ -304,6 +333,8 @@ async function createCSR(
     state: string;
     locality: string;
     organization: string;
+    organizationalUnit: string;
+    emailAddress: string;
   },
 ): Promise<string> {
   if (typeof kp === 'undefined') {
@@ -333,10 +364,30 @@ async function createCSR(
       type: '2.5.4.10',
       value: new asn1js.Utf8String({ value: subjectValues.organization }),
     }),
+    // Conditionally add the optional Organizational Unit
+    ...(subjectValues.organizationalUnit
+      ? [
+          new AttributeTypeAndValue({
+            type: '2.5.4.11',
+            value: new asn1js.Utf8String({
+              value: subjectValues.organizationalUnit,
+            }),
+          }),
+        ]
+      : []),
     new AttributeTypeAndValue({
       type: '2.5.4.3',
       value: new asn1js.Utf8String({ value: fqdns[0] }),
     }),
+    // Conditionally add the optional Email Address
+    ...(subjectValues.emailAddress
+      ? [
+          new AttributeTypeAndValue({
+            type: '1.2.840.113549.1.9.1',
+            value: new asn1js.Utf8String({ value: subjectValues.emailAddress }),
+          }),
+        ]
+      : []),
   ];
 
   const subject = new RelativeDistinguishedNames({
@@ -357,7 +408,8 @@ async function createCSR(
     names: fqdns.map(x => new GeneralName({ type: 2, value: x })),
   });
 
-  pkcs10.attributes = [
+  // Build the attributes array for the CSR
+  const attributes = [
     new Attribute({
       type: '1.2.840.113549.1.9.14', // OID for Extension Request
       values: [
@@ -374,6 +426,8 @@ async function createCSR(
     }),
   ];
 
+  pkcs10.attributes = attributes;
+
   if (typeof kp !== 'undefined') {
     try {
       // Import the public key into the PKCS#10 structure
@@ -382,9 +436,12 @@ async function createCSR(
       // Sign the PKCS#10 CSR with the private key
       await pkcs10.sign(kp.privateKey, ha);
       const ber = pkcs10.toSchema().toBER(false);
-      return `-----BEGIN CERTIFICATE REQUEST-----\n${arrayBufferToBase64(
-        ber,
-      ).replace(/(.{64})/g, '$1\n')}\n-----END CERTIFICATE REQUEST-----`.trim();
+
+      // Create the base64 string, wrapping every 64 characters, and then trim any trailing whitespace.
+      const base64Content = arrayBufferToBase64(ber)
+        .replace(/(.{64})/g, '$1\n')
+        .trimEnd();
+      return `-----BEGIN CERTIFICATE REQUEST-----\n${base64Content}\n-----END CERTIFICATE REQUEST-----`;
     } catch (error) {
       throw new Error(`Failed to create CSR: ${error.message}`);
     }
@@ -409,6 +466,7 @@ function decodeCSR(csrPEM: string): string {
         return `${attr.type}: ${attr.value.valueBlock.value}`;
       })
       .join('\n');
+
     const publicKeyInfo = csr.subjectPublicKeyInfo;
     let publicKeyType;
     let publicKeySize = 0;
