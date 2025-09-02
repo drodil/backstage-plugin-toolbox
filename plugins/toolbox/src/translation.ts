@@ -200,7 +200,8 @@ export const toolboxTranslationRef = createTranslationRef({
         name: 'CSR',
         description: 'Generate Certificate Signing Request',
         alertMsg: 'Provide some domain names first.',
-        remindMsg: 'Important: Please download and securely store your private key now!',
+        remindMsg:
+          'Important: Please download and securely store your private key now!',
         errorMsg: 'Error generating CSR',
         unknownMsg: 'Unknown algorithm',
         generateButton: 'GENERATE',
