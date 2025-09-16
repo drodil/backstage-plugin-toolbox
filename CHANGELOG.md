@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.31.0](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.30.0...v1.31.0) (2025-09-16)
+
+
+### Features
+
+* **csr-generator:** add two optional fields and one key type ([dd57165](https://github.com/drodil/backstage-plugin-toolbox/commit/dd57165dfb49201b9812db3fdaab1de88236eb4e))
+
+
+### Bug Fixes
+
+* **csr:** fix code style ([a70067b](https://github.com/drodil/backstage-plugin-toolbox/commit/a70067b43017042c1f8cdfb3ce019f8293f54237))
+* **csr:** remove redundant extension attribute ([39d0cae](https://github.com/drodil/backstage-plugin-toolbox/commit/39d0cae33ab631827d97df800d9b384581038721))
+* **csr:** subject order ([e5311d5](https://github.com/drodil/backstage-plugin-toolbox/commit/e5311d5a451b02ddde117126fb2685ee8df4756d))
+
 ## [1.30.0](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.29.5...v1.30.0) (2025-08-27)
 
 
