@@ -15,6 +15,7 @@ import {
   Location,
   QueryEntitiesRequest,
   QueryEntitiesResponse,
+  StreamEntitiesRequest,
   ValidateEntityResponse,
 } from '@backstage/catalog-client';
 import { CompoundEntityRef, Entity } from '@backstage/catalog-model';
@@ -170,6 +171,13 @@ export class CatalogApiMock implements CatalogApi {
     _: AnalyzeLocationRequest,
     __?: CatalogRequestOptions,
   ): Promise<AnalyzeLocationResponse> {
+    throw new Error('Method not implemented.');
+  }
+
+  streamEntities(
+    _?: StreamEntitiesRequest,
+    __?: CatalogRequestOptions,
+  ): AsyncIterable<Entity[]> {
     throw new Error('Method not implemented.');
   }
 }
