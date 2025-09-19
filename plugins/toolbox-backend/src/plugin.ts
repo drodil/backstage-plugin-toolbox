@@ -7,6 +7,9 @@ import {
   toolboxToolExtensionPoint,
   ToolRequestHandler,
 } from '@drodil/backstage-plugin-toolbox-node';
+import { actionsRegistryServiceRef } from '@backstage/backend-plugin-api/alpha';
+import { registerActions } from './service/actions';
+import { catalogServiceRef } from '@backstage/plugin-catalog-node';
 
 /**
  * toolboxPlugin backend plugin
@@ -29,8 +32,10 @@ export const toolboxPlugin = createBackendPlugin({
         httpRouter: coreServices.httpRouter,
         config: coreServices.rootConfig,
         logger: coreServices.logger,
+        actionsRegistry: actionsRegistryServiceRef,
+        catalog: catalogServiceRef,
       },
-      async init({ httpRouter, logger, config }) {
+      async init({ httpRouter, logger, config, actionsRegistry, catalog }) {
         httpRouter.use(
           await createRouter({
             logger,
@@ -42,6 +47,8 @@ export const toolboxPlugin = createBackendPlugin({
           path: '*',
           allow: 'unauthenticated',
         });
+
+        registerActions({ actionsRegistry, catalog, config });
       },
     });
   },
