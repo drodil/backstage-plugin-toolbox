@@ -126,6 +126,10 @@ export const HomePage = () => {
 This allows the home page users to configure the card so that their favorite tool is available in their home page.
 For more information, see https://github.com/backstage/backstage/pull/16744
 
+### New frontend system
+
+Coming later when home page supports the new frontend system.
+
 ## Optional backend
 
 The plugin also supports additional backend for tools that cannot work only in the frontend. The backend can be extended
