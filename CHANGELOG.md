@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.33.0](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.32.0...v1.33.0) (2025-09-23)
+
+
+### Features
+
+* **nfs:** better support for nfs and extra tools ([e9a1e32](https://github.com/drodil/backstage-plugin-toolbox/commit/e9a1e32004caf8124b5bf4dbced8a0a1143664f0))
+
 ## [1.32.0](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.31.0...v1.32.0) (2025-09-19)
 
 
