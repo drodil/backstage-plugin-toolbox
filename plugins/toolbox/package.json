@@ -108,6 +108,7 @@
   "devDependencies": {
     "@backstage/cli": "backstage:^",
     "@backstage/dev-utils": "backstage:^",
+    "@backstage/frontend-defaults": "backstage:^",
     "@backstage/plugin-catalog-common": "backstage:^",
     "@backstage/plugin-home": "backstage:^",
     "@rjsf/core": "^3.0.0",

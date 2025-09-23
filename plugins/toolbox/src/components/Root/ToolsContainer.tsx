@@ -194,7 +194,9 @@ export const ToolsContainer = (props: ToolsContainerProps) => {
       if (!search) {
         return true;
       }
-      const toolName = t(`tool.${tool.id}.name`, { defaultValue: tool.name });
+      const toolName = t(`tool.${tool.id}.name`, {
+        defaultValue: tool.displayName ?? tool.name,
+      });
       const description = t(`tool.${tool.id}.description`, {
         defaultValue: tool.description,
       });
@@ -262,12 +264,14 @@ export const ToolsContainer = (props: ToolsContainerProps) => {
                       fontWeight: 'bold',
                     },
                   }}
-                  label={t(`tool.${tool.id}.name`, { defaultValue: tool.name })}
+                  label={t(`tool.${tool.id}.name`, {
+                    defaultValue: tool.displayName ?? tool.name,
+                  })}
                   {...tabProps(i)}
                 />
               ),
               localizedTitle: `${category} - ${t(`tool.${tool.id}.name`, {
-                defaultValue: tool.name,
+                defaultValue: tool.displayName ?? tool.name,
               })}`,
               localizedDescription: t(`tool.${tool.id}.description`, {
                 defaultValue: tool.description,

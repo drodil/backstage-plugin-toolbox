@@ -73,6 +73,34 @@ const extraToolExample: Tool = {
 <ToolboxPage extraTools={[extraToolExample]} />;
 ```
 
+### New frontend system
+
+To add new tools using the new frontend system, you can use the `ToolboxToolBlueprint`:
+
+```tsx
+import { ToolboxToolBlueprint } from '@drodil/backstage-plugin-toolbox/alpha';
+import { createFrontendModule } from '@backstage/frontend-plugin-api';
+
+const base64EncodeTool = ToolboxToolBlueprint.make({
+  name: 'base64-encode',
+  params: {
+    id: 'base64-encode',
+    displayName: 'Base64',
+    description: 'Encode and decode base64 strings',
+    category: 'Encode/Decode',
+    async loader() {
+      const m = await import('./components/Encoders/Base64Encode');
+      return compatWrapper(<m.default />);
+    },
+  },
+});
+
+createFrontendModule({
+  pluginId: 'toolbox',
+  extensions: [base64EncodeTool],
+});
+```
+
 ## Adding tools to custom home page
 
 You can add tools to the Backstage custom home page as follows:

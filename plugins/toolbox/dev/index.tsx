@@ -1,3 +1,5 @@
+/**
+
 import { createDevApp } from '@backstage/dev-utils';
 import {
   ToolboxPage,
@@ -75,3 +77,33 @@ createDevApp()
     path: '/home',
   })
   .render();
+ *
+ */
+
+// NEW FRONTEND SYSTEM
+import { createApp } from '@backstage/frontend-defaults';
+import { createRoot } from 'react-dom/client';
+
+import plugin, { ToolboxToolBlueprint } from '../src/alpha';
+import { createFrontendModule } from '@backstage/frontend-plugin-api';
+
+const extraTool = ToolboxToolBlueprint.make({
+  params: {
+    id: 'extra-tool',
+    displayName: 'Extra Tool',
+    loader: () => Promise.resolve(<div>Extra tool</div>),
+  },
+});
+
+const myModule = createFrontendModule({
+  pluginId: 'toolbox',
+  extensions: [extraTool],
+});
+
+const app = createApp({
+  features: [plugin, myModule],
+});
+
+const container = document.getElementById('root');
+const root = createRoot(container!);
+root.render(app.createRoot());

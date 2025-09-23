@@ -2432,7 +2432,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@backstage/frontend-defaults@npm:^0.3.1":
+"@backstage/frontend-defaults@backstage:^::backstage=1.43.0&npm=0.3.1, @backstage/frontend-defaults@npm:^0.3.1":
   version: 0.3.1
   resolution: "@backstage/frontend-defaults@npm:0.3.1"
   dependencies:
@@ -3333,6 +3333,7 @@ __metadata:
     "@backstage/core-components": "backstage:^"
     "@backstage/core-plugin-api": "backstage:^"
     "@backstage/dev-utils": "backstage:^"
+    "@backstage/frontend-defaults": "backstage:^"
     "@backstage/frontend-plugin-api": "backstage:^"
     "@backstage/plugin-catalog-common": "backstage:^"
     "@backstage/plugin-catalog-react": "backstage:^"

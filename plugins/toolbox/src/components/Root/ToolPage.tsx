@@ -21,7 +21,7 @@ export const ToolPage = (props: ToolsContainerProps) => {
       defaultValue: tool.category ?? 'Miscellaneous',
     },
   )} - ${t(`tool.${tool.id}.name`, {
-    defaultValue: tool.name,
+    defaultValue: tool.displayName ?? tool.name,
   })}`;
   const description = t(`tool.${tool.id}.description`, {
     defaultValue: tool.description,

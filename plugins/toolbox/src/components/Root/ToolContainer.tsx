@@ -35,7 +35,10 @@ export const ToolContainer = (props: ToolContainerProps) => {
           </Box>
         }
       >
-        <ContentHeader title={tool.name} description={tool.description}>
+        <ContentHeader
+          title={tool.displayName ?? tool.name}
+          description={tool.description}
+        >
           {tool.headerButtons}
         </ContentHeader>
         {tool.component}
