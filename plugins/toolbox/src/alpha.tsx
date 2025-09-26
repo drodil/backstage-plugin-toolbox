@@ -24,11 +24,14 @@ import {
 
 // TODO: Add homepage content blueprint
 
-/**
- * @deprecated Use `@drodil/backstage-plugin-toolbox-react/alpha` instead
- */
 export {
+  /**
+   * @deprecated Use `@drodil/backstage-plugin-toolbox-react/alpha` instead
+   */
   toolDataRef,
+  /**
+   * @deprecated Use `@drodil/backstage-plugin-toolbox-react/alpha` instead
+   */
   ToolboxToolBlueprint,
 } from '@drodil/backstage-plugin-toolbox-react/alpha';
 
