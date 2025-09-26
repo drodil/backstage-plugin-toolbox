@@ -92,6 +92,15 @@ export const ToolboxToolBlueprint = createExtensionBlueprint({
   },
 });
 
+export const ToolboxWelcomePageBlueprint = createExtensionBlueprint({
+  kind: 'welcome-page',
+  attachTo: { id: 'page:toolbox', input: 'welcomePage' },
+  output: [coreExtensionData.reactElement],
+  factory(params: { element: JSX.Element }) {
+    return [coreExtensionData.reactElement(params.element)];
+  },
+});
+
 const toolboxPage = PageBlueprint.makeWithOverrides({
   inputs: {
     tools: createExtensionInput([toolDataRef], {
