@@ -2,11 +2,9 @@ import {
   ApiBlueprint,
   coreExtensionData,
   createExtensionBlueprint,
-  createExtensionDataRef,
   createExtensionInput,
   createFrontendModule,
   createFrontendPlugin,
-  ExtensionBoundary,
   NavItemBlueprint,
   PageBlueprint,
 } from '@backstage/frontend-plugin-api';
@@ -19,9 +17,20 @@ import { discoveryApiRef, fetchApiRef } from '@backstage/core-plugin-api';
 import { toolboxApiRef, ToolboxClient } from './api';
 import { rootRouteRef } from './routes.ts';
 import CardTravel from '@mui/icons-material/CardTravel';
-import { Tool } from '@drodil/backstage-plugin-toolbox-react';
+import {
+  ToolboxToolBlueprint,
+  toolDataRef,
+} from '@drodil/backstage-plugin-toolbox-react/alpha';
 
 // TODO: Add homepage content blueprint
+
+/**
+ * @deprecated Use `@drodil/backstage-plugin-toolbox-react/alpha` instead
+ */
+export {
+  toolDataRef,
+  ToolboxToolBlueprint,
+} from '@drodil/backstage-plugin-toolbox-react/alpha';
 
 const toolboxApi = ApiBlueprint.make({
   params: defineParams =>
@@ -35,61 +44,6 @@ const toolboxApi = ApiBlueprint.make({
         return new ToolboxClient({ discoveryApi, fetchApi });
       },
     }),
-});
-
-export const toolDataRef = createExtensionDataRef<Tool>().with({
-  id: 'toolbox.tool',
-});
-
-export const ToolboxToolBlueprint = createExtensionBlueprint({
-  kind: 'toolbox-tool',
-  attachTo: { id: 'page:toolbox', input: 'tools' },
-  output: [toolDataRef],
-  inputs: {
-    headerButtons: createExtensionInput([coreExtensionData.reactElement], {
-      required: false,
-      singleton: false,
-    }),
-  },
-  config: {
-    schema: {
-      id: z => z.string().optional(),
-      displayName: z => z.string().optional(),
-      aliases: z => z.array(z.string()).optional(),
-      showOpenInNewWindowButton: z => z.boolean().optional(),
-      showFavoriteButton: z => z.boolean().optional(),
-      description: z => z.string().optional(),
-      category: z => z.string().optional(),
-      requiresBackend: z => z.boolean().optional(),
-    },
-  },
-  dataRefs: { tool: toolDataRef },
-  *factory(
-    params: {
-      id: string;
-      displayName: string;
-      description?: string;
-      aliases?: string[];
-      category?: string;
-      requiresBackend?: boolean;
-      showFavoriteButton?: boolean;
-      showOpenInNewWindowButton?: boolean;
-      loader: () => Promise<JSX.Element>;
-    },
-    { config, inputs, node },
-  ) {
-    const headerButtons = inputs.headerButtons.map(button =>
-      button.get(coreExtensionData.reactElement),
-    );
-    yield toolDataRef({
-      ...params,
-      ...config,
-      name: params.displayName,
-      id: params.id,
-      component: ExtensionBoundary.lazy(node, params.loader),
-      headerButtons,
-    });
-  },
 });
 
 export const ToolboxWelcomePageBlueprint = createExtensionBlueprint({

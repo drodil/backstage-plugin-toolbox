@@ -16,6 +16,21 @@
   "bugs": {
     "url": "https://github.com/drodil/backstage-plugin-toolbox/issues"
   },
+  "exports": {
+    ".": "./src/index.ts",
+    "./alpha": "./src/alpha.tsx",
+    "./package.json": "./package.json"
+  },
+  "typesVersions": {
+    "*": {
+      "alpha": [
+        "src/alpha.tsx"
+      ],
+      "package.json": [
+        "package.json"
+      ]
+    }
+  },
   "publishConfig": {
     "access": "public",
     "main": "dist/index.esm.js",
@@ -44,6 +59,7 @@
   },
   "dependencies": {
     "@backstage/core-plugin-api": "backstage:^",
+    "@backstage/frontend-plugin-api": "backstage:^",
     "@mui/material": "^5.16.7"
   },
   "peerDependencies": {

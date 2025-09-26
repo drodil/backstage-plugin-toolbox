@@ -84,8 +84,9 @@ createDevApp()
 import { createApp } from '@backstage/frontend-defaults';
 import { createRoot } from 'react-dom/client';
 
-import plugin, { ToolboxToolBlueprint } from '../src/alpha';
+import plugin from '../src/alpha';
 import { createFrontendModule } from '@backstage/frontend-plugin-api';
+import { ToolboxToolBlueprint } from '@drodil/backstage-plugin-toolbox-react/alpha';
 
 const extraTool = ToolboxToolBlueprint.make({
   params: {

@@ -3315,6 +3315,7 @@ __metadata:
   dependencies:
     "@backstage/cli": "backstage:^"
     "@backstage/core-plugin-api": "backstage:^"
+    "@backstage/frontend-plugin-api": "backstage:^"
     "@backstage/test-utils": "backstage:^"
     "@mui/material": "npm:^5.16.7"
     "@testing-library/jest-dom": "npm:^5.10.1"
