@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.33.1](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.33.0...v1.33.1) (2025-09-26)
+
+
+### Bug Fixes
+
+* deprecated for individual exports ([c0ac52a](https://github.com/drodil/backstage-plugin-toolbox/commit/c0ac52a6b850517bcd9b6a580a93c0fac299e9d5))
+* **nfs:** add blueprint for custom welcome page ([62cc7c0](https://github.com/drodil/backstage-plugin-toolbox/commit/62cc7c0fb59fe252a7f68b57e1bf95668effab55))
+* **nfs:** move tool blueprint to react plugin ([50c037e](https://github.com/drodil/backstage-plugin-toolbox/commit/50c037e87f80d5a97baabce559382b94501ef67f))
+* repo fix ([9f0176f](https://github.com/drodil/backstage-plugin-toolbox/commit/9f0176f1005189adb86d209f8a6364d3ffa35aaf))
+
 ## [1.33.0](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.32.0...v1.33.0) (2025-09-23)
 
 
