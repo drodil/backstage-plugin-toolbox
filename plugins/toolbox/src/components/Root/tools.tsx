@@ -47,6 +47,7 @@ const RegexValidator = lazy(() => import('../Validators/RegexValidator'));
 const UrlExploder = lazy(() => import('../Misc/UrlExploder'));
 const Whois = lazy(() => import('../Networking/Whois'));
 const StringAnalyzer = lazy(() => import('../Misc/StringAnalyzer'));
+const BackstageIcons = lazy(() => import('../Misc/BackstageIcons'));
 
 // const CidrCalculator = lazy(() => import('../Networking/CidrCalculator'));
 
@@ -212,6 +213,13 @@ export const defaultTools: Tool[] = [
     component: <EntityDescriber />,
     category: 'Backstage',
     description: 'Describes existing catalog entity in YAML',
+  },
+  {
+    id: 'icons-list',
+    name: 'Icons list',
+    component: <BackstageIcons />,
+    category: 'Backstage',
+    description: 'Shows Backstage icons list',
   },
   {
     id: 'csr-generate',

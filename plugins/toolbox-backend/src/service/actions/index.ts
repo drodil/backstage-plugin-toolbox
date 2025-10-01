@@ -21,6 +21,8 @@ import { createPasswordGeneratorAction } from './passwordGenerator.ts';
 import { createStringAnalyzerAction } from './stringAnalyzer.ts';
 import { createUrlExploderAction } from './urlExploder.ts';
 import { createTextDiffAction } from './textDiff.ts';
+import { createBackstageIconsAction } from './backstageIconsBrowser.ts';
+
 // Networking actions
 import { createCidrCalculatorAction } from './cidrCalculator.ts';
 import { createWhoisLookupAction } from './whoisLookup.ts';
@@ -104,6 +106,10 @@ export const registerActions = (options: {
   }
   if (isActionEnabled('diff-text')) {
     createTextDiffAction(options);
+  }
+  if (isActionEnabled('icons-list')) {
+    createBackstageIconsAction(options);
+    // console.log('Finished createBackstageIconsAction.');
   }
 
   // Networking actions
