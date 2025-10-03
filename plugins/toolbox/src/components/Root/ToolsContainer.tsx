@@ -2,7 +2,7 @@ import { ReactElement, Suspense, useEffect, useMemo, useState } from 'react';
 import { Content, ContentHeader } from '@backstage/core-components';
 import { useFavoriteStorage } from '../../utils/hooks';
 import SearchIcon from '@material-ui/icons/Search';
-import { defaultTools } from './tools';
+import { getSortedTools } from '../../utils/tools';
 import OpenInNew from '@material-ui/icons/OpenInNew';
 import { FavoriteButton } from '../Buttons';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -160,45 +160,19 @@ export const ToolsContainer = (props: ToolsContainerProps) => {
     }
   }, [value]);
 
+  const favoritesCategory = t('tool.category.favorites');
+  const allTools = getSortedTools({
+    extraTools,
+    tools,
+    favorites,
+    backendTools,
+    toolFilterFunction,
+    favoritesCategory,
+    t,
+  });
+
   const tabs: TabInfo[] = useMemo(() => {
     const tabInfos: TabInfo[] = [];
-    const favoritesCategory = t('tool.category.favorites');
-    const shownTools = tools ?? [...(extraTools ?? []), ...defaultTools];
-    const filteredTools = shownTools
-      .filter(
-        tool =>
-          (tool.requiresBackend === true && backendTools.includes(tool.id)) ||
-          tool.requiresBackend !== true,
-      )
-      .filter(tool => toolFilterFunction?.(tool) ?? true);
-
-    const allTools = filteredTools
-      .map(tool => {
-        if (favorites.includes(tool.id)) {
-          return { ...tool, category: favoritesCategory };
-        }
-        return tool;
-      })
-      .sort((a, b) => {
-        const aCategoryStr = t(
-          `tool.category.${(a.category ?? 'miscellaneous').toLowerCase()}`,
-          {
-            defaultValue: a.category ?? 'Miscellaneous',
-          },
-        );
-        const bCategoryStr = t(
-          `tool.category.${(b.category ?? 'miscellaneous').toLowerCase()}`,
-          {
-            defaultValue: b.category ?? 'Miscellaneous',
-          },
-        );
-        if (aCategoryStr === favoritesCategory) {
-          return -1;
-        } else if (bCategoryStr === favoritesCategory) {
-          return 1;
-        }
-        return (aCategoryStr ?? '').localeCompare(bCategoryStr ?? '');
-      });
 
     tabInfos.push({
       id: '',
@@ -317,15 +291,12 @@ export const ToolsContainer = (props: ToolsContainerProps) => {
       });
     return tabInfos;
   }, [
-    favorites,
+    allTools,
+    favoritesCategory,
     search,
-    extraTools,
-    tools,
     categorySortFunction,
     toolSortFunction,
     welcomePage,
-    backendTools,
-    toolFilterFunction,
     t,
     classes,
   ]);
