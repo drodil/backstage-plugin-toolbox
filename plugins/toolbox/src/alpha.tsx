@@ -185,15 +185,15 @@ const csvToJsonTool = ToolboxToolBlueprint.make({
   },
 });
 
-const jsonToCsvTool = ToolboxToolBlueprint.make({
-  name: 'json-to-csv-convert',
+const jsonConverterTool = ToolboxToolBlueprint.make({
+  name: 'json-converter',
   params: {
-    id: 'json-to-csv-convert',
-    displayName: 'JSON to CSV',
-    description: 'Convert to JSON text to CSV',
+    id: 'json-converter',
+    displayName: 'JSON',
+    description: 'Convert JSON to CSV, String or YAML ',
     category: 'Convert',
     async loader() {
-      const m = await import('./components/Converters/JsonToCsv');
+      const m = await import('./components/Converters/JsonConverter');
       return compatWrapper(<m.default />);
     },
   },
@@ -208,20 +208,6 @@ const xmlToJsonTool = ToolboxToolBlueprint.make({
     category: 'Convert',
     async loader() {
       const m = await import('./components/Converters/XmlToJson');
-      return compatWrapper(<m.default />);
-    },
-  },
-});
-
-const jsonToYamlTool = ToolboxToolBlueprint.make({
-  name: 'json-to-yaml-convert',
-  params: {
-    id: 'json-to-yaml-convert',
-    displayName: 'JSON to YAML',
-    description: 'Convert to JSON text to YAML',
-    category: 'Convert',
-    async loader() {
-      const m = await import('./components/Converters/JsonToYaml');
       return compatWrapper(<m.default />);
     },
   },
@@ -646,9 +632,8 @@ export default createFrontendPlugin({
     jwtDecoderTool,
     markdownPreviewTool,
     csvToJsonTool,
-    jsonToCsvTool,
+    jsonConverterTool,
     xmlToJsonTool,
-    jsonToYamlTool,
     yamlToJsonTool,
     richTextToMarkdownTool,
     numberBaseTool,

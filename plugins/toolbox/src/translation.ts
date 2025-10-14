@@ -92,9 +92,17 @@ export const toolboxTranslationRef = createTranslationRef({
         description: 'Convert to XML text to JSON',
         invalidFormat: 'Invalid XML provided',
       },
-      'json-to-yaml-convert': {
-        name: 'JSON to YAML',
-        description: 'Convert to JSON text to YAML',
+      'json-converter': {
+        name: 'JSON',
+        description: 'Convert JSON to CSV, String or YAML',
+        inputLabel: 'JSON Input',
+        outputLabel: 'Converted Output',
+        unexpectedError: 'An unexpected error occurred',
+        mode: {
+          csv: 'CSV',
+          string: 'String',
+          yaml: 'YAML',
+        },
       },
       'yaml-to-json-convert': {
         name: 'YAML to JSON',
