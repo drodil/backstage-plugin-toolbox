@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.34.0](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.33.4...v1.34.0) (2025-10-15)
+
+
+### Features
+
+* rollback to mui4 ([7839e1b](https://github.com/drodil/backstage-plugin-toolbox/commit/7839e1b3cd0f5d8a1c14d2e06c0db2f89432bf87))
+
 ### [1.33.4](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.33.3...v1.33.4) (2025-10-15)
 
 
