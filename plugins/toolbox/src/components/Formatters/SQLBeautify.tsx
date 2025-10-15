@@ -1,69 +1,60 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useEffect, useState } from 'react';
 import TextField from '@mui/material/TextField';
 import { DefaultEditor } from '../DefaultEditor';
 import { format } from 'sql-formatter';
 import { useToolboxTranslation } from '../../hooks';
 import { SQLLanguageSelector } from './SQLLanguageSelector';
 
+const languages = [
+  'sql',
+  'bigquery',
+  'db2',
+  'db2i',
+  'hive',
+  'mariadb',
+  'mysql',
+  'n1ql',
+  'plsql',
+  'postgresql',
+  'redshift',
+  'singlestoredb',
+  'snowflake',
+  'spark',
+  'sqlite',
+  'transactsql',
+  'trino',
+];
+
 /**
  * SQLBeautify - Formats SQL queries using sql-formatter.
  * Allows selection of SQL language.
  */
 export const SQLBeautify = () => {
-  const languages = useMemo(
-    () => [
-      'sql',
-      'bigquery',
-      'db2',
-      'db2i',
-      'hive',
-      'mariadb',
-      'mysql',
-      'n1ql',
-      'plsql',
-      'postgresql',
-      'redshift',
-      'singlestoredb',
-      'snowflake',
-      'spark',
-      'sqlite',
-      'transactsql',
-      'trino',
-    ],
-    [],
-  );
   const [input, setInput] = useState('');
   const [output, setOutput] = useState('');
   const [language, setLanguage] = useState('sql');
   const { t } = useToolboxTranslation();
 
   const sample = "SELECT bar, foo FROM foo_bar WHERE foo='bar' GROUP BY bar";
-  const debounceTime = 300;
 
   useEffect(() => {
-    let handler: NodeJS.Timeout;
     if (input) {
-      handler = setTimeout(() => {
-        try {
-          setOutput(format(input, { language }));
-        } catch (e) {
-          if (e instanceof Error && e.message) {
-            setOutput(e.message);
-          } else {
-            setOutput(
-              t('tool.format-sql.unexpectedError', {
-                defaultValue: 'An unexpected error occurred',
-              }),
-            );
-          }
+      try {
+        setOutput(format(input, { language }));
+      } catch (e) {
+        if (e instanceof Error && e.message) {
+          setOutput(e.message);
+        } else {
+          setOutput(
+            t('tool.format-sql.unexpectedError', {
+              defaultValue: 'An unexpected error occurred',
+            }),
+          );
         }
-      }, debounceTime);
+      }
     } else {
       setOutput('');
     }
-    return () => {
-      if (handler) clearTimeout(handler);
-    };
   }, [input, language, t]);
 
   return (
@@ -106,11 +97,6 @@ export const SQLBeautify = () => {
           sx={{
             zIndex: 0,
             width: '100%',
-            p: '8px',
-            '& label[class*="MuiFormLabel-root"]': {
-              paddingTop: '10px !important',
-              paddingLeft: '10px !important',
-            },
           }}
         />
       }

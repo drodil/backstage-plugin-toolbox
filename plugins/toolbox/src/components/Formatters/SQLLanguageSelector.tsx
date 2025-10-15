@@ -25,7 +25,7 @@ export const SQLLanguageSelector = ({
   const uniqueId = useId();
 
   return (
-    <FormControl size="small" sx={{ minWidth: 175, mb: 1.5 }}>
+    <FormControl size="small" sx={{ minWidth: 175 }}>
       <InputLabel
         id={`sql-language-label-${uniqueId}`}
         sx={{
