@@ -3,7 +3,7 @@ import { DefaultEditor } from '../DefaultEditor';
 import { faker } from '@faker-js/faker';
 import Barcode from 'react-barcode';
 import { DefaultSelect } from '../Selects';
-import MenuItem from '@mui/material/MenuItem';
+import { MenuItem } from '@material-ui/core';
 
 const formatOptions = [
   'CODE39',

@@ -2,22 +2,54 @@ import { useState } from 'react';
 import { faker } from '@faker-js/faker';
 import { lowerCase, upperFirst } from 'lodash';
 import { ClearValueButton, CopyToClipboardButton } from '../Buttons';
-import Button from '@mui/material/Button';
-import FormControl from '@mui/material/FormControl';
-import InputLabel from '@mui/material/InputLabel';
-import Grid from '@mui/material/Grid';
-import MenuItem from '@mui/material/MenuItem';
-import ButtonGroup from '@mui/material/ButtonGroup';
+import {
+  Box,
+  Button,
+  ButtonGroup,
+  FormControl,
+  Grid,
+  makeStyles,
+  MenuItem,
+  TextField,
+  Theme,
+} from '@material-ui/core';
 import { DefaultSelect } from '../Selects';
-import TextField from '@mui/material/TextField';
-import Box from '@mui/material/Box';
 import { useToolboxTranslation } from '../../hooks';
+
+const useStyles = makeStyles<Theme>(theme => ({
+  formControl: {
+    width: '100%',
+  },
+  gridContainer: {
+    marginBottom: theme.spacing(0.625), // 5px
+  },
+  multiplierBox: {
+    marginLeft: theme.spacing(2), // 16px
+  },
+  buttonGroup: {
+    marginLeft: theme.spacing(2), // 16px
+    marginBottom: theme.spacing(2), // 16px
+  },
+  outputGrid: {
+    width: '100%',
+  },
+  textField: {
+    width: '100%',
+  },
+  generateButton: {
+    paddingLeft: theme.spacing(2), // 16px
+    paddingRight: theme.spacing(2), // 16px
+    borderColor: '#E0E0E0',
+    borderRadius: theme.spacing(0.5), // 4px
+  },
+}));
 
 const randomInt = (min: number, max: number) => {
   return Math.floor(Math.random() * max) + min;
 };
 
 export const LoremIpsum = () => {
+  const classes = useStyles();
   const [output, setOutput] = useState('');
   const [multiplier, setMultiplier] = useState(1);
 
@@ -153,11 +185,7 @@ export const LoremIpsum = () => {
         variant="outlined"
         onClick={() => generate(props.type)}
         color="inherit"
-        sx={{
-          px: '16px',
-          borderColor: 'textVerySubtle',
-          borderRadius: '4px !important',
-        }}
+        className={classes.generateButton}
       >
         {translatedTitle}
       </Button>
@@ -165,17 +193,16 @@ export const LoremIpsum = () => {
   };
 
   return (
-    <FormControl sx={{ width: '100%' }}>
-      <Grid container style={{ marginBottom: '5px' }}>
+    <FormControl className={classes.formControl}>
+      <Grid container className={classes.gridContainer}>
         <Grid item>
-          <InputLabel id="multiplier-label">Count</InputLabel>
-          <Box sx={{ ml: '16px ' }}>
+          <Box className={classes.multiplierBox}>
             <DefaultSelect
-              labelId="multiplier-label"
               value={multiplier.toString(10)}
               onChange={e =>
                 setMultiplier(Number.parseInt(e.target.value as string, 10))
               }
+              label="Count"
               variant="standard"
             >
               <MenuItem value={1}>1</MenuItem>
@@ -188,45 +215,45 @@ export const LoremIpsum = () => {
               <MenuItem value={500}>500</MenuItem>
               <MenuItem value={1000}>1000</MenuItem>
             </DefaultSelect>
-            <ButtonGroup sx={{ marginLeft: 2, marginBottom: 2 }}>
+            <ButtonGroup className={classes.buttonGroup}>
               <ClearValueButton setValue={setOutput} tooltip="Clear output" />
               <CopyToClipboardButton output={output} />
             </ButtonGroup>
           </Box>
-          <ButtonGroup sx={{ marginLeft: 2, marginBottom: 2 }}>
+          <ButtonGroup className={classes.buttonGroup}>
             <GenerateButton type="line" />
             <GenerateButton type="paragraph" />
             <GenerateButton type="slug" />
             <GenerateButton type="word" />
             <GenerateButton type="hack" />
           </ButtonGroup>
-          <ButtonGroup sx={{ marginLeft: 2, marginBottom: 2 }}>
+          <ButtonGroup className={classes.buttonGroup}>
             <GenerateButton type="hex" />
             <GenerateButton type="datetime" />
             <GenerateButton type="number" />
             <GenerateButton type="string" />
             <GenerateButton type="uuid" />
           </ButtonGroup>
-          <ButtonGroup sx={{ marginLeft: 2, marginBottom: 2 }}>
+          <ButtonGroup className={classes.buttonGroup}>
             <GenerateButton type="ipv4" title="IPv4" />
             <GenerateButton type="ipv6" title="IPv6" />
             <GenerateButton type="mac" title="MAC" />
             <GenerateButton type="imei" />
             <GenerateButton type="cron" />
           </ButtonGroup>
-          <ButtonGroup sx={{ marginLeft: 2, marginBottom: 2 }}>
+          <ButtonGroup className={classes.buttonGroup}>
             <GenerateButton type="domain" />
             <GenerateButton type="password" />
             <GenerateButton type="url" title="URL" />
             <GenerateButton type="user-agent" title="User agent" />
             <GenerateButton type="emoji" />
           </ButtonGroup>
-          <ButtonGroup sx={{ marginLeft: 2, marginBottom: 2 }}>
+          <ButtonGroup className={classes.buttonGroup}>
             <GenerateButton type="address" />
             <GenerateButton type="name" title="Name" />
             <GenerateButton type="job-title" title="Job title" />
           </ButtonGroup>
-          <ButtonGroup sx={{ marginLeft: 2, marginBottom: 2 }}>
+          <ButtonGroup className={classes.buttonGroup}>
             <GenerateButton type="product-name" title="Product name" />
             <GenerateButton
               type="product-description"
@@ -235,13 +262,13 @@ export const LoremIpsum = () => {
             <GenerateButton type="catch-phrase" title="Catch phrase" />
             <GenerateButton type="song" title="Song name" />
           </ButtonGroup>
-          <ButtonGroup sx={{ marginLeft: 2, marginBottom: 2 }}>
+          <ButtonGroup className={classes.buttonGroup}>
             <GenerateButton type="bic" title="BIC" />
             <GenerateButton type="credit-card" title="Credit card" />
             <GenerateButton type="iban" title="IBAN" />
           </ButtonGroup>
         </Grid>
-        <Grid item sx={{ width: '100%' }}>
+        <Grid item style={{ width: '100%' }}>
           <TextField
             id="output"
             label="Output"

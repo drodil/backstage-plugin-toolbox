@@ -2,17 +2,29 @@ import { useState } from 'react';
 import { useApi } from '@backstage/core-plugin-api';
 import { toolboxApiRef } from '../../api';
 import { Progress } from '@backstage/core-components';
-import Grid from '@mui/material/Grid';
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
+import { Button, Grid, makeStyles, TextField, Theme } from '@material-ui/core';
 import { useToolboxTranslation } from '../../hooks';
 
-const Whois = () => {
+const useStyles = makeStyles<Theme>(theme => ({
+  textField: {
+    width: '20rem',
+  },
+  resultGrid: {
+    marginTop: theme.spacing(2), // 1rem = 16px
+  },
+  outputTextField: {
+    marginBottom: theme.spacing(2), // 1rem = 16px
+    width: '100%',
+  },
+}));
+
+export const Whois = () => {
   const [domain, setDomain] = useState('');
   const [response, setResponse] = useState({});
   const [loading, setLoading] = useState(false);
   const toolboxApi = useApi(toolboxApiRef);
   const { t } = useToolboxTranslation();
+  const classes = useStyles();
 
   const lookup = () => {
     setResponse({});
@@ -36,7 +48,7 @@ const Whois = () => {
           <TextField
             label={t('tool.whois.domainInput')}
             variant="outlined"
-            style={{ width: '20rem' }}
+            className={classes.textField}
             value={domain}
             onChange={e => {
               setDomain(e.target.value);
@@ -61,7 +73,7 @@ const Whois = () => {
       </Grid>
       {loading && <Progress />}
       {Object.keys(response).length > 0 && (
-        <Grid style={{ marginTop: '1rem' }}>
+        <Grid className={classes.resultGrid}>
           {Object.entries(response).map(([key, value]) => {
             return (
               <TextField
@@ -75,7 +87,7 @@ const Whois = () => {
                 inputProps={{
                   style: { resize: 'vertical' },
                 }}
-                style={{ marginBottom: '1rem', width: '100%' }}
+                className={classes.outputTextField}
                 minRows={30}
                 variant="outlined"
               />

@@ -1,6 +1,6 @@
 import { DiffEditor, loader } from '@monaco-editor/react';
 import * as monaco from 'monaco-editor';
-import { useEffect, useMemo, useState, useRef, useCallback } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import useEffectOnce from 'react-use/lib/useEffectOnce';
 import { Select, SelectItem } from '@backstage/core-components';
 
@@ -10,13 +10,15 @@ import {
   FileUploadButton,
   PasteFromClipboardButton,
 } from '../Buttons';
-import Input from '@mui/icons-material/Input';
+import Input from '@material-ui/icons/Input';
 import { appThemeApiRef, useApi } from '@backstage/core-plugin-api';
-import Tooltip from '@mui/material/Tooltip';
-import Button from '@mui/material/Button';
-import FormControl from '@mui/material/FormControl';
-import Grid from '@mui/material/Grid';
-import ButtonGroup from '@mui/material/ButtonGroup';
+import {
+  Button,
+  ButtonGroup,
+  FormControl,
+  Grid,
+  Tooltip,
+} from '@material-ui/core';
 import { useToolboxTranslation } from '../../hooks';
 
 loader.config({ monaco });

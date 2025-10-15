@@ -1,27 +1,93 @@
 import { ReactElement, Suspense, useEffect, useMemo, useState } from 'react';
 import { Content, ContentHeader } from '@backstage/core-components';
 import { useFavoriteStorage } from '../../utils/hooks';
-import SearchIcon from '@mui/icons-material/Search';
+import SearchIcon from '@material-ui/icons/Search';
 import { defaultTools } from './tools';
-import OpenInNew from '@mui/icons-material/OpenInNew';
+import OpenInNew from '@material-ui/icons/OpenInNew';
 import { FavoriteButton } from '../Buttons';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useAnalytics } from '@backstage/core-plugin-api';
 import { WelcomePage } from '../WelcomePage/WelcomePage';
 import { Tool } from '@drodil/backstage-plugin-toolbox-react';
-import Tab from '@mui/material/Tab';
-import Grid from '@mui/material/Grid';
-import InputBase from '@mui/material/InputBase';
-import Paper from '@mui/material/Paper';
-import IconButton from '@mui/material/IconButton';
-import Tabs from '@mui/material/Tabs';
-import Box from '@mui/material/Box';
-import CircularProgress from '@mui/material/CircularProgress';
-import Tooltip from '@mui/material/Tooltip';
-import Button from '@mui/material/Button';
-import TabPanel from '@mui/lab/TabPanel';
-import TabContext from '@mui/lab/TabContext';
+import {
+  Box,
+  Button,
+  CircularProgress,
+  Grid,
+  IconButton,
+  InputBase,
+  makeStyles,
+  Paper,
+  Tab,
+  Tabs,
+  Theme,
+  Tooltip,
+} from '@material-ui/core';
+import { TabContext, TabPanel } from '@material-ui/lab';
 import { useBackendTools, useToolboxTranslation } from '../../hooks';
+
+const useStyles = makeStyles((theme: Theme) => ({
+  container: {
+    margin: 0,
+    width: '100%',
+    padding: 0,
+  },
+  sidebar: {
+    borderRight: `1px solid ${theme.palette.divider}`,
+    padding: theme.spacing(1),
+  },
+  searchPaper: {
+    justifyContent: 'center',
+    margin: theme.spacing(2),
+    paddingLeft: theme.spacing(2),
+    marginBottom: theme.spacing(1),
+    display: 'flex',
+    height: '48px',
+    backgroundColor: theme.palette.background.paper,
+    border: `1px solid ${theme.palette.divider}`,
+  },
+  searchIcon: {
+    marginRight: theme.spacing(2),
+    paddingRight: 0,
+  },
+  mainTab: {
+    width: '100%',
+    padding: 0,
+    marginTop: theme.spacing(1),
+    paddingTop: 0,
+    paddingBottom: 0,
+  },
+  categoryTab: {
+    marginTop: '0.2rem',
+  },
+  toolTab: {
+    width: '100%',
+    '&:hover': {
+      backgroundColor: theme.palette.action.hover,
+    },
+  },
+  hiddenTab: {
+    display: 'none',
+  },
+  tabs: {
+    height: 'calc(100vh - 160px)',
+    '& .MuiTab-root': {
+      '&.Mui-selected': {
+        backgroundColor: theme.palette.action.selected,
+      },
+    },
+  },
+  content: {
+    padding: 0,
+  },
+  loadingContainer: {
+    display: 'flex',
+    width: '100%',
+    height: '50%',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+}));
 
 type TabInfo = {
   tab: ReactElement;
@@ -66,6 +132,7 @@ export const ToolsContainer = (props: ToolsContainerProps) => {
     welcomePage,
     toolFilterFunction,
   } = props;
+  const classes = useStyles();
   const { hash } = useLocation();
   const navigate = useNavigate();
   const analytics = useAnalytics();
@@ -133,20 +200,7 @@ export const ToolsContainer = (props: ToolsContainerProps) => {
         <Tab
           key="toolbox"
           wrapped
-          sx={{
-            width: '100%',
-            padding: 0,
-            '&:hover': {
-              background: 'transparent',
-            },
-            '&[aria-selected="true"]': {
-              fontWeight: 'bold',
-            },
-            marginTop: 1,
-            paddingTop: 1,
-            paddingBottom: '0.2rem',
-            color: 'text.primary',
-          }}
+          className={classes.mainTab}
           label={t('toolsPage.tabPanel.mainLabel')}
         />
       ),
@@ -209,8 +263,8 @@ export const ToolsContainer = (props: ToolsContainerProps) => {
         tabInfos.push({
           tab: (
             <Tab
-              style={
-                !anyMatchSearch ? { display: 'none' } : { marginTop: '0.2rem' }
+              className={
+                !anyMatchSearch ? classes.hiddenTab : classes.categoryTab
               }
               key={category}
               label={category}
@@ -234,18 +288,10 @@ export const ToolsContainer = (props: ToolsContainerProps) => {
               tab: (
                 <Tab
                   key={tool.name}
-                  style={!matchesSearch(tool) ? { display: 'none' } : {}}
+                  className={
+                    !matchesSearch(tool) ? classes.hiddenTab : classes.toolTab
+                  }
                   wrapped
-                  sx={{
-                    width: '100%',
-                    padding: 0,
-                    '&:hover': {
-                      background: 'transparent',
-                    },
-                    '&[aria-selected="true"]': {
-                      fontWeight: 'bold',
-                    },
-                  }}
                   label={t(`tool.${tool.id}.name`, {
                     defaultValue: tool.displayName ?? tool.name,
                   })}
@@ -274,6 +320,7 @@ export const ToolsContainer = (props: ToolsContainerProps) => {
     backendTools,
     toolFilterFunction,
     t,
+    classes,
   ]);
 
   useEffect(() => {
@@ -295,37 +342,9 @@ export const ToolsContainer = (props: ToolsContainerProps) => {
 
   return (
     <Content noPadding>
-      <Grid
-        container
-        spacing={2}
-        direction="row"
-        sx={{ margin: 0, width: '100%', padding: 0 }}
-      >
-        <Grid
-          item
-          xs={4}
-          md={3}
-          lg={2}
-          sx={theme => ({
-            borderRight: `1px solid ${theme.palette.divider}`,
-            padding: '0 !important',
-          })}
-        >
-          <Paper
-            component="form"
-            sx={{
-              justifyContent: 'space-between',
-              margin: 2,
-              marginBottom: 1,
-              display: 'flex',
-              '& input': {
-                marginLeft: 2,
-                width: '100%',
-                flex: 1,
-              },
-              height: '48px',
-            }}
-          >
+      <Grid container spacing={2} direction="row" className={classes.container}>
+        <Grid item xs={4} md={3} lg={2} className={classes.sidebar}>
+          <Paper component="form" className={classes.searchPaper}>
             <InputBase
               placeholder={t('toolsPage.input.search')}
               inputProps={{ 'aria-label': 'Search' }}
@@ -334,7 +353,7 @@ export const ToolsContainer = (props: ToolsContainerProps) => {
             <IconButton
               disabled
               aria-label="search"
-              sx={{ mr: '16px !important', pr: '0 !important' }}
+              className={classes.searchIcon}
             >
               <SearchIcon />
             </IconButton>
@@ -347,33 +366,15 @@ export const ToolsContainer = (props: ToolsContainerProps) => {
             value={value}
             onChange={handleChange}
             aria-label="Tools selection"
-            sx={{
-              height: 'calc(100vh - 160px);',
-              '& div[class*="MuiTabScrollButton-vertical"]': {
-                height: '10px',
-              },
-              '& button[class*="MuiTab-wrapped"]': {
-                fontSize: '12px',
-              },
-              '& button[class*="Mui-disabled"]': {
-                paddingTop: '8px !important',
-                paddingBottom: '8px !important',
-              },
-            }}
+            className={classes.tabs}
           >
             {tabs.map(tab => tab.tab)}
           </Tabs>
         </Grid>
-        <Grid item xs={8} md={9} lg={10} sx={{ padding: 0 }}>
+        <Grid item xs={8} md={9} lg={10} className={classes.content}>
           <Suspense
             fallback={
-              <Box
-                display="flex"
-                width="100%"
-                height="50%"
-                alignItems="center"
-                justifyContent="center"
-              >
+              <Box className={classes.loadingContainer}>
                 <CircularProgress />
               </Box>
             }

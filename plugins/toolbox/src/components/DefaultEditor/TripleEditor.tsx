@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import { ReactElement, useState } from 'react';
 import {
   ClearValueButton,
   CopyToClipboardButton,
@@ -7,12 +7,50 @@ import {
   SampleButton,
 } from '../Buttons';
 import { FileDownloadButton } from '../Buttons/FileDownloadButton';
-import Grid from '@mui/material/Grid';
-import ButtonGroup from '@mui/material/ButtonGroup';
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
-import FormControl from '@mui/material/FormControl';
+import {
+  Button,
+  ButtonGroup,
+  FormControl,
+  Grid,
+  makeStyles,
+  TextField,
+  Theme,
+} from '@material-ui/core';
 import { useToolboxTranslation } from '../../hooks';
+
+const useStyles = makeStyles<Theme>(theme => ({
+  formControl: {
+    width: '100%',
+  },
+  gridContainer: {
+    marginBottom: theme.spacing(0.625), // 5px
+  },
+  modeGrid: {
+    paddingLeft: theme.spacing(2), // 16px
+    paddingTop: theme.spacing(4), // 32px
+  },
+  buttonGroup: {
+    marginBottom: theme.spacing(1),
+  },
+  toolsGrid: {
+    padding: theme.spacing(2), // 16px
+  },
+  selectedButton: {
+    color: theme.palette.text.primary,
+    backgroundColor: theme.palette.action.selected,
+  },
+  unselectedButton: {
+    borderColor: theme.palette.divider,
+  },
+  editorGrid: {
+    paddingTop: theme.spacing(1), // 8px
+    paddingLeft: theme.spacing(1), // 8px
+  },
+  textField: {
+    width: '100%',
+    padding: theme.spacing(1), // 8px
+  },
+}));
 
 type Props = {
   input: string;
@@ -48,6 +86,7 @@ type Props = {
 
 export const TripleEditor = (props: Props) => {
   const { t } = useToolboxTranslation();
+  const classes = useStyles();
   const {
     input,
     setInput,
@@ -77,12 +116,8 @@ export const TripleEditor = (props: Props) => {
     minRows = 20,
   } = props;
 
-  const [fileName, setFileName] = React.useState(
-    downloadFileName ?? 'download.txt',
-  );
-  const [fileType, setFileType] = React.useState(
-    downloadFileType ?? 'text/plain',
-  );
+  const [fileName, setFileName] = useState(downloadFileName ?? 'output');
+  const [fileType, setFileType] = useState(downloadFileType ?? 'txt');
 
   const readFileAndSetInput = (file?: File) => {
     if (!file) {
@@ -123,16 +158,16 @@ export const TripleEditor = (props: Props) => {
   };
 
   return (
-    <FormControl style={{ width: '100%' }} onDrop={handleDrop}>
-      <Grid container spacing={4} style={{ marginBottom: '5px' }}>
+    <FormControl className={classes.formControl} onDrop={handleDrop}>
+      <Grid container spacing={4} className={classes.gridContainer}>
         {modes && modes.length > 0 && (
-          <Grid item sx={{ pl: '16px', pt: '32px !important' }}>
+          <Grid item className={classes.modeGrid}>
             <ButtonGroup
               size="small"
               disableElevation
               variant="contained"
               aria-label="Disabled elevation buttons"
-              style={{ marginBottom: '1rem' }}
+              className={classes.buttonGroup}
               color="inherit"
             >
               {modes.map(m => (
@@ -142,15 +177,11 @@ export const TripleEditor = (props: Props) => {
                   onClick={() => setMode && setMode(m)}
                   variant={mode === m ? 'contained' : 'outlined'}
                   color="inherit"
-                  sx={{
-                    ...(mode === m && {
-                      color: '#000000',
-                      backgroundColor: '#E0E0E0',
-                    }),
-                    ...(mode !== m && {
-                      borderColor: '#E0E0E0',
-                    }),
-                  }}
+                  className={
+                    mode === m
+                      ? classes.selectedButton
+                      : classes.unselectedButton
+                  }
                 >
                   {t(`components.defaultEditor.mode.${m.toLowerCase()}`, {
                     defaultValue: m,
@@ -160,7 +191,7 @@ export const TripleEditor = (props: Props) => {
             </ButtonGroup>
           </Grid>
         )}
-        <Grid item sx={{ p: '16px' }}>
+        <Grid item className={classes.toolsGrid}>
           <ButtonGroup size="small">
             <ClearValueButton setValue={setInput} />
             <PasteFromClipboardButton setInput={setInput} />
@@ -188,12 +219,7 @@ export const TripleEditor = (props: Props) => {
         )}
       </Grid>
       <Grid container>
-        <Grid
-          item
-          xs={12}
-          lg={4}
-          sx={{ pt: '8px !important', pl: '8px !important' }}
-        >
+        <Grid item xs={12} lg={4} className={classes.editorGrid}>
           {leftContent ? (
             leftContent
           ) : (
@@ -207,25 +233,13 @@ export const TripleEditor = (props: Props) => {
                 onChange={e => setInput(e.target.value)}
                 minRows={minRows}
                 variant="outlined"
-                sx={{
-                  width: '100%',
-                  p: '8px',
-                  '& label[class*="MuiFormLabel-root"]': {
-                    paddingTop: '10px !important',
-                    paddingLeft: '10px !important',
-                  },
-                }}
+                className={classes.textField}
               />
             </>
           )}
           {extraLeftContent}
         </Grid>
-        <Grid
-          item
-          xs={12}
-          lg={4}
-          sx={{ pt: '8px !important', pl: '8px !important' }}
-        >
+        <Grid item xs={12} lg={4} className={classes.editorGrid}>
           {middleContent ? (
             middleContent
           ) : (
@@ -239,25 +253,13 @@ export const TripleEditor = (props: Props) => {
                 onChange={e => setPattern(e.target.value)}
                 minRows={minRows}
                 variant="outlined"
-                sx={{
-                  width: '100%',
-                  p: '8px',
-                  '& label[class*="MuiFormLabel-root"]': {
-                    paddingTop: '10px !important',
-                    paddingLeft: '10px !important',
-                  },
-                }}
+                className={classes.textField}
               />
             </>
           )}
           {extraMiddleContent}
         </Grid>
-        <Grid
-          item
-          xs={12}
-          lg={4}
-          sx={{ pt: '8px !important', pl: '8px !important' }}
-        >
+        <Grid item xs={12} lg={4} className={classes.editorGrid}>
           {rightContent ? (
             rightContent
           ) : (
@@ -271,14 +273,7 @@ export const TripleEditor = (props: Props) => {
                 onChange={e => setOutput(e.target.value)}
                 minRows={minRows}
                 variant="outlined"
-                sx={{
-                  width: '100%',
-                  p: '8px',
-                  '& label[class*="MuiFormLabel-root"]': {
-                    paddingTop: '10px !important',
-                    paddingLeft: '10px !important',
-                  },
-                }}
+                className={classes.textField}
               />
             </>
           )}

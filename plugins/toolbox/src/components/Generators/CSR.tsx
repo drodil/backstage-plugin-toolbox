@@ -1,16 +1,19 @@
-import * as React from 'react';
-import { ChangeEvent, useEffect } from 'react';
-import TextField from '@mui/material/TextField';
-import Grid from '@mui/material/Grid';
-import Autocomplete from '@mui/material/Autocomplete';
-import FormControl from '@mui/material/FormControl';
-import ButtonGroup from '@mui/material/ButtonGroup';
-import Button from '@mui/material/Button';
+import { ChangeEvent, useEffect, useState } from 'react';
+import {
+  Button,
+  ButtonGroup,
+  FormControl,
+  Grid,
+  makeStyles,
+  TextField,
+  Theme,
+} from '@material-ui/core';
+import { Autocomplete } from '@material-ui/lab';
 import { alertApiRef, configApiRef, useApi } from '@backstage/core-plugin-api';
 import { useToolboxTranslation } from '../../hooks';
 import { CopyToClipboardButton } from '../Buttons/CopyToClipboardButton';
 import { FileDownloadButton } from '../Buttons/FileDownloadButton';
-import PlayCircleOutlineRoundedIcon from '@mui/icons-material/PlayCircleOutlineRounded';
+import PlayCircleOutlineRoundedIcon from '@material-ui/icons/PlayCircleOutlineRounded';
 import * as asn1js from 'asn1js';
 import {
   Attribute,
@@ -24,6 +27,33 @@ import {
 } from 'pkijs/build';
 import { getCrypto } from 'pkijs';
 
+const useStyles = makeStyles<Theme>(theme => ({
+  formControl: {
+    width: '100%',
+  },
+  gridContainer: {
+    marginBottom: theme.spacing(0.625), // 5px
+  },
+  modeGrid: {
+    paddingLeft: theme.spacing(2), // 16px
+    paddingTop: theme.spacing(4), // 32px
+  },
+  buttonGroup: {
+    marginBottom: theme.spacing(2), // 1rem = 16px
+  },
+  formContainer: {
+    padding: theme.spacing(4), // 32px
+  },
+  fieldGrid: {
+    paddingTop: theme.spacing(1), // 8px
+    paddingLeft: theme.spacing(1), // 8px
+  },
+  textField: {
+    marginBottom: theme.spacing(2), // 10px
+    width: '100%',
+  },
+}));
+
 const keyOptions = [
   { label: 'RSA 4096', value: 'rsa-4096-sha2' },
   { label: 'RSA 2048 SHA2', value: 'rsa-2048-sha2' },
@@ -34,16 +64,17 @@ const keyOptions = [
 
 export const CSRGenerator = () => {
   const { t } = useToolboxTranslation();
-  const [fqdns, setFqdns] = React.useState<string[]>([]);
-  const [hashAlgName, setHashAlgName] = React.useState('SHA-256');
-  const [keyPEM, setKeyPEM] = React.useState('');
-  const [key, setKey] = React.useState<CryptoKeyPair | undefined>(undefined);
-  const [certReq, setCertReq] = React.useState('');
-  const [decodedCSR, setDecodedCSR] = React.useState('');
-  const [algorithmName, setAlgorithmName] = React.useState('rsa-4096-sha2');
+  const classes = useStyles();
+  const [fqdns, setFqdns] = useState<string[]>([]);
+  const [hashAlgName, setHashAlgName] = useState('SHA-256');
+  const [keyPEM, setKeyPEM] = useState('');
+  const [key, setKey] = useState<CryptoKeyPair | undefined>(undefined);
+  const [certReq, setCertReq] = useState('');
+  const [decodedCSR, setDecodedCSR] = useState('');
+  const [algorithmName, setAlgorithmName] = useState('rsa-4096-sha2');
   const alertApi = useApi(alertApiRef);
   const config = useApi(configApiRef);
-  const [subjectValues, setSubjectValues] = React.useState({
+  const [subjectValues, setSubjectValues] = useState({
     country: config.getOptionalString('app.toolbox.csr.defaults.country') || '',
     state: config.getOptionalString('app.toolbox.csr.defaults.state') || '',
     locality:
@@ -127,12 +158,12 @@ export const CSRGenerator = () => {
   };
 
   return (
-    <FormControl style={{ width: '100%' }}>
-      <Grid container spacing={4} style={{ marginBottom: '5px' }}>
-        <Grid item sx={{ pl: '16px', pt: '32px !important' }}>
+    <FormControl className={classes.formControl}>
+      <Grid container spacing={4} className={classes.gridContainer}>
+        <Grid item className={classes.modeGrid}>
           <ButtonGroup
             size="small"
-            style={{ marginBottom: '1rem' }}
+            className={classes.buttonGroup}
             color="inherit"
           >
             <Button
@@ -152,26 +183,26 @@ export const CSRGenerator = () => {
             />
           </ButtonGroup>
         </Grid>
-        <Grid container p={4}>
-          <Grid
-            item
-            xs={12}
-            lg={4}
-            sx={{ pt: '8px !important', pl: '8px !important' }}
-          >
+        <Grid container className={classes.formContainer}>
+          <Grid item xs={12} lg={4} className={classes.fieldGrid}>
             <TextField
               label={t('tool.csr-generate.domainNamesLabel')}
               onChange={handleFqdnChange}
+              variant="outlined"
               multiline
               minRows={5}
-              style={{ marginBottom: '10px', width: '100%' }}
+              className={classes.textField}
               InputProps={{
                 style: { whiteSpace: 'pre-wrap' },
               }}
             />
             <Autocomplete
-              style={{ marginBottom: '10px', width: '100%' }}
+              className={classes.textField}
               options={keyOptions}
+              getOptionLabel={option =>
+                keyOptions.find(o => o.value === option.value)?.label ||
+                option.value
+              }
               value={
                 keyOptions.find(option => option.value === algorithmName) ||
                 null
@@ -188,48 +219,54 @@ export const CSRGenerator = () => {
             <TextField
               label={t('tool.csr-generate.countryNameLabel')}
               value={subjectValues.country}
-              style={{ marginBottom: '10px', width: '100%' }}
+              className={classes.textField}
+              variant="outlined"
               onChange={handleSubjectChange('country')}
             />
             <TextField
               label={t('tool.csr-generate.stateOrProvinceNameLabel')}
               value={subjectValues.state}
-              style={{ marginBottom: '10px', width: '100%' }}
+              className={classes.textField}
+              variant="outlined"
               onChange={handleSubjectChange('state')}
             />
             <TextField
               label={t('tool.csr-generate.localityNameLabel')}
               value={subjectValues.locality}
-              style={{ marginBottom: '10px', width: '100%' }}
+              className={classes.textField}
+              variant="outlined"
               onChange={handleSubjectChange('locality')}
             />
             <TextField
               label={t('tool.csr-generate.organizationNameLabel')}
               value={subjectValues.organization}
-              style={{ marginBottom: '10px', width: '100%' }}
+              className={classes.textField}
+              variant="outlined"
               onChange={handleSubjectChange('organization')}
             />
             {/* Optional field for Organizational Unit */}
             <TextField
               label={t('tool.csr-generate.organizationalUnitNameLabel')}
               value={subjectValues.organizationalUnit}
-              style={{ marginBottom: '10px', width: '100%' }}
+              className={classes.textField}
+              variant="outlined"
               onChange={handleSubjectChange('organizationalUnit')}
             />
             {/* Optional field for Email Address */}
             <TextField
               label={t('tool.csr-generate.emailAddressLabel')}
               value={subjectValues.emailAddress}
-              style={{ marginBottom: '10px', width: '100%' }}
+              className={classes.textField}
+              variant="outlined"
               onChange={handleSubjectChange('emailAddress')}
             />
           </Grid>
-          <Grid item xs={12} lg={8} sx={{ p: '8px !important' }}>
+          <Grid item xs={12} lg={8} className={classes.fieldGrid}>
             <TextField
               id="certificate-request"
               label={t('tool.csr-generate.certificateRequestLabel')}
               value={certReq || ''}
-              style={{ width: '100%', marginBottom: '10px' }}
+              className={classes.textField}
               multiline
               minRows={20}
               maxRows={50}
@@ -243,7 +280,7 @@ export const CSRGenerator = () => {
               id="decoded-csr"
               label={t('tool.csr-generate.decodedCSRLabel')}
               value={decodedCSR || ''}
-              style={{ width: '100%' }}
+              className={classes.textField}
               multiline
               minRows={10}
               maxRows={20}

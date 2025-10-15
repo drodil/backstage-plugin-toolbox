@@ -1,7 +1,6 @@
 import { ChangeEvent } from 'react';
-import AttachFile from '@mui/icons-material/AttachFile';
-import Tooltip from '@mui/material/Tooltip';
-import Button from '@mui/material/Button';
+import { Button, Tooltip } from '@material-ui/core';
+import AttachFile from '@material-ui/icons/AttachFile';
 import { useToolboxTranslation } from '../../hooks';
 
 type Props = {

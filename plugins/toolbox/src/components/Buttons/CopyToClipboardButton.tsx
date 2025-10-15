@@ -1,6 +1,5 @@
-import Tooltip from '@mui/material/Tooltip';
-import Button from '@mui/material/Button';
-import FileCopy from '@mui/icons-material/FileCopy';
+import { Button, Tooltip } from '@material-ui/core';
+import FileCopy from '@material-ui/icons/FileCopy';
 import { useToolboxTranslation } from '../../hooks';
 import { alertApiRef, useApi } from '@backstage/core-plugin-api';
 

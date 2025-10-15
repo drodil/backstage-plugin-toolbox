@@ -5,15 +5,30 @@ import {
   PasteFromClipboardButton,
   SampleButton,
 } from '../Buttons';
-import TextField from '@mui/material/TextField';
-import FormControl from '@mui/material/FormControl';
-import Grid from '@mui/material/Grid';
-import Typography from '@mui/material/Typography';
-import Divider from '@mui/material/Divider';
-import Alert from '@mui/material/Alert';
+import {
+  Divider,
+  FormControl,
+  Grid,
+  makeStyles,
+  TextField,
+  Theme,
+  Typography,
+} from '@material-ui/core';
+import { Alert } from '@material-ui/lab';
 import { useToolboxTranslation } from '../../hooks';
 
+const useStyles = makeStyles<Theme>(theme => ({
+  textField: {
+    marginBottom: theme.spacing(2), // 1rem = 16px
+    width: '100%',
+  },
+  formControl: {
+    width: '100%',
+  },
+}));
+
 export const SLACalculator = () => {
+  const classes = useStyles();
   const [input, setInput] = useState('');
   const [output, setOutput] = useState({
     daily: '',
@@ -85,20 +100,21 @@ export const SLACalculator = () => {
   const OutputField = (props: { label: string; value?: string | null }) => {
     const { label, value } = props;
     return (
-      <>
+      <div className={classes.textField}>
         <TextField
           label={label}
-          style={{ marginTop: '1rem', width: '100%' }}
+          variant="outlined"
           disabled
           value={value ?? ''}
+          style={{ width: '100%' }}
         />
         <CopyToClipboardButton output={value ?? ''} />
-      </>
+      </div>
     );
   };
 
   return (
-    <FormControl style={{ width: '100%' }}>
+    <FormControl className={classes.formControl}>
       <Grid container>
         <Grid item xs={12} lg={8}>
           <Typography variant="subtitle1">
@@ -112,7 +128,7 @@ export const SLACalculator = () => {
             <SampleButton setInput={handleChange} sample="99.9" />
           </Typography>
           <TextField
-            style={{ width: '100%' }}
+            style={{ width: '100%', marginTop: '1rem' }}
             id="input"
             label={t('tool.sla-calculator.inputLabel')}
             name="input"

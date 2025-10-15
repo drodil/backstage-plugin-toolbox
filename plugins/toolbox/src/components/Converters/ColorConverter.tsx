@@ -16,12 +16,14 @@ import {
   PasteFromClipboardButton,
   SampleButton,
 } from '../Buttons';
-import TextField from '@mui/material/TextField';
-import FormControl from '@mui/material/FormControl';
-import Grid from '@mui/material/Grid';
-import Typography from '@mui/material/Typography';
-import Divider from '@mui/material/Divider';
-import Box from '@mui/material/Box';
+import {
+  Box,
+  Divider,
+  FormControl,
+  Grid,
+  TextField,
+  Typography,
+} from '@material-ui/core';
 import { useToolboxTranslation } from '../../hooks';
 
 export const ColorConverter = () => {
@@ -289,15 +291,15 @@ export const ColorConverter = () => {
   const OutputField = (props: { label: string; value?: string | null }) => {
     const { label, value } = props;
     return (
-      <>
+      <div style={{ marginBottom: '1rem', width: '100%' }}>
         <TextField
           label={label}
-          style={{ marginTop: '1rem', width: '100%' }}
+          style={{ width: '100%' }}
           disabled
           value={value ?? ''}
         />
         <CopyToClipboardButton output={value ?? ''} />
-      </>
+      </div>
     );
   };
 
@@ -315,7 +317,7 @@ export const ColorConverter = () => {
             name="input"
             label={t('tool.color-convert.inputLabel')}
             value={getInputStr()}
-            style={{ width: '100%' }}
+            style={{ width: '100%', marginTop: '1rem' }}
             onChange={e => handleChange(e.target.value)}
             variant="outlined"
           />

@@ -6,11 +6,23 @@ import {
   SampleButton,
 } from '../Buttons';
 import { faker } from '@faker-js/faker';
-import Grid from '@mui/material/Grid';
-import TextField from '@mui/material/TextField';
+import { Grid, makeStyles, TextField, Theme } from '@material-ui/core';
 import { useToolboxTranslation } from '../../hooks';
 
-const UrlExploder = () => {
+const useStyles = makeStyles<Theme>(theme => ({
+  textField: {
+    marginBottom: theme.spacing(1.25), // 10px
+    width: '100%',
+  },
+  firstTextField: {
+    marginTop: theme.spacing(1.25), // 10px
+    marginBottom: theme.spacing(1.25), // 10px
+    width: '100%',
+  },
+}));
+
+export const UrlExploder = () => {
+  const classes = useStyles();
   const [url, setUrl] = useState<null | URL>(null);
   const [rawInput, setRawInput] = useState('');
   const [protocol, setProtocol] = useState('');
@@ -97,36 +109,40 @@ const UrlExploder = () => {
           variant="outlined"
           value={rawInput}
           onChange={e => onInput(e.target.value)}
-          style={{ marginTop: '10px', marginBottom: '10px', width: '100%' }}
+          className={classes.firstTextField}
         />
       </Grid>
       <Grid item xs={6}>
         <TextField
           label={t('tool.url-exploder.protocolLabel')}
           value={protocol}
-          style={{ marginBottom: '10px', width: '100%' }}
+          className={classes.textField}
           onChange={e => setProtocol(e.target.value)}
+          variant="outlined"
         />
         <TextField
           label={t('tool.url-exploder.pathLabel')}
           value={path}
-          style={{ marginBottom: '10px', width: '100%' }}
+          className={classes.textField}
           onChange={e => setPath(e.target.value)}
+          variant="outlined"
         />
         <TextField
           label={t('tool.url-exploder.usernameLabel')}
           value={username}
-          style={{ marginBottom: '10px', width: '100%' }}
+          className={classes.textField}
           onChange={e => setUsername(e.target.value)}
+          variant="outlined"
         />
         <TextField
           label={t('tool.url-exploder.queryLabel')}
           value={query}
           multiline
           minRows={10}
-          style={{ marginBottom: '10px', width: '100%' }}
+          className={classes.textField}
           onChange={e => setQuery(e.target.value)}
           helperText={t('tool.url-exploder.queryHelperText')}
+          variant="outlined"
         />
       </Grid>
 
@@ -134,27 +150,31 @@ const UrlExploder = () => {
         <TextField
           label={t('tool.url-exploder.hostLabel')}
           value={host}
-          style={{ marginBottom: '10px', width: '100%' }}
+          className={classes.textField}
           onChange={e => setHost(e.target.value)}
+          variant="outlined"
         />
         <TextField
           label={t('tool.url-exploder.portLabel')}
           type="number"
           value={port}
-          style={{ marginBottom: '10px', width: '100%' }}
+          className={classes.textField}
           onChange={e => setPort(e.target.value)}
+          variant="outlined"
         />
         <TextField
           label={t('tool.url-exploder.passwordLabel')}
           value={password}
-          style={{ marginBottom: '10px', width: '100%' }}
+          className={classes.textField}
           onChange={e => setPassword(e.target.value)}
+          variant="outlined"
         />
         <TextField
           label={t('tool.url-exploder.hashLabel')}
           value={hash}
-          style={{ marginBottom: '10px', width: '100%' }}
+          className={classes.textField}
           onChange={e => setHash(e.target.value)}
+          variant="outlined"
         />
         <TextField
           label={t('tool.url-exploder.originLabel')}
@@ -162,7 +182,8 @@ const UrlExploder = () => {
           InputProps={{
             readOnly: true,
           }}
-          style={{ marginBottom: '10px', width: '100%' }}
+          className={classes.textField}
+          variant="outlined"
         />
       </Grid>
     </Grid>

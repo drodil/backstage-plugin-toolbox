@@ -1,10 +1,45 @@
 import { Tool } from '@drodil/backstage-plugin-toolbox-react';
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-import Grid from '@mui/material/Grid';
-import CardContent from '@mui/material/CardContent';
-import Card from '@mui/material/Card';
+import {
+  Box,
+  Card,
+  CardContent,
+  Grid,
+  makeStyles,
+  Theme,
+  Typography,
+} from '@material-ui/core';
 import { useToolboxTranslation } from '../../hooks';
+
+const useStyles = makeStyles<Theme>(theme => ({
+  introText: {
+    marginTop: theme.spacing(1), // 8px
+  },
+  gridContainer: {
+    padding: 0,
+    margin: theme.spacing(-1), // -8px
+    marginBottom: theme.spacing(-1), // -8px
+    marginTop: theme.spacing(1), // 8px
+  },
+  gridItem: {
+    padding: theme.spacing(1), // 8px
+    paddingTop: theme.spacing(1), // 8px
+    paddingLeft: theme.spacing(1), // 8px
+  },
+  card: {
+    cursor: 'pointer',
+    borderWidth: '1px',
+    borderStyle: 'solid',
+    borderColor: 'transparent',
+    height: '100%',
+    '&:hover': {
+      borderColor: theme.palette.primary.main,
+    },
+  },
+  cardContent: {
+    padding: theme.spacing(2), // 16px
+    paddingBottom: theme.spacing(2), // 16px
+  },
+}));
 
 export type WelcomePageProps = {
   tools: Tool[];
@@ -13,38 +48,25 @@ export type WelcomePageProps = {
 export const WelcomePage = (props: WelcomePageProps) => {
   const { tools } = props;
   const { t } = useToolboxTranslation();
+  const classes = useStyles();
 
   return (
     <Box>
-      <Typography mt={1}>{t('welcomePage.introText')}</Typography>
-      <Typography mt={1}>{t('welcomePage.secondText')}</Typography>
-      <Grid
-        container
-        sx={{ p: 0, mx: '-8px', mb: '-8px', mt: 1 }}
-        alignContent="center"
-      >
+      <Typography className={classes.introText}>
+        {t('welcomePage.introText')}
+      </Typography>
+      <Typography className={classes.introText}>
+        {t('welcomePage.secondText')}
+      </Typography>
+      <Grid container className={classes.gridContainer} alignContent="center">
         {tools.map(tool => {
           return (
-            <Grid
-              item
-              key={tool.id}
-              xs={3}
-              sx={{ p: '8px', pt: '8px !important', pl: '8px !important' }}
-            >
+            <Grid item key={tool.id} xs={3} className={classes.gridItem}>
               <Card
                 onClick={() => (window.location.hash = tool.id)}
-                sx={theme => ({
-                  cursor: 'pointer',
-                  borderWidth: '1px',
-                  borderStyle: 'solid',
-                  borderColor: 'transparent',
-                  height: '100%',
-                  '&:hover': {
-                    borderColor: theme.palette.primary.light,
-                  },
-                })}
+                className={classes.card}
               >
-                <CardContent sx={{ p: '16px', pb: '16px !important' }}>
+                <CardContent className={classes.cardContent}>
                   <Typography color="textSecondary" gutterBottom>
                     {t(
                       `tool.category.${(

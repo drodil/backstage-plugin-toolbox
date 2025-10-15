@@ -1,5 +1,5 @@
 import { defaultTools } from '../Root';
-import Typography from '@mui/material/Typography';
+import { Typography } from '@material-ui/core';
 import { useToolboxTranslation } from '../../hooks';
 
 export const Content = (props?: { toolId?: string }) => {

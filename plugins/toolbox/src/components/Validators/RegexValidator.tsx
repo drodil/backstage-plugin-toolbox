@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { TripleEditor } from '../DefaultEditor/TripleEditor';
 
 export const RegexValidator = () => {
-  const [input, setInput] = React.useState('');
-  const [pattern, setPattern] = React.useState('');
-  const [output, setOutput] = React.useState('');
+  const [input, setInput] = useState('');
+  const [pattern, setPattern] = useState('');
+  const [output, setOutput] = useState('');
 
   function isRegexValid(inputStr: string, patternStr: string): string {
     const flags = 'gim'; // g=global, m=match line start/end, i=case insensitive

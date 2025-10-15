@@ -1,9 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { DefaultEditor } from '../DefaultEditor';
 import { MarkdownContent } from '@backstage/core-components';
 import beautify from 'js-beautify';
 import { unescape } from 'lodash';
-import Paper from '@mui/material/Paper';
+import { Paper } from '@material-ui/core';
 
 export const MarkdownPreview = () => {
   const [input, setInput] = useState('');
@@ -28,12 +28,11 @@ export const MarkdownPreview = () => {
       acceptFileTypes=".md"
       rightContent={
         <>
-          <Paper elevation={0} sx={{ padding: 2 }}>
+          <Paper elevation={0} style={{ padding: 16 }}>
             <MarkdownContent className="mdPreview" content={input} />
           </Paper>
           <Paper
             elevation={0}
-            sx={{ padding: 2 }}
             style={{ marginTop: '1rem', whiteSpace: 'pre-line' }}
           >
             {html}

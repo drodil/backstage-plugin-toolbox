@@ -1,6 +1,5 @@
-import Tooltip from '@mui/material/Tooltip';
-import Button from '@mui/material/Button';
-import Clear from '@mui/icons-material/Clear';
+import { Button, Tooltip } from '@material-ui/core';
+import Clear from '@material-ui/icons/Clear';
 import { useToolboxTranslation } from '../../hooks';
 
 type Props = {

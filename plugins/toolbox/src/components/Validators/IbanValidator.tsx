@@ -1,9 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import * as IBAN from 'iban';
 import { DefaultEditor } from '../DefaultEditor';
 import { OutputField } from '../DefaultEditor/OutputField';
-import Alert from '@mui/material/Alert';
-import AlertTitle from '@mui/material/AlertTitle';
+import { Alert, AlertTitle } from '@material-ui/lab';
 import { useToolboxTranslation } from '../../hooks';
 
 export const IbanValidator = () => {

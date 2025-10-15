@@ -1,4 +1,4 @@
-import { createDevApp } from '@backstage/dev-utils';
+/** import { createDevApp } from '@backstage/dev-utils';
 import {
   defaultTools,
   ToolboxPage,
@@ -75,10 +75,14 @@ createDevApp()
     path: '/home',
   })
   .render();
-
+ */
 // NEW FRONTEND SYSTEM
-/** import { createApp } from '@backstage/frontend-defaults';
+import { createApp } from '@backstage/frontend-defaults';
 import { createRoot } from 'react-dom/client';
+import { CatalogApiMock } from './CatalogApiMock';
+import { catalogApiRef } from '@backstage/plugin-catalog-react';
+import catalogPlugin from '@backstage/plugin-catalog/alpha';
+import '@backstage/ui/css/styles.css';
 
 import plugin from '../src/alpha';
 import { createFrontendModule } from '@backstage/frontend-plugin-api';
@@ -92,16 +96,28 @@ const extraTool = ToolboxToolBlueprint.make({
   },
 });
 
+const myCatalogPlugin = catalogPlugin.withOverrides({
+  extensions: [
+    catalogPlugin.getExtension('api:catalog').override({
+      params: defineParams =>
+        defineParams({
+          api: catalogApiRef,
+          deps: {},
+          factory: () => new CatalogApiMock(),
+        }),
+    }),
+  ],
+});
+
 const myModule = createFrontendModule({
   pluginId: 'toolbox',
   extensions: [extraTool],
 });
 
 const app = createApp({
-  features: [plugin, myModule],
+  features: [plugin, myModule, myCatalogPlugin],
 });
 
 const container = document.getElementById('root');
 const root = createRoot(container!);
 root.render(app.createRoot());
-*/

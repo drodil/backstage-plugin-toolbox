@@ -1,8 +1,7 @@
 import { useFavoriteStorage } from '../../utils/hooks';
-import Tooltip from '@mui/material/Tooltip';
-import Button from '@mui/material/Button';
-import Star from '@mui/icons-material/Star';
-import StarOutline from '@mui/icons-material/StarOutline';
+import { Button, Tooltip } from '@material-ui/core';
+import Star from '@material-ui/icons/Star';
+import StarOutline from '@material-ui/icons/StarOutline';
 import { useToolboxTranslation } from '../../hooks';
 
 type Props = {

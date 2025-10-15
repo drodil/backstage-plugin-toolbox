@@ -1,6 +1,5 @@
 import type { ChangeEvent } from 'react';
-import * as React from 'react';
-import { useCallback, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 import { faker } from '@faker-js/faker';
 import type {
@@ -11,10 +10,13 @@ import type {
   ShapeType,
 } from 'qr-code-styling';
 import QRCodeStyling from 'qr-code-styling';
-import MenuItem from '@mui/material/MenuItem';
-import InputLabel from '@mui/material/InputLabel';
-import FormControl from '@mui/material/FormControl';
-import TextField from '@mui/material/TextField';
+import {
+  Box,
+  Button,
+  FormControl,
+  MenuItem,
+  TextField,
+} from '@material-ui/core';
 import {
   DefaultEditor,
   useToolboxTranslation,
@@ -22,9 +24,24 @@ import {
 
 import { configApiRef, useApi } from '@backstage/core-plugin-api';
 import { DefaultSelect } from '../Selects';
-import { SelectChangeEvent } from '@mui/material/Select';
-import Button from '@mui/material/Button';
-import Box from '@mui/material/Box';
+import { makeStyles, Theme } from '@material-ui/core/styles';
+
+const useStyles = makeStyles<Theme>(theme => ({
+  select: {
+    margin: `0 ${theme.spacing(1.25)}px`, // 10px between
+  },
+  colorTextField: {
+    margin: `${theme.spacing(1.25)}px ${theme.spacing(
+      1.25,
+    )}px 0 ${theme.spacing(1.25)}px`, // 10px between 0 between
+  },
+  downloadSpan: {
+    marginLeft: theme.spacing(4), // 2rem = 32px
+  },
+  box: {
+    margin: theme.spacing(5), // 40px
+  },
+}));
 
 interface QrCodeSettings {
   cornerSquareType: CornerSquareType;
@@ -48,7 +65,7 @@ const ConfigSelect = (props: {
   readonly setSettings: (settings: QrCodeSettings) => void;
 }) => {
   const onChange = useCallback(
-    (event: SelectChangeEvent<unknown>) =>
+    (event: React.ChangeEvent<{ value: unknown }>) =>
       props.setSettings({
         ...props.settings,
         [props.settingKey]: event.target.value as DotType,
@@ -56,9 +73,8 @@ const ConfigSelect = (props: {
     [props],
   );
   const { t } = useToolboxTranslation();
+  const classes = useStyles();
 
-  const labelId = `label-for-${props.settingKey}`;
-  const between = '3px';
   const colorSetting = props.settingKey.replace(
     'Type',
     'Color',
@@ -74,17 +90,13 @@ const ConfigSelect = (props: {
 
   return (
     <FormControl key={`formcontrol-for-select-${props.settingKey}`}>
-      <InputLabel id={labelId}>{props.name}</InputLabel>
       <DefaultSelect
         id={`id-${props.settingKey}`}
         key={`select-for-${props.settingKey}`}
         label={props.name}
-        labelId={labelId}
-        name="select"
         onChange={onChange}
-        sx={{ width: 140, margin: `0 ${between}` }}
+        className={classes.select}
         value={props.settings[props.settingKey]}
-        variant="outlined"
       >
         {props.types
           ? props.types.map(value => (
@@ -104,8 +116,8 @@ const ConfigSelect = (props: {
           label={`${props.name} ${t('tool.qr-code-generate.color')}`}
           name="input"
           onChange={onChangeColor}
-          sx={{ width: 140, margin: `10px ${between} 0 ${between}` }}
-          variant="outlined"
+          className={classes.colorTextField}
+          variant="standard"
         />
       ) : null}
     </FormControl>
@@ -120,6 +132,7 @@ export const QRCodeGenerator = () => {
   const [image, setImage] = useState<string | null>(null);
   const ref = useRef(null);
   const { t } = useToolboxTranslation();
+  const classes = useStyles();
 
   const config = useApi(configApiRef).getOptionalConfig('app.toolbox.qrCode');
 
@@ -144,7 +157,7 @@ export const QRCodeGenerator = () => {
   };
 
   // settings
-  const [settings, setSettings] = React.useState<QrCodeSettings>(defaults);
+  const [settings, setSettings] = useState<QrCodeSettings>(defaults);
 
   const qrCode = useMemo(() => {
     const qr = new QRCodeStyling({
@@ -185,7 +198,7 @@ export const QRCodeGenerator = () => {
     settings.shape,
   ]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     qrCode.update({
       data: input,
       dotsOptions: {
@@ -222,7 +235,7 @@ export const QRCodeGenerator = () => {
   }, [qrCode, settings, input]);
 
   const onExtensionChange = useCallback(
-    (event: SelectChangeEvent<unknown>) => {
+    (event: React.ChangeEvent<{ value: unknown }>) => {
       setFileExt(event.target.value as FileExtension);
     },
     [setFileExt],
@@ -235,17 +248,12 @@ export const QRCodeGenerator = () => {
   }, [fileExt, qrCode]);
 
   const DownloadOptions = (
-    <span style={{ marginLeft: '2rem' }}>
+    <span className={classes.downloadSpan}>
       <FormControl>
-        <InputLabel id="file-type">
-          {t('tool.qr-code-generate.downloadAs')}
-        </InputLabel>
         <DefaultSelect
           defaultValue="png"
-          labelId="file-type"
-          onChange={onExtensionChange}
           label={t('tool.qr-code-generate.downloadAs')}
-          variant="outlined"
+          onChange={onExtensionChange}
         >
           <MenuItem value="png">png</MenuItem>
           <MenuItem value="webp">webp</MenuItem>
@@ -261,7 +269,7 @@ export const QRCodeGenerator = () => {
 
   return (
     <>
-      <Box sx={{ margin: 5 }} />
+      <Box className={classes.box} />
 
       <DefaultEditor
         additionalTools={[

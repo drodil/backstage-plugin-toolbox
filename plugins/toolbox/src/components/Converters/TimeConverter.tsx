@@ -5,14 +5,16 @@ import {
   CopyToClipboardButton,
   PasteFromClipboardButton,
 } from '../Buttons';
-import TextField from '@mui/material/TextField';
-import FormControl from '@mui/material/FormControl';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
+import {
+  Button,
+  Divider,
+  FormControl,
+  Grid,
+  MenuItem,
+  TextField,
+  Typography,
+} from '@material-ui/core';
 import { DefaultSelect } from '../Selects';
-import Grid from '@mui/material/Grid';
-import MenuItem from '@mui/material/MenuItem';
-import Divider from '@mui/material/Divider';
 import { useToolboxTranslation } from '../../hooks';
 
 export const TimeConverter = () => {
@@ -76,6 +78,7 @@ export const TimeConverter = () => {
     return (
       <>
         <TextField
+          variant="outlined"
           label={label}
           style={{ marginTop: '1rem', width: '100%' }}
           disabled

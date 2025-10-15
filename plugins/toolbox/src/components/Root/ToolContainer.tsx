@@ -1,8 +1,7 @@
 import { Suspense } from 'react';
 import { ContentHeader } from '@backstage/core-components';
-import Box from '@mui/material/Box';
-import CircularProgress from '@mui/material/CircularProgress';
-import { styled } from '@mui/material/styles';
+import { Box, CircularProgress } from '@material-ui/core';
+import { styled } from '@material-ui/core/styles';
 import type { Tool } from '@drodil/backstage-plugin-toolbox-react';
 
 const StyledToolContainer = styled('div')(({ theme }) => ({

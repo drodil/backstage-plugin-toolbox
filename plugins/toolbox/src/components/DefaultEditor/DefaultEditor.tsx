@@ -7,12 +7,48 @@ import {
   SampleButton,
 } from '../Buttons';
 import { FileDownloadButton } from '../Buttons/FileDownloadButton';
-import Grid from '@mui/material/Grid';
-import ButtonGroup from '@mui/material/ButtonGroup';
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
-import FormControl from '@mui/material/FormControl';
+import {
+  Button,
+  ButtonGroup,
+  FormControl,
+  Grid,
+  makeStyles,
+  TextField,
+  Theme,
+} from '@material-ui/core';
 import { useToolboxTranslation } from '../../hooks';
+
+const useStyles = makeStyles<Theme>(theme => ({
+  formControl: {
+    width: '100%',
+  },
+  gridContainer: {
+    marginBottom: theme.spacing(0.625), // 5px
+  },
+  modeGrid: {
+    paddingLeft: theme.spacing(2), // 16px
+    paddingTop: theme.spacing(4), // 32px
+  },
+  buttonGroup: {},
+  selectedButton: {},
+  unselectedButton: {
+    borderColor: theme.palette.action.active,
+  },
+  toolsGrid: {
+    padding: theme.spacing(2), // 16px
+    marginBottom: theme.spacing(1),
+  },
+  editorGrid: {
+    paddingTop: theme.spacing(1), // 8px
+    paddingLeft: theme.spacing(1), // 8px
+  },
+  outputGrid: {
+    paddingTop: theme.spacing(1), // 8px
+  },
+  textField: {
+    width: '100%',
+  },
+}));
 
 type Props = {
   input: string;
@@ -41,6 +77,7 @@ type Props = {
 
 export const DefaultEditor = (props: Props) => {
   const { t } = useToolboxTranslation();
+  const classes = useStyles();
   const {
     input,
     setInput,
@@ -106,16 +143,16 @@ export const DefaultEditor = (props: Props) => {
   };
 
   return (
-    <FormControl style={{ width: '100%' }} onDrop={handleDrop}>
-      <Grid container spacing={4} style={{ marginBottom: '5px' }}>
+    <FormControl className={classes.formControl} onDrop={handleDrop}>
+      <Grid container spacing={4} className={classes.gridContainer}>
         {modes && modes.length > 0 && (
-          <Grid item sx={{ pl: '16px', pt: '32px !important' }}>
+          <Grid item className={classes.modeGrid}>
             <ButtonGroup
               size="small"
               disableElevation
               variant="contained"
               aria-label="Disabled elevation buttons"
-              style={{ marginBottom: '1rem' }}
+              className={classes.buttonGroup}
               color="inherit"
             >
               {modes.map(m => (
@@ -125,15 +162,11 @@ export const DefaultEditor = (props: Props) => {
                   onClick={() => setMode && setMode(m)}
                   variant={mode === m ? 'contained' : 'outlined'}
                   color="inherit"
-                  sx={{
-                    ...(mode === m && {
-                      color: '#000000',
-                      backgroundColor: '#E0E0E0',
-                    }),
-                    ...(mode !== m && {
-                      borderColor: '#E0E0E0',
-                    }),
-                  }}
+                  className={
+                    mode === m
+                      ? classes.selectedButton
+                      : classes.unselectedButton
+                  }
                 >
                   {t(`components.defaultEditor.mode.${m.toLowerCase()}`, {
                     defaultValue: m,
@@ -143,7 +176,7 @@ export const DefaultEditor = (props: Props) => {
             </ButtonGroup>
           </Grid>
         )}
-        <Grid item sx={{ p: '16px' }}>
+        <Grid item className={classes.toolsGrid}>
           <ButtonGroup size="small">
             <ClearValueButton setValue={setInput} />
             <PasteFromClipboardButton setInput={setInput} />
@@ -169,12 +202,7 @@ export const DefaultEditor = (props: Props) => {
         )}
       </Grid>
       <Grid container>
-        <Grid
-          item
-          xs={12}
-          lg={6}
-          sx={{ pt: '8px !important', pl: '8px !important' }}
-        >
+        <Grid item xs={12} lg={6} className={classes.editorGrid}>
           {leftContent ?? (
             <TextField
               label={inputLabel}
@@ -185,25 +213,18 @@ export const DefaultEditor = (props: Props) => {
               onChange={e => setInput(e.target.value)}
               minRows={minRows}
               variant="outlined"
-              sx={{
-                width: '100%',
-                p: '8px',
-                '& label[class*="MuiFormLabel-root"]': {
-                  paddingTop: '10px !important',
-                  paddingLeft: '10px !important',
-                },
-              }}
+              className={classes.textField}
             />
           )}
           {extraLeftContent}
         </Grid>
-        <Grid item xs={12} lg={6} sx={{ p: '8px !important', mt: '8px' }}>
+        <Grid item xs={12} lg={6} className={classes.outputGrid}>
           {rightContent ?? (
             <TextField
               id="output"
               label={outputLabel}
               value={output || ''}
-              style={{ width: '100%' }}
+              className={classes.textField}
               multiline
               minRows={minRows}
               variant="outlined"

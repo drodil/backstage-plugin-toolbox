@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { DefaultEditor } from '../DefaultEditor';
-import Alert from '@mui/material/Alert';
-import AlertTitle from '@mui/material/AlertTitle';
+import { Alert, AlertTitle } from '@material-ui/lab';
 import { useToolboxTranslation } from '../../hooks';
 import { useApi } from '@backstage/core-plugin-api';
 import { catalogApiRef } from '@backstage/plugin-catalog-react';

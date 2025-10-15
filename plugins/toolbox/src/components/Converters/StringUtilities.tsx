@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { DefaultEditor } from '../DefaultEditor';
 import {
   camelCase,
@@ -8,13 +8,28 @@ import {
   snakeCase,
   upperCase,
 } from 'lodash';
-import TextField from '@mui/material/TextField';
-import CheckBox from '@mui/material/Checkbox';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Box from '@mui/material/Box';
+import {
+  Box,
+  Checkbox as CheckBox,
+  FormControlLabel,
+  makeStyles,
+  TextField,
+  Theme,
+} from '@material-ui/core';
 import { useToolboxTranslation } from '../../hooks';
 
+const useStyles = makeStyles<Theme>(theme => ({
+  controlsGrid: {
+    alignItems: 'center',
+    padding: theme.spacing(1, 0, 0, 1), // 8px 0 0 8px
+  },
+  paddingBox: {
+    paddingLeft: theme.spacing(2), // 16px
+  },
+}));
+
 export const StringUtilities = () => {
+  const classes = useStyles();
   const [input, setInput] = useState('');
   const [output, setOutput] = useState('');
   const [mode, setMode] = useState('Replace');
@@ -103,16 +118,13 @@ export const StringUtilities = () => {
 
   const extraLeftContent =
     mode === 'Replace' ? (
-      <Box
-        display="flex"
-        style={{ alignItems: 'center', padding: '8px 0 0 8px' }}
-      >
+      <Box display="flex" className={classes.controlsGrid}>
         <TextField
           label={t('tool.string-utilities-convert.inputSearch')}
           onChange={event => setSearchWord(event.target.value)}
           variant="outlined"
         />
-        <Box style={{ paddingLeft: '16px' }}>
+        <Box className={classes.paddingBox}>
           <FormControlLabel
             control={
               <CheckBox

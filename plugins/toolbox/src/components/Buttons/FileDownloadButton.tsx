@@ -1,6 +1,5 @@
-import GetAppIcon from '@mui/icons-material/GetApp';
-import Tooltip from '@mui/material/Tooltip';
-import Button from '@mui/material/Button';
+import { Button, Tooltip } from '@material-ui/core';
+import GetAppIcon from '@material-ui/icons/GetApp';
 import { useToolboxTranslation } from '../../hooks';
 
 export type FileDownloadButtonProps = {

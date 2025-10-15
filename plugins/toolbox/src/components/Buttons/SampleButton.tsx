@@ -1,6 +1,5 @@
-import Tooltip from '@mui/material/Tooltip';
-import Button from '@mui/material/Button';
-import Input from '@mui/icons-material/Input';
+import { Button, Tooltip } from '@material-ui/core';
+import Input from '@material-ui/icons/Input';
 import { useToolboxTranslation } from '../../hooks';
 
 type Props = {

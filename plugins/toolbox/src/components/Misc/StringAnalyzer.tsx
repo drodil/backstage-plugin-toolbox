@@ -1,16 +1,27 @@
 import { useEffect, useState } from 'react';
 import { DefaultEditor } from '../DefaultEditor';
 import { faker } from '@faker-js/faker';
-import Grid from '@mui/material/Grid';
-import TextField from '@mui/material/TextField';
-import Typography from '@mui/material/Typography';
+import {
+  Grid,
+  makeStyles,
+  TextField,
+  Theme,
+  Typography,
+} from '@material-ui/core';
 import { useToolboxTranslation } from '../../hooks';
 
 const ANALYZED_CHARS =
   'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 :;,.!?*+^${}()|/\\';
+const useStyles = makeStyles<Theme>(theme => ({
+  resultGrid: {
+    marginTop: theme.spacing(2), // 1rem = 16px
+  },
+}));
+
 const escapeRegex = (str: string) => str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
 export const StringAnalyzer = () => {
+  const classes = useStyles();
   const [input, setInput] = useState('');
   const [characters, setCharacters] = useState(0);
   const [lines, setLines] = useState(0);
@@ -64,7 +75,7 @@ export const StringAnalyzer = () => {
               <TextField label="Words" value={words} variant="standard" />
             </Grid>
           </Grid>
-          <Grid container style={{ marginTop: '1rem' }}>
+          <Grid container className={classes.resultGrid}>
             <Grid item xs={12}>
               <Typography variant="h6">
                 {t('tool.string-analyzer.characterStats')}

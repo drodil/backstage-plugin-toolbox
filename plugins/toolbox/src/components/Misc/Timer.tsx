@@ -1,15 +1,39 @@
 import { useEffect, useState } from 'react';
 import { TimePaper } from './TimePaper';
-import FormControl from '@mui/material/FormControl';
-import Grid from '@mui/material/Grid';
-import ButtonGroup from '@mui/material/ButtonGroup';
-import Button from '@mui/material/Button';
+import {
+  Button,
+  ButtonGroup,
+  FormControl,
+  Grid,
+  makeStyles,
+  Theme,
+} from '@material-ui/core';
 import { useToolboxTranslation } from '../../hooks';
+
+const useStyles = makeStyles<Theme>(theme => ({
+  formControl: {
+    width: '100%',
+  },
+  gridContainer: {
+    marginBottom: theme.spacing(0.625), // 5px
+  },
+  timeDisplay: {
+    fontSize: '5rem',
+    fontWeight: 'bold',
+    textAlign: 'center',
+    marginBottom: theme.spacing(2), // 16px
+  },
+  resetButton: {
+    backgroundColor: '#E0E0E0',
+    color: '#000000',
+  },
+}));
 
 const Timer = () => {
   const [elapsedTime, setElapsedTime] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
   const { t } = useToolboxTranslation();
+  const classes = useStyles();
 
   useEffect(() => {
     let intervalId: any;
@@ -47,8 +71,8 @@ const Timer = () => {
 
   return (
     <>
-      <FormControl style={{ width: '100%' }}>
-        <Grid container spacing={4} style={{ marginBottom: '5px' }}>
+      <FormControl className={classes.formControl}>
+        <Grid container spacing={4} className={classes.gridContainer}>
           <Grid item>
             <ButtonGroup>
               {!isRunning && (
@@ -72,13 +96,7 @@ const Timer = () => {
               <Button
                 variant="contained"
                 onClick={handleReset}
-                sx={{
-                  backgroundColor: '#E0E0E0',
-                  color: '#000000 !important',
-                  '&:hover': {
-                    backgroundColor: '#E0E0E0',
-                  },
-                }}
+                className={classes.resetButton}
               >
                 {t('tool.countdown.resetButton')}
               </Button>

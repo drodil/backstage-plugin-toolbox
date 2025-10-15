@@ -7,7 +7,7 @@ import {
 import { useEffect, useState } from 'react';
 import { DefaultEditor } from '../DefaultEditor';
 import { DefaultSelect } from '../Selects';
-import MenuItem from '@mui/material/MenuItem';
+import { MenuItem } from '@material-ui/core';
 
 const formatOptions = [
   'TypeScript',

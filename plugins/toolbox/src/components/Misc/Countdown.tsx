@@ -1,13 +1,35 @@
 import { ChangeEvent, useEffect, useState } from 'react';
 import { TimePaper } from './TimePaper';
-import FormControl from '@mui/material/FormControl';
-import Grid from '@mui/material/Grid';
-import ButtonGroup from '@mui/material/ButtonGroup';
-import Button from '@mui/material/Button';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Switch from '@mui/material/Switch';
-import TextField from '@mui/material/TextField';
+import {
+  Button,
+  ButtonGroup,
+  FormControl,
+  FormControlLabel,
+  Grid,
+  makeStyles,
+  Switch,
+  TextField,
+  Theme,
+} from '@material-ui/core';
 import { useToolboxTranslation } from '../../hooks';
+
+const useStyles = makeStyles<Theme>(theme => ({
+  formControl: {
+    width: '100%',
+  },
+  gridContainer: {
+    marginBottom: theme.spacing(0.625), // 5px
+  },
+  buttonGroup: {
+    padding: theme.spacing(2), // 16px
+    paddingLeft: 0,
+    paddingTop: 0,
+  },
+  resetButton: {
+    backgroundColor: '#E0E0E0',
+    color: '#000000',
+  },
+}));
 
 function sleep(ms: number) {
   return new Promise(resolve => setTimeout(resolve, ms));
@@ -37,7 +59,8 @@ async function playAlert() {
   beep(440.0);
 }
 
-const Countdown = () => {
+export const Countdown = () => {
+  const classes = useStyles();
   const [secondsLeft, setSecondsLeft] = useState(0);
   const [hours, setHours] = useState(0);
   const [minutes, setMinutes] = useState(0);
@@ -103,16 +126,10 @@ const Countdown = () => {
   const timeLeft = formatTime(secondsLeft);
   return (
     <>
-      <FormControl style={{ width: '100%' }}>
-        <Grid container spacing={4} style={{ marginBottom: '5px' }}>
+      <FormControl className={classes.formControl}>
+        <Grid container spacing={4} className={classes.gridContainer}>
           <Grid item>
-            <ButtonGroup
-              sx={{
-                p: '16px !important',
-                pl: '0 !important',
-                pt: '0 !important',
-              }}
-            >
+            <ButtonGroup className={classes.buttonGroup}>
               {!isRunning && (
                 <Button
                   variant="contained"
@@ -134,13 +151,7 @@ const Countdown = () => {
               <Button
                 variant="contained"
                 onClick={handleReset}
-                sx={{
-                  backgroundColor: '#E0E0E0',
-                  color: '#000000 !important',
-                  '&:hover': {
-                    backgroundColor: '#E0E0E0',
-                  },
-                }}
+                className={classes.resetButton}
               >
                 {t('tool.countdown.resetButton')}
               </Button>

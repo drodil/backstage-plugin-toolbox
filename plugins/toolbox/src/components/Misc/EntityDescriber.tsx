@@ -5,11 +5,8 @@ import { Entity } from '@backstage/catalog-model';
 import { CopyToClipboardButton } from '../Buttons';
 import YAML from 'yaml';
 import { FileDownloadButton } from '../Buttons/FileDownloadButton';
-import FormControl from '@mui/material/FormControl';
-import Grid from '@mui/material/Grid';
-import ButtonGroup from '@mui/material/ButtonGroup';
-import TextField from '@mui/material/TextField';
-import Autocomplete from '@mui/material/Autocomplete';
+import { ButtonGroup, FormControl, Grid, TextField } from '@material-ui/core';
+import { Autocomplete } from '@material-ui/lab';
 import { useToolboxTranslation } from '../../hooks';
 import { AutocompleteListboxComponent } from './AutocompleteListComponent.tsx';
 

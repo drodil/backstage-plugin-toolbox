@@ -16,7 +16,7 @@ import {
 import { discoveryApiRef, fetchApiRef } from '@backstage/core-plugin-api';
 import { toolboxApiRef, ToolboxClient } from './api';
 import { rootRouteRef } from './routes.ts';
-import CardTravel from '@mui/icons-material/CardTravel';
+import CardTravel from '@material-ui/icons/CardTravel';
 import {
   ToolboxToolBlueprint,
   toolDataRef,

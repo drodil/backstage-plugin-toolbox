@@ -1,4 +1,4 @@
-import Select, { SelectProps } from '@mui/material/Select';
+import { Select, SelectProps } from '@material-ui/core';
 
 export const DefaultSelect = (props: SelectProps) => {
   const { children, ...otherProps } = props;
@@ -8,11 +8,9 @@ export const DefaultSelect = (props: SelectProps) => {
       {...otherProps}
       MenuProps={{
         MenuListProps: {
-          sx: {
-            'li.MuiButtonBase-root': {
-              display: 'flex',
-              flexDirection: 'column',
-            },
+          style: {
+            display: 'flex',
+            flexDirection: 'column',
           },
         },
       }}
