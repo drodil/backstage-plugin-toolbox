@@ -145,18 +145,14 @@ export const CSRGenerator = () => {
               {t('tool.csr-generate.generateButton')}
             </Button>
             <CopyToClipboardButton output={certReq} />
-            <p style={{ fontWeight: 500, fontFamily: 'Helvetica Neue' }}>CSR</p>
             <FileDownloadButton
               content={keyPEM}
               fileName={`${fqdns[0]}.${algorithmName}.key`}
               fileType="text/plain"
             />
-            <p style={{ fontWeight: 500, fontFamily: 'Helvetica Neue' }}>
-              {t('tool.csr-generate.key')}
-            </p>
           </ButtonGroup>
         </Grid>
-        <Grid container>
+        <Grid container p={4}>
           <Grid
             item
             xs={12}

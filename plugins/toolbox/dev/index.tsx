@@ -1,11 +1,9 @@
-/**
-
 import { createDevApp } from '@backstage/dev-utils';
 import {
-  ToolboxPage,
-  ToolsContainer,
-  ToolContainer,
   defaultTools,
+  ToolboxPage,
+  ToolContainer,
+  ToolsContainer,
 } from '../src';
 import {
   AnyApiFactory,
@@ -77,11 +75,9 @@ createDevApp()
     path: '/home',
   })
   .render();
- *
- */
 
 // NEW FRONTEND SYSTEM
-import { createApp } from '@backstage/frontend-defaults';
+/** import { createApp } from '@backstage/frontend-defaults';
 import { createRoot } from 'react-dom/client';
 
 import plugin from '../src/alpha';
@@ -108,3 +104,4 @@ const app = createApp({
 const container = document.getElementById('root');
 const root = createRoot(container!);
 root.render(app.createRoot());
+*/

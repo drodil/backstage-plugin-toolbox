@@ -128,24 +128,6 @@ export const ToolsContainer = (props: ToolsContainerProps) => {
       });
 
     tabInfos.push({
-      tab: (
-        <Tab
-          key="Toolbox"
-          label=""
-          disabled
-          sx={{
-            marginTop: 1,
-            paddingTop: 1,
-            paddingBottom: '50px',
-          }}
-        />
-      ),
-      component: undefined,
-      id: 'toolbox',
-      localizedTitle: '',
-    });
-
-    tabInfos.push({
       id: '',
       tab: (
         <Tab
@@ -162,7 +144,7 @@ export const ToolsContainer = (props: ToolsContainerProps) => {
             },
             marginTop: 1,
             paddingTop: 1,
-            paddingBottom: '50px',
+            paddingBottom: '0.2rem',
             color: 'text.primary',
           }}
           label={t('toolsPage.tabPanel.mainLabel')}
@@ -228,7 +210,7 @@ export const ToolsContainer = (props: ToolsContainerProps) => {
           tab: (
             <Tab
               style={
-                !anyMatchSearch ? { display: 'none' } : { marginTop: '0.5rem' }
+                !anyMatchSearch ? { display: 'none' } : { marginTop: '0.2rem' }
               }
               key={category}
               label={category}
