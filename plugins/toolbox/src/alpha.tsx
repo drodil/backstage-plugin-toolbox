@@ -367,6 +367,20 @@ const entityDescriberTool = ToolboxToolBlueprint.make({
   },
 });
 
+const backstageIconsTool = ToolboxToolBlueprint.make({
+  name: 'icons-list',
+  params: {
+    id: 'icons-list',
+    displayName: 'Icons list',
+    description: 'Shows all Backstage icons',
+    category: 'Backstage',
+    async loader() {
+      const m = await import('./components/Misc/BackstageIcons');
+      return compatWrapper(<m.default />);
+    },
+  },
+});
+
 const csrTool = ToolboxToolBlueprint.make({
   name: 'csr-generate',
   params: {
@@ -659,6 +673,7 @@ export default createFrontendPlugin({
     hashTool,
     entityValidatorTool,
     entityDescriberTool,
+    backstageIconsTool,
     csrTool,
     qrCodeTool,
     barCodeTool,
