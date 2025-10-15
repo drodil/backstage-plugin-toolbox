@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.33.3](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.33.2...v1.33.3) (2025-10-15)
+
+
+### Bug Fixes
+
+* add small delay for input ([a96948d](https://github.com/drodil/backstage-plugin-toolbox/commit/a96948d6bdcee867f41f7e6d38bab3d42da778c8))
+
 ### [1.33.2](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.33.1...v1.33.2) (2025-10-15)
 
 ### [1.33.1](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.33.0...v1.33.1) (2025-09-26)
