@@ -41,6 +41,8 @@ export const toolboxTranslationRef = createTranslationRef({
         'The toolbox contains commonly used tools for development and design. These tools include encoding, data generation, conversion tools, and other utilities to make work easier. All data is kept within this domain, so you don’t have to worry about your data getting into the wrong hands.',
       secondText:
         'To select tools, click the cards below or use the left-side navigation.',
+      search: 'Search for tool',
+      noToolsFound: 'No tools found',
     },
     tool: {
       category: {

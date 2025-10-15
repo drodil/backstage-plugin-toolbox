@@ -1,18 +1,45 @@
+import React, { useState } from 'react';
 import { Tool } from '@drodil/backstage-plugin-toolbox-react';
 import {
   Box,
   Card,
   CardContent,
   Grid,
+  IconButton,
+  InputBase,
   makeStyles,
+  Paper,
   Theme,
   Typography,
 } from '@material-ui/core';
+import SearchIcon from '@material-ui/icons/Search';
 import { useToolboxTranslation } from '../../hooks';
+import { Alert } from '@material-ui/lab';
 
 const useStyles = makeStyles<Theme>(theme => ({
   introText: {
     marginTop: theme.spacing(1), // 8px
+  },
+  searchPaper: {
+    justifyContent: 'space-between',
+    marginTop: theme.spacing(1),
+    marginBottom: theme.spacing(1),
+    display: 'flex',
+    height: '48px',
+    backgroundColor: theme.palette.background.paper,
+    border: `1px solid ${theme.palette.divider}`,
+  },
+  searchInput: {
+    paddingLeft: theme.spacing(2),
+    flex: 1,
+  },
+  noTools: {
+    width: '100%',
+    margin: theme.spacing(1),
+  },
+  searchIcon: {
+    marginRight: theme.spacing(2),
+    paddingRight: 0,
   },
   gridContainer: {
     padding: 0,
@@ -29,7 +56,7 @@ const useStyles = makeStyles<Theme>(theme => ({
     cursor: 'pointer',
     borderWidth: '1px',
     borderStyle: 'solid',
-    borderColor: 'transparent',
+    borderColor: theme.palette.divider,
     height: '100%',
     '&:hover': {
       borderColor: theme.palette.primary.main,
@@ -49,6 +76,27 @@ export const WelcomePage = (props: WelcomePageProps) => {
   const { tools } = props;
   const { t } = useToolboxTranslation();
   const classes = useStyles();
+  const [search, setSearch] = useState('');
+
+  const filteredTools = tools.filter(tool => {
+    if (!search) {
+      return true;
+    }
+    const toolName = t(`tool.${tool.id}.name`, {
+      defaultValue: tool.displayName ?? tool.name,
+    });
+    const description = t(`tool.${tool.id}.description`, {
+      defaultValue: tool.description,
+    });
+    return (
+      toolName.toLowerCase().includes(search.toLowerCase()) ||
+      tool.id.toLowerCase().includes(search.toLowerCase()) ||
+      tool.aliases?.some(alias =>
+        alias.toLowerCase().includes(search.toLowerCase()),
+      ) ||
+      description?.toLowerCase().includes(search.toLowerCase())
+    );
+  });
 
   return (
     <Box>
@@ -58,8 +106,27 @@ export const WelcomePage = (props: WelcomePageProps) => {
       <Typography className={classes.introText}>
         {t('welcomePage.secondText')}
       </Typography>
+      <Paper component="form" className={classes.searchPaper}>
+        <InputBase
+          placeholder={t('welcomePage.search')}
+          inputProps={{ 'aria-label': 'Search' }}
+          className={classes.searchInput}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            setSearch(e.target.value)
+          }
+          value={search}
+        />
+        <IconButton disabled aria-label="search" className={classes.searchIcon}>
+          <SearchIcon />
+        </IconButton>
+      </Paper>
       <Grid container className={classes.gridContainer} alignContent="center">
-        {tools.map(tool => {
+        {filteredTools.length === 0 && (
+          <Alert severity="warning" className={classes.noTools}>
+            {t('welcomePage.noToolsFound')}
+          </Alert>
+        )}
+        {filteredTools.map(tool => {
           return (
             <Grid item key={tool.id} xs={3} className={classes.gridItem}>
               <Card

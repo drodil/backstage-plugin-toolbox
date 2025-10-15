@@ -25,6 +25,7 @@ import {
 } from '@material-ui/core';
 import { TabContext, TabPanel } from '@material-ui/lab';
 import { useBackendTools, useToolboxTranslation } from '../../hooks';
+import CardTravel from '@material-ui/icons/CardTravel';
 
 const useStyles = makeStyles((theme: Theme) => ({
   container: {
@@ -39,7 +40,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   searchPaper: {
     justifyContent: 'center',
     margin: theme.spacing(2),
-    paddingLeft: theme.spacing(2),
+    paddingLeft: theme.spacing(1),
     marginBottom: theme.spacing(1),
     display: 'flex',
     height: '48px',
@@ -53,12 +54,17 @@ const useStyles = makeStyles((theme: Theme) => ({
   mainTab: {
     width: '100%',
     padding: 0,
+    fontSize: '14px',
     marginTop: theme.spacing(1),
     paddingTop: 0,
     paddingBottom: 0,
   },
   categoryTab: {
-    marginTop: '0.2rem',
+    marginTop: '8px',
+    fontSize: '16px',
+    fontColor: theme.palette.text.secondary,
+    borderTop: `1px solid ${theme.palette.divider}`,
+    paddingBottom: 0,
   },
   toolTab: {
     width: '100%',
@@ -202,6 +208,7 @@ export const ToolsContainer = (props: ToolsContainerProps) => {
           wrapped
           className={classes.mainTab}
           label={t('toolsPage.tabPanel.mainLabel')}
+          icon={<CardTravel fontSize="small" />}
         />
       ),
       localizedTitle: t('toolsPage.pageTitle'),
