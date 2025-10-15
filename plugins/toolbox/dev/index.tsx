@@ -82,7 +82,6 @@ import { createRoot } from 'react-dom/client';
 import { CatalogApiMock } from './CatalogApiMock';
 import { catalogApiRef } from '@backstage/plugin-catalog-react';
 import catalogPlugin from '@backstage/plugin-catalog/alpha';
-import '@backstage/ui/css/styles.css';
 
 import plugin from '../src/alpha';
 import { createFrontendModule } from '@backstage/frontend-plugin-api';
