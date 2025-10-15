@@ -13,7 +13,6 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import FormControl from '@mui/material/FormControl';
 import { useToolboxTranslation } from '../../hooks';
-import { useDebounce } from 'react-use';
 
 type Props = {
   input: string;
@@ -67,7 +66,6 @@ export const DefaultEditor = (props: Props) => {
 
   const [fileName, setFileName] = useState(downloadFileName ?? 'download.txt');
   const [fileType, setFileType] = useState(downloadFileType ?? 'text/plain');
-  const [writtenInput, setWrittenInput] = useState(input);
 
   const readFileAndSetInput = (file?: File) => {
     if (!file) {
@@ -106,14 +104,6 @@ export const DefaultEditor = (props: Props) => {
       });
     }
   };
-
-  useDebounce(
-    () => {
-      setInput(writtenInput);
-    },
-    150,
-    [writtenInput],
-  );
 
   return (
     <FormControl style={{ width: '100%' }} onDrop={handleDrop}>
@@ -191,8 +181,8 @@ export const DefaultEditor = (props: Props) => {
               // eslint-disable-next-line
               id="input"
               multiline
-              value={writtenInput}
-              onChange={e => setWrittenInput(e.target.value)}
+              value={input}
+              onChange={e => setInput(e.target.value)}
               minRows={minRows}
               variant="outlined"
               sx={{
