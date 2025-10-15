@@ -27,7 +27,6 @@ import { createWhoisLookupAction } from './whoisLookup.ts';
 // Validator actions
 import { createIbanValidatorAction } from './ibanValidator.ts';
 import { createRegexValidatorAction } from './regexValidator.ts';
-import { createEntityValidatorAction } from './entityValidator.ts';
 import { CatalogService } from '@backstage/plugin-catalog-node';
 import { Config } from '@backstage/config';
 
@@ -120,8 +119,5 @@ export const registerActions = (options: {
   }
   if (isActionEnabled('validate-regex')) {
     createRegexValidatorAction(options);
-  }
-  if (isActionEnabled('validate-entity')) {
-    createEntityValidatorAction(options);
   }
 };
