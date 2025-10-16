@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import TextField from '@mui/material/TextField';
+import TextField from '@material-ui/core/TextField';
+import { makeStyles } from '@material-ui/core/styles';
 import { DefaultEditor } from '../DefaultEditor';
 import { format } from 'sql-formatter';
 import { useToolboxTranslation } from '../../hooks';
@@ -25,6 +26,13 @@ const languages = [
   'trino',
 ];
 
+const useStyles = makeStyles({
+  textField: {
+    zIndex: 0,
+    width: '100%',
+  },
+});
+
 /**
  * SQLBeautify - Formats SQL queries using sql-formatter.
  * Allows selection of SQL language.
@@ -36,7 +44,7 @@ export const SQLBeautify = () => {
   const { t } = useToolboxTranslation();
 
   const sample = "SELECT bar, foo FROM foo_bar WHERE foo='bar' GROUP BY bar";
-
+  const classes = useStyles();
   useEffect(() => {
     if (input) {
       try {
@@ -88,16 +96,11 @@ export const SQLBeautify = () => {
           onChange={e => setInput(e.target.value)}
           minRows={20}
           variant="outlined"
-          autoComplete="new-password"
           inputProps={{
             form: 'off',
             spellCheck: false,
-            autoComplete: 'new-password',
           }}
-          sx={{
-            zIndex: 0,
-            width: '100%',
-          }}
+          className={classes.textField}
         />
       }
       rightContent={
@@ -112,10 +115,7 @@ export const SQLBeautify = () => {
             spellCheck: false,
             readOnly: true,
           }}
-          sx={{
-            zIndex: 0,
-            width: '100%',
-          }}
+          className={classes.textField}
         />
       }
     />
