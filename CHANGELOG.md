@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.35.0](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.34.0...v1.35.0) (2025-10-21)
+
+
+### Features
+
+* **sql-beautify:** add dropdown to support languages ([cd28349](https://github.com/drodil/backstage-plugin-toolbox/commit/cd2834929c692fa6654d36c2a4ade2ed43cbc000))
+* **sql-beautify:** add dropdown to support languages ([8b670cb](https://github.com/drodil/backstage-plugin-toolbox/commit/8b670cbac1d2145cde7ff254ad4561dd7d4c7cb8))
+* **sql-beautify:** add dropdown to support languages ([92aab15](https://github.com/drodil/backstage-plugin-toolbox/commit/92aab15925fc9dd6059f92f795537e57803f277e))
+
 ## [1.34.0](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.33.4...v1.34.0) (2025-10-15)
 
 
