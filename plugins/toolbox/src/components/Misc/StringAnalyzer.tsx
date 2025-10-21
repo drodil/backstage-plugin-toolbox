@@ -66,13 +66,24 @@ export const StringAnalyzer = () => {
                 label="Characters"
                 value={characters}
                 variant="standard"
+                autoComplete="off"
               />
             </Grid>
             <Grid item>
-              <TextField label="Lines" value={lines} variant="standard" />
+              <TextField
+                label="Lines"
+                value={lines}
+                variant="standard"
+                autoComplete="off"
+              />
             </Grid>
             <Grid item>
-              <TextField label="Words" value={words} variant="standard" />
+              <TextField
+                label="Words"
+                value={words}
+                variant="standard"
+                autoComplete="off"
+              />
             </Grid>
           </Grid>
           <Grid container className={classes.resultGrid}>
@@ -88,6 +99,7 @@ export const StringAnalyzer = () => {
                   value={count}
                   size="small"
                   variant="standard"
+                  autoComplete="off"
                 />
               </Grid>
             ))}

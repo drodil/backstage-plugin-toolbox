@@ -297,6 +297,7 @@ export const ColorConverter = () => {
           style={{ width: '100%' }}
           disabled
           value={value ?? ''}
+          autoComplete="off"
         />
         <CopyToClipboardButton output={value ?? ''} />
       </div>
@@ -320,6 +321,7 @@ export const ColorConverter = () => {
             style={{ width: '100%', marginTop: '1rem' }}
             onChange={e => handleChange(e.target.value)}
             variant="outlined"
+            autoComplete="off"
           />
         </Grid>
       </Grid>

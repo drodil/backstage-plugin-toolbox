@@ -81,6 +81,7 @@ export const EntityDescriber = () => {
             renderInput={params => (
               <TextField
                 {...params}
+                autoComplete="off"
                 label={t('tool.entity-describer.entityLabel')}
                 variant="outlined"
               />
@@ -97,6 +98,7 @@ export const EntityDescriber = () => {
             minRows={20}
             maxRows={50}
             variant="outlined"
+            autoComplete="off"
           />
         </Grid>
       </Grid>

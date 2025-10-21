@@ -100,6 +100,7 @@ export const SQLBeautify = () => {
             form: 'off',
             spellCheck: false,
           }}
+          autoComplete="off"
           className={classes.textField}
         />
       }
@@ -111,6 +112,7 @@ export const SQLBeautify = () => {
           multiline
           minRows={20}
           variant="outlined"
+          autoComplete="off"
           inputProps={{
             spellCheck: false,
             readOnly: true,

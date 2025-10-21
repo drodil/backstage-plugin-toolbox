@@ -278,6 +278,7 @@ export const LoremIpsum = () => {
             minRows={20}
             maxRows={50}
             variant="outlined"
+            autoComplete="off"
           />
         </Grid>
       </Grid>

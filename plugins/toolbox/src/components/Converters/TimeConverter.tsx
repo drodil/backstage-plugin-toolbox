@@ -83,6 +83,7 @@ export const TimeConverter = () => {
           style={{ marginTop: '1rem', width: '100%' }}
           disabled
           value={value ?? ''}
+          autoComplete="off"
         />
         <CopyToClipboardButton output={value ?? ''} />
       </>
@@ -112,6 +113,7 @@ export const TimeConverter = () => {
             value={getInputStr()}
             onChange={e => handleChange(e.target.value)}
             variant="outlined"
+            autoComplete="off"
           />
         </Grid>
         <Grid item xs={12} lg={4}>

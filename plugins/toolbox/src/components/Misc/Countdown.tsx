@@ -172,6 +172,7 @@ export const Countdown = () => {
               type="number"
               value={hours}
               variant="standard"
+              autoComplete="off"
               onChange={e => {
                 const val = parseInt(e.target.value, 10);
                 if (!isNaN(val)) {
@@ -186,6 +187,7 @@ export const Countdown = () => {
               type="number"
               value={minutes}
               variant="standard"
+              autoComplete="off"
               onChange={e => {
                 const val = parseInt(e.target.value, 10);
                 if (!isNaN(val)) {
@@ -200,6 +202,7 @@ export const Countdown = () => {
               type="number"
               value={seconds}
               variant="standard"
+              autoComplete="off"
               onChange={e => {
                 const val = parseInt(e.target.value, 10);
                 if (!isNaN(val)) {

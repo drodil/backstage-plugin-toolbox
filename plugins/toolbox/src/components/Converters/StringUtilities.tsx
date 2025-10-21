@@ -123,6 +123,7 @@ export const StringUtilities = () => {
           label={t('tool.string-utilities-convert.inputSearch')}
           onChange={event => setSearchWord(event.target.value)}
           variant="outlined"
+          autoComplete="off"
         />
         <Box className={classes.paddingBox}>
           <FormControlLabel
@@ -138,6 +139,7 @@ export const StringUtilities = () => {
         <TextField
           label={t('tool.string-utilities-convert.inputReplace')}
           onChange={event => setReplaceWord(event.target.value)}
+          autoComplete="off"
         />
       </Box>
     ) : undefined;

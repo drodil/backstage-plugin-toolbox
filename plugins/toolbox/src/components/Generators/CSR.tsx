@@ -192,6 +192,7 @@ export const CSRGenerator = () => {
               multiline
               minRows={5}
               className={classes.textField}
+              autoComplete="off"
               InputProps={{
                 style: { whiteSpace: 'pre-wrap' },
               }}
@@ -213,6 +214,7 @@ export const CSRGenerator = () => {
                   {...params}
                   label={t('tool.csr-generate.keyTypeLabel')}
                   variant="outlined"
+                  autoComplete="off"
                 />
               )}
             />
@@ -222,6 +224,7 @@ export const CSRGenerator = () => {
               className={classes.textField}
               variant="outlined"
               onChange={handleSubjectChange('country')}
+              autoComplete="off"
             />
             <TextField
               label={t('tool.csr-generate.stateOrProvinceNameLabel')}
@@ -229,6 +232,7 @@ export const CSRGenerator = () => {
               className={classes.textField}
               variant="outlined"
               onChange={handleSubjectChange('state')}
+              autoComplete="off"
             />
             <TextField
               label={t('tool.csr-generate.localityNameLabel')}
@@ -236,6 +240,7 @@ export const CSRGenerator = () => {
               className={classes.textField}
               variant="outlined"
               onChange={handleSubjectChange('locality')}
+              autoComplete="off"
             />
             <TextField
               label={t('tool.csr-generate.organizationNameLabel')}
@@ -243,6 +248,7 @@ export const CSRGenerator = () => {
               className={classes.textField}
               variant="outlined"
               onChange={handleSubjectChange('organization')}
+              autoComplete="off"
             />
             {/* Optional field for Organizational Unit */}
             <TextField
@@ -251,6 +257,7 @@ export const CSRGenerator = () => {
               className={classes.textField}
               variant="outlined"
               onChange={handleSubjectChange('organizationalUnit')}
+              autoComplete="off"
             />
             {/* Optional field for Email Address */}
             <TextField
@@ -259,6 +266,7 @@ export const CSRGenerator = () => {
               className={classes.textField}
               variant="outlined"
               onChange={handleSubjectChange('emailAddress')}
+              autoComplete="email"
             />
           </Grid>
           <Grid item xs={12} lg={8} className={classes.fieldGrid}>
@@ -271,6 +279,7 @@ export const CSRGenerator = () => {
               minRows={20}
               maxRows={50}
               variant="outlined"
+              autoComplete="off"
               InputProps={{
                 style: { whiteSpace: 'pre-wrap' },
                 readOnly: true,
@@ -285,6 +294,7 @@ export const CSRGenerator = () => {
               minRows={10}
               maxRows={20}
               variant="outlined"
+              autoComplete="off"
               InputProps={{
                 style: { whiteSpace: 'pre-wrap' },
                 readOnly: true,

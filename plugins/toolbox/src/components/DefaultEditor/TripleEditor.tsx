@@ -233,6 +233,7 @@ export const TripleEditor = (props: Props) => {
                 onChange={e => setInput(e.target.value)}
                 minRows={minRows}
                 variant="outlined"
+                autoComplete="off"
                 className={classes.textField}
               />
             </>
@@ -253,6 +254,7 @@ export const TripleEditor = (props: Props) => {
                 onChange={e => setPattern(e.target.value)}
                 minRows={minRows}
                 variant="outlined"
+                autoComplete="off"
                 className={classes.textField}
               />
             </>
@@ -270,6 +272,7 @@ export const TripleEditor = (props: Props) => {
                 id="output"
                 multiline
                 value={output}
+                autoComplete="off"
                 onChange={e => setOutput(e.target.value)}
                 minRows={minRows}
                 variant="outlined"
