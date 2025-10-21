@@ -110,6 +110,7 @@ export const UrlExploder = () => {
           value={rawInput}
           onChange={e => onInput(e.target.value)}
           className={classes.firstTextField}
+          autoComplete="url"
         />
       </Grid>
       <Grid item xs={6}>
@@ -119,6 +120,7 @@ export const UrlExploder = () => {
           className={classes.textField}
           onChange={e => setProtocol(e.target.value)}
           variant="outlined"
+          autoComplete="off"
         />
         <TextField
           label={t('tool.url-exploder.pathLabel')}
@@ -126,6 +128,7 @@ export const UrlExploder = () => {
           className={classes.textField}
           onChange={e => setPath(e.target.value)}
           variant="outlined"
+          autoComplete="off"
         />
         <TextField
           label={t('tool.url-exploder.usernameLabel')}
@@ -133,6 +136,7 @@ export const UrlExploder = () => {
           className={classes.textField}
           onChange={e => setUsername(e.target.value)}
           variant="outlined"
+          autoComplete="off"
         />
         <TextField
           label={t('tool.url-exploder.queryLabel')}
@@ -143,6 +147,7 @@ export const UrlExploder = () => {
           onChange={e => setQuery(e.target.value)}
           helperText={t('tool.url-exploder.queryHelperText')}
           variant="outlined"
+          autoComplete="off"
         />
       </Grid>
 
@@ -153,6 +158,7 @@ export const UrlExploder = () => {
           className={classes.textField}
           onChange={e => setHost(e.target.value)}
           variant="outlined"
+          autoComplete="off"
         />
         <TextField
           label={t('tool.url-exploder.portLabel')}
@@ -161,6 +167,7 @@ export const UrlExploder = () => {
           className={classes.textField}
           onChange={e => setPort(e.target.value)}
           variant="outlined"
+          autoComplete="off"
         />
         <TextField
           label={t('tool.url-exploder.passwordLabel')}
@@ -168,6 +175,7 @@ export const UrlExploder = () => {
           className={classes.textField}
           onChange={e => setPassword(e.target.value)}
           variant="outlined"
+          autoComplete="off"
         />
         <TextField
           label={t('tool.url-exploder.hashLabel')}
@@ -175,6 +183,7 @@ export const UrlExploder = () => {
           className={classes.textField}
           onChange={e => setHash(e.target.value)}
           variant="outlined"
+          autoComplete="off"
         />
         <TextField
           label={t('tool.url-exploder.originLabel')}
@@ -184,6 +193,7 @@ export const UrlExploder = () => {
           }}
           className={classes.textField}
           variant="outlined"
+          autoComplete="off"
         />
       </Grid>
     </Grid>

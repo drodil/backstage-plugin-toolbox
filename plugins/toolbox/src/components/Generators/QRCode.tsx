@@ -118,6 +118,7 @@ const ConfigSelect = (props: {
           onChange={onChangeColor}
           className={classes.colorTextField}
           variant="standard"
+          autoComplete="off"
         />
       ) : null}
     </FormControl>

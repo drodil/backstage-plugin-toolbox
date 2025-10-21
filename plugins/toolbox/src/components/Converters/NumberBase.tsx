@@ -88,6 +88,7 @@ export const NumberBase = () => {
             value={state.binary}
             onChange={e => handleChange('binary', e.target.value)}
             variant="outlined"
+            autoComplete="off"
           />
         </Grid>
         <Grid item xs={12}>
@@ -106,6 +107,7 @@ export const NumberBase = () => {
             value={state.octal}
             onChange={e => handleChange('octal', e.target.value)}
             variant="outlined"
+            autoComplete="off"
           />
         </Grid>
         <Grid item xs={12}>
@@ -124,6 +126,7 @@ export const NumberBase = () => {
             value={state.decimal}
             onChange={e => handleChange('decimal', e.target.value)}
             variant="outlined"
+            autoComplete="off"
           />
         </Grid>
         <Grid item xs={12}>
@@ -140,6 +143,7 @@ export const NumberBase = () => {
             value={state.hex}
             onChange={e => handleChange('hex', e.target.value)}
             variant="outlined"
+            autoComplete="off"
           />
         </Grid>
       </Grid>

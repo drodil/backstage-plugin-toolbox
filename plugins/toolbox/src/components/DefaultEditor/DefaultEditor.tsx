@@ -214,6 +214,7 @@ export const DefaultEditor = (props: Props) => {
               minRows={minRows}
               variant="outlined"
               className={classes.textField}
+              autoComplete="off"
             />
           )}
           {extraLeftContent}
@@ -228,6 +229,7 @@ export const DefaultEditor = (props: Props) => {
               multiline
               minRows={minRows}
               variant="outlined"
+              autoComplete="off"
             />
           )}
           {extraRightContent}

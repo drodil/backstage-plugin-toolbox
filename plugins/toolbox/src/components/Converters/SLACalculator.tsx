@@ -107,6 +107,7 @@ export const SLACalculator = () => {
           disabled
           value={value ?? ''}
           style={{ width: '100%' }}
+          autoComplete="off"
         />
         <CopyToClipboardButton output={value ?? ''} />
       </div>
@@ -135,6 +136,7 @@ export const SLACalculator = () => {
             value={input}
             onChange={e => handleChange(e.target.value)}
             variant="outlined"
+            autoComplete="off"
           />
           {error.show ? <Alert severity="error">{error.msg}</Alert> : null}
         </Grid>

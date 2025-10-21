@@ -53,6 +53,7 @@ export const Whois = () => {
             onChange={e => {
               setDomain(e.target.value);
             }}
+            autoComplete="off"
           />
         </Grid>
         <Grid item>
@@ -90,6 +91,7 @@ export const Whois = () => {
                 className={classes.outputTextField}
                 minRows={30}
                 variant="outlined"
+                autoComplete="off"
               />
             );
           })}
