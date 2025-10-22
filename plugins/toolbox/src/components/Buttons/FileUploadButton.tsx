@@ -1,4 +1,4 @@
-import { ChangeEvent } from 'react';
+import { ChangeEvent, useId } from 'react';
 import { Button, Tooltip } from '@material-ui/core';
 import AttachFile from '@material-ui/icons/AttachFile';
 import { useToolboxTranslation } from '../../hooks';
@@ -12,9 +12,10 @@ type Props = {
 
 export const FileUploadButton = (props: Props) => {
   const { t } = useToolboxTranslation();
+  const generatedId = useId();
   const {
     onFileLoad,
-    id = 'uploadBtn',
+    id = `uploadBtn-${generatedId}`,
     buttonText = t('components.fileUploadButton.buttonText'),
     accept = '*/*',
   } = props;
