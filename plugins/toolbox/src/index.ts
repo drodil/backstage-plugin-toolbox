@@ -3,6 +3,7 @@ export {
   ToolboxPage,
   ToolsContainer,
   ToolContainer,
+  toolboxHomepageCardFactory,
   ToolboxHomepageCard,
 } from './plugin';
 export * from '@drodil/backstage-plugin-toolbox-react';

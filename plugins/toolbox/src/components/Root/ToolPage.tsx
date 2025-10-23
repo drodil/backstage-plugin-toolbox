@@ -3,6 +3,7 @@ import { defaultTools } from './tools';
 import { useParams } from 'react-router-dom';
 import { useToolboxTranslation } from '../../hooks';
 import { ToolContainer } from './ToolContainer';
+import { getToolTitle } from '../../utils/tools';
 
 export const ToolPage = (props: ToolsContainerProps) => {
   const { extraTools } = props;
@@ -15,14 +16,7 @@ export const ToolPage = (props: ToolsContainerProps) => {
     return <>{t('toolPage.toolNotAvailable')}</>;
   }
 
-  const title = `${t(
-    `tool.category.${(tool.category ?? 'miscellaneous').toLowerCase()}`,
-    {
-      defaultValue: tool.category ?? 'Miscellaneous',
-    },
-  )} - ${t(`tool.${tool.id}.name`, {
-    defaultValue: tool.displayName ?? tool.name,
-  })}`;
+  const title = getToolTitle(tool, t);
   const description = t(`tool.${tool.id}.description`, {
     defaultValue: tool.description,
   });

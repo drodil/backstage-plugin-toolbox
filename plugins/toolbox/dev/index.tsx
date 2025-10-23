@@ -16,6 +16,7 @@ import { catalogApiRef } from '@backstage/plugin-catalog-react';
 import { rootRouteRef } from '../src/routes';
 import { CatalogApiMock } from './CatalogApiMock';
 import { HomePage } from './HomePage';
+import { HomePageWithFactory } from './HomePageWithFactory';
 
 const extraToolExample = {
   id: 'extra-test',
@@ -73,6 +74,11 @@ createDevApp()
     element: <HomePage />,
     title: 'Home Page',
     path: '/home',
+  })
+  .addPage({
+    element: <HomePageWithFactory />,
+    title: 'Home Page 2',
+    path: '/home2',
   })
   .render();
  */
