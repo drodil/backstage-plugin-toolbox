@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.35.1](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.35.0...v1.35.1) (2025-10-24)
+
+
+### Bug Fixes
+
+* **toolboxhomepagecard:** show "category - name" in homepage cards and tool dropdown ([7dfe4de](https://github.com/drodil/backstage-plugin-toolbox/commit/7dfe4ded598985c871f4a1e5d1803fd5fc8a703e))
+* **toolboxhomepagecard:** tool upload button loads wrong tool ([3a5ac0c](https://github.com/drodil/backstage-plugin-toolbox/commit/3a5ac0cb807bf5a8d9867736b6290e657d0fa0b3))
+
 ## [1.35.0](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.34.0...v1.35.0) (2025-10-21)
 
 
