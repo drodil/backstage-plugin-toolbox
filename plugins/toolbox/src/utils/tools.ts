@@ -52,9 +52,13 @@ export function getSortedTools({
 
       if (aCategoryStr === favoritesCategory) return -1;
       if (bCategoryStr === favoritesCategory) return 1;
-      return aCategoryStr
+      const categoryCompare = aCategoryStr
         .toLowerCase()
         .localeCompare(bCategoryStr.toLowerCase());
+      if (categoryCompare !== 0) return categoryCompare;
+      const aName = (a.displayName || a.name || a.id).toLowerCase();
+      const bName = (b.displayName || b.name || b.id).toLowerCase();
+      return aName.localeCompare(bName);
     });
 }
 
