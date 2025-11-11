@@ -87,8 +87,9 @@ const de = createTranslationMessages({
     'tool.xml-to-json-convert.name': 'XML -> JSON',
     'tool.xml-to-json-convert.description': 'Konvertiere XML nach JSON',
     'tool.xml-to-json-convert.invalidFormat': 'Falsches Format!',
-    'tool.json-to-yaml-convert.name': 'JSON -> YAML',
-    'tool.json-to-yaml-convert.description': 'Konvertiere JSON nach YAML',
+    'tool.json-converter.name': 'JSON',
+    'tool.json-converter.description':
+      'Konvertiere JSON zu CSV, String oder YAML',
     'tool.yaml-to-json-convert.name': 'YAML -> JSON',
     'tool.yaml-to-json-convert.description': 'Konvertiere YAML nach JSON',
     'tool.rich-text-to-markdown-convert.name': 'HTML -> Markdown',

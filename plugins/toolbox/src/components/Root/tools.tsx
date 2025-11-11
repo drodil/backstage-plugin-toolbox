@@ -12,8 +12,7 @@ const JwtDecoder = lazy(() => import('../Encoders/JwtDecoder'));
 const NumberBase = lazy(() => import('../Converters/NumberBase'));
 const MarkdownPreview = lazy(() => import('../Converters/MarkdownPreview'));
 const CsvToJson = lazy(() => import('../Converters/CsvToJson'));
-const JsonToCsv = lazy(() => import('../Converters/JsonToCsv'));
-const JsonToYaml = lazy(() => import('../Converters/JsonToYaml'));
+const JsonConverter = lazy(() => import('../Converters/JsonConverter'));
 const YamlToJson = lazy(() => import('../Converters/YamlToJson'));
 const StringUtilities = lazy(() => import('../Converters/StringUtilities'));
 const TimeConverter = lazy(() => import('../Converters/TimeConverter'));
@@ -103,11 +102,11 @@ export const defaultTools: Tool[] = [
     description: 'Convert CSV text to JSON',
   },
   {
-    id: 'json-to-csv-convert',
-    name: 'JSON to CSV',
-    component: <JsonToCsv />,
+    id: 'json-converter',
+    name: 'JSON',
+    component: <JsonConverter />,
     category: 'Convert',
-    description: 'Convert to JSON text to CSV',
+    description: 'Convert JSON to CSV, String or YAML',
   },
   {
     id: 'xml-to-json-convert',
@@ -115,13 +114,6 @@ export const defaultTools: Tool[] = [
     component: <XmlToJson />,
     category: 'Convert',
     description: 'Convert to XML text to JSON',
-  },
-  {
-    id: 'json-to-yaml-convert',
-    name: 'JSON to YAML',
-    component: <JsonToYaml />,
-    category: 'Convert',
-    description: 'Convert to JSON text to YAML',
   },
   {
     id: 'yaml-to-json-convert',

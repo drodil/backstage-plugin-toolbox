@@ -76,8 +76,9 @@ const fi = createTranslationMessages({
     'tool.xml-to-json-convert.name': 'XML -> JSON',
     'tool.xml-to-json-convert.description': 'Muuta XML JSON muotoon',
     'tool.xml-to-json-convert.invalidFormat': 'Väärän muotoinen XML syötetty',
-    'tool.json-to-yaml-convert.name': 'JSON -> YAML',
-    'tool.json-to-yaml-convert.description': 'Muuta JSON YAML muotoon',
+    'tool.json-converter.name': 'JSON',
+    'tool.json-converter.description':
+      'Muuta JSON CSV, String tai YAML-muotoon',
     'tool.yaml-to-json-convert.name': 'YAML -> JSON',
     'tool.yaml-to-json-convert.description': 'Muuta YAML JSON muotoon',
     'tool.rich-text-to-markdown-convert.name': 'HTML -> Markdown',
