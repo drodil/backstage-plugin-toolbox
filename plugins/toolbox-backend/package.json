@@ -52,7 +52,7 @@
     "@types/express": "*",
     "@types/jsonwebtoken": "^9.0.10",
     "@types/qrcode": "^1.5.5",
-    "csvtojson": "^2.0.10",
+    "csvtojson": "^2.0.14",
     "express": "^4.20.0",
     "express-promise-router": "^4.1.0",
     "iban": "^0.0.14",
