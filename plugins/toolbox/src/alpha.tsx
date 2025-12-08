@@ -6,6 +6,7 @@ import {
   createFrontendModule,
   createFrontendPlugin,
   NavItemBlueprint,
+  OverridableFrontendPlugin,
   PageBlueprint,
 } from '@backstage/frontend-plugin-api';
 import {
@@ -614,7 +615,7 @@ createFrontendModule({
  *
  * @alpha
  */
-export default createFrontendPlugin({
+const toolboxPlugin: OverridableFrontendPlugin = createFrontendPlugin({
   pluginId: 'toolbox',
   info: { packageJson: () => import('../package.json') },
   routes: convertLegacyRouteRefs({
@@ -663,3 +664,5 @@ export default createFrontendPlugin({
     whoisTool,
   ],
 });
+
+export default toolboxPlugin;
