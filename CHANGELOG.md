@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.36.0](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.35.1...v1.36.0) (2025-12-08)
+
+
+### Features
+
+* **json-tool:** consolidate json to csv, to yaml and add to string ([683ee04](https://github.com/drodil/backstage-plugin-toolbox/commit/683ee0464031c999883b2d094ed4668085cf0f07))
+
+
+### Bug Fixes
+
+* **toolboxhomepagecard:** toolbox dropdown order ([294637b](https://github.com/drodil/backstage-plugin-toolbox/commit/294637b797b92b67626ae617b6330f96dfc48e07))
+
 ### [1.35.1](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.35.0...v1.35.1) (2025-10-24)
 
 
