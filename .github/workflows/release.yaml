@@ -78,13 +78,10 @@ jobs:
           automatic_release_tag: ${{ steps.previoustag.outputs.tag }}
           files: 'CHANGELOG.md'
 
-  frontend-publish:
-    name: Publish plugin frontend
+  publish:
+    name: Publish plugin packages
     runs-on: ubuntu-latest
     needs: [tagged-release]
-    defaults:
-      run:
-        working-directory: ./plugins/toolbox
     steps:
       - uses: actions/checkout@v3
         with:
@@ -102,113 +99,13 @@ jobs:
       - run: git pull
       - run: yarn
       - run: yarn tsc
-      - run: yarn build
-      - run: yarn npm publish
-
-  react-publish:
-    name: Publish plugin react
-    runs-on: ubuntu-latest
-    needs: [tagged-release]
-    defaults:
-      run:
-        working-directory: ./plugins/toolbox-react
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-      - name: Create yarnrc.yml
-        run: |
-          echo "npmAuthToken: ${{ secrets.NPM_TOKEN }}" >> ~/.yarnrc.yml
-          echo "npmAlwaysAuth: true" >> ~/.yarnrc.yml
-          echo "npmPublishRegistry: https://registry.npmjs.org" >> ~/.yarnrc.yml
-      - name: Use Node.js 22.x
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22.x
-          cache: 'yarn'
-      - run: git pull
-      - run: yarn
-      - run: yarn tsc
-      - run: yarn build
-      - run: yarn npm publish
-
-  backend-publish:
-    name: Publish plugin backend
-    runs-on: ubuntu-latest
-    needs: [tagged-release]
-    defaults:
-      run:
-        working-directory: ./plugins/toolbox-backend
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-      - name: Create yarnrc.yml
-        run: |
-          echo "npmAuthToken: ${{ secrets.NPM_TOKEN }}" >> ~/.yarnrc.yml
-          echo "npmAlwaysAuth: true" >> ~/.yarnrc.yml
-          echo "npmPublishRegistry: https://registry.npmjs.org" >> ~/.yarnrc.yml
-      - name: Use Node.js 22.x
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22.x
-          cache: 'yarn'
-      - run: git pull
-      - run: yarn
-      - run: yarn tsc
-      - run: yarn build
-      - run: yarn npm publish
-
-  node-publish:
-    name: Publish plugin node
-    runs-on: ubuntu-latest
-    needs: [tagged-release]
-    defaults:
-      run:
-        working-directory: ./plugins/toolbox-node
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-      - name: Create yarnrc.yml
-        run: |
-          echo "npmAuthToken: ${{ secrets.NPM_TOKEN }}" >> ~/.yarnrc.yml
-          echo "npmAlwaysAuth: true" >> ~/.yarnrc.yml
-          echo "npmPublishRegistry: https://registry.npmjs.org" >> ~/.yarnrc.yml
-      - name: Use Node.js 22.x
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22.x
-          cache: 'yarn'
-      - run: git pull
-      - run: yarn
-      - run: yarn tsc
-      - run: yarn build
-      - run: yarn npm publish
-
-  whois-module-publish:
-    name: Publish plugin whois-module
-    runs-on: ubuntu-latest
-    needs: [tagged-release]
-    defaults:
-      run:
-        working-directory: ./plugins/toolbox-backend-module-whois
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-      - name: Create yarnrc.yml
-        run: |
-          echo "npmAuthToken: ${{ secrets.NPM_TOKEN }}" >> ~/.yarnrc.yml
-          echo "npmAlwaysAuth: true" >> ~/.yarnrc.yml
-          echo "npmPublishRegistry: https://registry.npmjs.org" >> ~/.yarnrc.yml
-      - name: Use Node.js 22.x
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22.x
-          cache: 'yarn'
-      - run: git pull
-      - run: yarn
-      - run: yarn tsc
-      - run: yarn build
-      - run: yarn npm publish
+      - run: yarn --cwd plugins/toolbox build
+      - run: yarn --cwd plugins/toolbox npm publish
+      - run: yarn --cwd plugins/toolbox-react build
+      - run: yarn --cwd plugins/toolbox-react npm publish
+      - run: yarn --cwd plugins/toolbox-backend build
+      - run: yarn --cwd plugins/toolbox-backend npm publish
+      - run: yarn --cwd plugins/toolbox-node build
+      - run: yarn --cwd plugins/toolbox-node npm publish
+      - run: yarn --cwd plugins/toolbox-backend-module-whois build
+      - run: yarn --cwd plugins/toolbox-backend-module-whois npm publish
