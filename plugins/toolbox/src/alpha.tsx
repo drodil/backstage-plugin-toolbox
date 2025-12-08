@@ -3,17 +3,12 @@ import {
   coreExtensionData,
   createExtensionBlueprint,
   createExtensionInput,
-  createFrontendModule,
   createFrontendPlugin,
   NavItemBlueprint,
   OverridableFrontendPlugin,
   PageBlueprint,
 } from '@backstage/frontend-plugin-api';
-import {
-  compatWrapper,
-  convertLegacyRouteRef,
-  convertLegacyRouteRefs,
-} from '@backstage/core-compat-api';
+import { compatWrapper } from '@backstage/core-compat-api';
 import { discoveryApiRef, fetchApiRef } from '@backstage/core-plugin-api';
 import { toolboxApiRef, ToolboxClient } from './api';
 import { rootRouteRef } from './routes.ts';
@@ -77,7 +72,7 @@ const toolboxPage = PageBlueprint.makeWithOverrides({
     const welcomePage = inputs.welcomePage?.get(coreExtensionData.reactElement);
     return originalFactory({
       path: config.path ?? '/toolbox',
-      routeRef: convertLegacyRouteRef(rootRouteRef),
+      routeRef: rootRouteRef,
       loader: () =>
         import('./components/Root').then(m =>
           compatWrapper(<m.Root tools={tools} welcomePage={welcomePage} />),
@@ -600,14 +595,9 @@ const whoisTool = ToolboxToolBlueprint.make({
 export const toolboxNavItem = NavItemBlueprint.make({
   params: {
     title: 'Toolbox',
-    routeRef: convertLegacyRouteRef(rootRouteRef),
+    routeRef: rootRouteRef,
     icon: CardTravel,
   },
-});
-
-createFrontendModule({
-  pluginId: 'toolbox',
-  extensions: [toolboxApi, toolboxPage, toolboxNavItem],
 });
 
 /**
@@ -618,9 +608,9 @@ createFrontendModule({
 const toolboxPlugin: OverridableFrontendPlugin = createFrontendPlugin({
   pluginId: 'toolbox',
   info: { packageJson: () => import('../package.json') },
-  routes: convertLegacyRouteRefs({
+  routes: {
     root: rootRouteRef,
-  }),
+  },
   extensions: [
     toolboxApi,
     toolboxPage,
