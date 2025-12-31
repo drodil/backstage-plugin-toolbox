@@ -328,7 +328,6 @@ const entityValidatorTool = ToolboxToolBlueprint.make({
     displayName: 'Entity validator',
     description: 'Validate catalog entity YAML',
     category: 'Backstage',
-    isNew: true,
     async loader() {
       const m = await import('./components/Validators/EntityValidator');
       return compatWrapper(<m.default />);
