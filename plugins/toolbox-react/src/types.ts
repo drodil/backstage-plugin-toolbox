@@ -12,4 +12,5 @@ export type Tool = {
   category?: string;
   headerButtons?: ReactElement[];
   requiresBackend?: boolean;
+  isNew?: boolean;
 };

@@ -17,6 +17,7 @@ const de = createTranslationMessages({
       'Die Toolbox enthält Tools für Entwicklung und Design. Alle Tools laufen auf lokalen Rechnern, es werden keine Daten nach außerhalb gegeben. Dies ist eine Art Swiss-Army-Knife für Entwickler gedacht.',
     'welcomePage.secondText':
       'Um Tools auszuwählen klicken Sie auf die Karten unten, bzw. links im Navigationsbaum.',
+      'welcomePage.badge.new': 'Neu',
     // Komponenten
     'components.clearValueButton.tooltipTitle': 'Leere Eingabefeld',
     'components.clearValueButton.buttonText': 'Leeren',

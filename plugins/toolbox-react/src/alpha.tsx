@@ -31,6 +31,7 @@ export const ToolboxToolBlueprint = createExtensionBlueprint({
       description: z => z.string().optional(),
       category: z => z.string().optional(),
       requiresBackend: z => z.boolean().optional(),
+      isNew: z => z.boolean().optional(),
     },
   },
   dataRefs: { tool: toolDataRef },
@@ -45,6 +46,7 @@ export const ToolboxToolBlueprint = createExtensionBlueprint({
       showFavoriteButton?: boolean;
       showOpenInNewWindowButton?: boolean;
       loader: () => Promise<JSX.Element>;
+      isNew?: boolean;
     },
     { config, inputs, node },
   ) {

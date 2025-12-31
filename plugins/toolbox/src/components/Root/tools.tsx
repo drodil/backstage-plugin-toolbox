@@ -194,6 +194,7 @@ export const defaultTools: Tool[] = [
       </Button>,
     ],
     description: 'Validate catalog entity YAML',
+    isNew: true,
   },
   {
     id: 'entity-describer',

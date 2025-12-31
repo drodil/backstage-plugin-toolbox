@@ -43,6 +43,9 @@ export const toolboxTranslationRef = createTranslationRef({
         'To select tools, click the cards below or use the left-side navigation.',
       search: 'Search for tool',
       noToolsFound: 'No tools found',
+      badge: {
+        new: 'New',
+      },
     },
     tool: {
       category: {
