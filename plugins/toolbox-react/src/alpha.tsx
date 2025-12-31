@@ -46,7 +46,7 @@ export const ToolboxToolBlueprint = createExtensionBlueprint({
       showFavoriteButton?: boolean;
       showOpenInNewWindowButton?: boolean;
       loader: () => Promise<JSX.Element>;
-      isNew?: boolean
+      isNew?: boolean;
     },
     { config, inputs, node },
   ) {

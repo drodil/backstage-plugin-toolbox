@@ -141,7 +141,7 @@ export const WelcomePage = (props: WelcomePageProps) => {
                 onClick={() => (window.location.hash = tool.id)}
                 className={classes.card}
               >
-                 {tool.isNew && (
+                {tool.isNew && (
                   <Box className={classes.newBadge}>
                     <NewIndicator
                       ariaLabel={t('welcomePage.badge.new', {
