@@ -9,6 +9,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { useAnalytics } from '@backstage/core-plugin-api';
 import { WelcomePage } from '../WelcomePage/WelcomePage';
 import { Tool } from '@drodil/backstage-plugin-toolbox-react';
+import { NewIndicator } from '../Badges/NewIndicator';
 import {
   Box,
   Button,
@@ -85,6 +86,11 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   content: {
     padding: 0,
+  },
+  tabLabel: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: theme.spacing(1),
   },
   loadingContainer: {
     display: 'flex',
@@ -273,9 +279,20 @@ export const ToolsContainer = (props: ToolsContainerProps) => {
                     !matchesSearch(tool) ? classes.hiddenTab : classes.toolTab
                   }
                   wrapped
-                  label={t(`tool.${tool.id}.name`, {
-                    defaultValue: tool.displayName ?? tool.name,
-                  })}
+                  label={
+                    <Box className={classes.tabLabel}>
+                      {t(`tool.${tool.id}.name`, {
+                        defaultValue: tool.displayName ?? tool.name,
+                      })}
+                      {tool.isNew && (
+                        <NewIndicator
+                          ariaLabel={t('welcomePage.badge.new', {
+                            defaultValue: 'New',
+                          })}
+                        />
+                      )}
+                    </Box>
+                  }
                   {...tabProps(i)}
                 />
               ),
