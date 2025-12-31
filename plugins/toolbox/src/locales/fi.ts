@@ -15,6 +15,7 @@ const fi = createTranslationMessages({
       'Työkalupakki sisältää yleisesti käytetyt työkalut kehittämiseen ja suunnitteluun. Näitä työkaluja ovat koodaus, tiedon luonti, muunnostyökalut ja muut työskentelyä helpottavat apuohjelmat. Kaikki tiedot säilytetään tällä verkkotunnuksella, joten sinun ei tarvitse huolehtia tietosi joutumisesta vääriin käsiin.',
     'welcomePage.secondText':
       'Valitse työkalut napsauttamalla alla olevia kortteja tai käyttämällä vasemmanpuoleista navigointia.',
+      'welcomePage.badge.new': 'Uusi',
     // Components
     'components.clearValueButton.tooltipTitle': 'Tyhjennä arvo',
     'components.clearValueButton.buttonText': 'Tyhjennä',

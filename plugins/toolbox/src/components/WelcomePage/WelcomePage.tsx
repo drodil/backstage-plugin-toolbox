@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Tool } from '@drodil/backstage-plugin-toolbox-react';
 import {
   Box,
@@ -15,6 +15,7 @@ import {
 import SearchIcon from '@material-ui/icons/Search';
 import { useToolboxTranslation } from '../../hooks';
 import { Alert } from '@material-ui/lab';
+import { NewIndicator } from '../Badges/NewIndicator';
 
 const useStyles = makeStyles<Theme>(theme => ({
   introText: {
@@ -58,6 +59,7 @@ const useStyles = makeStyles<Theme>(theme => ({
     borderStyle: 'solid',
     borderColor: theme.palette.divider,
     height: '100%',
+    position: 'relative',
     '&:hover': {
       borderColor: theme.palette.primary.main,
     },
@@ -65,6 +67,12 @@ const useStyles = makeStyles<Theme>(theme => ({
   cardContent: {
     padding: theme.spacing(2), // 16px
     paddingBottom: theme.spacing(2), // 16px
+  },
+  newBadge: {
+    position: 'absolute',
+    top: theme.spacing(1),
+    right: theme.spacing(1),
+    zIndex: 1,
   },
 }));
 
@@ -133,6 +141,18 @@ export const WelcomePage = (props: WelcomePageProps) => {
                 onClick={() => (window.location.hash = tool.id)}
                 className={classes.card}
               >
+              {tool.isNew && (
+                  <Box className={classes.newBadge}>
+                    <NewIndicator
+                      label={t('welcomePage.badge.new', {
+                        defaultValue: 'New',
+                      })}
+                      ariaLabel={t('welcomePage.badge.new', {
+                        defaultValue: 'New',
+                      })}
+                    />
+                  </Box>
+                )}
                 <CardContent className={classes.cardContent}>
                   <Typography color="textSecondary" gutterBottom>
                     {t(
