@@ -37,7 +37,6 @@
     "tsc": "tsc"
   },
   "dependencies": {
-    "@backstage/backend-common": "^0.25.0",
     "@backstage/backend-plugin-api": "backstage:^",
     "@drodil/backstage-plugin-toolbox-node": "workspace:^",
     "express": "^4.20.0",
