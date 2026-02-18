@@ -15,16 +15,30 @@ import {
   Location,
   QueryEntitiesRequest,
   QueryEntitiesResponse,
+  QueryLocationsInitialRequest,
+  QueryLocationsRequest,
+  QueryLocationsResponse,
   StreamEntitiesRequest,
   ValidateEntityResponse,
 } from '@backstage/catalog-client';
 import { CompoundEntityRef, Entity } from '@backstage/catalog-model';
-import {
-  AnalyzeLocationRequest,
-  AnalyzeLocationResponse,
-} from '@backstage/plugin-catalog-common';
+import { AnalyzeLocationRequest, AnalyzeLocationResponse, } from '@backstage/plugin-catalog-common';
 
 export class CatalogApiMock implements CatalogApi {
+  queryLocations(
+    _request?: QueryLocationsRequest,
+    _options?: CatalogRequestOptions,
+  ): Promise<QueryLocationsResponse> {
+    throw new Error('Method not implemented.');
+  }
+
+  streamLocations(
+    _request?: QueryLocationsInitialRequest,
+    _options?: CatalogRequestOptions,
+  ): AsyncIterable<Location[]> {
+    throw new Error('Method not implemented.');
+  }
+
   addLocation(
     _location: AddLocationRequest,
     _options?: CatalogRequestOptions,
