@@ -22,7 +22,10 @@ import {
   ValidateEntityResponse,
 } from '@backstage/catalog-client';
 import { CompoundEntityRef, Entity } from '@backstage/catalog-model';
-import { AnalyzeLocationRequest, AnalyzeLocationResponse, } from '@backstage/plugin-catalog-common';
+import {
+  AnalyzeLocationRequest,
+  AnalyzeLocationResponse,
+} from '@backstage/plugin-catalog-common';
 
 export class CatalogApiMock implements CatalogApi {
   queryLocations(
