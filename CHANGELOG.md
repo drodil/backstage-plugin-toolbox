@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.36.6](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.36.5...v1.36.6) (2026-02-18)
+
+
+### Bug Fixes
+
+* **deps:** remove unused @backstage/backend-common ([bbe2126](https://github.com/drodil/backstage-plugin-toolbox/commit/bbe2126285f68188eead8c2bf745a1855b8210a4))
+
 ### [1.36.5](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.36.4...v1.36.5) (2025-12-18)
 
 ### [1.36.4](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.36.3...v1.36.4) (2025-12-08)
