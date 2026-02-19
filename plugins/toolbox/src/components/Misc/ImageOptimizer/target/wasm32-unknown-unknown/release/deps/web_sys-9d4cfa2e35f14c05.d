@@ -1,0 +1,9 @@
+/home/erfanteymoori/project/backstage-plugin-toolbox/plugins/toolbox/src/components/Misc/ImageOptimizer/target/wasm32-unknown-unknown/release/deps/web_sys-9d4cfa2e35f14c05.d: /home/erfanteymoori/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/web-sys-0.3.85/src/lib.rs /home/erfanteymoori/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/web-sys-0.3.85/src/features/mod.rs /home/erfanteymoori/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/web-sys-0.3.85/src/features/gen_console.rs
+
+/home/erfanteymoori/project/backstage-plugin-toolbox/plugins/toolbox/src/components/Misc/ImageOptimizer/target/wasm32-unknown-unknown/release/deps/libweb_sys-9d4cfa2e35f14c05.rlib: /home/erfanteymoori/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/web-sys-0.3.85/src/lib.rs /home/erfanteymoori/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/web-sys-0.3.85/src/features/mod.rs /home/erfanteymoori/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/web-sys-0.3.85/src/features/gen_console.rs
+
+/home/erfanteymoori/project/backstage-plugin-toolbox/plugins/toolbox/src/components/Misc/ImageOptimizer/target/wasm32-unknown-unknown/release/deps/libweb_sys-9d4cfa2e35f14c05.rmeta: /home/erfanteymoori/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/web-sys-0.3.85/src/lib.rs /home/erfanteymoori/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/web-sys-0.3.85/src/features/mod.rs /home/erfanteymoori/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/web-sys-0.3.85/src/features/gen_console.rs
+
+/home/erfanteymoori/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/web-sys-0.3.85/src/lib.rs:
+/home/erfanteymoori/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/web-sys-0.3.85/src/features/mod.rs:
+/home/erfanteymoori/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/web-sys-0.3.85/src/features/gen_console.rs:

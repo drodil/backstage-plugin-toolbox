@@ -47,7 +47,7 @@ const UrlExploder = lazy(() => import('../Misc/UrlExploder'));
 const Whois = lazy(() => import('../Networking/Whois'));
 const StringAnalyzer = lazy(() => import('../Misc/StringAnalyzer'));
 
-const ImageOptimizer = lazy(() => import('../Misc/ImageOptimizer'))
+const ImageOptimizer = lazy(() => import('../Misc/ImageOptimizer/ImageOptimizer'))
 
 // const CidrCalculator = lazy(() => import('../Networking/CidrCalculator'));
 

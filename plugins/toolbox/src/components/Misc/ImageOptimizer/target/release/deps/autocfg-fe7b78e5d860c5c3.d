@@ -1,0 +1,10 @@
+/home/erfanteymoori/project/backstage-plugin-toolbox/plugins/toolbox/src/components/Misc/ImageOptimizer/target/release/deps/autocfg-fe7b78e5d860c5c3.d: /home/erfanteymoori/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/autocfg-1.5.0/src/lib.rs /home/erfanteymoori/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/autocfg-1.5.0/src/error.rs /home/erfanteymoori/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/autocfg-1.5.0/src/rustc.rs /home/erfanteymoori/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/autocfg-1.5.0/src/version.rs
+
+/home/erfanteymoori/project/backstage-plugin-toolbox/plugins/toolbox/src/components/Misc/ImageOptimizer/target/release/deps/libautocfg-fe7b78e5d860c5c3.rlib: /home/erfanteymoori/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/autocfg-1.5.0/src/lib.rs /home/erfanteymoori/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/autocfg-1.5.0/src/error.rs /home/erfanteymoori/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/autocfg-1.5.0/src/rustc.rs /home/erfanteymoori/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/autocfg-1.5.0/src/version.rs
+
+/home/erfanteymoori/project/backstage-plugin-toolbox/plugins/toolbox/src/components/Misc/ImageOptimizer/target/release/deps/libautocfg-fe7b78e5d860c5c3.rmeta: /home/erfanteymoori/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/autocfg-1.5.0/src/lib.rs /home/erfanteymoori/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/autocfg-1.5.0/src/error.rs /home/erfanteymoori/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/autocfg-1.5.0/src/rustc.rs /home/erfanteymoori/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/autocfg-1.5.0/src/version.rs
+
+/home/erfanteymoori/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/autocfg-1.5.0/src/lib.rs:
+/home/erfanteymoori/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/autocfg-1.5.0/src/error.rs:
+/home/erfanteymoori/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/autocfg-1.5.0/src/rustc.rs:
+/home/erfanteymoori/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/autocfg-1.5.0/src/version.rs:

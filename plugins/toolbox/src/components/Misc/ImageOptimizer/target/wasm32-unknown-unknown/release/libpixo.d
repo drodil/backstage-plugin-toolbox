@@ -1,0 +1,1 @@
+/home/erfanteymoori/project/backstage-plugin-toolbox/plugins/toolbox/src/components/Misc/ImageOptimizer/target/wasm32-unknown-unknown/release/libpixo.rlib: /home/erfanteymoori/project/backstage-plugin-toolbox/plugins/toolbox/src/components/Misc/ImageOptimizer/src/lib.rs
