@@ -16,6 +16,16 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'yarn'
+
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: wasm32-unknown-unknown
+      - name: Install wasm-pack
+        uses: jetli/wasm-pack-action@v0.4.0
+        with:
+          version: 'latest'
+
       - run: yarn install --immutable
       - run: yarn lint:all
       - run: yarn prettier:check
@@ -35,7 +45,18 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'yarn'
+
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: wasm32-unknown-unknown
+      - name: Install wasm-pack
+        uses: jetli/wasm-pack-action@v0.4.0
+        with:
+          version: 'latest'
+
       - run: yarn install --immutable
+      - run: yarn build:wasm
       - run: yarn test:all
 
   bump-version:
@@ -96,8 +117,19 @@ jobs:
         with:
           node-version: 22.x
           cache: 'yarn'
+
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: wasm32-unknown-unknown
+      - name: Install wasm-pack
+        uses: jetli/wasm-pack-action@v0.4.0
+        with:
+          version: 'latest'
+
       - run: git pull
       - run: yarn
+      - run: yarn build:wasm
       - run: yarn tsc
       - run: yarn --cwd plugins/toolbox build
       - run: yarn --cwd plugins/toolbox npm publish

@@ -23,12 +23,23 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'yarn'
+      - name: install Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: wasm32-unknown-unknown
+
+      - name: install wasm-pack
+        uses: jetli/wasm-pack-action@v0.4.0
+        with:
+          version: 'latest'
+
       - run: yarn install --immutable
       - run: yarn commitlint --from=origin/main
         if: github.actor != 'dependabot[bot]'
       - run: yarn lint:all
       - run: yarn prettier:check
       - run: yarn fix --check
+      - run: yarn build:wasm
       - run: yarn tsc
       - run: yarn build
 
@@ -47,5 +58,16 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'yarn'
+
+      - name: install Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: wasm32-unknown-unknown
+
+      - name: install wasm-pack
+        uses: jetli/wasm-pack-action@v0.4.0
+        with:
+          version: 'latest'
+
       - run: yarn install --immutable
       - run: yarn test:all
