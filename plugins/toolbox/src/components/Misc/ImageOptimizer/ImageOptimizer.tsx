@@ -20,7 +20,7 @@ import {
   Paper,
   TextField,
   CircularProgress,
-  useTheme,
+  /* useTheme,*/
   InputAdornment,
   Switch,
   FormControlLabel,
@@ -33,8 +33,8 @@ import {
 import { useDropzone } from 'react-dropzone';
 
 export const ImageOptimizer = () => {
-  const theme = useTheme();
-  const isDarkMode = theme.palette.type === 'dark';
+  // const theme = useTheme();
+  // const isDarkMode = theme.palette.type === 'dark';
   const [ready, setReady] = useState(false);
   const [inputBytes, setInputBytes] = useState<Uint8Array | null>(null);
   const [quality, setQuality] = useState<number>(75);
@@ -207,7 +207,7 @@ export const ImageOptimizer = () => {
     document.body.removeChild(link);
   };
 
-  { /* return fängt hier an ////////////////////////////////////////////////////////////////////////////  */ }
+  /* return fängt hier an ////////////////////////////////////////////////////////////////////////////  */
 
   return (
     <Page themeId="tool">
@@ -436,7 +436,8 @@ export const ImageOptimizer = () => {
                     style={{ color: 'green', marginTop: 5 }}
                   >
                     Saved:{' '}
-                    {((1 - stats.compressed / stats.original) * 100).toFixed(1)}%
+                    {((1 - stats.compressed / stats.original) * 100).toFixed(1)}
+                    %
                   </Typography>
                   <Button
                     variant="contained"
@@ -454,9 +455,6 @@ export const ImageOptimizer = () => {
           </Grid>
 
           {/* Hier geht es mit Stats und preview los /////////////////////////////////////////////////////////////////////////////// */}
-
-
-
 
           <Grid item xs={12} md={8}>
             <InfoCard title="Preview">
@@ -547,6 +545,5 @@ export const ImageOptimizer = () => {
     </Page>
   );
 };
-
 
 export default ImageOptimizer;

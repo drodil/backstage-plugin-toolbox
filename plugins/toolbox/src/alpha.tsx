@@ -599,7 +599,9 @@ const imageOptimizer = ToolboxToolBlueprint.make({
     description: 'Compress and resize images',
     category: 'Miscellaneous',
     async loader() {
-      const m = await import('./components/Misc/ImageOptimizer/ImageOptimizer.tsx');
+      const m = await import(
+        './components/Misc/ImageOptimizer/ImageOptimizer.tsx'
+      );
       return compatWrapper(<m.default />);
     },
   },

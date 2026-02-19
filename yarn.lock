@@ -3582,6 +3582,7 @@ __metadata:
     qr-code-styling: "npm:^1.6.2"
     quicktype-core: "npm:23.0.168"
     react-barcode: "npm:^1.4.6"
+    react-dropzone: "npm:^15.0.0"
     react-qr-code: "npm:^2.0.12"
     react-use: "npm:^17.2.4"
     react-window: "npm:^1.8.11"

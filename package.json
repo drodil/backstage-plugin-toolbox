@@ -32,7 +32,8 @@
   },
   "workspaces": {
     "packages": [
-      "plugins/**"
+      "plugins/**",
+      "!plugins/toolbox/src/components/Misc/ImageOptimizer/pkg"
     ]
   },
   "devDependencies": {

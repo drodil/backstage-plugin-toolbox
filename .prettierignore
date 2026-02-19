@@ -6,3 +6,5 @@ coverage
 app-config.yaml
 .yarn
 CHANGELOG.md
+plugins/toolbox/src/components/Misc/ImageOptimizer/pkg/
+plugins/toolbox/src/components/Misc/ImageOptimizer/target/
