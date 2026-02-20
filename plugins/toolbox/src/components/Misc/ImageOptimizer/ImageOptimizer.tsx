@@ -1,3 +1,4 @@
+import { StatsCard } from './StatsCard';
 import { useEffect, useState, useCallback } from 'react';
 import {
   Content,
@@ -423,124 +424,103 @@ export const ImageOptimizer = () => {
               </CardTab>
             </TabbedCard>
             {stats && (
-              <Box mt={3}>
-                <InfoCard title="Stats">
-                  <Typography variant="body2">
-                    Original: {(stats.original / 1024).toFixed(2)} KB
-                  </Typography>
-                  <Typography variant="body2">
-                    New: <b>{(stats.compressed / 1024).toFixed(2)} KB</b>
-                  </Typography>
-                  <Typography
-                    variant="body2"
-                    style={{ color: 'green', marginTop: 5 }}
-                  >
-                    Saved:{' '}
-                    {((1 - stats.compressed / stats.original) * 100).toFixed(1)}
-                    %
-                  </Typography>
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    onClick={downloadCompression}
-                    disabled={!ready || !inputBytes}
-                    fullWidth
-                    style={{ marginTop: 10 }}
-                  >
-                    Download Image
-                  </Button>
-                </InfoCard>
-              </Box>
-            )}
-          </Grid>
+              <StatsCard
+              stats={stats}
+              ready={ready}
+              hasInput={!!inputBytes}
+              downloadCompression={downloadCompression}
+            />)}
+              
+
+            </Grid>
 
           {/* Hier geht es mit Stats und preview los /////////////////////////////////////////////////////////////////////////////// */}
 
-          <Grid item xs={12} md={8}>
-            <InfoCard title="Preview">
-              <Box
-                display="flex"
-                justifyContent="center"
-                alignItems="center"
-                minHeight="300px"
-                style={{ background: '#4a606e5d' }}
-              >
-                {imageUrl ? (
-                  <ReactCompareSlider
-                    itemOne={
-                      <div style={{ position: 'relative', height: '100%' }}>
-                        <ReactCompareSliderImage
-                          src={imageUrl}
-                          alt="Original"
-                          style={{
-                            maxWidth: '100%',
-                            maxHeight: '600px',
-                            objectFit: 'contain',
-                          }}
-                        />
+            <Grid item xs={12} md={8}>
+              <InfoCard title="Preview">
+                <Box
+                  display="flex"
+                  justifyContent="center"
+                  alignItems="center"
+                  minHeight="300px"
+                  style={{ background: '#4a606e5d' }}
+                >
+                  {imageUrl ? (
+                    <ReactCompareSlider
+                      itemOne={
+                        <div style={{ position: 'relative', height: '100%' }}>
+                          <ReactCompareSliderImage
+                            src={imageUrl}
+                            alt="Original"
+                            style={{
+                              maxWidth: '100%',
+                              maxHeight: '600px',
+                              objectFit: 'contain',
+                            }}
+                          />
 
-                        <div
-                          style={{
-                            position: 'absolute',
-                            top: 10,
-                            left: 10,
-                            backgroundColor: 'rgba(0, 0, 0, 0.7)',
-                            color: 'white',
-                            padding: '4px 8px',
-                            borderRadius: '4px',
-                            fontSize: '12px',
-                            pointerEvents: 'none',
-                          }}
-                        >
-                          Original (
-                          {stats?.original
-                            ? (stats.original / 1024).toFixed(0)
-                            : 0}{' '}
-                          KB)
+                          <div
+                            style={{
+                              position: 'absolute',
+                              top: 10,
+                              left: 10,
+                              backgroundColor: 'rgba(0, 0, 0, 0.7)',
+                              color: 'white',
+                              padding: '4px 8px',
+                              borderRadius: '4px',
+                              fontSize: '12px',
+                              pointerEvents: 'none',
+                            }}
+                          >
+                            Original (
+                            {stats?.original
+                              ? (stats.original / 1024).toFixed(0)
+                              : 0}{' '}
+                            KB)
+                          </div>
                         </div>
-                      </div>
-                    }
-                    itemTwo={
-                      <div style={{ position: 'relative', height: '100%' }}>
-                        <ReactCompareSliderImage
-                          src={resultUrl || imageUrl}
-                          alt="Optimized"
-                          style={{
-                            maxWidth: '100%',
-                            maxHeight: '600px',
-                            objectFit: 'contain',
-                          }}
-                        />
+                      }
+                      itemTwo={
+                        <div style={{ position: 'relative', height: '100%' }}>
+                          <ReactCompareSliderImage
+                            src={resultUrl || imageUrl}
+                            alt="Optimized"
+                            style={{
+                              maxWidth: '100%',
+                              maxHeight: '600px',
+                              objectFit: 'contain',
+                            }}
+                          />
 
-                        <div
-                          style={{
-                            position: 'absolute',
-                            top: 10,
-                            right: 10,
-                            backgroundColor: 'rgba(0, 0, 0, 0.7)',
-                            color: '#9bf29b',
-                            padding: '4px 8px',
-                            borderRadius: '4px',
-                            fontSize: '12px',
-                            pointerEvents: 'none',
-                          }}
-                        >
-                          Compressed (
-                          {stats?.compressed
-                            ? (stats.compressed / 1024).toFixed(0)
-                            : 0}{' '}
-                          KB)
+                          <div
+                            style={{
+                              position: 'absolute',
+                              top: 10,
+                              right: 10,
+                              backgroundColor: 'rgba(0, 0, 0, 0.7)',
+                              color: '#9bf29b',
+                              padding: '4px 8px',
+                              borderRadius: '4px',
+                              fontSize: '12px',
+                              pointerEvents: 'none',
+                            }}
+                          >
+                            Compressed (
+                            {stats?.compressed
+                              ? (stats.compressed / 1024).toFixed(0)
+                              : 0}{' '}
+                            KB)
+                          </div>
                         </div>
-                      </div>
-                    }
-                  />
-                ) : (
-                  <Typography color="textSecondary">No image</Typography>
-                )}
-              </Box>
-            </InfoCard>
+                      }
+                    />
+                  ) : (
+                    <Typography color="textSecondary">No image</Typography>
+                  )}
+                </Box>
+              </InfoCard>
+            </Grid>
           </Grid>
-        </Grid>
       </Content>
     </Page>
   );
