@@ -1,4 +1,4 @@
-import { StatsCard } from './StatsCard';
+import { ComponentStatsCard } from './ComponentStatsCard.tsx';
 import { useEffect, useState, useCallback } from 'react';
 import {
   Content,
@@ -11,14 +11,12 @@ import {
 import {
   Grid,
   Button,
-  Slider,
   Select,
   MenuItem,
   InputLabel,
   FormControl,
   Typography,
   Box,
-  Paper,
   TextField,
   CircularProgress,
   /* useTheme,*/
@@ -32,6 +30,7 @@ import {
   ReactCompareSliderImage,
 } from 'react-compare-slider';
 import { useDropzone } from 'react-dropzone';
+import { ComponentCompressTab } from './ComponentCompressTab.tsx';
 
 export const ImageOptimizer = () => {
   // const theme = useTheme();
@@ -67,15 +66,6 @@ export const ImageOptimizer = () => {
 
   /*
 
-      cloudaccess profile -n dxc-develop --pm=false --hl=true
-
-      cloudaccess profile -n dxc-develop -r 3600
-      erfan.teymoori@deutschebahn.com
-
-      . ./setup-dev.sh
-      yarn install
-      yarn dev
-
       Aufgaben:
       * Architektur in mehreren Dateien verlegen 
       * Darkmode beachten
@@ -83,10 +73,12 @@ export const ImageOptimizer = () => {
       * filter option einbauen
       * Dev option einbauen
       * nach Toolbox anpassen
+      * Nur für PNG und JPEG anpassen also bei compressTab
+      * irgendien Name von einem state von maintain aspect stimmt nicht
       
       
 
-    };*/
+    */
 
   const onDrop = useCallback(async (files: File[]) => {
     const file = files[0];
@@ -208,7 +200,6 @@ export const ImageOptimizer = () => {
     document.body.removeChild(link);
   };
 
-  /* return fängt hier an ////////////////////////////////////////////////////////////////////////////  */
 
   return (
     <Page themeId="tool">
@@ -218,84 +209,22 @@ export const ImageOptimizer = () => {
           <Grid item xs={12} md={4}>
             <TabbedCard title="Settings">
               <CardTab label="Compress">
-                <Grid container spacing={3}>
-                  <Grid item xs={12}>
-                    <Paper
-                      {...getRootProps()}
-                      style={{
-                        border: '2px dashed #cccccc8f',
-                        padding: '20px',
-                        textAlign: 'center',
-                        cursor: 'pointer',
-                        backgroundColor: isDragActive ? '#6c808d' : '#4a606e',
-                      }}
-                      elevation={0}
-                    >
-                      <input {...getInputProps()} />
-
-                      {fileName ? (
-                        <Typography style={{ fontWeight: 'bold' }}>
-                          Ausgewählt: {fileName}
-                        </Typography>
-                      ) : (
-                        <Typography color="textSecondary">
-                          {isDragActive
-                            ? 'Jetzt loslassen...'
-                            : ' drag or click image'}
-                        </Typography>
-                      )}
-                    </Paper>
-                  </Grid>
-
-                  <Grid item xs={12}>
-                    <FormControl fullWidth>
-                      <InputLabel>Format</InputLabel>
-                      <Select
-                        value={imgType}
-                        onChange={e => setImgType(e.target.value as string)}
-                      >
-                        <MenuItem value="unveraendert">Unverändert</MenuItem>
-                        <MenuItem value="jpeg">JPEG</MenuItem>
-                        <MenuItem value="png">PNG</MenuItem>
-                        <MenuItem value="webp">
-                          WebP (gerade noch zu JPEG){' '}
-                        </MenuItem>
-                        <MenuItem value="avif">
-                          AVIF (gerade noch zu JPEG){' '}
-                        </MenuItem>
-                      </Select>
-                    </FormControl>
-                  </Grid>
-
-                  <Grid item xs={12}>
-                    <Typography gutterBottom>Quality: {quality}%</Typography>
-                    <Slider
-                      value={quality}
-                      onChange={(_, val) => setQuality(val as number)}
-                      min={1}
-                      max={100}
-                    />
-                  </Grid>
-                  <Grid item xs={12}>
-                    <Button
-                      variant="contained"
-                      color="primary"
-                      onClick={processImage}
-                      disabled={!ready || !inputBytes || loadingState}
-                      fullWidth
-                      startIcon={
-                        loadingState ? (
-                          <CircularProgress size={20} color="inherit" />
-                        ) : null
-                      }
-                    >
-                      {loadingState ? 'Verarbeite...' : 'Start'}
-                    </Button>
-                  </Grid>
-                </Grid>
+                <ComponentCompressTab
+                  getInputProps={getInputProps}
+                  getRootProps={getRootProps}
+                  isDragActive={isDragActive}
+                  fileName={fileName}
+                  imgType={imgType}
+                  quality={quality}
+                  setImgType={setImgType}
+                  setQuality={setQuality}
+                  processImage={processImage}
+                  ready={ready}
+                  inputBytes={!!inputBytes}
+                  loadingState={loadingState}
+                />
               </CardTab>
 
-              {/* Hier geht Resize los //////////////////////////////////////////////////////////////////////////     */}
 
               <CardTab label="Resize">
                 <Grid container spacing={3}>
@@ -424,103 +353,103 @@ export const ImageOptimizer = () => {
               </CardTab>
             </TabbedCard>
             {stats && (
-              <StatsCard
-              stats={stats}
-              ready={ready}
-              hasInput={!!inputBytes}
-              downloadCompression={downloadCompression}
-            />)}
-              
+              <ComponentStatsCard
+                stats={stats}
+                ready={ready}
+                hasInput={!!inputBytes}
+                downloadCompression={downloadCompression}
+              />)}
 
-            </Grid>
+
+          </Grid>
 
           {/* Hier geht es mit Stats und preview los /////////////////////////////////////////////////////////////////////////////// */}
 
-            <Grid item xs={12} md={8}>
-              <InfoCard title="Preview">
-                <Box
-                  display="flex"
-                  justifyContent="center"
-                  alignItems="center"
-                  minHeight="300px"
-                  style={{ background: '#4a606e5d' }}
-                >
-                  {imageUrl ? (
-                    <ReactCompareSlider
-                      itemOne={
-                        <div style={{ position: 'relative', height: '100%' }}>
-                          <ReactCompareSliderImage
-                            src={imageUrl}
-                            alt="Original"
-                            style={{
-                              maxWidth: '100%',
-                              maxHeight: '600px',
-                              objectFit: 'contain',
-                            }}
-                          />
+          <Grid item xs={12} md={8}>
+            <InfoCard title="Preview">
+              <Box
+                display="flex"
+                justifyContent="center"
+                alignItems="center"
+                minHeight="300px"
+                style={{ background: '#4a606e5d' }}
+              >
+                {imageUrl ? (
+                  <ReactCompareSlider
+                    itemOne={
+                      <div style={{ position: 'relative', height: '100%' }}>
+                        <ReactCompareSliderImage
+                          src={imageUrl}
+                          alt="Original"
+                          style={{
+                            maxWidth: '100%',
+                            maxHeight: '600px',
+                            objectFit: 'contain',
+                          }}
+                        />
 
-                          <div
-                            style={{
-                              position: 'absolute',
-                              top: 10,
-                              left: 10,
-                              backgroundColor: 'rgba(0, 0, 0, 0.7)',
-                              color: 'white',
-                              padding: '4px 8px',
-                              borderRadius: '4px',
-                              fontSize: '12px',
-                              pointerEvents: 'none',
-                            }}
-                          >
-                            Original (
-                            {stats?.original
-                              ? (stats.original / 1024).toFixed(0)
-                              : 0}{' '}
-                            KB)
-                          </div>
+                        <div
+                          style={{
+                            position: 'absolute',
+                            top: 10,
+                            left: 10,
+                            backgroundColor: 'rgba(0, 0, 0, 0.7)',
+                            color: 'white',
+                            padding: '4px 8px',
+                            borderRadius: '4px',
+                            fontSize: '12px',
+                            pointerEvents: 'none',
+                          }}
+                        >
+                          Original (
+                          {stats?.original
+                            ? (stats.original / 1024).toFixed(0)
+                            : 0}{' '}
+                          KB)
                         </div>
-                      }
-                      itemTwo={
-                        <div style={{ position: 'relative', height: '100%' }}>
-                          <ReactCompareSliderImage
-                            src={resultUrl || imageUrl}
-                            alt="Optimized"
-                            style={{
-                              maxWidth: '100%',
-                              maxHeight: '600px',
-                              objectFit: 'contain',
-                            }}
-                          />
+                      </div>
+                    }
+                    itemTwo={
+                      <div style={{ position: 'relative', height: '100%' }}>
+                        <ReactCompareSliderImage
+                          src={resultUrl || imageUrl}
+                          alt="Optimized"
+                          style={{
+                            maxWidth: '100%',
+                            maxHeight: '600px',
+                            objectFit: 'contain',
+                          }}
+                        />
 
-                          <div
-                            style={{
-                              position: 'absolute',
-                              top: 10,
-                              right: 10,
-                              backgroundColor: 'rgba(0, 0, 0, 0.7)',
-                              color: '#9bf29b',
-                              padding: '4px 8px',
-                              borderRadius: '4px',
-                              fontSize: '12px',
-                              pointerEvents: 'none',
-                            }}
-                          >
-                            Compressed (
-                            {stats?.compressed
-                              ? (stats.compressed / 1024).toFixed(0)
-                              : 0}{' '}
-                            KB)
-                          </div>
+                        <div
+                          style={{
+                            position: 'absolute',
+                            top: 10,
+                            right: 10,
+                            backgroundColor: 'rgba(0, 0, 0, 0.7)',
+                            color: '#9bf29b',
+                            padding: '4px 8px',
+                            borderRadius: '4px',
+                            fontSize: '12px',
+                            pointerEvents: 'none',
+                          }}
+                        >
+                          Compressed (
+                          {stats?.compressed
+                            ? (stats.compressed / 1024).toFixed(0)
+                            : 0}{' '}
+                          KB)
                         </div>
-                      }
-                    />
-                  ) : (
-                    <Typography color="textSecondary">No image</Typography>
-                  )}
-                </Box>
-              </InfoCard>
-            </Grid>
+                      </div>
+                    }
+                  />
+                ) : (
+                  <Typography color="textSecondary">No image</Typography>
+                )}
+              </Box>
+            </InfoCard>
           </Grid>
+        </Grid>
       </Content>
     </Page>
   );

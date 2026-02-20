@@ -11,7 +11,7 @@ interface statsCardProps {
 }
 
 
-export const StatsCard = ({stats, ready, hasInput, downloadCompression}: statsCardProps) => {
+export const ComponentStatsCard = ({stats, ready, hasInput, downloadCompression}: statsCardProps) => {
 
 
 
