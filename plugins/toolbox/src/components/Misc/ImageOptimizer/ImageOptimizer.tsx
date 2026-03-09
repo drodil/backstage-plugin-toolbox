@@ -75,6 +75,10 @@ export const ImageOptimizer = () => {
       * nach Toolbox anpassen
       * Nur für PNG und JPEG anpassen also bei compressTab
       * irgendien Name von einem state von maintain aspect stimmt nicht
+      * Text verlässt dropZone
+      * Layout ändern
+      * PNG encoder ändern
+      * Rust Code säubern
       
       
 
