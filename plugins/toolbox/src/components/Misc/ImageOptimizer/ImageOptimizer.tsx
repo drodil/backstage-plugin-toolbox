@@ -1,40 +1,19 @@
 import { ComponentStatsCard } from './ComponentStatsCard.tsx';
 import { useEffect, useState, useCallback } from 'react';
 import {
-  Content,
-  Header,
-  Page,
-  InfoCard,
   TabbedCard,
   CardTab,
 } from '@backstage/core-components';
 import {
   Grid,
-  Button,
-  Select,
-  MenuItem,
-  InputLabel,
-  FormControl,
-  Typography,
-  Box,
-  TextField,
-  CircularProgress,
-  /* useTheme,*/
-  InputAdornment,
-  Switch,
-  FormControlLabel,
 } from '@material-ui/core';
 import init, { pixo_compress, init_hook, pixo_resize } from './pkg/pixo.js';
-import {
-  ReactCompareSlider,
-  ReactCompareSliderImage,
-} from 'react-compare-slider';
 import { useDropzone } from 'react-dropzone';
 import { ComponentCompressTab } from './ComponentCompressTab.tsx';
+import { ComponentResizeTab } from './ComponentResizeTab.tsx';
+import { ComponentPreviewCard } from './ComponentPreviewCard.tsx';
 
 export const ImageOptimizer = () => {
-  // const theme = useTheme();
-  // const isDarkMode = theme.palette.type === 'dark';
   const [ready, setReady] = useState(false);
   const [inputBytes, setInputBytes] = useState<Uint8Array | null>(null);
   const [quality, setQuality] = useState<number>(75);
@@ -52,10 +31,11 @@ export const ImageOptimizer = () => {
   const [resizePreset, setResizePreset] = useState<number>(100);
   const [resizeWidth, setResizeWidth] = useState<number | string>('');
   const [resizeHight, setResizeHight] = useState<number | string>('');
-  const [resizeMaintainAspect, setResizeMaintainAspect] =
-    useState<boolean>(true);
+  const [resizeMaintainAspect, setResizeMaintainAspect] = useState<boolean>(true);
   const [aspectRatio, setAspectRatio] = useState(0);
   const [origDim, setOrigDim] = useState({ width: 0, height: 0 });
+  const [originalResizeWidth, originalSetResizeWidth] = useState<number>(0);
+  const [originalResizeHeight, originalSetResizeHeight] = useState<number>(0);
 
   useEffect(() => {
     init().then(() => {
@@ -67,7 +47,7 @@ export const ImageOptimizer = () => {
   /*
 
       Aufgaben:
-      * Architektur in mehreren Dateien verlegen 
+      *- Architektur in mehreren Dateien verlegen 
       * Darkmode beachten
       * resize fertig machen und testen
       * filter option einbauen
@@ -79,6 +59,7 @@ export const ImageOptimizer = () => {
       * Layout ändern
       * PNG encoder ändern
       * Rust Code säubern
+      * Hight zu Height
       
       
 
@@ -120,6 +101,8 @@ export const ImageOptimizer = () => {
       setResizeHight(h);
       setAspectRatio(w / h);
       setOrigDim({ width: w, height: h });
+      originalSetResizeHeight(h);
+      originalSetResizeWidth(w);
     };
 
     // Reset bei neuem Bild
@@ -206,256 +189,67 @@ export const ImageOptimizer = () => {
 
 
   return (
-    <Page themeId="tool">
-      <Header title="Pixo Compressor" subtitle="Rust & WASM" />
-      <Content>
-        <Grid container spacing={3}>
-          <Grid item xs={12} md={4}>
-            <TabbedCard title="Settings">
-              <CardTab label="Compress">
-                <ComponentCompressTab
-                  getInputProps={getInputProps}
-                  getRootProps={getRootProps}
-                  isDragActive={isDragActive}
-                  fileName={fileName}
-                  imgType={imgType}
-                  quality={quality}
-                  setImgType={setImgType}
-                  setQuality={setQuality}
-                  processImage={processImage}
-                  ready={ready}
-                  inputBytes={!!inputBytes}
-                  loadingState={loadingState}
-                />
-              </CardTab>
+    <Grid container spacing={3}>
+      <Grid item xs={12} md={4}>
 
+        <TabbedCard title="Settings">
+          <CardTab label="Compress">
+            <ComponentCompressTab
+              getInputProps={getInputProps}
+              getRootProps={getRootProps}
+              isDragActive={isDragActive}
+              fileName={fileName}
+              imgType={imgType}
+              quality={quality}
+              setImgType={setImgType}
+              setQuality={setQuality}
+              processImage={processImage}
+              ready={ready}
+              inputBytes={!!inputBytes}
+              loadingState={loadingState}
+            />
+          </CardTab>
 
-              <CardTab label="Resize">
-                <Grid container spacing={3}>
-                  <Grid item xs={6}>
-                    <FormControl fullWidth>
-                      <InputLabel>Algorythm</InputLabel>
-                      <Select
-                        value={resizeAlgorythm}
-                        onChange={e =>
-                          setResizeAlgorythm(e.target.value as string)
-                        }
-                      >
-                        <MenuItem value="lanczos3">Lanczos3 </MenuItem>
-                        <MenuItem value="bilinear">Bilinear</MenuItem>
-                        <MenuItem value="nearest">Nearest (fast)</MenuItem>
-                      </Select>
-                    </FormControl>
-                  </Grid>
+          <CardTab label="Resize">
+            <ComponentResizeTab
+              resizeAlgorythm={resizeAlgorythm}
+              setResizeAlgorythm={setResizeAlgorythm}
+              resizePreset={resizePreset}
+              setResizePreset={setResizePreset}
+              resizeWidth={resizeWidth}
+              setResizeWidth={setResizeWidth}
+              resizeHight={resizeHight}
+              setResizeHight={setResizeHight}
+              resizeMaintainAspect={resizeMaintainAspect}
+              setResizeMaintainAspect={setResizeMaintainAspect}
+              aspectRatio={aspectRatio}
+              processImage={processImage}
+              ready={ready}
+              inputBytes={inputBytes}
+              loadingState={loadingState}
+              originalResizeHeight={originalResizeHeight}
+              originalResizeWidth={originalResizeWidth}
+            />
+          </CardTab>
 
-                  <Grid item xs={6}>
-                    <FormControl fullWidth>
-                      <InputLabel>Preset</InputLabel>
-                      <Select
-                        value={resizePreset}
-                        onChange={e =>
-                          setResizePreset(e.target.value as number)
-                        }
-                      >
-                        <MenuItem value="25">25%</MenuItem>
-                        <MenuItem value="50">50%</MenuItem>
-                        <MenuItem value="100">100%</MenuItem>
-                        <MenuItem value="200">200%</MenuItem>
-                        <MenuItem value="400">400%</MenuItem>
-                      </Select>
-                    </FormControl>
-                  </Grid>
+        </TabbedCard>
+        {stats && (
+          <ComponentStatsCard
+            stats={stats}
+            ready={ready}
+            hasInput={!!inputBytes}
+            downloadCompression={downloadCompression}
+          />)}
+      </Grid>
 
-                  <Grid item xs={12}>
-                    <Box display="flex" justifyContent="center">
-                      <FormControlLabel
-                        control={
-                          <Switch
-                            defaultChecked
-                            checked={resizeMaintainAspect}
-                            onChange={e =>
-                              setResizeMaintainAspect(e.target.checked)
-                            }
-                          />
-                        }
-                        label="Maintain aspect ratio"
-                      />
-                    </Box>
-                  </Grid>
-
-                  <Grid item xs={6}>
-                    <TextField
-                      id="width"
-                      label="Width"
-                      variant="outlined"
-                      value={resizeWidth}
-                      InputProps={{
-                        endAdornment: (
-                          <InputAdornment position="end">px</InputAdornment>
-                        ),
-                      }}
-                      onChange={e => {
-                        const val = e.target.value;
-                        setResizeWidth(val);
-
-                        if (
-                          resizeMaintainAspect &&
-                          val !== '' &&
-                          aspectRatio > 0
-                        ) {
-                          const newHight = Number(val) / aspectRatio;
-                          setResizeHight(Math.round(newHight));
-                        }
-                      }}
-                    />
-                  </Grid>
-
-                  <Grid item xs={6}>
-                    <TextField
-                      id="height"
-                      label="Hight"
-                      variant="outlined"
-                      value={resizeHight}
-                      InputProps={{
-                        endAdornment: (
-                          <InputAdornment position="end">px</InputAdornment>
-                        ),
-                      }}
-                      onChange={e => {
-                        const val = e.target.value;
-                        setResizeHight(val);
-
-                        if (
-                          resizeMaintainAspect &&
-                          val !== '' &&
-                          aspectRatio > 0
-                        ) {
-                          const newWidth = Number(val) * aspectRatio;
-                          setResizeWidth(Math.round(newWidth));
-                        }
-                      }}
-                    />
-                  </Grid>
-
-                  <Grid item xs={12}>
-                    <Button
-                      variant="contained"
-                      color="primary"
-                      onClick={processImage}
-                      disabled={!ready || !inputBytes || loadingState}
-                      fullWidth
-                      startIcon={
-                        loadingState ? (
-                          <CircularProgress size={20} color="inherit" />
-                        ) : null
-                      }
-                    >
-                      {loadingState ? 'Verarbeite...' : 'Run Resize'}
-                    </Button>
-                  </Grid>
-                </Grid>
-              </CardTab>
-            </TabbedCard>
-            {stats && (
-              <ComponentStatsCard
-                stats={stats}
-                ready={ready}
-                hasInput={!!inputBytes}
-                downloadCompression={downloadCompression}
-              />)}
-
-
-          </Grid>
-
-          {/* Hier geht es mit Stats und preview los /////////////////////////////////////////////////////////////////////////////// */}
-
-          <Grid item xs={12} md={8}>
-            <InfoCard title="Preview">
-              <Box
-                display="flex"
-                justifyContent="center"
-                alignItems="center"
-                minHeight="300px"
-                style={{ background: '#4a606e5d' }}
-              >
-                {imageUrl ? (
-                  <ReactCompareSlider
-                    itemOne={
-                      <div style={{ position: 'relative', height: '100%' }}>
-                        <ReactCompareSliderImage
-                          src={imageUrl}
-                          alt="Original"
-                          style={{
-                            maxWidth: '100%',
-                            maxHeight: '600px',
-                            objectFit: 'contain',
-                          }}
-                        />
-
-                        <div
-                          style={{
-                            position: 'absolute',
-                            top: 10,
-                            left: 10,
-                            backgroundColor: 'rgba(0, 0, 0, 0.7)',
-                            color: 'white',
-                            padding: '4px 8px',
-                            borderRadius: '4px',
-                            fontSize: '12px',
-                            pointerEvents: 'none',
-                          }}
-                        >
-                          Original (
-                          {stats?.original
-                            ? (stats.original / 1024).toFixed(0)
-                            : 0}{' '}
-                          KB)
-                        </div>
-                      </div>
-                    }
-                    itemTwo={
-                      <div style={{ position: 'relative', height: '100%' }}>
-                        <ReactCompareSliderImage
-                          src={resultUrl || imageUrl}
-                          alt="Optimized"
-                          style={{
-                            maxWidth: '100%',
-                            maxHeight: '600px',
-                            objectFit: 'contain',
-                          }}
-                        />
-
-                        <div
-                          style={{
-                            position: 'absolute',
-                            top: 10,
-                            right: 10,
-                            backgroundColor: 'rgba(0, 0, 0, 0.7)',
-                            color: '#9bf29b',
-                            padding: '4px 8px',
-                            borderRadius: '4px',
-                            fontSize: '12px',
-                            pointerEvents: 'none',
-                          }}
-                        >
-                          Compressed (
-                          {stats?.compressed
-                            ? (stats.compressed / 1024).toFixed(0)
-                            : 0}{' '}
-                          KB)
-                        </div>
-                      </div>
-                    }
-                  />
-                ) : (
-                  <Typography color="textSecondary">No image</Typography>
-                )}
-              </Box>
-            </InfoCard>
-          </Grid>
-        </Grid>
-      </Content>
-    </Page>
+      <Grid item xs={12} md={8}>
+        <ComponentPreviewCard
+          imageUrl={imageUrl}
+          resultUrl={resultUrl}
+          stats={stats}
+        />
+      </Grid>
+    </Grid>
   );
 };
 
