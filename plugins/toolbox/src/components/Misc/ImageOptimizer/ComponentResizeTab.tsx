@@ -26,9 +26,9 @@ interface ComponentResizeTabProps {
 
 }
 
-export const ComponentResizeTab = ({resizeAlgorythm, setResizeAlgorythm, resizePreset, setResizePreset, resizeWidth, setResizeWidth, resizeHight,
+export const ComponentResizeTab = ({ resizeAlgorythm, setResizeAlgorythm, resizePreset, setResizePreset, resizeWidth, setResizeWidth, resizeHight,
     setResizeHight, resizeMaintainAspect, setResizeMaintainAspect, aspectRatio, processImage, ready, inputBytes, loadingState, originalResizeHeight,
-     originalResizeWidth }: ComponentResizeTabProps) => {
+    originalResizeWidth }: ComponentResizeTabProps) => {
 
     return (
         <Grid container spacing={3}>
@@ -61,7 +61,7 @@ export const ComponentResizeTab = ({resizeAlgorythm, setResizeAlgorythm, resizeP
 
                             let resizeHightFactor = Number(originalResizeHeight) * presetVal;
                             let resizeWidthFactor = Number(originalResizeWidth) * presetVal;
-                            
+
                             setResizeHight(resizeHightFactor);
                             setResizeWidth(resizeWidthFactor);
                         }}

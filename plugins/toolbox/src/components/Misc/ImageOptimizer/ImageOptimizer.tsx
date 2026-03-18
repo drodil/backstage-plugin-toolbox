@@ -1,14 +1,10 @@
 import { ComponentStatsCard } from './ComponentStatsCard.tsx';
 import { useEffect, useState, useCallback } from 'react';
-import {
-  TabbedCard,
-  CardTab,
-} from '@backstage/core-components';
-import {
-  Grid,
-} from '@material-ui/core';
+import { TabbedCard, CardTab } from '@backstage/core-components';
+import { Grid } from '@material-ui/core';
 import init, { pixo_compress, init_hook, pixo_resize } from './pkg/pixo.js';
 import { useDropzone } from 'react-dropzone';
+
 import { ComponentCompressTab } from './ComponentCompressTab.tsx';
 import { ComponentResizeTab } from './ComponentResizeTab.tsx';
 import { ComponentPreviewCard } from './ComponentPreviewCard.tsx';
@@ -19,10 +15,7 @@ export const ImageOptimizer = () => {
   const [quality, setQuality] = useState<number>(75);
   const [imgType, setImgType] = useState<string>('jpeg');
   const [resultUrl, setResultUrl] = useState<string | null>(null);
-  const [stats, setStats] = useState<{
-    original: number;
-    compressed: number;
-  } | null>(null);
+  const [stats, setStats] = useState<{ original: number; compressed: number; } | null>(null);
   const [downloadUrl, setDownloadUrl] = useState<string | null>(null);
   const [fileName, setFileName] = useState<string>('');
   const [imageUrl, setImageUrl] = useState<string | null>(null);
@@ -43,6 +36,16 @@ export const ImageOptimizer = () => {
       setReady(true);
     });
   }, []);
+  useEffect(() => {
+    return () => {
+      if (imageUrl) URL.revokeObjectURL(imageUrl);
+    };
+  }, [imageUrl]);
+  useEffect(() => {
+    return () => {
+      if (resultUrl) URL.revokeObjectURL(resultUrl);
+    };
+  }, [resultUrl]);
 
   /*
 
@@ -60,6 +63,8 @@ export const ImageOptimizer = () => {
       * PNG encoder ändern
       * Rust Code säubern
       * Hight zu Height
+      * Preview vergrößern auf settings tab größe
+      * Preview für resized Bilder verbesern
       
       
 
@@ -118,6 +123,7 @@ export const ImageOptimizer = () => {
   });
 
   const processImage = useCallback(() => {
+    
     if (!ready || !inputBytes) return;
 
     setLoading(true);
@@ -133,12 +139,13 @@ export const ImageOptimizer = () => {
           hight > 0 &&
           (width !== origDim.width || hight !== origDim.height)
         ) {
-          currentBytes = pixo_resize(currentBytes, width, hight);
+          currentBytes = pixo_resize(currentBytes, /*resizeAlgorythmm,*/ width, hight);
         }
 
         const mimeType = imgType === 'png' ? 'image/png' : 'image/jpeg';
 
         // jetzt compress
+        console.time("Kompression");
         try {
           let q = quality;
           if (q <= 0) q = 1;
@@ -148,6 +155,7 @@ export const ImageOptimizer = () => {
         } catch (e) {
           setLoading(false);
         }
+        console.timeEnd("Kompression");
 
         // Bauen
         // as any fix für TS
@@ -166,6 +174,8 @@ export const ImageOptimizer = () => {
         setLoading(false);
       }
     }, 200);
+    
+    
   }, [
     ready,
     inputBytes,
