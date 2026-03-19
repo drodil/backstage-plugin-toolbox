@@ -47,28 +47,7 @@ export const ImageOptimizer = () => {
     };
   }, [resultUrl]);
 
-  /*
 
-      Aufgaben:
-      *- Architektur in mehreren Dateien verlegen 
-      * Darkmode beachten
-      * resize fertig machen und testen
-      * filter option einbauen
-      * Dev option einbauen
-      * nach Toolbox anpassen
-      * Nur für PNG und JPEG anpassen also bei compressTab
-      * irgendien Name von einem state von maintain aspect stimmt nicht
-      * Text verlässt dropZone
-      * Layout ändern
-      * PNG encoder ändern
-      * Rust Code säubern
-      * Hight zu Height
-      * Preview vergrößern auf settings tab größe
-      * Preview für resized Bilder verbesern
-      
-      
-
-    */
 
   const onDrop = useCallback(async (files: File[]) => {
     const file = files[0];
@@ -88,14 +67,12 @@ export const ImageOptimizer = () => {
 
     setInputBytes(bytes);
 
-    // für orginalbild url
 
-    // as any fix für TS
     const blob = new Blob([bytes], { type: file.type });
     const origUrl = URL.createObjectURL(blob);
     setImageUrl(origUrl);
 
-    // Für preset bei resize
+
     const img = new Image();
     img.src = origUrl;
     img.onload = () => {
@@ -110,12 +87,10 @@ export const ImageOptimizer = () => {
       originalSetResizeWidth(w);
     };
 
-    // Reset bei neuem Bild
     setResultUrl(null);
     setStats(null);
   }, []);
 
-  // Hook initialisieren
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
     accept: { 'image/*': [] },
@@ -144,7 +119,7 @@ export const ImageOptimizer = () => {
 
         const mimeType = imgType === 'png' ? 'image/png' : 'image/jpeg';
 
-        // jetzt compress
+        
         console.time("Kompression");
         try {
           let q = quality;
@@ -157,8 +132,7 @@ export const ImageOptimizer = () => {
         }
         console.timeEnd("Kompression");
 
-        // Bauen
-        // as any fix für TS
+
         const blob = new Blob([currentBytes as any], { type: mimeType });
         const url = URL.createObjectURL(blob);
 
