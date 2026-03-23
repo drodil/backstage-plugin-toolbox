@@ -39,7 +39,7 @@ export const ComponentCompressTab = ({ getRootProps, getInputProps, isDragActive
                         padding: '20px',
                         textAlign: 'center',
                         cursor: 'pointer',
-                        backgroundColor: isDragActive ? '#6c808d' : '#4a606e',
+                        backgroundColor: isDragActive ? '#78909c74' : '#78909C33',
                     }}
                     elevation={0}
                 >

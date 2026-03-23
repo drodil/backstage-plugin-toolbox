@@ -20,7 +20,7 @@ export const ImageOptimizer = () => {
   const [fileName, setFileName] = useState<string>('');
   const [imageUrl, setImageUrl] = useState<string | null>(null);
   const [loadingState, setLoading] = useState(false);
-  const [resizeAlgorythm, setResizeAlgorythm] = useState<string>('lanczos3');
+  const [resizeAlgorhythm, setResizeAlgorhythm] = useState<string>('lanczos3');
   const [resizePreset, setResizePreset] = useState<number>(100);
   const [resizeWidth, setResizeWidth] = useState<number | string>('');
   const [resizeHight, setResizeHight] = useState<number | string>('');
@@ -46,6 +46,36 @@ export const ImageOptimizer = () => {
       if (resultUrl) URL.revokeObjectURL(resultUrl);
     };
   }, [resultUrl]);
+
+
+  /*
+
+    Aufgaben:
+    *- Architektur in mehreren Dateien verlegen 
+    *- Darkmode beachten
+    * resize fertig machen und testen
+    * filter option einbauen
+    * Dev option einbauen
+    * nach Toolbox anpassen
+    * Nur für PNG und JPEG anpassen also bei compressTab
+    * irgendien Name von einem state von maintain aspect stimmt nicht
+    * Text verlässt dropZone
+    * Layout ändern
+    * PNG encoder ändern
+    * Rust Code säubern
+    * Hight zu Height
+    * Preview vergrößern auf settings tab größe
+    * Preview für resized Bilder verbesern
+    * Fehlermeldungsnachrichten und mehr machen
+    * resizealgorithm
+    * camle snake
+    * Neuer algo = neuer use
+    * deutsch zu english
+    * jpeg resizen geht nicht
+    
+    
+
+  */
 
 
 
@@ -98,7 +128,7 @@ export const ImageOptimizer = () => {
   });
 
   const processImage = useCallback(() => {
-    
+
     if (!ready || !inputBytes) return;
 
     setLoading(true);
@@ -108,25 +138,24 @@ export const ImageOptimizer = () => {
         let currentBytes = inputBytes;
         const width = Number(resizeWidth);
         const hight = Number(resizeHight);
-
-        if (
-          width > 0 &&
-          hight > 0 &&
-          (width !== origDim.width || hight !== origDim.height)
-        ) {
-          currentBytes = pixo_resize(currentBytes, /*resizeAlgorythmm,*/ width, hight);
-        }
-
         const mimeType = imgType === 'png' ? 'image/png' : 'image/jpeg';
-
-        
-        console.time("Kompression");
         try {
           let q = quality;
           if (q <= 0) q = 1;
           if (q >= 100) q = 99;
 
+          if (
+            width > 0 &&
+            hight > 0 &&
+            (width !== origDim.width || hight !== origDim.height)
+          ) {
+            currentBytes = pixo_resize(currentBytes, resizeAlgorhythm, width, hight);
+          }
+
+          console.time("Kompression");
+
           currentBytes = pixo_compress(currentBytes, q, imgType);
+          
         } catch (e) {
           setLoading(false);
         }
@@ -148,8 +177,8 @@ export const ImageOptimizer = () => {
         setLoading(false);
       }
     }, 200);
-    
-    
+
+
   }, [
     ready,
     inputBytes,
@@ -159,6 +188,7 @@ export const ImageOptimizer = () => {
     imgType,
     origDim.width,
     origDim.height,
+    resizeAlgorhythm,
   ]);
 
   const downloadCompression = () => {
@@ -196,8 +226,8 @@ export const ImageOptimizer = () => {
 
           <CardTab label="Resize">
             <ComponentResizeTab
-              resizeAlgorythm={resizeAlgorythm}
-              setResizeAlgorythm={setResizeAlgorythm}
+              resizeAlgorhythm={resizeAlgorhythm}
+              setResizeAlgorhythm={setResizeAlgorhythm}
               resizePreset={resizePreset}
               setResizePreset={setResizePreset}
               resizeWidth={resizeWidth}

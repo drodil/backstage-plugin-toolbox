@@ -3,8 +3,8 @@ import { Box, Button, CircularProgress, FormControl, FormControlLabel, Grid, Inp
 
 interface ComponentResizeTabProps {
 
-    resizeAlgorythm: string;
-    setResizeAlgorythm: (type: string) => void;
+    resizeAlgorhythm: string;
+    setResizeAlgorhythm: (type: string) => void;
     resizePreset: number;
     setResizePreset: (type: number) => void;
     resizeWidth: number | string;
@@ -26,7 +26,7 @@ interface ComponentResizeTabProps {
 
 }
 
-export const ComponentResizeTab = ({ resizeAlgorythm, setResizeAlgorythm, resizePreset, setResizePreset, resizeWidth, setResizeWidth, resizeHight,
+export const ComponentResizeTab = ({ resizeAlgorhythm, setResizeAlgorhythm, resizePreset, setResizePreset, resizeWidth, setResizeWidth, resizeHight,
     setResizeHight, resizeMaintainAspect, setResizeMaintainAspect, aspectRatio, processImage, ready, inputBytes, loadingState, originalResizeHeight,
     originalResizeWidth }: ComponentResizeTabProps) => {
 
@@ -36,12 +36,12 @@ export const ComponentResizeTab = ({ resizeAlgorythm, setResizeAlgorythm, resize
                 <FormControl fullWidth>
                     <InputLabel>Algorythm</InputLabel>
                     <Select
-                        value={resizeAlgorythm}
+                        value={resizeAlgorhythm}
                         onChange={e =>
-                            setResizeAlgorythm(e.target.value as string)
+                            setResizeAlgorhythm(e.target.value as string)
                         }
                     >
-                        <MenuItem value="lanczos3">Lanczos3 </MenuItem>
+                        <MenuItem value="lanczos3">Lanczos3 (recommended) </MenuItem>
                         <MenuItem value="bilinear">Bilinear</MenuItem>
                         <MenuItem value="nearest">Nearest (fast)</MenuItem>
                     </Select>

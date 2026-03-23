@@ -26,7 +26,7 @@ export const ComponentPreviewCard = ({
 				justifyContent="center"
 				alignItems="center"
 				minHeight="300px"
-				style={{ background: '#4a606e5d' }}
+				style={{ background: '#4a606e31' }}
 			>
 				{imageUrl ? (
 					<ReactCompareSlider
