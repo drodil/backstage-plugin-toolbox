@@ -24,7 +24,7 @@ interface ComponentCompressTabProps {
 
 
 export const ComponentCompressTab = ({ getRootProps, getInputProps, isDragActive, fileName,
-     imgType, quality, setImgType, setQuality, processImage, ready, inputBytes, loadingState }: ComponentCompressTabProps) => {
+    imgType, quality, setImgType, setQuality, processImage, ready, inputBytes, loadingState }: ComponentCompressTabProps) => {
 
 
 
@@ -40,13 +40,21 @@ export const ComponentCompressTab = ({ getRootProps, getInputProps, isDragActive
                         textAlign: 'center',
                         cursor: 'pointer',
                         backgroundColor: isDragActive ? '#78909c74' : '#78909C33',
+                        overflow: 'hidden',
                     }}
                     elevation={0}
                 >
                     <input {...getInputProps()} />
 
                     {fileName ? (
-                        <Typography style={{ fontWeight: 'bold' }}>
+                        <Typography
+                            style={{
+                                fontWeight: 'bold',
+                                whiteSpace: 'nowrap',
+                                overflow: 'hidden',
+                                textOverflow: 'ellipsis',
+                            }}
+                        >
                             Ausgewählt: {fileName}
                         </Typography>
                     ) : (
@@ -66,15 +74,8 @@ export const ComponentCompressTab = ({ getRootProps, getInputProps, isDragActive
                         value={imgType}
                         onChange={e => setImgType(e.target.value as string)}
                     >
-                        <MenuItem value="unveraendert">Unverändert</MenuItem>
                         <MenuItem value="jpeg">JPEG</MenuItem>
                         <MenuItem value="png">PNG</MenuItem>
-                        <MenuItem value="webp">
-                            WebP (gerade noch zu JPEG){' '}
-                        </MenuItem>
-                        <MenuItem value="avif">
-                            AVIF (gerade noch zu JPEG){' '}
-                        </MenuItem>
                     </Select>
                 </FormControl>
             </Grid>

@@ -62,6 +62,7 @@ pub fn pixo_compress(input_data: &[u8], qual: u8, img_type: &str) -> Result<Vec<
 pub fn pixo_resize(
     input_data: &[u8],
     resize_algorithm: &str,
+    img_type: &str,
     dst_width: u32,
     dst_height: u32,
 ) -> Result<Vec<u8>, JsValue> {
@@ -92,13 +93,26 @@ pub fn pixo_resize(
     let resized_pixels = resize(&pixels, &options)
         .map_err(|e| JsValue::from_str(&format!("Resize interner Fehler: {:?}", e)))?;
 
-    let jpeg_opts = JpegOptions::builder(dst_width, dst_height)
-        .color_type(ColorType::Rgb)
-        .quality(85)
-        .build();
+        let final_output;
+    if img_type == "png" {
 
-    let final_output = jpeg::encode(&resized_pixels, &jpeg_opts)
-        .map_err(|e| JsValue::from_str(&format!("Pixo Encoding Fehler nach Resize: {:?}", e)))?;
+        let pixo_opts = PngOptions::builder(w, h)
+            .color_type(ColorType::Rgb)
+            .compression_level(6)
+            .build();
+
+        final_output = png::encode(&pixels, &pixo_opts)
+            .map_err(|e| JsValue::from_str(&format!("Pixo Encoding Fehlr: {:?}", e)))?;
+    } else {
+        let jpeg_opts = JpegOptions::builder(dst_width, dst_height)
+            .color_type(ColorType::Rgb)
+            .quality(85)
+            .build();
+
+        final_output = jpeg::encode(&resized_pixels, &jpeg_opts).map_err(|e| {
+            JsValue::from_str(&format!("Pixo Encoding Fehler nach Resize: {:?}", e))
+        })?;
+    }
 
     Ok(final_output)
 }

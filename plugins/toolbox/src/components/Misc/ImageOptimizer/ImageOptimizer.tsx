@@ -1,6 +1,7 @@
 import { ComponentStatsCard } from './ComponentStatsCard.tsx';
 import { useEffect, useState, useCallback } from 'react';
 import { TabbedCard, CardTab } from '@backstage/core-components';
+
 import { Grid } from '@material-ui/core';
 import init, { pixo_compress, init_hook, pixo_resize } from './pkg/pixo.js';
 import { useDropzone } from 'react-dropzone';
@@ -24,11 +25,13 @@ export const ImageOptimizer = () => {
   const [resizePreset, setResizePreset] = useState<number>(100);
   const [resizeWidth, setResizeWidth] = useState<number | string>('');
   const [resizeHight, setResizeHight] = useState<number | string>('');
-  const [resizeMaintainAspect, setResizeMaintainAspect] = useState<boolean>(true);
+  const [resizeMaintainAspectRatio, setResizeMaintainAspectRatio] = useState<boolean>(true);
   const [aspectRatio, setAspectRatio] = useState(0);
   const [origDim, setOrigDim] = useState({ width: 0, height: 0 });
   const [originalResizeWidth, originalSetResizeWidth] = useState<number>(0);
   const [originalResizeHeight, originalSetResizeHeight] = useState<number>(0);
+  const [origImgeType, setOrigImgeType] = useState<string>('jpeg');
+
 
   useEffect(() => {
     init().then(() => {
@@ -53,13 +56,15 @@ export const ImageOptimizer = () => {
     Aufgaben:
     *- Architektur in mehreren Dateien verlegen 
     *- Darkmode beachten
-    * resize fertig machen und testen
-    * filter option einbauen
-    * Dev option einbauen
-    * nach Toolbox anpassen
-    * Nur für PNG und JPEG anpassen also bei compressTab
-    * irgendien Name von einem state von maintain aspect stimmt nicht
-    * Text verlässt dropZone
+    *- resize fertig machen und testen
+    
+    *-. filter option einbauen
+    *-. Dev option einbauen
+
+    *- nach Toolbox anpassen
+    *- Nur für PNG und JPEG anpassen also bei compressTab
+    *- irgendien Name von einem state von maintain aspect stimmt nicht
+    *- Text verlässt dropZone
     * Layout ändern
     * PNG encoder ändern
     * Rust Code säubern
@@ -72,6 +77,8 @@ export const ImageOptimizer = () => {
     * Neuer algo = neuer use
     * deutsch zu english
     * jpeg resizen geht nicht
+    * fehler auswerfen, wen falsches Bildofrmat
+    * states ordnen
     
     
 
@@ -115,6 +122,11 @@ export const ImageOptimizer = () => {
       setOrigDim({ width: w, height: h });
       originalSetResizeHeight(h);
       originalSetResizeWidth(w);
+      if (file.type === 'image/png') {
+      setOrigImgeType('png');
+    } else {
+      setOrigImgeType('jpeg');
+    }
     };
 
     setResultUrl(null);
@@ -149,15 +161,16 @@ export const ImageOptimizer = () => {
             hight > 0 &&
             (width !== origDim.width || hight !== origDim.height)
           ) {
-            currentBytes = pixo_resize(currentBytes, resizeAlgorhythm, width, hight);
+            currentBytes = pixo_resize(currentBytes, resizeAlgorhythm, origImgeType, width, hight);
           }
 
           console.time("Kompression");
 
           currentBytes = pixo_compress(currentBytes, q, imgType);
-          
+
         } catch (e) {
           setLoading(false);
+          console.error("WASM Fehler:", e);
         }
         console.timeEnd("Kompression");
 
@@ -214,8 +227,8 @@ export const ImageOptimizer = () => {
               isDragActive={isDragActive}
               fileName={fileName}
               imgType={imgType}
-              quality={quality}
               setImgType={setImgType}
+              quality={quality}
               setQuality={setQuality}
               processImage={processImage}
               ready={ready}
@@ -234,8 +247,8 @@ export const ImageOptimizer = () => {
               setResizeWidth={setResizeWidth}
               resizeHight={resizeHight}
               setResizeHight={setResizeHight}
-              resizeMaintainAspect={resizeMaintainAspect}
-              setResizeMaintainAspect={setResizeMaintainAspect}
+              resizeMaintainAspect={resizeMaintainAspectRatio}
+              setResizeMaintainAspect={setResizeMaintainAspectRatio}
               aspectRatio={aspectRatio}
               processImage={processImage}
               ready={ready}
