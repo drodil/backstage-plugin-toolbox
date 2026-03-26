@@ -14,24 +14,29 @@ export const ImageOptimizer = () => {
   const [ready, setReady] = useState(false);
   const [inputBytes, setInputBytes] = useState<Uint8Array | null>(null);
   const [quality, setQuality] = useState<number>(75);
+
   const [imgType, setImgType] = useState<string>('jpeg');
   const [resultUrl, setResultUrl] = useState<string | null>(null);
   const [stats, setStats] = useState<{ original: number; compressed: number; } | null>(null);
+
   const [downloadUrl, setDownloadUrl] = useState<string | null>(null);
   const [fileName, setFileName] = useState<string>('');
   const [imageUrl, setImageUrl] = useState<string | null>(null);
+
   const [loadingState, setLoading] = useState(false);
-  const [resizeAlgorhythm, setResizeAlgorhythm] = useState<string>('lanczos3');
+  const [resizeAlgorithm, setResizeAlgorithm] = useState<string>('lanczos3');
   const [resizePreset, setResizePreset] = useState<number>(100);
+
   const [resizeWidth, setResizeWidth] = useState<number | string>('');
   const [resizeHeight, setResizeHeight] = useState<number | string>('');
   const [resizeMaintainAspectRatio, setResizeMaintainAspectRatio] = useState<boolean>(true);
+
   const [aspectRatio, setAspectRatio] = useState(0);
   const [origDim, setOrigDim] = useState({ width: 0, height: 0 });
   const [originalResizeWidth, originalSetResizeWidth] = useState<number>(0);
+
   const [originalResizeHeight, originalSetResizeHeight] = useState<number>(0);
   const [origImgeType, setOrigImgeType] = useState<string>('jpeg');
-
 
   useEffect(() => {
     init().then(() => {
@@ -50,45 +55,6 @@ export const ImageOptimizer = () => {
     };
   }, [resultUrl]);
 
-
-  /*
-
-    Aufgaben:
-    *- Architektur in mehreren Dateien verlegen 
-    *- Darkmode beachten
-    *- resize fertig machen und testen
-    
-    *-. filter option einbauen
-    *-. Dev option einbauen
-
-    *- nach Toolbox anpassen
-    *- Nur für PNG und JPEG anpassen also bei compressTab
-    *- irgendien Name von einem state von maintain aspect stimmt nicht
-    *- Text verlässt dropZone
-    *- Layout ändern
-    *- PNG encoder ändern
-    *- Rust Code säubern
-    *- Hight zu Height
-    *- Preview vergrößern auf settings tab größe
-    *- Preview für resized Bilder verbesern
-    *- Fehlermeldungsnachrichten und mehr machen
-    *- resizealgorithm
-    *- camle snake
-    * Neuer algo = neuer use
-    * deutsch zu english
-    * jpeg resizen geht nicht
-    * fehler auswerfen, wen falsches Bildofrmat
-    * states ordnen
-    * console logs weg
-    * Textboxen beim verkleineen werden kleiner
-    * Math.round für resize dimnesions
-    
-    
-
-  */
-
-
-
   const onDrop = useCallback(async (files: File[]) => {
     const file = files[0];
 
@@ -104,14 +70,12 @@ export const ImageOptimizer = () => {
 
     const buffer = await file.arrayBuffer();
     const bytes = new Uint8Array(buffer);
-
     setInputBytes(bytes);
 
 
     const blob = new Blob([bytes], { type: file.type });
     const origUrl = URL.createObjectURL(blob);
     setImageUrl(origUrl);
-
 
     const img = new Image();
     img.src = origUrl;
@@ -125,24 +89,18 @@ export const ImageOptimizer = () => {
       setOrigDim({ width: w, height: h });
       originalSetResizeHeight(h);
       originalSetResizeWidth(w);
-      if (file.type === 'image/png') {
-      setOrigImgeType('png');
-    } else {
-      setOrigImgeType('jpeg');
-    }
-    };
-    
 
+      if (file.type === 'image/png') {
+        setOrigImgeType('png');
+      } else {
+        setOrigImgeType('jpeg');
+      }
+    };
     setResultUrl(null);
     setStats(null);
   }, []);
 
-  const { getRootProps, getInputProps, isDragActive } = useDropzone({
-    onDrop,
-    accept: { 'image/*': [] },
-    multiple: false,
-  });
-
+  // main function 
   const processImage = useCallback(() => {
 
     if (!ready || !inputBytes) return;
@@ -159,27 +117,20 @@ export const ImageOptimizer = () => {
           let q = quality;
           if (q <= 0) q = 1;
           if (q >= 100) q = 99;
-          console.log("Typename:", origImgeType);
           if (
             width > 0 &&
             Height > 0 &&
             (width !== origDim.width || Height !== origDim.height)
-            
-          ) 
-          {
-            currentBytes = pixo_resize(currentBytes, resizeAlgorhythm, origImgeType, width, Height);
+
+          ) {
+            currentBytes = pixo_resize(currentBytes, resizeAlgorithm, origImgeType, width, Height);
           }
-
-          console.time("Kompression");
-
           currentBytes = pixo_compress(currentBytes, q, imgType);
 
         } catch (e) {
           setLoading(false);
-          console.error("WASM Fehler:", e);
+          console.error("WASM Error:", e);
         }
-        console.timeEnd("Kompression");
-
 
         const blob = new Blob([currentBytes as any], { type: mimeType });
         const url = URL.createObjectURL(blob);
@@ -196,8 +147,6 @@ export const ImageOptimizer = () => {
         setLoading(false);
       }
     }, 200);
-
-
   }, [
     ready,
     inputBytes,
@@ -207,8 +156,14 @@ export const ImageOptimizer = () => {
     imgType,
     origDim.width,
     origDim.height,
-    resizeAlgorhythm,
+    resizeAlgorithm,
   ]);
+
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({
+    onDrop,
+    accept: { 'image/*': [] },
+    multiple: false,
+  });
 
   const downloadCompression = () => {
     if (!downloadUrl) return;
@@ -219,7 +174,6 @@ export const ImageOptimizer = () => {
     link.click();
     document.body.removeChild(link);
   };
-
 
   return (
     <Grid container spacing={3}>
@@ -245,8 +199,8 @@ export const ImageOptimizer = () => {
 
           <CardTab label="Resize">
             <ComponentResizeTab
-              resizeAlgorhythm={resizeAlgorhythm}
-              setResizeAlgorhythm={setResizeAlgorhythm}
+              resizeAlgorithm={resizeAlgorithm}
+              setResizeAlgorithm={setResizeAlgorithm}
               resizePreset={resizePreset}
               setResizePreset={setResizePreset}
               resizeWidth={resizeWidth}
@@ -264,7 +218,6 @@ export const ImageOptimizer = () => {
               originalResizeWidth={originalResizeWidth}
             />
           </CardTab>
-
         </TabbedCard>
         {stats && (
           <ComponentStatsCard

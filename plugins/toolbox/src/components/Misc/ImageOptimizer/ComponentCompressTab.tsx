@@ -1,7 +1,6 @@
 import { Button, CircularProgress, FormControl, Grid, InputLabel, MenuItem, Paper, Select, Slider, Typography } from "@material-ui/core";
 import { DropzoneInputProps, DropzoneRootProps } from "react-dropzone";
 
-
 interface ComponentCompressTabProps {
     getRootProps: <T extends DropzoneRootProps>(props?: T) => T;
     getInputProps: <T extends DropzoneInputProps>(props?: T) => T;
@@ -18,15 +17,10 @@ interface ComponentCompressTabProps {
     ready: boolean;
     inputBytes: boolean;
     loadingState: boolean;
-
-
 }
-
 
 export const ComponentCompressTab = ({ getRootProps, getInputProps, isDragActive, fileName,
     imgType, quality, setImgType, setQuality, processImage, ready, inputBytes, loadingState }: ComponentCompressTabProps) => {
-
-
 
     return (
 
@@ -41,10 +35,10 @@ export const ComponentCompressTab = ({ getRootProps, getInputProps, isDragActive
                         cursor: 'pointer',
                         backgroundColor: isDragActive ? '#78909c74' : '#78909C33',
                         overflow: 'hidden',
-                        
+
                     }}
                     elevation={0}
-                    
+
                 >
                     <input {...getInputProps()} />
 
@@ -62,8 +56,8 @@ export const ComponentCompressTab = ({ getRootProps, getInputProps, isDragActive
                     ) : (
                         <Typography color="textSecondary">
                             {isDragActive
-                                ? 'Jetzt loslassen...'
-                                : ' drag or click image'}
+                                ? 'let go now...'
+                                : ' drag or click'}
                         </Typography>
                     )}
                 </Paper>
@@ -104,10 +98,9 @@ export const ComponentCompressTab = ({ getRootProps, getInputProps, isDragActive
                         ) : null
                     }
                 >
-                    {loadingState ? 'Verarbeite...' : 'Start'}
+                    {loadingState ? 'preocessing...' : 'Start'}
                 </Button>
             </Grid>
         </Grid>
-
     )
 }

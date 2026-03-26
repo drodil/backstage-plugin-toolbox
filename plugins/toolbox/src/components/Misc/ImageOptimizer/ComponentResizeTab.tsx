@@ -1,10 +1,11 @@
-import { Box, Button, CircularProgress, FormControl, FormControlLabel, Grid, InputAdornment, InputLabel, MenuItem, Select, Switch, TextField } from "@material-ui/core";
-
+import {
+    Box, Button, CircularProgress, FormControl, FormControlLabel, Grid,
+    InputAdornment, InputLabel, MenuItem, Select, Switch, TextField
+} from "@material-ui/core";
 
 interface ComponentResizeTabProps {
-
-    resizeAlgorhythm: string;
-    setResizeAlgorhythm: (type: string) => void;
+    resizeAlgorithm: string;
+    setResizeAlgorithm: (type: string) => void;
     resizePreset: number;
     setResizePreset: (type: number) => void;
     resizeWidth: number | string;
@@ -20,27 +21,23 @@ interface ComponentResizeTabProps {
     loadingState: boolean;
     originalResizeWidth: number;
     originalResizeHeight: number;
-
-
-
-
 }
 
-export const ComponentResizeTab = ({ resizeAlgorhythm, setResizeAlgorhythm, resizePreset,
-     setResizePreset, resizeWidth, setResizeWidth, resizeHeight,
+export const ComponentResizeTab = ({ resizeAlgorithm, setResizeAlgorithm, resizePreset,
+    setResizePreset, resizeWidth, setResizeWidth, resizeHeight,
     setResizeHeight, resizeMaintainAspect, setResizeMaintainAspect, aspectRatio,
-     processImage, ready, inputBytes, loadingState, originalResizeHeight,
+    processImage, ready, inputBytes, loadingState, originalResizeHeight,
     originalResizeWidth }: ComponentResizeTabProps) => {
 
     return (
         <Grid container spacing={3}>
             <Grid item xs={6}>
                 <FormControl fullWidth>
-                    <InputLabel>Algorythm</InputLabel>
+                    <InputLabel>Algorithm</InputLabel>
                     <Select
-                        value={resizeAlgorhythm}
+                        value={resizeAlgorithm}
                         onChange={e =>
-                            setResizeAlgorhythm(e.target.value as string)
+                            setResizeAlgorithm(e.target.value as string)
                         }
                     >
                         <MenuItem value="lanczos3">Lanczos3 (recommended) </MenuItem>
@@ -49,8 +46,6 @@ export const ComponentResizeTab = ({ resizeAlgorhythm, setResizeAlgorhythm, resi
                     </Select>
                 </FormControl>
             </Grid>
-
-
 
             <Grid item xs={6}>
                 <FormControl fullWidth>
@@ -63,6 +58,9 @@ export const ComponentResizeTab = ({ resizeAlgorhythm, setResizeAlgorhythm, resi
 
                             let resizeHeightFactor = Number(originalResizeHeight) * presetVal;
                             let resizeWidthFactor = Number(originalResizeWidth) * presetVal;
+
+                            resizeHeightFactor = Math.round(resizeHeightFactor);
+                            resizeWidthFactor = Math.round(resizeWidthFactor);
 
                             setResizeHeight(resizeHeightFactor);
                             setResizeWidth(resizeWidthFactor);
@@ -99,14 +97,19 @@ export const ComponentResizeTab = ({ resizeAlgorhythm, setResizeAlgorhythm, resi
                     id="width"
                     label="Width"
                     variant="outlined"
+                    type="number"
+                    autoComplete="off"
                     value={resizeWidth}
+                    error={Number(resizeWidth) < 0}
+                    helperText={Number(resizeWidth) < 0 ? "value to small" : ""}
                     InputProps={{
                         endAdornment: (
                             <InputAdornment position="end">px</InputAdornment>
                         ),
                     }}
                     onChange={e => {
-                        const val = e.target.value;
+                        const rawVal = e.target.value;
+                        const val = rawVal === '' ? '' : Math.round(Number(rawVal));
                         setResizeWidth(val);
 
                         if (
@@ -126,14 +129,19 @@ export const ComponentResizeTab = ({ resizeAlgorhythm, setResizeAlgorhythm, resi
                     id="height"
                     label="Height"
                     variant="outlined"
+                    type="number"
+                    autoComplete="off"
                     value={resizeHeight}
+                    error={Number(resizeWidth) < 0}
+                    helperText={Number(resizeWidth) < 0 ? "value to small" : ""}
                     InputProps={{
                         endAdornment: (
                             <InputAdornment position="end">px</InputAdornment>
                         ),
                     }}
                     onChange={e => {
-                        const val = e.target.value;
+                        const rawVal = e.target.value;
+                        const val = rawVal === '' ? '' : Math.round(Number(rawVal));
                         setResizeHeight(val);
 
                         if (
@@ -153,7 +161,8 @@ export const ComponentResizeTab = ({ resizeAlgorhythm, setResizeAlgorhythm, resi
                     variant="contained"
                     color="primary"
                     onClick={processImage}
-                    disabled={!ready || !inputBytes || loadingState}
+                    disabled={!ready || !inputBytes || loadingState ||
+                        Number(resizeWidth) < 0 || Number(resizeHeight) < 0}
                     fullWidth
                     startIcon={
                         loadingState ? (
@@ -161,10 +170,9 @@ export const ComponentResizeTab = ({ resizeAlgorhythm, setResizeAlgorhythm, resi
                         ) : null
                     }
                 >
-                    {loadingState ? 'Verarbeite...' : 'Run Resize'}
+                    {loadingState ? 'Processing...' : 'Run Resize'}
                 </Button>
             </Grid>
         </Grid>
-
     )
 }

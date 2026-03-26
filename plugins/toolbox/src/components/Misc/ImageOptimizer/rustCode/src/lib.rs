@@ -13,7 +13,7 @@ pub fn init_hook() {
 #[wasm_bindgen]
 pub fn pixo_compress(input_data: &[u8], qual: u8, img_type: &str) -> Result<Vec<u8>, JsValue> {
     let img = load_from_memory(input_data)
-        .map_err(|e| JsValue::from_str(&format!("Bild konnte net gelesen werden: {}", e)))?;
+        .map_err(|e| JsValue::from_str(&format!("Could not decode image: {}", e)))?;
 
     let rgb_img = img.into_rgb8();
 
@@ -23,7 +23,6 @@ pub fn pixo_compress(input_data: &[u8], qual: u8, img_type: &str) -> Result<Vec<
 
     let output = match img_type {
         "png" => {
-            web_sys::console::log_1(&"Verarbeite PNG.....".into());
             let mut qual = qual;
             if qual < 10 {
                 qual = 10;
@@ -34,7 +33,7 @@ pub fn pixo_compress(input_data: &[u8], qual: u8, img_type: &str) -> Result<Vec<
                 .compression_level(qual)
                 .build();
             png::encode(&pixels, &pixo_opts)
-                .map_err(|e| JsValue::from_str(&format!("Pixo Encoding Fehlr: {:?}", e)))?
+                .map_err(|e| JsValue::from_str(&format!("Image encoding error: {:?}", e)))?
         }
         "jpeg" => {
             let pixo_opts = JpegOptions::builder(w, h)
@@ -42,7 +41,7 @@ pub fn pixo_compress(input_data: &[u8], qual: u8, img_type: &str) -> Result<Vec<
                 .quality(qual)
                 .build();
             jpeg::encode(&pixels, &pixo_opts)
-                .map_err(|e| JsValue::from_str(&format!("Pixo Encoding Fehler: {:?}", e)))?
+                .map_err(|e| JsValue::from_str(&format!("Image encoding error: {:?}", e)))?
         }
 
         _ => {
@@ -51,7 +50,7 @@ pub fn pixo_compress(input_data: &[u8], qual: u8, img_type: &str) -> Result<Vec<
                 .quality(qual)
                 .build();
             jpeg::encode(&pixels, &pixo_opts)
-                .map_err(|e| JsValue::from_str(&format!("Pixo Encoding Fehler: {:?}", e)))?
+                .map_err(|e| JsValue::from_str(&format!("Image encoding error: {:?}", e)))?
         }
     };
 
@@ -66,8 +65,9 @@ pub fn pixo_resize(
     dst_width: u32,
     dst_height: u32,
 ) -> Result<Vec<u8>, JsValue> {
-    let img = load_from_memory(input_data)
-        .map_err(|e| JsValue::from_str(&format!("Bild konnte net gelesen werden: {}", e)))?;
+    let img = load_from_memory(input_data).map_err(|e| {
+        JsValue::from_str(&format!("Could not read image in resizing process: {}", e))
+    })?;
 
     let rgb_img = img.into_rgb8();
 
@@ -88,29 +88,27 @@ pub fn pixo_resize(
         .algorithm(algorithm_enum)
         .build();
 
-    web_sys::console::log_1(&format!("Ausgewählter Algorithmus: {}", resize_algorithm).into());
-
     let resized_pixels = resize(&pixels, &options)
-        .map_err(|e| JsValue::from_str(&format!("Resize interner Fehler: {:?}", e)))?;
+        .map_err(|e| JsValue::from_str(&format!("Resize internal error: {:?}", e)))?;
 
     let final_output = if img_type == "png" {
-        web_sys::console::log_1(&"Verarbeite PNG.....".into());
         let pixo_opts = PngOptions::builder(dst_width, dst_height)
             .color_type(ColorType::Rgb)
             .compression_level(6)
             .build();
 
-        png::encode(&resized_pixels, &pixo_opts)
-            .map_err(|e| JsValue::from_str(&format!("Pixo Encoding Fehlr: {:?}", e)))?
+        png::encode(&resized_pixels, &pixo_opts).map_err(|e| {
+            JsValue::from_str(&format!("Image encoding error while resizing: {:?}", e))
+        })?
     } else {
-        web_sys::console::log_1(&"Verarbeite JPEG.....".into());
         let jpeg_opts = JpegOptions::builder(dst_width, dst_height)
             .color_type(ColorType::Rgb)
             .quality(85)
             .build();
 
-        jpeg::encode(&resized_pixels, &jpeg_opts)
-            .map_err(|e| JsValue::from_str(&format!("Pixo Encoding Fehler nach Resize: {:?}", e)))?
+        jpeg::encode(&resized_pixels, &jpeg_opts).map_err(|e| {
+            JsValue::from_str(&format!("Image encoding error while resizing: {:?}", e))
+        })?
     };
 
     Ok(final_output)

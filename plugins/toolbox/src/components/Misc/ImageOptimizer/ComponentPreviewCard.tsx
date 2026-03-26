@@ -1,9 +1,6 @@
 import { InfoCard } from '@backstage/core-components';
 import { Box, Typography } from '@material-ui/core';
-import {
-	ReactCompareSlider,
-	ReactCompareSliderImage,
-} from 'react-compare-slider';
+import { ReactCompareSlider, ReactCompareSliderImage } from 'react-compare-slider';
 
 interface ComponentPreviewCardProps {
 	imageUrl: string | null;
