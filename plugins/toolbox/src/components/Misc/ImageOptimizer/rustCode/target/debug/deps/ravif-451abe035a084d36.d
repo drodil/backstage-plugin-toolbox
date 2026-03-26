@@ -1,0 +1,8 @@
+/Users/erfanteymoori/private/pixoToolboxIntegration/backstage-plugin-toolbox/plugins/toolbox/src/components/Misc/ImageOptimizer/rustCode/target/debug/deps/ravif-451abe035a084d36.d: /Users/erfanteymoori/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ravif-0.11.20/src/lib.rs /Users/erfanteymoori/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ravif-0.11.20/src/av1encoder.rs /Users/erfanteymoori/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ravif-0.11.20/src/error.rs /Users/erfanteymoori/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ravif-0.11.20/src/dirtyalpha.rs
+
+/Users/erfanteymoori/private/pixoToolboxIntegration/backstage-plugin-toolbox/plugins/toolbox/src/components/Misc/ImageOptimizer/rustCode/target/debug/deps/libravif-451abe035a084d36.rmeta: /Users/erfanteymoori/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ravif-0.11.20/src/lib.rs /Users/erfanteymoori/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ravif-0.11.20/src/av1encoder.rs /Users/erfanteymoori/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ravif-0.11.20/src/error.rs /Users/erfanteymoori/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ravif-0.11.20/src/dirtyalpha.rs
+
+/Users/erfanteymoori/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ravif-0.11.20/src/lib.rs:
+/Users/erfanteymoori/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ravif-0.11.20/src/av1encoder.rs:
+/Users/erfanteymoori/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ravif-0.11.20/src/error.rs:
+/Users/erfanteymoori/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ravif-0.11.20/src/dirtyalpha.rs:

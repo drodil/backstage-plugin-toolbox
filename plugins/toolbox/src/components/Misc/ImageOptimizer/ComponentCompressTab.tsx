@@ -41,8 +41,10 @@ export const ComponentCompressTab = ({ getRootProps, getInputProps, isDragActive
                         cursor: 'pointer',
                         backgroundColor: isDragActive ? '#78909c74' : '#78909C33',
                         overflow: 'hidden',
+                        
                     }}
                     elevation={0}
+                    
                 >
                     <input {...getInputProps()} />
 

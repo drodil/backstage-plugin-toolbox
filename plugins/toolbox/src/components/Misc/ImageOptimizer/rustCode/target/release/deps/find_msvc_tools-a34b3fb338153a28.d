@@ -1,0 +1,9 @@
+/Users/erfanteymoori/private/pixoToolboxIntegration/backstage-plugin-toolbox/plugins/toolbox/src/components/Misc/ImageOptimizer/rustCode/target/release/deps/find_msvc_tools-a34b3fb338153a28.d: /Users/erfanteymoori/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/find-msvc-tools-0.1.9/src/lib.rs /Users/erfanteymoori/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/find-msvc-tools-0.1.9/src/find_tools.rs /Users/erfanteymoori/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/find-msvc-tools-0.1.9/src/tool.rs
+
+/Users/erfanteymoori/private/pixoToolboxIntegration/backstage-plugin-toolbox/plugins/toolbox/src/components/Misc/ImageOptimizer/rustCode/target/release/deps/libfind_msvc_tools-a34b3fb338153a28.rlib: /Users/erfanteymoori/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/find-msvc-tools-0.1.9/src/lib.rs /Users/erfanteymoori/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/find-msvc-tools-0.1.9/src/find_tools.rs /Users/erfanteymoori/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/find-msvc-tools-0.1.9/src/tool.rs
+
+/Users/erfanteymoori/private/pixoToolboxIntegration/backstage-plugin-toolbox/plugins/toolbox/src/components/Misc/ImageOptimizer/rustCode/target/release/deps/libfind_msvc_tools-a34b3fb338153a28.rmeta: /Users/erfanteymoori/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/find-msvc-tools-0.1.9/src/lib.rs /Users/erfanteymoori/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/find-msvc-tools-0.1.9/src/find_tools.rs /Users/erfanteymoori/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/find-msvc-tools-0.1.9/src/tool.rs
+
+/Users/erfanteymoori/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/find-msvc-tools-0.1.9/src/lib.rs:
+/Users/erfanteymoori/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/find-msvc-tools-0.1.9/src/find_tools.rs:
+/Users/erfanteymoori/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/find-msvc-tools-0.1.9/src/tool.rs:

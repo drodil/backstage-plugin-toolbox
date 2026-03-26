@@ -1,0 +1,105 @@
+cargo:rustc-cfg=asm_neon
+OUT_DIR = Some(/Users/erfanteymoori/private/pixoToolboxIntegration/backstage-plugin-toolbox/plugins/toolbox/src/components/Misc/ImageOptimizer/rustCode/target/debug/build/rav1e-f68e8917472147e4/out)
+OPT_LEVEL = Some(0)
+TARGET = Some(aarch64-apple-darwin)
+CARGO_ENCODED_RUSTFLAGS = Some()
+HOST = Some(aarch64-apple-darwin)
+cargo:rerun-if-env-changed=CC_aarch64-apple-darwin
+CC_aarch64-apple-darwin = None
+cargo:rerun-if-env-changed=CC_aarch64_apple_darwin
+CC_aarch64_apple_darwin = None
+cargo:rerun-if-env-changed=HOST_CC
+HOST_CC = None
+cargo:rerun-if-env-changed=CC
+CC = None
+cargo:rerun-if-env-changed=CC_ENABLE_DEBUG_OUTPUT
+RUSTC_WRAPPER = None
+cargo:rerun-if-env-changed=CRATE_CC_NO_DEFAULTS
+CRATE_CC_NO_DEFAULTS = None
+DEBUG = Some(true)
+cargo:rerun-if-env-changed=MACOSX_DEPLOYMENT_TARGET
+MACOSX_DEPLOYMENT_TARGET = None
+cargo:rerun-if-env-changed=CFLAGS
+CFLAGS = None
+cargo:rerun-if-env-changed=HOST_CFLAGS
+HOST_CFLAGS = None
+cargo:rerun-if-env-changed=CFLAGS_aarch64_apple_darwin
+CFLAGS_aarch64_apple_darwin = None
+cargo:rerun-if-env-changed=CFLAGS_aarch64-apple-darwin
+CFLAGS_aarch64-apple-darwin = None
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+cargo:rerun-if-env-changed=AR_aarch64-apple-darwin
+AR_aarch64-apple-darwin = None
+cargo:rerun-if-env-changed=AR_aarch64_apple_darwin
+AR_aarch64_apple_darwin = None
+cargo:rerun-if-env-changed=HOST_AR
+HOST_AR = None
+cargo:rerun-if-env-changed=AR
+AR = None
+cargo:rerun-if-env-changed=ARFLAGS
+ARFLAGS = None
+cargo:rerun-if-env-changed=HOST_ARFLAGS
+HOST_ARFLAGS = None
+cargo:rerun-if-env-changed=ARFLAGS_aarch64_apple_darwin
+ARFLAGS_aarch64_apple_darwin = None
+cargo:rerun-if-env-changed=ARFLAGS_aarch64-apple-darwin
+ARFLAGS_aarch64-apple-darwin = None
+cargo:rustc-link-lib=static=rav1e-aarch64
+cargo:rustc-link-search=native=/Users/erfanteymoori/private/pixoToolboxIntegration/backstage-plugin-toolbox/plugins/toolbox/src/components/Misc/ImageOptimizer/rustCode/target/debug/build/rav1e-f68e8917472147e4/out
+cargo:rerun-if-changed=src/arm/32
+cargo:rerun-if-changed=src/arm/32/looprestoration_common.S
+cargo:rerun-if-changed=src/arm/32/mc.S
+cargo:rerun-if-changed=src/arm/32/itx.S
+cargo:rerun-if-changed=src/arm/32/looprestoration_tmpl.S
+cargo:rerun-if-changed=src/arm/32/ipred.S
+cargo:rerun-if-changed=src/arm/32/looprestoration16.S
+cargo:rerun-if-changed=src/arm/32/cdef16.S
+cargo:rerun-if-changed=src/arm/32/itx16.S
+cargo:rerun-if-changed=src/arm/32/cdef_tmpl.S
+cargo:rerun-if-changed=src/arm/32/loopfilter16.S
+cargo:rerun-if-changed=src/arm/32/looprestoration.S
+cargo:rerun-if-changed=src/arm/32/util.S
+cargo:rerun-if-changed=src/arm/32/mc16.S
+cargo:rerun-if-changed=src/arm/32/loopfilter.S
+cargo:rerun-if-changed=src/arm/32/ipred16.S
+cargo:rerun-if-changed=src/arm/32/cdef.S
+cargo:rerun-if-changed=src/arm/32/msac.S
+cargo:rerun-if-changed=src/arm/asm.S
+cargo:rerun-if-changed=src/arm/tables.S
+cargo:rerun-if-changed=src/arm/64
+cargo:rerun-if-changed=src/arm/64/looprestoration_common.S
+cargo:rerun-if-changed=src/arm/64/mc.S
+cargo:rerun-if-changed=src/arm/64/itx.S
+cargo:rerun-if-changed=src/arm/64/looprestoration_tmpl.S
+cargo:rerun-if-changed=src/arm/64/sad.S
+cargo:rerun-if-changed=src/arm/64/ipred.S
+cargo:rerun-if-changed=src/arm/64/satd.S
+cargo:rerun-if-changed=src/arm/64/looprestoration16.S
+cargo:rerun-if-changed=src/arm/64/cdef16.S
+cargo:rerun-if-changed=src/arm/64/itx16.S
+cargo:rerun-if-changed=src/arm/64/cdef_tmpl.S
+cargo:rerun-if-changed=src/arm/64/loopfilter16.S
+cargo:rerun-if-changed=src/arm/64/looprestoration.S
+cargo:rerun-if-changed=src/arm/64/util.S
+cargo:rerun-if-changed=src/arm/64/mc16.S
+cargo:rerun-if-changed=src/arm/64/sse.S
+cargo:rerun-if-changed=src/arm/64/cdef_dist.S
+cargo:rerun-if-changed=src/arm/64/loopfilter.S
+cargo:rerun-if-changed=src/arm/64/ipred16.S
+cargo:rerun-if-changed=src/arm/64/cdef.S
+cargo:rerun-if-changed=src/arm/64/msac.S
+cargo:rustc-env=PROFILE=debug
+cargo:rustc-env=CARGO_CFG_TARGET_FEATURE=aes,crc,dit,dotprod,dpb,dpb2,fcma,fhm,flagm,fp16,frintts,jsconv,lor,lse,neon,paca,pacg,pan,pmuv3,ras,rcpc,rcpc2,rdm,sb,sha2,sha3,ssbs,vh
+cargo:rustc-env=CARGO_ENCODED_RUSTFLAGS=

@@ -34,7 +34,7 @@ jobs:
         with:
           version: 'latest'
 
-      - run: cd plugins/toolbox/src/components/Misc/ImageOptimizer && wasm-pack build --target web
+      - run: cd plugins/toolbox/src/components/Misc/ImageOptimizer/rustCode && wasm-pack build --target web
       - run: yarn install --immutable
       - run: yarn commitlint --from=origin/main
         if: github.actor != 'dependabot[bot]'

@@ -9,8 +9,8 @@ interface ComponentResizeTabProps {
     setResizePreset: (type: number) => void;
     resizeWidth: number | string;
     setResizeWidth: (type: number | string) => void;
-    resizeHight: number | string;
-    setResizeHight: (type: number | string) => void;
+    resizeHeight: number | string;
+    setResizeHeight: (type: number | string) => void;
     resizeMaintainAspect: boolean;
     setResizeMaintainAspect: (type: boolean) => void;
     aspectRatio: number;
@@ -26,8 +26,10 @@ interface ComponentResizeTabProps {
 
 }
 
-export const ComponentResizeTab = ({ resizeAlgorhythm, setResizeAlgorhythm, resizePreset, setResizePreset, resizeWidth, setResizeWidth, resizeHight,
-    setResizeHight, resizeMaintainAspect, setResizeMaintainAspect, aspectRatio, processImage, ready, inputBytes, loadingState, originalResizeHeight,
+export const ComponentResizeTab = ({ resizeAlgorhythm, setResizeAlgorhythm, resizePreset,
+     setResizePreset, resizeWidth, setResizeWidth, resizeHeight,
+    setResizeHeight, resizeMaintainAspect, setResizeMaintainAspect, aspectRatio,
+     processImage, ready, inputBytes, loadingState, originalResizeHeight,
     originalResizeWidth }: ComponentResizeTabProps) => {
 
     return (
@@ -59,10 +61,10 @@ export const ComponentResizeTab = ({ resizeAlgorhythm, setResizeAlgorhythm, resi
                             setResizePreset(e.target.value as number);
                             let presetVal = Number(e.target.value) / 100;
 
-                            let resizeHightFactor = Number(originalResizeHeight) * presetVal;
+                            let resizeHeightFactor = Number(originalResizeHeight) * presetVal;
                             let resizeWidthFactor = Number(originalResizeWidth) * presetVal;
 
-                            setResizeHight(resizeHightFactor);
+                            setResizeHeight(resizeHeightFactor);
                             setResizeWidth(resizeWidthFactor);
                         }}
                     >
@@ -112,8 +114,8 @@ export const ComponentResizeTab = ({ resizeAlgorhythm, setResizeAlgorhythm, resi
                             val !== '' &&
                             aspectRatio > 0
                         ) {
-                            const newHight = Number(val) / aspectRatio;
-                            setResizeHight(Math.round(newHight));
+                            const newHeight = Number(val) / aspectRatio;
+                            setResizeHeight(Math.round(newHeight));
                         }
                     }}
                 />
@@ -122,9 +124,9 @@ export const ComponentResizeTab = ({ resizeAlgorhythm, setResizeAlgorhythm, resi
             <Grid item xs={6}>
                 <TextField
                     id="height"
-                    label="Hight"
+                    label="Height"
                     variant="outlined"
-                    value={resizeHight}
+                    value={resizeHeight}
                     InputProps={{
                         endAdornment: (
                             <InputAdornment position="end">px</InputAdornment>
@@ -132,7 +134,7 @@ export const ComponentResizeTab = ({ resizeAlgorhythm, setResizeAlgorhythm, resi
                     }}
                     onChange={e => {
                         const val = e.target.value;
-                        setResizeHight(val);
+                        setResizeHeight(val);
 
                         if (
                             resizeMaintainAspect &&

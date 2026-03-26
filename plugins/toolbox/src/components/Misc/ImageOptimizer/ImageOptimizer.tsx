@@ -3,7 +3,7 @@ import { useEffect, useState, useCallback } from 'react';
 import { TabbedCard, CardTab } from '@backstage/core-components';
 
 import { Grid } from '@material-ui/core';
-import init, { pixo_compress, init_hook, pixo_resize } from './pkg/pixo.js';
+import init, { pixo_compress, init_hook, pixo_resize } from './rustCode/pkg/pixo.js';
 import { useDropzone } from 'react-dropzone';
 
 import { ComponentCompressTab } from './ComponentCompressTab.tsx';
@@ -24,7 +24,7 @@ export const ImageOptimizer = () => {
   const [resizeAlgorhythm, setResizeAlgorhythm] = useState<string>('lanczos3');
   const [resizePreset, setResizePreset] = useState<number>(100);
   const [resizeWidth, setResizeWidth] = useState<number | string>('');
-  const [resizeHight, setResizeHight] = useState<number | string>('');
+  const [resizeHeight, setResizeHeight] = useState<number | string>('');
   const [resizeMaintainAspectRatio, setResizeMaintainAspectRatio] = useState<boolean>(true);
   const [aspectRatio, setAspectRatio] = useState(0);
   const [origDim, setOrigDim] = useState({ width: 0, height: 0 });
@@ -65,20 +65,23 @@ export const ImageOptimizer = () => {
     *- Nur für PNG und JPEG anpassen also bei compressTab
     *- irgendien Name von einem state von maintain aspect stimmt nicht
     *- Text verlässt dropZone
-    * Layout ändern
-    * PNG encoder ändern
-    * Rust Code säubern
-    * Hight zu Height
-    * Preview vergrößern auf settings tab größe
-    * Preview für resized Bilder verbesern
-    * Fehlermeldungsnachrichten und mehr machen
-    * resizealgorithm
-    * camle snake
+    *- Layout ändern
+    *- PNG encoder ändern
+    *- Rust Code säubern
+    *- Hight zu Height
+    *- Preview vergrößern auf settings tab größe
+    *- Preview für resized Bilder verbesern
+    *- Fehlermeldungsnachrichten und mehr machen
+    *- resizealgorithm
+    *- camle snake
     * Neuer algo = neuer use
     * deutsch zu english
     * jpeg resizen geht nicht
     * fehler auswerfen, wen falsches Bildofrmat
     * states ordnen
+    * console logs weg
+    * Textboxen beim verkleineen werden kleiner
+    * Math.round für resize dimnesions
     
     
 
@@ -117,7 +120,7 @@ export const ImageOptimizer = () => {
       const h = img.height;
 
       setResizeWidth(w);
-      setResizeHight(h);
+      setResizeHeight(h);
       setAspectRatio(w / h);
       setOrigDim({ width: w, height: h });
       originalSetResizeHeight(h);
@@ -128,6 +131,7 @@ export const ImageOptimizer = () => {
       setOrigImgeType('jpeg');
     }
     };
+    
 
     setResultUrl(null);
     setStats(null);
@@ -149,19 +153,21 @@ export const ImageOptimizer = () => {
       try {
         let currentBytes = inputBytes;
         const width = Number(resizeWidth);
-        const hight = Number(resizeHight);
+        const Height = Number(resizeHeight);
         const mimeType = imgType === 'png' ? 'image/png' : 'image/jpeg';
         try {
           let q = quality;
           if (q <= 0) q = 1;
           if (q >= 100) q = 99;
-
+          console.log("Typename:", origImgeType);
           if (
             width > 0 &&
-            hight > 0 &&
-            (width !== origDim.width || hight !== origDim.height)
-          ) {
-            currentBytes = pixo_resize(currentBytes, resizeAlgorhythm, origImgeType, width, hight);
+            Height > 0 &&
+            (width !== origDim.width || Height !== origDim.height)
+            
+          ) 
+          {
+            currentBytes = pixo_resize(currentBytes, resizeAlgorhythm, origImgeType, width, Height);
           }
 
           console.time("Kompression");
@@ -196,7 +202,7 @@ export const ImageOptimizer = () => {
     ready,
     inputBytes,
     resizeWidth,
-    resizeHight,
+    resizeHeight,
     quality,
     imgType,
     origDim.width,
@@ -245,8 +251,8 @@ export const ImageOptimizer = () => {
               setResizePreset={setResizePreset}
               resizeWidth={resizeWidth}
               setResizeWidth={setResizeWidth}
-              resizeHight={resizeHight}
-              setResizeHight={setResizeHight}
+              resizeHeight={resizeHeight}
+              setResizeHeight={setResizeHeight}
               resizeMaintainAspect={resizeMaintainAspectRatio}
               setResizeMaintainAspect={setResizeMaintainAspectRatio}
               aspectRatio={aspectRatio}

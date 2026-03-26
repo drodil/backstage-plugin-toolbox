@@ -25,7 +25,7 @@ export const ComponentPreviewCard = ({
 				display="flex"
 				justifyContent="center"
 				alignItems="center"
-				minHeight="300px"
+				minHeight="318px"
 				style={{ background: '#4a606e31' }}
 			>
 				{imageUrl ? (
