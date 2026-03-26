@@ -26,7 +26,7 @@ jobs:
         with:
           version: 'latest'
 
-      - run: cd plugins/toolbox/src/components/Misc/ImageOptimizer && wasm-pack build --target web
+      - run: cd plugins/toolbox/src/components/Misc/ImageOptimizer/rustCode && wasm-pack build --target web
       - run: yarn install --immutable
       - run: yarn lint:all
       - run: yarn prettier:check
@@ -56,7 +56,7 @@ jobs:
         with:
           version: 'latest'
 
-      - run: cd plugins/toolbox/src/components/Misc/ImageOptimizer && wasm-pack build --target web
+      - run: cd plugins/toolbox/src/components/Misc/ImageOptimizer/rustCode && wasm-pack build --target web
       - run: yarn install --immutable
       - run: yarn test:all
 
@@ -129,7 +129,7 @@ jobs:
           version: 'latest'
 
       - run: git pull
-      - run: cd plugins/toolbox/src/components/Misc/ImageOptimizer && wasm-pack build --target web
+      - run: cd plugins/toolbox/src/components/Misc/ImageOptimizer/rustCode && wasm-pack build --target web
       - run: yarn
       - run: yarn tsc
       - run: yarn --cwd plugins/toolbox build

@@ -22298,6 +22298,12 @@ __metadata:
   languageName: node
   linkType: hard
 
+"pixo@workspace:plugins/toolbox/src/components/Misc/ImageOptimizer/rustCode/pkg":
+  version: 0.0.0-use.local
+  resolution: "pixo@workspace:plugins/toolbox/src/components/Misc/ImageOptimizer/rustCode/pkg"
+  languageName: unknown
+  linkType: soft
+
 "pkg-dir@npm:^4.2.0":
   version: 4.2.0
   resolution: "pkg-dir@npm:4.2.0"

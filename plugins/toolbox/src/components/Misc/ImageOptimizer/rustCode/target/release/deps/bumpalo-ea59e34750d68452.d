@@ -1,9 +1,0 @@
-/Users/erfanteymoori/private/pixoToolboxIntegration/backstage-plugin-toolbox/plugins/toolbox/src/components/Misc/ImageOptimizer/rustCode/target/release/deps/bumpalo-ea59e34750d68452.d: /Users/erfanteymoori/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/bumpalo-3.20.1/src/lib.rs /Users/erfanteymoori/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/bumpalo-3.20.1/src/alloc.rs /Users/erfanteymoori/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/bumpalo-3.20.1/src/../README.md
-
-/Users/erfanteymoori/private/pixoToolboxIntegration/backstage-plugin-toolbox/plugins/toolbox/src/components/Misc/ImageOptimizer/rustCode/target/release/deps/libbumpalo-ea59e34750d68452.rlib: /Users/erfanteymoori/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/bumpalo-3.20.1/src/lib.rs /Users/erfanteymoori/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/bumpalo-3.20.1/src/alloc.rs /Users/erfanteymoori/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/bumpalo-3.20.1/src/../README.md
-
-/Users/erfanteymoori/private/pixoToolboxIntegration/backstage-plugin-toolbox/plugins/toolbox/src/components/Misc/ImageOptimizer/rustCode/target/release/deps/libbumpalo-ea59e34750d68452.rmeta: /Users/erfanteymoori/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/bumpalo-3.20.1/src/lib.rs /Users/erfanteymoori/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/bumpalo-3.20.1/src/alloc.rs /Users/erfanteymoori/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/bumpalo-3.20.1/src/../README.md
-
-/Users/erfanteymoori/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/bumpalo-3.20.1/src/lib.rs:
-/Users/erfanteymoori/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/bumpalo-3.20.1/src/alloc.rs:
-/Users/erfanteymoori/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/bumpalo-3.20.1/src/../README.md:

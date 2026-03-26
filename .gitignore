@@ -104,8 +104,7 @@ dist
 .tern-port
 
 # Rust / WASM
-**/plugins/toolbox/src/components/Misc/ImageOptimizer/pkg
-**/plugins/toolbox/src/components/Misc/ImageOptimizer/target
+**/plugins/toolbox/src/components/Misc/ImageOptimizer/rustCode/target
 
 
 .idea

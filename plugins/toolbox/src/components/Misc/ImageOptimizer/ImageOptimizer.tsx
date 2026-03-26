@@ -3,7 +3,11 @@ import { useEffect, useState, useCallback } from 'react';
 import { TabbedCard, CardTab } from '@backstage/core-components';
 
 import { Grid } from '@material-ui/core';
-import init, { pixo_compress, init_hook, pixo_resize } from './rustCode/pkg/pixo.js';
+import init, {
+  pixo_compress,
+  init_hook,
+  pixo_resize,
+} from './rustCode/pkg/pixo.js';
 import { useDropzone } from 'react-dropzone';
 
 import { ComponentCompressTab } from './ComponentCompressTab.tsx';
@@ -17,7 +21,10 @@ export const ImageOptimizer = () => {
 
   const [imgType, setImgType] = useState<string>('jpeg');
   const [resultUrl, setResultUrl] = useState<string | null>(null);
-  const [stats, setStats] = useState<{ original: number; compressed: number; } | null>(null);
+  const [stats, setStats] = useState<{
+    original: number;
+    compressed: number;
+  } | null>(null);
 
   const [downloadUrl, setDownloadUrl] = useState<string | null>(null);
   const [fileName, setFileName] = useState<string>('');
@@ -29,7 +36,8 @@ export const ImageOptimizer = () => {
 
   const [resizeWidth, setResizeWidth] = useState<number | string>('');
   const [resizeHeight, setResizeHeight] = useState<number | string>('');
-  const [resizeMaintainAspectRatio, setResizeMaintainAspectRatio] = useState<boolean>(true);
+  const [resizeMaintainAspectRatio, setResizeMaintainAspectRatio] =
+    useState<boolean>(true);
 
   const [aspectRatio, setAspectRatio] = useState(0);
   const [origDim, setOrigDim] = useState({ width: 0, height: 0 });
@@ -72,7 +80,6 @@ export const ImageOptimizer = () => {
     const bytes = new Uint8Array(buffer);
     setInputBytes(bytes);
 
-
     const blob = new Blob([bytes], { type: file.type });
     const origUrl = URL.createObjectURL(blob);
     setImageUrl(origUrl);
@@ -100,9 +107,8 @@ export const ImageOptimizer = () => {
     setStats(null);
   }, []);
 
-  // main function 
+  // main function
   const processImage = useCallback(() => {
-
     if (!ready || !inputBytes) return;
 
     setLoading(true);
@@ -121,15 +127,18 @@ export const ImageOptimizer = () => {
             width > 0 &&
             Height > 0 &&
             (width !== origDim.width || Height !== origDim.height)
-
           ) {
-            currentBytes = pixo_resize(currentBytes, resizeAlgorithm, origImgeType, width, Height);
+            currentBytes = pixo_resize(
+              currentBytes,
+              resizeAlgorithm,
+              origImgeType,
+              width,
+              Height,
+            );
           }
           currentBytes = pixo_compress(currentBytes, q, imgType);
-
         } catch (e) {
           setLoading(false);
-          console.error("WASM Error:", e);
         }
 
         const blob = new Blob([currentBytes as any], { type: mimeType });
@@ -157,6 +166,7 @@ export const ImageOptimizer = () => {
     origDim.width,
     origDim.height,
     resizeAlgorithm,
+    origImgeType,
   ]);
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
@@ -178,7 +188,6 @@ export const ImageOptimizer = () => {
   return (
     <Grid container spacing={3}>
       <Grid item xs={12} md={4}>
-
         <TabbedCard title="Settings">
           <CardTab label="Compress">
             <ComponentCompressTab
@@ -225,7 +234,8 @@ export const ImageOptimizer = () => {
             ready={ready}
             hasInput={!!inputBytes}
             downloadCompression={downloadCompression}
-          />)}
+          />
+        )}
       </Grid>
 
       <Grid item xs={12} md={8}>
