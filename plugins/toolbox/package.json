@@ -88,6 +88,7 @@
     "qr-code-styling": "^1.6.2",
     "quicktype-core": "23.0.168",
     "react-barcode": "^1.4.6",
+    "react-dropzone": "^15.0.0",
     "react-qr-code": "^2.0.12",
     "react-use": "^17.2.4",
     "react-window": "^1.8.11",

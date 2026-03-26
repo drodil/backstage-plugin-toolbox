@@ -103,6 +103,10 @@ dist
 # TernJS port file
 .tern-port
 
+# Rust / WASM
+**/plugins/toolbox/src/components/Misc/ImageOptimizer/rustCode/target
+
+
 .idea
 .vscode
 dist-types/

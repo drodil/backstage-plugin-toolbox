@@ -16,6 +16,17 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'yarn'
+
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: wasm32-unknown-unknown
+      - name: Install wasm-pack
+        uses: jetli/wasm-pack-action@v0.4.0
+        with:
+          version: 'latest'
+
+      - run: cd plugins/toolbox/src/components/Misc/ImageOptimizer/rustCode && wasm-pack build --target web
       - run: yarn install --immutable
       - run: yarn lint:all
       - run: yarn prettier:check
@@ -35,6 +46,17 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'yarn'
+
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: wasm32-unknown-unknown
+      - name: Install wasm-pack
+        uses: jetli/wasm-pack-action@v0.4.0
+        with:
+          version: 'latest'
+
+      - run: cd plugins/toolbox/src/components/Misc/ImageOptimizer/rustCode && wasm-pack build --target web
       - run: yarn install --immutable
       - run: yarn test:all
 
@@ -96,7 +118,18 @@ jobs:
         with:
           node-version: 22.x
           cache: 'yarn'
+
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: wasm32-unknown-unknown
+      - name: Install wasm-pack
+        uses: jetli/wasm-pack-action@v0.4.0
+        with:
+          version: 'latest'
+
       - run: git pull
+      - run: cd plugins/toolbox/src/components/Misc/ImageOptimizer/rustCode && wasm-pack build --target web
       - run: yarn
       - run: yarn tsc
       - run: yarn --cwd plugins/toolbox build

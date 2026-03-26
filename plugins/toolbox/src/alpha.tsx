@@ -591,6 +591,22 @@ const whoisTool = ToolboxToolBlueprint.make({
   },
 });
 
+const imageOptimizer = ToolboxToolBlueprint.make({
+  name: 'image-optimizer',
+  params: {
+    id: 'image-optimizer',
+    displayName: 'Image Optimizer',
+    description: 'Compress and resize images',
+    category: 'Miscellaneous',
+    async loader() {
+      const m = await import(
+        './components/Misc/ImageOptimizer/ImageOptimizer.tsx'
+      );
+      return compatWrapper(<m.default />);
+    },
+  },
+});
+
 /** @alpha */
 export const toolboxNavItem = NavItemBlueprint.make({
   params: {
@@ -652,6 +668,7 @@ const toolboxPlugin: OverridableFrontendPlugin = createFrontendPlugin({
     ibanValidatorTool,
     regexValidatorTool,
     whoisTool,
+    imageOptimizer,
   ],
 });
 

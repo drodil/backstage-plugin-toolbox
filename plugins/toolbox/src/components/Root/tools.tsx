@@ -47,6 +47,10 @@ const UrlExploder = lazy(() => import('../Misc/UrlExploder'));
 const Whois = lazy(() => import('../Networking/Whois'));
 const StringAnalyzer = lazy(() => import('../Misc/StringAnalyzer'));
 
+const ImageOptimizer = lazy(
+  () => import('../Misc/ImageOptimizer/ImageOptimizer'),
+);
+
 // const CidrCalculator = lazy(() => import('../Networking/CidrCalculator'));
 
 export const defaultTools: Tool[] = [
@@ -324,6 +328,13 @@ export const defaultTools: Tool[] = [
     category: 'Networking',
     description: 'Lookup domain WHOIS information',
     requiresBackend: true,
+  },
+  {
+    id: 'image-optimizer',
+    name: 'Image Optimizer',
+    component: <ImageOptimizer />,
+    category: 'Miscellaneous',
+    description: 'Compress and resize images',
   },
   /**
    {

@@ -13,7 +13,9 @@
     "docker:down": "docker compose down",
     "start:app": "yarn workspace @drodil/backstage-plugin-toolbox start --config ../../app-config.yaml",
     "start": "yarn workspace @drodil/backstage-plugin-toolbox-backend start --config ../../app-config.yaml",
-    "build": "backstage-cli repo build --all",
+    "build:wasm": "cd plugins/toolbox/src/components/Misc/ImageOptimizer/rustCode && wasm-pack build --target web",
+    "prebuild": "yarn build:wasm",
+    "build": "yarn build:wasm && backstage-cli repo build --all",
     "tsc": "tsc",
     "tsc:full": "tsc --skipLibCheck false --incremental false",
     "clean": "backstage-cli repo clean",
@@ -30,7 +32,8 @@
   },
   "workspaces": {
     "packages": [
-      "plugins/**"
+      "plugins/**",
+      "!plugins/toolbox/src/components/Misc/ImageOptimizer/pkg"
     ]
   },
   "devDependencies": {
@@ -72,5 +75,9 @@
       "yarn fix"
     ]
   },
-  "packageManager": "yarn@4.5.0"
+  "packageManager": "yarn@4.5.0",
+  "dependencies": {
+    "react-compare-slider": "^3.1.0",
+    "react-dropzone": "^15.0.0"
+  }
 }

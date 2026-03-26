@@ -1,0 +1,15 @@
+{
+  "name": "pixo",
+  "type": "module",
+  "version": "0.1.0",
+  "files": [
+    "pixo_bg.wasm",
+    "pixo.js",
+    "pixo.d.ts"
+  ],
+  "main": "pixo.js",
+  "types": "pixo.d.ts",
+  "sideEffects": [
+    "./snippets/*"
+  ]
+}
