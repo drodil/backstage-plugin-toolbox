@@ -61,7 +61,7 @@
     "whoiser": "^1.17.0",
     "winston": "^3.2.1",
     "xml-js": "^1.6.11",
-    "yaml": "^2.3.4",
+    "yaml": "^2.8.3",
     "yn": "^4.0.0"
   },
   "devDependencies": {
