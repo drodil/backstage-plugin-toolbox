@@ -69,7 +69,7 @@
     "@material-ui/lab": "^4.0.0-alpha.61",
     "@monaco-editor/react": "^4.5.2",
     "@mui/material": "^5.16.7",
-    "asn1js": "3.0.5",
+    "asn1js": "^3.0.7",
     "color-convert": "^2.0.1",
     "crypto-hash": "^3.0.0",
     "csvtojson": "^2.0.14",
