@@ -197,4 +197,12 @@ export class CatalogApiMock implements CatalogApi {
   ): AsyncIterable<Entity[]> {
     throw new Error('Method not implemented.');
   }
+
+  updateLocation(
+    _: string,
+    __: { type?: string; target: string },
+    ___?: CatalogRequestOptions,
+  ): Promise<Location> {
+    throw new Error('Method not implemented.');
+  }
 }
