@@ -5,6 +5,7 @@ import {
   createExtensionInput,
   ExtensionBoundary,
 } from '@backstage/frontend-plugin-api';
+import { z } from 'zod';
 import { Tool } from './types';
 
 export const toolDataRef = createExtensionDataRef<Tool>().with({
@@ -21,17 +22,15 @@ export const ToolboxToolBlueprint = createExtensionBlueprint({
       singleton: false,
     }),
   },
-  config: {
-    schema: {
-      id: z => z.string().optional(),
-      displayName: z => z.string().optional(),
-      aliases: z => z.array(z.string()).optional(),
-      showOpenInNewWindowButton: z => z.boolean().optional(),
-      showFavoriteButton: z => z.boolean().optional(),
-      description: z => z.string().optional(),
-      category: z => z.string().optional(),
-      requiresBackend: z => z.boolean().optional(),
-    },
+  configSchema: {
+    id: z.string().optional(),
+    displayName: z.string().optional(),
+    aliases: z.array(z.string()).optional(),
+    showOpenInNewWindowButton: z.boolean().optional(),
+    showFavoriteButton: z.boolean().optional(),
+    description: z.string().optional(),
+    category: z.string().optional(),
+    requiresBackend: z.boolean().optional(),
   },
   dataRefs: { tool: toolDataRef },
   *factory(
