@@ -2437,7 +2437,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@backstage/cli-defaults@npm:^0.1.1":
+"@backstage/cli-defaults@backstage:^::backstage=1.50.0&npm=0.1.1, @backstage/cli-defaults@npm:^0.1.1":
   version: 0.1.1
   resolution: "@backstage/cli-defaults@npm:0.1.1"
   dependencies:
@@ -25527,6 +25527,7 @@ __metadata:
   resolution: "root@workspace:."
   dependencies:
     "@backstage/cli": "backstage:^"
+    "@backstage/cli-defaults": "backstage:^"
     "@commitlint/cli": "npm:^17.7.1"
     "@commitlint/config-conventional": "npm:^17.7.0"
     "@jest/environment-jsdom-abstract": "npm:^30.2.0"
