@@ -5,7 +5,7 @@ import {
   createExtensionInput,
   ExtensionBoundary,
 } from '@backstage/frontend-plugin-api';
-import { z } from 'zod';
+import { z } from 'zod/v4';
 import { Tool } from './types';
 
 export const toolDataRef = createExtensionDataRef<Tool>().with({
