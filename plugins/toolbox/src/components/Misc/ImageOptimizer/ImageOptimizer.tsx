@@ -7,7 +7,7 @@ import init, {
   pixo_compress,
   init_hook,
   pixo_resize,
-} from './rustCode/pkg/pixo.js';
+} from './wasm/pkg/pixo.js';
 import { useDropzone } from 'react-dropzone';
 
 import { ComponentCompressTab } from './ComponentCompressTab.tsx';

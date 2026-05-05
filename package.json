@@ -32,7 +32,7 @@
   "workspaces": {
     "packages": [
       "plugins/**",
-      "!plugins/toolbox/src/components/Misc/ImageOptimizer/rustCode/pkg"
+      "!plugins/**/wasm/pkg"
     ]
   },
   "devDependencies": {

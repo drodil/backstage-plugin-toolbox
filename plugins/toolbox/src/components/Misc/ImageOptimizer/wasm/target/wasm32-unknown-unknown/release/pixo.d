@@ -1,0 +1,1 @@
+/Users/erfanteymoori/private/pixoToolboxIntegration/backstage-plugin-toolbox/plugins/toolbox/src/components/Misc/ImageOptimizer/rustCode/target/wasm32-unknown-unknown/release/pixo.wasm: /Users/erfanteymoori/private/pixoToolboxIntegration/backstage-plugin-toolbox/plugins/toolbox/src/components/Misc/ImageOptimizer/rustCode/src/lib.rs
