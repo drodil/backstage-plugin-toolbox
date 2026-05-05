@@ -98,7 +98,8 @@
     "turndown": "^7.1.2",
     "turndown-plugin-gfm": "^1.0.2",
     "xml-js": "^1.6.11",
-    "yaml": "^2.3.2"
+    "yaml": "^2.3.2",
+    "react-compare-slider": "^3.1.0"
   },
   "peerDependencies": {
     "@backstage/catalog-client": "^1.13.0",
