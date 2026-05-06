@@ -33,8 +33,8 @@ jobs:
         with:
           version: 'latest'
 
-      - run: cd plugins/toolbox/src/components/Misc/ImageOptimizer/rustCode && wasm-pack build --target web
       - run: yarn install --immutable
+      - run: yarn build:wasm
       - run: yarn commitlint --from=origin/main
         if: github.actor != 'dependabot[bot]'
       - run: yarn lint:all
@@ -69,6 +69,6 @@ jobs:
         with:
           version: 'latest'
 
-      - run: cd plugins/toolbox/src/components/Misc/ImageOptimizer/rustCode && wasm-pack build --target web
       - run: yarn install --immutable
+      - run: yarn build:wasm
       - run: yarn test:all

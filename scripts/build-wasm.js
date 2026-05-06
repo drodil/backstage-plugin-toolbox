@@ -6,7 +6,7 @@ const IGNORE_DIRS = ['node_modules', 'target', 'pkg', 'dist'];
 
 function findRustProjects(dir) {
   let results = [];
-  
+
   if (!fs.existsSync(dir)) return results;
 
   const files = fs.readdirSync(dir);
@@ -21,7 +21,7 @@ function findRustProjects(dir) {
       results.push(dir);
     }
   }
-  
+
   return results;
 }
 
