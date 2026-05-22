@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.36.9](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.36.8...v1.36.9) (2026-05-22)
+
+
+### Bug Fixes
+
+* use zod v4 import ([32ff204](https://github.com/drodil/backstage-plugin-toolbox/commit/32ff2046741478f0964cf63a97fae5cc2f1a93d8))
+
 ### [1.36.8](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.36.7...v1.36.8) (2026-04-15)
 
 
