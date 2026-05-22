@@ -4,7 +4,6 @@ import {
   createExtensionBlueprint,
   createExtensionInput,
   createFrontendPlugin,
-  NavItemBlueprint,
   OverridableFrontendPlugin,
   PageBlueprint,
 } from '@backstage/frontend-plugin-api';
@@ -72,6 +71,8 @@ const toolboxPage = PageBlueprint.makeWithOverrides({
     const welcomePage = inputs.welcomePage?.get(coreExtensionData.reactElement);
     return originalFactory({
       path: config.path ?? '/toolbox',
+      title: config.title ?? 'Toolbox',
+      icon: <CardTravel />,
       routeRef: rootRouteRef,
       loader: () =>
         import('./components/Root').then(m =>
@@ -591,15 +592,6 @@ const whoisTool = ToolboxToolBlueprint.make({
   },
 });
 
-/** @alpha */
-export const toolboxNavItem = NavItemBlueprint.make({
-  params: {
-    title: 'Toolbox',
-    routeRef: rootRouteRef,
-    icon: CardTravel,
-  },
-});
-
 /**
  * Backstage frontend plugin.
  *
@@ -614,7 +606,6 @@ const toolboxPlugin: OverridableFrontendPlugin = createFrontendPlugin({
   extensions: [
     toolboxApi,
     toolboxPage,
-    toolboxNavItem,
     // Tools
     base64EncodeTool,
     urlEncodeTool,
