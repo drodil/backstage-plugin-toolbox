@@ -1,6 +1,6 @@
 {
   "name": "@drodil/backstage-plugin-toolbox",
-  "version": "1.36.9",
+  "version": "1.36.10",
   "main": "src/index.ts",
   "types": "src/index.ts",
   "prepublishOnly": "yarn tsc && yarn build",
