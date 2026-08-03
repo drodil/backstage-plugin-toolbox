@@ -1,5 +1,5 @@
-import { Button, Tooltip } from '@material-ui/core';
-import Clear from '@material-ui/icons/Clear';
+import { TooltipTrigger, Tooltip, Button } from '@backstage/ui';
+import { RiCloseLine } from '@remixicon/react';
 import { useToolboxTranslation } from '../../hooks';
 
 type Props = {
@@ -10,19 +10,14 @@ type Props = {
 export const ClearValueButton = (props: Props) => {
   const { t } = useToolboxTranslation();
   return (
-    <Tooltip
-      arrow
-      title={props.tooltip ?? t('components.clearValueButton.tooltipTitle')}
-    >
-      <Button
-        size="small"
-        startIcon={<Clear />}
-        onClick={() => props.setValue('')}
-        variant="text"
-        color="inherit"
-      >
+    <TooltipTrigger>
+      <Button variant="tertiary" onClick={() => props.setValue('')}>
+        <RiCloseLine size={16} />
         {t('components.clearValueButton.buttonText')}
       </Button>
-    </Tooltip>
+      <Tooltip>
+        {props.tooltip ?? t('components.clearValueButton.tooltipTitle')}
+      </Tooltip>
+    </TooltipTrigger>
   );
 };

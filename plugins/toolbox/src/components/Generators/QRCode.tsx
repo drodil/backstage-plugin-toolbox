@@ -10,38 +10,11 @@ import type {
   ShapeType,
 } from 'qr-code-styling';
 import QRCodeStyling from 'qr-code-styling';
-import {
-  Box,
-  Button,
-  FormControl,
-  MenuItem,
-  TextField,
-} from '@material-ui/core';
-import {
-  DefaultEditor,
-  useToolboxTranslation,
-} from '@drodil/backstage-plugin-toolbox';
 
 import { configApiRef, useApi } from '@backstage/core-plugin-api';
-import { DefaultSelect } from '../Selects';
-import { makeStyles, Theme } from '@material-ui/core/styles';
-
-const useStyles = makeStyles<Theme>(theme => ({
-  select: {
-    margin: `0 ${theme.spacing(1.25)}px`, // 10px between
-  },
-  colorTextField: {
-    margin: `${theme.spacing(1.25)}px ${theme.spacing(
-      1.25,
-    )}px 0 ${theme.spacing(1.25)}px`, // 10px between 0 between
-  },
-  downloadSpan: {
-    marginLeft: theme.spacing(4), // 2rem = 32px
-  },
-  box: {
-    margin: theme.spacing(5), // 40px
-  },
-}));
+import { useToolboxTranslation } from '../../hooks';
+import { DefaultEditor } from '../DefaultEditor';
+import { Button, Select, TextField } from '@backstage/ui';
 
 interface QrCodeSettings {
   cornerSquareType: CornerSquareType;
@@ -64,21 +37,12 @@ const ConfigSelect = (props: {
   readonly settings: QrCodeSettings;
   readonly setSettings: (settings: QrCodeSettings) => void;
 }) => {
-  const onChange = useCallback(
-    (event: React.ChangeEvent<{ value: unknown }>) =>
-      props.setSettings({
-        ...props.settings,
-        [props.settingKey]: event.target.value as DotType,
-      }),
-    [props],
-  );
   const { t } = useToolboxTranslation();
-  const classes = useStyles();
-
   const colorSetting = props.settingKey.replace(
     'Type',
     'Color',
   ) as keyof QrCodeSettings;
+
   const onChangeColor = useCallback(
     (event: ChangeEvent<HTMLInputElement>) =>
       props.setSettings({
@@ -89,54 +53,54 @@ const ConfigSelect = (props: {
   );
 
   return (
-    <FormControl key={`formcontrol-for-select-${props.settingKey}`}>
-      <DefaultSelect
+    <div
+      key={`formcontrol-for-select-${props.settingKey}`}
+      style={{ margin: '0 10px' }}
+    >
+      <Select
         id={`id-${props.settingKey}`}
-        key={`select-for-${props.settingKey}`}
         label={props.name}
-        onChange={onChange}
-        className={classes.select}
-        value={props.settings[props.settingKey]}
-      >
-        {props.types
-          ? props.types.map(value => (
-              <MenuItem
-                key={`selectFor${props.name}menu${value}`}
-                value={value}
-              >
-                {t(`tool.qr-code-generate.${value}`)}
-              </MenuItem>
-            ))
-          : null}
-      </DefaultSelect>
+        selectedKey={props.settings[props.settingKey]}
+        onSelectionChange={key =>
+          props.setSettings({
+            ...props.settings,
+            [props.settingKey]: key as DotType,
+          })
+        }
+        options={
+          props.types
+            ? props.types.map(value => ({
+                value,
+                label: t(`tool.qr-code-generate.${value}`, {
+                  defaultValue: value,
+                }),
+              }))
+            : []
+        }
+      />
       {props.name !== 'Shape' ? (
         <TextField
-          defaultValue={props.settings[colorSetting]}
-          id="input"
           label={`${props.name} ${t('tool.qr-code-generate.color')}`}
-          name="input"
-          onChange={onChangeColor}
-          className={classes.colorTextField}
-          variant="standard"
+          defaultValue={props.settings[colorSetting]}
+          onChange={(val: any) =>
+            onChangeColor({ target: { value: val } } as any)
+          }
           autoComplete="off"
         />
       ) : null}
-    </FormControl>
+    </div>
   );
 };
 
 export const QRCodeGenerator = () => {
   const [input, setInput] = useState('');
   const sample = faker.internet.url();
-
   const [fileExt, setFileExt] = useState<FileExtension>('png');
   const [image, setImage] = useState<string | null>(null);
   const ref = useRef(null);
   const { t } = useToolboxTranslation();
-  const classes = useStyles();
 
   const config = useApi(configApiRef).getOptionalConfig('app.toolbox.qrCode');
-
   const defaultColor = '#000';
   const defaults: QrCodeSettings = {
     cornerSquareType:
@@ -156,8 +120,6 @@ export const QRCodeGenerator = () => {
     shape:
       (config?.getOptionalString('defaults.shape') as ShapeType) ?? 'square',
   };
-
-  // settings
   const [settings, setSettings] = useState<QrCodeSettings>(defaults);
 
   const qrCode = useMemo(() => {
@@ -165,10 +127,7 @@ export const QRCodeGenerator = () => {
       width: 500,
       height: 500,
       image: '',
-      dotsOptions: {
-        color: settings.dotColor,
-        type: settings.dotType,
-      },
+      dotsOptions: { color: settings.dotColor, type: settings.dotType },
       cornersSquareOptions: {
         color: settings.cornerSquareColor,
         type: settings.cornerSquareType,
@@ -178,16 +137,10 @@ export const QRCodeGenerator = () => {
         type: settings.cornerDotType,
       },
       shape: settings.shape,
-      imageOptions: {
-        crossOrigin: 'anonymous',
-        margin: 20,
-      },
+      imageOptions: { crossOrigin: 'anonymous', margin: 20 },
       margin: 5,
     });
-
-    if (ref.current) {
-      qr.append(ref.current);
-    }
+    if (ref.current) qr.append(ref.current);
     return qr;
   }, [
     settings.cornerDotColor,
@@ -200,12 +153,8 @@ export const QRCodeGenerator = () => {
   ]);
 
   useEffect(() => {
+    qrCode.update({ data: input });
     qrCode.update({
-      data: input,
-      dotsOptions: {
-        color: settings.dotColor,
-        type: settings.dotType,
-      },
       cornersSquareOptions: {
         color: settings.cornerSquareColor,
         type: settings.cornerSquareType,
@@ -214,6 +163,7 @@ export const QRCodeGenerator = () => {
         color: settings.cornerDotColor,
         type: settings.cornerDotType,
       },
+      dotsOptions: { color: settings.dotColor, type: settings.dotType },
       shape: settings.shape,
     });
     qrCode
@@ -223,123 +173,108 @@ export const QRCodeGenerator = () => {
           setImage(null);
           return;
         }
-
         if (Buffer.isBuffer(data)) {
           const blob = new Blob([data as BlobPart], { type: 'image/png' });
           setImage(window.URL.createObjectURL(blob));
           return;
         }
-
         setImage(window.URL.createObjectURL(data));
       })
       .catch(() => setImage(null));
   }, [qrCode, settings, input]);
 
-  const onExtensionChange = useCallback(
-    (event: React.ChangeEvent<{ value: unknown }>) => {
-      setFileExt(event.target.value as FileExtension);
-    },
-    [setFileExt],
-  );
-
   const onDownloadClick = useCallback(() => {
-    void qrCode.download({
-      extension: fileExt,
-    });
+    void qrCode.download({ extension: fileExt });
   }, [fileExt, qrCode]);
 
   const DownloadOptions = (
-    <span className={classes.downloadSpan}>
-      <FormControl>
-        <DefaultSelect
-          defaultValue="png"
-          label={t('tool.qr-code-generate.downloadAs')}
-          onChange={onExtensionChange}
-        >
-          <MenuItem value="png">png</MenuItem>
-          <MenuItem value="webp">webp</MenuItem>
-          <MenuItem value="jpeg">jpeg</MenuItem>
-          <MenuItem value="svg">svg</MenuItem>
-        </DefaultSelect>
-      </FormControl>
-      <Button key="downloadbutton" onClick={onDownloadClick} disabled={!input}>
+    <span style={{ marginLeft: '2rem' }}>
+      <Select
+        label={t('tool.qr-code-generate.downloadAs')}
+        selectedKey={fileExt}
+        onSelectionChange={key => setFileExt(key as FileExtension)}
+        options={[
+          { value: 'png', label: 'png' },
+          { value: 'webp', label: 'webp' },
+          { value: 'jpeg', label: 'jpeg' },
+          { value: 'svg', label: 'svg' },
+        ]}
+      />
+      <Button
+        key="downloadbutton"
+        onClick={onDownloadClick}
+        isDisabled={!input}
+        variant="primary"
+      >
         {t('tool.qr-code-generate.download')}
       </Button>
     </span>
   );
 
   return (
-    <>
-      <Box className={classes.box} />
-
-      <DefaultEditor
-        additionalTools={[
-          <ConfigSelect
-            key="dotSelect"
-            name={t('tool.qr-code-generate.dotType')}
-            setSettings={setSettings}
-            settingKey={'dotType' as const}
-            settings={settings}
-            types={
-              [
-                'square',
-                'classy',
-                'dots',
-                'classy-rounded',
-                'extra-rounded',
-                'rounded',
-              ] as DotType[]
-            }
-          />,
-          <ConfigSelect
-            key="cornerSquareSelect"
-            name={t('tool.qr-code-generate.cornerSquareType')}
-            setSettings={setSettings}
-            settingKey={'cornerSquareType' as const}
-            settings={settings}
-            types={['square', 'dot', 'extra-rounded'] as CornerSquareType[]}
-          />,
-          <ConfigSelect
-            key="cornerDotSelect"
-            name={t('tool.qr-code-generate.cornerDotType')}
-            setSettings={setSettings}
-            settingKey={'cornerDotType' as const}
-            settings={settings}
-            types={['dot', 'square'] as CornerDotType[]}
-          />,
-          <ConfigSelect
-            key="shapeSelect"
-            name={t('tool.qr-code-generate.shapeType')}
-            setSettings={setSettings}
-            settingKey={'shape' as const}
-            settings={settings}
-            types={['circle', 'square'] as ShapeType[]}
-          />,
-          DownloadOptions,
-        ]}
-        input={input}
-        inputProps={{ maxLength: 2048 }}
-        rightContent={
-          image ? (
-            <img
-              ref={ref}
-              className="blob-to-image"
-              src={image}
-              alt="QR code"
-            />
-          ) : (
-            <div ref={ref} />
-          )
-        }
-        sample={sample}
-        setInput={useCallback(
-          value => {
-            setInput(value);
-          },
-          [setInput],
-        )}
-      />
-    </>
+    <DefaultEditor
+      additionalTools={[
+        <ConfigSelect
+          key="dotSelect"
+          name={t('tool.qr-code-generate.dotType')}
+          setSettings={setSettings}
+          settingKey="dotType"
+          settings={settings}
+          types={
+            [
+              'square',
+              'classy',
+              'dots',
+              'classy-rounded',
+              'extra-rounded',
+              'rounded',
+            ] as DotType[]
+          }
+        />,
+        <ConfigSelect
+          key="cornerSquareSelect"
+          name={t('tool.qr-code-generate.cornerSquareType')}
+          setSettings={setSettings}
+          settingKey="cornerSquareType"
+          settings={settings}
+          types={['square', 'dot', 'extra-rounded'] as CornerSquareType[]}
+        />,
+        <ConfigSelect
+          key="cornerDotSelect"
+          name={t('tool.qr-code-generate.cornerDotType')}
+          setSettings={setSettings}
+          settingKey="cornerDotType"
+          settings={settings}
+          types={['dot', 'square'] as CornerDotType[]}
+        />,
+        <ConfigSelect
+          key="shapeSelect"
+          name={t('tool.qr-code-generate.shapeType')}
+          setSettings={setSettings}
+          settingKey="shape"
+          settings={settings}
+          types={['circle', 'square'] as ShapeType[]}
+        />,
+        DownloadOptions,
+      ]}
+      input={input}
+      inputProps={{ maxLength: 2048 }}
+      rightContent={
+        image ? (
+          <img ref={ref} className="blob-to-image" src={image} alt="QR code" />
+        ) : (
+          <div ref={ref} />
+        )
+      }
+      sample={sample}
+      setInput={useCallback(
+        value => {
+          setInput(value);
+        },
+        [setInput],
+      )}
+    />
   );
 };
+
 export default QRCodeGenerator;

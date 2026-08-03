@@ -1,0 +1,137 @@
+@layer components {
+  .container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .sidebar {
+    border-right: 1px solid var(--bui-border-1);
+    padding: var(--bui-space-2);
+    width: 220px;
+    min-width: 180px;
+    flex-shrink: 0;
+    height: calc(100vh - 160px);
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .searchWrapper {
+    display: flex;
+    align-items: center;
+    gap: var(--bui-space-2);
+    border: 1px solid var(--bui-border-1);
+    border-radius: var(--bui-radius-2);
+    background-color: var(--bui-bg-neutral-1);
+    padding: var(--bui-space-2);
+    margin-bottom: var(--bui-space-2);
+  }
+
+  .searchInput {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-family: var(--bui-font-regular);
+    font-size: var(--bui-font-size-2);
+    color: var(--bui-fg-primary);
+  }
+
+  .searchInput::placeholder {
+    color: var(--bui-fg-secondary);
+  }
+
+  .navList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex: 1;
+  }
+
+  .categoryLabel {
+    font-size: var(--bui-font-size-1);
+    font-weight: var(--bui-font-weight-bold);
+    color: var(--bui-fg-secondary);
+    padding: var(--bui-space-2) var(--bui-space-2) var(--bui-space-1);
+    border-top: 1px solid var(--bui-border-1);
+    margin-top: var(--bui-space-2);
+    display: block;
+  }
+
+  .toolButton {
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    border-left: 2px solid transparent;
+    padding: var(--bui-space-2) var(--bui-space-2) var(--bui-space-2)
+      var(--bui-space-3);
+    border-radius: 0 var(--bui-radius-2) var(--bui-radius-2) 0;
+    font-family: var(--bui-font-regular);
+    font-size: var(--bui-font-size-2);
+    color: var(--bui-fg-primary);
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: background-color 0.1s, border-color 0.1s;
+  }
+
+  .toolButton:hover {
+    background-color: var(--bui-bg-neutral-1-hover);
+  }
+
+  .toolButtonActive {
+    background-color: var(--bui-bg-neutral-2);
+    border-left-color: var(--bui-ring);
+    font-weight: var(--bui-font-weight-bold);
+  }
+
+  .homeButton {
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    padding: var(--bui-space-2);
+    border-radius: var(--bui-radius-2);
+    font-family: var(--bui-font-regular);
+    font-size: var(--bui-font-size-2);
+    color: var(--bui-fg-primary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: var(--bui-space-2);
+  }
+
+  .homeButton:hover {
+    background-color: var(--bui-bg-neutral-1-hover);
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  .mainContent {
+    flex: 1;
+    min-width: 0;
+    padding: var(--bui-space-4);
+    overflow: auto;
+  }
+
+  .loadingContainer {
+    display: flex;
+    width: 100%;
+    height: 50%;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .contentHeader {
+    display: flex;
+    align-items: center;
+    gap: var(--bui-space-2);
+  }
+}

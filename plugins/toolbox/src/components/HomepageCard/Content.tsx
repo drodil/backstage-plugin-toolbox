@@ -1,5 +1,5 @@
 import { defaultTools } from '../Root';
-import { Typography } from '@material-ui/core';
+import { Text } from '@backstage/ui';
 import { useToolboxTranslation } from '../../hooks';
 
 export const Content = (props?: { toolId?: string }) => {
@@ -8,9 +8,9 @@ export const Content = (props?: { toolId?: string }) => {
   const tool = defaultTools.find(t => t.id === props?.toolId);
   if (!tool) {
     return (
-      <Typography variant="h4">
+      <Text variant="title-small">
         {intl('components.homePageCard.selectToolText')}
-      </Typography>
+      </Text>
     );
   }
   return tool.component;

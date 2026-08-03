@@ -1,0 +1,98 @@
+@layer components {
+  .page {
+    padding: var(--bui-space-4);
+  }
+
+  .intro {
+    margin-top: var(--bui-space-2);
+    margin-bottom: var(--bui-space-2);
+  }
+
+  .searchWrapper {
+    display: flex;
+    align-items: center;
+    gap: var(--bui-space-2);
+    border: 1px solid var(--bui-border-1);
+    border-radius: var(--bui-radius-2);
+    background-color: var(--bui-bg-neutral-1);
+    padding: var(--bui-space-2) var(--bui-space-4);
+    margin-top: var(--bui-space-2);
+    margin-bottom: var(--bui-space-4);
+    height: 48px;
+  }
+
+  .searchInput {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-family: var(--bui-font-regular);
+    font-size: var(--bui-font-size-2);
+    color: var(--bui-fg-primary);
+  }
+
+  .searchInput::placeholder {
+    color: var(--bui-fg-secondary);
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--bui-space-2);
+    margin-top: var(--bui-space-2);
+  }
+
+  @media (max-width: 1024px) {
+    .grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .card {
+    cursor: pointer;
+    border: 1px solid var(--bui-border-1);
+    border-radius: var(--bui-radius-2);
+    padding: var(--bui-space-4);
+    height: 100%;
+    background-color: var(--bui-bg-neutral-1);
+    transition: border-color 0.15s;
+  }
+
+  .card:hover {
+    border-color: var(--bui-ring);
+  }
+
+  .cardCategory {
+    display: inline-block;
+    background-color: var(--bui-bg-neutral-2);
+    color: var(--bui-fg-secondary);
+    font-size: var(--bui-font-size-1);
+    font-family: var(--bui-font-regular);
+    padding: 2px var(--bui-space-2);
+    border-radius: var(--bui-radius-full);
+    margin-bottom: var(--bui-space-2);
+  }
+
+  .cardTitle {
+    display: block;
+    font-weight: var(--bui-font-weight-bold);
+    margin-bottom: var(--bui-space-1);
+  }
+
+  .cardDescription {
+    display: block;
+    color: var(--bui-fg-secondary);
+    font-size: var(--bui-font-size-1);
+  }
+
+  .noTools {
+    width: 100%;
+    margin: var(--bui-space-2);
+  }
+}

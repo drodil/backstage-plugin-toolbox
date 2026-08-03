@@ -1,5 +1,5 @@
-import { Button, Tooltip } from '@material-ui/core';
-import FileCopy from '@material-ui/icons/FileCopy';
+import { TooltipTrigger, Tooltip, Button } from '@backstage/ui';
+import { RiFileCopyLine } from '@remixicon/react';
 import { useToolboxTranslation } from '../../hooks';
 import { alertApiRef, useApi } from '@backstage/core-plugin-api';
 
@@ -27,19 +27,14 @@ export const CopyToClipboardButton = (props: Props) => {
   };
 
   return (
-    <Tooltip
-      arrow
-      title={props.title ?? t('components.copyToClipboardButton.tooltipTitle')}
-    >
-      <Button
-        size="small"
-        startIcon={<FileCopy />}
-        onClick={copyToClipboard}
-        variant="text"
-        color="inherit"
-      >
+    <TooltipTrigger>
+      <Button variant="tertiary" onClick={copyToClipboard}>
+        <RiFileCopyLine size={16} />
         {t('components.copyToClipboardButton.buttonText')}
       </Button>
-    </Tooltip>
+      <Tooltip>
+        {props.title ?? t('components.copyToClipboardButton.tooltipTitle')}
+      </Tooltip>
+    </TooltipTrigger>
   );
 };

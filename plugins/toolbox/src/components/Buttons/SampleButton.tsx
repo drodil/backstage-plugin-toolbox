@@ -1,5 +1,5 @@
-import { Button, Tooltip } from '@material-ui/core';
-import Input from '@material-ui/icons/Input';
+import { TooltipTrigger, Tooltip, Button } from '@backstage/ui';
+import { RiFileDownloadLine } from '@remixicon/react';
 import { useToolboxTranslation } from '../../hooks';
 
 type Props = {
@@ -10,16 +10,12 @@ type Props = {
 export const SampleButton = (props: Props) => {
   const { t } = useToolboxTranslation();
   return (
-    <Tooltip arrow title={t('components.sampleButton.tooltipTitle')}>
-      <Button
-        size="small"
-        startIcon={<Input />}
-        onClick={() => props.setInput(props.sample)}
-        variant="text"
-        color="inherit"
-      >
+    <TooltipTrigger>
+      <Button variant="tertiary" onClick={() => props.setInput(props.sample)}>
+        <RiFileDownloadLine size={16} />
         {t('components.sampleButton.buttonText')}
       </Button>
-    </Tooltip>
+      <Tooltip>{t('components.sampleButton.tooltipTitle')}</Tooltip>
+    </TooltipTrigger>
   );
 };

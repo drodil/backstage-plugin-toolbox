@@ -1,10 +1,8 @@
 export {
-  toolboxPlugin,
-  ToolboxPage,
-  ToolsContainer,
-  ToolContainer,
-  toolboxHomepageCardFactory,
-  ToolboxHomepageCard,
+  toolboxPlugin as default,
+  ToolboxWelcomePageBlueprint,
+  toolDataRef,
+  ToolboxToolBlueprint,
 } from './plugin';
 export * from '@drodil/backstage-plugin-toolbox-react';
 export * from './components/Root';

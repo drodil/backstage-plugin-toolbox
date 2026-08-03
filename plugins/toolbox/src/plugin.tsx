@@ -9,26 +9,21 @@ import {
 } from '@backstage/frontend-plugin-api';
 import { compatWrapper } from '@backstage/core-compat-api';
 import { discoveryApiRef, fetchApiRef } from '@backstage/core-plugin-api';
+import { HomePageWidgetBlueprint } from '@backstage/plugin-home-react/alpha';
 import { toolboxApiRef, ToolboxClient } from './api';
-import { rootRouteRef } from './routes.ts';
-import CardTravel from '@material-ui/icons/CardTravel';
+import { rootRouteRef } from './routes';
+import { RiBriefcaseLine } from '@remixicon/react';
 import {
   ToolboxToolBlueprint,
   toolDataRef,
-} from '@drodil/backstage-plugin-toolbox-react/alpha';
-
-// TODO: Add homepage content blueprint
+} from '@drodil/backstage-plugin-toolbox-react';
+// Imported early so the settings schema enum can reference built-in tool IDs
+import { defaultTools } from './components/Root';
 
 export {
-  /**
-   * @deprecated Use `@drodil/backstage-plugin-toolbox-react/alpha` instead
-   */
   toolDataRef,
-  /**
-   * @deprecated Use `@drodil/backstage-plugin-toolbox-react/alpha` instead
-   */
   ToolboxToolBlueprint,
-} from '@drodil/backstage-plugin-toolbox-react/alpha';
+} from '@drodil/backstage-plugin-toolbox-react';
 
 const toolboxApi = ApiBlueprint.make({
   params: defineParams =>
@@ -72,7 +67,7 @@ const toolboxPage = PageBlueprint.makeWithOverrides({
     return originalFactory({
       path: config.path ?? '/toolbox',
       title: config.title ?? 'Toolbox',
-      icon: <CardTravel />,
+      icon: <RiBriefcaseLine />,
       routeRef: rootRouteRef,
       loader: () =>
         import('./components/Root').then(m =>
@@ -336,20 +331,6 @@ const entityValidatorTool = ToolboxToolBlueprint.make({
   },
 });
 
-const entityDescriberTool = ToolboxToolBlueprint.make({
-  name: 'entity-describer',
-  params: {
-    id: 'entity-describer',
-    displayName: 'Entity describer',
-    description: 'Describes existing catalog entity in YAML',
-    category: 'Backstage',
-    async loader() {
-      const m = await import('./components/Misc/EntityDescriber');
-      return compatWrapper(<m.default />);
-    },
-  },
-});
-
 const csrTool = ToolboxToolBlueprint.make({
   name: 'csr-generate',
   params: {
@@ -591,12 +572,38 @@ const whoisTool = ToolboxToolBlueprint.make({
     },
   },
 });
+const homeCard = HomePageWidgetBlueprint.make({
+  name: 'toolbox',
+  params: {
+    title: 'Toolbox',
+    description: 'Shows a tool from the toolbox',
+    components: () =>
+      import('./components/HomepageCard').then(m => ({
+        Content: m.Content,
+      })),
+    layout: {
+      height: { defaultRows: 4, minRows: 4 },
+      width: { defaultColumns: 4, minColumns: 4 },
+    },
+    settings: {
+      schema: {
+        title: 'Toolbox settings',
+        type: 'object',
+        properties: {
+          toolId: {
+            title: 'Tool',
+            type: 'string',
+            oneOf: defaultTools.map(tool => ({
+              const: tool.id,
+              title: tool.displayName ?? tool.name,
+            })),
+          },
+        },
+      },
+    },
+  },
+});
 
-/**
- * Backstage frontend plugin.
- *
- * @alpha
- */
 const toolboxPlugin: OverridableFrontendPlugin = createFrontendPlugin({
   pluginId: 'toolbox',
   info: { packageJson: () => import('../package.json') },
@@ -625,7 +632,6 @@ const toolboxPlugin: OverridableFrontendPlugin = createFrontendPlugin({
     slaCalculatorTool,
     hashTool,
     entityValidatorTool,
-    entityDescriberTool,
     csrTool,
     qrCodeTool,
     barCodeTool,
@@ -643,7 +649,8 @@ const toolboxPlugin: OverridableFrontendPlugin = createFrontendPlugin({
     ibanValidatorTool,
     regexValidatorTool,
     whoisTool,
+    homeCard,
   ],
 });
 
-export default toolboxPlugin;
+export { toolboxPlugin };

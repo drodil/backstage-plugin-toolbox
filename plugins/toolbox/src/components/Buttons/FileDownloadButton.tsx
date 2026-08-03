@@ -1,5 +1,5 @@
-import { Button, Tooltip } from '@material-ui/core';
-import GetAppIcon from '@material-ui/icons/GetApp';
+import { TooltipTrigger, Tooltip, Button } from '@backstage/ui';
+import { RiDownloadLine } from '@remixicon/react';
 import { useToolboxTranslation } from '../../hooks';
 
 export type FileDownloadButtonProps = {
@@ -20,16 +20,12 @@ export const FileDownloadButton = (props: FileDownloadButtonProps) => {
   };
 
   return (
-    <Tooltip title={t('components.fileDownloadButton.tooltipTitle')} arrow>
-      <Button
-        size="small"
-        startIcon={<GetAppIcon />}
-        onClick={download}
-        variant="text"
-        color="inherit"
-      >
+    <TooltipTrigger>
+      <Button variant="tertiary" onClick={download}>
+        <RiDownloadLine size={16} />
         {t('components.fileDownloadButton.buttonText')}
       </Button>
-    </Tooltip>
+      <Tooltip>{t('components.fileDownloadButton.tooltipTitle')}</Tooltip>
+    </TooltipTrigger>
   );
 };

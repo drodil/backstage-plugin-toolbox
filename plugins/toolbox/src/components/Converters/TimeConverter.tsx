@@ -5,17 +5,9 @@ import {
   CopyToClipboardButton,
   PasteFromClipboardButton,
 } from '../Buttons';
-import {
-  Button,
-  Divider,
-  FormControl,
-  Grid,
-  MenuItem,
-  TextField,
-  Typography,
-} from '@material-ui/core';
-import { DefaultSelect } from '../Selects';
+import { Button, Flex, Select, TextField } from '@backstage/ui';
 import { useToolboxTranslation } from '../../hooks';
+import styles from '../DefaultEditor/DefaultEditor.module.css';
 
 export const TimeConverter = () => {
   const [input, setInput] = useState<DateTime | null>(null);
@@ -23,10 +15,7 @@ export const TimeConverter = () => {
   const { t } = useToolboxTranslation();
 
   const getInputStr = () => {
-    if (input === null) {
-      return '';
-    }
-
+    if (input === null) return '';
     switch (inputType) {
       default:
       case 'unix':
@@ -49,7 +38,6 @@ export const TimeConverter = () => {
       setInput(null);
       return;
     }
-
     switch (inputType) {
       default:
       case 'unix':
@@ -73,130 +61,127 @@ export const TimeConverter = () => {
     }
   };
 
-  const OutputField = (props: { label: string; value?: string | null }) => {
-    const { label, value } = props;
-    return (
-      <>
-        <TextField
-          variant="outlined"
-          label={label}
-          style={{ marginTop: '1rem', width: '100%' }}
-          disabled
-          value={value ?? ''}
-          autoComplete="off"
+  const OutputRow = (props: { label: string; value?: string | null }) => (
+    <div style={{ marginBottom: 'var(--bui-space-2)' }}>
+      <label className={styles.fieldLabel}>{props.label}</label>
+      <Flex gap="2" align="center">
+        <input
+          className={styles.textarea}
+          style={{
+            minHeight: 'unset',
+            height: '40px',
+            resize: 'none',
+            flex: 1,
+          }}
+          readOnly
+          value={props.value ?? ''}
         />
-        <CopyToClipboardButton output={value ?? ''} />
-      </>
-    );
-  };
+        <CopyToClipboardButton output={props.value ?? ''} />
+      </Flex>
+    </div>
+  );
 
   return (
-    <FormControl style={{ width: '100%' }}>
-      <Grid container>
-        <Grid item xs={12} lg={8}>
-          <Typography variant="subtitle1">
-            <PasteFromClipboardButton setInput={v => handleChange(v)} />
-            <ClearValueButton setValue={() => handleChange('')} />
-            <Button
-              size="small"
-              onClick={() => setInput(DateTime.now())}
-              color="inherit"
-            >
-              {t('tool.time-convert.labelNow')}
-            </Button>
-          </Typography>
-          <TextField
-            style={{ width: '100%' }}
-            id="input"
-            name="input"
-            label={t('tool.time-convert.labelInput')}
-            value={getInputStr()}
-            onChange={e => handleChange(e.target.value)}
-            variant="outlined"
-            autoComplete="off"
+    <div style={{ width: '100%' }}>
+      <div style={{ maxWidth: '600px' }}>
+        <Flex gap="2" style={{ marginBottom: 'var(--bui-space-2)' }}>
+          <PasteFromClipboardButton setInput={v => handleChange(v)} />
+          <ClearValueButton setValue={() => handleChange('')} />
+          <Button variant="secondary" onClick={() => setInput(DateTime.now())}>
+            {t('tool.time-convert.labelNow')}
+          </Button>
+        </Flex>
+        <Flex
+          gap="4"
+          align="center"
+          style={{ marginBottom: 'var(--bui-space-4)' }}
+        >
+          <div style={{ flex: 1 }}>
+            <TextField
+              id="input"
+              label={t('tool.time-convert.labelInput')}
+              value={getInputStr() ?? ''}
+              onChange={val => handleChange(val)}
+              autoComplete="off"
+            />
+          </div>
+          <Select
+            label={t('tool.time-convert.inputType')}
+            selectedKey={inputType}
+            onSelectionChange={key => setInputType(key as string)}
+            options={[
+              { value: 'unix', label: t('tool.time-convert.unixTime') },
+              {
+                value: 'milliseconds',
+                label: t('tool.time-convert.millisecondsTime'),
+              },
+              { value: 'iso8601', label: 'ISO8601' },
+              { value: 'sql', label: 'SQL' },
+              { value: 'rfc2822', label: 'RFC2822' },
+              { value: 'http', label: 'HTTP' },
+            ]}
           />
-        </Grid>
-        <Grid item xs={12} lg={4}>
-          <Typography variant="subtitle1">
-            {t('tool.time-convert.inputType')}
-          </Typography>
-          <DefaultSelect
-            value={inputType}
-            onChange={e => setInputType(e.target.value as string)}
-          >
-            <MenuItem value="unix">{t('tool.time-convert.unixTime')}</MenuItem>
-            <MenuItem value="milliseconds">
-              {t('tool.time-convert.millisecondsTime')}
-            </MenuItem>
-            <MenuItem value="iso8601">ISO8601</MenuItem>
-            <MenuItem value="sql">SQL</MenuItem>
-            <MenuItem value="rfc2822">RFC2822</MenuItem>
-            <MenuItem value="http">HTTP</MenuItem>
-          </DefaultSelect>
-        </Grid>
-      </Grid>
-      <Divider style={{ marginTop: '1rem', marginBottom: '1rem' }} />
-      <Grid container>
-        <Grid item lg={5} md={8} xs={12}>
-          <OutputField
+        </Flex>
+      </div>
+      <hr style={{ margin: '1rem 0', borderColor: 'var(--bui-border-1)' }} />
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))',
+          gap: 'var(--bui-space-4)',
+        }}
+      >
+        <div>
+          <OutputRow
             label={`${t('tool.time-convert.outputLabel.local')} (ISO8601)`}
             value={input?.toLocal().toString()}
           />
-          <OutputField
-            label="UTC (ISO8601)"
-            value={input?.toUTC().toString()}
-          />
-          <OutputField label="Relative" value={input?.toRelative()} />
-          <OutputField
+          <OutputRow label="UTC (ISO8601)" value={input?.toUTC().toString()} />
+          <OutputRow label="Relative" value={input?.toRelative()} />
+          <OutputRow
             label={t('tool.time-convert.outputLabel.unix')}
             value={input?.toSeconds().toFixed(0).toString()}
           />
-          <OutputField label="RFC2822" value={input?.toRFC2822()} />
-          <OutputField label="HTTP" value={input?.toHTTP()} />
-        </Grid>
-        <Grid item lg={2} md={4} xs={12}>
-          <OutputField
+          <OutputRow label="RFC2822" value={input?.toRFC2822()} />
+          <OutputRow label="HTTP" value={input?.toHTTP()} />
+        </div>
+        <div>
+          <OutputRow
             label={t('tool.time-convert.outputLabel.dayOfTheWeek')}
             value={input?.toFormat('c')}
           />
-          <OutputField
+          <OutputRow
             label={t('tool.time-convert.outputLabel.weekNumber')}
             value={input?.toFormat('W')}
           />
-          <OutputField
+          <OutputRow
             label={t('tool.time-convert.outputLabel.quarter')}
             value={input?.toFormat('q')}
           />
-          <OutputField
+          <OutputRow
             label={t('tool.time-convert.outputLabel.dayOfTheYear')}
             value={input?.toFormat('o')}
           />
-          <OutputField
+          <OutputRow
             label={t('tool.time-convert.outputLabel.leapYear')}
             value={input?.isInLeapYear ? 'true' : 'false'}
           />
-        </Grid>
-        <Grid item lg={5} md={12} xs={12}>
-          <OutputField
+        </div>
+        <div>
+          <OutputRow
             label={t('tool.time-convert.outputLabel.local')}
             value={input?.toLocaleString(DateTime.DATETIME_FULL)}
           />
-          <OutputField label="SQL" value={input?.toSQL()} />
-          <OutputField
-            label="YYYY-MM-DD"
-            value={input?.toFormat('yyyy-MM-dd')}
-          />
-          <OutputField
-            label="DD/MM/YYYY"
-            value={input?.toFormat('dd/MM/yyyy')}
-          />
-          <OutputField
+          <OutputRow label="SQL" value={input?.toSQL()} />
+          <OutputRow label="YYYY-MM-DD" value={input?.toFormat('yyyy-MM-dd')} />
+          <OutputRow label="DD/MM/YYYY" value={input?.toFormat('dd/MM/yyyy')} />
+          <OutputRow
             label={t('tool.time-convert.outputLabel.timezone')}
             value={input?.toFormat('z')}
           />
-        </Grid>
-      </Grid>
-    </FormControl>
+        </div>
+      </div>
+    </div>
   );
 };
 

@@ -1,7 +1,5 @@
 import { lazy } from 'react';
 import { Tool } from '@drodil/backstage-plugin-toolbox-react';
-import DescriptionIcon from '@material-ui/icons/Description';
-import { Button } from '@material-ui/core';
 
 const Base64Encode = lazy(() => import('../Encoders/Base64Encode'));
 const UrlEncode = lazy(() => import('../Encoders/UrlEncode'));
@@ -24,7 +22,6 @@ const RichTextToMarkdown = lazy(
 );
 
 const EntityValidator = lazy(() => import('../Validators/EntityValidator'));
-const EntityDescriber = lazy(() => import('../Misc/EntityDescriber'));
 const Countdown = lazy(() => import('../Misc/Countdown'));
 const Timer = lazy(() => import('../Misc/Timer'));
 const Diff = lazy(() => import('../Misc/Diff'));
@@ -46,8 +43,6 @@ const RegexValidator = lazy(() => import('../Validators/RegexValidator'));
 const UrlExploder = lazy(() => import('../Misc/UrlExploder'));
 const Whois = lazy(() => import('../Networking/Whois'));
 const StringAnalyzer = lazy(() => import('../Misc/StringAnalyzer'));
-
-// const CidrCalculator = lazy(() => import('../Networking/CidrCalculator'));
 
 export const defaultTools: Tool[] = [
   {
@@ -177,30 +172,20 @@ export const defaultTools: Tool[] = [
     component: <EntityValidator />,
     category: 'Backstage',
     headerButtons: [
-      <Button
-        variant="contained"
+      <a
         key="entity-validator-button"
-        size="small"
-        target="_blank"
         href="https://backstage.io/docs/features/software-catalog/descriptor-format"
-        startIcon={<DescriptionIcon />}
-        color="inherit"
+        target="_blank"
+        rel="noopener noreferrer"
         style={{
-          backgroundColor: '#E0E0E0',
-          color: '#000000',
+          fontSize: 'var(--bui-font-size-1)',
+          color: 'var(--bui-fg-secondary)',
         }}
       >
         Entity descriptor format
-      </Button>,
+      </a>,
     ],
     description: 'Validate catalog entity YAML',
-  },
-  {
-    id: 'entity-describer',
-    name: 'Entity describer',
-    component: <EntityDescriber />,
-    category: 'Backstage',
-    description: 'Describes existing catalog entity in YAML',
   },
   {
     id: 'csr-generate',

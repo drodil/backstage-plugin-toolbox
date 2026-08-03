@@ -1,72 +1,69 @@
 # toolbox
 
-Welcome to the toolbox plugin!
-
-_This plugin was created through the Backstage CLI_
+Welcome to the toolbox plugin\!
 
 ## Getting started
 
-Your plugin has been added to the example app in this repository, meaning you'll be able to access it by running
-`yarn start` in the root directory, and then navigating to [/toolbox](http://localhost:3000/toolbox).
+Run `yarn start` in the root directory and navigate to [/toolbox](http://localhost:3000/toolbox).
 
 You can also serve the plugin in isolation by running `yarn start` in the plugin directory.
-This method of serving the plugin provides quicker iteration speed and a faster startup and hot reloads.
-It is only meant for local development, and the setup for it can be found inside the [/dev](./dev) directory.
+
+> **⚠️ v2.0.0 — New frontend system only**
+>
+> This version requires the new Backstage frontend system. See the
+> [installation instructions](../../docs/index.md#installation) for details.
 
 ## Installation
 
-Add the plugin to your frontend app:
-
 ```bash
-cd packages/app && yarn add @drodil/backstage-plugin-toolbox
+yarn --cwd packages/app add @drodil/backstage-plugin-toolbox
 ```
 
-Expose the questions page:
+Register the plugin in `packages/app/src/index.ts`:
 
-```tsx
-// packages/app/src/App.tsx
-import { ToolboxPage } from '@drodil/backstage-plugin-toolbox';
+```ts
+import { createApp } from '@backstage/frontend-defaults';
+import toolboxPlugin from '@drodil/backstage-plugin-toolbox';
 
-// ...
-
-const AppRoutes = () => (
-  <FlatRoutes>
+const app = createApp({
+  features: [
+    toolboxPlugin,
     // ...
-    <Route path="/toolbox" element={<ToolboxPage />} />
-    // ...
-  </FlatRoutes>
-);
+  ],
+});
+
+export default app.createRoot();
 ```
 
-An interface for toolbox is now available at `/toolbox`.
+The toolbox is now available at `/toolbox`.
 
 ## Adding your own tools
 
-You can also add your own tools to the plugin by passing them to the ToolboxPage as a property:
+Use `ToolboxToolBlueprint` from the main package:
 
-```tsx
-import { ToolboxPage, Tool } from '@drodil/backstage-plugin-toolbox';
+```ts
+import { ToolboxToolBlueprint } from '@drodil/backstage-plugin-toolbox';
+import { createFrontendModule } from '@backstage/frontend-plugin-api';
+import { compatWrapper } from '@backstage/core-compat-api';
 
-const extraToolExample: Tool = {
-  name: 'Extra',
-  component: <div>Extra tool</div>,
-};
+const myTool = ToolboxToolBlueprint.make({
+  name: 'my-tool',
+  params: {
+    id: 'my-tool',
+    displayName: 'My Tool',
+    description: 'Does something useful',
+    category: 'Miscellaneous',
+    async loader() {
+      const m = await import('./components/MyTool');
+      return compatWrapper(<m.default />);
+    },
+  },
+});
 
-<ToolboxPage extraTools={[extraToolExample]} />;
+export default createFrontendModule({
+  pluginId: 'toolbox',
+  extensions: [myTool],
+});
 ```
 
-Also lazy loading is supported:
-
-```tsx
-import React, { lazy } from 'react';
-import { ToolboxPage, Tool } from '@drodil/backstage-plugin-toolbox';
-
-const MyTool = lazy(() => import('./MyTool'));
-
-const extraToolExample: Tool = {
-  name: 'Extra',
-  component: <MyTool />,
-};
-
-<ToolboxPage extraTools={[extraToolExample]} />;
-```
+See [docs/index.md](../../docs/index.md) for full documentation.

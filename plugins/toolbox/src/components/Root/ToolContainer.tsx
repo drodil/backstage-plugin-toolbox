@@ -1,16 +1,7 @@
 import { Suspense } from 'react';
 import { ContentHeader } from '@backstage/core-components';
-import { Box, CircularProgress } from '@material-ui/core';
-import { styled } from '@material-ui/core/styles';
+import { Flex } from '@backstage/ui';
 import type { Tool } from '@drodil/backstage-plugin-toolbox-react';
-
-const StyledToolContainer = styled('div')(({ theme }) => ({
-  padding: '1rem',
-  width: '100%',
-  height: '100%',
-  overflow: 'auto',
-  backgroundColor: theme.palette.background.default,
-}));
 
 export interface ToolContainerProps {
   tool: Tool;
@@ -20,18 +11,23 @@ export const ToolContainer = (props: ToolContainerProps) => {
   const { tool } = props;
 
   return (
-    <StyledToolContainer>
+    <div
+      style={{
+        padding: '1rem',
+        width: '100%',
+        height: '100%',
+        overflow: 'auto',
+      }}
+    >
       <Suspense
         fallback={
-          <Box
-            display="flex"
-            width="100%"
-            height="50%"
-            alignItems="center"
-            justifyContent="center"
+          <Flex
+            align="center"
+            justify="center"
+            style={{ width: '100%', height: '50%' }}
           >
-            <CircularProgress />
-          </Box>
+            <span>Loading...</span>
+          </Flex>
         }
       >
         <ContentHeader
@@ -42,6 +38,6 @@ export const ToolContainer = (props: ToolContainerProps) => {
         </ContentHeader>
         {tool.component}
       </Suspense>
-    </StyledToolContainer>
+    </div>
   );
 };

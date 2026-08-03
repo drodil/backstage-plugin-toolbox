@@ -1,5 +1,5 @@
-import { Button, Tooltip } from '@material-ui/core';
-import AssignmentReturnedIcon from '@material-ui/icons/AssignmentReturned';
+import { TooltipTrigger, Tooltip, Button } from '@backstage/ui';
+import { RiClipboardLine } from '@remixicon/react';
 import { useToolboxTranslation } from '../../hooks';
 
 type Props = {
@@ -16,21 +16,14 @@ export const PasteFromClipboardButton = (props: Props) => {
     );
   };
   return (
-    <Tooltip
-      arrow
-      title={
-        props.title ?? t('components.pasteFromClipboardButton.tooltipTitle')
-      }
-    >
-      <Button
-        size="small"
-        startIcon={<AssignmentReturnedIcon />}
-        onClick={pasteFromClipboard}
-        variant="text"
-        color="inherit"
-      >
+    <TooltipTrigger>
+      <Button variant="tertiary" onClick={pasteFromClipboard}>
+        <RiClipboardLine size={16} />
         {t('components.pasteFromClipboardButton.buttonText')}
       </Button>
-    </Tooltip>
+      <Tooltip>
+        {props.title ?? t('components.pasteFromClipboardButton.tooltipTitle')}
+      </Tooltip>
+    </TooltipTrigger>
   );
 };

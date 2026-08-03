@@ -1,6 +1,6 @@
 import { ChangeEvent, useId } from 'react';
-import { Button, Tooltip } from '@material-ui/core';
-import AttachFile from '@material-ui/icons/AttachFile';
+import { TooltipTrigger, Tooltip, Button } from '@backstage/ui';
+import { RiAttachmentLine } from '@remixicon/react';
 import { useToolboxTranslation } from '../../hooks';
 
 type Props = {
@@ -22,19 +22,15 @@ export const FileUploadButton = (props: Props) => {
 
   return (
     <>
-      <Tooltip arrow title={t('components.fileUploadButton.tooltipTitle')}>
+      <TooltipTrigger>
         <label htmlFor={id}>
-          <Button
-            component="span"
-            size="small"
-            startIcon={<AttachFile />}
-            variant="text"
-            color="inherit"
-          >
+          <Button variant="tertiary" aria-label={buttonText}>
+            <RiAttachmentLine size={16} />
             {buttonText}
           </Button>
         </label>
-      </Tooltip>
+        <Tooltip>{t('components.fileUploadButton.tooltipTitle')}</Tooltip>
+      </TooltipTrigger>
       <input
         type="file"
         accept={accept}

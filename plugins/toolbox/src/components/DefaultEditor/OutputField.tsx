@@ -1,31 +1,22 @@
 import { CopyToClipboardButton } from '../Buttons';
-import { Box, makeStyles, TextField, Theme } from '@material-ui/core';
-
-const useStyles = makeStyles<Theme>(theme => ({
-  container: {
-    paddingBottom: theme.spacing(2), // 1rem = 16px
-  },
-  textField: {
-    width: '100%',
-  },
-}));
+import { Flex } from '@backstage/ui';
+import styles from './DefaultEditor.module.css';
 
 export const OutputField = (props: {
   label: string;
   value?: string | null;
 }) => {
   const { label, value } = props;
-  const classes = useStyles();
   return (
-    <Box className={classes.container}>
-      <TextField
-        label={label}
-        variant="outlined"
-        className={classes.textField}
-        disabled
+    <Flex direction="column" gap="2">
+      <label className={styles.fieldLabel}>{label}</label>
+      <textarea
+        className={styles.textarea}
+        readOnly
         value={value ?? ''}
+        rows={5}
       />
       <CopyToClipboardButton output={value ?? ''} />
-    </Box>
+    </Flex>
   );
 };

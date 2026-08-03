@@ -16,15 +16,9 @@ import {
   PasteFromClipboardButton,
   SampleButton,
 } from '../Buttons';
-import {
-  Box,
-  Divider,
-  FormControl,
-  Grid,
-  TextField,
-  Typography,
-} from '@material-ui/core';
+import { Flex, TextField } from '@backstage/ui';
 import { useToolboxTranslation } from '../../hooks';
+import styles from '../DefaultEditor/DefaultEditor.module.css';
 
 export const ColorConverter = () => {
   const [input, setInput] = useState('');
@@ -51,7 +45,6 @@ export const ColorConverter = () => {
   }
 
   const getInputStr = () => input || '';
-
   const getColorType = (color: string) => {
     switch (true) {
       case color.includes('#'):
@@ -76,24 +69,18 @@ export const ColorConverter = () => {
   };
 
   const parseRgb = ([r, g, b]: RGB): string => `rgb(${r},${g},${b})`;
-
   const parseHsl = ([h, s, l]: HSL): string => `hsl(${h},${s}%,${l}%)`;
-
   const parseHsv = ([h, s, v]: HSV): string => `hsv(${h},${s}%,${v}%)`;
-
   const parseCmyk = ([c, m, y, k]: CMYK): string =>
     `cmyk(${c}%,${m}%,${y}%,${k}%)`;
-
   const parseLab = ([l, a, b]: LAB): string => `lab(${l},${a},${b})`;
   const parseLch = ([l, c, h]: LCH): string => `lch(${l},${c},${h})`;
-
-  const removeCharacters = (value: string, colorType: string) => {
-    return value
+  const removeCharacters = (value: string, colorType: string) =>
+    value
       .replace(/\s/g, '')
       .replace(colorType, '')
       .replace('(', '')
       .replace(')', '');
-  };
 
   const handleNoMatch = () => {
     setHex('');
@@ -116,7 +103,7 @@ export const ColorConverter = () => {
       setHtml(colorConvert.hex.keyword(value));
       setLab(colorConvert.hex.lab(value));
       setLch(colorConvert.hex.lch(value));
-    } catch (error) {
+    } catch {
       handleNoMatch();
     }
   };
@@ -125,7 +112,6 @@ export const ColorConverter = () => {
     const values: RGB = removeCharacters(value, 'rgb')
       .split(',')
       .map((val: string) => parseInt(val, 10)) as RGB;
-
     try {
       setHex(`#${colorConvert.rgb.hex(values)}`);
       setRgb(values);
@@ -135,7 +121,7 @@ export const ColorConverter = () => {
       setHtml(colorConvert.rgb.keyword(values));
       setLab(colorConvert.rgb.lab(values));
       setLch(colorConvert.rgb.lch(values));
-    } catch (error) {
+    } catch {
       handleNoMatch();
     }
   };
@@ -153,7 +139,7 @@ export const ColorConverter = () => {
       setHtml(colorConvert.hsl.keyword(values));
       setLab(colorConvert.hsl.lab(values));
       setLch(colorConvert.hsl.lch(values));
-    } catch (error) {
+    } catch {
       handleNoMatch();
     }
   };
@@ -171,7 +157,7 @@ export const ColorConverter = () => {
       setHtml(colorConvert.hsv.keyword(values));
       setLab(colorConvert.hsv.lab(values));
       setLch(colorConvert.hsv.lch(values));
-    } catch (error) {
+    } catch {
       handleNoMatch();
     }
   };
@@ -180,7 +166,6 @@ export const ColorConverter = () => {
     const values: CMYK = removeCharacters(value, 'cmyk')
       .split(',')
       .map((val: string) => parseInt(val, 10)) as CMYK;
-
     try {
       setHex(`#${colorConvert.cmyk.hex(values)}`);
       setRgb(colorConvert.cmyk.rgb(values));
@@ -190,7 +175,7 @@ export const ColorConverter = () => {
       setHtml(colorConvert.cmyk.keyword(values));
       setLab(colorConvert.cmyk.lab(values));
       setLch(colorConvert.cmyk.lch(values));
-    } catch (error) {
+    } catch {
       handleNoMatch();
     }
   };
@@ -199,7 +184,6 @@ export const ColorConverter = () => {
     const values: LAB = removeCharacters(value, 'lab')
       .split(',')
       .map((val: string) => parseInt(val, 10)) as LAB;
-
     try {
       setHex(`#${colorConvert.lab.hex(values)}`);
       setRgb(colorConvert.lab.rgb(values));
@@ -208,7 +192,7 @@ export const ColorConverter = () => {
       setLab(values);
       setLch(colorConvert.lab.lch(values));
       setHtml(colorConvert.lab.keyword(values));
-    } catch (error) {
+    } catch {
       handleNoMatch();
     }
   };
@@ -217,7 +201,6 @@ export const ColorConverter = () => {
     const values: LCH = removeCharacters(value, 'lch')
       .split(',')
       .map((val: string) => parseInt(val, 10)) as LCH;
-
     try {
       setHex(`#${colorConvert.lch.hex(values)}`);
       setRgb(colorConvert.lch.rgb(values));
@@ -226,7 +209,7 @@ export const ColorConverter = () => {
       setLab(colorConvert.lch.lab(values));
       setLch(values);
       setHtml(colorConvert.lch.keyword(values));
-    } catch (error) {
+    } catch {
       handleNoMatch();
     }
   };
@@ -241,7 +224,7 @@ export const ColorConverter = () => {
       setHtml(value);
       setLab(colorConvert.keyword.lab(value));
       setLch(colorConvert.keyword.lch(value));
-    } catch (error) {
+    } catch {
       handleNoMatch();
     }
   };
@@ -249,7 +232,6 @@ export const ColorConverter = () => {
   const handleChange = (value: any) => {
     setInput(value);
     const colorType = getColorType(value);
-
     switch (colorType) {
       case ColorType.Hex:
         handleHex(value);
@@ -276,72 +258,75 @@ export const ColorConverter = () => {
         handleLch(value);
         break;
       default:
-        setHex('');
-        setRgb([0, 0, 0]);
-        setHsl([0, 0, 0]);
-        setHsv([0, 0, 0]);
-        setCmyk([0, 0, 0, 0]);
-        setHtml(null);
-        setLab([0, 0, 0]);
-        setLch([0, 0, 0]);
+        handleNoMatch();
         break;
     }
   };
 
-  const OutputField = (props: { label: string; value?: string | null }) => {
-    const { label, value } = props;
-    return (
-      <div style={{ marginBottom: '1rem', width: '100%' }}>
-        <TextField
-          label={label}
-          style={{ width: '100%' }}
-          disabled
-          value={value ?? ''}
-          autoComplete="off"
+  const OutputRow = (props: { label: string; value?: string | null }) => (
+    <div style={{ marginBottom: 'var(--bui-space-2)' }}>
+      <label className={styles.fieldLabel}>{props.label}</label>
+      <Flex gap="2" align="center">
+        <input
+          className={styles.textarea}
+          style={{
+            minHeight: 'unset',
+            height: '40px',
+            resize: 'none',
+            flex: 1,
+          }}
+          readOnly
+          value={props.value ?? ''}
         />
-        <CopyToClipboardButton output={value ?? ''} />
-      </div>
-    );
-  };
+        <CopyToClipboardButton output={props.value ?? ''} />
+      </Flex>
+    </div>
+  );
 
   return (
-    <FormControl style={{ width: '100%' }}>
-      <Grid container>
-        <Grid item xs={12} lg={6}>
-          <Typography variant="subtitle1">
-            <PasteFromClipboardButton setInput={v => handleChange(v)} />
-            <ClearValueButton setValue={() => handleChange('')} />
-            {sample && <SampleButton setInput={handleChange} sample={sample} />}
-          </Typography>
-          <TextField
-            id="input"
-            name="input"
-            label={t('tool.color-convert.inputLabel')}
-            value={getInputStr()}
-            style={{ width: '100%', marginTop: '1rem' }}
-            onChange={e => handleChange(e.target.value)}
-            variant="outlined"
-            autoComplete="off"
-          />
-        </Grid>
-      </Grid>
-      <Divider style={{ marginTop: '1rem', marginBottom: '1rem' }} />
-      <Grid container>
-        <Grid item lg={6} md={8} xs={12}>
-          <OutputField label="Hex" value={hex} />
-          <OutputField label="RGB" value={parseRgb(rgb)} />
-          <OutputField label="HSL" value={parseHsl(hsl)} />
-          <OutputField label="HSV" value={parseHsv(hsv)} />
-          <OutputField label="CMYK" value={parseCmyk(cmyk)} />
-          <OutputField label="HTML" value={html} />
-          <OutputField label="Lab" value={parseLab(lab)} />
-          <OutputField label="lch" value={parseLch(lch)} />
-        </Grid>
-        <Grid item lg={6} md={4} xs={12}>
-          <Box bgcolor={hex} style={{ margin: '1rem', height: '50vh' }} />
-        </Grid>
-      </Grid>
-    </FormControl>
+    <div style={{ width: '100%' }}>
+      <div style={{ maxWidth: '500px', marginBottom: 'var(--bui-space-4)' }}>
+        <Flex gap="2" style={{ marginBottom: 'var(--bui-space-2)' }}>
+          <PasteFromClipboardButton setInput={v => handleChange(v)} />
+          <ClearValueButton setValue={() => handleChange('')} />
+          {sample && <SampleButton setInput={handleChange} sample={sample} />}
+        </Flex>
+        <TextField
+          id="input"
+          label={t('tool.color-convert.inputLabel')}
+          value={getInputStr()}
+          onChange={val => handleChange(val)}
+          autoComplete="off"
+        />
+      </div>
+      <hr style={{ margin: '1rem 0', borderColor: 'var(--bui-border-1)' }} />
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: '1fr 1fr',
+          gap: 'var(--bui-space-4)',
+        }}
+      >
+        <div>
+          <OutputRow label="Hex" value={hex} />
+          <OutputRow label="RGB" value={parseRgb(rgb)} />
+          <OutputRow label="HSL" value={parseHsl(hsl)} />
+          <OutputRow label="HSV" value={parseHsv(hsv)} />
+          <OutputRow label="CMYK" value={parseCmyk(cmyk)} />
+          <OutputRow label="HTML" value={html} />
+          <OutputRow label="Lab" value={parseLab(lab)} />
+          <OutputRow label="lch" value={parseLch(lch)} />
+        </div>
+        <div
+          style={{
+            backgroundColor: hex || 'transparent',
+            margin: '1rem',
+            minHeight: '200px',
+            borderRadius: 'var(--bui-radius-2)',
+          }}
+        />
+      </div>
+    </div>
   );
 };
 

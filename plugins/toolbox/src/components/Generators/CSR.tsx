@@ -1,19 +1,11 @@
-import { ChangeEvent, useEffect, useState } from 'react';
-import {
-  Button,
-  ButtonGroup,
-  FormControl,
-  Grid,
-  makeStyles,
-  TextField,
-  Theme,
-} from '@material-ui/core';
-import { Autocomplete } from '@material-ui/lab';
+import { useEffect, useState } from 'react';
 import { alertApiRef, configApiRef, useApi } from '@backstage/core-plugin-api';
 import { useToolboxTranslation } from '../../hooks';
 import { CopyToClipboardButton } from '../Buttons/CopyToClipboardButton';
 import { FileDownloadButton } from '../Buttons/FileDownloadButton';
-import PlayCircleOutlineRoundedIcon from '@material-ui/icons/PlayCircleOutlineRounded';
+import { Button, Flex, Select, TextField } from '@backstage/ui';
+import { RiPlayCircleLine } from '@remixicon/react';
+import styles from '../DefaultEditor/DefaultEditor.module.css';
 import * as asn1js from 'asn1js';
 import {
   Attribute,
@@ -27,33 +19,6 @@ import {
 } from 'pkijs/build';
 import { getCrypto } from 'pkijs';
 
-const useStyles = makeStyles<Theme>(theme => ({
-  formControl: {
-    width: '100%',
-  },
-  gridContainer: {
-    marginBottom: theme.spacing(0.625), // 5px
-  },
-  modeGrid: {
-    paddingLeft: theme.spacing(2), // 16px
-    paddingTop: theme.spacing(4), // 32px
-  },
-  buttonGroup: {
-    marginBottom: theme.spacing(2), // 1rem = 16px
-  },
-  formContainer: {
-    padding: theme.spacing(4), // 32px
-  },
-  fieldGrid: {
-    paddingTop: theme.spacing(1), // 8px
-    paddingLeft: theme.spacing(1), // 8px
-  },
-  textField: {
-    marginBottom: theme.spacing(2), // 10px
-    width: '100%',
-  },
-}));
-
 const keyOptions = [
   { label: 'RSA 4096', value: 'rsa-4096-sha2' },
   { label: 'RSA 2048 SHA2', value: 'rsa-2048-sha2' },
@@ -64,7 +29,6 @@ const keyOptions = [
 
 export const CSRGenerator = () => {
   const { t } = useToolboxTranslation();
-  const classes = useStyles();
   const [fqdns, setFqdns] = useState<string[]>([]);
   const [hashAlgName, setHashAlgName] = useState('SHA-256');
   const [keyPEM, setKeyPEM] = useState('');
@@ -108,22 +72,12 @@ export const CSRGenerator = () => {
     });
   }, [algorithmName]);
 
-  const handleSubjectChange =
-    (field: string) => (event: ChangeEvent<HTMLInputElement>) => {
-      setSubjectValues({ ...subjectValues, [field]: event.target.value });
-    };
-
-  const handleAlgorithmChange = (
-    _event: React.ChangeEvent<{}>,
-    newAlgorithm: { label: string; value: string } | null,
-  ) => {
-    if (newAlgorithm) {
-      setAlgorithmName(newAlgorithm.value);
-    }
+  const handleSubjectChange = (field: string) => (value: string) => {
+    setSubjectValues(prev => ({ ...prev, [field]: value }));
   };
 
-  const handleFqdnChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
-    const fqdnz = event.target.value
+  const handleFqdnChange = (value: string) => {
+    const fqdnz = value
       .split(/[\n\s,]+/)
       .map(fqdn => fqdn.trim())
       .filter(fqdn => fqdn.length > 0);
@@ -158,152 +112,131 @@ export const CSRGenerator = () => {
   };
 
   return (
-    <FormControl className={classes.formControl}>
-      <Grid container spacing={4} className={classes.gridContainer}>
-        <Grid item className={classes.modeGrid}>
-          <ButtonGroup
-            size="small"
-            className={classes.buttonGroup}
-            color="inherit"
-          >
-            <Button
-              startIcon={<PlayCircleOutlineRoundedIcon />}
-              onClick={handleSubmit}
-              size="small"
-              variant="text"
-              color="inherit"
-            >
-              {t('tool.csr-generate.generateButton')}
-            </Button>
-            <CopyToClipboardButton output={certReq} />
-            <FileDownloadButton
-              content={keyPEM}
-              fileName={`${fqdns[0]}.${algorithmName}.key`}
-              fileType="text/plain"
-            />
-          </ButtonGroup>
-        </Grid>
-        <Grid container className={classes.formContainer}>
-          <Grid item xs={12} lg={4} className={classes.fieldGrid}>
-            <TextField
-              label={t('tool.csr-generate.domainNamesLabel')}
-              onChange={handleFqdnChange}
-              variant="outlined"
-              multiline
-              minRows={5}
-              className={classes.textField}
-              autoComplete="off"
-              InputProps={{
-                style: { whiteSpace: 'pre-wrap' },
-              }}
-            />
-            <Autocomplete
-              className={classes.textField}
-              options={keyOptions}
-              getOptionLabel={option =>
-                keyOptions.find(o => o.value === option.value)?.label ||
-                option.value
-              }
-              value={
-                keyOptions.find(option => option.value === algorithmName) ||
-                null
-              }
-              onChange={handleAlgorithmChange}
-              renderInput={params => (
-                <TextField
-                  {...params}
-                  label={t('tool.csr-generate.keyTypeLabel')}
-                  variant="outlined"
-                  autoComplete="off"
-                />
-              )}
-            />
-            <TextField
-              label={t('tool.csr-generate.countryNameLabel')}
-              value={subjectValues.country}
-              className={classes.textField}
-              variant="outlined"
-              onChange={handleSubjectChange('country')}
+    <div style={{ width: '100%' }}>
+      <Flex
+        gap="2"
+        style={{ marginBottom: 'var(--bui-space-4)', padding: '1rem 0' }}
+      >
+        <Button variant="primary" onClick={handleSubmit}>
+          <RiPlayCircleLine size={16} />
+          {t('tool.csr-generate.generateButton')}
+        </Button>
+        <CopyToClipboardButton output={certReq} />
+        <FileDownloadButton
+          content={keyPEM}
+          fileName={`${fqdns[0]}.${algorithmName}.key`}
+          fileType="text/plain"
+        />
+      </Flex>
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: '1fr 2fr',
+          gap: 'var(--bui-space-4)',
+          padding: '1rem',
+        }}
+      >
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 'var(--bui-space-2)',
+          }}
+        >
+          <div>
+            <label className={styles.fieldLabel}>
+              {t('tool.csr-generate.domainNamesLabel')}
+            </label>
+            <textarea
+              className={styles.textarea}
+              rows={5}
+              onChange={e => handleFqdnChange(e.target.value)}
               autoComplete="off"
             />
-            <TextField
-              label={t('tool.csr-generate.stateOrProvinceNameLabel')}
-              value={subjectValues.state}
-              className={classes.textField}
-              variant="outlined"
-              onChange={handleSubjectChange('state')}
-              autoComplete="off"
-            />
-            <TextField
-              label={t('tool.csr-generate.localityNameLabel')}
-              value={subjectValues.locality}
-              className={classes.textField}
-              variant="outlined"
-              onChange={handleSubjectChange('locality')}
-              autoComplete="off"
-            />
-            <TextField
-              label={t('tool.csr-generate.organizationNameLabel')}
-              value={subjectValues.organization}
-              className={classes.textField}
-              variant="outlined"
-              onChange={handleSubjectChange('organization')}
-              autoComplete="off"
-            />
-            {/* Optional field for Organizational Unit */}
-            <TextField
-              label={t('tool.csr-generate.organizationalUnitNameLabel')}
-              value={subjectValues.organizationalUnit}
-              className={classes.textField}
-              variant="outlined"
-              onChange={handleSubjectChange('organizationalUnit')}
-              autoComplete="off"
-            />
-            {/* Optional field for Email Address */}
-            <TextField
-              label={t('tool.csr-generate.emailAddressLabel')}
-              value={subjectValues.emailAddress}
-              className={classes.textField}
-              variant="outlined"
-              onChange={handleSubjectChange('emailAddress')}
-              autoComplete="email"
-            />
-          </Grid>
-          <Grid item xs={12} lg={8} className={classes.fieldGrid}>
-            <TextField
+          </div>
+          <Select
+            label={t('tool.csr-generate.keyTypeLabel')}
+            selectedKey={algorithmName}
+            onSelectionChange={selectedKey =>
+              setAlgorithmName(selectedKey as string)
+            }
+            options={keyOptions.map(o => ({ value: o.value, label: o.label }))}
+          />
+          <TextField
+            label={t('tool.csr-generate.countryNameLabel')}
+            value={subjectValues.country}
+            onChange={handleSubjectChange('country')}
+            autoComplete="off"
+          />
+          <TextField
+            label={t('tool.csr-generate.stateOrProvinceNameLabel')}
+            value={subjectValues.state}
+            onChange={handleSubjectChange('state')}
+            autoComplete="off"
+          />
+          <TextField
+            label={t('tool.csr-generate.localityNameLabel')}
+            value={subjectValues.locality}
+            onChange={handleSubjectChange('locality')}
+            autoComplete="off"
+          />
+          <TextField
+            label={t('tool.csr-generate.organizationNameLabel')}
+            value={subjectValues.organization}
+            onChange={handleSubjectChange('organization')}
+            autoComplete="off"
+          />
+          <TextField
+            label={t('tool.csr-generate.organizationalUnitNameLabel')}
+            value={subjectValues.organizationalUnit}
+            onChange={handleSubjectChange('organizationalUnit')}
+            autoComplete="off"
+          />
+          <TextField
+            label={t('tool.csr-generate.emailAddressLabel')}
+            value={subjectValues.emailAddress}
+            onChange={handleSubjectChange('emailAddress')}
+            autoComplete="email"
+          />
+        </div>
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 'var(--bui-space-4)',
+          }}
+        >
+          <div>
+            <label className={styles.fieldLabel}>
+              {t('tool.csr-generate.certificateRequestLabel')}
+            </label>
+            <textarea
               id="certificate-request"
-              label={t('tool.csr-generate.certificateRequestLabel')}
+              className={styles.textarea}
               value={certReq || ''}
-              className={classes.textField}
-              multiline
-              minRows={20}
-              maxRows={50}
-              variant="outlined"
+              readOnly
+              rows={20}
               autoComplete="off"
-              InputProps={{
-                style: { whiteSpace: 'pre-wrap' },
-                readOnly: true,
-              }}
+              style={{ whiteSpace: 'pre-wrap' }}
             />
-            <TextField
+          </div>
+          <div>
+            <label className={styles.fieldLabel}>
+              {t('tool.csr-generate.decodedCSRLabel')}
+            </label>
+            <textarea
               id="decoded-csr"
-              label={t('tool.csr-generate.decodedCSRLabel')}
+              className={styles.textarea}
               value={decodedCSR || ''}
-              className={classes.textField}
-              multiline
-              minRows={10}
-              maxRows={20}
-              variant="outlined"
+              readOnly
+              rows={10}
               autoComplete="off"
-              InputProps={{
-                style: { whiteSpace: 'pre-wrap' },
-                readOnly: true,
-              }}
+              style={{ whiteSpace: 'pre-wrap' }}
             />
-          </Grid>
-        </Grid>
-      </Grid>
-    </FormControl>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 };
 

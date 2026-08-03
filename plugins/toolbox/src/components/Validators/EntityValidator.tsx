@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { DefaultEditor } from '../DefaultEditor';
-import { Alert, AlertTitle } from '@material-ui/lab';
+import { Alert } from '@backstage/ui';
 import { useToolboxTranslation } from '../../hooks';
 import { useApi } from '@backstage/core-plugin-api';
 import { catalogApiRef } from '@backstage/plugin-catalog-react';
@@ -8,12 +8,18 @@ import YAML from 'yaml';
 import { Entity } from '@backstage/catalog-model';
 
 type AnyError = { name: string; message: string };
+type AlertState = {
+  status: 'info' | 'danger' | 'success';
+  title?: string;
+  description: string;
+};
 
 export const EntityValidator = () => {
   const { t } = useToolboxTranslation();
-  const [output, setOutput] = useState(
-    <Alert severity="info">{t('tool.entity-validator.alertEmptyValue')}</Alert>,
-  );
+  const [alert, setAlert] = useState<AlertState>({
+    status: 'info',
+    description: '',
+  });
   const [input, setInput] = useState('');
   const catalogApi = useApi(catalogApiRef);
   const sample =
@@ -42,18 +48,15 @@ export const EntityValidator = () => {
 
   const formatError = (err: AnyError | AnyError[]) => {
     const msgs = Array.isArray(err) ? err : [err];
-    return msgs
-      .map(msg => `${msg.name}: ${msg.message.replaceAll('|', '<br>')}`)
-      .join('<hr><br>');
+    return msgs.map(msg => `${msg.name}: ${msg.message}`).join('\n');
   };
 
   useEffect(() => {
     if (!input) {
-      setOutput(
-        <Alert severity="info">
-          {t('tool.entity-validator.alertEmptyValue')}
-        </Alert>,
-      );
+      setAlert({
+        status: 'info',
+        description: t('tool.entity-validator.alertEmptyValue'),
+      });
       return;
     }
 
@@ -61,12 +64,11 @@ export const EntityValidator = () => {
     try {
       entity = YAML.parse(input);
     } catch (err) {
-      setOutput(
-        <Alert severity="error">
-          <AlertTitle>{t('tool.entity-validator.alertErrorTitle')}</AlertTitle>
-          <div dangerouslySetInnerHTML={{ __html: formatError(err) }} />
-        </Alert>,
-      );
+      setAlert({
+        status: 'danger',
+        title: t('tool.entity-validator.alertErrorTitle'),
+        description: formatError(err),
+      });
       return;
     }
     catalogApi
@@ -76,36 +78,25 @@ export const EntityValidator = () => {
       )
       .then(resp => {
         if (resp.valid) {
-          setOutput(
-            <Alert severity="success">
-              <AlertTitle>
-                {t('tool.entity-validator.alertSuccessTitle')}
-              </AlertTitle>
-              {t('tool.entity-validator.alertValidEntity')}
-            </Alert>,
-          );
+          setAlert({
+            status: 'success',
+            title: t('tool.entity-validator.alertSuccessTitle'),
+            description: t('tool.entity-validator.alertValidEntity'),
+          });
           return;
         }
-        setOutput(
-          <Alert severity="error">
-            <AlertTitle>
-              {t('tool.entity-validator.alertErrorTitle')}
-            </AlertTitle>
-            <div
-              dangerouslySetInnerHTML={{ __html: formatError(resp.errors) }}
-            />
-          </Alert>,
-        );
+        setAlert({
+          status: 'danger',
+          title: t('tool.entity-validator.alertErrorTitle'),
+          description: formatError(resp.errors),
+        });
       })
       .catch(err => {
-        setOutput(
-          <Alert severity="error">
-            <AlertTitle>
-              {t('tool.entity-validator.alertErrorTitle')}
-            </AlertTitle>
-            <div dangerouslySetInnerHTML={{ __html: formatError(err) }} />
-          </Alert>,
-        );
+        setAlert({
+          status: 'danger',
+          title: t('tool.entity-validator.alertErrorTitle'),
+          description: formatError(err),
+        });
       });
   }, [catalogApi, input, t]);
 
@@ -114,7 +105,13 @@ export const EntityValidator = () => {
       input={input}
       setInput={setInput}
       sample={sample}
-      rightContent={<>{output}</>}
+      rightContent={
+        <Alert
+          status={alert.status}
+          title={alert.title}
+          description={alert.description}
+        />
+      }
       allowFileUpload
       inputLabel={t('tool.entity-validator.inputLabel')}
       acceptFileTypes=".yaml,.yml"

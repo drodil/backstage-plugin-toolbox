@@ -1,4 +1,4 @@
-import { ReactElement, useState } from 'react';
+import { DragEvent, ReactElement, useState } from 'react';
 import {
   ClearValueButton,
   CopyToClipboardButton,
@@ -7,50 +7,9 @@ import {
   SampleButton,
 } from '../Buttons';
 import { FileDownloadButton } from '../Buttons/FileDownloadButton';
-import {
-  Button,
-  ButtonGroup,
-  FormControl,
-  Grid,
-  makeStyles,
-  TextField,
-  Theme,
-} from '@material-ui/core';
+import { Button, Flex } from '@backstage/ui';
 import { useToolboxTranslation } from '../../hooks';
-
-const useStyles = makeStyles<Theme>(theme => ({
-  formControl: {
-    width: '100%',
-  },
-  gridContainer: {
-    marginBottom: theme.spacing(0.625), // 5px
-  },
-  modeGrid: {
-    paddingLeft: theme.spacing(2), // 16px
-    paddingTop: theme.spacing(4), // 32px
-  },
-  buttonGroup: {
-    marginBottom: theme.spacing(1),
-  },
-  toolsGrid: {
-    padding: theme.spacing(2), // 16px
-  },
-  selectedButton: {
-    color: theme.palette.text.primary,
-    backgroundColor: theme.palette.action.selected,
-  },
-  unselectedButton: {
-    borderColor: theme.palette.divider,
-  },
-  editorGrid: {
-    paddingTop: theme.spacing(1), // 8px
-    paddingLeft: theme.spacing(1), // 8px
-  },
-  textField: {
-    width: '100%',
-    padding: theme.spacing(1), // 8px
-  },
-}));
+import styles from './TripleEditor.module.css';
 
 type Props = {
   input: string;
@@ -60,7 +19,6 @@ type Props = {
   output: string;
   setOutput: (value: string) => void;
   mode?: string;
-  minRows?: number;
   inputLabel?: string;
   patternLabel?: string;
   outputLabel?: string;
@@ -86,7 +44,6 @@ type Props = {
 
 export const TripleEditor = (props: Props) => {
   const { t } = useToolboxTranslation();
-  const classes = useStyles();
   const {
     input,
     setInput,
@@ -113,7 +70,6 @@ export const TripleEditor = (props: Props) => {
     allowFileDownload,
     downloadFileName,
     downloadFileType,
-    minRows = 20,
   } = props;
 
   const [fileName, setFileName] = useState(downloadFileName ?? 'output');
@@ -135,7 +91,7 @@ export const TripleEditor = (props: Props) => {
     reader.readAsText(file);
   };
 
-  const handleDrop = (ev: React.DragEvent<HTMLDivElement>) => {
+  const handleDrop = (ev: DragEvent<HTMLDivElement>) => {
     if (allowFileUpload !== true) {
       return;
     }
@@ -158,131 +114,97 @@ export const TripleEditor = (props: Props) => {
   };
 
   return (
-    <FormControl className={classes.formControl} onDrop={handleDrop}>
-      <Grid container spacing={4} className={classes.gridContainer}>
-        {modes && modes.length > 0 && (
-          <Grid item className={classes.modeGrid}>
-            <ButtonGroup
-              size="small"
-              disableElevation
-              variant="contained"
-              aria-label="Disabled elevation buttons"
-              className={classes.buttonGroup}
-              color="inherit"
+    <div className={styles.container} onDrop={handleDrop}>
+      {modes && modes.length > 0 && (
+        <Flex gap="2" className={styles.toolsRow}>
+          {modes.map(m => (
+            <Button
+              key={m}
+              variant={mode === m ? 'primary' : 'secondary'}
+              onClick={() => setMode && setMode(m)}
             >
-              {modes.map(m => (
-                <Button
-                  size="small"
-                  key={m}
-                  onClick={() => setMode && setMode(m)}
-                  variant={mode === m ? 'contained' : 'outlined'}
-                  color="inherit"
-                  className={
-                    mode === m
-                      ? classes.selectedButton
-                      : classes.unselectedButton
-                  }
-                >
-                  {t(`components.defaultEditor.mode.${m.toLowerCase()}`, {
-                    defaultValue: m,
-                  })}
-                </Button>
-              ))}
-            </ButtonGroup>
-          </Grid>
+              {t(`components.defaultEditor.mode.${m.toLowerCase()}`, {
+                defaultValue: m,
+              })}
+            </Button>
+          ))}
+        </Flex>
+      )}
+      <Flex gap="2" className={styles.toolsRow}>
+        <ClearValueButton setValue={setInput} />
+        <PasteFromClipboardButton setInput={setInput} />
+        <ClearValueButton setValue={setPattern} />
+        <PasteFromClipboardButton setInput={setPattern} />
+        {output && <CopyToClipboardButton output={output} />}
+        {sample && <SampleButton setInput={setInput} sample={sample} />}
+        {allowFileUpload && (
+          <FileUploadButton
+            accept={acceptFileTypes}
+            onFileLoad={readFileAndSetInput}
+          />
         )}
-        <Grid item className={classes.toolsGrid}>
-          <ButtonGroup size="small">
-            <ClearValueButton setValue={setInput} />
-            <PasteFromClipboardButton setInput={setInput} />
-            <ClearValueButton setValue={setPattern} />
-            <PasteFromClipboardButton setInput={setPattern} />
-            {output && <CopyToClipboardButton output={output} />}
-            {sample && <SampleButton setInput={setInput} sample={sample} />}
-            {allowFileUpload && (
-              <FileUploadButton
-                accept={acceptFileTypes}
-                onFileLoad={readFileAndSetInput}
-              />
-            )}
-            {output && allowFileDownload && (
-              <FileDownloadButton
-                content={output}
-                fileName={fileName}
-                fileType={fileType}
-              />
-            )}
-          </ButtonGroup>
-        </Grid>
-        {additionalTools && additionalTools.length > 0 && (
-          <Grid item>{additionalTools.map(tool => tool)}</Grid>
+        {output && allowFileDownload && (
+          <FileDownloadButton
+            content={output}
+            fileName={fileName}
+            fileType={fileType}
+          />
         )}
-      </Grid>
-      <Grid container>
-        <Grid item xs={12} lg={4} className={classes.editorGrid}>
-          {leftContent ? (
-            leftContent
-          ) : (
+        {additionalTools && additionalTools.map(tool => tool)}
+      </Flex>
+      <div className={styles.editorsRow}>
+        <div className={styles.editorCell}>
+          {leftContent ?? (
             <>
-              <TextField
-                label={inputLabel}
-                // eslint-disable-next-line
+              <label htmlFor="input" className={styles.fieldLabel}>
+                {inputLabel}
+              </label>
+              <textarea
                 id="input"
-                multiline
+                className={styles.textarea}
                 value={input}
                 onChange={e => setInput(e.target.value)}
-                minRows={minRows}
-                variant="outlined"
                 autoComplete="off"
-                className={classes.textField}
               />
             </>
           )}
           {extraLeftContent}
-        </Grid>
-        <Grid item xs={12} lg={4} className={classes.editorGrid}>
-          {middleContent ? (
-            middleContent
-          ) : (
+        </div>
+        <div className={styles.editorCell}>
+          {middleContent ?? (
             <>
-              <TextField
-                label={patternLabel}
-                // eslint-disable-next-line
+              <label htmlFor="pattern" className={styles.fieldLabel}>
+                {patternLabel}
+              </label>
+              <textarea
                 id="pattern"
-                multiline
+                className={styles.textarea}
                 value={pattern}
                 onChange={e => setPattern(e.target.value)}
-                minRows={minRows}
-                variant="outlined"
                 autoComplete="off"
-                className={classes.textField}
               />
             </>
           )}
           {extraMiddleContent}
-        </Grid>
-        <Grid item xs={12} lg={4} className={classes.editorGrid}>
-          {rightContent ? (
-            rightContent
-          ) : (
+        </div>
+        <div className={styles.editorCell}>
+          {rightContent ?? (
             <>
-              <TextField
-                label={outputLabel}
-                // eslint-disable-next-line
+              <label htmlFor="output" className={styles.fieldLabel}>
+                {outputLabel}
+              </label>
+              <textarea
                 id="output"
-                multiline
+                className={styles.textarea}
                 value={output}
-                autoComplete="off"
                 onChange={e => setOutput(e.target.value)}
-                minRows={minRows}
-                variant="outlined"
-                className={classes.textField}
+                autoComplete="off"
               />
             </>
           )}
           {extraRightContent}
-        </Grid>
-      </Grid>
-    </FormControl>
+        </div>
+      </div>
+    </div>
   );
 };
