@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.36.11...v2.0.0) (2026-08-04)
+
+
+### ⚠ BREAKING CHANGES
+
+* dropped old frontend system support and migrated
+from MUI to BUI
+
+### Features
+
+* upgrade to BUI and drop old frontend system ([6225f71](https://github.com/drodil/backstage-plugin-toolbox/commit/6225f71ad48d5b6eb82586d8093c0ec36bc5929e))
+
 ### [1.36.11](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.36.10...v1.36.11) (2026-07-29)
 
 ### [1.36.10](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.36.9...v1.36.10) (2026-05-27)
