@@ -1,21 +1,3 @@
-import { Select, SelectProps } from '@material-ui/core';
+import { Select } from '@backstage/ui';
 
-export const DefaultSelect = (props: SelectProps) => {
-  const { children, ...otherProps } = props;
-
-  return (
-    <Select
-      {...otherProps}
-      MenuProps={{
-        MenuListProps: {
-          style: {
-            display: 'flex',
-            flexDirection: 'column',
-          },
-        },
-      }}
-    >
-      {children}
-    </Select>
-  );
-};
+export { Select as DefaultSelect };

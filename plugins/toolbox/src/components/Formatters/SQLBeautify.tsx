@@ -1,10 +1,9 @@
 import { useEffect, useState } from 'react';
-import TextField from '@material-ui/core/TextField';
-import { makeStyles } from '@material-ui/core/styles';
 import { DefaultEditor } from '../DefaultEditor';
 import { format } from 'sql-formatter';
 import { useToolboxTranslation } from '../../hooks';
 import { SQLLanguageSelector } from './SQLLanguageSelector';
+import styles from '../DefaultEditor/DefaultEditor.module.css';
 
 const languages = [
   'sql',
@@ -25,14 +24,6 @@ const languages = [
   'transactsql',
   'trino',
 ];
-
-const useStyles = makeStyles({
-  textField: {
-    zIndex: 0,
-    width: '100%',
-  },
-});
-
 /**
  * SQLBeautify - Formats SQL queries using sql-formatter.
  * Allows selection of SQL language.
@@ -44,7 +35,6 @@ export const SQLBeautify = () => {
   const { t } = useToolboxTranslation();
 
   const sample = "SELECT bar, foo FROM foo_bar WHERE foo='bar' GROUP BY bar";
-  const classes = useStyles();
   useEffect(() => {
     if (input) {
       try {
@@ -87,38 +77,37 @@ export const SQLBeautify = () => {
         />,
       ]}
       leftContent={
-        <TextField
-          name="editorSqlInput_abc1234"
-          label={t('tool.format-sql.inputLabel')}
-          id="input"
-          multiline
-          value={input}
-          onChange={e => setInput(e.target.value)}
-          minRows={20}
-          variant="outlined"
-          inputProps={{
-            form: 'off',
-            spellCheck: false,
-          }}
-          autoComplete="off"
-          className={classes.textField}
-        />
+        <>
+          <label htmlFor="input" className={styles.fieldLabel}>
+            {t('tool.format-sql.inputLabel')}
+          </label>
+          <textarea
+            name="editorSqlInput_abc1234"
+            id="input"
+            className={styles.textarea}
+            value={input}
+            onChange={e => setInput(e.target.value)}
+            rows={20}
+            autoComplete="off"
+            spellCheck={false}
+          />
+        </>
       }
       rightContent={
-        <TextField
-          id="output"
-          label={t('tool.format-sql.outputLabel')}
-          value={output || ''}
-          multiline
-          minRows={20}
-          variant="outlined"
-          autoComplete="off"
-          inputProps={{
-            spellCheck: false,
-            readOnly: true,
-          }}
-          className={classes.textField}
-        />
+        <>
+          <label htmlFor="output" className={styles.fieldLabel}>
+            {t('tool.format-sql.outputLabel')}
+          </label>
+          <textarea
+            id="output"
+            className={styles.textarea}
+            value={output || ''}
+            rows={20}
+            autoComplete="off"
+            spellCheck={false}
+            readOnly
+          />
+        </>
       }
     />
   );

@@ -3,7 +3,6 @@ import { DefaultEditor } from '../DefaultEditor';
 import { MarkdownContent } from '@backstage/core-components';
 import beautify from 'js-beautify';
 import { unescape } from 'lodash';
-import { Paper } from '@material-ui/core';
 
 export const MarkdownPreview = () => {
   const [input, setInput] = useState('');
@@ -28,15 +27,12 @@ export const MarkdownPreview = () => {
       acceptFileTypes=".md"
       rightContent={
         <>
-          <Paper elevation={0} style={{ padding: 16 }}>
+          <div style={{ padding: 16 }}>
             <MarkdownContent className="mdPreview" content={input} />
-          </Paper>
-          <Paper
-            elevation={0}
-            style={{ marginTop: '1rem', whiteSpace: 'pre-line' }}
-          >
+          </div>
+          <div style={{ marginTop: '1rem', whiteSpace: 'pre-line' }}>
             {html}
-          </Paper>
+          </div>
         </>
       }
     />

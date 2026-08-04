@@ -8,28 +8,10 @@ import {
   snakeCase,
   upperCase,
 } from 'lodash';
-import {
-  Box,
-  Checkbox as CheckBox,
-  FormControlLabel,
-  makeStyles,
-  TextField,
-  Theme,
-} from '@material-ui/core';
+import { Checkbox, Flex, TextField } from '@backstage/ui';
 import { useToolboxTranslation } from '../../hooks';
 
-const useStyles = makeStyles<Theme>(theme => ({
-  controlsGrid: {
-    alignItems: 'center',
-    padding: theme.spacing(1, 0, 0, 1), // 8px 0 0 8px
-  },
-  paddingBox: {
-    paddingLeft: theme.spacing(2), // 16px
-  },
-}));
-
 export const StringUtilities = () => {
-  const classes = useStyles();
   const [input, setInput] = useState('');
   const [output, setOutput] = useState('');
   const [mode, setMode] = useState('Replace');
@@ -118,30 +100,28 @@ export const StringUtilities = () => {
 
   const extraLeftContent =
     mode === 'Replace' ? (
-      <Box display="flex" className={classes.controlsGrid}>
+      <Flex
+        gap="2"
+        align="center"
+        style={{ paddingTop: 'var(--bui-space-2)', flexWrap: 'wrap' }}
+      >
         <TextField
           label={t('tool.string-utilities-convert.inputSearch')}
-          onChange={event => setSearchWord(event.target.value)}
-          variant="outlined"
+          onChange={val => setSearchWord(val)}
           autoComplete="off"
         />
-        <Box className={classes.paddingBox}>
-          <FormControlLabel
-            control={
-              <CheckBox
-                checked={isUseRegexpEnabled}
-                onClick={() => setIsUseRegexpEnabled(!isUseRegexpEnabled)}
-              />
-            }
-            label="Regexp"
-          />
-        </Box>
+        <Checkbox
+          isSelected={isUseRegexpEnabled}
+          onChange={() => setIsUseRegexpEnabled(!isUseRegexpEnabled)}
+        >
+          Regexp
+        </Checkbox>
         <TextField
           label={t('tool.string-utilities-convert.inputReplace')}
-          onChange={event => setReplaceWord(event.target.value)}
+          onChange={val => setReplaceWord(val)}
           autoComplete="off"
         />
-      </Box>
+      </Flex>
     ) : undefined;
 
   return (

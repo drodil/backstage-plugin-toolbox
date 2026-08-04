@@ -2,17 +2,10 @@ import { useCallback, useEffect, useState } from 'react';
 import { useToolboxTranslation } from '../../hooks';
 import { DefaultEditor } from '../DefaultEditor';
 import { Parser } from '@json2csv/plainjs';
-import TextField from '@material-ui/core/TextField';
-import { makeStyles } from '@material-ui/core/styles';
 import { parse as json5Parse } from 'json5';
 import { stringify as yamlStringify } from 'yaml';
+import styles from '../DefaultEditor/DefaultEditor.module.css';
 
-const useStyles = makeStyles({
-  textField: {
-    zIndex: 0,
-    width: '100%',
-  },
-});
 const getFileType = (mode: string): string => {
   switch (mode) {
     case 'CSV':
@@ -72,7 +65,6 @@ export const JsonConverter = () => {
   const [input, setInput] = useState('');
   const [output, setOutput] = useState('');
   const [mode, setMode] = useState('CSV');
-  const classes = useStyles();
   const sample = JSON.stringify(
     [
       { type: 'car', name: 'pedro', stars: 3 },
@@ -119,40 +111,41 @@ export const JsonConverter = () => {
       downloadFileName={`download.${mode.toLowerCase()}`}
       downloadFileType={fileType}
       leftContent={
-        <TextField
-          name="editorJsonInput"
-          label={t('tool.json-converter.inputLabel', {
-            defaultValue: 'JSON Input',
-          })}
-          id="input"
-          multiline
-          value={input}
-          onChange={e => setInput(e.target.value)}
-          minRows={20}
-          variant="outlined"
-          inputProps={{
-            form: 'off',
-            spellCheck: false,
-          }}
-          className={classes.textField}
-        />
+        <>
+          <label htmlFor="input" className={styles.fieldLabel}>
+            {t('tool.json-converter.inputLabel', {
+              defaultValue: 'JSON Input',
+            })}
+          </label>
+          <textarea
+            name="editorJsonInput"
+            id="input"
+            className={styles.textarea}
+            value={input}
+            onChange={e => setInput(e.target.value)}
+            rows={20}
+            autoComplete="off"
+            spellCheck={false}
+          />
+        </>
       }
       rightContent={
-        <TextField
-          id="output"
-          label={t('tool.json-converter.outputLabel', {
-            defaultValue: 'Converted Output',
-          })}
-          value={output || ''}
-          multiline
-          minRows={20}
-          variant="outlined"
-          inputProps={{
-            spellCheck: false,
-            readOnly: true,
-          }}
-          className={classes.textField}
-        />
+        <>
+          <label htmlFor="output" className={styles.fieldLabel}>
+            {t('tool.json-converter.outputLabel', {
+              defaultValue: 'Converted Output',
+            })}
+          </label>
+          <textarea
+            id="output"
+            className={styles.textarea}
+            value={output || ''}
+            rows={20}
+            autoComplete="off"
+            spellCheck={false}
+            readOnly
+          />
+        </>
       }
     />
   );

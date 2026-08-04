@@ -1,7 +1,6 @@
 import { useFavoriteStorage } from '../../utils/hooks';
-import { Button, Tooltip } from '@material-ui/core';
-import Star from '@material-ui/icons/Star';
-import StarOutline from '@material-ui/icons/StarOutline';
+import { TooltipTrigger, Tooltip, ButtonIcon } from '@backstage/ui';
+import { RiStarFill, RiStarLine } from '@remixicon/react';
 import { useToolboxTranslation } from '../../hooks';
 
 type Props = {
@@ -37,17 +36,22 @@ export const FavoriteButton = (props: Props) => {
 
   const isFavorite = currentFavorites.includes(toolId);
   return (
-    <Tooltip
-      title={
-        isFavorite
+    <TooltipTrigger>
+      <ButtonIcon
+        aria-label={
+          isFavorite
+            ? t('components.favoriteButton.tooltipTitleFavorite')
+            : t('components.favoriteButton.tooltipTitleNotFavorite')
+        }
+        icon={isFavorite ? <RiStarFill size={20} /> : <RiStarLine size={20} />}
+        variant="secondary"
+        onPress={handleClick}
+      />
+      <Tooltip>
+        {isFavorite
           ? t('components.favoriteButton.tooltipTitleFavorite')
-          : t('components.favoriteButton.tooltipTitleNotFavorite')
-      }
-      arrow
-    >
-      <Button onClick={handleClick} color="inherit">
-        {isFavorite ? <Star /> : <StarOutline />}
-      </Button>
-    </Tooltip>
+          : t('components.favoriteButton.tooltipTitleNotFavorite')}
+      </Tooltip>
+    </TooltipTrigger>
   );
 };

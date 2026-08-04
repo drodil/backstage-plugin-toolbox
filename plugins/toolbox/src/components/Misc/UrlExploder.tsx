@@ -6,23 +6,11 @@ import {
   SampleButton,
 } from '../Buttons';
 import { faker } from '@faker-js/faker';
-import { Grid, makeStyles, TextField, Theme } from '@material-ui/core';
+import { Flex, TextField } from '@backstage/ui';
 import { useToolboxTranslation } from '../../hooks';
-
-const useStyles = makeStyles<Theme>(theme => ({
-  textField: {
-    marginBottom: theme.spacing(1.25), // 10px
-    width: '100%',
-  },
-  firstTextField: {
-    marginTop: theme.spacing(1.25), // 10px
-    marginBottom: theme.spacing(1.25), // 10px
-    width: '100%',
-  },
-}));
+import styles from '../DefaultEditor/DefaultEditor.module.css';
 
 export const UrlExploder = () => {
-  const classes = useStyles();
   const [url, setUrl] = useState<null | URL>(null);
   const [rawInput, setRawInput] = useState('');
   const [protocol, setProtocol] = useState('');
@@ -90,8 +78,8 @@ export const UrlExploder = () => {
   }, [protocol, host, path, username, port, password, hash, query]);
 
   return (
-    <Grid container>
-      <Grid item xs={12}>
+    <div style={{ width: '100%' }}>
+      <Flex gap="2" style={{ marginBottom: 'var(--bui-space-2)' }}>
         <SampleButton setInput={onInput} sample={faker.internet.url()} />
         <ClearValueButton setValue={onInput} />
         <PasteFromClipboardButton
@@ -104,99 +92,123 @@ export const UrlExploder = () => {
             output={rawInput}
           />
         )}
+      </Flex>
+      <div style={{ marginBottom: 'var(--bui-space-4)' }}>
         <TextField
           label="URL"
-          variant="outlined"
           value={rawInput}
-          onChange={e => onInput(e.target.value)}
-          className={classes.firstTextField}
+          onChange={val => onInput(val)}
           autoComplete="url"
         />
-      </Grid>
-      <Grid item xs={6}>
-        <TextField
-          label={t('tool.url-exploder.protocolLabel')}
-          value={protocol}
-          className={classes.textField}
-          onChange={e => setProtocol(e.target.value)}
-          variant="outlined"
-          autoComplete="off"
-        />
-        <TextField
-          label={t('tool.url-exploder.pathLabel')}
-          value={path}
-          className={classes.textField}
-          onChange={e => setPath(e.target.value)}
-          variant="outlined"
-          autoComplete="off"
-        />
-        <TextField
-          label={t('tool.url-exploder.usernameLabel')}
-          value={username}
-          className={classes.textField}
-          onChange={e => setUsername(e.target.value)}
-          variant="outlined"
-          autoComplete="off"
-        />
-        <TextField
-          label={t('tool.url-exploder.queryLabel')}
-          value={query}
-          multiline
-          minRows={10}
-          className={classes.textField}
-          onChange={e => setQuery(e.target.value)}
-          helperText={t('tool.url-exploder.queryHelperText')}
-          variant="outlined"
-          autoComplete="off"
-        />
-      </Grid>
-
-      <Grid item xs={6}>
-        <TextField
-          label={t('tool.url-exploder.hostLabel')}
-          value={host}
-          className={classes.textField}
-          onChange={e => setHost(e.target.value)}
-          variant="outlined"
-          autoComplete="off"
-        />
-        <TextField
-          label={t('tool.url-exploder.portLabel')}
-          type="number"
-          value={port}
-          className={classes.textField}
-          onChange={e => setPort(e.target.value)}
-          variant="outlined"
-          autoComplete="off"
-        />
-        <TextField
-          label={t('tool.url-exploder.passwordLabel')}
-          value={password}
-          className={classes.textField}
-          onChange={e => setPassword(e.target.value)}
-          variant="outlined"
-          autoComplete="off"
-        />
-        <TextField
-          label={t('tool.url-exploder.hashLabel')}
-          value={hash}
-          className={classes.textField}
-          onChange={e => setHash(e.target.value)}
-          variant="outlined"
-          autoComplete="off"
-        />
-        <TextField
-          label={t('tool.url-exploder.originLabel')}
-          value={origin}
-          InputProps={{
-            readOnly: true,
-          }}
-          className={classes.textField}
-          variant="outlined"
-          autoComplete="off"
-        />
-      </Grid>
-    </Grid>
+      </div>
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: '1fr 1fr',
+          gap: 'var(--bui-space-4)',
+        }}
+      >
+        <div>
+          <div style={{ marginBottom: 'var(--bui-space-2)' }}>
+            <TextField
+              label={t('tool.url-exploder.protocolLabel')}
+              value={protocol}
+              onChange={setProtocol}
+              autoComplete="off"
+            />
+          </div>
+          <div style={{ marginBottom: 'var(--bui-space-2)' }}>
+            <TextField
+              label={t('tool.url-exploder.pathLabel')}
+              value={path}
+              onChange={setPath}
+              autoComplete="off"
+            />
+          </div>
+          <div style={{ marginBottom: 'var(--bui-space-2)' }}>
+            <TextField
+              label={t('tool.url-exploder.usernameLabel')}
+              value={username}
+              onChange={setUsername}
+              autoComplete="off"
+            />
+          </div>
+          <div style={{ marginBottom: 'var(--bui-space-2)' }}>
+            <label className={styles.fieldLabel}>
+              {t('tool.url-exploder.queryLabel')}
+            </label>
+            <textarea
+              className={styles.textarea}
+              rows={10}
+              value={query}
+              onChange={e => setQuery(e.target.value)}
+              autoComplete="off"
+            />
+          </div>
+        </div>
+        <div>
+          <div style={{ marginBottom: 'var(--bui-space-2)' }}>
+            <TextField
+              label={t('tool.url-exploder.hostLabel')}
+              value={host}
+              onChange={setHost}
+              autoComplete="off"
+            />
+          </div>
+          <div style={{ marginBottom: 'var(--bui-space-2)' }}>
+            <label
+              style={{
+                fontSize: 'var(--bui-font-size-1)',
+                color: 'var(--bui-fg-secondary)',
+                display: 'block',
+                marginBottom: 'var(--bui-space-1)',
+              }}
+            >
+              {t('tool.url-exploder.portLabel')}
+            </label>
+            <input
+              type="number"
+              value={port}
+              onChange={e => setPort(e.target.value)}
+              autoComplete="off"
+              style={{
+                padding: 'var(--bui-space-2)',
+                border: '1px solid var(--bui-border-1)',
+                borderRadius: 'var(--bui-radius-2)',
+                fontFamily: 'var(--bui-font-regular)',
+                fontSize: 'var(--bui-font-size-2)',
+                width: '100%',
+                boxSizing: 'border-box',
+              }}
+            />
+          </div>
+          <div style={{ marginBottom: 'var(--bui-space-2)' }}>
+            <TextField
+              label={t('tool.url-exploder.passwordLabel')}
+              value={password}
+              onChange={setPassword}
+              autoComplete="off"
+            />
+          </div>
+          <div style={{ marginBottom: 'var(--bui-space-2)' }}>
+            <TextField
+              label={t('tool.url-exploder.hashLabel')}
+              value={hash}
+              onChange={setHash}
+              autoComplete="off"
+            />
+          </div>
+          <div style={{ marginBottom: 'var(--bui-space-2)' }}>
+            <TextField
+              label={t('tool.url-exploder.originLabel')}
+              value={origin}
+              onChange={() => {}}
+              autoComplete="off"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
   );
 };
 

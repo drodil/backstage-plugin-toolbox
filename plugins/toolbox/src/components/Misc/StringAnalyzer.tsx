@@ -1,27 +1,15 @@
 import { useEffect, useState } from 'react';
 import { DefaultEditor } from '../DefaultEditor';
 import { faker } from '@faker-js/faker';
-import {
-  Grid,
-  makeStyles,
-  TextField,
-  Theme,
-  Typography,
-} from '@material-ui/core';
+import { Flex, Text, TextField } from '@backstage/ui';
 import { useToolboxTranslation } from '../../hooks';
 
 const ANALYZED_CHARS =
   'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 :;,.!?*+^${}()|/\\';
-const useStyles = makeStyles<Theme>(theme => ({
-  resultGrid: {
-    marginTop: theme.spacing(2), // 1rem = 16px
-  },
-}));
 
 const escapeRegex = (str: string) => str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
 export const StringAnalyzer = () => {
-  const classes = useStyles();
   const [input, setInput] = useState('');
   const [characters, setCharacters] = useState(0);
   const [lines, setLines] = useState(0);
@@ -55,55 +43,49 @@ export const StringAnalyzer = () => {
       sample={faker.lorem.paragraphs(Math.random() * 10 + 1, '\n')}
       rightContent={
         <>
-          <Grid container>
-            <Grid item xs={12}>
-              <Typography variant="h6">
-                {t('tool.string-analyzer.overallStats')}
-              </Typography>
-            </Grid>
-            <Grid item>
-              <TextField
-                label="Characters"
-                value={characters}
-                variant="standard"
-                autoComplete="off"
-              />
-            </Grid>
-            <Grid item>
-              <TextField
-                label="Lines"
-                value={lines}
-                variant="standard"
-                autoComplete="off"
-              />
-            </Grid>
-            <Grid item>
-              <TextField
-                label="Words"
-                value={words}
-                variant="standard"
-                autoComplete="off"
-              />
-            </Grid>
-          </Grid>
-          <Grid container className={classes.resultGrid}>
-            <Grid item xs={12}>
-              <Typography variant="h6">
-                {t('tool.string-analyzer.characterStats')}
-              </Typography>
-            </Grid>
+          <Text variant="title-small">
+            {t('tool.string-analyzer.overallStats')}
+          </Text>
+          <Flex gap="4" style={{ margin: 'var(--bui-space-2) 0' }}>
+            <TextField
+              label="Characters"
+              value={String(characters)}
+              onChange={() => {}}
+              autoComplete="off"
+            />
+            <TextField
+              label="Lines"
+              value={String(lines)}
+              onChange={() => {}}
+              autoComplete="off"
+            />
+            <TextField
+              label="Words"
+              value={String(words)}
+              onChange={() => {}}
+              autoComplete="off"
+            />
+          </Flex>
+          <Text
+            variant="title-small"
+            style={{ marginTop: 'var(--bui-space-4)' }}
+          >
+            {t('tool.string-analyzer.characterStats')}
+          </Text>
+          <Flex
+            gap="2"
+            style={{ flexWrap: 'wrap', marginTop: 'var(--bui-space-2)' }}
+          >
             {alphabets.map(({ char, count }) => (
-              <Grid item key={char}>
-                <TextField
-                  label={char}
-                  value={count}
-                  size="small"
-                  variant="standard"
-                  autoComplete="off"
-                />
-              </Grid>
+              <TextField
+                key={char}
+                label={char}
+                value={String(count)}
+                onChange={() => {}}
+                autoComplete="off"
+              />
             ))}
-          </Grid>
+          </Flex>
         </>
       }
     />

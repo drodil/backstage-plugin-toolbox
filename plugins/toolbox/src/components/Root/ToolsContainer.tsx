@@ -1,118 +1,20 @@
 import { ReactElement, Suspense, useEffect, useMemo, useState } from 'react';
 import { Content, ContentHeader } from '@backstage/core-components';
 import { useFavoriteStorage } from '../../utils/hooks';
-import SearchIcon from '@material-ui/icons/Search';
+import {
+  RiSearchLine,
+  RiBriefcaseLine,
+  RiExternalLinkLine,
+} from '@remixicon/react';
 import { getSortedTools } from '../../utils/tools';
-import OpenInNew from '@material-ui/icons/OpenInNew';
 import { FavoriteButton } from '../Buttons';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useAnalytics } from '@backstage/core-plugin-api';
 import { WelcomePage } from '../WelcomePage/WelcomePage';
 import { Tool } from '@drodil/backstage-plugin-toolbox-react';
-import {
-  Box,
-  Button,
-  CircularProgress,
-  Grid,
-  IconButton,
-  InputBase,
-  makeStyles,
-  Paper,
-  Tab,
-  Tabs,
-  Theme,
-  Tooltip,
-} from '@material-ui/core';
-import { TabContext, TabPanel } from '@material-ui/lab';
+import { TooltipTrigger, Tooltip, ButtonIcon } from '@backstage/ui';
 import { useBackendTools, useToolboxTranslation } from '../../hooks';
-import CardTravel from '@material-ui/icons/CardTravel';
-
-const useStyles = makeStyles((theme: Theme) => ({
-  container: {
-    margin: 0,
-    width: '100%',
-    padding: 0,
-  },
-  sidebar: {
-    borderRight: `1px solid ${theme.palette.divider}`,
-    padding: theme.spacing(1),
-  },
-  searchPaper: {
-    justifyContent: 'center',
-    margin: theme.spacing(2),
-    paddingLeft: theme.spacing(1),
-    marginBottom: theme.spacing(1),
-    display: 'flex',
-    height: '48px',
-    backgroundColor: theme.palette.background.paper,
-    border: `1px solid ${theme.palette.divider}`,
-  },
-  searchIcon: {
-    marginRight: theme.spacing(2),
-    paddingRight: 0,
-  },
-  mainTab: {
-    width: '100%',
-    padding: 0,
-    fontSize: '14px',
-    marginTop: theme.spacing(1),
-    paddingTop: 0,
-    paddingBottom: 0,
-  },
-  categoryTab: {
-    marginTop: '8px',
-    fontSize: '16px',
-    fontColor: theme.palette.text.secondary,
-    borderTop: `1px solid ${theme.palette.divider}`,
-    paddingBottom: 0,
-  },
-  toolTab: {
-    width: '100%',
-    '&:hover': {
-      backgroundColor: theme.palette.action.hover,
-    },
-  },
-  hiddenTab: {
-    display: 'none',
-  },
-  tabs: {
-    height: 'calc(100vh - 160px)',
-    '& .MuiTab-root': {
-      '&.Mui-selected': {
-        backgroundColor: theme.palette.action.selected,
-      },
-    },
-  },
-  content: {
-    padding: 0,
-  },
-  loadingContainer: {
-    display: 'flex',
-    width: '100%',
-    height: '50%',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-}));
-
-type TabInfo = {
-  tab: ReactElement;
-  component: ReactElement | undefined;
-  id: string;
-  localizedTitle: string;
-  showOpenInNewWindowButton?: boolean;
-  showFavoriteButton?: boolean;
-  description?: string;
-  localizedDescription?: string;
-  headerButtons?: ReactElement[];
-};
-
-const tabProps = (index: number) => {
-  return {
-    id: `toolbox-tab-${index}`,
-    'aria-controls': `toolbox-tabpanel-${index}`,
-  };
-};
+import styles from './ToolsContainer.module.css';
 
 export type ToolsContainerProps = {
   /** extra custom local tools to add into the tool page */
@@ -138,11 +40,10 @@ export const ToolsContainer = (props: ToolsContainerProps) => {
     welcomePage,
     toolFilterFunction,
   } = props;
-  const classes = useStyles();
   const { hash } = useLocation();
   const navigate = useNavigate();
   const analytics = useAnalytics();
-  const [value, setValue] = useState(1);
+  const [selectedId, setSelectedId] = useState('');
   const [search, setSearch] = useState('');
   const backendTools = useBackendTools();
   const favorites = useFavoriteStorage();
@@ -153,12 +54,6 @@ export const ToolsContainer = (props: ToolsContainerProps) => {
     window.open(`/toolbox/tool/${id}`, 'newwindow', 'width=1000,height=800');
     return false;
   };
-
-  useEffect(() => {
-    if (value === 0) {
-      setValue(1);
-    }
-  }, [value]);
 
   const favoritesCategory = t('tool.category.favorites');
   const allTools = getSortedTools({
@@ -171,230 +66,197 @@ export const ToolsContainer = (props: ToolsContainerProps) => {
     t,
   });
 
-  const tabs: TabInfo[] = useMemo(() => {
-    const tabInfos: TabInfo[] = [];
-
-    tabInfos.push({
-      id: '',
-      tab: (
-        <Tab
-          key="toolbox"
-          wrapped
-          className={classes.mainTab}
-          label={t('toolsPage.tabPanel.mainLabel')}
-          icon={<CardTravel fontSize="small" />}
-        />
-      ),
-      localizedTitle: t('toolsPage.pageTitle'),
-      component: welcomePage || <WelcomePage tools={allTools} />,
-      showFavoriteButton: false,
-      showOpenInNewWindowButton: false,
+  const matchesSearch = (tool: Tool) => {
+    if (!search) return true;
+    const toolName = t(`tool.${tool.id}.name`, {
+      defaultValue: tool.displayName ?? tool.name,
     });
+    const description = t(`tool.${tool.id}.description`, {
+      defaultValue: tool.description,
+    });
+    return (
+      toolName.toLowerCase().includes(search.toLowerCase()) ||
+      tool.id.toLowerCase().includes(search.toLowerCase()) ||
+      tool.aliases?.some(alias =>
+        alias.toLowerCase().includes(search.toLowerCase()),
+      ) ||
+      description?.toLowerCase().includes(search.toLowerCase())
+    );
+  };
 
-    const categories: { [key: string]: Tool[] } = allTools.reduce(
-      (ctgs, tool) => {
+  const categories: { [key: string]: Tool[] } = useMemo(
+    () =>
+      allTools.reduce((ctgs, tool) => {
         const categoryStr = t(
           `tool.category.${(tool.category ?? 'miscellaneous').toLowerCase()}`,
-          {
-            defaultValue: tool.category ?? 'Miscellaneous',
-          },
+          { defaultValue: tool.category ?? 'Miscellaneous' },
         );
         const toolList: Tool[] = ctgs[categoryStr] || [];
         toolList.push(tool);
         ctgs[categoryStr] = toolList;
         return ctgs;
-      },
-      {} as Record<string, Tool[]>,
-    );
-
-    const matchesSearch = (tool: Tool) => {
-      if (!search) {
-        return true;
-      }
-      const toolName = t(`tool.${tool.id}.name`, {
-        defaultValue: tool.displayName ?? tool.name,
-      });
-      const description = t(`tool.${tool.id}.description`, {
-        defaultValue: tool.description,
-      });
-      return (
-        toolName.toLowerCase().includes(search.toLowerCase()) ||
-        tool.id.toLowerCase().includes(search.toLowerCase()) ||
-        tool.aliases?.some(alias =>
-          alias.toLowerCase().includes(search.toLowerCase()),
-        ) ||
-        description?.toLowerCase().includes(search.toLowerCase())
-      );
-    };
-
-    Object.entries(categories)
-      .sort(([a, _], [b, __]) => {
-        if (categorySortFunction) {
-          return categorySortFunction(a, b);
-        } else if (a === favoritesCategory) {
-          return -1;
-        } else if (b === favoritesCategory) {
-          return 1;
-        }
-        return a.localeCompare(b);
-      })
-      .forEach(([category, categoryTools]) => {
-        const anyMatchSearch = categoryTools.some(tool => matchesSearch(tool));
-
-        tabInfos.push({
-          tab: (
-            <Tab
-              className={
-                !anyMatchSearch ? classes.hiddenTab : classes.categoryTab
-              }
-              key={category}
-              label={category}
-              disabled
-            />
-          ),
-          component: undefined,
-          id: category,
-          localizedTitle: '',
-        });
-
-        categoryTools
-          .sort((a, b) => {
-            if (toolSortFunction) {
-              return toolSortFunction(a, b);
-            }
-            return a.name.localeCompare(b.name);
-          })
-          .forEach((tool, i) => {
-            tabInfos.push({
-              tab: (
-                <Tab
-                  key={tool.name}
-                  className={
-                    !matchesSearch(tool) ? classes.hiddenTab : classes.toolTab
-                  }
-                  wrapped
-                  label={t(`tool.${tool.id}.name`, {
-                    defaultValue: tool.displayName ?? tool.name,
-                  })}
-                  {...tabProps(i)}
-                />
-              ),
-              localizedTitle: `${category} - ${t(`tool.${tool.id}.name`, {
-                defaultValue: tool.displayName ?? tool.name,
-              })}`,
-              localizedDescription: t(`tool.${tool.id}.description`, {
-                defaultValue: tool.description,
-              }),
-              ...tool,
-            });
-          });
-      });
-    return tabInfos;
-  }, [
-    allTools,
-    favoritesCategory,
-    search,
-    categorySortFunction,
-    toolSortFunction,
-    welcomePage,
-    t,
-    classes,
-  ]);
+      }, {} as Record<string, Tool[]>),
+    [allTools, t],
+  );
 
   useEffect(() => {
-    const idx = tabs.findIndex(tab => tab.id === hash.slice(1));
-    if (idx > -1) {
-      setValue(idx);
+    const id = hash.slice(1);
+    if (id && id !== selectedId) {
+      setSelectedId(id);
     }
-  }, [hash, value, tabs]);
+  }, [hash, selectedId]);
 
-  const handleChange = (_: any, newValue: number) => {
-    const tab = tabs[newValue];
-    if (tab) {
-      analytics.captureEvent('click', tab.id, {
-        attributes: { toolName: tab.localizedTitle },
-      });
-      navigate(`#${tab.id}`);
-    }
+  const handleToolClick = (id: string) => {
+    analytics.captureEvent('click', id, { attributes: { toolName: id } });
+    navigate(`#${id}`);
+    setSelectedId(id);
   };
+
+  const selectedTool = allTools.find(tool => tool.id === selectedId);
+  const selectedTitle = selectedTool
+    ? `${t(
+        `tool.category.${(
+          selectedTool.category ?? 'miscellaneous'
+        ).toLowerCase()}`,
+        { defaultValue: selectedTool.category ?? 'Miscellaneous' },
+      )} - ${t(`tool.${selectedTool.id}.name`, {
+        defaultValue: selectedTool.displayName ?? selectedTool.name,
+      })}`
+    : '';
+  const selectedDescription = selectedTool
+    ? t(`tool.${selectedTool.id}.description`, {
+        defaultValue: selectedTool.description,
+      })
+    : '';
 
   return (
     <Content noPadding>
-      <Grid container spacing={2} direction="row" className={classes.container}>
-        <Grid item xs={4} md={3} lg={2} className={classes.sidebar}>
-          <Paper component="form" className={classes.searchPaper}>
-            <InputBase
+      <div className={styles.container}>
+        <nav className={styles.sidebar}>
+          <div className={styles.searchWrapper}>
+            <input
+              className={styles.searchInput}
               placeholder={t('toolsPage.input.search')}
-              inputProps={{ 'aria-label': 'Search' }}
+              aria-label="Search"
+              value={search}
               onChange={e => setSearch(e.target.value)}
             />
-            <IconButton
-              disabled
-              aria-label="search"
-              className={classes.searchIcon}
-            >
-              <SearchIcon />
-            </IconButton>
-          </Paper>
-          <Tabs
-            orientation="vertical"
-            variant="scrollable"
-            scrollButtons="auto"
-            indicatorColor="primary"
-            value={value}
-            onChange={handleChange}
-            aria-label="Tools selection"
-            className={classes.tabs}
-          >
-            {tabs.map(tab => tab.tab)}
-          </Tabs>
-        </Grid>
-        <Grid item xs={8} md={9} lg={10} className={classes.content}>
-          <Suspense
-            fallback={
-              <Box className={classes.loadingContainer}>
-                <CircularProgress />
-              </Box>
-            }
-          >
-            <TabContext value={`toolbox-tabpanel-${value}`}>
-              {tabs.map((tool, i) => {
-                if (!tool.localizedTitle) {
-                  return null;
-                }
+            <RiSearchLine size={16} color="var(--bui-fg-secondary)" />
+          </div>
+          <ul className={styles.navList}>
+            <li>
+              <button
+                className={`${styles.homeButton}${
+                  selectedId === '' ? ` ${styles.toolButtonActive}` : ''
+                }`}
+                onClick={() => {
+                  navigate('#');
+                  setSelectedId('');
+                }}
+              >
+                <RiBriefcaseLine size={16} />
+                {t('toolsPage.tabPanel.mainLabel')}
+              </button>
+            </li>
+            {Object.entries(categories)
+              .sort(([a], [b]) => {
+                if (categorySortFunction) return categorySortFunction(a, b);
+                if (a === favoritesCategory) return -1;
+                if (b === favoritesCategory) return 1;
+                return a.localeCompare(b);
+              })
+              .map(([category, categoryTools]) => {
+                const anyMatchSearch = categoryTools.some(tool =>
+                  matchesSearch(tool),
+                );
                 return (
-                  <TabPanel key={tool.id} value={`toolbox-tabpanel-${i}`}>
-                    <ContentHeader
-                      title={tool.localizedTitle}
-                      description={tool.localizedDescription}
-                    >
-                      {tool.headerButtons}
-                      {tool.showOpenInNewWindowButton !== false && (
-                        <Tooltip
-                          title={t('toolsPage.tabPanel.tooltipTitle')}
-                          arrow
-                        >
-                          <Button
-                            size="small"
-                            onClick={() => openToolInWindow(tool.id)}
-                            color="inherit"
+                  <li
+                    key={category}
+                    className={anyMatchSearch ? undefined : styles.hidden}
+                  >
+                    <span className={styles.categoryLabel}>{category}</span>
+                    <ul className={styles.navList}>
+                      {categoryTools
+                        .sort((a, b) => {
+                          if (toolSortFunction) return toolSortFunction(a, b);
+                          return a.name.localeCompare(b.name);
+                        })
+                        .map(tool => (
+                          <li
+                            key={tool.id}
+                            className={
+                              matchesSearch(tool) ? undefined : styles.hidden
+                            }
                           >
-                            <OpenInNew />
-                          </Button>
-                        </Tooltip>
-                      )}
-                      {tool.showFavoriteButton !== false && (
-                        <FavoriteButton toolId={tool.id} />
-                      )}
-                    </ContentHeader>
-                    {tool.component}
-                  </TabPanel>
+                            <button
+                              className={`${styles.toolButton}${
+                                selectedId === tool.id
+                                  ? ` ${styles.toolButtonActive}`
+                                  : ''
+                              }`}
+                              onClick={() => handleToolClick(tool.id)}
+                              title={t(`tool.${tool.id}.name`, {
+                                defaultValue: tool.displayName ?? tool.name,
+                              })}
+                            >
+                              {t(`tool.${tool.id}.name`, {
+                                defaultValue: tool.displayName ?? tool.name,
+                              })}
+                            </button>
+                          </li>
+                        ))}
+                    </ul>
+                  </li>
                 );
               })}
-            </TabContext>
+          </ul>
+        </nav>
+        <div className={styles.mainContent}>
+          <Suspense
+            fallback={
+              <div className={styles.loadingContainer}>
+                <span>Loading...</span>
+              </div>
+            }
+          >
+            {selectedId === '' ? (
+              welcomePage || <WelcomePage tools={allTools} />
+            ) : (
+              <>
+                {selectedTool ? (
+                  <>
+                    <ContentHeader
+                      title={selectedTitle}
+                      description={selectedDescription}
+                    >
+                      {selectedTool.headerButtons}
+                      {selectedTool.showOpenInNewWindowButton !== false && (
+                        <TooltipTrigger>
+                          <ButtonIcon
+                            aria-label={t('toolsPage.tabPanel.tooltipTitle')}
+                            icon={<RiExternalLinkLine size={16} />}
+                            variant="secondary"
+                            onPress={() => openToolInWindow(selectedTool.id)}
+                          />
+                          <Tooltip>
+                            {t('toolsPage.tabPanel.tooltipTitle')}
+                          </Tooltip>
+                        </TooltipTrigger>
+                      )}
+                      {selectedTool.showFavoriteButton !== false && (
+                        <FavoriteButton toolId={selectedTool.id} />
+                      )}
+                    </ContentHeader>
+                    {selectedTool.component}
+                  </>
+                ) : (
+                  welcomePage || <WelcomePage tools={allTools} />
+                )}
+              </>
+            )}
           </Suspense>
-        </Grid>
-      </Grid>
+        </div>
+      </div>
     </Content>
   );
 };

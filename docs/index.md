@@ -1,142 +1,106 @@
 # Getting started
 
+> **⚠️ v2.0.0 — New frontend system only**
+>
+> Version 2.0.0 requires the [new Backstage frontend system](https://backstage.io/docs/frontend-system/).
+> The legacy system (`ToolboxPage`, `ToolsContainer`, `createPlugin`) has been removed.
+> If you are on the legacy system, stay on v1.x.
+
 ## Installation
 
-Add the plugin to your frontend app:
+Add the frontend plugin to your app:
 
 ```bash
 yarn --cwd packages/app add @drodil/backstage-plugin-toolbox
 ```
 
-Expose the toolbox page:
+Register the plugin in your app's `packages/app/src/index.ts`:
 
-```tsx
-// packages/app/src/App.tsx
-import { ToolboxPage } from '@drodil/backstage-plugin-toolbox';
+```ts
+import { createApp } from '@backstage/frontend-defaults';
+import toolboxPlugin from '@drodil/backstage-plugin-toolbox';
 
-const AppRoutes = () => (
-  <FlatRoutes>
-    // ...
-    <Route path="/toolbox" element={<ToolboxPage />} />
-    // ...
-  </FlatRoutes>
-);
+const app = createApp({
+  features: [
+    toolboxPlugin,
+    // ...other plugins
+  ],
+});
+
+export default app.createRoot();
 ```
 
-Add the navigation in the frontend:
-
-```tsx
-// packages/app/src/components/Root/Root.tsx
-import CardTravel from '@mui/icons-material/CardTravel';
-
-// ...
-
-export const Root = ({ children }: PropsWithChildren<{}>) => (
-  <SidebarPage>
-    // ...
-    <SidebarItem icon={CardTravel} to="toolbox" text="ToolBox" />
-    // ...
-  </SidebarPage>
-);
-```
-
-An interface for toolbox is now available at `/toolbox`.
+The toolbox is now available at `/toolbox`.
 
 ## Adding your own tools
 
-You can also add your own tools to the plugin by passing them to the ToolboxPage as a property:
+Use `ToolboxToolBlueprint` (now exported from the main package, no `/alpha` sub-path required):
 
-```tsx
-import { ToolboxPage, Tool } from '@drodil/backstage-plugin-toolbox';
-
-const extraToolExample: Tool = {
-  name: 'Extra',
-  component: <div>Extra tool</div>,
-};
-
-<ToolboxPage extraTools={[extraToolExample]} />;
-```
-
-Also lazy loading is supported:
-
-```tsx
-import React, { lazy } from 'react';
-import { ToolboxPage, Tool } from '@drodil/backstage-plugin-toolbox';
-
-const MyTool = lazy(() => import('./MyTool'));
-
-const extraToolExample: Tool = {
-  name: 'Extra',
-  component: <MyTool />,
-};
-
-<ToolboxPage extraTools={[extraToolExample]} />;
-```
-
-### New frontend system
-
-To add new tools using the new frontend system, you can use the `ToolboxToolBlueprint`:
-
-```tsx
-import { ToolboxToolBlueprint } from '@drodil/backstage-plugin-toolbox/alpha';
+```ts
+import { ToolboxToolBlueprint } from '@drodil/backstage-plugin-toolbox';
 import { createFrontendModule } from '@backstage/frontend-plugin-api';
+import { compatWrapper } from '@backstage/core-compat-api';
 
-const base64EncodeTool = ToolboxToolBlueprint.make({
-  name: 'base64-encode',
+const myCustomTool = ToolboxToolBlueprint.make({
+  name: 'my-tool',
   params: {
-    id: 'base64-encode',
-    displayName: 'Base64',
-    description: 'Encode and decode base64 strings',
-    category: 'Encode/Decode',
+    id: 'my-tool',
+    displayName: 'My Tool',
+    description: 'Does something useful',
+    category: 'Miscellaneous',
     async loader() {
-      const m = await import('./components/Encoders/Base64Encode');
+      const m = await import('./components/MyTool');
       return compatWrapper(<m.default />);
     },
   },
 });
 
-createFrontendModule({
+export default createFrontendModule({
   pluginId: 'toolbox',
-  extensions: [base64EncodeTool],
+  extensions: [myCustomTool],
 });
 ```
 
-## Adding tools to custom home page
+Register the module alongside the plugin:
 
-You can add tools to the Backstage custom home page as follows:
+```ts
+import { createApp } from '@backstage/frontend-defaults';
+import toolboxPlugin from '@drodil/backstage-plugin-toolbox';
+import myToolboxModule from './myToolboxModule';
 
-```tsx
-import { CustomHomepageGrid } from '@backstage/plugin-home';
-import { ToolboxHomepageCard } from '@drodil/backstage-plugin-toolbox';
-import { Content, Page } from '@backstage/core-components';
-
-export const HomePage = () => {
-  return (
-    <Page themeId="home">
-      <Content>
-        <CustomHomepageGrid>
-          <ToolboxHomepageCard />
-        </CustomHomepageGrid>
-      </Content>
-    </Page>
-  );
-};
+const app = createApp({
+  features: [
+    toolboxPlugin,
+    myToolboxModule,
+    // ...
+  ],
+});
 ```
 
-This allows the home page users to configure the card so that their favorite tool is available in their home page.
-For more information, see https://github.com/backstage/backstage/pull/16744
+### Custom welcome page
 
-### New frontend system
+Use `ToolboxWelcomePageBlueprint` to replace the default welcome page:
 
-Coming later when home page supports the new frontend system.
+```ts
+import { ToolboxWelcomePageBlueprint } from '@drodil/backstage-plugin-toolbox';
+
+const myWelcomePage = ToolboxWelcomePageBlueprint.make({
+  name: 'custom-welcome',
+  params: {
+    element: <MyWelcomePage />,
+  },
+});
+```
 
 ## Optional backend
 
-The plugin also supports additional backend for tools that cannot work only in the frontend. The backend can be extended
-with
-additional handlers by utilizing the extension point. See `plugins/toolbox-backend-module-whois` for an example.
+The plugin supports an optional backend for tools that cannot run entirely in the browser.
 
-To install backend and additional tools to it, add the following to your `packages/backend/src/index.ts`:
+```bash
+yarn --cwd packages/backend add @drodil/backstage-plugin-toolbox-backend @drodil/backstage-plugin-toolbox-backend-module-whois
+```
+
+In `packages/backend/src/index.ts`:
 
 ```ts
 import { createBackend } from '@backstage/backend-defaults';
@@ -144,23 +108,15 @@ import { createBackend } from '@backstage/backend-defaults';
 const backend = createBackend();
 
 backend.add(import('@drodil/backstage-plugin-toolbox-backend'));
+// Optional: adds WHOIS lookup tool
 backend.add(import('@drodil/backstage-plugin-toolbox-backend-module-whois'));
 
 backend.start();
 ```
 
-Also add the necessary dependencies to your `packages/backend/package.json`:
+# Translations
 
-```bash
-yarn --cwd packages/backend add @drodil/backstage-plugin-toolbox-backend @drodil/backstage-plugin-toolbox-backend-module-whois
-```
-
-# Translations (alpha)
-
-The plugin supports translations. To add a new language, create a new file in `packages/app/src/locales` with the
-language code (e.g. `toolbox-fi.ts`).
-Create the translations as described here https://backstage.io/docs/plugins/internationalization/ using the
-`toolboxTranslationRef` from `@drodil/backstage-plugin-toolbox` as the translation reference:
+The plugin supports i18n. To add a new language, create a locale file in your app:
 
 ```ts
 // packages/app/src/locales/toolbox-fi.ts
@@ -179,14 +135,13 @@ const fi = createTranslationMessages({
 export default fi;
 ```
 
-Then add the translation to your `packages/app/src/App.tsx`:
+Then register it in `packages/app/src/App.tsx`:
 
 ```tsx
 import { createTranslationResource } from '@backstage/core-plugin-api/alpha';
 import { toolboxTranslationRef } from '@drodil/backstage-plugin-toolbox';
 
 const app = createApp({
-  //...
   __experimentalTranslations: {
     availableLanguages: ['en', 'fi'],
     resources: [
@@ -201,42 +156,38 @@ const app = createApp({
 });
 ```
 
-## Tool specific translations
+## Tool-specific translations
 
-The `tool` object inside translation ref works as a namespace for the tool translations. You can add translations for
-specific tools by adding a new object inside the tools object with the tool id as the key:
+Override the display name or description of any tool using its ID as the key:
 
 ```ts
 createTranslationMessages({
   ref: toolboxTranslationRef,
   messages: {
-    'tool.backslash-encode.name': 'My translation',
+    'tool.backslash-encode.name': 'Backslash encoder',
+    'tool.backslash-encode.description':
+      'Encode and decode backslash characters',
   },
 });
 ```
 
-This works also for custom tools added to the plugin.
-
-Tool categories are also supported and the category key is always in lowercase:
+Tool categories use lowercase keys:
 
 ```ts
 createTranslationMessages({
   ref: toolboxTranslationRef,
   messages: {
-    'tool.category.encode/decode': 'My translation',
+    'tool.category.encode/decode': 'Encode & Decode',
   },
 });
 ```
 
 ## Using predefined translations
 
-You can also use the predefined translations from the plugin:
-
 ```ts
 import { toolboxTranslations } from '@drodil/backstage-plugin-toolbox';
 
 const app = createApp({
-  //...
   __experimentalTranslations: {
     availableLanguages: ['en', 'fi'],
     resources: [toolboxTranslations],
@@ -244,6 +195,5 @@ const app = createApp({
 });
 ```
 
-Note that these translations might not contain your desired language. If you want to add a new language, you need to
-contribute it to the plugin in `plugins/toolbox/src/locales/` and add it in the `plugins/toolbox/src/translation.ts`
-with the right language code.
+To add a new language, contribute a locale file to `plugins/toolbox/src/locales/` and register it in
+`plugins/toolbox/src/translation.ts`.

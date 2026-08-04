@@ -18,14 +18,10 @@
   },
   "exports": {
     ".": "./src/index.ts",
-    "./alpha": "./src/alpha.tsx",
     "./package.json": "./package.json"
   },
   "typesVersions": {
     "*": {
-      "alpha": [
-        "src/alpha.tsx"
-      ],
       "package.json": [
         "package.json"
       ]
@@ -58,7 +54,6 @@
   "dependencies": {
     "@backstage/core-plugin-api": "backstage:^",
     "@backstage/frontend-plugin-api": "backstage:^",
-    "@mui/material": "^5.16.7",
     "zod": "^4.3.6"
   },
   "peerDependencies": {

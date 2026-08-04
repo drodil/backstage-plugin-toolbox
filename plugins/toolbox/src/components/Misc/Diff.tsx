@@ -10,15 +10,8 @@ import {
   FileUploadButton,
   PasteFromClipboardButton,
 } from '../Buttons';
-import Input from '@material-ui/icons/Input';
 import { appThemeApiRef, useApi } from '@backstage/core-plugin-api';
-import {
-  Button,
-  ButtonGroup,
-  FormControl,
-  Grid,
-  Tooltip,
-} from '@material-ui/core';
+import { Button, Flex } from '@backstage/ui';
 import { useToolboxTranslation } from '../../hooks';
 
 loader.config({ monaco });
@@ -72,16 +65,9 @@ export const SampleButton = (props: SampleButtonProps) => {
   const { sample, setInput } = props;
   const { t } = useToolboxTranslation();
   return (
-    <Tooltip arrow title={t('components.sampleButton.tooltipTitle')}>
-      <Button
-        size="small"
-        startIcon={<Input />}
-        onClick={() => setInput(sample)}
-        color="inherit"
-      >
-        {t('components.sampleButton.buttonText')}
-      </Button>
-    </Tooltip>
+    <Button variant="tertiary" onClick={() => setInput(sample)}>
+      {t('components.sampleButton.buttonText')}
+    </Button>
   );
 };
 
@@ -190,56 +176,53 @@ function Diff() {
     : [{ label: t('tool.diff.loadingLabel'), value: 'loading' }];
 
   return (
-    <FormControl style={{ width: '100%' }}>
-      <Grid container style={{ width: '100%' }}>
-        <Grid item style={{ minWidth: '200px' }}>
+    <div style={{ width: '100%' }}>
+      <Flex gap="2" style={{ marginBottom: 'var(--bui-space-2)' }}>
+        <div style={{ minWidth: '200px' }}>
           <Select
             selected={language}
             onChange={handleLanguageSelect}
             items={languageOptions}
             label={t('tool.diff.selectLanguage')}
           />
-        </Grid>
-      </Grid>
-      <Grid container style={{ width: '100%' }}>
-        <Grid item>
-          {exampleOriginalText && exampleModifiedText && (
-            <SampleButton
-              setInput={input => {
-                setOriginalText(input[0]);
-                setModifiedText(input[1]);
-              }}
-              sample={[exampleOriginalText, exampleModifiedText]}
-            />
-          )}
-        </Grid>
-      </Grid>
-      <Grid container style={{ marginBottom: '5px', width: '100%' }}>
-        <Grid item style={{ width: '50%' }}>
-          <ButtonGroup size="small">
-            <FileUploadButton
-              onFileLoad={setOriginalFile}
-              id="originalFile"
-              buttonText={t('tool.diff.originalFileUploadButton')}
-            />
-            <ClearValueButton setValue={setOriginalText} />
-            <PasteFromClipboardButton setInput={setOriginalText} />
-            {originalText && <CopyToClipboardButton output={originalText} />}
-          </ButtonGroup>
-        </Grid>
-        <Grid item style={{ width: '50%' }}>
-          <ButtonGroup size="small">
-            <FileUploadButton
-              onFileLoad={setModifiedFile}
-              id="modifiedFile"
-              buttonText={t('tool.diff.modifiedFileUploadButton')}
-            />
-            <ClearValueButton setValue={setModifiedText} />
-            <PasteFromClipboardButton setInput={setModifiedText} />
-            {modifiedText && <CopyToClipboardButton output={modifiedText} />}
-          </ButtonGroup>
-        </Grid>
-      </Grid>
+        </div>
+      </Flex>
+      <Flex gap="2" style={{ marginBottom: 'var(--bui-space-2)' }}>
+        {exampleOriginalText && exampleModifiedText && (
+          <SampleButton
+            setInput={input => {
+              setOriginalText(input[0]);
+              setModifiedText(input[1]);
+            }}
+            sample={[exampleOriginalText, exampleModifiedText]}
+          />
+        )}
+      </Flex>
+      <Flex
+        gap="2"
+        style={{ marginBottom: 'var(--bui-space-2)', width: '100%' }}
+      >
+        <Flex gap="2" style={{ width: '50%' }}>
+          <FileUploadButton
+            onFileLoad={setOriginalFile}
+            id="originalFile"
+            buttonText={t('tool.diff.originalFileUploadButton')}
+          />
+          <ClearValueButton setValue={setOriginalText} />
+          <PasteFromClipboardButton setInput={setOriginalText} />
+          {originalText && <CopyToClipboardButton output={originalText} />}
+        </Flex>
+        <Flex gap="2" style={{ width: '50%' }}>
+          <FileUploadButton
+            onFileLoad={setModifiedFile}
+            id="modifiedFile"
+            buttonText={t('tool.diff.modifiedFileUploadButton')}
+          />
+          <ClearValueButton setValue={setModifiedText} />
+          <PasteFromClipboardButton setInput={setModifiedText} />
+          {modifiedText && <CopyToClipboardButton output={modifiedText} />}
+        </Flex>
+      </Flex>
       <DiffEditor
         height="100vh"
         theme={theme.includes('dark') ? 'vs-dark' : 'vs-light'}
@@ -247,7 +230,7 @@ function Diff() {
         language={language}
         onMount={onMount}
       />
-    </FormControl>
+    </div>
   );
 }
 

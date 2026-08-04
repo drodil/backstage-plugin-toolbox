@@ -7,55 +7,15 @@ import {
   SampleButton,
 } from '../Buttons';
 import { FileDownloadButton } from '../Buttons/FileDownloadButton';
-import {
-  Button,
-  ButtonGroup,
-  FormControl,
-  Grid,
-  makeStyles,
-  TextField,
-  Theme,
-} from '@material-ui/core';
+import { Button, Flex } from '@backstage/ui';
 import { useToolboxTranslation } from '../../hooks';
-
-const useStyles = makeStyles<Theme>(theme => ({
-  formControl: {
-    width: '100%',
-  },
-  gridContainer: {
-    marginBottom: theme.spacing(0.625), // 5px
-  },
-  modeGrid: {
-    paddingLeft: theme.spacing(2), // 16px
-    paddingTop: theme.spacing(4), // 32px
-  },
-  buttonGroup: {},
-  selectedButton: {},
-  unselectedButton: {
-    borderColor: theme.palette.action.active,
-  },
-  toolsGrid: {
-    padding: theme.spacing(2), // 16px
-    marginBottom: theme.spacing(1),
-  },
-  editorGrid: {
-    paddingTop: theme.spacing(1), // 8px
-    paddingLeft: theme.spacing(1), // 8px
-  },
-  outputGrid: {
-    paddingTop: theme.spacing(1), // 8px
-  },
-  textField: {
-    width: '100%',
-  },
-}));
+import styles from './DefaultEditor.module.css';
 
 type Props = {
   input: string;
   setInput: (value: string) => void;
   output?: string;
   mode?: string;
-  minRows?: number;
   inputLabel?: string;
   outputLabel?: string;
   setMode?: (value: string) => void;
@@ -77,7 +37,6 @@ type Props = {
 
 export const DefaultEditor = (props: Props) => {
   const { t } = useToolboxTranslation();
-  const classes = useStyles();
   const {
     input,
     setInput,
@@ -98,7 +57,6 @@ export const DefaultEditor = (props: Props) => {
     allowFileDownload,
     downloadFileName,
     downloadFileType,
-    minRows = 20,
   } = props;
 
   const [fileName, setFileName] = useState(downloadFileName ?? 'download.txt');
@@ -143,98 +101,78 @@ export const DefaultEditor = (props: Props) => {
   };
 
   return (
-    <FormControl className={classes.formControl} onDrop={handleDrop}>
-      <Grid container spacing={4} className={classes.gridContainer}>
-        {modes && modes.length > 0 && (
-          <Grid item className={classes.modeGrid}>
-            <ButtonGroup
-              size="small"
-              disableElevation
-              variant="contained"
-              aria-label="Disabled elevation buttons"
-              className={classes.buttonGroup}
-              color="inherit"
+    <div className={styles.container} onDrop={handleDrop}>
+      {modes && modes.length > 0 && (
+        <Flex gap="2" className={styles.modesRow}>
+          {modes.map(m => (
+            <Button
+              key={m}
+              variant={mode === m ? 'primary' : 'secondary'}
+              onClick={() => setMode && setMode(m)}
             >
-              {modes.map(m => (
-                <Button
-                  size="small"
-                  key={m}
-                  onClick={() => setMode && setMode(m)}
-                  variant={mode === m ? 'contained' : 'outlined'}
-                  color="inherit"
-                  className={
-                    mode === m
-                      ? classes.selectedButton
-                      : classes.unselectedButton
-                  }
-                >
-                  {t(`components.defaultEditor.mode.${m.toLowerCase()}`, {
-                    defaultValue: m,
-                  })}
-                </Button>
-              ))}
-            </ButtonGroup>
-          </Grid>
+              {t(`components.defaultEditor.mode.${m.toLowerCase()}`, {
+                defaultValue: m,
+              })}
+            </Button>
+          ))}
+        </Flex>
+      )}
+      <Flex gap="2" className={styles.toolsRow}>
+        <ClearValueButton setValue={setInput} />
+        <PasteFromClipboardButton setInput={setInput} />
+        {output && <CopyToClipboardButton output={output} />}
+        {sample && <SampleButton setInput={setInput} sample={sample} />}
+        {allowFileUpload && (
+          <FileUploadButton
+            accept={acceptFileTypes}
+            onFileLoad={readFileAndSetInput}
+          />
         )}
-        <Grid item className={classes.toolsGrid}>
-          <ButtonGroup size="small">
-            <ClearValueButton setValue={setInput} />
-            <PasteFromClipboardButton setInput={setInput} />
-            {output && <CopyToClipboardButton output={output} />}
-            {sample && <SampleButton setInput={setInput} sample={sample} />}
-            {allowFileUpload && (
-              <FileUploadButton
-                accept={acceptFileTypes}
-                onFileLoad={readFileAndSetInput}
-              />
-            )}
-            {output && allowFileDownload && (
-              <FileDownloadButton
-                content={output}
-                fileName={fileName}
-                fileType={fileType}
-              />
-            )}
-          </ButtonGroup>
-        </Grid>
-        {additionalTools && additionalTools.length > 0 && (
-          <Grid item>{additionalTools.map(tool => tool)}</Grid>
+        {output && allowFileDownload && (
+          <FileDownloadButton
+            content={output}
+            fileName={fileName}
+            fileType={fileType}
+          />
         )}
-      </Grid>
-      <Grid container>
-        <Grid item xs={12} lg={6} className={classes.editorGrid}>
+        {additionalTools && additionalTools.map(tool => tool)}
+      </Flex>
+      <div className={styles.editorsRow}>
+        <div className={styles.editorCell}>
           {leftContent ?? (
-            <TextField
-              label={inputLabel}
-              // eslint-disable-next-line
-              id="input"
-              multiline
-              value={input}
-              onChange={e => setInput(e.target.value)}
-              minRows={minRows}
-              variant="outlined"
-              className={classes.textField}
-              autoComplete="off"
-            />
+            <>
+              <label htmlFor="input" className={styles.fieldLabel}>
+                {inputLabel}
+              </label>
+              <textarea
+                id="input"
+                className={styles.textarea}
+                value={input}
+                onChange={e => setInput(e.target.value)}
+                autoComplete="off"
+              />
+            </>
           )}
           {extraLeftContent}
-        </Grid>
-        <Grid item xs={12} lg={6} className={classes.outputGrid}>
+        </div>
+        <div className={styles.editorCell}>
           {rightContent ?? (
-            <TextField
-              id="output"
-              label={outputLabel}
-              value={output || ''}
-              className={classes.textField}
-              multiline
-              minRows={minRows}
-              variant="outlined"
-              autoComplete="off"
-            />
+            <>
+              <label htmlFor="output" className={styles.fieldLabel}>
+                {outputLabel}
+              </label>
+              <textarea
+                id="output"
+                className={styles.textarea}
+                value={output || ''}
+                autoComplete="off"
+                readOnly
+              />
+            </>
           )}
           {extraRightContent}
-        </Grid>
-      </Grid>
-    </FormControl>
+        </div>
+      </div>
+    </div>
   );
 };

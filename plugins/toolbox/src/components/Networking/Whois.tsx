@@ -2,21 +2,9 @@ import { useState } from 'react';
 import { useApi } from '@backstage/core-plugin-api';
 import { toolboxApiRef } from '../../api';
 import { Progress } from '@backstage/core-components';
-import { Button, Grid, makeStyles, TextField, Theme } from '@material-ui/core';
+import { Button, Flex, TextField } from '@backstage/ui';
 import { useToolboxTranslation } from '../../hooks';
-
-const useStyles = makeStyles<Theme>(theme => ({
-  textField: {
-    width: '20rem',
-  },
-  resultGrid: {
-    marginTop: theme.spacing(2), // 1rem = 16px
-  },
-  outputTextField: {
-    marginBottom: theme.spacing(2), // 1rem = 16px
-    width: '100%',
-  },
-}));
+import styles from '../DefaultEditor/DefaultEditor.module.css';
 
 export const Whois = () => {
   const [domain, setDomain] = useState('');
@@ -24,78 +12,56 @@ export const Whois = () => {
   const [loading, setLoading] = useState(false);
   const toolboxApi = useApi(toolboxApiRef);
   const { t } = useToolboxTranslation();
-  const classes = useStyles();
 
   const lookup = () => {
     setResponse({});
     if (domain) {
       setLoading(true);
-      toolboxApi
-        .toolJsonRequest('whois', {
-          domain,
-        })
-        .then((data: any) => {
-          setLoading(false);
-          setResponse(data);
-        });
+      toolboxApi.toolJsonRequest('whois', { domain }).then((data: any) => {
+        setLoading(false);
+        setResponse(data);
+      });
     }
   };
 
   return (
     <>
-      <Grid container spacing={2} alignItems="center">
-        <Grid item>
-          <TextField
-            label={t('tool.whois.domainInput')}
-            variant="outlined"
-            className={classes.textField}
-            value={domain}
-            onChange={e => {
-              setDomain(e.target.value);
-            }}
-            autoComplete="off"
-          />
-        </Grid>
-        <Grid item>
-          <Button variant="contained" color="primary" onClick={lookup}>
-            {t('tool.whois.lookupButton')}
-          </Button>
-        </Grid>
-        <Grid item>
-          <Button
-            variant="outlined"
-            onClick={() => {
-              setDomain('google.com');
-            }}
-          >
-            {t('tool.whois.exampleButton')}
-          </Button>
-        </Grid>
-      </Grid>
+      <Flex
+        gap="2"
+        align="center"
+        style={{ marginBottom: 'var(--bui-space-4)' }}
+      >
+        <TextField
+          label={t('tool.whois.domainInput')}
+          value={domain}
+          onChange={setDomain}
+          autoComplete="off"
+        />
+        <Button variant="primary" onClick={lookup}>
+          {t('tool.whois.lookupButton')}
+        </Button>
+        <Button variant="secondary" onClick={() => setDomain('google.com')}>
+          {t('tool.whois.exampleButton')}
+        </Button>
+      </Flex>
       {loading && <Progress />}
       {Object.keys(response).length > 0 && (
-        <Grid className={classes.resultGrid}>
-          {Object.entries(response).map(([key, value]) => {
-            return (
-              <TextField
-                key={key}
-                label={key}
-                id="output"
-                multiline
+        <div style={{ marginTop: 'var(--bui-space-4)' }}>
+          {Object.entries(response).map(([key, value]) => (
+            <div key={key} style={{ marginBottom: 'var(--bui-space-2)' }}>
+              <label className={styles.fieldLabel}>{key}</label>
+              <textarea
+                className={styles.textarea}
+                readOnly
+                rows={5}
                 value={Object.entries(value as any)
                   .map(([k, v]) => `${k}: ${v}`)
                   .join('\n')}
-                inputProps={{
-                  style: { resize: 'vertical' },
-                }}
-                className={classes.outputTextField}
-                minRows={30}
-                variant="outlined"
                 autoComplete="off"
               />
-            );
-          })}
-        </Grid>
+            </div>
+          ))}
+        </div>
       )}
     </>
   );

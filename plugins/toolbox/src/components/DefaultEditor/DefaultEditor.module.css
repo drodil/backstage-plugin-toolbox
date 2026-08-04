@@ -1,0 +1,73 @@
+@layer components {
+  .container {
+    width: 100%;
+  }
+
+  .toolsRow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--bui-space-2);
+    margin-bottom: var(--bui-space-2);
+    align-items: center;
+  }
+
+  .modesRow {
+    display: flex;
+    gap: var(--bui-space-1);
+    align-items: center;
+    padding-bottom: var(--bui-space-2);
+  }
+
+  .editorsRow {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--bui-space-3);
+    margin-top: var(--bui-space-2);
+  }
+
+  @media (max-width: 1024px) {
+    .editorsRow {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .editorCell {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .textarea {
+    width: 100%;
+    min-height: 450px;
+    padding: var(--bui-space-3);
+    font-family: var(--bui-font-regular);
+    font-size: var(--bui-font-size-2);
+    line-height: 1.5;
+    background-color: var(--bui-bg-app);
+    color: var(--bui-fg-primary);
+    border: 1px solid var(--bui-border-1);
+    border-radius: var(--bui-radius-2);
+    resize: vertical;
+    box-sizing: border-box;
+    outline: none;
+    transition: border-color 0.15s;
+  }
+
+  .textarea:hover {
+    border-color: var(--bui-fg-secondary);
+  }
+
+  .textarea:focus {
+    border-color: var(--bui-ring);
+    outline: 2px solid var(--bui-ring);
+    outline-offset: -2px;
+  }
+
+  .fieldLabel {
+    font-size: var(--bui-font-size-1);
+    color: var(--bui-fg-secondary);
+    margin-bottom: var(--bui-space-1);
+    display: block;
+  }
+}

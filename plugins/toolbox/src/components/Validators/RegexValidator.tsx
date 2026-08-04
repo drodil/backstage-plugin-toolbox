@@ -45,7 +45,6 @@ export const RegexValidator = () => {
       setPattern={setPattern}
       output={output}
       setOutput={setOutput}
-      minRows={20}
       inputLabel="Input"
       patternLabel="Regex-Pattern"
       outputLabel="Output"

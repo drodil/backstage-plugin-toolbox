@@ -1,35 +1,7 @@
-import { ChangeEvent, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { TimePaper } from './TimePaper';
-import {
-  Button,
-  ButtonGroup,
-  FormControl,
-  FormControlLabel,
-  Grid,
-  makeStyles,
-  Switch,
-  TextField,
-  Theme,
-} from '@material-ui/core';
+import { Button, Flex, Switch } from '@backstage/ui';
 import { useToolboxTranslation } from '../../hooks';
-
-const useStyles = makeStyles<Theme>(theme => ({
-  formControl: {
-    width: '100%',
-  },
-  gridContainer: {
-    marginBottom: theme.spacing(0.625), // 5px
-  },
-  buttonGroup: {
-    padding: theme.spacing(2), // 16px
-    paddingLeft: 0,
-    paddingTop: 0,
-  },
-  resetButton: {
-    backgroundColor: '#E0E0E0',
-    color: '#000000',
-  },
-}));
 
 function sleep(ms: number) {
   return new Promise(resolve => setTimeout(resolve, ms));
@@ -60,7 +32,6 @@ async function playAlert() {
 }
 
 export const Countdown = () => {
-  const classes = useStyles();
   const [secondsLeft, setSecondsLeft] = useState(0);
   const [hours, setHours] = useState(0);
   const [minutes, setMinutes] = useState(0);
@@ -84,14 +55,11 @@ export const Countdown = () => {
     }
   };
 
-  const handleStop = () => {
-    setIsRunning(false);
-  };
+  const handleStop = () => setIsRunning(false);
 
   const handleReset = () => {
     if (isRunning) {
-      const time = hours * 3600 + minutes * 60 + seconds - 1;
-      setSecondsLeft(time);
+      setSecondsLeft(hours * 3600 + minutes * 60 + seconds - 1);
     } else {
       setHours(0);
       setMinutes(0);
@@ -99,13 +67,8 @@ export const Countdown = () => {
     }
   };
 
-  const handleChimeToggle = (event: ChangeEvent<HTMLInputElement>) => {
-    setChime(event.target.checked);
-  };
-
   useEffect(() => {
     let intervalId: any;
-
     if (isRunning) {
       intervalId = setInterval(() => {
         const time = secondsLeft - 1;
@@ -113,127 +76,108 @@ export const Countdown = () => {
           setSecondsLeft(time);
         } else if (time <= 0) {
           setIsRunning(false);
-          if (chime) {
-            playAlert();
-          }
+          if (chime) playAlert();
         }
       }, 1000);
     }
-
     return () => clearInterval(intervalId);
   }, [hours, minutes, seconds, secondsLeft, isRunning, chime]);
 
   const timeLeft = formatTime(secondsLeft);
+
   return (
     <>
-      <FormControl className={classes.formControl}>
-        <Grid container spacing={4} className={classes.gridContainer}>
-          <Grid item>
-            <ButtonGroup className={classes.buttonGroup}>
-              {!isRunning && (
-                <Button
-                  variant="contained"
-                  color="primary"
-                  onClick={handleStart}
-                >
-                  {t('tool.countdown.startButton')}
-                </Button>
-              )}
-              {isRunning && (
-                <Button
-                  variant="contained"
-                  color="secondary"
-                  onClick={handleStop}
-                >
-                  {t('tool.countdown.stopButton')}
-                </Button>
-              )}
-              <Button
-                variant="contained"
-                onClick={handleReset}
-                className={classes.resetButton}
-              >
-                {t('tool.countdown.resetButton')}
-              </Button>
-            </ButtonGroup>
-            <FormControlLabel
-              control={<Switch defaultChecked onChange={handleChimeToggle} />}
-              label="Chime"
-              labelPlacement="start"
-            />
-          </Grid>
-        </Grid>
-      </FormControl>
+      <Flex
+        gap="2"
+        align="center"
+        style={{ marginBottom: 'var(--bui-space-4)' }}
+      >
+        {!isRunning && (
+          <Button variant="primary" onClick={handleStart}>
+            {t('tool.countdown.startButton')}
+          </Button>
+        )}
+        {isRunning && (
+          <Button variant="secondary" onClick={handleStop}>
+            {t('tool.countdown.stopButton')}
+          </Button>
+        )}
+        <Button variant="secondary" onClick={handleReset}>
+          {t('tool.countdown.resetButton')}
+        </Button>
+        <Switch isSelected={chime} onChange={setChime}>
+          Chime
+        </Switch>
+      </Flex>
       {!isRunning && (
-        <Grid container spacing={4}>
-          <Grid item>
-            <TextField
-              label={t('tool.countdown.hoursLabel')}
-              type="number"
-              value={hours}
-              variant="standard"
-              autoComplete="off"
-              onChange={e => {
-                const val = parseInt(e.target.value, 10);
-                if (!isNaN(val)) {
-                  setHours(val);
-                }
-              }}
-            />
-          </Grid>
-          <Grid item>
-            <TextField
-              label={t('tool.countdown.minutesLabel')}
-              type="number"
-              value={minutes}
-              variant="standard"
-              autoComplete="off"
-              onChange={e => {
-                const val = parseInt(e.target.value, 10);
-                if (!isNaN(val)) {
-                  setMinutes(val);
-                }
-              }}
-            />
-          </Grid>
-          <Grid item>
-            <TextField
-              label={t('tool.countdown.secondsLabel')}
-              type="number"
-              value={seconds}
-              variant="standard"
-              autoComplete="off"
-              onChange={e => {
-                const val = parseInt(e.target.value, 10);
-                if (!isNaN(val)) {
-                  setSeconds(val);
-                }
-              }}
-            />
-          </Grid>
-        </Grid>
+        <Flex gap="4" style={{ marginBottom: 'var(--bui-space-4)' }}>
+          {[
+            {
+              label: t('tool.countdown.hoursLabel'),
+              value: hours,
+              setter: setHours,
+            },
+            {
+              label: t('tool.countdown.minutesLabel'),
+              value: minutes,
+              setter: setMinutes,
+            },
+            {
+              label: t('tool.countdown.secondsLabel'),
+              value: seconds,
+              setter: setSeconds,
+            },
+          ].map(({ label, value, setter }) => (
+            <div key={label}>
+              <label
+                style={{
+                  fontSize: 'var(--bui-font-size-1)',
+                  color: 'var(--bui-fg-secondary)',
+                  display: 'block',
+                  marginBottom: 'var(--bui-space-1)',
+                }}
+              >
+                {label}
+              </label>
+              <input
+                type="number"
+                value={value}
+                min={0}
+                onChange={e => {
+                  const v = parseInt(e.target.value, 10);
+                  if (!isNaN(v)) setter(v);
+                }}
+                style={{
+                  padding: 'var(--bui-space-2) var(--bui-space-3)',
+                  border: '1px solid var(--bui-border-1)',
+                  borderRadius: 'var(--bui-radius-2)',
+                  fontFamily: 'var(--bui-font-regular)',
+                  fontSize: 'var(--bui-font-size-2)',
+                  background: 'var(--bui-bg-app)',
+                  color: 'var(--bui-fg-primary)',
+                  width: '100px',
+                  outline: 'none',
+                }}
+              />
+            </div>
+          ))}
+        </Flex>
       )}
       {isRunning && (
-        <Grid container spacing={2} justifyContent="center" alignItems="center">
-          <Grid item>
-            <TimePaper
-              value={timeLeft.hours}
-              title={t('tool.countdown.hoursLabel')}
-            />
-          </Grid>
-          <Grid item>
-            <TimePaper
-              value={timeLeft.minutes}
-              title={t('tool.countdown.minutesLabel')}
-            />
-          </Grid>
-          <Grid item>
-            <TimePaper
-              value={timeLeft.seconds}
-              title={t('tool.countdown.secondsLabel')}
-            />
-          </Grid>
-        </Grid>
+        <Flex gap="4" justify="center" align="center">
+          <TimePaper
+            value={timeLeft.hours}
+            title={t('tool.countdown.hoursLabel')}
+          />
+          <TimePaper
+            value={timeLeft.minutes}
+            title={t('tool.countdown.minutesLabel')}
+          />
+          <TimePaper
+            value={timeLeft.seconds}
+            title={t('tool.countdown.secondsLabel')}
+          />
+        </Flex>
       )}
     </>
   );

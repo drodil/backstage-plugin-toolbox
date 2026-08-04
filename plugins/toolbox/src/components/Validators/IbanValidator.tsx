@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import * as IBAN from 'iban';
 import { DefaultEditor } from '../DefaultEditor';
 import { OutputField } from '../DefaultEditor/OutputField';
-import { Alert, AlertTitle } from '@material-ui/lab';
+import { Alert } from '@backstage/ui';
 import { useToolboxTranslation } from '../../hooks';
 
 export const IbanValidator = () => {
@@ -28,15 +28,15 @@ export const IbanValidator = () => {
     <DefaultEditor
       input={input}
       setInput={setInput}
-      minRows={1}
       inputLabel="IBAN"
       rightContent={
         <>
           {!isValid && (
-            <Alert severity="error">
-              <AlertTitle>{t('tool.iban.alertErrorTitle')}</AlertTitle>
-              {t('tool.iban.alertInvalidIBAN')}
-            </Alert>
+            <Alert
+              status="danger"
+              title={t('tool.iban.alertErrorTitle')}
+              description={t('tool.iban.alertInvalidIBAN')}
+            />
           )}
           {isValid && (
             <>

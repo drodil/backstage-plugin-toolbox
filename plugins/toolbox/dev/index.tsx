@@ -1,97 +1,16 @@
-/** import { createDevApp } from '@backstage/dev-utils';
-import {
-  defaultTools,
-  ToolboxPage,
-  ToolContainer,
-  ToolsContainer,
-} from '../src';
-import {
-  AnyApiFactory,
-  createApiFactory,
-  createPlugin,
-  discoveryApiRef,
-  fetchApiRef,
-} from '@backstage/core-plugin-api';
-import { catalogApiRef } from '@backstage/plugin-catalog-react';
-import { rootRouteRef } from '../src/routes';
-import { CatalogApiMock } from './CatalogApiMock';
-import { HomePage } from './HomePage';
-import { HomePageWithFactory } from './HomePageWithFactory';
-
-const extraToolExample = {
-  id: 'extra-test',
-  name: 'Extra',
-  component: <div>Extra tool</div>,
-};
-
-const apiFactories: AnyApiFactory[] = [
-  createApiFactory({
-    api: catalogApiRef,
-    deps: { discoveryApi: discoveryApiRef, fetchApi: fetchApiRef },
-    factory: () => new CatalogApiMock(),
-  }),
-];
-
-const toolboxDevPlugin = createPlugin({
-  id: 'toolboxDev',
-  routes: {
-    root: rootRouteRef,
-  },
-  apis: apiFactories,
-});
-
-createDevApp()
-  .registerPlugin(toolboxDevPlugin)
-  .addPage({
-    element: <ToolboxPage extraTools={[extraToolExample]} />,
-    title: 'Root Page',
-    path: '/toolbox',
-  })
-  .addPage({
-    element: (
-      <ToolboxPage
-        welcomePage={
-          <p>
-            This is a customized home page for toolbox. Use your imagination!
-          </p>
-        }
-      />
-    ),
-    title: 'Custom Page',
-    path: '/toolbox-custom',
-  })
-  .addPage({
-    element: <ToolsContainer />,
-    title: 'Container Page',
-    path: '/toolbox-container',
-  })
-  .addPage({
-    element: <ToolContainer tool={defaultTools[0]} />,
-    title: 'Tool Page',
-    path: '/tool',
-  })
-  .addPage({
-    element: <HomePage />,
-    title: 'Home Page',
-    path: '/home',
-  })
-  .addPage({
-    element: <HomePageWithFactory />,
-    title: 'Home Page 2',
-    path: '/home2',
-  })
-  .render();
- */
-// NEW FRONTEND SYSTEM
 import { createApp } from '@backstage/frontend-defaults';
 import { createRoot } from 'react-dom/client';
 import { CatalogApiMock } from './CatalogApiMock';
 import { catalogApiRef } from '@backstage/plugin-catalog-react';
 import catalogPlugin from '@backstage/plugin-catalog/alpha';
 
-import plugin from '../src/alpha';
+import toolboxPlugin from '../src';
 import { createFrontendModule } from '@backstage/frontend-plugin-api';
-import { ToolboxToolBlueprint } from '@drodil/backstage-plugin-toolbox-react/alpha';
+import { ToolboxToolBlueprint } from '@drodil/backstage-plugin-toolbox-react';
+import homePlugin from '@backstage/plugin-home/alpha';
+
+// eslint-disable-next-line @backstage/no-ui-css-imports-in-non-frontend
+import '@backstage/ui/css/styles.css';
 
 const extraTool = ToolboxToolBlueprint.make({
   params: {
@@ -120,7 +39,7 @@ const myModule = createFrontendModule({
 });
 
 const app = createApp({
-  features: [plugin, myModule, myCatalogPlugin],
+  features: [toolboxPlugin, myModule, myCatalogPlugin, homePlugin],
 });
 
 const container = document.getElementById('root');

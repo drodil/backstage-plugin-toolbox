@@ -1,7 +1,4 @@
-import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
-import { makeStyles } from '@material-ui/core/styles';
+import { Select } from '@backstage/ui';
 import { useToolboxTranslation } from '../../hooks';
 import { useId } from 'react';
 
@@ -11,47 +8,25 @@ interface SQLLanguageSelectorProps {
   languages: string[];
 }
 
-const useStyles = makeStyles({
-  formControl: {
-    position: 'relative',
-    top: '2px',
-  },
-});
-
-/**
- * SQLLanguageSelector - Dropdown for selecting SQL language.
- */
 export const SQLLanguageSelector = ({
   language,
   onChange,
   languages,
 }: SQLLanguageSelectorProps) => {
   const { t } = useToolboxTranslation();
+  const uniqueId = useId();
   const getDisplayName = (lang: string) =>
     t(`tool.format-sql.language.${lang}`, { defaultValue: lang });
-  const uniqueId = useId();
-  const classes = useStyles();
 
   return (
-    <FormControl size="small" className={classes.formControl}>
-      <Select
-        labelId={`sql-language-label-${uniqueId}`}
-        id={`sql-language-selector-${uniqueId}`}
-        value={language}
-        onChange={e => {
-          const value = e.target.value;
-          if (typeof value === 'string') {
-            onChange(value);
-          }
-        }}
-        name={`sql-language-selector-${uniqueId}`}
-      >
-        {languages.map(m => (
-          <MenuItem key={m} value={m}>
-            {getDisplayName(m)}
-          </MenuItem>
-        ))}
-      </Select>
-    </FormControl>
+    <Select
+      id={`sql-language-selector-${uniqueId}`}
+      label={t('tool.format-sql.selectLanguageLabel', {
+        defaultValue: 'Language',
+      })}
+      selectedKey={language}
+      onSelectionChange={key => onChange(key as string)}
+      options={languages.map(m => ({ value: m, label: getDisplayName(m) }))}
+    />
   );
 };

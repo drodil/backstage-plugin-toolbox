@@ -2,56 +2,18 @@ import { useState } from 'react';
 import { faker } from '@faker-js/faker';
 import { lowerCase, upperFirst } from 'lodash';
 import { ClearValueButton, CopyToClipboardButton } from '../Buttons';
-import {
-  Box,
-  Button,
-  ButtonGroup,
-  FormControl,
-  Grid,
-  makeStyles,
-  MenuItem,
-  TextField,
-  Theme,
-} from '@material-ui/core';
-import { DefaultSelect } from '../Selects';
+import { Button, Flex, Select, Text } from '@backstage/ui';
 import { useToolboxTranslation } from '../../hooks';
-
-const useStyles = makeStyles<Theme>(theme => ({
-  formControl: {
-    width: '100%',
-  },
-  gridContainer: {
-    marginBottom: theme.spacing(0.625), // 5px
-  },
-  multiplierBox: {
-    marginLeft: theme.spacing(2), // 16px
-  },
-  buttonGroup: {
-    marginLeft: theme.spacing(2), // 16px
-    marginBottom: theme.spacing(2), // 16px
-  },
-  outputGrid: {
-    width: '100%',
-  },
-  textField: {
-    width: '100%',
-  },
-  generateButton: {
-    paddingLeft: theme.spacing(2), // 16px
-    paddingRight: theme.spacing(2), // 16px
-    borderColor: '#E0E0E0',
-    borderRadius: theme.spacing(0.5), // 4px
-  },
-}));
+import styles from '../DefaultEditor/DefaultEditor.module.css';
 
 const randomInt = (min: number, max: number) => {
   return Math.floor(Math.random() * max) + min;
 };
 
 export const LoremIpsum = () => {
-  const classes = useStyles();
   const [output, setOutput] = useState('');
   const [multiplier, setMultiplier] = useState(1);
+  const { t } = useToolboxTranslation();
 
   const generate = (type: string) => {
     let outputs = [];
@@ -173,116 +135,139 @@ export const LoremIpsum = () => {
   };
 
   const GenerateButton = (props: { type: string; title?: string }) => {
-    const { t } = useToolboxTranslation();
     const title = props.title ? props.title : upperFirst(lowerCase(props.type));
     const translatedTitle = t(
       `tool.lorem-ipsum-generate.button.${props.type.toLowerCase()}`,
       { defaultValue: title },
     );
     return (
-      <Button
-        size="small"
-        variant="outlined"
-        onClick={() => generate(props.type)}
-        color="inherit"
-        className={classes.generateButton}
-      >
+      <Button variant="secondary" onClick={() => generate(props.type)}>
         {translatedTitle}
       </Button>
     );
   };
 
   return (
-    <FormControl className={classes.formControl}>
-      <Grid container className={classes.gridContainer}>
-        <Grid item>
-          <Box className={classes.multiplierBox}>
-            <DefaultSelect
-              value={multiplier.toString(10)}
-              onChange={e =>
-                setMultiplier(Number.parseInt(e.target.value as string, 10))
-              }
-              label="Count"
-              variant="standard"
-            >
-              <MenuItem value={1}>1</MenuItem>
-              <MenuItem value={5}>5</MenuItem>
-              <MenuItem value={10}>10</MenuItem>
-              <MenuItem value={25}>25</MenuItem>
-              <MenuItem value={50}>50</MenuItem>
-              <MenuItem value={100}>100</MenuItem>
-              <MenuItem value={250}>250</MenuItem>
-              <MenuItem value={500}>500</MenuItem>
-              <MenuItem value={1000}>1000</MenuItem>
-            </DefaultSelect>
-            <ButtonGroup className={classes.buttonGroup}>
-              <ClearValueButton setValue={setOutput} tooltip="Clear output" />
-              <CopyToClipboardButton output={output} />
-            </ButtonGroup>
-          </Box>
-          <ButtonGroup className={classes.buttonGroup}>
-            <GenerateButton type="line" />
-            <GenerateButton type="paragraph" />
-            <GenerateButton type="slug" />
-            <GenerateButton type="word" />
-            <GenerateButton type="hack" />
-          </ButtonGroup>
-          <ButtonGroup className={classes.buttonGroup}>
-            <GenerateButton type="hex" />
-            <GenerateButton type="datetime" />
-            <GenerateButton type="number" />
-            <GenerateButton type="string" />
-            <GenerateButton type="uuid" />
-          </ButtonGroup>
-          <ButtonGroup className={classes.buttonGroup}>
-            <GenerateButton type="ipv4" title="IPv4" />
-            <GenerateButton type="ipv6" title="IPv6" />
-            <GenerateButton type="mac" title="MAC" />
-            <GenerateButton type="imei" />
-            <GenerateButton type="cron" />
-          </ButtonGroup>
-          <ButtonGroup className={classes.buttonGroup}>
-            <GenerateButton type="domain" />
-            <GenerateButton type="password" />
-            <GenerateButton type="url" title="URL" />
-            <GenerateButton type="user-agent" title="User agent" />
-            <GenerateButton type="emoji" />
-          </ButtonGroup>
-          <ButtonGroup className={classes.buttonGroup}>
-            <GenerateButton type="address" />
-            <GenerateButton type="name" title="Name" />
-            <GenerateButton type="job-title" title="Job title" />
-          </ButtonGroup>
-          <ButtonGroup className={classes.buttonGroup}>
-            <GenerateButton type="product-name" title="Product name" />
-            <GenerateButton
-              type="product-description"
-              title="Product description"
-            />
-            <GenerateButton type="catch-phrase" title="Catch phrase" />
-            <GenerateButton type="song" title="Song name" />
-          </ButtonGroup>
-          <ButtonGroup className={classes.buttonGroup}>
-            <GenerateButton type="bic" title="BIC" />
-            <GenerateButton type="credit-card" title="Credit card" />
-            <GenerateButton type="iban" title="IBAN" />
-          </ButtonGroup>
-        </Grid>
-        <Grid item style={{ width: '100%' }}>
-          <TextField
-            id="output"
-            label="Output"
-            value={output || ''}
-            style={{ width: '100%' }}
-            multiline
-            minRows={20}
-            maxRows={50}
-            variant="outlined"
-            autoComplete="off"
-          />
-        </Grid>
-      </Grid>
-    </FormControl>
+    <div style={{ width: '100%' }}>
+      <Flex
+        gap="2"
+        align="center"
+        style={{ marginBottom: 'var(--bui-space-2)' }}
+      >
+        <Select
+          label="Count"
+          selectedKey={String(multiplier)}
+          onSelectionChange={key =>
+            setMultiplier(Number.parseInt(key as string, 10))
+          }
+          options={[1, 5, 10, 25, 50, 100, 250, 500, 1000].map(n => ({
+            value: String(n),
+            label: String(n),
+          }))}
+        />
+        <ClearValueButton setValue={setOutput} tooltip="Clear output" />
+        <CopyToClipboardButton output={output} />
+      </Flex>
+      <div style={{ marginBottom: 'var(--bui-space-4)' }}>
+        <Text
+          variant="body-small"
+          style={{
+            color: 'var(--bui-fg-secondary)',
+            display: 'block',
+            marginBottom: 'var(--bui-space-1)',
+          }}
+        >
+          Text
+        </Text>
+        <Flex gap="2" style={{ flexWrap: 'wrap' }}>
+          <GenerateButton type="line" />
+          <GenerateButton type="paragraph" />
+          <GenerateButton type="slug" />
+          <GenerateButton type="word" />
+          <GenerateButton type="hack" />
+        </Flex>
+      </div>
+      <div style={{ marginBottom: 'var(--bui-space-4)' }}>
+        <Text
+          variant="body-small"
+          style={{
+            color: 'var(--bui-fg-secondary)',
+            display: 'block',
+            marginBottom: 'var(--bui-space-1)',
+          }}
+        >
+          Identifiers
+        </Text>
+        <Flex gap="2" style={{ flexWrap: 'wrap' }}>
+          <GenerateButton type="hex" />
+          <GenerateButton type="datetime" />
+          <GenerateButton type="number" />
+          <GenerateButton type="string" />
+          <GenerateButton type="uuid" />
+        </Flex>
+      </div>
+      <div style={{ marginBottom: 'var(--bui-space-4)' }}>
+        <Text
+          variant="body-small"
+          style={{
+            color: 'var(--bui-fg-secondary)',
+            display: 'block',
+            marginBottom: 'var(--bui-space-1)',
+          }}
+        >
+          Network
+        </Text>
+        <Flex gap="2" style={{ flexWrap: 'wrap' }}>
+          <GenerateButton type="ipv4" title="IPv4" />
+          <GenerateButton type="ipv6" title="IPv6" />
+          <GenerateButton type="mac" title="MAC" />
+          <GenerateButton type="imei" />
+          <GenerateButton type="cron" />
+          <GenerateButton type="domain" />
+          <GenerateButton type="password" />
+          <GenerateButton type="url" title="URL" />
+          <GenerateButton type="user-agent" title="User agent" />
+          <GenerateButton type="emoji" />
+        </Flex>
+      </div>
+      <div style={{ marginBottom: 'var(--bui-space-4)' }}>
+        <Text
+          variant="body-small"
+          style={{
+            color: 'var(--bui-fg-secondary)',
+            display: 'block',
+            marginBottom: 'var(--bui-space-1)',
+          }}
+        >
+          Personal &amp; Business
+        </Text>
+        <Flex gap="2" style={{ flexWrap: 'wrap' }}>
+          <GenerateButton type="address" />
+          <GenerateButton type="product-name" />
+          <GenerateButton type="product-description" />
+          <GenerateButton type="catch-phrase" />
+          <GenerateButton type="bic" title="BIC" />
+          <GenerateButton type="credit-card" />
+          <GenerateButton type="iban" title="IBAN" />
+          <GenerateButton type="song" />
+          <GenerateButton type="name" />
+          <GenerateButton type="job-title" />
+        </Flex>
+      </div>
+      <div>
+        <label htmlFor="lorem-output" className={styles.fieldLabel}>
+          Output
+        </label>
+        <textarea
+          id="lorem-output"
+          className={styles.textarea}
+          value={output || ''}
+          readOnly
+          rows={20}
+          autoComplete="off"
+        />
+      </div>
+    </div>
   );
 };
 
