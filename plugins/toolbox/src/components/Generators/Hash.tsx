@@ -8,6 +8,7 @@ import md2 from 'js-md2';
 // @ts-ignore
 import md4 from 'js-md4';
 import { OutputField } from '../DefaultEditor/OutputField';
+import { Flex } from '@backstage/ui';
 
 export const Hash = () => {
   const [input, setInput] = useState('');
@@ -43,6 +44,10 @@ export const Hash = () => {
       });
     });
   }, [input]);
+  const textAreaStyle: React.CSSProperties = {
+    minHeight: '1lh',
+    fieldSizing: 'content',
+  } as React.CSSProperties;
 
   return (
     <DefaultEditor
@@ -51,15 +56,57 @@ export const Hash = () => {
       sample={sample}
       allowFileUpload
       rightContent={
-        <>
-          <OutputField label="MD2" value={hash.md2} />
-          <OutputField label="MD4" value={hash.md4} />
-          <OutputField label="MD5" value={hash.md5} />
-          <OutputField label="SHA1" value={hash.sha1} />
-          <OutputField label="SHA256" value={hash.sha256} />
-          <OutputField label="SHA384" value={hash.sha384} />
-          <OutputField label="SHA512" value={hash.sha512} />
-        </>
+        <Flex direction="column" gap="2">
+          <OutputField
+            label="MD2"
+            value={hash.md2}
+            rows={1}
+            flexDirection="row"
+            textAreaStyle={textAreaStyle}
+          />
+          <OutputField
+            label="MD4"
+            value={hash.md4}
+            rows={1}
+            flexDirection="row"
+            textAreaStyle={textAreaStyle}
+          />
+          <OutputField
+            label="MD5"
+            value={hash.md5}
+            rows={1}
+            flexDirection="row"
+            textAreaStyle={textAreaStyle}
+          />
+          <OutputField
+            label="SHA1"
+            value={hash.sha1}
+            rows={1}
+            flexDirection="row"
+            textAreaStyle={textAreaStyle}
+          />
+          <OutputField
+            label="SHA256"
+            value={hash.sha256}
+            rows={1}
+            flexDirection="row"
+            textAreaStyle={textAreaStyle}
+          />
+          <OutputField
+            label="SHA384"
+            value={hash.sha384}
+            rows={1}
+            flexDirection="row"
+            textAreaStyle={textAreaStyle}
+          />
+          <OutputField
+            label="SHA512"
+            value={hash.sha512}
+            rows={1}
+            flexDirection="row"
+            textAreaStyle={textAreaStyle}
+          />
+        </Flex>
       }
     />
   );
