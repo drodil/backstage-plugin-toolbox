@@ -56,4 +56,3 @@ backend:
   reading:
     allow:
       - host: localhost
-

@@ -114,6 +114,44 @@ backend.add(import('@drodil/backstage-plugin-toolbox-backend-module-whois'));
 backend.start();
 ```
 
+# Configuration
+
+## Disabling specific tools
+
+Disabling a tool is done easily through `app.extensions` overrides in `app-config.yaml`.
+To completely disable a tool, simply target said tool, and set the disabled attribute
+to false:
+
+```yaml
+app:
+  extensions:
+    - toolbox-tool:toolbox/base64-encode:
+        disabled: true
+```
+
+Or as a shorthand:
+
+```yaml
+app:
+  extensions:
+    - toolbox-tool:toolbox/base64-encode: false
+```
+
+If you would rather just exclude the tool from the toolbox page, you can instead
+override the `page:toolbox` extension and set the `enabledTools` config key to an
+array of the tool IDs you want to keep on the toolbox page:
+
+```yaml
+app:
+  extensions:
+    - page:toolbox:
+        config:
+          enabledTools:
+            - sla-calculator
+            - csr-generate
+            - ...
+```
+
 # Translations
 
 The plugin supports i18n. To add a new language, create a locale file in your app:

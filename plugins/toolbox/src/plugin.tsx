@@ -19,6 +19,7 @@ import {
 } from '@drodil/backstage-plugin-toolbox-react';
 // Imported early so the settings schema enum can reference built-in tool IDs
 import { defaultTools } from './components/Root';
+import { z } from 'zod/v4';
 
 export {
   toolDataRef,
@@ -59,10 +60,17 @@ const toolboxPage = PageBlueprint.makeWithOverrides({
       optional: true,
     }),
   },
+  configSchema: {
+    enabledTools: z.array(z.string()).optional(),
+  },
   factory: (originalFactory, { config, inputs }) => {
-    const tools = inputs.tools.map(t =>
-      t.get(ToolboxToolBlueprint.dataRefs.tool),
-    );
+    const tools = inputs.tools
+      .map(t => t.get(ToolboxToolBlueprint.dataRefs.tool))
+      .filter(
+        t =>
+          config.enabledTools === undefined ||
+          config.enabledTools.includes(t.id),
+      );
     const welcomePage = inputs.welcomePage?.get(coreExtensionData.reactElement);
     return originalFactory({
       path: config.path ?? '/toolbox',
@@ -604,6 +612,44 @@ const homeCard = HomePageWidgetBlueprint.make({
   },
 });
 
+const toolExtensions = [
+  base64EncodeTool,
+  urlEncodeTool,
+  htmlEntitiesEncodeTool,
+  backslashEncodeTool,
+  jwtDecoderTool,
+  markdownPreviewTool,
+  csvToJsonTool,
+  jsonConverterTool,
+  xmlToJsonTool,
+  yamlToJsonTool,
+  richTextToMarkdownTool,
+  numberBaseTool,
+  stringUtilitiesTool,
+  timeConverterTool,
+  colorConverterTool,
+  slaCalculatorTool,
+  hashTool,
+  entityValidatorTool,
+  csrTool,
+  qrCodeTool,
+  barCodeTool,
+  loremIpsumTool,
+  interfaceTool,
+  jsBeautifyTool,
+  htmlBeautifyTool,
+  cssBeautifyTool,
+  sqlBeautifyTool,
+  stringAnalyzerTool,
+  countdownTool,
+  stopwatchTool,
+  diffTool,
+  urlExploderTool,
+  ibanValidatorTool,
+  regexValidatorTool,
+  whoisTool,
+];
+
 const toolboxPlugin: OverridableFrontendPlugin = createFrontendPlugin({
   pluginId: 'toolbox',
   info: { packageJson: () => import('../package.json') },
@@ -614,41 +660,7 @@ const toolboxPlugin: OverridableFrontendPlugin = createFrontendPlugin({
     toolboxApi,
     toolboxPage,
     // Tools
-    base64EncodeTool,
-    urlEncodeTool,
-    htmlEntitiesEncodeTool,
-    backslashEncodeTool,
-    jwtDecoderTool,
-    markdownPreviewTool,
-    csvToJsonTool,
-    jsonConverterTool,
-    xmlToJsonTool,
-    yamlToJsonTool,
-    richTextToMarkdownTool,
-    numberBaseTool,
-    stringUtilitiesTool,
-    timeConverterTool,
-    colorConverterTool,
-    slaCalculatorTool,
-    hashTool,
-    entityValidatorTool,
-    csrTool,
-    qrCodeTool,
-    barCodeTool,
-    loremIpsumTool,
-    interfaceTool,
-    jsBeautifyTool,
-    htmlBeautifyTool,
-    cssBeautifyTool,
-    sqlBeautifyTool,
-    stringAnalyzerTool,
-    countdownTool,
-    stopwatchTool,
-    diffTool,
-    urlExploderTool,
-    ibanValidatorTool,
-    regexValidatorTool,
-    whoisTool,
+    ...toolExtensions,
     homeCard,
   ],
 });
