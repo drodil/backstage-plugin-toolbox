@@ -2,6 +2,10 @@ app:
   title: Toolbox Dev App
   baseUrl: http://localhost:3000
 
+  #extensions:
+  #  - toolbox-tool:toolbox/base64-encode:
+  #      disabled: true
+
   toolbox:
     qrCode:
       defaults:
@@ -47,10 +51,10 @@ backend:
     store: memory
   cors:
     origin: http://localhost:3000
-    methods: [GET, HEAD, PATCH, POST, PUT, DELETE]
+    methods: [ GET, HEAD, PATCH, POST, PUT, DELETE ]
     credentials: true
   csp:
-    connect-src: ["'self'", 'http:', 'https:']
+    connect-src: [ "'self'", 'http:', 'https:' ]
     # Content-Security-Policy directives follow the Helmet format: https://helmetjs.github.io/#reference
     # Default Helmet Content-Security-Policy values can be removed by setting the key to false
   reading:
