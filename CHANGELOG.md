@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.1.0](https://github.com/drodil/backstage-plugin-toolbox/compare/v2.0.0...v2.1.0) (2026-08-19)
+
+
+### Features
+
+* **config:** add config 'enabled' to enable a selection of tools ([de9d088](https://github.com/drodil/backstage-plugin-toolbox/commit/de9d088c844e3cea6b2731737beb2dfe8daa7502))
+* **hash:** update UI to show hash results in a single page ([67d1904](https://github.com/drodil/backstage-plugin-toolbox/commit/67d190463d71c682a24dfd0f78ea7d29d4654961))
+
 ## [2.0.0](https://github.com/drodil/backstage-plugin-toolbox/compare/v1.36.11...v2.0.0) (2026-08-04)
 
 

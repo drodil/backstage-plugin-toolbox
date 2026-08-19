@@ -1,7 +1,7 @@
 {
   "name": "@drodil/backstage-plugin-toolbox-node",
   "description": "Node.js library for the toolbox plugin",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "main": "src/index.ts",
   "types": "src/index.ts",
   "prepublishOnly": "yarn tsc && yarn build",
