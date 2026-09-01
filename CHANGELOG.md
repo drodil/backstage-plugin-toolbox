@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.1.1](https://github.com/drodil/backstage-plugin-toolbox/compare/v2.1.0...v2.1.1) (2026-09-01)
+
+
+### Bug Fixes
+
+* only load english locale for faker ([9834ff8](https://github.com/drodil/backstage-plugin-toolbox/commit/9834ff8633c32a09ae5438ee11ef14591465d410))
+
 ## [2.1.0](https://github.com/drodil/backstage-plugin-toolbox/compare/v2.0.0...v2.1.0) (2026-08-19)
 
 
