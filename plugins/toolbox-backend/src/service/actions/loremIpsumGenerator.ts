@@ -1,5 +1,5 @@
 import { ActionsRegistryService } from '@backstage/backend-plugin-api/alpha';
-import { faker } from '@faker-js/faker';
+import { faker } from '@faker-js/faker/locale/en';
 
 export const createLoremIpsumGeneratorAction = (options: {
   actionsRegistry: ActionsRegistryService;

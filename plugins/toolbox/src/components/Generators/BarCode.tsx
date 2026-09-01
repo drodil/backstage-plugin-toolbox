@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { DefaultEditor } from '../DefaultEditor';
-import { faker } from '@faker-js/faker';
+import { faker } from '@faker-js/faker/locale/en';
 import Barcode from 'react-barcode';
 import { Select } from '@backstage/ui';
 

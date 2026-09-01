@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { DefaultEditor } from '../DefaultEditor';
-import { faker } from '@faker-js/faker';
+import { faker } from '@faker-js/faker/locale/en';
 import { sha1, sha256, sha384, sha512 } from 'crypto-hash';
 import { Md5 } from 'ts-md5';
 // @ts-ignore

@@ -5,7 +5,7 @@ import {
   PasteFromClipboardButton,
   SampleButton,
 } from '../Buttons';
-import { faker } from '@faker-js/faker';
+import { faker } from '@faker-js/faker/locale/en';
 import { Flex, TextField } from '@backstage/ui';
 import { useToolboxTranslation } from '../../hooks';
 import styles from '../DefaultEditor/DefaultEditor.module.css';

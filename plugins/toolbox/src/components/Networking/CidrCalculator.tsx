@@ -6,7 +6,7 @@ import React, { useEffect } from 'react';
 import { DefaultEditor } from '../DefaultEditor/DefaultEditor';
  import { TextField } from '@material-ui/core';
 import { useStyles } from '../../utils/hooks';
-import { faker } from '@faker-js/faker';
+import { faker } from '@faker-js/faker/locale/en';
 import { CopyToClipboardButton } from '../Buttons/CopyToClipboardButton';
 import { IPv4CidrRange, IPv6CidrRange, Validator } from 'ip-num';
 import { Alert, AlertTitle } from '@material-ui/lab';

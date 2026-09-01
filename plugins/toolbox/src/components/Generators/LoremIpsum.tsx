@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { faker } from '@faker-js/faker';
+import { faker } from '@faker-js/faker/locale/en';
 import { lowerCase, upperFirst } from 'lodash';
 import { ClearValueButton, CopyToClipboardButton } from '../Buttons';
 import { Button, Flex, Select, Text } from '@backstage/ui';

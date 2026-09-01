@@ -1,7 +1,7 @@
 import type { ChangeEvent } from 'react';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
-import { faker } from '@faker-js/faker';
+import { faker } from '@faker-js/faker/locale/en';
 import type {
   CornerDotType,
   CornerSquareType,
