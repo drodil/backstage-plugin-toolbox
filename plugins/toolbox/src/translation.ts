@@ -179,6 +179,8 @@ export const toolboxTranslationRef = createTranslationRef({
         alertSuccessTitle: 'Success!',
         alertErrorTitle: 'Error!',
         alertValidEntity: 'Entity is valid!',
+        locationLabel: 'Location URL (optional)',
+        locationDescription: 'Resolves placeholders and relative targets',
       },
       'entity-describer': {
         name: 'Entity describer',
