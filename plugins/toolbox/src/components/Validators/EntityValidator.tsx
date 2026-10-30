@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
 import { DefaultEditor } from '../DefaultEditor';
-import { Alert } from '@backstage/ui';
+import { Alert, TextField } from '@backstage/ui';
 import { useToolboxTranslation } from '../../hooks';
 import { useApi } from '@backstage/core-plugin-api';
 import { catalogApiRef } from '@backstage/plugin-catalog-react';
 import YAML from 'yaml';
 import { Entity } from '@backstage/catalog-model';
+import { toLocationRef } from '../../utils/locationRef';
 
 type AnyError = { name: string; message: string };
 type AlertState = {
@@ -21,6 +22,7 @@ export const EntityValidator = () => {
     description: '',
   });
   const [input, setInput] = useState('');
+  const [locationUrl, setLocationUrl] = useState('');
   const catalogApi = useApi(catalogApiRef);
   const sample =
     'apiVersion: backstage.io/v1alpha1\n' +
@@ -72,10 +74,7 @@ export const EntityValidator = () => {
       return;
     }
     catalogApi
-      .validateEntity(
-        entity as Entity,
-        'url:https://localhost/entity-validator',
-      )
+      .validateEntity(entity as Entity, toLocationRef(locationUrl))
       .then(resp => {
         if (resp.valid) {
           setAlert({
@@ -98,7 +97,7 @@ export const EntityValidator = () => {
           description: formatError(err),
         });
       });
-  }, [catalogApi, input, t]);
+  }, [catalogApi, input, locationUrl, t]);
 
   return (
     <DefaultEditor
@@ -110,6 +109,17 @@ export const EntityValidator = () => {
           status={alert.status}
           title={alert.title}
           description={alert.description}
+        />
+      }
+      extraLeftContent={
+        <TextField
+          label={t('tool.entity-validator.locationLabel')}
+          description={t('tool.entity-validator.locationDescription')}
+          placeholder="https://github.com/org/repo/blob/main/catalog-info.yaml"
+          type="url"
+          value={locationUrl}
+          onChange={setLocationUrl}
+          autoComplete="off"
         />
       }
       allowFileUpload
