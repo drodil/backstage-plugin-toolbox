@@ -3,16 +3,32 @@ import { DefaultEditor } from '../DefaultEditor';
 import { Alert } from '@backstage/ui';
 import { useToolboxTranslation } from '../../hooks';
 import { useApi } from '@backstage/core-plugin-api';
-import { catalogApiRef } from '@backstage/plugin-catalog-react';
-import YAML from 'yaml';
-import { Entity } from '@backstage/catalog-model';
+import { CatalogApi, catalogApiRef } from '@backstage/plugin-catalog-react';
+import {
+  EntityDocument,
+  labelErrors,
+  parseEntityDocuments,
+  ValidationError,
+} from '../../utils/entityDocuments';
 
-type AnyError = { name: string; message: string };
 type AlertState = {
   status: 'info' | 'danger' | 'success';
   title?: string;
   description: string;
 };
+
+const validateDocument =
+  (catalogApi: CatalogApi) =>
+  (document: EntityDocument): Promise<ValidationError[]> =>
+    document.type === 'error'
+      ? Promise.resolve([document.error])
+      : catalogApi
+          .validateEntity(
+            document.entity,
+            'url:https://localhost/entity-validator',
+          )
+          .then(resp => (resp.valid ? [] : resp.errors))
+          .catch(err => [err]);
 
 export const EntityValidator = () => {
   const { t } = useToolboxTranslation();
@@ -46,58 +62,50 @@ export const EntityValidator = () => {
     '  owner: artist-relations-team\n' +
     '  system: public-websites';
 
-  const formatError = (err: AnyError | AnyError[]) => {
+  const formatError = (err: ValidationError | ValidationError[]) => {
     const msgs = Array.isArray(err) ? err : [err];
     return msgs.map(msg => `${msg.name}: ${msg.message}`).join('\n');
   };
 
   useEffect(() => {
-    if (!input) {
+    const documents = parseEntityDocuments(input);
+    if (documents.length === 0) {
       setAlert({
         status: 'info',
         description: t('tool.entity-validator.alertEmptyValue'),
       });
-      return;
+      return undefined;
     }
 
-    let entity;
-    try {
-      entity = YAML.parse(input);
-    } catch (err) {
-      setAlert({
-        status: 'danger',
-        title: t('tool.entity-validator.alertErrorTitle'),
-        description: formatError(err),
-      });
-      return;
-    }
-    catalogApi
-      .validateEntity(
-        entity as Entity,
-        'url:https://localhost/entity-validator',
-      )
-      .then(resp => {
-        if (resp.valid) {
-          setAlert({
-            status: 'success',
-            title: t('tool.entity-validator.alertSuccessTitle'),
-            description: t('tool.entity-validator.alertValidEntity'),
-          });
-          return;
-        }
-        setAlert({
-          status: 'danger',
-          title: t('tool.entity-validator.alertErrorTitle'),
-          description: formatError(resp.errors),
-        });
-      })
-      .catch(err => {
-        setAlert({
-          status: 'danger',
-          title: t('tool.entity-validator.alertErrorTitle'),
-          description: formatError(err),
-        });
-      });
+    let cancelled = false;
+    Promise.all(documents.map(validateDocument(catalogApi))).then(results => {
+      if (cancelled) {
+        return;
+      }
+      const errors = labelErrors(documents, results);
+      const validMessage =
+        documents.length === 1
+          ? t('tool.entity-validator.alertValidEntity')
+          : t('tool.entity-validator.alertValidEntities', {
+              count: documents.length,
+            });
+      setAlert(
+        errors.length > 0
+          ? {
+              status: 'danger',
+              title: t('tool.entity-validator.alertErrorTitle'),
+              description: formatError(errors),
+            }
+          : {
+              status: 'success',
+              title: t('tool.entity-validator.alertSuccessTitle'),
+              description: validMessage,
+            },
+      );
+    });
+    return () => {
+      cancelled = true;
+    };
   }, [catalogApi, input, t]);
 
   return (
