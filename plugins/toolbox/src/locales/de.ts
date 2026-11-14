@@ -149,6 +149,8 @@ const de = createTranslationMessages({
     'tool.entity-validator.alertSuccessTitle': 'Erfolg!',
     'tool.entity-validator.alertErrorTitle': 'Fehler!',
     'tool.entity-validator.alertValidEntity': 'Entity valide!',
+    'tool.entity-validator.alertValidEntities':
+      'Alle {{count}} Entities valide!',
     'tool.entity-describer.name': 'Entity-Describer',
     'tool.entity-describer.description':
       'Zeigt existierende Entity Beschreibungen in YAML',

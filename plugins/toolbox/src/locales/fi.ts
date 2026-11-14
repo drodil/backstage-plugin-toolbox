@@ -139,6 +139,8 @@ const fi = createTranslationMessages({
     'tool.entity-validator.alertSuccessTitle': 'Onnistui!',
     'tool.entity-validator.alertErrorTitle': 'Virhe!',
     'tool.entity-validator.alertValidEntity': 'Entiteetti on validi!',
+    'tool.entity-validator.alertValidEntities':
+      'Kaikki {{count}} entiteettiä ovat valideja!',
     'tool.entity-describer.name': 'Entiteettikuvaaja',
     'tool.entity-describer.description':
       'Hae olemessa olevan entitettin YAML katalogista',

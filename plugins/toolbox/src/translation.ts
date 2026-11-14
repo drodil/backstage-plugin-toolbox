@@ -179,6 +179,7 @@ export const toolboxTranslationRef = createTranslationRef({
         alertSuccessTitle: 'Success!',
         alertErrorTitle: 'Error!',
         alertValidEntity: 'Entity is valid!',
+        alertValidEntities: 'All {{count}} entities are valid!',
       },
       'entity-describer': {
         name: 'Entity describer',
