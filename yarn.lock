@@ -4296,6 +4296,7 @@ __metadata:
     "@backstage/plugin-catalog-react": "backstage:^"
     "@backstage/plugin-home": "backstage:^"
     "@backstage/plugin-home-react": "backstage:^"
+    "@backstage/test-utils": "backstage:^"
     "@backstage/ui": "backstage:^"
     "@drodil/backstage-plugin-toolbox-react": "workspace:^"
     "@faker-js/faker": "npm:^8.1.0"
