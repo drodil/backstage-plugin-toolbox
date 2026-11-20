@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { DefaultEditor } from '../DefaultEditor';
 import { Alert } from '@backstage/ui';
 import { useToolboxTranslation } from '../../hooks';
-import { useApi } from '@backstage/core-plugin-api';
+import { useApi } from '@backstage/frontend-plugin-api';
 import { CatalogApi, catalogApiRef } from '@backstage/plugin-catalog-react';
 import {
   EntityDocument,

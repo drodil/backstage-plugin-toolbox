@@ -39,7 +39,6 @@ Use `ToolboxToolBlueprint` (now exported from the main package, no `/alpha` sub-
 ```ts
 import { ToolboxToolBlueprint } from '@drodil/backstage-plugin-toolbox';
 import { createFrontendModule } from '@backstage/frontend-plugin-api';
-import { compatWrapper } from '@backstage/core-compat-api';
 
 const myCustomTool = ToolboxToolBlueprint.make({
   name: 'my-tool',
@@ -50,7 +49,7 @@ const myCustomTool = ToolboxToolBlueprint.make({
     category: 'Miscellaneous',
     async loader() {
       const m = await import('./components/MyTool');
-      return compatWrapper(<m.default />);
+      return <m.default />;
     },
   },
 });

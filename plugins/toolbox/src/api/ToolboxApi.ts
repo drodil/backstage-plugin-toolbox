@@ -1,4 +1,4 @@
-import { createApiRef } from '@backstage/core-plugin-api';
+import { createApiRef } from '@backstage/frontend-plugin-api';
 
 export interface ToolboxApi {
   getBackendTools(): Promise<string[]>;
@@ -8,6 +8,6 @@ export interface ToolboxApi {
   toolJsonRequest(toolName: string, data: any): Promise<unknown>;
 }
 
-export const toolboxApiRef = createApiRef<ToolboxApi>({
+export const toolboxApiRef = createApiRef<ToolboxApi>().with({
   id: 'plugin.toolbox.service',
 });

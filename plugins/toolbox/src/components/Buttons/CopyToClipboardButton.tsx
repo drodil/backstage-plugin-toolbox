@@ -1,7 +1,7 @@
 import { TooltipTrigger, Tooltip, Button } from '@backstage/ui';
 import { RiFileCopyLine } from '@remixicon/react';
 import { useToolboxTranslation } from '../../hooks';
-import { alertApiRef, useApi } from '@backstage/core-plugin-api';
+import { alertApiRef, useApi } from '@backstage/frontend-plugin-api';
 
 type Props = {
   output: string | number;

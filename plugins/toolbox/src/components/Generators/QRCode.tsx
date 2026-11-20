@@ -11,7 +11,7 @@ import type {
 } from 'qr-code-styling';
 import QRCodeStyling from 'qr-code-styling';
 
-import { configApiRef, useApi } from '@backstage/core-plugin-api';
+import { coreApis, useApi } from '@backstage/frontend-plugin-api';
 import { useToolboxTranslation } from '../../hooks';
 import { DefaultEditor } from '../DefaultEditor';
 import { Button, Select, TextField } from '@backstage/ui';
@@ -100,7 +100,9 @@ export const QRCodeGenerator = () => {
   const ref = useRef(null);
   const { t } = useToolboxTranslation();
 
-  const config = useApi(configApiRef).getOptionalConfig('app.toolbox.qrCode');
+  const config = useApi(coreApis.config).getOptionalConfig(
+    'app.toolbox.qrCode',
+  );
   const defaultColor = '#000';
   const defaults: QrCodeSettings = {
     cornerSquareType:

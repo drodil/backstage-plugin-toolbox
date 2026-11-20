@@ -10,7 +10,7 @@ import {
   FileUploadButton,
   PasteFromClipboardButton,
 } from '../Buttons';
-import { appThemeApiRef, useApi } from '@backstage/core-plugin-api';
+import { coreApis, useApi } from '@backstage/frontend-plugin-api';
 import { Button, Flex } from '@backstage/ui';
 import { useToolboxTranslation } from '../../hooks';
 
@@ -84,7 +84,7 @@ const useSyncEditorValue = (
 };
 
 function Diff() {
-  const appThemeApi = useApi(appThemeApiRef);
+  const appThemeApi = useApi(coreApis.appTheme);
   const theme = useMemo(
     () => appThemeApi.getActiveThemeId() ?? 'light',
     [appThemeApi],

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { alertApiRef, configApiRef, useApi } from '@backstage/core-plugin-api';
+import { alertApiRef, coreApis, useApi } from '@backstage/frontend-plugin-api';
 import { useToolboxTranslation } from '../../hooks';
 import { CopyToClipboardButton } from '../Buttons/CopyToClipboardButton';
 import { FileDownloadButton } from '../Buttons/FileDownloadButton';
@@ -37,7 +37,7 @@ export const CSRGenerator = () => {
   const [decodedCSR, setDecodedCSR] = useState('');
   const [algorithmName, setAlgorithmName] = useState('rsa-4096-sha2');
   const alertApi = useApi(alertApiRef);
-  const config = useApi(configApiRef);
+  const config = useApi(coreApis.config);
   const [subjectValues, setSubjectValues] = useState({
     country: config.getOptionalString('app.toolbox.csr.defaults.country') || '',
     state: config.getOptionalString('app.toolbox.csr.defaults.state') || '',
