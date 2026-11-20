@@ -6,11 +6,12 @@ import { ToolContainer } from './ToolContainer';
 import { getToolTitle } from '../../utils/tools';
 
 export const ToolPage = (props: ToolsContainerProps) => {
-  const { extraTools } = props;
+  const { extraTools, tools } = props;
   const params = useParams();
   const { t } = useToolboxTranslation();
 
-  const allTools = [...(extraTools ?? []), ...defaultTools];
+  // Same tool set as ToolsContainer: `tools` replaces the default tools
+  const allTools = tools ?? [...(extraTools ?? []), ...defaultTools];
   const tool = allTools.find(({ id }) => id === params.id);
   if (!tool) {
     return <>{t('toolPage.toolNotAvailable')}</>;
