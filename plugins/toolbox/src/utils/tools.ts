@@ -12,6 +12,18 @@ export interface GetSortedToolsProps {
   t?: TFunction;
 }
 
+/**
+ * The tools the toolbox knows about before any filtering: `tools` when given
+ * (the new frontend system passes the installed tool extensions), otherwise
+ * the extra tools plus the default ones.
+ */
+export function getAllTools({
+  tools,
+  extraTools,
+}: Pick<GetSortedToolsProps, 'tools' | 'extraTools'>): Tool[] {
+  return tools ?? [...(extraTools ?? []), ...defaultTools];
+}
+
 export function getSortedTools({
   extraTools,
   tools,
@@ -21,8 +33,7 @@ export function getSortedTools({
   favoritesCategory,
   t,
 }: GetSortedToolsProps): Tool[] {
-  const shownTools = tools ?? [...(extraTools ?? []), ...defaultTools];
-  return shownTools
+  return getAllTools({ tools, extraTools })
     .filter(
       tool =>
         (tool.requiresBackend === true && backendTools.includes(tool.id)) ||
