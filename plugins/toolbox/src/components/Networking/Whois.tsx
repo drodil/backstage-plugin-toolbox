@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useApi } from '@backstage/core-plugin-api';
+import { useApi } from '@backstage/frontend-plugin-api';
 import { toolboxApiRef } from '../../api';
 import { Progress } from '@backstage/core-components';
 import { Button, Flex, TextField } from '@backstage/ui';

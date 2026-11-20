@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import jwtDecode, { JwtPayload } from 'jwt-decode';
 import { DefaultEditor } from '../DefaultEditor';
 import { SignJWT } from 'jose';
-import { alertApiRef, useApi } from '@backstage/core-plugin-api';
+import { alertApiRef, useApi } from '@backstage/frontend-plugin-api';
 import { useToolboxTranslation } from '../../hooks';
 
 const BASE64_REGEX =

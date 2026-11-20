@@ -9,7 +9,7 @@ import {
 import { getSortedTools } from '../../utils/tools';
 import { FavoriteButton } from '../Buttons';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { useAnalytics } from '@backstage/core-plugin-api';
+import { useAnalytics } from '@backstage/frontend-plugin-api';
 import { WelcomePage } from '../WelcomePage/WelcomePage';
 import { Tool } from '@drodil/backstage-plugin-toolbox-react';
 import { TooltipTrigger, Tooltip, ButtonIcon } from '@backstage/ui';

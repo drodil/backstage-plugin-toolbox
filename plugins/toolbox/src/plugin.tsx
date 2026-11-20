@@ -1,5 +1,6 @@
 import {
   ApiBlueprint,
+  coreApis,
   coreExtensionData,
   createExtensionBlueprint,
   createExtensionInput,
@@ -7,8 +8,6 @@ import {
   OverridableFrontendPlugin,
   PageBlueprint,
 } from '@backstage/frontend-plugin-api';
-import { compatWrapper } from '@backstage/core-compat-api';
-import { discoveryApiRef, fetchApiRef } from '@backstage/core-plugin-api';
 import { HomePageWidgetBlueprint } from '@backstage/plugin-home-react/alpha';
 import { toolboxApiRef, ToolboxClient } from './api';
 import { rootRouteRef } from './routes';
@@ -31,8 +30,8 @@ const toolboxApi = ApiBlueprint.make({
     defineParams({
       api: toolboxApiRef,
       deps: {
-        discoveryApi: discoveryApiRef,
-        fetchApi: fetchApiRef,
+        discoveryApi: coreApis.discovery,
+        fetchApi: coreApis.fetch,
       },
       factory({ discoveryApi, fetchApi }) {
         return new ToolboxClient({ discoveryApi, fetchApi });
@@ -78,9 +77,9 @@ const toolboxPage = PageBlueprint.makeWithOverrides({
       icon: <RiBriefcaseLine />,
       routeRef: rootRouteRef,
       loader: () =>
-        import('./components/Root').then(m =>
-          compatWrapper(<m.Root tools={tools} welcomePage={welcomePage} />),
-        ),
+        import('./components/Root').then(m => (
+          <m.Root tools={tools} welcomePage={welcomePage} />
+        )),
     });
   },
 });
@@ -95,7 +94,7 @@ const base64EncodeTool = ToolboxToolBlueprint.make({
     category: 'Encode/Decode',
     async loader() {
       const m = await import('./components/Encoders/Base64Encode');
-      return compatWrapper(<m.default />);
+      return <m.default />;
     },
   },
 });
@@ -109,7 +108,7 @@ const urlEncodeTool = ToolboxToolBlueprint.make({
     category: 'Encode/Decode',
     async loader() {
       const m = await import('./components/Encoders/UrlEncode');
-      return compatWrapper(<m.default />);
+      return <m.default />;
     },
   },
 });
@@ -123,7 +122,7 @@ const htmlEntitiesEncodeTool = ToolboxToolBlueprint.make({
     category: 'Encode/Decode',
     async loader() {
       const m = await import('./components/Encoders/HtmlEntities');
-      return compatWrapper(<m.default />);
+      return <m.default />;
     },
   },
 });
@@ -137,7 +136,7 @@ const backslashEncodeTool = ToolboxToolBlueprint.make({
     category: 'Encode/Decode',
     async loader() {
       const m = await import('./components/Encoders/Backslash');
-      return compatWrapper(<m.default />);
+      return <m.default />;
     },
   },
 });
@@ -152,7 +151,7 @@ const jwtDecoderTool = ToolboxToolBlueprint.make({
     aliases: ['jwt'],
     async loader() {
       const m = await import('./components/Encoders/JwtDecoder');
-      return compatWrapper(<m.default />);
+      return <m.default />;
     },
   },
 });
@@ -166,7 +165,7 @@ const markdownPreviewTool = ToolboxToolBlueprint.make({
     aliases: ['md'],
     async loader() {
       const m = await import('./components/Converters/MarkdownPreview');
-      return compatWrapper(<m.default />);
+      return <m.default />;
     },
   },
 });
@@ -180,7 +179,7 @@ const csvToJsonTool = ToolboxToolBlueprint.make({
     category: 'Convert',
     async loader() {
       const m = await import('./components/Converters/CsvToJson');
-      return compatWrapper(<m.default />);
+      return <m.default />;
     },
   },
 });
@@ -194,7 +193,7 @@ const jsonConverterTool = ToolboxToolBlueprint.make({
     category: 'Convert',
     async loader() {
       const m = await import('./components/Converters/JsonConverter');
-      return compatWrapper(<m.default />);
+      return <m.default />;
     },
   },
 });
@@ -208,7 +207,7 @@ const xmlToJsonTool = ToolboxToolBlueprint.make({
     category: 'Convert',
     async loader() {
       const m = await import('./components/Converters/XmlToJson');
-      return compatWrapper(<m.default />);
+      return <m.default />;
     },
   },
 });
@@ -222,7 +221,7 @@ const yamlToJsonTool = ToolboxToolBlueprint.make({
     category: 'Convert',
     async loader() {
       const m = await import('./components/Converters/YamlToJson');
-      return compatWrapper(<m.default />);
+      return <m.default />;
     },
   },
 });
@@ -236,7 +235,7 @@ const richTextToMarkdownTool = ToolboxToolBlueprint.make({
     category: 'Convert',
     async loader() {
       const m = await import('./components/Converters/RichTextToMarkdown');
-      return compatWrapper(<m.default />);
+      return <m.default />;
     },
   },
 });
@@ -250,7 +249,7 @@ const numberBaseTool = ToolboxToolBlueprint.make({
     category: 'Convert',
     async loader() {
       const m = await import('./components/Converters/NumberBase');
-      return compatWrapper(<m.default />);
+      return <m.default />;
     },
   },
 });
@@ -264,7 +263,7 @@ const stringUtilitiesTool = ToolboxToolBlueprint.make({
     category: 'Convert',
     async loader() {
       const m = await import('./components/Converters/StringUtilities');
-      return compatWrapper(<m.default />);
+      return <m.default />;
     },
   },
 });
@@ -278,7 +277,7 @@ const stringAnalyzerTool = ToolboxToolBlueprint.make({
     category: 'Miscellaneous',
     async loader() {
       const m = await import('./components/Misc/StringAnalyzer');
-      return compatWrapper(<m.default />);
+      return <m.default />;
     },
   },
 });
@@ -292,7 +291,7 @@ const timeConverterTool = ToolboxToolBlueprint.make({
     category: 'Convert',
     async loader() {
       const m = await import('./components/Converters/TimeConverter');
-      return compatWrapper(<m.default />);
+      return <m.default />;
     },
   },
 });
@@ -306,7 +305,7 @@ const colorConverterTool = ToolboxToolBlueprint.make({
     category: 'Convert',
     async loader() {
       const m = await import('./components/Converters/ColorConverter');
-      return compatWrapper(<m.default />);
+      return <m.default />;
     },
   },
 });
@@ -320,7 +319,7 @@ const slaCalculatorTool = ToolboxToolBlueprint.make({
     category: 'Calculate',
     async loader() {
       const m = await import('./components/Converters/SLACalculator');
-      return compatWrapper(<m.default />);
+      return <m.default />;
     },
   },
 });
@@ -334,7 +333,7 @@ const entityValidatorTool = ToolboxToolBlueprint.make({
     category: 'Backstage',
     async loader() {
       const m = await import('./components/Validators/EntityValidator');
-      return compatWrapper(<m.default />);
+      return <m.default />;
     },
   },
 });
@@ -348,7 +347,7 @@ const csrTool = ToolboxToolBlueprint.make({
     category: 'Generate',
     async loader() {
       const m = await import('./components/Generators/CSR');
-      return compatWrapper(<m.default />);
+      return <m.default />;
     },
   },
 });
@@ -362,7 +361,7 @@ const qrCodeTool = ToolboxToolBlueprint.make({
     category: 'Generate',
     async loader() {
       const m = await import('./components/Generators/QRCode');
-      return compatWrapper(<m.default />);
+      return <m.default />;
     },
   },
 });
@@ -376,7 +375,7 @@ const barCodeTool = ToolboxToolBlueprint.make({
     category: 'Generate',
     async loader() {
       const m = await import('./components/Generators/BarCode');
-      return compatWrapper(<m.default />);
+      return <m.default />;
     },
   },
 });
@@ -390,7 +389,7 @@ const loremIpsumTool = ToolboxToolBlueprint.make({
     category: 'Generate',
     async loader() {
       const m = await import('./components/Generators/LoremIpsum');
-      return compatWrapper(<m.default />);
+      return <m.default />;
     },
   },
 });
@@ -405,7 +404,7 @@ const hashTool = ToolboxToolBlueprint.make({
     aliases: ['md2', 'md5', 'sha1', 'sha256', 'sha512'],
     async loader() {
       const m = await import('./components/Generators/Hash');
-      return compatWrapper(<m.default />);
+      return <m.default />;
     },
   },
 });
@@ -420,7 +419,7 @@ const interfaceTool = ToolboxToolBlueprint.make({
     category: 'Generate',
     async loader() {
       const m = await import('./components/Generators/Interface');
-      return compatWrapper(<m.default />);
+      return <m.default />;
     },
   },
 });
@@ -435,7 +434,7 @@ const jsBeautifyTool = ToolboxToolBlueprint.make({
     aliases: ['js-beautify', 'js'],
     async loader() {
       const m = await import('./components/Formatters/JSBeautify');
-      return compatWrapper(<m.default />);
+      return <m.default />;
     },
   },
 });
@@ -449,7 +448,7 @@ const htmlBeautifyTool = ToolboxToolBlueprint.make({
     category: 'Format',
     async loader() {
       const m = await import('./components/Formatters/HTMLBeautify');
-      return compatWrapper(<m.default />);
+      return <m.default />;
     },
   },
 });
@@ -463,7 +462,7 @@ const cssBeautifyTool = ToolboxToolBlueprint.make({
     category: 'Format',
     async loader() {
       const m = await import('./components/Formatters/CSSBeautify');
-      return compatWrapper(<m.default />);
+      return <m.default />;
     },
   },
 });
@@ -477,7 +476,7 @@ const sqlBeautifyTool = ToolboxToolBlueprint.make({
     category: 'Format',
     async loader() {
       const m = await import('./components/Formatters/SQLBeautify');
-      return compatWrapper(<m.default />);
+      return <m.default />;
     },
   },
 });
@@ -491,7 +490,7 @@ const countdownTool = ToolboxToolBlueprint.make({
     category: 'Miscellaneous',
     async loader() {
       const m = await import('./components/Misc/Countdown');
-      return compatWrapper(<m.default />);
+      return <m.default />;
     },
   },
 });
@@ -505,7 +504,7 @@ const stopwatchTool = ToolboxToolBlueprint.make({
     category: 'Miscellaneous',
     async loader() {
       const m = await import('./components/Misc/Timer');
-      return compatWrapper(<m.default />);
+      return <m.default />;
     },
   },
 });
@@ -519,7 +518,7 @@ const diffTool = ToolboxToolBlueprint.make({
     category: 'Miscellaneous',
     async loader() {
       const m = await import('./components/Misc/Diff');
-      return compatWrapper(<m.default />);
+      return <m.default />;
     },
   },
 });
@@ -533,7 +532,7 @@ const ibanValidatorTool = ToolboxToolBlueprint.make({
     category: 'Validate',
     async loader() {
       const m = await import('./components/Validators/IbanValidator');
-      return compatWrapper(<m.default />);
+      return <m.default />;
     },
   },
 });
@@ -547,7 +546,7 @@ const regexValidatorTool = ToolboxToolBlueprint.make({
     category: 'Validate',
     async loader() {
       const m = await import('./components/Validators/RegexValidator');
-      return compatWrapper(<m.default />);
+      return <m.default />;
     },
   },
 });
@@ -561,7 +560,7 @@ const urlExploderTool = ToolboxToolBlueprint.make({
     category: 'Miscellaneous',
     async loader() {
       const m = await import('./components/Misc/UrlExploder');
-      return compatWrapper(<m.default />);
+      return <m.default />;
     },
   },
 });
@@ -576,7 +575,7 @@ const whoisTool = ToolboxToolBlueprint.make({
     requiresBackend: true,
     async loader() {
       const m = await import('./components/Networking/Whois');
-      return compatWrapper(<m.default />);
+      return <m.default />;
     },
   },
 });

@@ -39,7 +39,6 @@ Use `ToolboxToolBlueprint` (now exported from the main package, no `/alpha` sub-
 ```ts
 import { ToolboxToolBlueprint } from '@drodil/backstage-plugin-toolbox';
 import { createFrontendModule } from '@backstage/frontend-plugin-api';
-import { compatWrapper } from '@backstage/core-compat-api';
 
 const myCustomTool = ToolboxToolBlueprint.make({
   name: 'my-tool',
@@ -50,7 +49,7 @@ const myCustomTool = ToolboxToolBlueprint.make({
     category: 'Miscellaneous',
     async loader() {
       const m = await import('./components/MyTool');
-      return compatWrapper(<m.default />);
+      return <m.default />;
     },
   },
 });
@@ -159,7 +158,7 @@ The plugin supports i18n. To add a new language, create a locale file in your ap
 ```ts
 // packages/app/src/locales/toolbox-fi.ts
 import { toolboxTranslationRef } from '@drodil/backstage-plugin-toolbox';
-import { createTranslationMessages } from '@backstage/core-plugin-api/alpha';
+import { createTranslationMessages } from '@backstage/frontend-plugin-api';
 
 const fi = createTranslationMessages({
   ref: toolboxTranslationRef,
@@ -176,7 +175,7 @@ export default fi;
 Then register it in `packages/app/src/App.tsx`:
 
 ```tsx
-import { createTranslationResource } from '@backstage/core-plugin-api/alpha';
+import { createTranslationResource } from '@backstage/frontend-plugin-api';
 import { toolboxTranslationRef } from '@drodil/backstage-plugin-toolbox';
 
 const app = createApp({

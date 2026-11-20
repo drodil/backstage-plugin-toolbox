@@ -44,7 +44,6 @@ Use `ToolboxToolBlueprint` from the main package:
 ```ts
 import { ToolboxToolBlueprint } from '@drodil/backstage-plugin-toolbox';
 import { createFrontendModule } from '@backstage/frontend-plugin-api';
-import { compatWrapper } from '@backstage/core-compat-api';
 
 const myTool = ToolboxToolBlueprint.make({
   name: 'my-tool',
@@ -55,7 +54,7 @@ const myTool = ToolboxToolBlueprint.make({
     category: 'Miscellaneous',
     async loader() {
       const m = await import('./components/MyTool');
-      return compatWrapper(<m.default />);
+      return <m.default />;
     },
   },
 });
