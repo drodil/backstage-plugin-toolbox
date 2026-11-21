@@ -118,6 +118,7 @@
     "@types/lodash": "^4.14.201",
     "@types/luxon": "^3.3.2",
     "@types/node": "*",
+    "@types/react-dom": "^18.0.0",
     "@types/react-window": "^1",
     "@types/readable-stream": "^4.0.15",
     "@types/turndown": "^5.0.2",
