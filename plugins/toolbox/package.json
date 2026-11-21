@@ -99,6 +99,8 @@
     "react-router-dom": "6.0.0-beta.0 || ^6.3.0"
   },
   "devDependencies": {
+    "@backstage/catalog-client": "backstage:^",
+    "@backstage/catalog-model": "backstage:^",
     "@backstage/cli": "backstage:^",
     "@backstage/dev-utils": "backstage:^",
     "@backstage/frontend-defaults": "backstage:^",
@@ -118,12 +120,16 @@
     "@types/lodash": "^4.14.201",
     "@types/luxon": "^3.3.2",
     "@types/node": "*",
+    "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
     "@types/react-window": "^1",
     "@types/readable-stream": "^4.0.15",
     "@types/turndown": "^5.0.2",
     "@types/urijs": "^1.19.25",
-    "cross-fetch": "^3.1.5"
+    "cross-fetch": "^3.1.5",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.30.6"
   },
   "files": [
     "dist",
