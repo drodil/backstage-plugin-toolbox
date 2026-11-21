@@ -1,17 +1,18 @@
 import { ToolsContainerProps } from './ToolsContainer';
-import { defaultTools } from './tools';
 import { useParams } from 'react-router-dom';
 import { useToolboxTranslation } from '../../hooks';
 import { ToolContainer } from './ToolContainer';
-import { getToolTitle } from '../../utils/tools';
+import { getAllTools, getToolTitle } from '../../utils/tools';
 
 export const ToolPage = (props: ToolsContainerProps) => {
-  const { extraTools } = props;
+  const { extraTools, tools } = props;
   const params = useParams();
   const { t } = useToolboxTranslation();
 
-  const allTools = [...(extraTools ?? []), ...defaultTools];
-  const tool = allTools.find(({ id }) => id === params.id);
+  // The list's tool set, before its favorites and visibility filters.
+  const tool = getAllTools({ tools, extraTools }).find(
+    ({ id }) => id === params.id,
+  );
   if (!tool) {
     return <>{t('toolPage.toolNotAvailable')}</>;
   }
