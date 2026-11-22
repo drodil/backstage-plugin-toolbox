@@ -41,6 +41,9 @@ describe('toolbox', () => {
       expect(
         await findByText(/^The toolbox contains/, {}, waitOptions),
       ).toBeInTheDocument();
+      expect(
+        queryByText('WHOIS lookup', { selector: 'button' }),
+      ).not.toBeInTheDocument();
       expect(queryByText('Lookup')).not.toBeInTheDocument();
     },
     testTimeout,
