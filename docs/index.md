@@ -172,9 +172,9 @@ const fi = createTranslationMessages({
 export default fi;
 ```
 
-Then install it with a `TranslationBlueprint` extension from `@backstage/plugin-app-react` in an `app` module, in `packages/app/src/App.tsx`:
+Then install it with a `TranslationBlueprint` extension from `@backstage/plugin-app-react` in an `app` module, in the same `createApp` call in `packages/app/src/index.ts`:
 
-```tsx
+```ts
 import { createApp } from '@backstage/frontend-defaults';
 import {
   createFrontendModule,
@@ -197,16 +197,18 @@ const toolboxFiTranslations = TranslationBlueprint.make({
   },
 });
 
-export default createApp({
+const app = createApp({
   features: [
     toolboxPlugin,
     createFrontendModule({
       pluginId: 'app',
       extensions: [toolboxFiTranslations],
     }),
-    // ...other features
+    // ...other plugins
   ],
 });
+
+export default app.createRoot();
 ```
 
 Finally, list the available languages in `app-config.yaml`:
