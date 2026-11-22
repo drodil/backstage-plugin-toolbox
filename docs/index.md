@@ -163,7 +163,7 @@ import { createTranslationMessages } from '@backstage/frontend-plugin-api';
 const fi = createTranslationMessages({
   ref: toolboxTranslationRef,
   full: false,
-  translations: {
+  messages: {
     'toolsPage.title': 'Työkalut',
     'welcomePage.introText': 'Käytä työkaluja helposti',
   },
@@ -172,25 +172,53 @@ const fi = createTranslationMessages({
 export default fi;
 ```
 
-Then register it in `packages/app/src/App.tsx`:
+Then install it with a `TranslationBlueprint` extension from `@backstage/plugin-app-react` in an `app` module, in `packages/app/src/App.tsx`:
 
 ```tsx
-import { createTranslationResource } from '@backstage/frontend-plugin-api';
-import { toolboxTranslationRef } from '@drodil/backstage-plugin-toolbox';
+import { createApp } from '@backstage/frontend-defaults';
+import {
+  createFrontendModule,
+  createTranslationResource,
+} from '@backstage/frontend-plugin-api';
+import { TranslationBlueprint } from '@backstage/plugin-app-react';
+import toolboxPlugin, {
+  toolboxTranslationRef,
+} from '@drodil/backstage-plugin-toolbox';
 
-const app = createApp({
-  __experimentalTranslations: {
-    availableLanguages: ['en', 'fi'],
-    resources: [
-      createTranslationResource({
-        ref: toolboxTranslationRef,
-        translations: {
-          fi: () => import('./locales/toolbox-fi'),
-        },
-      }),
-    ],
+const toolboxFiTranslations = TranslationBlueprint.make({
+  name: 'toolbox-fi',
+  params: {
+    resource: createTranslationResource({
+      ref: toolboxTranslationRef,
+      translations: {
+        fi: () => import('./locales/toolbox-fi'),
+      },
+    }),
   },
 });
+
+export default createApp({
+  features: [
+    toolboxPlugin,
+    createFrontendModule({
+      pluginId: 'app',
+      extensions: [toolboxFiTranslations],
+    }),
+    // ...other features
+  ],
+});
+```
+
+Finally, list the available languages in `app-config.yaml`:
+
+```yaml
+app:
+  extensions:
+    - api:app/app-language:
+        config:
+          availableLanguages:
+            - en
+            - fi
 ```
 
 ## Tool-specific translations
@@ -221,14 +249,21 @@ createTranslationMessages({
 
 ## Using predefined translations
 
+The plugin ships its own translations as `toolboxTranslations`. To use them, add this module to your app's `features` and list the languages in `app-config.yaml` as shown above:
+
 ```ts
+import { createFrontendModule } from '@backstage/frontend-plugin-api';
+import { TranslationBlueprint } from '@backstage/plugin-app-react';
 import { toolboxTranslations } from '@drodil/backstage-plugin-toolbox';
 
-const app = createApp({
-  __experimentalTranslations: {
-    availableLanguages: ['en', 'fi'],
-    resources: [toolboxTranslations],
-  },
+const toolboxTranslationsModule = createFrontendModule({
+  pluginId: 'app',
+  extensions: [
+    TranslationBlueprint.make({
+      name: 'toolbox',
+      params: { resource: toolboxTranslations },
+    }),
+  ],
 });
 ```
 
