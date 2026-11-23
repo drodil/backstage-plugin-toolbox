@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.2.0](https://github.com/drodil/backstage-plugin-toolbox/compare/v2.1.1...v2.2.0) (2026-11-23)
+
+
+### Features
+
+* **entity-validator:** validate multi-document YAML ([449e8c5](https://github.com/drodil/backstage-plugin-toolbox/commit/449e8c5d8eef9bce839094d4a1e92d56d0de9d1c))
+
+
+### Bug Fixes
+
+* declare every imported package instead of relying on hoisting ([7507112](https://github.com/drodil/backstage-plugin-toolbox/commit/7507112072d3c826a2c5d42bb2712ac8c1937009))
+* require react-router-dom 6.30.2 or later ([76e416b](https://github.com/drodil/backstage-plugin-toolbox/commit/76e416b4e21c6f83548b3232e4be0e2c8dc9da86))
+* **toolbox:** find tools from the tools prop on the tool page ([cc21981](https://github.com/drodil/backstage-plugin-toolbox/commit/cc21981a50b702c5b571295828e680af070fc99c))
+
 ### [2.1.1](https://github.com/drodil/backstage-plugin-toolbox/compare/v2.1.0...v2.1.1) (2026-09-01)
 
 
