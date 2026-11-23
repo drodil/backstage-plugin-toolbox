@@ -1,4 +1,4 @@
-import { createTranslationMessages } from '@backstage/core-plugin-api/alpha';
+import { createTranslationMessages } from '@backstage/frontend-plugin-api';
 import { toolboxTranslationRef } from '../translation';
 
 const fi = createTranslationMessages({

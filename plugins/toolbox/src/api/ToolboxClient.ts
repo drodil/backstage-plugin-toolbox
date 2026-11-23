@@ -1,5 +1,5 @@
 import { ToolboxApi } from './ToolboxApi';
-import { DiscoveryApi, FetchApi } from '@backstage/core-plugin-api';
+import { DiscoveryApi, FetchApi } from '@backstage/frontend-plugin-api';
 
 export class ToolboxClient implements ToolboxApi {
   private readonly fetchApi: FetchApi;

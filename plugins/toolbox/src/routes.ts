@@ -1,5 +1,3 @@
-import { createRouteRef } from '@backstage/core-plugin-api';
+import { createRouteRef } from '@backstage/frontend-plugin-api';
 
-export const rootRouteRef = createRouteRef({
-  id: 'toolbox',
-});
+export const rootRouteRef = createRouteRef();

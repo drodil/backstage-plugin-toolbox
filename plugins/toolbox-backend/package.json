@@ -70,6 +70,7 @@
     "@backstage/plugin-auth-backend": "backstage:^",
     "@backstage/plugin-auth-backend-module-guest-provider": "backstage:^",
     "@drodil/backstage-plugin-toolbox-backend-module-whois": "workspace:^",
+    "@types/iban": "^0.0.35",
     "@types/supertest": "^2.0.12",
     "msw": "^1.0.0",
     "supertest": "^6.2.4"
