@@ -65,7 +65,7 @@
     "color-convert": "^2.0.1",
     "crypto-hash": "^3.0.0",
     "csvtojson": "^2.0.14",
-    "i18next": "^22.4.15",
+    "i18next": "^26.3.4",
     "iban": "^0.0.14",
     "jose": "^5.2.0",
     "js-beautify": "^1.14.9",
